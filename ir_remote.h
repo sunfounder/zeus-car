@@ -1,0 +1,45 @@
+#ifndef __IR_REMOTE_H__
+#define __IR_REMOTE_H__
+
+#define IR_KEY_POWER 0x45
+#define IR_KEY_MODE  0x46
+#define IR_KEY_MUTE  0x47
+
+#define IR_KEY_PLAY_PAUSE 0x44
+#define IR_KEY_BACKWARD   0x40
+#define IR_KEY_FORWARD    0x43
+
+#define IR_KEY_EQ    0x07
+#define IR_KEY_MINUS 0x15
+#define IR_KEY_PLUS  0x09
+
+#define IR_KEY_0     0x16
+#define IR_KEY_CYCLE 0x19
+#define IR_KEY_U_SD  0x0D
+
+#define IR_KEY_1 0x0C
+#define IR_KEY_2 0x18
+#define IR_KEY_3 0x5E
+
+#define IR_KEY_4 0x08
+#define IR_KEY_5 0x1C
+#define IR_KEY_6 0x5A
+
+#define IR_KEY_7 0x42
+#define IR_KEY_8 0x52
+#define IR_KEY_9 0x4A
+
+#define IR_KEY_ERROR 0x00
+
+#define IR_USE_AVR_TIMER1
+
+class IR_Remote{
+  public:
+    IR_Remote(int pin);
+    void begin();
+    int read();
+  private:
+    int pin;
+};
+
+#endif // __IR_REMOTE_H__
