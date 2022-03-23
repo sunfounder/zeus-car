@@ -29,7 +29,7 @@ class Car{
     void left();
     void right();
     void stop();
-    void move(int angle, int power,int rot);
+    void move(int angle, int power, int rot);
   
   private:
     int* motorPins;
