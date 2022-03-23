@@ -15,4 +15,4 @@ class Grayscale{
     int ref;
 };
 
-#endif
+#endif // __GRAYSCALE_H__

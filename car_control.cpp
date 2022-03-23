@@ -1,7 +1,7 @@
 #include "car_control.h"
 
-#include <SoftPWM.h>  //PWM库
 #include <Arduino.h>
+#include <SoftPWM.h>  //PWM库
 
 Car::Car(int* motorPins, int* motorDirection) {
   this->motorPins = motorPins;
@@ -16,74 +16,19 @@ void Car::begin() {
   }
 }
 
-void Car::forward() {  //前进
-  setMotor(0, 100);
-  setMotor(1, 100);
-  setMotor(2, 100);
-  setMotor(3, 100);
-}
-void Car::backward() {  //后退
-  setMotor(0, -100);
-  setMotor(1, -100);
-  setMotor(2, -100);
-  setMotor(3, -100);
-}
-void Car::left() {  //向左
-  setMotor(0, -100);
-  setMotor(1, 100);
-  setMotor(2, -100);
-  setMotor(3, 100);
-}
-void Car::right() {  //向右
-  setMotor(0, 100);
-  setMotor(1, -100);
-  setMotor(2, 100);
-  setMotor(3, -100);
-}
-void Car::turnLeft() {  //左旋转
-  setMotor(0, 100);
-  setMotor(1, -100);
-  setMotor(2, -100);
-  setMotor(3, 100);
-}
-void Car::turnRight() {  //右旋转
-  setMotor(0, -100);
-  setMotor(1, 100);
-  setMotor(2, 100);
-  setMotor(3, -100);
-}
-void Car::leftForword() {  //左前进
-  setMotor(0, 100);
-  setMotor(1, 0);
-  setMotor(2, 100);
-  setMotor(3, 0);
-}
-void Car::rightForword() {  //右前进
-  setMotor(0, 0);
-  setMotor(1, 100);
-  setMotor(2, 0);
-  setMotor(3, 100);
-}
-void Car::leftBackward() {  //左后退
-  setMotor(0, 0);
-  setMotor(1, -100);
-  setMotor(2, 0);
-  setMotor(3, -100);
-}
-void Car::rightBackward() {  //右后退
-  setMotor(0, -100);
-  setMotor(1, 0);
-  setMotor(2, -100);
-  setMotor(3, 0);
-}
-void Car::stop() {  //停止
-  setMotor(0, 0);
-  setMotor(1, 0);
-  setMotor(2, 0);
-  setMotor(3, 0);
-}
+void Car::forward()       { this->setMotors( 100,  100,  100,  100); }
+void Car::backward()      { this->setMotors(-100, -100, -100, -100); }
+void Car::left()          { this->setMotors(-100,  100, -100,  100); }
+void Car::right()         { this->setMotors( 100, -100,  100, -100); }
+void Car::turnLeft()      { this->setMotors( 100, -100, -100,  100); }
+void Car::turnRight()     { this->setMotors(-100,  100,  100, -100); }
+void Car::leftForword()   { this->setMotors( 100,    0,  100,    0); }
+void Car::rightForword()  { this->setMotors(   0,  100,    0,  100); }
+void Car::leftBackward()  { this->setMotors(   0, -100,    0, -100); }
+void Car::rightBackward() { this->setMotors(-100,    0, -100,    0); }
+void Car::stop()          { this->setMotors(   0,    0,    0,    0); }
 
-void Car::setMotor(int motor, int power) {  //定义电机转向
+void Car::setMotor(int motor, int power) {
   int a = motor * 2;
   int b = motor * 2 + 1;
   int dir = power > 0;
@@ -91,34 +36,34 @@ void Car::setMotor(int motor, int power) {  //定义电机转向
 
   int newPower = map(abs(power), 0, 100, 0, 255);
 
-  SoftPWMSet(motorPins[a], dir * newPower);
+  SoftPWMSet(motorPins[a],  dir * newPower);
   SoftPWMSet(motorPins[b], !dir * newPower);
 }
 
-void Car::move(int angle, int power,
-               int rot) {  //设置小车极坐标 int angle 》 角度 、int power 》
-                           //速度 、int rot 》 弧度 --》定义电机运动方向
-  int power_0, power_1, power_2, power_3;  //设置4个轮子的速度
+void Car::setMotors(int power1, int power2, int power3, int power4) {
+  setMotor(0, power1);
+  setMotor(1, power2);
+  setMotor(2, power3);
+  setMotor(3, power4);
+}
 
-  angle = angle % 360;  //角度限制在0-360
-  if (angle < 0) { //角度限制在0-360
+void Car::move(int angle, int power, int rot) {
+  int power_0, power_1, power_2, power_3;
+
+  // Limite angle to 0-360
+  angle = angle % 360;
+  if (angle < 0) {
     angle += 360;
   }
-  angle += 90;  //打印出来的值与实际相差90，需进行等比对换，变成我们需要的值
-  float rad = angle * PI / 180;  // PI-->π转换
+  // Offset angle as 0 to the front
+  angle += 90;
+  float rad = angle * PI / 180;
 
   // Calculate 4 wheel
-  power_0 = power * sin(rad) + power * cos(rad) -
-            rot;  // * (CAR_WIDTH+CAR_LENGTH);计算小车车轮行驶方向以及速度
-  power_1 = power * sin(rad) - power * cos(rad) +
-            rot;  // * (CAR_WIDTH+CAR_LENGTH);计算小车车轮行驶方向以及速度
-  power_2 = power * sin(rad) + power * cos(rad) +
-            rot;  // * (CAR_WIDTH+CAR_LENGTH);计算小车车轮行驶方向以及速度
-  power_3 = power * sin(rad) - power * cos(rad) -
-            rot;  // * (CAR_WIDTH+CAR_LENGTH);计算小车车轮行驶方向以及速度
+  power_0 = power * sin(rad) + power * cos(rad) - rot;
+  power_1 = power * sin(rad) - power * cos(rad) + rot;
+  power_2 = power * sin(rad) + power * cos(rad) + rot;
+  power_3 = power * sin(rad) - power * cos(rad) - rot;
 
-  setMotor(0, power_0);  //电机行驶方向以及速度
-  setMotor(1, power_1);  //电机行驶方向以及速度
-  setMotor(2, power_2);  //电机行驶方向以及速度
-  setMotor(3, power_3);  //电机行驶方向以及速度
+  this->setMotors(power_0, power_1, power_2, power_3);
 }

@@ -5,11 +5,19 @@
 #define CAR_WIDTH  14.76/2      //定义宽度
 #define CAR_LENGTH  11.48/2     //定义长度
 
+// [0]-------[1]
+//  |         |
+//  |         |
+//  |         |
+//  |         |
+// [3]-------[2]
+
 class Car{
   public:
     Car(int* pins, int* directions);
     void begin();
     void setMotor(int motor, int power);
+    void setMotors(int power1, int power2, int power3, int power4)
     void forward();
     void backward();
     void turnLeft();
