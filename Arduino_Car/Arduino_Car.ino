@@ -6,53 +6,55 @@
 #include "ir_remote.h"
 #include "ultrasonic.h"
 
-int motorDirection[] = {1, 0, 0, 1};
-int motorPins[8] = {2, 3, 4, 5, 6, 7, 8, 9};
-int grayscalePins[3] = {A0, A1, A2};
-int grayscaleReference = 400;
-int ultrasonicPin = 11;
-int irObstaclePins[] = {12, A3, A4, A5, 13};
-int irReceiverPin = 10;
+uint8_t ultrasonicPin = 11;
+uint8_t irObstaclePins[] = {12, A3, 12, 13, 13};
 
-Car car = Car(motorPins, motorDirection);
-Grayscale grayscale = Grayscale(grayscalePins, grayscaleReference);
 Ultrasonic ultrasonic = Ultrasonic(ultrasonicPin);
-IR_Remote irRemote = IR_Remote(irReceiverPin);
 
 #define CAR_DEFAULT_POWER 40
+#define CAR_CALIBRATION_POWER 80
 #define ULTRASONIC_AVOIDANCE_THRESHOLD 20
 #define ULTRASONIC_FOLLOW_THRESHOLD 30
 #define ULTRASONIC_STOP_THRESHOLD 10
 #define NORMAL_LINE_FOLLOW_POWER 30
-#define NORMAL_LINE_FOLLOW_ANGLE 90
+#define NORMAL_LINE_FOLLOW_ANGLE 45
 
-float current_dir = 0;  //定义小车障碍当前角度初始为0
-int angles[6] = {0, 60, 120, 180, 240, 300};  //定义六个角度
-
-int currentMode = MODE_REMOTE_CONTROL;
+// Current mode of the car
+uint8_t currentMode = MODE_REMOTE_CONTROL;
 // State machine for almost all mode. State define see every function
-int currentState = 0;
+uint8_t currentState = 0;
+uint16_t remoteAngle = 0;
+int8_t remotePower = 0;
+int8_t remoteRot = 0;
 
 void setup() {
-  Serial.begin(9600);  // 115200（PC端使用）
-  car.begin();
-  grayscale.begin();
+  Serial.begin(115200);
+  Serial.println("Seting up...");
+  carBegin();
+  gsBegin();
   ultrasonic.begin();
   ultrasonic.setRef(ULTRASONIC_AVOIDANCE_THRESHOLD);
-  irRemote.begin();
+  irBegin();
+  Serial.println("Setup done");
 }
 
 void loop() {
-  int key = irRemote.read();
+  uint8_t key = irRead();
   if (key != IR_KEY_ERROR) {
     currentState = 0;
   }
   switch (key) {
     case IR_KEY_POWER:
+      currentMode = MODE_NONE;
+      carStop();
       break;
     case IR_KEY_MODE:
       break;
     case IR_KEY_MUTE:
+      currentMode = MODE_COMPASS_CALIBRATION;
+      carMove(0, 0, CAR_CALIBRATION_POWER);
+      carStop();
+      Serial.println("Calibrate compass");
       break;
     case IR_KEY_PLAY_PAUSE:
       currentMode = MODE_NORMAL_LINE_FOLLOWING;
@@ -117,6 +119,11 @@ void loop() {
     case MODE_PARALLEL_OBSTACLE_AVOIDANCE:
       parallelObstacleAvoidance();
       break;
+    case MODE_REMOTE_CONTROL:
+      carMove2(remoteAngle, remotePower, remoteRot);
+      break;
+    case MODE_COMPASS_CALIBRATION:
+      compassCalibrate();
     default:
       break;
   }
@@ -124,9 +131,9 @@ void loop() {
 
 // 循迹传感器呈倒三角形，放在小车正下方。旋转巡线（普通巡线）
 void normalLineFollowing() {
-  int sensorL, sensorM, sensorR;
-  int gsValues[3];
-  grayscale.readInto(gsValues);
+  bool sensorL, sensorM, sensorR;
+  bool gsValues[3];
+  gsReadInto(gsValues);
   sensorL = gsValues[0];
   sensorM = gsValues[1];
   sensorR = gsValues[2];
@@ -136,92 +143,91 @@ void normalLineFollowing() {
   Serial.print(", ");
   Serial.println(sensorR);
   if (sensorL == 0 && sensorM == 1 && sensorR == 0) {
-    car.move(0, NORMAL_LINE_FOLLOW_POWER, 0);
+    carMove(0, NORMAL_LINE_FOLLOW_POWER, 0);
   } else if (sensorL == 1 && sensorM == 0 && sensorR == 0) {
-    car.move(-NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
+    carMove(-NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
   } else if (sensorL == 0 && sensorM == 0 && sensorR == 1) {
-    car.move(NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
+    carMove(NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
   } else if (sensorL == 1 && sensorM == 1 && sensorR == 0) {
-    car.move(0, 0, NORMAL_LINE_FOLLOW_POWER);
+    carMove(0, 0, NORMAL_LINE_FOLLOW_POWER);
   } else if (sensorL == 0 && sensorM == 1 && sensorR == 1) {
-    car.move(0, 0, -NORMAL_LINE_FOLLOW_POWER);
+    carMove(0, 0, -NORMAL_LINE_FOLLOW_POWER);
   }
 }
 
 // State machine: state 0: follow, state 1: turn to find Obstacle
 void normalObstacleFollowing() {
-  int sensor_values[5];
+  bool sensor_values[5];
   float us_dis;
   us_dis = ultrasonic.read();
-  for (int i = 0; i < 5; i++) {
+  for (uint8_t i = 0; i < 5; i++) {
     sensor_values[i] = digitalRead(irObstaclePins[i]);
   }
   if (us_dis < ULTRASONIC_STOP_THRESHOLD) {
-    car.stop();
+    carStop();
     currentState = 0;
   } else if (us_dis < ULTRASONIC_FOLLOW_THRESHOLD) {
-    car.move(0, CAR_DEFAULT_POWER, 0);
+    carMove(0, CAR_DEFAULT_POWER, 0);
     currentState = 0;
   } else if (sensor_values[0] + sensor_values[1] + sensor_values[2] < 3) {
     // if any of the three sensors are triggered, turn left
-    car.move(0, 0, -CAR_DEFAULT_POWER);
+    carMove(0, 0, -CAR_DEFAULT_POWER);
     currentState = 1;
   } else if (sensor_values[3] + sensor_values[4] < 2) {
     // if any of the two sensors are triggered, turn right
-    car.move(0, 0, CAR_DEFAULT_POWER);
+    carMove(0, 0, CAR_DEFAULT_POWER);
     currentState = 1;
   } else {
     if (currentState == 0) {
-      car.stop();
+      carStop();
     }
   }
 }
 
 void normalObstacleAvoidance() {
-  int middle_clear = ultrasonic.isClear();
-  int left_clear = digitalRead(irObstaclePins[4]);
-  int right_clear = digitalRead(irObstaclePins[0]);
+  bool middle_clear = ultrasonic.isClear();
+  bool left_clear = digitalRead(irObstaclePins[4]);
+  bool right_clear = digitalRead(irObstaclePins[0]);
   if (middle_clear && left_clear && right_clear) {
-    car.move(0, CAR_DEFAULT_POWER, 0);  //前进
+    carMove(0, CAR_DEFAULT_POWER, 0);  //前进
   } else {
     if (!left_clear) {
-      car.move(0, 0, -CAR_DEFAULT_POWER);
+      carMove(0, 0, -CAR_DEFAULT_POWER);
     } else {
-      car.move(0, 0, CAR_DEFAULT_POWER);
+      carMove(0, 0, CAR_DEFAULT_POWER);
     }
   }
 }
 
 // 循迹传感器呈倒三角形，放在小车正下方。平移巡线
-int moveAngle = 0;
-int lineFollowOffLineCount = 0;
+int16_t moveAngle = 0;
+uint16_t lineFollowOffLineCount = 0;
 void parallelLineFollowing() {
-  int sensorL, sensorM, sensorR;
-  // int count = 0;
-  int gsValues[3];
-  grayscale.readInto(gsValues, moveAngle);
+  bool sensorL, sensorM, sensorR;
+  bool gsValues[3];
+  gsReadInto(gsValues, moveAngle);
   sensorL = gsValues[0];
   sensorM = gsValues[1];
   sensorR = gsValues[2];
   if (sensorL == 0 && sensorM == 1 && sensorR == 0) {
     // Serial.println("前进");
-    car.move(moveAngle, CAR_DEFAULT_POWER, 0);
+    carMove(moveAngle, CAR_DEFAULT_POWER, 0);
   } else if (sensorL == 1 && sensorM == 0 && sensorR == 0) {
     // Serial.println("左移");
-    car.move(moveAngle - 60, CAR_DEFAULT_POWER, 0);
+    carMove(moveAngle - 60, CAR_DEFAULT_POWER, 0);
   } else if (sensorL == 0 && sensorM == 0 && sensorR == 1) {
     // Serial.println("右移");
-    car.move(moveAngle + 60, CAR_DEFAULT_POWER, 0);
+    carMove(moveAngle + 60, CAR_DEFAULT_POWER, 0);
   } else if (sensorL == 0 && sensorM == 1 && sensorR == 1) {
     if (moveAngle % 120 == 0) {
       moveAngle += 60;
     } else {
       moveAngle -= 60;
     }
-    car.move(moveAngle, CAR_DEFAULT_POWER, 0);
+    carMove(moveAngle, CAR_DEFAULT_POWER, 0);
     // Wait until only one sensor is on the line
     while (gsValues[0] + gsValues[1] + gsValues[2] == 1) {
-      grayscale.readInto(gsValues, moveAngle);
+      gsReadInto(gsValues, moveAngle);
     }
     Serial.print("改变方向：");
     Serial.println(moveAngle);
@@ -231,10 +237,10 @@ void parallelLineFollowing() {
     } else {
       moveAngle += 60;
     }
-    car.move(moveAngle, CAR_DEFAULT_POWER, 0);
+    carMove(moveAngle, CAR_DEFAULT_POWER, 0);
     // Wait until only one sensor is on the line
     while (gsValues[0] + gsValues[1] + gsValues[2] == 1) {
-      grayscale.readInto(gsValues, moveAngle);
+      gsReadInto(gsValues, moveAngle);
     }
     Serial.print("改变方向：");
     Serial.println(moveAngle);
@@ -242,7 +248,7 @@ void parallelLineFollowing() {
   if (sensorL == 0 && sensorM == 0 && sensorR == 0) {
     lineFollowOffLineCount += 1;
     if (lineFollowOffLineCount > 1000) {
-      car.stop();
+      carStop();
     }
   } else {
     lineFollowOffLineCount = 0;
@@ -254,9 +260,9 @@ void parallelLineFollowing() {
 }
 
 void parallelObstacleFollowing() {
-  int sensor_values[5];  //定义五个传感器
+  bool sensor_values[5];  //定义五个传感器
   float us_dis;
-  int i;
+  uint8_t i;
   ultrasonic.read();
   us_dis = ultrasonic.read();  //定义us_dis为超声波的测试距离
   for (i = 0; i < 5; i++) {
@@ -264,31 +270,31 @@ void parallelObstacleFollowing() {
         digitalRead(irObstaclePins[i]);  //定义传感器起为irObstaclePins[i]的读值
   }
   if (us_dis < ULTRASONIC_AVOIDANCE_THRESHOLD && us_dis > 10) {
-    car.move(0, CAR_DEFAULT_POWER, 0);  //前进
+    carMove(0, CAR_DEFAULT_POWER, 0);  //前进
   } else if (sensor_values[0] == 0) {
-    car.move(60, CAR_DEFAULT_POWER, 0);  //右前进
+    carMove(60, CAR_DEFAULT_POWER, 0);  //右前进
   } else if (sensor_values[1] == 0) {
-    car.move(120, CAR_DEFAULT_POWER, 0);  //右后退
+    carMove(120, CAR_DEFAULT_POWER, 0);  //右后退
   } else if (sensor_values[2] == 0) {
-    car.move(180, CAR_DEFAULT_POWER, 0);  //后退
+    carMove(180, CAR_DEFAULT_POWER, 0);  //后退
   } else if (sensor_values[3] == 0) {
-    car.move(240, CAR_DEFAULT_POWER, 0);  //左后退
+    carMove(240, CAR_DEFAULT_POWER, 0);  //左后退
   } else if (sensor_values[4] == 0) {
-    car.move(300, CAR_DEFAULT_POWER, 0);  //左前进
+    carMove(300, CAR_DEFAULT_POWER, 0);  //左前进
   } else if (us_dis < ULTRASONIC_AVOIDANCE_THRESHOLD && sensor_values[0] == 0) {
-    car.move(45, CAR_DEFAULT_POWER, 0);  //右前进
+    carMove(45, CAR_DEFAULT_POWER, 0);  //右前进
   } else if (sensor_values[0] == 0 && sensor_values[1] == 0) {
-    car.move(90, CAR_DEFAULT_POWER, 0);  //右转
+    carMove(90, CAR_DEFAULT_POWER, 0);  //右转
   } else if (sensor_values[1] == 0 && sensor_values[2] == 0) {
-    car.move(150, CAR_DEFAULT_POWER, 0);  //右后退
+    carMove(150, CAR_DEFAULT_POWER, 0);  //右后退
   } else if (sensor_values[2] == 0 && sensor_values[3] == 0) {
-    car.move(210, CAR_DEFAULT_POWER, 0);  //左后退
+    carMove(210, CAR_DEFAULT_POWER, 0);  //左后退
   } else if (sensor_values[3] == 0 && sensor_values[4] == 0) {
-    car.move(270, CAR_DEFAULT_POWER, 0);  //左转
+    carMove(270, CAR_DEFAULT_POWER, 0);  //左转
   } else if (sensor_values[4] == 0 && us_dis < ULTRASONIC_AVOIDANCE_THRESHOLD) {
-    car.move(330, CAR_DEFAULT_POWER, 0);  //左前进
+    carMove(330, CAR_DEFAULT_POWER, 0);  //左前进
   } else if (ULTRASONIC_AVOIDANCE_THRESHOLD < us_dis) {
-    car.move(0, 0, 0);  //暂停
+    carMove(0, 0, 0);  //暂停
   }
 }
 
@@ -300,11 +306,11 @@ void parallelObstacleFollowing() {
 //   4-----2
 //       /
 //      3
-int loopOrder[6] = {0, 5, 1, 4, 2, 3};
-int currentDir = 0;
+uint8_t loopOrder[6] = {0, 5, 1, 4, 2, 3};
+uint8_t currentDir = 0;
 void parallelObstacleAvoidance() {
-  int sensorValues[6];
-  int i, j;
+  bool sensorValues[6];
+  uint8_t i, j;
   // Read sensors
   sensorValues[0] = ultrasonic.isClear();  //定义us_dis为超声波的测试距离
   for (i = 0; i < 5; i++) {
@@ -312,13 +318,22 @@ void parallelObstacleAvoidance() {
   }
   // Check if current direction, current direction left and current direction
   // right is obstacled
-  int currentDirLeft = (currentDir + 5) % 6;
-  int currentDirRight = (currentDir + 1) % 6;
+  uint8_t currentDirLeft = (currentDir + 5) % 6;
+  uint8_t currentDirRight = (currentDir + 1) % 6;
+  Serial.print("currentDir: ");
+  Serial.println(currentDir);
+  Serial.print("current State: ");
+  Serial.print(sensorValues[currentDirLeft]);
+  Serial.print(" ");
+  Serial.print(sensorValues[currentDir]);
+  Serial.print(" ");
+  Serial.println(sensorValues[currentDirRight]);
   if (sensorValues[currentDir] == 0 || sensorValues[currentDirLeft] == 0 ||
       sensorValues[currentDirRight] == 0) {
-    // Check if there is any direction that is not obstacled
-    for (i = 0; i < 6; i++) {
-      int index = loopOrder[i];
+    Serial.println("obstacle");
+    // Check if there is any direction is not obstacled, Skip 0 as it will interferes
+    for (i = 1; i < 6; i++) {
+      uint8_t index = loopOrder[i];
       // Add currentDir to transfer to the current direction
       index = (currentDir + i) % 6;
       // Check if the current direction is clear
@@ -330,58 +345,91 @@ void parallelObstacleAvoidance() {
     }
   }
   // Move
-  car.move(currentDir * 60, CAR_DEFAULT_POWER, 0);
+  carMove(currentDir * 60, CAR_DEFAULT_POWER, 0);
 }
 
-void remoteControl(long key) {
+void remoteControl(uint8_t key) {
   switch (key) {
     case IR_KEY_CYCLE:  // Turn Left
-      car.move(0, 0, CAR_DEFAULT_POWER);
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteRot = CAR_DEFAULT_POWER;
       Serial.println("Turn Left");
       break;
     case IR_KEY_U_SD:  // Turn Right
-      car.move(0, 0, -CAR_DEFAULT_POWER);
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteRot = -CAR_DEFAULT_POWER;
       Serial.println("Turn Right");
       break;
+    case IR_KEY_0: // Reset origin direction
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteRot = 0;
+      carResetHeading();
+      break;
     case IR_KEY_1:  // Left Forward
-      car.move(315, CAR_DEFAULT_POWER, 0);
+      remoteAngle = 315;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Left Forward");
       break;
     case IR_KEY_2:  // Forward
-      car.move(0, CAR_DEFAULT_POWER, 0);
+      remoteAngle = 0;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Forward");
       break;
-    case IR_KEY_3:  // Right Forwardå
-      car.move(45, CAR_DEFAULT_POWER, 0);
+    case IR_KEY_3:  // Right Forward
+      remoteAngle = 45;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Right Forward");
       break;
     case IR_KEY_4:  // Left
-      car.move(270, CAR_DEFAULT_POWER, 0);
+      remoteAngle = 270;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Left");
       break;
     case IR_KEY_5:  // Stop
-      car.stop();
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteRot = 0;
       Serial.println("Stop");
       break;
     case IR_KEY_6:  // Right
-      car.move(90, CAR_DEFAULT_POWER, 0);
+      remoteAngle = 90;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Right");
       break;
     case IR_KEY_7:  // Left Backward
-      car.move(225, CAR_DEFAULT_POWER, 0);
+      remoteAngle = 225;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Left Backward");
       break;
     case IR_KEY_8:  // Backward
-      car.move(180, CAR_DEFAULT_POWER, 0);
+      remoteAngle = 180;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Backward");
       break;
     case IR_KEY_9:  // Right Backward
-      car.move(135, CAR_DEFAULT_POWER, 0);
+      remoteAngle = 135;
+      remotePower = CAR_DEFAULT_POWER;
+      remoteRot = 0;
       Serial.println("Right Backward");
       break;
     default:
-      car.stop();
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteRot = 0;
       Serial.println("Stop");
       break;
   }
+}
+
+void compassCalibrate() {
 }

@@ -1,19 +1,15 @@
 #include "ir_remote.h"
 #include <IRremote.h>
 
-IRrecv irrecv;
+int irReceiverPin = 10;
+IRrecv irrecv(irReceiverPin);
 
-IR_Remote::IR_Remote(int pin) {
-  this->pin = pin;
-  irrecv = IRrecv(pin);
-}
-
-void IR_Remote::begin() {
+void irBegin() {
   irrecv.enableIRIn();
 }
 
-int IR_Remote::read() {
-  int result = IR_KEY_ERROR;
+uint8_t irRead() {
+  long result = IR_KEY_ERROR;
   if (irrecv.decode()) {
     result = irrecv.decodedIRData.command;
   }

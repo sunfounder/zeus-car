@@ -17,7 +17,7 @@ class Car{
     Car(int* pins, int* directions);
     void begin();
     void setMotor(int motor, int power);
-    void setMotors(int power1, int power2, int power3, int power4)
+    void setMotors(int power1, int power2, int power3, int power4);
     void forward();
     void backward();
     void turnLeft();

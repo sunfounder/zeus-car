@@ -1,6 +1,8 @@
 #ifndef __IR_REMOTE_H__
 #define __IR_REMOTE_H__
 
+#include <Arduino.h>
+
 #define IR_KEY_POWER 0x45
 #define IR_KEY_MODE  0x46
 #define IR_KEY_MUTE  0x47
@@ -33,13 +35,7 @@
 
 #define IR_USE_AVR_TIMER1
 
-class IR_Remote{
-  public:
-    IR_Remote(int pin);
-    void begin();
-    int read();
-  private:
-    int pin;
-};
+void irBegin();
+uint8_t irRead();
 
 #endif // __IR_REMOTE_H__
