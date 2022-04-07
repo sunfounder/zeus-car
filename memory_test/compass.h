@@ -5,8 +5,6 @@
 
 void compassBegin();
 uint16_t compassReadAngle();
-void compassCalibrateStart();
-void compassCalibrateLoop();
-bool compassCalibrateDone();
+void compassCalibrate();
 
 #endif // __COMPASS_H__

@@ -8,14 +8,13 @@
 
 uint8_t irObstaclePins[] = {12, A3, 12, 13, 13};
 
-#define CAR_DEFAULT_POWER 60
-#define CAR_ROTATE_POWER 80
+#define CAR_DEFAULT_POWER 40
 #define CAR_CALIBRATION_POWER 80
 #define NORMAL_LINE_FOLLOW_POWER 30
 #define NORMAL_LINE_FOLLOW_ANGLE 45
 
 // Current mode of the car
-uint8_t currentMode = MODE_NONE;
+uint8_t currentMode = MODE_REMOTE_CONTROL;
 // State machine for almost all mode. State define see every function
 uint8_t currentState = 0;
 uint16_t remoteAngle = 0;
@@ -30,10 +29,6 @@ void setup() {
   irBegin();
   Serial.println("Setup done");
 }
-
-// void loop() {
-//   testCompass();
-// }
 
 void loop() {
   uint8_t key = irRead();
@@ -50,8 +45,8 @@ void loop() {
     case IR_KEY_MUTE:
       currentMode = MODE_COMPASS_CALIBRATION;
       carMove(0, 0, CAR_CALIBRATION_POWER);
+      carStop();
       Serial.println("Calibrate compass");
-      compassCalibrateStart();
       break;
     case IR_KEY_PLAY_PAUSE:
       currentMode = MODE_NORMAL_LINE_FOLLOWING;
@@ -117,16 +112,10 @@ void loop() {
       parallelObstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
-      carMoveFieldCentric(remoteAngle, remotePower, remoteRot);
-      // carMove(remoteAngle, remotePower, remoteRot);
+      carMove2(remoteAngle, remotePower, remoteRot);
       break;
     case MODE_COMPASS_CALIBRATION:
-      compassCalibrateLoop();
-      if (compassCalibrateDone()) {
-        currentMode = MODE_NONE;
-        Serial.println("Compass calibrated");
-        carStop();
-      }
+      compassCalibrate();
     default:
       break;
   }
@@ -354,15 +343,15 @@ void parallelObstacleAvoidance() {
 void remoteControl(uint8_t key) {
   switch (key) {
     case IR_KEY_CYCLE:  // Turn Left
-      // remoteAngle = 0;
-      // remotePower = 0;
-      remoteRot = CAR_ROTATE_POWER;
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteRot = CAR_DEFAULT_POWER;
       Serial.println("Turn Left");
       break;
     case IR_KEY_U_SD:  // Turn Right
-      // remoteAngle = 0;
-      // remotePower = 0;
-      remoteRot = -CAR_ROTATE_POWER;
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteRot = -CAR_DEFAULT_POWER;
       Serial.println("Turn Right");
       break;
     case IR_KEY_0: // Reset origin direction
@@ -374,25 +363,25 @@ void remoteControl(uint8_t key) {
     case IR_KEY_1:  // Left Forward
       remoteAngle = 315;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Left Forward");
       break;
     case IR_KEY_2:  // Forward
       remoteAngle = 0;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Forward");
       break;
     case IR_KEY_3:  // Right Forward
       remoteAngle = 45;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Right Forward");
       break;
     case IR_KEY_4:  // Left
       remoteAngle = 270;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Left");
       break;
     case IR_KEY_5:  // Stop
@@ -404,25 +393,25 @@ void remoteControl(uint8_t key) {
     case IR_KEY_6:  // Right
       remoteAngle = 90;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Right");
       break;
     case IR_KEY_7:  // Left Backward
       remoteAngle = 225;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Left Backward");
       break;
     case IR_KEY_8:  // Backward
       remoteAngle = 180;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Backward");
       break;
     case IR_KEY_9:  // Right Backward
       remoteAngle = 135;
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
+      remoteRot = 0;
       Serial.println("Right Backward");
       break;
     default:
@@ -432,4 +421,7 @@ void remoteControl(uint8_t key) {
       Serial.println("Stop");
       break;
   }
+}
+
+void compassCalibrate() {
 }

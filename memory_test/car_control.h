@@ -2,7 +2,6 @@
 #define __CAR_CONTROL_H__
 
 #include <Arduino.h>
-#include "compass.h"
 
 #define CAR_WIDTH  14.76/2      //定义宽度
 #define CAR_LENGTH  11.48/2     //定义长度
@@ -30,7 +29,6 @@ void carRight();
 void carStop();
 void carMove(int16_t angle, int8_t power, int8_t rot);
 void carMove2(int16_t angle, int8_t power, int8_t rot);
-void carMoveFieldCentric(int16_t angle, int8_t power, int8_t rot);
 void carResetHeading();
 
 #endif // __CAR_CONTROL_H__

@@ -1,4 +1,5 @@
 #include "car_control.h"
+#include "compass.h"
 
 #include <Arduino.h>
 #include <SoftPWM.h>  //PWM库
@@ -6,7 +7,7 @@
 #define MOTOR_POWER_MIN 28  // 28/255
 
 bool motorDirection[4] = {1, 0, 0, 1};
-uint8_t motorPins[8] = {3, 4, 5, 6, 7, 8, 9, 10};
+uint8_t motorPins[8] = {2, 3, 4, 5, 6, 7, 8, 9};
 
 float kP = 2.0;
 float kI = 0.0;
@@ -90,9 +91,8 @@ void carMove(int16_t angle, int8_t power, int8_t rot) {
 void carMove2(int16_t angle, int8_t power, int8_t rot) {
   uint16_t heading;
   int16_t error;
-  int offset;
 
-  if (rot == 0) {
+  if (rot != 0) {
     heading = compassReadAngle();
     Serial.print("originHeading:");
     Serial.print(originHeading);
@@ -110,31 +110,13 @@ void carMove2(int16_t angle, int8_t power, int8_t rot) {
     Serial.print(",rot:");
 
     // rot += kP * error + kI * errorIntegral + kD * (_lastError - error);
-    offset += kP * error + kI * errorIntegral + kD * (error - _lastError);
-    Serial.println(offset);
-    rot += max(-100, min(100, offset));
+    rot += kP * error + kI * errorIntegral + kD * (error - _lastError);
+    Serial.println(rot);
     errorIntegral += error;
     _lastError = error;
   }
+
   carMove(angle, power, rot);
-}
-
-void carMoveFieldCentric(int16_t angle, int8_t power, int8_t rot) {
-  uint16_t heading;
-  int16_t offset;
-  heading = compassReadAngle();
-  offset = heading - originHeading;
-  int16_t fcAngle = angle - offset;
-  Serial.print("originHeading:");
-  Serial.print(originHeading);
-  Serial.print(",heading:");
-  Serial.print(heading);
-  Serial.print(",fcAngle:");
-  Serial.print(fcAngle);
-  Serial.print(",fieldAngle:");
-  Serial.println(originHeading-angle);
-
-  carMove(fcAngle, power, rot);
 }
 
 void carResetHeading() {
