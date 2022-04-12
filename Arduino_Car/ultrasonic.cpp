@@ -1,8 +1,8 @@
 #include "ultrasonic.h"
 #include "Arduino.h"
 
-uint8_t ultrasonicTrig = 11;
-uint8_t ultrasonicEcho = 11;
+uint8_t ultrasonicTrig = 5;
+uint8_t ultrasonicEcho = 5;
 
 float ultrasonicRead() {
   pinMode(ultrasonicTrig, OUTPUT);

@@ -8,13 +8,13 @@
 bool motorDirection[4] = {1, 0, 0, 1};
 uint8_t motorPins[8] = {3, 4, 5, 6, 7, 8, 9, 10};
 
-float kP = 2.0;
+float kP = 0.8;
 float kI = 0.0;
-float kD = 0.0;
-uint16_t _lastError = 0;
-uint16_t errorIntegral = 0;
+float kD = 20;
+int32_t _lastError = 0;
+int32_t errorIntegral = 0;
 
-uint16_t originHeading;
+int16_t originHeading;
 
 void carBegin() {
   SoftPWMBegin();
@@ -70,11 +70,10 @@ void carMove(int16_t angle, int8_t power, int8_t rot) {
 
   power /= sqrt(2);
   // Calculate 4 wheel
-  power_0 = (power * sin(rad) + power * cos(rad)) * 0.7 - rot * 0.3;
-  power_1 = (power * sin(rad) - power * cos(rad)) * 0.7 + rot * 0.3;
-  power_2 = (power * sin(rad) + power * cos(rad)) * 0.7 + rot * 0.3;
-  power_3 = (power * sin(rad) - power * cos(rad)) * 0.7 - rot * 0.3;
-
+  power_0 = (power * sin(rad) - power * cos(rad)) * 0.6 - rot * 0.4;
+  power_1 = (power * sin(rad) + power * cos(rad)) * 0.6 + rot * 0.4;
+  power_2 = (power * sin(rad) - power * cos(rad)) * 0.6 + rot * 0.4;
+  power_3 = (power * sin(rad) + power * cos(rad)) * 0.6 - rot * 0.4;
   // Serial.print("power: ");
   // Serial.print(power_0);
   // Serial.print(" ");
@@ -88,16 +87,12 @@ void carMove(int16_t angle, int8_t power, int8_t rot) {
 }
 
 void carMove2(int16_t angle, int8_t power, int8_t rot) {
-  uint16_t heading;
-  int16_t error;
-  int offset;
+  int16_t heading;
+  int32_t error;
+  int32_t offset;
 
   if (rot == 0) {
     heading = compassReadAngle();
-    Serial.print("originHeading:");
-    Serial.print(originHeading);
-    Serial.print(",heading:");
-    Serial.print(heading);
     error = heading - originHeading;
     // convert -360 to 360 to -180 to 180
     if (error > 180) {
@@ -105,13 +100,20 @@ void carMove2(int16_t angle, int8_t power, int8_t rot) {
     } else if (error < -180) {
       error += 360;
     }
-    Serial.print(",error:");
+
+    // offset += kP * error + kI * errorIntegral + kD * (_lastError - error);
+    offset += kP * error + kI * errorIntegral + kD * (error - _lastError);
+  
+    // Serial.print("originHeading:");
+    // Serial.print(originHeading);
+    // Serial.print(",heading:");
+    // Serial.print(heading);
+    // Serial.print(',');
+    Serial.print("error:");
     Serial.print(error);
     Serial.print(",rot:");
-
-    // rot += kP * error + kI * errorIntegral + kD * (_lastError - error);
-    offset += kP * error + kI * errorIntegral + kD * (error - _lastError);
     Serial.println(offset);
+
     rot += max(-100, min(100, offset));
     errorIntegral += error;
     _lastError = error;
@@ -121,14 +123,59 @@ void carMove2(int16_t angle, int8_t power, int8_t rot) {
 
 void carMoveFieldCentric(int16_t angle, int8_t power, int8_t rot) {
   uint16_t heading;
-  int16_t offset;
   heading = compassReadAngle();
-  offset = heading - originHeading;
-  int16_t fcAngle = angle - offset;
+  int16_t fcAngle = angle - heading + originHeading;
+  // Serial.print("originHeading:");
+  // Serial.print(originHeading);
+  // Serial.print(",heading:");
+  // Serial.print(heading);
+  // Serial.print(",fcAngle:");
+  // Serial.print(fcAngle);
+  // Serial.print(",fieldAngle:");
+  // Serial.println(originHeading-angle);
+
+  carMove(fcAngle, power, rot);
+}
+
+void carMove3(int16_t angle, int8_t power, int16_t heading) {
+  int16_t currentHeading;
+  int32_t error;
+  int32_t offset;
+  int8_t rot;
+  int16_t tempHeading = originHeading + heading;
+
+  currentHeading = compassReadAngle();
+  error = currentHeading - tempHeading;
+  // convert -360 to 360 to -180 to 180
+  if (error > 180) {
+    error -= 360;
+  } else if (error < -180) {
+    error += 360;
+  }
+
+  // offset += kP * error + kI * errorIntegral + kD * (_lastError - error);
+  offset += kP * error + kI * errorIntegral + kD * (error - _lastError);
+
+  // Serial.print("tempHeading:");
+  // Serial.print(tempHeading);
+  // Serial.print(",currentHeading:");
+  // Serial.print(currentHeading);
+  // Serial.print(',');
+  // Serial.print("error:");
+  // Serial.print(error);
+  // Serial.print(",rot:");
+  // Serial.println(offset);
+
+  rot += max(-100, min(100, offset));
+  errorIntegral += error;
+  _lastError = error;
+
+  currentHeading = compassReadAngle();
+  int16_t fcAngle = angle - currentHeading + originHeading;
   Serial.print("originHeading:");
   Serial.print(originHeading);
-  Serial.print(",heading:");
-  Serial.print(heading);
+  Serial.print(",currentHeading:");
+  Serial.print(currentHeading);
   Serial.print(",fcAngle:");
   Serial.print(fcAngle);
   Serial.print(",fieldAngle:");
@@ -138,5 +185,11 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int8_t rot) {
 }
 
 void carResetHeading() {
-  originHeading = compassReadAngle();
+  for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
+    originHeading = compassReadAngle();
+  }
+}
+
+void carHeading() {
+  return originHeading;
 }

@@ -31,6 +31,8 @@ void carStop();
 void carMove(int16_t angle, int8_t power, int8_t rot);
 void carMove2(int16_t angle, int8_t power, int8_t rot);
 void carMoveFieldCentric(int16_t angle, int8_t power, int8_t rot);
+void carMove3(int16_t angle, int8_t power, int16_t heading);
 void carResetHeading();
+void carHeading();
 
 #endif // __CAR_CONTROL_H__
