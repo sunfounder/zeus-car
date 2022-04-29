@@ -1,11 +1,11 @@
 #include "ir_remote.h"
 #include "IRLremote.h"
 
-int irReceiverPin = 2;
+#define IR_RECEIVER_PIN 2
 CNec IRLremote;
 
 void irBegin() {
-  if (!IRLremote.begin(irReceiverPin))
+  if (!IRLremote.begin(IR_RECEIVER_PIN))
     Serial.println(F("You did not choose a valid pin."));
 }
 

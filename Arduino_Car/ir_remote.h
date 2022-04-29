@@ -33,8 +33,6 @@
 
 #define IR_KEY_ERROR 0x00
 
-// #define IR_USE_AVR_TIMER1
-
 void irBegin();
 uint8_t irRead();
 
