@@ -5,9 +5,14 @@
 #include "grayscale.h"
 #include "ir_remote.h"
 #include "ultrasonic.h"
-// #include "ai_camera.h"
+#include "ai_camera.h"
+#include <Adafruit_NeoPixel.h>
+#include <avr/power.h>
 
 uint8_t irObstaclePins[] = {A2, A2, A2, A2, A2};
+#define RGB_PIN 11
+#define RGB_NUMS 8
+#define RGB_FORMAT NEO_GRB + NEO_KHZ800
 
 #define CAR_DEFAULT_POWER 60
 #define CAR_ROTATE_POWER 80
@@ -15,102 +20,62 @@ uint8_t irObstaclePins[] = {A2, A2, A2, A2, A2};
 #define NORMAL_LINE_FOLLOW_POWER 30
 #define NORMAL_LINE_FOLLOW_ANGLE 45
 
+#define LINE_FOLLOW_OFFSET_ANGLE 30
+
+// #define REMOTE_MODE_FIELD_CENTRIC
+#define REMOTE_MODE_DRIFT
+
 // Current mode of the car
 uint8_t currentMode = MODE_NONE;
 // State machine for almost all mode. State define see every function
 uint8_t currentState = 0;
 uint16_t remoteAngle = 0;
 int8_t remotePower = 0;
-int8_t remoteRot = 0;
-int8_t remoteHeading = 0;
+int16_t remoteHeading = 0;
+bool remoteDriftEnable = false;
 
-// #define WIFI_MODE WIFI_MODE_AP
-// #define SSID "AIC_Test"
-// #define PASSWORD "12345678"
+#define WIFI_MODE WIFI_MODE_AP
+#define SSID "AIC_Test"
+#define PASSWORD "12345678"
+#define CAMERA_MODE CAMERA_MODE_STREAM
+#define PORT "8765"
 
-// #define CAMERA_MODE CAMERA_MODE_STREAM
-// #define PORT "8765"
-
-// AiCamera aiCam = AiCamera("aiCam", "aiCam");
+AiCamera aiCam = AiCamera("aiCam", "aiCam");
+Adafruit_NeoPixel pixels(RGB_NUMS, RGB_PIN, RGB_FORMAT);
 
 void setup() {
   Serial.begin(115200);
+  pixels.begin();
+  pixels.clear();
   carBegin();
   gsBegin();
   irBegin();
   // aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT, CAMERA_MODE);
   // aiCam.setOnReceived(onReceive);
-  // Serial.println("Start!");
+  // aiCam.setVideo("http://192.168.4.1:9000/mjpg");
+  Serial.println("Start!");
+  for(uint8_t i=0; i<RGB_NUMS; i++) {
+    pixels.setPixelColor(i, pixels.Color(10, 255, 10));
+  }
+  pixels.show();
 }
 
-// void loop() {
-//   testCompass();
-// }
+int16_t currentAngle = 0;
 
 void loop() {
-  // aiCam.loop();
-  uint8_t key = irRead();
-  if (key != IR_KEY_ERROR) {
-    currentState = 0;
-  }
-  switch (key) {
-    case IR_KEY_POWER:
-      currentMode = MODE_NONE;
-      carStop();
-      break;
-    case IR_KEY_MODE:
-      break;
-    case IR_KEY_MUTE:
-      currentMode = MODE_COMPASS_CALIBRATION;
-      carMove(0, 0, CAR_CALIBRATION_POWER);
-      // Serial.println("Calibrate compass");
-      compassCalibrateStart();
-      break;
-    case IR_KEY_PLAY_PAUSE:
-      currentMode = MODE_NORMAL_LINE_FOLLOWING;
-      // Serial.println("Change mode to normal line following");
-      break;
-    case IR_KEY_BACKWARD:
-      currentMode = MODE_NORMAL_OBSTACLE_FOLLOWING;
-      // Serial.println("Change mode to normal obstacle following");
-      break;
-    case IR_KEY_FORWARD:
-      currentMode = MODE_NORMAL_OBSTACLE_AVOIDANCE;
-      // Serial.println("Change mode to normal obstacle avoidance");
-      break;
-    case IR_KEY_EQ:
-      currentMode = MODE_PARALLEL_LINE_FOLLOWING;
-      // Serial.println("Change mode to parallel line following");
-      break;
-    case IR_KEY_MINUS:
-      currentMode = MODE_PARALLEL_OBSTACLE_FOLLOWING;
-      // Serial.println("Change mode to parallel obstacle following");
-      break;
-    case IR_KEY_PLUS:
-      currentMode = MODE_PARALLEL_OBSTACLE_AVOIDANCE;
-      // Serial.println("Change mode to parallel obstacle avoidance");
-      break;
-    case IR_KEY_0:
-    case IR_KEY_CYCLE:
-    case IR_KEY_U_SD:
-    case IR_KEY_1:
-    case IR_KEY_2:
-    case IR_KEY_3:
-    case IR_KEY_4:
-    case IR_KEY_5:
-    case IR_KEY_6:
-    case IR_KEY_7:
-    case IR_KEY_8:
-    case IR_KEY_9:
-      currentMode = MODE_REMOTE_CONTROL;
-      // remoteControl(key);
-      remoteControlDrift(key);
-      // Serial.println("Change mode to remote control");
-      break;
-    default:
-      break;
-  }
+  int8_t resultAO[2];
+  gsGetAngleOffset(0, resultAO);
+  // Serial.print("GS Angle: ");Serial.println(resultAO[0]);
+  // Serial.print("GS Offset: ");Serial.println(resultAO[1]);
+  currentAngle = resultAO[0];
+  _carMove(currentAngle + (offset*LINE_FOLLOW_OFFSET_ANGLE), CAR_DEFAULT_POWER, 0);
+}
 
+void loop2() {
+  aiCam.loop();
+  remoteHandler();
+  // Serial.print("Mode: ");
+  // Serial.println(currentMode);
   switch (currentMode) {
     case MODE_NORMAL_LINE_FOLLOWING:
       normalLineFollowing();
@@ -131,9 +96,10 @@ void loop() {
       parallelObstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
-      // carMoveFieldCentric(remoteAngle, remotePower, remoteRot);
-      // carMove2(remoteAngle, remotePower, remoteRot);
-      carMove3(remoteAngle, remotePower, remoteHeading);
+      carMove(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
+      break;
+    case MODE_APP_CONTROL:
+      carMove(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
       break;
     case MODE_COMPASS_CALIBRATION:
       compassCalibrateLoop();
@@ -150,27 +116,27 @@ void loop() {
 // 循迹传感器呈倒三角形，放在小车正下方。旋转巡线（普通巡线）
 void normalLineFollowing() {
   bool sensorL, sensorM, sensorR;
-  bool gsValues[3];
-  gsReadInto(gsValues);
-  sensorL = gsValues[0];
-  sensorM = gsValues[1];
-  sensorR = gsValues[2];
-  Serial.print(sensorL);
-  Serial.print(", ");
-  Serial.print(sensorM);
-  Serial.print(", ");
-  Serial.println(sensorR);
-  if (sensorL == 0 && sensorM == 1 && sensorR == 0) {
-    carMove(0, NORMAL_LINE_FOLLOW_POWER, 0);
-  } else if (sensorL == 1 && sensorM == 0 && sensorR == 0) {
-    carMove(-NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
-  } else if (sensorL == 0 && sensorM == 0 && sensorR == 1) {
-    carMove(NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
-  } else if (sensorL == 1 && sensorM == 1 && sensorR == 0) {
-    carMove(0, 0, NORMAL_LINE_FOLLOW_POWER);
-  } else if (sensorL == 0 && sensorM == 1 && sensorR == 1) {
-    carMove(0, 0, -NORMAL_LINE_FOLLOW_POWER);
-  }
+  byte gsValues;
+  gsValues = gsRead();
+  // sensorL = gsValues[0];
+  // sensorM = gsValues[1];
+  // sensorR = gsValues[2];
+  // Serial.print(sensorL);
+  // Serial.print(", ");
+  // Serial.print(sensorM);
+  // Serial.print(", ");
+  // Serial.println(sensorR);
+  // if (sensorL == 0 && sensorM == 1 && sensorR == 0) {
+  //   carMove(0, NORMAL_LINE_FOLLOW_POWER, 0);
+  // } else if (sensorL == 1 && sensorM == 0 && sensorR == 0) {
+  //   carMove(-NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
+  // } else if (sensorL == 0 && sensorM == 0 && sensorR == 1) {
+  //   carMove(NORMAL_LINE_FOLLOW_ANGLE, NORMAL_LINE_FOLLOW_POWER, 0);
+  // } else if (sensorL == 1 && sensorM == 1 && sensorR == 0) {
+  //   carMove(0, 0, NORMAL_LINE_FOLLOW_POWER);
+  // } else if (sensorL == 0 && sensorM == 1 && sensorR == 1) {
+  //   carMove(0, 0, -NORMAL_LINE_FOLLOW_POWER);
+  // }
 }
 
 // State machine: state 0: follow, state 1: turn to find Obstacle
@@ -223,7 +189,7 @@ uint16_t lineFollowOffLineCount = 0;
 void parallelLineFollowing() {
   bool sensorL, sensorM, sensorR;
   bool gsValues[3];
-  gsReadInto(gsValues, moveAngle);
+  // gsReadInto(gsValues, moveAngle);
   sensorL = gsValues[0];
   sensorM = gsValues[1];
   sensorR = gsValues[2];
@@ -366,212 +332,229 @@ void parallelObstacleAvoidance() {
   carMove(currentDir * 60, CAR_DEFAULT_POWER, 0);
 }
 
+void remoteHandler() {
+  uint8_t key = irRead();
+  if (key != IR_KEY_ERROR) {
+    currentState = 0;
+  }
+  switch (key) {
+    case IR_KEY_POWER:
+      currentMode = MODE_NONE;
+      carStop();
+      break;
+    case IR_KEY_MODE:
+      break;
+    case IR_KEY_MUTE:
+      currentMode = MODE_COMPASS_CALIBRATION;
+      carMove(0, 0, CAR_CALIBRATION_POWER);
+      // Serial.println("Calibrate compass");
+      compassCalibrateStart();
+      break;
+    case IR_KEY_PLAY_PAUSE:
+      currentMode = MODE_NORMAL_LINE_FOLLOWING;
+      // Serial.println("Change mode to normal line following");
+      break;
+    case IR_KEY_BACKWARD:
+      currentMode = MODE_NORMAL_OBSTACLE_FOLLOWING;
+      // Serial.println("Change mode to normal obstacle following");
+      break;
+    case IR_KEY_FORWARD:
+      currentMode = MODE_NORMAL_OBSTACLE_AVOIDANCE;
+      // Serial.println("Change mode to normal obstacle avoidance");
+      break;
+    case IR_KEY_EQ:
+      currentMode = MODE_PARALLEL_LINE_FOLLOWING;
+      // Serial.println("Change mode to parallel line following");
+      break;
+    case IR_KEY_MINUS:
+      currentMode = MODE_PARALLEL_OBSTACLE_FOLLOWING;
+      // Serial.println("Change mode to parallel obstacle following");
+      break;
+    case IR_KEY_PLUS:
+      currentMode = MODE_PARALLEL_OBSTACLE_AVOIDANCE;
+      // Serial.println("Change mode to parallel obstacle avoidance");
+      break;
+    case IR_KEY_0:
+    case IR_KEY_CYCLE:
+    case IR_KEY_U_SD:
+    case IR_KEY_1:
+    case IR_KEY_2:
+    case IR_KEY_3:
+    case IR_KEY_4:
+    case IR_KEY_5:
+    case IR_KEY_6:
+    case IR_KEY_7:
+    case IR_KEY_8:
+    case IR_KEY_9:
+      currentMode = MODE_REMOTE_CONTROL;
+      remoteControl(key);
+      Serial.println("Change mode to remote control");
+      break;
+    default:
+      break;
+  }
+}
+
 void remoteControl(uint8_t key) {
   switch (key) {
-    case IR_KEY_CYCLE:  // Turn Left
-      // remoteAngle = 0;
-      // remotePower = 0;
-      // remoteRot = CAR_ROTATE_POWER;
-      remoteHeading = -90;
-      // Serial.println("Turn Left");
-      break;
-    case IR_KEY_U_SD:  // Turn Right
-      // remoteAngle = 0;
-      // remotePower = 0;
-      // remoteRot = -CAR_ROTATE_POWER;
-      remoteHeading = 90;
-      // Serial.println("Turn Right");
-      break;
     case IR_KEY_0: // Reset origin direction
+      currentMode = MODE_REMOTE_CONTROL;
       remoteAngle = 0;
       remotePower = 0;
-      remoteRot = 0;
       remoteHeading = 0;
       carStop();
       carResetHeading();
       break;
+    case IR_KEY_CYCLE: // Turn Left
+      #ifdef REMOTE_MODE_FIELD_CENTRIC
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteHeading -= 45;
+      if (remoteHeading < -180) {
+        remoteHeading += 360;
+      }
+      #endif
+      #ifdef REMOTE_MODE_DRIFT
+      remoteHeading = -90;
+      #endif
+      break;
+    case IR_KEY_U_SD:  // Turn Right
+      #ifdef REMOTE_MODE_FIELD_CENTRIC
+      remoteAngle = 0;
+      remotePower = 0;
+      remoteHeading += 45;
+      if (remoteHeading > 180) {
+        remoteHeading -= 360;
+      }
+      #endif
+      #ifdef REMOTE_MODE_DRIFT
+      remoteHeading = 90;
+      #endif
+      break;
     case IR_KEY_1:  // Left Forward
       remoteAngle = 315;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Left Forward");
       break;
     case IR_KEY_2:  // Forward
       remoteAngle = 0;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      carResetHeading();
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Forward");
       break;
     case IR_KEY_3:  // Right Forward
       remoteAngle = 45;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Right Forward");
       break;
     case IR_KEY_4:  // Left
       remoteAngle = 270;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Left");
       break;
     case IR_KEY_5:  // Stop
       remoteAngle = 0;
       remotePower = 0;
-      remoteRot = 0;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      #endif
       carStop();
-      // Serial.println("Stop");
       break;
     case IR_KEY_6:  // Right
       remoteAngle = 90;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Right");
       break;
     case IR_KEY_7:  // Left Backward
       remoteAngle = 225;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Left Backward");
       break;
     case IR_KEY_8:  // Backward
       remoteAngle = 180;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      carResetHeading();
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Backward");
       break;
     case IR_KEY_9:  // Right Backward
       remoteAngle = 135;
+      #ifdef REMOTE_MODE_DRIFT
       remoteHeading = 0;
+      #endif
       remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Right Backward");
       break;
     default:
       remoteAngle = 0;
       remotePower = 0;
-      remoteRot = 0;
       remoteHeading = 0;
-      // Serial.println("Stop");
       break;
   }
 }
 
-void remoteControlDrift(uint8_t key) {
-  switch (key) {
-    case IR_KEY_CYCLE:  // Turn Left
-      // remoteAngle = 0;
-      // remotePower = 0;
-      // remoteRot = CAR_ROTATE_POWER;
-      remoteHeading = -90;
-      // Serial.println("Turn Left");
-      break;
-    case IR_KEY_U_SD:  // Turn Right
-      // remoteAngle = 0;
-      // remotePower = 0;
-      // remoteRot = -CAR_ROTATE_POWER;
-      remoteHeading = 90;
-      // Serial.println("Turn Right");
-      break;
-    case IR_KEY_0: // Reset origin direction
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteRot = 0;
-      remoteHeading = 0;
-      carStop();
-      carResetHeading();
-      break;
-    case IR_KEY_1:  // Left Forward
-      remoteAngle = 315;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Left Forward");
-      break;
-    case IR_KEY_2:  // Forward
-      remoteAngle = 0;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      carResetHeading();
-      // remoteRot = 0;
-      // Serial.println("Forward");
-      break;
-    case IR_KEY_3:  // Right Forward
-      remoteAngle = 45;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Right Forward");
-      break;
-    case IR_KEY_4:  // Left
-      remoteAngle = 270;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Left");
-      break;
-    case IR_KEY_5:  // Stop
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteRot = 0;
-      remoteHeading = 0;
-      carStop();
-      // Serial.println("Stop");
-      break;
-    case IR_KEY_6:  // Right
-      remoteAngle = 90;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Right");
-      break;
-    case IR_KEY_7:  // Left Backward
-      remoteAngle = 225;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Left Backward");
-      break;
-    case IR_KEY_8:  // Backward
-      remoteAngle = 180;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Backward");
-      break;
-    case IR_KEY_9:  // Right Backward
-      remoteAngle = 135;
-      remoteHeading = 0;
-      remotePower = CAR_DEFAULT_POWER;
-      // remoteRot = 0;
-      // Serial.println("Right Backward");
-      break;
-    default:
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteRot = 0;
-      remoteHeading = 0;
-      // Serial.println("Stop");
-      break;
-  }
-}
 
 // void onReceive() {
-//   Serial.print("Slider D: ");Serial.println(aiCam.getSlider("D"));
-//   Serial.print("Switch J: ");Serial.println(aiCam.getSwitch("J"));
-//   Serial.print("Button I: ");Serial.println(aiCam.getButton("I"));
-//   Serial.print("Joystick Q X: ");Serial.println(aiCam.getJoystick("Q", JOYSTICK_X));
-//   Serial.print("Joystick Q Y: ");Serial.println(aiCam.getJoystick("Q", JOYSTICK_Y));
-//   Serial.print("Throttle K: ");Serial.println(aiCam.getThrottle("K"));
-//   aiCam.setMeter("H", 46);
-//   aiCam.setRadar("B", 20, 30);
-//   aiCam.setGreyscale("A", 300, 234, 678);
-//   aiCam.setValue("C", 498);
+//   currentMode = MODE_APP_CONTROL;
 // }
+void onReceive() {
+  // Serial.print("Slider D: ");Serial.println(aiCam.getSlider(REGION_D));
+  // Serial.print("Switch J: ");Serial.println(aiCam.getSwitch(REGION_J));
+  // Serial.print("Button I: ");Serial.println(aiCam.getButton(REGION_I));
+  // Serial.print("Throttle K: ");Serial.println(aiCam.getThrottle(REGION_K));
+  // aiCam.setMeter(REGION_H, 46);
+  // aiCam.setRadar(REGION_B, 20, 30);
+  // aiCam.setGreyscale(REGION_A, 300, 234, 678);
+  // aiCam.setValue(REGION_C, 498);
+  // Serial.print("Joystick K X: ");Serial.println(aiCam.getJoystick(REGION_K, JOYSTICK_X));
+  // Serial.print("Joystick K Y: ");Serial.println(aiCam.getJoystick(REGION_K, JOYSTICK_Y));
+  // Serial.print("Joystick K Angle: ");Serial.println(aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE));
+  // Serial.print("Joystick K Radius: ");Serial.println(aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS));
+  // int16_t qx = aiCam.getJoystick(REGION_Q, JOYSTICK_X);
+  // int16_t qy = aiCam.getJoystick(REGION_Q, JOYSTICK_Y);
+  bool power = aiCam.getSwitch(REGION_C);
+  if (power) {
+    currentMode = MODE_APP_CONTROL;
+  } else {
+    carStop();
+    currentMode = MODE_NONE;
+  }
+  if (aiCam.getButton(REGION_I)) {
+    carStop();
+    carResetHeading();
+    remoteHeading = 0;
+  }
+  if (currentMode == MODE_APP_CONTROL) {
+    if (aiCam.getSwitch(REGION_J)) { // Drift mode
+      remoteAngle = aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE);
+      remotePower = aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS);
+      int16_t moveHeadingR = aiCam.getJoystick(REGION_Q, JOYSTICK_RADIUS);
+      if (moveHeadingR == 0) {
+        // remoteDriftEnable = false;
+        carResetHeading();
+        remoteHeading = 0;
+      } else {
+        // remoteDriftEnable = true;
+        remoteHeading = aiCam.getJoystick(REGION_Q, JOYSTICK_ANGLE);
+      }
+    } else {
+      remoteAngle = aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE);
+      remotePower = aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS);
+      int16_t moveHeadingR = aiCam.getJoystick(REGION_Q, JOYSTICK_RADIUS);
+      if (moveHeadingR != 0)
+        remoteHeading = aiCam.getJoystick(REGION_Q, JOYSTICK_ANGLE);
+    }
+  }
+}
