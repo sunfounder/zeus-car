@@ -1,18 +1,18 @@
 #include "ultrasonic.h"
 #include "Arduino.h"
 
-uint8_t ultrasonicTrig = 5;
-uint8_t ultrasonicEcho = 5;
+#define ULTRASONIC_TRIG_PIN 5
+#define ULTRASONIC_ECHO_PIN 5
 
 float ultrasonicRead() {
-  pinMode(ultrasonicTrig, OUTPUT);
-  digitalWrite(ultrasonicTrig, LOW);
+  pinMode(ULTRASONIC_TRIG_PIN, OUTPUT);
+  digitalWrite(ULTRASONIC_TRIG_PIN, LOW);
   delayMicroseconds(2);
-  digitalWrite(ultrasonicTrig, HIGH);
+  digitalWrite(ULTRASONIC_TRIG_PIN, HIGH);
   delayMicroseconds(10);
-  digitalWrite(ultrasonicTrig, LOW);
-  pinMode(ultrasonicEcho, INPUT);
-  float duration = pulseIn(ultrasonicEcho, HIGH);
+  digitalWrite(ULTRASONIC_TRIG_PIN, LOW);
+  pinMode(ULTRASONIC_ECHO_PIN, INPUT);
+  float duration = pulseIn(ULTRASONIC_ECHO_PIN, HIGH);
   float distance = duration  * 34.0 / 1000;
   return distance;
 }
