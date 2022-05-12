@@ -1,9 +1,6 @@
 #include "ultrasonic.h"
 #include "Arduino.h"
 
-#define ULTRASONIC_TRIG_PIN 5
-#define ULTRASONIC_ECHO_PIN 5
-
 float ultrasonicRead() {
   pinMode(ULTRASONIC_TRIG_PIN, OUTPUT);
   digitalWrite(ULTRASONIC_TRIG_PIN, LOW);

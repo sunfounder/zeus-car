@@ -3,16 +3,17 @@
 
 #include <Arduino.h>
 
-#define AVERAGE_FILTER_SIZE 30
+#define AVERAGE_FILTER_SIZE 20
 #define EEPROM_CALIBRATION_ADDRESS 0
-#define CALIBRATION_TIME 5000
+#define CALIBRATION_TIME 3000
 
 #define AVERAGE_FILTER true
+// #define AVERAGE_FILTER false
 
 void compassBegin();
 uint16_t compassReadAngle();
 void compassCalibrateStart();
-void compassCalibrateLoop();
+bool compassCalibrateLoop();
 bool compassCalibrateDone();
 
 #endif // __COMPASS_H__

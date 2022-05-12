@@ -1,7 +1,6 @@
 #include "ir_remote.h"
 #include "IRLremote.h"
 
-#define IR_RECEIVER_PIN 2
 CNec IRLremote;
 
 void irBegin() {

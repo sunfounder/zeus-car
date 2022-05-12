@@ -4,6 +4,13 @@
 #include <Arduino.h>
 #include "compass.h"
 
+#define MOTOR_DIRECTIONS (uint8_t[4]){1, 0, 0, 1}
+#define MOTOR_PINS       (uint8_t[8]){6, 7, 8, 9, 10, 11, 12, 13}
+
+#define CAR_DEFAULT_POWER 60
+#define CAR_ROTATE_POWER 80
+#define CAR_CALIBRATION_POWER 80
+
 #define CAR_WIDTH  14.76/2      //定义宽度
 #define CAR_LENGTH  11.48/2     //定义长度
 
@@ -29,8 +36,8 @@ void carLeft();
 void carRight();
 void carStop();
 void _carMove(int16_t angle, int8_t power, int8_t rot, bool drift=false);
-// void carMove(int16_t angle, int8_t power, int8_t rot, bool drift=false);
-void carMove(int16_t angle, int8_t power, int16_t heading, bool drift=false);
+void carMove(int16_t angle, int8_t power, int8_t rot, bool drift=false);
+void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift=false);
 void carResetHeading();
 
 #endif // __CAR_CONTROL_H__

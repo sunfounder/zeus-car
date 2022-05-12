@@ -1,6 +1,10 @@
 #include "compass.h"
-#include <QMC5883LCompass.h>
 #include <EEPROM.h>
+
+#include <QMC5883LCompass.h>
+QMC5883LCompass _compass;
+// #include "qmc6310.h"
+// QMC6310 _compass;
 
 uint16_t heading;
 int calibrationData[6];
@@ -13,7 +17,6 @@ uint32_t calibrate_t;
 bool calibrateChanged;
 bool calibrateDone = true;
 
-QMC5883LCompass qmc5883l;
 
 void compassClearCalibration() {
   for (uint8_t i = 0; i < 6; i++) {
@@ -21,25 +24,19 @@ void compassClearCalibration() {
     EEPROM.write(EEPROM_CALIBRATION_ADDRESS + 2 * i, 0);
     EEPROM.write(EEPROM_CALIBRATION_ADDRESS + 2 * i + 1, 0);
   }
-  // qmc5883l.setCalibration(0, 0, 0, 0, 0, 0);
+  // _compass.clearCalibration();
 }
 
 void compassSaveCalibration() {
-  Serial.println("Saving calibration data...");
+  // Serial.println("Saving calibration data...");
   for (int i = 0; i < 6; i++) {
     uint16_t data = calibrationData[i] + 0xFF;
     uint8_t highByte = data >> 8;
     uint8_t lowByte = data & 0xFF;
-    // Serial.print("Index: ");
-    // Serial.print(i);
-    // Serial.print(" HighByte: ");
-    // Serial.print(highByte);
-    // Serial.print(" LowByte: ");
-    // Serial.println(lowByte);
     EEPROM.write(EEPROM_CALIBRATION_ADDRESS + 2 * i, highByte);
     EEPROM.write(EEPROM_CALIBRATION_ADDRESS + 2 * i + 1, lowByte);
   }
-  qmc5883l.setCalibration(
+  _compass.setCalibration(
     calibrationData[0], 
     calibrationData[1], 
     calibrationData[2], 
@@ -71,7 +68,7 @@ void compassReadCalibration() {
   // Serial.print(", ");
   // Serial.print(calibrationData[5]);
   // Serial.println(");");
-  qmc5883l.setCalibration(
+  _compass.setCalibration(
     calibrationData[0],
     calibrationData[1],
     calibrationData[2],
@@ -91,18 +88,26 @@ void compassCalibrateStart() {
   calibrate_t = calibrate_c;
   calibrateChanged = false;
   calibrateDone = false;
+  _compass.read();
+  calibrationData[0] = _compass.getX();
+  calibrationData[1] = _compass.getX();
+  calibrationData[2] = _compass.getY();
+  calibrationData[3] = _compass.getY();
+  calibrationData[4] = _compass.getZ();
+  calibrationData[5] = _compass.getZ();
 }
 
-void compassCalibrateLoop() {
+bool compassCalibrateLoop() {
   // Serial.println("Compass Reading...");
   if (calibrateDone) {
     return;
   }
   calibrateChanged = false;
-  qmc5883l.read();
-  int x = qmc5883l.getX();
-  int y = qmc5883l.getY();
-  int z = qmc5883l.getZ();
+  _compass.read();
+  int x = _compass.getX();
+  int y = _compass.getY();
+  int z = _compass.getZ();
+
   if (x < calibrationData[0]) {
     calibrationData[0] = x;
     calibrateChanged = true;
@@ -128,29 +133,30 @@ void compassCalibrateLoop() {
   }
 
   if (calibrateChanged) {
-    Serial.println("Calibrate Data Updated... Keep moving your sensor around.");
+    // Serial.println("Calibrate Data Updated... Keep moving your sensor around.");
     calibrate_c = millis();
   }
   calibrate_t = millis();
   if (calibrate_t - calibrate_c > CALIBRATION_TIME) {
-    Serial.println("Calibratiion finished!");
-    Serial.print("calibration data(");
-    Serial.print(calibrationData[0]);
-    Serial.print(", ");
-    Serial.print(calibrationData[1]);
-    Serial.print(", ");
-    Serial.print(calibrationData[2]);
-    Serial.print(", ");
-    Serial.print(calibrationData[3]);
-    Serial.print(", ");
-    Serial.print(calibrationData[4]);
-    Serial.print(", ");
-    Serial.print(calibrationData[5]);
-    Serial.println(");");
+    // Serial.println("Calibratiion finished!");
+    // Serial.print("calibration data(");
+    // Serial.print(calibrationData[0]);
+    // Serial.print(", ");
+    // Serial.print(calibrationData[1]);
+    // Serial.print(", ");
+    // Serial.print(calibrationData[2]);
+    // Serial.print(", ");
+    // Serial.print(calibrationData[3]);
+    // Serial.print(", ");
+    // Serial.print(calibrationData[4]);
+    // Serial.print(", ");
+    // Serial.print(calibrationData[5]);
+    // Serial.println(");");
 
     compassSaveCalibration();
     calibrateDone = true;
   }
+  return calibrateChanged;
 }
 
 #if (AVERAGE_FILTER)
@@ -164,9 +170,9 @@ void compassFilterBufferAppend(uint16_t value) {
 #endif
 
 uint16_t compassReadAngle() {
-  qmc5883l.read();
+  _compass.read();
   #if (AVERAGE_FILTER)
-  uint16_t heading = qmc5883l.getAzimuth();
+  uint16_t heading = _compass.getAzimuth();
   compassFilterBufferAppend(heading);
   uint16_t sum = 0;
   for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
@@ -174,18 +180,15 @@ uint16_t compassReadAngle() {
   }
   return sum / AVERAGE_FILTER_SIZE;
   #else
-  return qmc5883l.getAzimuth();
+  return _compass.getAzimuth();
   #endif
 }
 
 void compassBegin() {
-  qmc5883l.init();
-  // qmc5883l.setCalibration(-1120, 843, -1302, 747, 0, 492);
-  // delay(2000);
+  _compass.init();
   compassReadCalibration();
   // Serial.println("Compass read calibration done");
   for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
     compassReadAngle();
-    // delay(10);
   }
 }

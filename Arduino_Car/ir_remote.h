@@ -3,6 +3,9 @@
 
 #include <Arduino.h>
 
+#define IR_RECEIVER_PIN 2
+
+
 #define IR_KEY_POWER 0x45
 #define IR_KEY_MODE  0x46
 #define IR_KEY_MUTE  0x47
