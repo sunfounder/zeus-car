@@ -10,7 +10,8 @@
 #include "grayscale.h"
 #include "ultrasonic.h"
 
-// #define LIGHT_ON
+// #define LIGHT_ON true
+#define LIGHT_ON false
 
 #define RGB_PIN 5
 #define RGB_NUMS 8
@@ -19,7 +20,7 @@
 #define NORMAL_LINE_FOLLOW_POWER 30
 #define NORMAL_LINE_FOLLOW_ANGLE 45
 
-#define LINE_FOLLOW_OFFSET_ANGLE 20
+#define LINE_FOLLOW_OFFSET_ANGLE 30
 
 // #define REMOTE_MODE_FIELD_CENTRIC
 #define REMOTE_MODE_DRIFT
@@ -51,8 +52,8 @@ void setup() {
   carBegin();
   hc165Begin();
   irBegin();
-  // aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT, CAMERA_MODE);
-  // aiCam.setOnReceived(onReceive);
+  aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT, CAMERA_MODE);
+  aiCam.setOnReceived(onReceive);
   while (millis() - m < 500) {
     delay(1);
   }
@@ -71,13 +72,13 @@ void loop() {
 void modeHandler() {
   switch (currentMode) {
     case MODE_NONE:
-      #ifndef LIGHT_ON
+      #if (LIGHT_ON)
       pixels.fill(MODE_NONE_COLOR);
       pixels.show();
       #endif
       break;
     case MODE_LINE_FOLLOWING:
-      #ifndef LIGHT_ON
+      #if (LIGHT_ON)
       pixels.fill(MODE_LINE_FOLLOWING_COLOR);
       pixels.show();
       #endif
@@ -91,28 +92,28 @@ void modeHandler() {
     //   rotateLineFollowing();
     //   break;
     case MODE_OBSTACLE_FOLLOWING:
-      #ifndef LIGHT_ON
+      #if (LIGHT_ON)
       pixels.fill(MODE_OBSTACLE_FOLLOWING_COLOR);
       pixels.show();
       #endif
       obstacleFollowing();
       break;
     case MODE_OBSTACLE_AVOIDANCE:
-      #ifndef LIGHT_ON
+      #if (LIGHT_ON)
       pixels.fill(MODE_OBSTACLE_AVOIDANCE_COLOR);
       pixels.show();
       #endif
       obstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
-      #ifndef LIGHT_ON
+      #if (LIGHT_ON)
       pixels.fill(MODE_REMOTE_CONTROL_COLOR);
       pixels.show();
       #endif
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, true);
       break;
     case MODE_APP_CONTROL:
-      #ifndef LIGHT_ON
+      #if (LIGHT_ON)
       pixels.fill(MODE_APP_CONTROL_COLOR);
       pixels.show();
       #endif
@@ -120,7 +121,7 @@ void modeHandler() {
       break;
     case MODE_COMPASS_CALIBRATION:
       bool changed = compassCalibrateLoop();
-      #ifndef LIGHT_ON
+      #if (LIGHT_ON)
       if (changed) {
         pixels.fill(GREEN);
         pixels.show();
