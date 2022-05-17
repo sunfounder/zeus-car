@@ -1,6 +1,7 @@
+# Arduino Car
 
+## Install dependenncies
 
-## 安装库
-IRRemote
-SoftPWM
-Adafruit_NeoPixel
+- IRRemote
+- SoftPWM
+- Adafruit_NeoPixel
