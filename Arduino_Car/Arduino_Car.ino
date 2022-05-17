@@ -4,26 +4,28 @@
 #include "car_control.h"
 #include "ir_remote.h"
 #include "ai_camera.h"
-#include <Adafruit_NeoPixel.h>
+#include <SoftPWM.h>
+#include "rgb.h"
 #include "hc165.h"
 #include "ir_obstacle.h"
 #include "grayscale.h"
 #include "ultrasonic.h"
 
-// #define LIGHT_ON true
-#define LIGHT_ON false
-
-#define RGB_PIN 5
-#define RGB_NUMS 8
-#define RGB_FORMAT NEO_GRB + NEO_KHZ800
-
-#define NORMAL_LINE_FOLLOW_POWER 30
-#define NORMAL_LINE_FOLLOW_ANGLE 45
+#define LIGHT_ON true
+// #define LIGHT_ON false
 
 #define LINE_FOLLOW_OFFSET_ANGLE 30
 
 // #define REMOTE_MODE_FIELD_CENTRIC
 #define REMOTE_MODE_DRIFT
+
+#define WIFI_MODE WIFI_MODE_AP
+#define SSID "AIC_Test"
+#define PASSWORD "12345678"
+#define CAMERA_MODE CAMERA_MODE_STREAM
+#define PORT "8765"
+
+AiCamera aiCam = AiCamera("aiCam", "aiCam");
 
 // Current mode of the car
 uint8_t currentMode = MODE_NONE;
@@ -34,21 +36,13 @@ int8_t remotePower = 0;
 int16_t remoteHeading = 0;
 bool remoteDriftEnable = false;
 
-#define WIFI_MODE WIFI_MODE_AP
-#define SSID "AIC_Test"
-#define PASSWORD "12345678"
-#define CAMERA_MODE CAMERA_MODE_STREAM
-#define PORT "8765"
-
-AiCamera aiCam = AiCamera("aiCam", "aiCam");
-Adafruit_NeoPixel pixels(RGB_NUMS, RGB_PIN, RGB_FORMAT);
-
 void setup() {
   int m = millis();
   Serial.begin(115200);
-  pixels.begin();
-  pixels.fill(GREEN);
-  pixels.show();
+  Serial.println("Initialzing!");
+  SoftPWMBegin();
+  rgbBegin();
+  rgbWrite(GREEN);
   carBegin();
   hc165Begin();
   irBegin();
@@ -58,8 +52,7 @@ void setup() {
     delay(1);
   }
   Serial.println("Start!");
-  pixels.clear();
-  pixels.show();
+  rgbOff();
 }
 int16_t currentAngle = 0;
 
@@ -73,49 +66,42 @@ void modeHandler() {
   switch (currentMode) {
     case MODE_NONE:
       #if (LIGHT_ON)
-      pixels.fill(MODE_NONE_COLOR);
-      pixels.show();
+      rgbWrite(MODE_NONE_COLOR);
       #endif
       break;
     case MODE_LINE_FOLLOWING:
       #if (LIGHT_ON)
-      pixels.fill(MODE_LINE_FOLLOWING_COLOR);
-      pixels.show();
+      rgbWrite(MODE_LINE_FOLLOWING_COLOR);
       #endif
       carResetHeading();
       lineFollowing();
       break;
     // case MODE_ROTATE_LINE_FOLLOWING:
-    //   pixels.fill(MODE_LINE_FOLLOWING_COLOR);
-    //   pixels.show();
+    //   rgbWrite(MODE_LINE_FOLLOWING_COLOR);
     //   carResetHeading();
     //   rotateLineFollowing();
     //   break;
     case MODE_OBSTACLE_FOLLOWING:
       #if (LIGHT_ON)
-      pixels.fill(MODE_OBSTACLE_FOLLOWING_COLOR);
-      pixels.show();
+      rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);
       #endif
       obstacleFollowing();
       break;
     case MODE_OBSTACLE_AVOIDANCE:
       #if (LIGHT_ON)
-      pixels.fill(MODE_OBSTACLE_AVOIDANCE_COLOR);
-      pixels.show();
+      rgbWrite(MODE_OBSTACLE_AVOIDANCE_COLOR);
       #endif
       obstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
       #if (LIGHT_ON)
-      pixels.fill(MODE_REMOTE_CONTROL_COLOR);
-      pixels.show();
+      rgbWrite(MODE_REMOTE_CONTROL_COLOR);
       #endif
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, true);
       break;
     case MODE_APP_CONTROL:
       #if (LIGHT_ON)
-      pixels.fill(MODE_APP_CONTROL_COLOR);
-      pixels.show();
+      rgbWrite(MODE_APP_CONTROL_COLOR);
       #endif
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
       break;
@@ -123,11 +109,9 @@ void modeHandler() {
       bool changed = compassCalibrateLoop();
       #if (LIGHT_ON)
       if (changed) {
-        pixels.fill(GREEN);
-        pixels.show();
+        rgbWrite(GREEN);
         delay(20);
-        pixels.clear();
-        pixels.show();
+        rgbOff();
       }
       #endif
       if (compassCalibrateDone()) {
@@ -436,44 +420,39 @@ void remoteControl(uint8_t key) {
 
 
 void onReceive(char* recvBuf, char* sendBuf) {
-  Serial.print("Received: ");
-  Serial.println(recvBuf);
-  bool power = aiCam.getSwitch(recvBuf, REGION_E);
-  if (!power) {
-    return;
-  }
-  currentMode = MODE_APP_CONTROL;
   if (aiCam.getButton(recvBuf, REGION_I)) {
+    currentMode = MODE_APP_CONTROL;
     carStop();
     carResetHeading();
     remoteHeading = 0;
     return;
   }
-
-  // Serial.print("driftEnable: ");
-  bool driftEnable = aiCam.getSwitch(recvBuf, REGION_J);
-  if (driftEnable) { // Drift mode
-    remoteDriftEnable = true;
-    remoteAngle = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_ANGLE);
-    remotePower = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_RADIUS);
-    remotePower = map(remotePower, 0, 100, 0, CAR_DEFAULT_POWER);
-    int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
-    if (moveHeadingR == 0) {
-      carResetHeading();
-      remoteHeading = 0;
+  uint16_t angle = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_ANGLE);
+  uint8_t power = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_RADIUS);
+  power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
+  if (remoteAngle != angle) {
+    currentMode = MODE_APP_CONTROL;
+    remoteAngle = angle;
+  }
+  if (remotePower != power) {
+    currentMode = MODE_APP_CONTROL;
+    remotePower = power;
+  }
+  if (remoteDriftEnable != aiCam.getSwitch(recvBuf, REGION_J)) {
+    currentMode = MODE_APP_CONTROL;
+    remoteDriftEnable = !remoteDriftEnable;
+    if (remoteDriftEnable) { // Drift mode
+      int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
+      if (moveHeadingR == 0) {
+        carResetHeading();
+        remoteHeading = 0;
+      } else {
+        remoteHeading = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
+      }
     } else {
-      remoteHeading = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
+      int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
+      if (moveHeadingR != 0)
+        remoteHeading = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
     }
-  } else {
-    remoteDriftEnable = false;
-    remoteAngle = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_ANGLE);
-    remotePower = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_RADIUS);
-    // Serial.print("Angle: ");
-    // Serial.print(remoteAngle);
-    // Serial.print(" Power: ");
-    // Serial.println(remotePower);
-    int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
-    if (moveHeadingR != 0)
-      remoteHeading = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
   }
 }

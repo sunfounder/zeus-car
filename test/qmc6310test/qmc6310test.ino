@@ -12,7 +12,17 @@ void setup() {
   Serial.begin(115200);
   compass.init();
   // calibrateInit();
-  compass.setCalibration(10740, 13775, -7673, -4842, 1509, 1764);
+  compass.setCalibration(2237, 2426, -121, 2529, -3931, -1168);
+
+  Serial.println("Start!");
+}
+
+int16_t compassGetAzimuth() {
+  compass.read();
+  int16_t y = compass.getY();
+  int16_t z = compass.getZ();
+  int heading = atan2(y, -z) * RAD_TO_DEG;
+  return heading;
 }
 
 void loop() {
@@ -29,8 +39,8 @@ void test() {
   Serial.print(compass.getY());
   Serial.print(", z: ");
   Serial.print(compass.getZ());
-  Serial.print(", Azimuth: ");
-  Serial.println(compass.getAzimuth());
+  Serial.print(", Azimuth YZ: ");
+  Serial.println(compassGetAzimuth());
   delay(100);
 }
 

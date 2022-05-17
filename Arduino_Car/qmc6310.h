@@ -52,11 +52,11 @@ class QMC6310{
     QMC6310();
     void init();
     void read();
-    int getX();
-    int getY();
-    int getZ();
-    int getAzimuth();
-    void setCalibration(int xMin, int xMax, int yMin, int yMax, int zMin, int zMax);
+    int16_t getX();
+    int16_t getY();
+    int16_t getZ();
+    uint16_t getAzimuth();
+    void setCalibration(int16_t xMin, int16_t xMax, int16_t yMin, int16_t yMax, int16_t zMin, int16_t zMax);
     void clearCalibration();
   private:
     void _i2cWrite(byte reg, byte val);

@@ -1,7 +1,7 @@
 #include "car_control.h"
 
 #include <Arduino.h>
-#include <SoftPWM.h>  //PWM库
+#include <SoftPWM.h>
 
 #define MOTOR_POWER_MIN 28  // 28/255
 
@@ -15,8 +15,7 @@ int32_t errorIntegral = 0;
 int16_t originHeading;
 
 void carBegin() {
-  SoftPWMBegin();
-  for (uint8_t i = 0; i < 4; i++) {
+  for (uint8_t i = 0; i < 8; i++) {
     SoftPWMSet(MOTOR_PINS[i], 0);
     SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);
   }

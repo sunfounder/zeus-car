@@ -39,19 +39,18 @@ void QMC6310::read() {
     float y_scale = avg / y_avg;
     float z_scale = avg / z_avg;
 
-    _x = (int)((_x - x_offset) * x_scale);
-    _y = (int)((_y - y_offset) * y_scale);
-    _z = (int)((_z - z_offset) * z_scale);
+    _x = (int16_t)((_x - x_offset) * x_scale);
+    _y = (int16_t)((_y - y_offset) * y_scale);
+    _z = (int16_t)((_z - z_offset) * z_scale);
   }
 }
 
-int QMC6310::getX() {return _x;}
-int QMC6310::getY() {return _y;}
-int QMC6310::getZ() {return _z;}
+int16_t QMC6310::getX() {return _x;}
+int16_t QMC6310::getY() {return _y;}
+int16_t QMC6310::getZ() {return _z;}
 
-int QMC6310::getAzimuth() {
-	// int azimuth = atan2(_y, _x) * 180.0 / PI;
-	int azimuth = atan2(_x, _y) * 180.0 / PI;
+uint16_t QMC6310::getAzimuth() {
+	int16_t azimuth = atan2(_y, _x) * 180.0 / PI;
   if (azimuth < 0) azimuth += 360;
 	return azimuth;
 }

@@ -1,15 +1,15 @@
 #include "compass.h"
 #include <EEPROM.h>
 
-#include <QMC5883LCompass.h>
-QMC5883LCompass _compass;
-// #include "qmc6310.h"
-// QMC6310 _compass;
+// #include <QMC5883LCompass.h>
+// QMC5883LCompass _compass;
+#include "qmc6310.h"
+QMC6310 _compass;
 
 uint16_t heading;
 int calibrationData[6];
 #if (AVERAGE_FILTER)
-uint16_t filterBuffer[AVERAGE_FILTER_SIZE];
+int16_t filterBuffer[AVERAGE_FILTER_SIZE];
 uint8_t filterBufferIndex = 0;
 #endif
 uint32_t calibrate_c;
@@ -24,7 +24,7 @@ void compassClearCalibration() {
     EEPROM.write(EEPROM_CALIBRATION_ADDRESS + 2 * i, 0);
     EEPROM.write(EEPROM_CALIBRATION_ADDRESS + 2 * i + 1, 0);
   }
-  // _compass.clearCalibration();
+  _compass.clearCalibration();
 }
 
 void compassSaveCalibration() {
@@ -169,10 +169,10 @@ void compassFilterBufferAppend(uint16_t value) {
 }
 #endif
 
-uint16_t compassReadAngle() {
+int16_t compassReadAngle() {
   _compass.read();
   #if (AVERAGE_FILTER)
-  uint16_t heading = _compass.getAzimuth();
+  uint16_t heading = compassGetAzimuth();
   compassFilterBufferAppend(heading);
   uint16_t sum = 0;
   for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
@@ -180,8 +180,16 @@ uint16_t compassReadAngle() {
   }
   return sum / AVERAGE_FILTER_SIZE;
   #else
-  return _compass.getAzimuth();
+  return compassGetAzimuth();
   #endif
+}
+
+int16_t compassGetAzimuth() {
+  _compass.read();
+  int16_t y = _compass.getY();
+  int16_t z = _compass.getZ();
+  int heading = atan2(y, -z) * RAD_TO_DEG;
+  return heading;
 }
 
 void compassBegin() {

@@ -10,18 +10,18 @@
 #define MODE_APP_CONTROL             6
 #define MODE_COMPASS_CALIBRATION     7
 
-#define RED           pixels.Color(255,  10,  10)
-#define ORANGE        pixels.Color(255, 165,  10)
-#define YELLOW        pixels.Color(255, 255,  10)
-#define YELLOW_GREEN  pixels.Color(165, 255,  10)
-#define GREEN         pixels.Color( 10, 255,  10)
-#define GREEN_CYAN    pixels.Color( 10, 255, 165)
-#define CYAN          pixels.Color( 10, 255, 255)
-#define CYAN_BLUE     pixels.Color( 10, 165, 255)
-#define BLUE          pixels.Color( 10,  10, 255)
-#define PURPLE        pixels.Color(165,  10, 255)
-#define VOILET        pixels.Color(255,  10, 255)
-#define MAGENTA       pixels.Color(255,  10, 165)
+#define RED           0xFF0A0A
+#define ORANGE        0xFFA50A
+#define YELLOW        0xFFFF0A
+#define YELLOW_GREEN  0xA5FF0A
+#define GREEN         0x0AFF0A
+#define GREEN_CYAN    0x0AFFA5
+#define CYAN          0x0AFFFF
+#define CYAN_BLUE     0x0AA5FF
+#define BLUE          0x0A0AFF
+#define PURPLE        0xA50AFF
+#define VOILET        0xFF0AFF
+#define MAGENTA       0xFF0AA5
 
 #define MODE_NONE_COLOR                     GREEN_CYAN
 #define MODE_LINE_FOLLOWING_COLOR           CYAN

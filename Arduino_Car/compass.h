@@ -11,7 +11,8 @@
 // #define AVERAGE_FILTER false
 
 void compassBegin();
-uint16_t compassReadAngle();
+int16_t compassReadAngle();
+int16_t compassGetAzimuth();
 void compassCalibrateStart();
 bool compassCalibrateLoop();
 bool compassCalibrateDone();
