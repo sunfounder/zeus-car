@@ -11,8 +11,8 @@
 #include "grayscale.h"
 #include "ultrasonic.h"
 
-#define LIGHT_ON true
-// #define LIGHT_ON false
+// #define LIGHT_ON true
+#define LIGHT_ON false
 
 #define LINE_FOLLOW_OFFSET_ANGLE 30
 
@@ -39,7 +39,7 @@ bool remoteDriftEnable = false;
 void setup() {
   int m = millis();
   Serial.begin(115200);
-  Serial.println("Initialzing!");
+  // Serial.println("Initialzing!");
   SoftPWMBegin();
   rgbBegin();
   rgbWrite(GREEN);
@@ -51,7 +51,7 @@ void setup() {
   while (millis() - m < 500) {
     delay(1);
   }
-  Serial.println("Start!");
+  // Serial.println("Start!");
   rgbOff();
 }
 int16_t currentAngle = 0;
@@ -420,6 +420,7 @@ void remoteControl(uint8_t key) {
 
 
 void onReceive(char* recvBuf, char* sendBuf) {
+  // Serial.println(recvBuf);
   if (aiCam.getButton(recvBuf, REGION_I)) {
     currentMode = MODE_APP_CONTROL;
     carStop();
