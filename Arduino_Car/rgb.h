@@ -4,7 +4,10 @@
 #include <Arduino.h>
 
 // #define COMMON_CATHODE
-#define COMMON_ANODE
+// #define COMMON_ANODE
+#ifndef LIGHT_ON
+#define LIGHT_ON true
+#endif
 
 #define RGB_PINS (uint8_t[3]){4, 5, A3}
 
