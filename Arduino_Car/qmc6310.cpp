@@ -11,10 +11,36 @@ QMC6310::QMC6310() {
 
 void QMC6310::init() {
 	Wire.begin();
+  // byte error = 10;
+  // // check device
+  // Wire.beginTransmission(QMC6310_ADDR);
+  // error = Wire.endTransmission();
+  // if (error == 0)
+  // {
+  //   Serial.print("compass:I2C device found at address 0x");
+  //   Serial.println(QMC6310_ADDR,HEX);
+  // }
+  // else if (error==4) 
+  // {
+  //   Serial.print("compass:Unknow error at address 0x");
+  //   Serial.println(QMC6310_ADDR,HEX);
+  // } 
+  // else 
+  // {
+  //   Serial.print("compass:I2C device not found address 0x");
+  //   Serial.println(QMC6310_ADDR,HEX);
+  // }
   // According to the datasheet, 7.1 Define the sign for X Y and Z axis
+  // if (error == 0){
+  //   this->_i2cWrite(0x29, 0x06);
+  //   this->_i2cWrite(QMC6310_REG_CONTROL_2, QMC6310_VAL_RNG_8G);
+  //   this->_i2cWrite(QMC6310_REG_CONTROL_1, QMC6310_VAL_MODE_NORMAL | QMC6310_VAL_ODR_200HZ | QMC6310_VAL_OSR1_8 | QMC6310_VAL_OSR2_8);
+  // }
+
   this->_i2cWrite(0x29, 0x06);
   this->_i2cWrite(QMC6310_REG_CONTROL_2, QMC6310_VAL_RNG_8G);
   this->_i2cWrite(QMC6310_REG_CONTROL_1, QMC6310_VAL_MODE_NORMAL | QMC6310_VAL_ODR_200HZ | QMC6310_VAL_OSR1_8 | QMC6310_VAL_OSR2_8);
+
 }
 
 void QMC6310::read() {
