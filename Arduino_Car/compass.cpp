@@ -1,6 +1,5 @@
 #include "compass.h"
 #include <EEPROM.h>
-
 // #include <QMC5883LCompass.h>
 // QMC5883LCompass _compass;
 #include "qmc6310.h"
@@ -200,3 +199,4 @@ void compassBegin() {
     compassReadAngle();
   }
 }
+
