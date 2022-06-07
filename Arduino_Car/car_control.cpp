@@ -69,6 +69,7 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
 
 void _carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   int8_t power_0, power_1, power_2, power_3;
+  float speed = 1.0;
   // Make forward 0
   angle += 90;
   // Offset angle as 0 to the front
@@ -77,15 +78,15 @@ void _carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   power /= sqrt(2);
   // Calculate 4 wheel
   if (drift) {
-    power_0 = (power * sin(rad) - power * cos(rad)) * 0.5;
-    power_1 = (power * sin(rad) + power * cos(rad)) * 0.5;
-    power_2 = (power * sin(rad) - power * cos(rad)) * 0.5 + rot * 0.5 * 2;
-    power_3 = (power * sin(rad) + power * cos(rad)) * 0.5 - rot * 0.5 * 2;
+    power_0 = (power * sin(rad) - power * cos(rad)) * speed;
+    power_1 = (power * sin(rad) + power * cos(rad)) * speed;
+    power_2 = (power * sin(rad) - power * cos(rad)) * speed + rot * speed * 2;
+    power_3 = (power * sin(rad) + power * cos(rad)) * speed - rot * speed * 2;
   } else {
-    power_0 = (power * sin(rad) - power * cos(rad)) * 0.5 - rot * 0.5;
-    power_1 = (power * sin(rad) + power * cos(rad)) * 0.5 + rot * 0.5;
-    power_2 = (power * sin(rad) - power * cos(rad)) * 0.5 + rot * 0.5;
-    power_3 = (power * sin(rad) + power * cos(rad)) * 0.5 - rot * 0.5;
+    power_0 = (power * sin(rad) - power * cos(rad)) * speed - rot * speed;
+    power_1 = (power * sin(rad) + power * cos(rad)) * speed + rot * speed;
+    power_2 = (power * sin(rad) - power * cos(rad)) * speed + rot * speed;
+    power_3 = (power * sin(rad) + power * cos(rad)) * speed - rot * speed;
   }
 
   // Serial.print("power: ");
@@ -137,7 +138,7 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
   int32_t error;
   int32_t offset;
   int8_t rot;
-
+  
   currentHeading = compassReadAngle();
 
   if (rot == 0) {
@@ -165,3 +166,4 @@ void carResetHeading() {
     originHeading = compassReadAngle();
   }
 }
+
