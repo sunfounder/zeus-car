@@ -5,19 +5,16 @@
 #include "ir_remote.h"
 #include "ai_camera.h"
 #include <SoftPWM.h>
-#include "rgb.h"
 #include "hc165.h"
 #include "ir_obstacle.h"
 #include "grayscale.h"
 #include "ultrasonic.h"
 
-// #define LIGHT_ON true
-#define LIGHT_ON false
+#define LIGHT_ON true
+#include "rgb.h"
+#include "cmd_code_config.h"
 
 #define LINE_FOLLOW_OFFSET_ANGLE 30
-
-// #define REMOTE_MODE_FIELD_CENTRIC
-#define REMOTE_MODE_DRIFT
 
 #define WIFI_MODE WIFI_MODE_AP
 #define SSID "AIC_Test"
@@ -29,17 +26,12 @@ AiCamera aiCam = AiCamera("aiCam", "aiCam");
 
 // Current mode of the car
 uint8_t currentMode = MODE_NONE;
-// State machine for almost all mode. State define see every function
-uint8_t currentState = 0;
-int16_t remoteAngle = 0;
-int8_t remotePower = 0;
-int16_t remoteHeading = 0;
-bool remoteDriftEnable = false;
+
 
 void setup() {
   int m = millis();
   Serial.begin(115200);
-  // Serial.println("Initialzing!");
+  Serial.println(F("Initialzing!"));
   SoftPWMBegin();
   rgbBegin();
   rgbWrite(GREEN);
@@ -51,9 +43,10 @@ void setup() {
   while (millis() - m < 500) {
     delay(1);
   }
-  // Serial.println("Start!");
+  Serial.println(F("GO!"));
   rgbOff();
 }
+
 int16_t currentAngle = 0;
 
 void loop() {
@@ -65,55 +58,41 @@ void loop() {
 void modeHandler() {
   switch (currentMode) {
     case MODE_NONE:
-      #if (LIGHT_ON)
-      rgbWrite(MODE_NONE_COLOR);
-      #endif
+      rgbWrite(MODE_NONE_COLOR);    
       break;
     case MODE_LINE_FOLLOWING:
-      #if (LIGHT_ON)
       rgbWrite(MODE_LINE_FOLLOWING_COLOR);
-      #endif
       carResetHeading();
       lineFollowing();
       break;
-    // case MODE_ROTATE_LINE_FOLLOWING:
-    //   rgbWrite(MODE_LINE_FOLLOWING_COLOR);
-    //   carResetHeading();
-    //   rotateLineFollowing();
-    //   break;
+    case MODE_ROTATE_LINE_FOLLOWING:
+      rgbWrite(MODE_LINE_FOLLOWING_COLOR);
+      carResetHeading();
+      rotateLineFollowing();
+      break;
     case MODE_OBSTACLE_FOLLOWING:
-      #if (LIGHT_ON)
       rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);
-      #endif
       obstacleFollowing();
       break;
     case MODE_OBSTACLE_AVOIDANCE:
-      #if (LIGHT_ON)
       rgbWrite(MODE_OBSTACLE_AVOIDANCE_COLOR);
-      #endif
       obstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
-      #if (LIGHT_ON)
       rgbWrite(MODE_REMOTE_CONTROL_COLOR);
-      #endif
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, true);
       break;
     case MODE_APP_CONTROL:
-      #if (LIGHT_ON)
       rgbWrite(MODE_APP_CONTROL_COLOR);
-      #endif
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
       break;
     case MODE_COMPASS_CALIBRATION:
       bool changed = compassCalibrateLoop();
-      #if (LIGHT_ON)
       if (changed) {
         rgbWrite(GREEN);
         delay(20);
         rgbOff();
       }
-      #endif
       if (compassCalibrateDone()) {
         currentMode = MODE_NONE;
         carStop();
@@ -158,50 +137,50 @@ void lineFollowing() {
   carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, 0, false);
 }
 
-// // Field centric angle
-// int16_t fcAngle = 0;
-// // Robot centric angle
-// int16_t rcAngle = 0;
-// int16_t currentHeading = 0;
-// void rotateLineFollowing() {
-//   currentHeading += 1;
-//   if (currentHeading > 360) {
-//     currentHeading -= 360;
-//   }
-//   uint16_t result=gsGetAngleOffset();
-//   uint8_t angleType = result >> 8 & 0xFF;
-//   uint8_t offsetType = result & 0xFF;
-//   int16_t angle = 0;
-//   int8_t offset = 0;
-//   switch (angleType) {
-//     case ANGLE_N45:   angle = -45;break;
-//     case ANGLE_0:     angle =   0;break;
-//     case ANGLE_45:    angle =  45;break;
-//     case ANGLE_90:    angle =  90;break;
-//     case ANGLE_ERROR: angle = rcAngle;break;
-//   }
-//   switch (offsetType) {
-//     case OFFSET_N1:    offset = -1;break;
-//     case OFFSET_0:     offset =  0;break;
-//     case OFFSET_1:     offset =  1;break;
-//     case OFFSET_ERROR: offset =  0;break;
-//   }
+// Field centric angle
+int16_t fcAngle = 0;
+// Robot centric angle
+int16_t rcAngle = 0;
+int16_t currentHeading = 0;
+void rotateLineFollowing() {
+  currentHeading += 1;
+  if (currentHeading > 360) {
+    currentHeading -= 360;
+  }
+  uint16_t result=gsGetAngleOffset();
+  uint8_t angleType = result >> 8 & 0xFF;
+  uint8_t offsetType = result & 0xFF;
+  int16_t angle = 0;
+  int8_t offset = 0;
+  switch (angleType) {
+    case ANGLE_N45:   angle = -45;break;
+    case ANGLE_0:     angle =   0;break;
+    case ANGLE_45:    angle =  45;break;
+    case ANGLE_90:    angle =  90;break;
+    case ANGLE_ERROR: angle = rcAngle;break;
+  }
+  switch (offsetType) {
+    case OFFSET_N1:    offset = -1;break;
+    case OFFSET_0:     offset =  0;break;
+    case OFFSET_1:     offset =  1;break;
+    case OFFSET_ERROR: offset =  0;break;
+  }
 
-//   int16_t deltaAngle = rcAngle - angle;
-//   if (deltaAngle > 90) {
-//     angle += 180;
-//     offset *= -1;
-//   } else if (deltaAngle < -90) {
-//     angle -= 180;
-//     offset *= -1;
-//   }
+  int16_t deltaAngle = rcAngle - angle;
+  if (deltaAngle > 90) {
+    angle += 180;
+    offset *= -1;
+  } else if (deltaAngle < -90) {
+    angle -= 180;
+    offset *= -1;
+  }
 
-//   rcAngle = angle;
-//   fcAngle = rcAngle + currentHeading;
-//   int16_t moveAngle = fcAngle + (offset*LINE_FOLLOW_OFFSET_ANGLE);
+  rcAngle = angle;
+  fcAngle = rcAngle + currentHeading;
+  int16_t moveAngle = fcAngle + (offset*LINE_FOLLOW_OFFSET_ANGLE);
 
-//   carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, currentHeading);
-// }
+  carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, currentHeading);
+}
 
 void obstacleFollowing() {
   byte result = irObstacleRead();
@@ -246,175 +225,53 @@ void remoteHandler() {
   if (key != IR_KEY_ERROR) {
     currentState = 0;
   }
-  switch (key) {
-    case IR_KEY_POWER:
-      currentMode = MODE_NONE;
-      carStop();
-      break;
-    case IR_KEY_MODE:
-      break;
-    case IR_KEY_MUTE:
-      currentMode = MODE_COMPASS_CALIBRATION;
-      carMove(0, 0, CAR_CALIBRATION_POWER);
-      compassCalibrateStart();
-      break;
-    case IR_KEY_PLAY_PAUSE:
-      currentMode = MODE_LINE_FOLLOWING;
-      break;
-    case IR_KEY_BACKWARD:
-      currentMode = MODE_OBSTACLE_FOLLOWING;
-      break;
-    case IR_KEY_FORWARD:
-      currentMode = MODE_OBSTACLE_AVOIDANCE;
-      break;
-    case IR_KEY_EQ:
-      break;
-    case IR_KEY_MINUS:
-      // currentMode = MODE_PARALLEL_OBSTACLE_FOLLOWING;
-      break;
-    case IR_KEY_PLUS:
-      // currentMode = MODE_PARALLEL_OBSTACLE_AVOIDANCE;
-      break;
-    case IR_KEY_0:
-    case IR_KEY_CYCLE:
-    case IR_KEY_U_SD:
-    case IR_KEY_1:
-    case IR_KEY_2:
-    case IR_KEY_3:
-    case IR_KEY_4:
-    case IR_KEY_5:
-    case IR_KEY_6:
-    case IR_KEY_7:
-    case IR_KEY_8:
-    case IR_KEY_9:
-      currentMode = MODE_REMOTE_CONTROL;
-      remoteControl(key);
-      break;
-    default:
-      break;
+  // Serial.print("Key: 0x");
+  // Serial.println(key, BIN);
+  int8_t cmd_code = ir_key_2_cmd_code(key);
+  if (cmd_code != -1) {
+    currentMode = MODE_REMOTE_CONTROL;
+    cmd_fuc_table[cmd_code]();
   }
-}
-
-void remoteControl(uint8_t key) {
-  switch (key) {
-    case IR_KEY_0: // Reset origin direction
-      currentMode = MODE_REMOTE_CONTROL;
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      carStop();
-      carResetHeading();
-      break;
-    case IR_KEY_CYCLE: // Turn Left
-      #ifdef REMOTE_MODE_FIELD_CENTRIC
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteHeading -= 45;
-      if (remoteHeading < -180) {
-        remoteHeading += 360;
-      }
-      #endif
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = -90;
-      remoteDriftEnable = true;
-      #endif
-      break;
-    case IR_KEY_U_SD:  // Turn Right
-      #ifdef REMOTE_MODE_FIELD_CENTRIC
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteHeading += 45;
-      if (remoteHeading > 180) {
-        remoteHeading -= 360;
-      }
-      #endif
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 90;
-      remoteDriftEnable = true;
-      #endif
-      break;
-    case IR_KEY_1:  // Left Forward
-      remoteAngle = 315;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    case IR_KEY_2:  // Forward
-      remoteAngle = 0;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      carResetHeading();
-      remoteDriftEnable = false;
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    case IR_KEY_3:  // Right Forward
-      remoteAngle = 45;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    case IR_KEY_4:  // Left
-      remoteAngle = 270;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    case IR_KEY_5:  // Stop
-      remoteAngle = 0;
-      remotePower = 0;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      #endif
-      carStop();
-      break;
-    case IR_KEY_6:  // Right
-      remoteAngle = 90;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    case IR_KEY_7:  // Left Backward
-      remoteAngle = 225;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    case IR_KEY_8:  // Backward
-      remoteAngle = 180;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      carResetHeading();
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    case IR_KEY_9:  // Right Backward
-      remoteAngle = 135;
-      #ifdef REMOTE_MODE_DRIFT
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      #endif
-      remotePower = CAR_DEFAULT_POWER;
-      break;
-    default:
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      break;
+  else{
+    switch (key) {
+      case IR_KEY_POWER:
+        currentMode = MODE_NONE;
+        carStop();
+        break;
+      case IR_KEY_MODE:
+        break;
+      case IR_KEY_MUTE:
+        currentMode = MODE_COMPASS_CALIBRATION;
+        carMove(0, 0, CAR_CALIBRATION_POWER);
+        compassCalibrateStart();
+        break;
+      case IR_KEY_PLAY_PAUSE:
+        currentMode = MODE_LINE_FOLLOWING;
+        break;
+      case IR_KEY_BACKWARD:
+        currentMode = MODE_OBSTACLE_FOLLOWING;
+        break;
+      case IR_KEY_FORWARD:
+        currentMode = MODE_OBSTACLE_AVOIDANCE;
+        break;
+      case IR_KEY_EQ:
+        break;
+      case IR_KEY_MINUS:
+        // currentMode = MODE_PARALLEL_OBSTACLE_FOLLOWING;
+        break;
+      case IR_KEY_PLUS:
+        // currentMode = MODE_PARALLEL_OBSTACLE_AVOIDANCE;
+        break;
+      case IR_KEY_0: // Reset origin direction
+        currentMode = MODE_REMOTE_CONTROL;
+        remoteAngle = 0;
+        remotePower = 0;
+        remoteHeading = 0;
+        remoteDriftEnable = false;
+        carStop();
+        carResetHeading();
+        break;
+    }
   }
 }
 
@@ -456,4 +313,19 @@ void onReceive(char* recvBuf, char* sendBuf) {
         remoteHeading = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
     }
   }
+
+  // speech control
+  char speech_buf[20];
+  aiCam.getSpeech(recvBuf, REGION_Z, speech_buf);
+  if (strlen(speech_buf) > 0) {
+    int8_t cmd_code = text_2_cmd_code(speech_buf);
+    // Serial.print(F("Cmd code: "));
+    // Serial.println(cmd_code);
+    if (cmd_code != -1) {
+      currentMode = MODE_APP_CONTROL;
+      cmd_fuc_table[cmd_code]();
+    }
+  }
+
 }
+
