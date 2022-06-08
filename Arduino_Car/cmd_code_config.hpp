@@ -160,13 +160,12 @@ void stop(){
 }
 
 void forward(){
-  // Serial.println(F("forward_1010"));
   remoteAngle = 0;
-  // #ifdef REMOTE_MODE_DRIFT
-  // remoteHeading = 0;
-  // // carResetHeading();
-  // remoteDriftEnable = false;
-  // #endif
+  #ifdef REMOTE_MODE_DRIFT
+  remoteHeading = 0;
+  carResetHeading();
+  remoteDriftEnable = false;
+  #endif
   remotePower = CAR_DEFAULT_POWER;
 }
 
@@ -175,7 +174,7 @@ void backward(){
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  // carResetHeading();
+  carResetHeading();
   #endif
   remotePower = CAR_DEFAULT_POWER;
 }
