@@ -40,7 +40,7 @@ void AiCamera::begin(const char* ssid, const char* password, const char* wifiMod
   DateSerial.begin(115200);
   #endif
   char ip[15];
-  this->set("RESET");
+  // this->set("RESET");
   this->set("NAME", name);
   this->set("TYPE", type);
   this->set("SSID", ssid);

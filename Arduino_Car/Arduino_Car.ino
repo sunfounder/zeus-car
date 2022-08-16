@@ -109,9 +109,9 @@ char speech_buf[20];
 void setup() {
   int m = millis();
   Serial.begin(115200);
-  Serial.print("Arduino Car version ");Serial.print(VERSION);
+  Serial.print("Arduino Car version ");Serial.println(VERSION);
 
-  Serial.println(F("Initialzing!"));
+  Serial.println(F("Initialzing..."));
   SoftPWMBegin();
   rgbBegin();
   rgbWrite(ORANGE);
