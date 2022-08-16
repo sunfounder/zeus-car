@@ -60,7 +60,7 @@ class QMC6310{
     void clearCalibration();
   private:
     void _i2cWrite(byte reg, byte val);
-    void _i2cReadInto(byte reg, byte num, byte* dest);
+    bool _i2cReadInto(byte reg, byte num, byte* dest);
     bool _calibrated = false;
 };
 

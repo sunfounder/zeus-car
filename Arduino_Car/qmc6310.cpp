@@ -1,4 +1,7 @@
 #include "qmc6310.h"
+#include "rgb.h"
+#include "car_control.h"
+
 
 int16_t _calibrationData[6];
 
@@ -11,32 +14,8 @@ QMC6310::QMC6310() {
 
 void QMC6310::init() {
 	Wire.begin();
-  // byte error = 10;
-  // // check device
-  // Wire.beginTransmission(QMC6310_ADDR);
-  // error = Wire.endTransmission();
-  // if (error == 0)
-  // {
-  //   Serial.print("compass:I2C device found at address 0x");
-  //   Serial.println(QMC6310_ADDR,HEX);
-  // }
-  // else if (error==4) 
-  // {
-  //   Serial.print("compass:Unknow error at address 0x");
-  //   Serial.println(QMC6310_ADDR,HEX);
-  // } 
-  // else 
-  // {
-  //   Serial.print("compass:I2C device not found address 0x");
-  //   Serial.println(QMC6310_ADDR,HEX);
-  // }
-  // According to the datasheet, 7.1 Define the sign for X Y and Z axis
-  // if (error == 0){
-  //   this->_i2cWrite(0x29, 0x06);
-  //   this->_i2cWrite(QMC6310_REG_CONTROL_2, QMC6310_VAL_RNG_8G);
-  //   this->_i2cWrite(QMC6310_REG_CONTROL_1, QMC6310_VAL_MODE_NORMAL | QMC6310_VAL_ODR_200HZ | QMC6310_VAL_OSR1_8 | QMC6310_VAL_OSR2_8);
-  // }
-
+  Wire.setWireTimeout(100000, true); // 100ms
+  
   this->_i2cWrite(0x29, 0x06);
   this->_i2cWrite(QMC6310_REG_CONTROL_2, QMC6310_VAL_RNG_8G);
   this->_i2cWrite(QMC6310_REG_CONTROL_1, QMC6310_VAL_MODE_NORMAL | QMC6310_VAL_ODR_200HZ | QMC6310_VAL_OSR1_8 | QMC6310_VAL_OSR2_8);
@@ -45,7 +24,9 @@ void QMC6310::init() {
 
 void QMC6310::read() {
   byte datas[6];
-  this->_i2cReadInto(QMC6310_REG_DATA_START, 6, datas);
+  bool result = this->_i2cReadInto(QMC6310_REG_DATA_START, 6, datas);
+  if (result == false) return;
+
   _x = (int16_t)((datas[1] << 8) | datas[0]);
   _y = (int16_t)((datas[3] << 8) | datas[2]);
   _z = (int16_t)((datas[5] << 8) | datas[4]);
@@ -102,13 +83,39 @@ void QMC6310::_i2cWrite(byte reg, byte val) {
   Wire.endTransmission();
 }
 
-void QMC6310::_i2cReadInto(byte reg, byte num, byte* dest) {
+bool QMC6310::_i2cReadInto(byte reg, byte num, byte* dest) {
   Wire.beginTransmission(QMC6310_ADDR);
   Wire.write(reg);
+  uint8_t result = Wire.endTransmission(true);
+  /*
   Wire.endTransmission();
-  Wire.requestFrom(QMC6310_ADDR, num);
-  while(Wire.available() < num);
+  0: success.
+  1: data too long to fit in transmit buffer.
+  2: received NACK on transmit of address.
+  3: received NACK on transmit of data.
+  4: other error.
+  5: timeout
+  */
+  if (result != 0) {
+    return false;
+  }
+
+  uint8_t rec_len = Wire.requestFrom(QMC6310_ADDR, num, true);
+  if (rec_len != num) {
+    return false;
+  }
+
+  int m = millis();
+  while(Wire.available() < num) {
+    if (millis() - m > 200) {
+      return false;
+    }
+  }
+
   for(int i = 0; i < num; i++) {
     dest[i] = Wire.read();
   }
+
+  return true;
 }
+
