@@ -11,6 +11,9 @@ float ultrasonicRead() {
   pinMode(ULTRASONIC_ECHO_PIN, INPUT);
   float duration = pulseIn(ULTRASONIC_ECHO_PIN, HIGH);
   float distance = duration  * 34.0 / 1000;
+  if (distance > 2000) {
+    return -1;
+  }
   return distance;
 }
 
@@ -21,3 +24,4 @@ bool ultrasonicIsObstacle() {
 bool ultrasonicIsClear() {
   return ultrasonicRead() > ULTRASONIC_AVOIDANCE_THRESHOLD;
 }
+

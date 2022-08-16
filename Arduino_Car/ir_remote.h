@@ -40,3 +40,4 @@ void irBegin();
 uint8_t irRead();
 
 #endif // __IR_REMOTE_H__
+

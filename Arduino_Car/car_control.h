@@ -4,25 +4,27 @@
 #include <Arduino.h>
 #include "compass.h"
 
-#define MOTOR_DIRECTIONS (uint8_t[4]){1, 0, 0, 1}
-#define MOTOR_PINS       (uint8_t[8]){6, 7, 8, 9, 10, 11, 12, 13}
 
-#define CAR_DEFAULT_POWER 60
+/* 
+Set the pins for the motors 
+    [0]--|||--[1]
+     |         |
+     |         |
+     |         |
+     |         |
+    [3]-------[2]
+*/
+#define MOTOR_DIRECTIONS (uint8_t[4]){1, 0, 0, 0}
+#define MOTOR_PINS       (uint8_t[8]){3, 4, 5, 6, A3, A2, A1, A0}
+
+#define CAR_DEFAULT_POWER 80
 #define CAR_ROTATE_POWER 80
 #define CAR_CALIBRATION_POWER 80
 
-#define CAR_WIDTH  14.76/2      //定义宽度
-#define CAR_LENGTH  11.48/2     //定义长度
-
-// [0]-------[1]
-//  |         |
-//  |         |
-//  |         |
-//  |         |
-// [3]-------[2]
+#define CAR_WIDTH  14.76/2     
+#define CAR_LENGTH  11.48/2     
 
 void carBegin();
-// void carSetMotor(uint8_t motor, int8_t power);
 void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3);
 void carForward();
 void carBackward();

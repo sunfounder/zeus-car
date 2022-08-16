@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define AVERAGE_FILTER_SIZE 20
+#define AVERAGE_FILTER_SIZE 30
 #define EEPROM_CALIBRATION_ADDRESS 0
 #define CALIBRATION_TIME 3000
 

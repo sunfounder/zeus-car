@@ -2,11 +2,6 @@
 #define __GRAYSCALE_H__
 #include <Arduino.h>
 
-#define PIN_74HC165_CP A0
-#define PIN_74HC165_PL A1
-#define PIN_74HC165_Q7 A2
-#define PIN_74HC165_CE A3
-
 #define ANGLE_N45     0
 #define ANGLE_0       1
 #define ANGLE_45      2
@@ -22,3 +17,4 @@ byte gsRead();
 uint16_t gsGetAngleOffset();
 
 #endif // __GRAYSCALE_H__
+

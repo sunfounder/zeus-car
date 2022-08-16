@@ -1,15 +1,14 @@
 #include "compass.h"
 #include <EEPROM.h>
-// #include <QMC5883LCompass.h>
-// QMC5883LCompass _compass;
 #include "qmc6310.h"
 QMC6310 _compass;
 
-uint16_t heading;
+int16_t heading;
 int calibrationData[6];
 #if (AVERAGE_FILTER)
 int16_t filterBuffer[AVERAGE_FILTER_SIZE];
 uint8_t filterBufferIndex = 0;
+int32_t filterBufferSum = 0;
 #endif
 uint32_t calibrate_c;
 uint32_t calibrate_t;
@@ -158,29 +157,19 @@ bool compassCalibrateLoop() {
   return calibrateChanged;
 }
 
-#if (AVERAGE_FILTER)
-void compassFilterBufferAppend(uint16_t value) {
-  filterBuffer[filterBufferIndex] = value;
-  filterBufferIndex++;
-  if (filterBufferIndex >= AVERAGE_FILTER_SIZE) {
-    filterBufferIndex = 0;
-  }
-}
-#endif
-
 int16_t compassReadAngle() {
   _compass.read();
+  int16_t value = compassGetAzimuth();
+
   #if (AVERAGE_FILTER)
-  uint16_t heading = compassGetAzimuth();
-  compassFilterBufferAppend(heading);
-  uint16_t sum = 0;
-  for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
-    sum += filterBuffer[i];
-  }
-  return sum / AVERAGE_FILTER_SIZE;
-  #else
-  return compassGetAzimuth();
+    filterBufferSum = filterBufferSum - filterBuffer[filterBufferIndex] + value;
+    filterBuffer[filterBufferIndex] = value;
+    filterBufferIndex++;
+    if (filterBufferIndex >= AVERAGE_FILTER_SIZE) filterBufferIndex = 0;
+    value = filterBufferSum / AVERAGE_FILTER_SIZE;
   #endif
+
+  return value;
 }
 
 int16_t compassGetAzimuth() {

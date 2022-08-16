@@ -16,25 +16,17 @@ void rgbWrite(uint32_t color) {
 }
 
 void rgbWrite(uint8_t r, uint8_t g, uint8_t b) {
-  #ifdef LIGHT_ON
-    #ifdef COMMON_ANODE
-      r = 255 - r;
-      g = 255 - g;
-      b = 255 - b;
-    #endif
-    // Serial.print("rgbWrite(");
-    // Serial.print(r);
-    // Serial.print(", ");
-    // Serial.print(g);
-    // Serial.print(", ");
-    // Serial.print(b);
-    // Serial.println(")");
-    SoftPWMSet(RGB_PINS[0], r);
-    SoftPWMSet(RGB_PINS[1], g);
-    SoftPWMSet(RGB_PINS[2], b);
+  #ifdef COMMON_ANODE
+    r = 255 - r;
+    g = 255 - g;
+    b = 255 - b;
   #endif
+  SoftPWMSet(RGB_PINS[0], r);
+  SoftPWMSet(RGB_PINS[1], g);
+  SoftPWMSet(RGB_PINS[2], b);
 }
 
 void rgbOff() {
   rgbWrite(0, 0, 0);
 }
+

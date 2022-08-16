@@ -3,3 +3,4 @@
 byte irObstacleRead() {
   return hc165Read();
 }
+

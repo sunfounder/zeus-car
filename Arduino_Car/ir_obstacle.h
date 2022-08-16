@@ -6,3 +6,4 @@
 byte irObstacleRead();
 
 #endif // __IR_OBSTACLE_H__
+

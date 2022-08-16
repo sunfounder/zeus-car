@@ -16,3 +16,4 @@ uint8_t irRead() {
   }
   return result;
 }
+
