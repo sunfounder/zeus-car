@@ -1,60 +1,180 @@
+/*******************************************************************
+  The control program of the Ardunio Mecanum wheel trolley
+
+  Development test environment:
+    - Arduino IDE 1.8.19
+  Board tools:
+    - Arduino AVR Boards 1.8.3
+  Libraries:
+    - IRRemote
+    - SoftPWM
+
+  Version: 1.0.0
+    -- https://github.com/sunfounder/arduino-car
+  
+  Author: Sunfounder
+  Website: http://www.sunfounder.com
+           https://docs.sunfounder.com
+
+ *******************************************************************/
+#define VERSION "1.0.0"
 
 #include "Arduino.h"
+#include <SoftPWM.h>
+#include "string.h"
+#include "ir_remote.h"
+#include "rgb.h"
 #include "Arduino_Car.h"
 #include "car_control.h"
-#include "ir_remote.h"
 #include "ai_camera.h"
-#include <SoftPWM.h>
 #include "hc165.h"
 #include "ir_obstacle.h"
 #include "grayscale.h"
 #include "ultrasonic.h"
+#include "cmd_code_config.hpp"
 
-#define LIGHT_ON true
-#include "rgb.h"
-#include "cmd_code_config.h"
+/*
+  Enable Watchdog
+*/
+#define WATCH_DOG 0
+#if WATCH_DOG
+  #include <avr/wdt.h>
+#endif
 
-#define LINE_FOLLOW_OFFSET_ANGLE 30
+/*
+  Use test
+*/
+#define TEST 0
+#if TEST
+  #include "test.h"
+#endif
 
+/*
+  Enable print memory message
+*/
+#define MEM 0
+#if MEM
+  #include <MemoryFree.h>
+  #include <pgmStrToRAM.h> // not needed for new way. but good to have for reference.
+#endif
+
+/*************************** SET *******************************/
+/*
+  Set Wifi mode, SSID and password
+*/
 #define WIFI_MODE WIFI_MODE_AP
 #define SSID "AIC_Test"
 #define PASSWORD "12345678"
-#define CAMERA_MODE CAMERA_MODE_STREAM
-#define PORT "8765"
 
+// #define WIFI_MODE WIFI_MODE_STA
+// #define SSID "xxxxxxxxxx"
+// #define PASSWORD "xxxxxxxxxx"
+
+// #define WIFI_MODE WIFI_MODE_STA
+// #define SSID "MakerStarsHall"
+// #define PASSWORD "sunfounder"
+
+/*
+  Set websockets port
+*/
+#define PORT "8765" // Sunfounder Controller APP fixed using port 8765
+
+/*
+  Set the motor speed in different modes
+*/
+#define SPEECH_REMOTE_POWER 40
+#define IR_REMOTE_POWER  50
+#define LINE_FOLLOW_POWER 50
+#define OBSTACLE_FOLLOW_POWER 80
+
+/*
+  Set the unit angle of line follower adjustment
+*/
+#define LINE_FOLLOW_OFFSET_ANGLE 30
+
+/*********************** Global variables ****************************/
+#define CAMERA_MODE CAMERA_MODE_STREAM
+#define WS_HEADER "WS+"
+#define IsStartWith(str, prefix) (strncmp(str, prefix, strlen(prefix)) == 0)
 AiCamera aiCam = AiCamera("aiCam", "aiCam");
 
 // Current mode of the car
 uint8_t currentMode = MODE_NONE;
+int16_t currentAngle = 0;
+int16_t app_remoteAngle;
+int8_t app_remotePower;
+char speech_buf[20];
 
-
+/*********************** setup() & loop() ************************/
 void setup() {
   int m = millis();
   Serial.begin(115200);
+  Serial.print("Arduino Car version ");Serial.print(VERSION);
+
   Serial.println(F("Initialzing!"));
   SoftPWMBegin();
   rgbBegin();
-  rgbWrite(GREEN);
+  rgbWrite(ORANGE);
   carBegin();
   hc165Begin();
   irBegin();
-  aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT, CAMERA_MODE);
+  delay(100);
+  aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT);
   aiCam.setOnReceived(onReceive);
-  while (millis() - m < 500) {
+  while (millis() - m < 500) { // Wait for peripherals to be ready
     delay(1);
   }
-  Serial.println(F("GO!"));
-  rgbOff();
+
+  #if WATCH_DOG
+  wdt_disable();  /* Disable the watchdog and wait for more than 2 seconds */
+  delay(3000);  /* Done so that the Arduino doesn't keep resetting infinitely in case of wrong configuration */
+  wdt_enable(WDTO_2S);  /* Enable the watchdog with a timeout of 2 seconds */
+  #endif
+
+  Serial.println(F("Okie!"));
+  rgbWrite(GREEN);
+
 }
 
-int16_t currentAngle = 0;
 
 void loop() {
-  aiCam.loop();
-  remoteHandler();
-  modeHandler();
+  #if !TEST 
+    aiCam.loop();
+    remoteHandler();
+    modeHandler();
+  #else
+    _carMove(   0, 100, 0);
+    rgbWrite(0, 255, 0);
+    delay(500);
+    _carMove( 180, 100, 0);
+    rgbWrite(0, 0, 255);
+    delay(500);
+    rgbWrite(255, 255, 255);
+
+    // rgb_test();
+    // grayscale_test();
+    // ultrasonic_test();
+    // ir_obstacle_test();
+    // obstacleAvoidance();
+    // carLeftForword();
+    // carMove(0, 0, 10);
+    // compass_test();
+    // ir_remote_test();
+    // carTurnLeft();
+  #endif 
+
+  #if WATCH_DOG
+    wdt_reset();  /* Reset the watchdog */
+  #endif
+
+  #if MEM
+    Serial.print(F("Free RAM = ")); //F function does the same and is now a built in library, in IDE > 1.0.0
+    Serial.println(freeMemory());  // print how much RAM is available in bytes.
+  #endif
+
 }
 
+/***************************** Functions ******************************/
 void modeHandler() {
   switch (currentMode) {
     case MODE_NONE:
@@ -62,24 +182,29 @@ void modeHandler() {
       break;
     case MODE_LINE_FOLLOWING:
       rgbWrite(MODE_LINE_FOLLOWING_COLOR);
+      remotePower = LINE_FOLLOW_POWER;
       carResetHeading();
       lineFollowing();
       break;
     case MODE_ROTATE_LINE_FOLLOWING:
       rgbWrite(MODE_LINE_FOLLOWING_COLOR);
+      remotePower = LINE_FOLLOW_POWER;
       carResetHeading();
       rotateLineFollowing();
       break;
     case MODE_OBSTACLE_FOLLOWING:
       rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);
+      remotePower = OBSTACLE_FOLLOW_POWER;
       obstacleFollowing();
       break;
     case MODE_OBSTACLE_AVOIDANCE:
       rgbWrite(MODE_OBSTACLE_AVOIDANCE_COLOR);
+      remotePower = OBSTACLE_FOLLOW_POWER;
       obstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
       rgbWrite(MODE_REMOTE_CONTROL_COLOR);
+      remotePower = IR_REMOTE_POWER;
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, true);
       break;
     case MODE_APP_CONTROL:
@@ -87,6 +212,9 @@ void modeHandler() {
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
       break;
     case MODE_COMPASS_CALIBRATION:
+      #if WATCH_DOG
+        wdt_disable();  /* Disable the watchdog and wait for more than 2 seconds */
+      #endif 
       bool changed = compassCalibrateLoop();
       if (changed) {
         rgbWrite(GREEN);
@@ -97,10 +225,14 @@ void modeHandler() {
         currentMode = MODE_NONE;
         carStop();
       }
+      #if WATCH_DOG
+      wdt_enable(WDTO_2S);  /* Enable the watchdog with a timeout of 2 seconds */
+      #endif
     default:
       break;
   }
 }
+
 
 void lineFollowing() {
   uint16_t result = gsGetAngleOffset();
@@ -108,6 +240,7 @@ void lineFollowing() {
   uint8_t offsetType = result & 0xFF;
   int16_t angle = 0;
   int8_t offset = 0;
+
   switch (angleType) {
     case ANGLE_N45:   angle = -45;break;
     case ANGLE_0:     angle =   0;break;
@@ -133,9 +266,14 @@ void lineFollowing() {
 
   currentAngle = angle;
   int16_t moveAngle = currentAngle + (offset*LINE_FOLLOW_OFFSET_ANGLE);
+  carMoveFieldCentric(moveAngle, LINE_FOLLOW_POWER, 0, false);
 
-  carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, 0, false);
+  // Serial.print("angle=");Serial.print(angle);
+  //Serial.print(", offset=");Serial.print(offset);
+  //Serial.print(", moveAngle=");Serial.println(moveAngle);
 }
+
+
 
 // Field centric angle
 int16_t fcAngle = 0;
@@ -182,13 +320,14 @@ void rotateLineFollowing() {
   carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, currentHeading);
 }
 
+
 void obstacleFollowing() {
   byte result = irObstacleRead();
-  bool leftIsClear = result & 0b00000010;
-  bool rightIsClear = result & 0b00000001;
+  bool leftIsClear = result & 0b00000001;
+  bool rightIsClear = result & 0b00000010;
   float usDistance = ultrasonicRead();
 
-  if (usDistance < 10) {
+  if (usDistance < 10 ) {
     carStop();
   } else if (usDistance < 20) {
     carForward();
@@ -203,30 +342,34 @@ void obstacleFollowing() {
   }
 }
 
+
 void obstacleAvoidance() {
   byte result = irObstacleRead();
-  bool leftIsClear = result & 0b00000010;
-  bool rightIsClear = result & 0b00000001;
+  bool leftIsClear = result & 0b00000001;
+  bool rightIsClear = result & 0b00000010;
   bool middleIsClear = ultrasonicIsClear();
 
   if (middleIsClear && leftIsClear && rightIsClear) {
     carForward();
   } else {
-    if (!leftIsClear) {
-      carTurnRight();
-    } else if (!rightIsClear) {
+    if (leftIsClear) {
       carTurnLeft();
+    } else if (rightIsClear) {
+      carTurnRight();
+    } else {
+      carMove(0, 0, 20);
+      delay(400);
+      carStop();
     }
   }
 }
 
 void remoteHandler() {
   uint8_t key = irRead();
-  if (key != IR_KEY_ERROR) {
-    currentState = 0;
+  if (key == IR_KEY_ERROR) {
+    return; // No key pressed
   }
-  // Serial.print("Key: 0x");
-  // Serial.println(key, BIN);
+
   int8_t cmd_code = ir_key_2_cmd_code(key);
   if (cmd_code != -1) {
     currentMode = MODE_REMOTE_CONTROL;
@@ -246,21 +389,22 @@ void remoteHandler() {
         compassCalibrateStart();
         break;
       case IR_KEY_PLAY_PAUSE:
+        carResetHeading();
         currentMode = MODE_LINE_FOLLOWING;
         break;
       case IR_KEY_BACKWARD:
+        carResetHeading();
         currentMode = MODE_OBSTACLE_FOLLOWING;
         break;
       case IR_KEY_FORWARD:
+        carResetHeading();
         currentMode = MODE_OBSTACLE_AVOIDANCE;
         break;
       case IR_KEY_EQ:
         break;
       case IR_KEY_MINUS:
-        // currentMode = MODE_PARALLEL_OBSTACLE_FOLLOWING;
         break;
       case IR_KEY_PLUS:
-        // currentMode = MODE_PARALLEL_OBSTACLE_AVOIDANCE;
         break;
       case IR_KEY_0: // Reset origin direction
         currentMode = MODE_REMOTE_CONTROL;
@@ -275,9 +419,47 @@ void remoteHandler() {
   }
 }
 
-
+/*
+  websocket received data processing
+*/
 void onReceive(char* recvBuf, char* sendBuf) {
-  // Serial.println(recvBuf);
+  // Serial.print("recv:");Serial.println(recvBuf);
+
+  // Mode select: line following, obstacle following, obstacle avoidance
+  if (aiCam.getSwitch(recvBuf, REGION_N)) {
+    currentMode = MODE_LINE_FOLLOWING;
+  } else if (aiCam.getSwitch(recvBuf, REGION_O)) {
+    currentMode = MODE_OBSTACLE_FOLLOWING;
+  } else if (aiCam.getSwitch(recvBuf, REGION_P)) {
+    currentMode = MODE_OBSTACLE_AVOIDANCE;
+  } else {
+    if (currentMode == MODE_LINE_FOLLOWING 
+      || currentMode == MODE_OBSTACLE_FOLLOWING 
+      || currentMode == MODE_OBSTACLE_AVOIDANCE){
+      currentMode = MODE_NONE;
+      carStop();
+      carResetHeading();
+      remoteHeading = 0;
+      return;    
+    }
+  }
+
+  // Stop
+  if (aiCam.getButton(recvBuf, REGION_F)) {
+    currentMode = MODE_NONE;
+    carStop();
+    return;
+  }
+
+  // Compass Calibrate
+  if (aiCam.getButton(recvBuf, REGION_E)) {
+    currentMode = MODE_COMPASS_CALIBRATION;
+    carMove(0, 0, CAR_CALIBRATION_POWER); // rote to calibrate
+    compassCalibrateStart();
+    return;
+  }
+
+  // Reset Origin
   if (aiCam.getButton(recvBuf, REGION_I)) {
     currentMode = MODE_APP_CONTROL;
     carStop();
@@ -285,45 +467,55 @@ void onReceive(char* recvBuf, char* sendBuf) {
     remoteHeading = 0;
     return;
   }
+
+  //Joystick
   uint16_t angle = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_ANGLE);
   uint8_t power = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_RADIUS);
   power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
-  if (remoteAngle != angle) {
+  if (app_remoteAngle != angle) {
     currentMode = MODE_APP_CONTROL;
-    remoteAngle = angle;
+    app_remoteAngle = angle;
+    remoteAngle = app_remoteAngle;
   }
-  if (remotePower != power) {
+  if (app_remotePower != power) {
     currentMode = MODE_APP_CONTROL;
-    remotePower = power;
+    app_remotePower = power;
+    remotePower = app_remotePower;
   }
+
+  // Drift 
+  // Serial.print("Drift:");Serial.println(remoteDriftEnable);
   if (remoteDriftEnable != aiCam.getSwitch(recvBuf, REGION_J)) {
     currentMode = MODE_APP_CONTROL;
     remoteDriftEnable = !remoteDriftEnable;
-    if (remoteDriftEnable) { // Drift mode
-      int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
-      if (moveHeadingR == 0) {
-        carResetHeading();
-        remoteHeading = 0;
-      } else {
-        remoteHeading = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
-      }
-    } else {
-      int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
-      if (moveHeadingR != 0)
-        remoteHeading = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
-    }
   }
 
-  // speech control
-  char speech_buf[20];
-  aiCam.getSpeech(recvBuf, REGION_Z, speech_buf);
-  if (strlen(speech_buf) > 0) {
-    int8_t cmd_code = text_2_cmd_code(speech_buf);
-    // Serial.print(F("Cmd code: "));
-    // Serial.println(cmd_code);
-    if (cmd_code != -1) {
-      currentMode = MODE_APP_CONTROL;
-      cmd_fuc_table[cmd_code]();
+  // MoveHead
+  int moveHeadingA = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
+  int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
+  if (remoteHeading !=  moveHeadingA || remoteHeadingR !=  moveHeadingR){
+    currentMode = MODE_APP_CONTROL;
+    remoteHeading = moveHeadingA;
+    remoteHeadingR = moveHeadingR;
+    if (remoteDriftEnable && moveHeadingR == 0) { // Drift mode
+      carResetHeading();
+      remoteHeading = 0;
+    } 
+    // Serial.print("head:");Serial.println(remoteHeading);
+  }
+
+  // Speech control
+  char speech_buf_temp[20];
+  aiCam.getSpeech(recvBuf, REGION_M, speech_buf_temp);
+  if (strcmp(speech_buf_temp, speech_buf) != 0) {
+    strcpy(speech_buf, speech_buf_temp);
+    if (strlen(speech_buf) > 0) {
+      int8_t cmd_code = text_2_cmd_code(speech_buf);
+      if (cmd_code != -1) {
+        remotePower = SPEECH_REMOTE_POWER;
+        currentMode = MODE_APP_CONTROL;
+        cmd_fuc_table[cmd_code]();
+      }
     }
   }
 
