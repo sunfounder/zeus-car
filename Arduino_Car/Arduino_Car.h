@@ -11,7 +11,7 @@
 #define MODE_COMPASS_CALIBRATION     7
 
 #define RED           0xFF0A0A
-#define ORANGE        0xFFA50A
+#define ORANGE        0xFF2500  //0xFFA500
 #define YELLOW        0xFFFF0A
 #define YELLOW_GREEN  0xA5FF0A
 #define GREEN         0x0AFF0A
@@ -32,3 +32,4 @@
 #define MODE_APP_CONTROL_COLOR              MAGENTA
 
 #endif // __ARDUINO_CAR_H__
+
