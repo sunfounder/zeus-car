@@ -99,8 +99,13 @@
 AiCamera aiCam = AiCamera("aiCam", "aiCam");
 
 // Current mode of the car
-uint8_t currentMode = MODE_NONE;
-int16_t currentAngle = 0;
+extern uint8_t currentMode;
+extern int16_t currentAngle;
+extern int16_t remoteAngle;
+extern int8_t remotePower;
+extern int16_t remoteHeading;
+extern int16_t remoteHeadingR;
+extern bool remoteDriftEnable;
 int16_t app_remoteAngle;
 int8_t app_remotePower;
 char speech_buf[20];
@@ -177,7 +182,7 @@ void loop() {
 /***************************** Functions ******************************/
 void modeHandler() {
   switch (currentMode) {
-    case MODE_NONE:
+    case MODE_NONE: 
       rgbWrite(MODE_NONE_COLOR);    
       break;
     case MODE_LINE_FOLLOWING:
@@ -204,7 +209,6 @@ void modeHandler() {
       break;
     case MODE_REMOTE_CONTROL:
       rgbWrite(MODE_REMOTE_CONTROL_COLOR);
-      remotePower = IR_REMOTE_POWER;
       carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, true);
       break;
     case MODE_APP_CONTROL:
@@ -233,7 +237,7 @@ void modeHandler() {
   }
 }
 
-
+ 
 void lineFollowing() {
   uint16_t result = gsGetAngleOffset();
   uint8_t angleType = result >> 8 & 0xFF;
@@ -256,21 +260,31 @@ void lineFollowing() {
   }
 
   int16_t deltaAngle = currentAngle - angle;
+  if (deltaAngle > 180) {
+    deltaAngle -= 360;
+  } else if (deltaAngle < -180) {
+    deltaAngle += 360;
+  } 
+
+  // Serial.print(",currentAngle=");Serial.print(currentAngle);
+  // Serial.print(",angleType=");Serial.print(angle);
+  // Serial.print(",deltaAngle=");Serial.print(deltaAngle);
+
   if (deltaAngle > 90) {
-    angle += 180;
+    angle -= 180;
     offset *= -1;
   } else if (deltaAngle < -90) {
-    angle -= 180;
+    angle += 180;
     offset *= -1;
   }
 
-  currentAngle = angle;
-  int16_t moveAngle = currentAngle + (offset*LINE_FOLLOW_OFFSET_ANGLE);
-  carMoveFieldCentric(moveAngle, LINE_FOLLOW_POWER, 0, false);
+  currentAngle = angle + (offset*LINE_FOLLOW_OFFSET_ANGLE);
+  carMoveFieldCentric(currentAngle, LINE_FOLLOW_POWER, 0, false);
 
-  // Serial.print("angle=");Serial.print(angle);
-  //Serial.print(", offset=");Serial.print(offset);
-  //Serial.print(", moveAngle=");Serial.println(moveAngle);
+  // Serial.print(",angle=");Serial.print(angle);
+  // Serial.print(", offset=");Serial.print(offset);
+  // Serial.print(", moveAngle=");Serial.println(currentAngle);
+
 }
 
 
@@ -320,7 +334,6 @@ void rotateLineFollowing() {
   carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, currentHeading);
 }
 
-
 void obstacleFollowing() {
   byte result = irObstacleRead();
   bool leftIsClear = result & 0b00000001;
@@ -341,7 +354,6 @@ void obstacleFollowing() {
     }
   }
 }
-
 
 void obstacleAvoidance() {
   byte result = irObstacleRead();
@@ -368,6 +380,8 @@ void remoteHandler() {
   uint8_t key = irRead();
   if (key == IR_KEY_ERROR) {
     return; // No key pressed
+  }else{
+    remotePower = IR_REMOTE_POWER;
   }
 
   int8_t cmd_code = ir_key_2_cmd_code(key);

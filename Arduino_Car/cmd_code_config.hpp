@@ -2,14 +2,15 @@
 #define __CMD_CODE_CONFIG_H__
 
 #include <Arduino.h>
-// #include "car_control.h"
 
 // #define REMOTE_MODE_FIELD_CENTRIC
 #define REMOTE_MODE_DRIFT
 
-#define CMD_SUM 11
+#define CMD_SUM 12
 
 // State machine for almost all mode. State define see every function
+uint8_t currentMode = MODE_NONE;
+int16_t currentAngle = 0;
 int16_t remoteAngle;
 int8_t remotePower;
 int16_t remoteHeading;
@@ -29,11 +30,12 @@ const char cmd_str_7[] PROGMEM = "right forward";
 const char cmd_str_8[] PROGMEM = "right backward";
 const char cmd_str_9[] PROGMEM = "move left";
 const char cmd_str_10[] PROGMEM = "move right";
+const char cmd_str_11[] PROGMEM = "pasue";
 
 const char *const cmd_str_table[] PROGMEM = {
   cmd_str_0, cmd_str_1, cmd_str_2, cmd_str_3,
   cmd_str_4, cmd_str_5, cmd_str_6, cmd_str_7,
-  cmd_str_8, cmd_str_9, cmd_str_10,
+  cmd_str_8, cmd_str_9, cmd_str_10,cmd_str_11,
 };
 
 #define STOP        0x00
@@ -47,6 +49,7 @@ const char *const cmd_str_table[] PROGMEM = {
 #define RIGHT_BACKWARD 0x08
 #define LEFT        0x09
 #define RIGHT       0x0A
+#define PAUSE       0x0B
 
 const int8_t cmd_code_table[CMD_SUM] PROGMEM={
   STOP,
@@ -60,6 +63,7 @@ const int8_t cmd_code_table[CMD_SUM] PROGMEM={
   RIGHT_BACKWARD,
   LEFT,
   RIGHT, 
+  PAUSE,
 };
 
 
@@ -90,6 +94,7 @@ void right_forward();
 void right_backward();
 void left();
 void right();
+void pause();
 
 void (*cmd_fuc_table [])(){
   stop,
@@ -103,11 +108,12 @@ void (*cmd_fuc_table [])(){
   right_backward,
   left,
   right,
+  pause,
 };
 
 // ir_key_table: macth to cmd_code_table
 const int8_t ir_key_table[CMD_SUM] PROGMEM={
-  IR_KEY_5,
+  IR_KEY_POWER,
   IR_KEY_2,
   IR_KEY_8,
   IR_KEY_CYCLE,
@@ -118,6 +124,7 @@ const int8_t ir_key_table[CMD_SUM] PROGMEM={
   IR_KEY_9,
   IR_KEY_4,
   IR_KEY_6,
+  IR_KEY_5,
 };
 
 
@@ -131,40 +138,29 @@ int8_t ir_key_2_cmd_code(uint8_t key){
 }
 
 void stop(){
-  // Serial.println(F("stop"));
-  remoteAngle = 0;
-  remotePower = 0;
-  #ifdef REMOTE_MODE_DRIFT
-  remoteHeading = 0;
-  remoteDriftEnable = false;
-  #endif
+  currentMode = MODE_NONE;
   carStop();
 }
 
 void forward(){
-  // Serial.println(F("forward"));
   remoteAngle = 0;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   carResetHeading();
   remoteDriftEnable = false;
   #endif
-
 }
 
 void backward(){
-  // Serial.println(F("backward"));
   remoteAngle = 180;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
   carResetHeading();
   #endif
-
 }
 
 void turn_left(){
-  // Serial.println(F("turn left"));
   #ifdef REMOTE_MODE_FIELD_CENTRIC
   remoteAngle = 0;
   remotePower = 0;
@@ -180,7 +176,6 @@ void turn_left(){
 }
 
 void turn_right(){
-  // Serial.println(F("turn right"));
   #ifdef REMOTE_MODE_FIELD_CENTRIC
   remoteAngle = 0;
   remotePower = 0;
@@ -196,7 +191,6 @@ void turn_right(){
 }
 
 void left_forward(){
-  // Serial.println(F("left forward"));
   remoteAngle = 315;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
@@ -205,7 +199,6 @@ void left_forward(){
 }
 
 void left_backward(){
-  // Serial.println(F("left backward"));
   remoteAngle = 225;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
@@ -214,7 +207,6 @@ void left_backward(){
 }
 
 void right_forward(){
-  // Serial.println(F("right forward"));
   remoteAngle = 45;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
@@ -223,7 +215,6 @@ void right_forward(){
 }
 
 void right_backward(){
-  // Serial.println(F("right backward"));
   remoteAngle = 135;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
@@ -232,7 +223,6 @@ void right_backward(){
 }
 
 void left(){
-  // Serial.println(F("left"));
   remoteAngle = 270;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
@@ -241,12 +231,21 @@ void left(){
 }
 
 void right(){
-  // Serial.println(F("right"));
   remoteAngle = 90;
   #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
   #endif
+}
+
+void pause(){
+  remoteAngle = 0;
+  remotePower = 0;
+  #ifdef REMOTE_MODE_DRIFT
+  remoteHeading = 0;
+  remoteDriftEnable = false;
+  #endif
+  carStop();
 }
 
 #endif
