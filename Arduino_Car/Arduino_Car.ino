@@ -70,10 +70,6 @@
 // #define SSID "xxxxxxxxxx"
 // #define PASSWORD "xxxxxxxxxx"
 
-// #define WIFI_MODE WIFI_MODE_STA
-// #define SSID "MakerStarsHall"
-// #define PASSWORD "sunfounder"
-
 /*
   Set websockets port
 */
