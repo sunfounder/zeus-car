@@ -24,7 +24,7 @@
 #include "string.h"
 #include "ir_remote.h"
 #include "rgb.h"
-#include "Arduino_Car.h"
+#include "Zeus_Car.h"
 #include "car_control.h"
 #include "ai_camera.h"
 #include "hc165.h"
@@ -63,7 +63,7 @@
   Set Wifi mode, SSID and password
 */
 #define WIFI_MODE WIFI_MODE_AP
-#define SSID "AIC_Test"
+#define SSID "Zeus_Car"
 #define PASSWORD "12345678"
 
 // #define WIFI_MODE WIFI_MODE_STA
