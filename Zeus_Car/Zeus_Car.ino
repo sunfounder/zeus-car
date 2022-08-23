@@ -10,7 +10,7 @@
     - SoftPWM
 
   Version: 1.0.0
-    -- https://github.com/sunfounder/arduino-car
+    -- https://github.com/sunfounder/zeus-car.git
   
   Author: Sunfounder
   Website: http://www.sunfounder.com
