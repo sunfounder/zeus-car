@@ -11,7 +11,7 @@ Zeur Car is a  omnidirectional moving car with Macnum wheels.It is controlled by
   - [Project Tree](#project-tree)
   - [About SunFounder](#about-sunfounder)
   - [License](#license)
-  - [Contact us:](#contact-us)
+  - [Contact us](#contact-us)
 ## Development test environment
 - Board: Ardunio UNO
 - IDE: Arduino IDE 1.8.19
@@ -86,7 +86,7 @@ Mike Huang, Chief Executive Officer
 
 Email: service@sunfounder.com
 
-## Contact us:
+## Contact us
 website:
     www.sunfounder.com
 
