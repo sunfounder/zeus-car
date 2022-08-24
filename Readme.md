@@ -4,15 +4,15 @@ The control program of the Ardunio Mecanum wheel car for Ardunio UNO.
 Zeur Car is a  omnidirectional moving car with Macnum wheels.It is controlled by Ardunio UNO and ESP32-CAM, with FPV controller, line patrol, obstacle avoidance and many other interesting functions.You can buy it on [our website](https://www.sunfounder.com/), or search sunfounder in Amazon.
 
 - [Zeus Car](#zeus-car)
-  - [Development test environment:](#development-test-environment)
+  - [Development test environment](#development-test-environment)
   - [Dependency libraries](#dependency-libraries)
   - [ESP32-CAM firmware](#esp32-cam-firmware)
-  - [Docs:](#docs)
-  - [Project Tree:](#project-tree)
+  - [Docs](#docs)
+  - [Project Tree](#project-tree)
   - [About SunFounder](#about-sunfounder)
   - [License](#license)
   - [Contact us:](#contact-us)
-## Development test environment:
+## Development test environment
 - Board: Ardunio UNO
 - IDE: Arduino IDE 1.8.19
 - Compiler Tools: Arduino AVR Boards 1.8.3
@@ -23,11 +23,10 @@ Zeur Car is a  omnidirectional moving car with Macnum wheels.It is controlled by
 
 ## ESP32-CAM firmware
 https://github.com/sunfounder/ai-camera-firmware
-## Docs:
+## Docs
 https://docs.sunfounder.com
 
-
-## Project Tree:
+## Project Tree
 ```
 zeus-car                               
 ├─ Zeus_Car                            //
