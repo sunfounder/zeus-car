@@ -5,14 +5,20 @@
 
 #define MOTOR_POWER_MIN 28  // 28/255
 
-#define KP (float)0.8 //0.8
+/* 
+  Set the pid parameters
+*/
+#define KP (float)0.8 
 #define KI (float)0.0
-#define KD (float)20.0  //20
+#define KD (float)20.0  
 
 int32_t _lastError = 0;
 int32_t errorIntegral = 0;
 int16_t originHeading;
 
+/* 
+* @brief: Initialize the motor, and (block) the initialization compass
+*/
 void carBegin() {
   for (uint8_t i = 0; i < 8; i++) {
     SoftPWMSet(MOTOR_PINS[i], 0);
@@ -24,6 +30,9 @@ void carBegin() {
   }
 }
 
+/* 
+* simple move functions
+*/
 void carForward()       { _carMove(   0, CAR_DEFAULT_POWER, 0); }
 void carBackward()      { _carMove( 180, CAR_DEFAULT_POWER, 0); }
 void carLeft()          { _carMove( -90, CAR_DEFAULT_POWER, 0); }
@@ -36,6 +45,9 @@ void carLeftBackward()  { _carMove(-135, CAR_DEFAULT_POWER, 0); }
 void carRightBackward() { _carMove( 135, CAR_DEFAULT_POWER, 0); }
 void carStop()          { _carMove(   0, 0, 0); }
 
+/* 
+* @brief: Set PWM values for 4 motors
+*/
 void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
   bool dir[4];
   int8_t power[4] = {power0, power1, power2, power3};
@@ -108,6 +120,7 @@ void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
 
   _carMove(angle, power, rot, drift);
 }
+
 
 void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift) {
   int16_t currentHeading = 0;

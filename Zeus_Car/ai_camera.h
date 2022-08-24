@@ -5,6 +5,9 @@
 #include "string.h"
 #include "rgb.h"
 
+/*
+  Set the print level of information received by esp32-cam
+*/
 #define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO
 #define CAM_DEBUG_LEVEL_OFF 0
 #define CAM_DEBUG_LEVEL_ERROR 1
@@ -17,6 +20,7 @@
 #define CAM_DEBUG_HEAD_INFO "[CAM_I]"
 #define CAM_DEBUG_HEAD_DEBUG "[CAM_D]"
 
+/*-----------------------------------------*/
 #define DPAD_STOP     0
 #define DPAD_FORWARD  1
 #define DPAD_BACKWARD 2

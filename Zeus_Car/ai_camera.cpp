@@ -1,6 +1,9 @@
 #include "ai_camera.h"
 #include "car_control.h"
 
+/*
+  Use custom serial port
+*/
 // #define AI_CAM_DEBUG_CUSTOM
 #ifdef AI_CAM_DEBUG_CUSTOM
   #include <SoftwareSerial.h>
@@ -12,29 +15,56 @@
   #define DebugSerial Serial
 #endif
 
+/*
+  Set SERIAL_TIMEOUT & WS_BUFFER_SIZE
+*/
+#define SERIAL_TIMEOUT 100
+#define WS_BUFFER_SIZE 100
+
+/*
+  Some keywords for communication with ESP32-CAM
+*/
 #define CHECK "SC"
 #define OK_FLAG "[OK]"
 #define ERROR_FLAG "[ERR]"
 #define WS_HEADER "WS+"
 #define CAM_INIT "[Init]"
 
+/*
+  functions for manipulating string 
+*/
 #define IsStartWith(str, prefix) (strncmp(str, prefix, strlen(prefix)) == 0)
 #define StrAppend(str, suffix) uint32_t len=strlen(str); str[len] = suffix; str[len+1] = '\0'
 #define StrClear(str) str[0] = 0
-#define SERIAL_TIMEOUT 100
-#define WS_BUFFER_SIZE 100
 
-void (*__on_receive__)(char*, char*);
+/*
+  Declare global variables
+*/
 char name[32];
 char type[32];
-
 char readBuffer[WS_BUFFER_SIZE + strlen(WS_HEADER)];
+
+/*
+  Declare the receive callback function
+*/
+void (*__on_receive__)(char*, char*);
+
 
 AiCamera::AiCamera(const char* _name, const char* _type) {
   strcpy(name, _name);
   strcpy(type, _type);
 }
 
+/* 
+* @brief: Set wifi and websocket port to esp32-cam, 
+*         block and wait for the setting to succeed
+*         
+* @param: {const char*} ssid  
+* @param: {const char*} password
+* @param: {const char*} wifiMode  0,None; 1, STA; 2, AP
+* @param: {const char*} wsPort 
+* @ret: void
+*/
 void AiCamera::begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort) {
   #ifdef AI_CAM_DEBUG_CUSTOM
   DateSerial.begin(115200);
@@ -54,6 +84,52 @@ void AiCamera::begin(const char* ssid, const char* password, const char* wifiMod
   DebugSerial.println(wsPort);
 }
 
+/* 
+* @brief: Set callback function method
+*         
+* @param: {void *} func  callback function pointer
+* @ret: void
+*/
+void AiCamera::setOnReceived(void (*func)(char*, char*)) { __on_receive__ = func; }
+
+
+/* 
+* @brief: Receive and process serial port data in a loop
+*         
+* @ret: void
+*/
+void AiCamera::loop() {
+  char recvBuffer[WS_BUFFER_SIZE + strlen(WS_HEADER)];
+  char sendBuffer[WS_BUFFER_SIZE] = ";;;;;;;;;;;;;;;;;;;;;;;;;";
+  this->readInto(recvBuffer);
+  if (strlen(recvBuffer) != 0) {
+    // ESP32-CAM reboot detection
+    if (IsStartWith(recvBuffer, CAM_INIT)) {
+      Serial.println(F("ESP32-CAM reboot detected"));
+      carStop();
+      rgbWrite(255, 0, 0);
+      while(1);
+    }
+
+    if (IsStartWith(recvBuffer, WS_HEADER)) {
+      Serial.println(recvBuffer);
+      this->subString(recvBuffer, strlen(WS_HEADER));
+      if (__on_receive__ != NULL) {
+        __on_receive__(recvBuffer, sendBuffer);
+      }
+    }
+  this->sendData(sendBuffer);
+  }
+}
+
+
+/* 
+* @brief: Print the information received from esp32-CAm,
+*        according to the set of CAM_DEBUG_LEVEL
+*         
+* @param: {char*} msg  
+* @ret: void
+*/
 void AiCamera::debug(char* msg) {
   #if (CAM_DEBUG_LEVEL ==  CAM_DEBUG_LEVEL_ALL) // all
     DebugSerial.print(CAM_DEBUG_HEAD_ALL);
@@ -79,6 +155,12 @@ void AiCamera::debug(char* msg) {
   #endif
 }
 
+/* 
+* @brief: Store the data read from the serial port into the buffer
+*         
+* @param: {char*} buffer  
+* @ret: void
+*/
 void AiCamera::readInto(char* buffer) {
   bool finished = false;
   char incomingChar;
@@ -122,9 +204,45 @@ void AiCamera::readInto(char* buffer) {
   }
 }
 
+/* 
+* @brief: Serial port sends data, automatically adds header (WS_HEADER)
+*         
+* @param: {char*} sendBuffer  
+* @ret: void
+*/
 void AiCamera::sendData(char* sendBuffer) {
-  DateSerial.print(F("WS+"));
+  DateSerial.print(F(WS_HEADER));
   DateSerial.println(sendBuffer);
+}
+
+/* 
+* @brief: Send command to ESP32-CAM with serial
+*         
+* @param: {char*} command   command keyword
+* @param: {char*} value 
+* @param: {char*} result  returned information from serial
+* @ret: {char*} result 
+*/
+void AiCamera::command(const char* command, const char* value, char* result) {
+  bool is_ok = false;
+  while(1) {
+    DateSerial.print("SET+");
+    DateSerial.print(command);
+    DateSerial.println(value);
+
+    while (1) {
+      this->readInto(result);
+      if (IsStartWith(result, OK_FLAG)){
+        is_ok = true;
+        this->subString(result, strlen(OK_FLAG) + 1); // Add 1 for Space
+        break;
+      }
+    }
+
+    if(is_ok == true) {
+      break;
+    }
+  }
 }
 
 void AiCamera::set(const char* command) {
@@ -145,56 +263,6 @@ void AiCamera::get(const char* command, const char* value, char* result) {
   this->command(command, value, result);
 }
 
-void AiCamera::command(const char* command, const char* value, char* result) {
-  
-  bool is_ok = false;
-  while(1) {
-    uint32_t start_t = millis();
-    
-    DateSerial.print("SET+");
-    DateSerial.print(command);
-    DateSerial.println(value);
-
-    while (1) {
-      this->readInto(result);
-      if (IsStartWith(result, OK_FLAG)){
-        is_ok = true;
-        this->subString(result, strlen(OK_FLAG) + 1); // Add 1 for Space
-        break;
-      }
-    }
-
-    if(is_ok == true) {
-      break;
-    }
-  }
-}
-
-void AiCamera::setOnReceived(void (*func)(char*, char*)) { __on_receive__ = func; }
-
-void AiCamera::loop() {
-  char recvBuffer[WS_BUFFER_SIZE + strlen(WS_HEADER)];
-  char sendBuffer[WS_BUFFER_SIZE] = ";;;;;;;;;;;;;;;;;;;;;;;;;";
-  this->readInto(recvBuffer);
-  if (strlen(recvBuffer) != 0) {
-    // ESP32-CAM reboot detection
-    if (IsStartWith(recvBuffer, CAM_INIT)) {
-      Serial.println(F("ESP32-CAM reboot detected"));
-      carStop();
-      rgbWrite(255, 0, 0);
-      while(1);
-    }
-
-    if (IsStartWith(recvBuffer, WS_HEADER)) {
-      Serial.println(recvBuffer);
-      this->subString(recvBuffer, strlen(WS_HEADER));
-      if (__on_receive__ != NULL) {
-        __on_receive__(recvBuffer, sendBuffer);
-      }
-    }
-  this->sendData(sendBuffer);
-  }
-}
 
 int16_t AiCamera::getSlider(char* buf, uint8_t region) {
   int16_t value = getIntOf(buf, region);
@@ -247,7 +315,6 @@ int16_t AiCamera::getThrottle(char* buf, uint8_t region) {
   return value;
 }
 
-
 void AiCamera::getSpeech(char* buf, uint8_t region, char* result) {
   getStrOf(buf, region, result, ';');
 
@@ -268,6 +335,7 @@ void AiCamera::setGreyscale(char* buf, uint8_t region, uint16_t value1, uint16_t
 void AiCamera::setValue(char* buf, uint8_t region, double value) {
   setStrOf(buf, region, String(value));
 }
+
 
 void AiCamera::subString(char* str, int16_t start, int16_t end) {
   uint8_t length = strlen(str);
