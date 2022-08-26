@@ -33,68 +33,84 @@
 #include "ultrasonic.h"
 #include "cmd_code_config.hpp"
 
-/*
-  Enable Watchdog
-*/
+/*************************** Configure *******************************/
+/** @name Configure 
+ * 
+ */
+///@{
+/** Whether to enable Watchdog */
 #define WATCH_DOG 0
 #if WATCH_DOG
   #include <avr/wdt.h>
 #endif
 
-/*
-  Use test
-*/
+/** Whether to enable TEST mode */
 #define TEST 0
 #if TEST
   #include "test.h"
 #endif
 
-/*
-  Enable print memory message
-*/
+/** Whether to enable  */
 #define MEM 0
 #if MEM
   #include <MemoryFree.h>
   #include <pgmStrToRAM.h> // not needed for new way. but good to have for reference.
 #endif
 
-/*************************** SET *******************************/
-/*
-  Set Wifi mode, SSID and password
-*/
+
+/** Configure Wifi mode */
 #define WIFI_MODE WIFI_MODE_AP
+
+/** Configure Wifi SSID */
 #define SSID "Zeus_Car"
+
+/** Configure Wifi password */
 #define PASSWORD "12345678"
 
 // #define WIFI_MODE WIFI_MODE_STA
 // #define SSID "xxxxxxxxxx"
 // #define PASSWORD "xxxxxxxxxx"
+//@}
 
-/*
-  Set websockets port
-*/
-#define PORT "8765" // Sunfounder Controller APP fixed using port 8765
+/** Configure product name */
+#define NAME "Zeus_Car"
 
-/*
-  Set the motor speed in different modes
+/** Configure product type */
+#define TYPE "Zeus_Car"
+
+/** Configure websockets port
+ *  
+ * Sunfounder Controller APP fixed using port 8765
 */
+#define PORT "8765"
+
+/** Configure the motor speed in voice control modes */
 #define SPEECH_REMOTE_POWER 40
+
+/** Configure the motor speed in IR remote control modes */
 #define IR_REMOTE_POWER  50
+
+/** Configure the motor speed in line follow modes */
 #define LINE_FOLLOW_POWER 50
+
+/** Configure the motor speed in line obstacle follow modes */
 #define OBSTACLE_FOLLOW_POWER 80
 
-/*
-  Set the unit angle of line follower adjustment
-*/
+/**Configure the unit angle of line follower adjustment */
 #define LINE_FOLLOW_OFFSET_ANGLE 30
 
-/*********************** Global variables ****************************/
-#define CAMERA_MODE CAMERA_MODE_STREAM
+/** websocket communication headers */ 
 #define WS_HEADER "WS+"
-#define IsStartWith(str, prefix) (strncmp(str, prefix, strlen(prefix)) == 0)
-AiCamera aiCam = AiCamera("aiCam", "aiCam");
 
-// Current mode of the car
+///@}
+
+/*********************** Global variables ****************************/
+/** Check if a string starts with a certain character */
+#define IsStartWith(str, prefix) (strncmp(str, prefix, strlen(prefix)) == 0)
+
+/** Instantiate aicamera, a class for serial communication with ESP32-CAM */
+AiCamera aiCam = AiCamera(NAME, TYPE);
+
 extern uint8_t currentMode;
 extern int16_t currentAngle;
 extern int16_t remoteAngle;
@@ -106,7 +122,14 @@ int16_t app_remoteAngle;
 int8_t app_remotePower;
 char speech_buf[20];
 
+//@}
+
 /*********************** setup() & loop() ************************/
+/**
+ * setup(), Ardunio main program entrance
+ * 
+ * Initialization of some peripherals
+ */
 void setup() {
   int m = millis();
   Serial.begin(115200);
@@ -137,31 +160,30 @@ void setup() {
 
 }
 
-
+/**
+ * loop(), Ardunio main loop
+ * 
+ * - inclued
+ *  - aiCam.loop()
+ *  - ir_remoteHandler()()
+ *  - modeHandler()
+ * - or modules test
+ */
 void loop() {
   #if !TEST 
     aiCam.loop();
-    remoteHandler();
+    ir_remoteHandler()();
     modeHandler();
   #else
-    _carMove(   0, 100, 0);
-    rgbWrite(0, 255, 0);
-    delay(500);
-    _carMove( 180, 100, 0);
-    rgbWrite(0, 0, 255);
-    delay(500);
-    rgbWrite(255, 255, 255);
-
+    /* Select the item to be tested */
+    motors_test();
     // rgb_test();
     // grayscale_test();
     // ultrasonic_test();
     // ir_obstacle_test();
     // obstacleAvoidance();
-    // carLeftForword();
-    // carMove(0, 0, 10);
     // compass_test();
     // ir_remote_test();
-    // carTurnLeft();
   #endif 
 
   #if WATCH_DOG
@@ -176,6 +198,19 @@ void loop() {
 }
 
 /***************************** Functions ******************************/
+/**
+ * modeHandler(), Execute the corresponding program according to the set mode
+ * 
+ * - inclued
+ *  - MODE_NONE
+ *  - MODE_LINE_FOLLOWING
+ *  - MODE_ROTATE_LINE_FOLLOWING
+ *  - MODE_OBSTACLE_FOLLOWING
+ *  - MODE_OBSTACLE_AVOIDANCE
+ *  - MODE_REMOTE_CONTROL
+ *  - MODE_APP_CONTROL
+ *  - MODE_COMPASS_CALIBRATION
+ */
 void modeHandler() {
   switch (currentMode) {
     case MODE_NONE: 
@@ -233,7 +268,9 @@ void modeHandler() {
   }
 }
 
- 
+/**
+ * Line follow program
+ */
 void lineFollowing() {
   uint16_t result = gsGetAngleOffset();
   uint8_t angleType = result >> 8 & 0xFF;
@@ -285,11 +322,14 @@ void lineFollowing() {
 
 
 
-// Field centric angle
+/** Field centric angle */
 int16_t fcAngle = 0;
-// Robot centric angle
+/** Robot centric angle */
 int16_t rcAngle = 0;
 int16_t currentHeading = 0;
+/**
+ * Rotate line follow program
+ */
 void rotateLineFollowing() {
   currentHeading += 1;
   if (currentHeading > 360) {
@@ -330,6 +370,9 @@ void rotateLineFollowing() {
   carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, currentHeading);
 }
 
+/**
+ * Obstacle follow program
+ */
 void obstacleFollowing() {
   byte result = irObstacleRead();
   bool leftIsClear = result & 0b00000001;
@@ -351,6 +394,9 @@ void obstacleFollowing() {
   }
 }
 
+/**
+ * Obstacle avoidance program
+ */
 void obstacleAvoidance() {
   byte result = irObstacleRead();
   bool leftIsClear = result & 0b00000001;
@@ -372,7 +418,10 @@ void obstacleAvoidance() {
   }
 }
 
-void remoteHandler() {
+/**
+ * ir_remoteHandler(), handle IR remote control key events
+ */
+void ir_remoteHandler()() {
   uint8_t key = irRead();
   if (key == IR_KEY_ERROR) {
     return; // No key pressed
@@ -429,9 +478,9 @@ void remoteHandler() {
   }
 }
 
-/*
-  websocket received data processing
-*/
+/**
+ * websocket received data processing
+ */
 void onReceive(char* recvBuf, char* sendBuf) {
   // Serial.print("recv:");Serial.println(recvBuf);
 

@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="compass_8h" kind="file" language="C++">
+    <compoundname>compass.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includedby refid="car__control_8h" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.h</includedby>
+    <includedby refid="compass_8cpp" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h</label>
+        <link refid="compass_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.h</label>
+        <link refid="car__control_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h</label>
+        <link refid="compass_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/test.h</label>
+        <link refid="test_8h_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="compass_8h_1a01b68be4752b4dadf5e4338ba09d06b5" prot="public" static="no">
+        <name>AVERAGE_FILTER_SIZE</name>
+        <initializer>30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the number of samples for average filtering</para>
+<para>default 30 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="10" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="compass_8h_1a5ede282bffe8149b1b8cad8853d69ed0" prot="public" static="no">
+        <name>EEPROM_CALIBRATION_ADDRESS</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the EEPROM start address where the calibration value is stored</para>
+<para>default 0 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="16" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="compass_8h_1a68532ab817b6490487ad5388d0548b0c" prot="public" static="no">
+        <name>CALIBRATION_TIME</name>
+        <initializer>3000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the time required for calibration values to stabilize</para>
+<para>uinit millisecond， default 3000 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="22" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="compass_8h_1a771bb32305e13584859119fb88982a38" prot="public" static="no">
+        <name>AVERAGE_FILTER</name>
+        <initializer>true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether to turn on the average filter</para>
+<para>default true </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="28" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="compass_8h_1afc3d9e7558ee6bb6c7521180291566f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void compassBegin</definition>
+        <argsstring>()</argsstring>
+        <name>compassBegin</name>
+        <briefdescription>
+<para>Compass init. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="31" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.cpp" bodystart="197" bodyend="203" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" declline="31" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="compass_8h_1a6a15525237d44a16f55ac708311058d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t compassReadAngle</definition>
+        <argsstring>()</argsstring>
+        <name>compassReadAngle</name>
+        <briefdescription>
+<para>Read the average filtered value of compass angle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int16_t average angle </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="32" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.cpp" bodystart="165" bodyend="178" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" declline="32" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="compass_8h_1ac1db930d7f4b410e14573d98efa1bfdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t compassGetAzimuth</definition>
+        <argsstring>()</argsstring>
+        <name>compassGetAzimuth</name>
+        <briefdescription>
+<para>Calculate the angle from the values in the x, y direction of the compass sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int16_t angle </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="33" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.cpp" bodystart="185" bodyend="191" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" declline="33" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="compass_8h_1a75548a0244c7fed3b9a9ee6528fbf90f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void compassCalibrateStart</definition>
+        <argsstring>()</argsstring>
+        <name>compassCalibrateStart</name>
+        <briefdescription>
+<para>Start calibrate compass. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="34" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.cpp" bodystart="95" bodyend="108" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" declline="34" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="compass_8h_1ad77e6de87b67b6244aa23723ac3068f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool compassCalibrateLoop</definition>
+        <argsstring>()</argsstring>
+        <name>compassCalibrateLoop</name>
+        <briefdescription>
+<para>The loop of compass calibration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="35" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.cpp" bodystart="114" bodyend="158" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" declline="35" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="compass_8h_1a6b7f2e55aa710299bc35b9b1bff13892" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool compassCalibrateDone</definition>
+        <argsstring>()</argsstring>
+        <name>compassCalibrateDone</name>
+        <briefdescription>
+<para>Is compass Calibrate Done ? </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>- true<itemizedlist>
+<listitem><para>false </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" line="36" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.cpp" bodystart="87" bodyend="89" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h" declline="36" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__COMPASS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__COMPASS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>AVERAGE_FILTER_SIZE<sp/>30</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EEPROM_CALIBRATION_ADDRESS<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CALIBRATION_TIME<sp/>3000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>AVERAGE_FILTER<sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>AVERAGE_FILTER<sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>compassBegin();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">int16_t<sp/>compassReadAngle();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">int16_t<sp/>compassGetAzimuth();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>compassCalibrateStart();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>compassCalibrateLoop();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>compassCalibrateDone();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__COMPASS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/compass.h"/>
+  </compounddef>
+</doxygen>

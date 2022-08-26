@@ -1,0 +1,7 @@
+``qmc6310``
+==============================
+Functions for compass sensor
+
+
+.. autodoxygenfile:: qmc6310.h
+   :project: auto

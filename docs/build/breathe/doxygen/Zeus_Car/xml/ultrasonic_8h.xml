@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="ultrasonic_8h" kind="file" language="C++">
+    <compoundname>ultrasonic.h</compoundname>
+    <includedby refid="test_8h" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/test.h</includedby>
+    <includedby refid="ultrasonic_8cpp" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/test.h</label>
+        <link refid="test_8h_source"/>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h</label>
+        <link refid="ultrasonic_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ultrasonic_8h_1a12346b5f556ec4ba70c7afb8303bf64f" prot="public" static="no">
+        <name>ULTRASONIC_TRIG_PIN</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="5" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ultrasonic_8h_1ac156969c19ada7414ab321776c8f49ee" prot="public" static="no">
+        <name>ULTRASONIC_ECHO_PIN</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="6" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ultrasonic_8h_1a0702e1e3996d18d1a09d2a876509b88c" prot="public" static="no">
+        <name>ULTRASONIC_AVOIDANCE_THRESHOLD</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="8" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ultrasonic_8h_1a8ac3351f7ba5c0f2f927656fe793bd09" prot="public" static="no">
+        <name>ULTRASONIC_FOLLOW_THRESHOLD</name>
+        <initializer>30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="9" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ultrasonic_8h_1a87d59b0c44da0bedb01b249f81b36460" prot="public" static="no">
+        <name>ULTRASONIC_STOP_THRESHOLD</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="10" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ultrasonic_8h_1aac90af540913d550a44bfb42620cda51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float ultrasonicRead</definition>
+        <argsstring>()</argsstring>
+        <name>ultrasonicRead</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="12" column="7" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" bodystart="4" bodyend="18" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" declline="12" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="ultrasonic_8h_1a9fa3257c2ca74d1cf5ee83c858ea8455" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ultrasonicIsObstacle</definition>
+        <argsstring>()</argsstring>
+        <name>ultrasonicIsObstacle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="13" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" bodystart="20" bodyend="22" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" declline="13" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="ultrasonic_8h_1a71348a04f56f29ceab599ac52c20f546" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ultrasonicIsClear</definition>
+        <argsstring>()</argsstring>
+        <name>ultrasonicIsClear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" line="14" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" bodystart="24" bodyend="26" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h" declline="14" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__ULTRASONIC_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__ULTRASONIC_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//To<sp/>save<sp/>IO<sp/>ports,<sp/>echo<sp/>and<sp/>tring<sp/>share<sp/>an<sp/>identical<sp/>pin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ULTRASONIC_TRIG_PIN<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ULTRASONIC_ECHO_PIN<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ULTRASONIC_AVOIDANCE_THRESHOLD<sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ULTRASONIC_FOLLOW_THRESHOLD<sp/>30</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ULTRASONIC_STOP_THRESHOLD<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ultrasonicRead();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ultrasonicIsObstacle();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ultrasonicIsClear();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__ULTRASONIC_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.h"/>
+  </compounddef>
+</doxygen>

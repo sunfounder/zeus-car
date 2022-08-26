@@ -1,0 +1,524 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="grayscale_8cpp" kind="file" language="C++">
+    <compoundname>grayscale.cpp</compoundname>
+    <includes refid="grayscale_8h" local="yes">grayscale.h</includes>
+    <includes refid="hc165_8h" local="yes">hc165.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp</label>
+        <link refid="grayscale_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>grayscale.h</label>
+        <link refid="grayscale_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hc165.h</label>
+        <link refid="hc165_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="grayscale_8cpp_1a4a73880b427cd56f2628e19599d5c6bd" prot="public" static="no">
+        <name>LEARNING_COUNT</name>
+        <initializer>64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="4" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="grayscale_8cpp_1a12a470d7adb2e649eea2b973f55be4f4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int grayscaleReference</definition>
+        <argsstring></argsstring>
+        <name>grayscaleReference</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="14" column="5" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a75e5ba85d7a0d3345c8f6f03b69bcf23" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_N45_SIZE</definition>
+        <argsstring></argsstring>
+        <name>ANGLE_N45_SIZE</name>
+        <initializer>= 33</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="22" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1ad47adb41fa6b67c285dd641328336f44" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_N45_LIST[]</definition>
+        <argsstring>[]</argsstring>
+        <name>ANGLE_N45_LIST</name>
+        <initializer>= {
+  0b00000001, 0b00000010, 0b00000011, 0b00000101, 0b00000111, 0b00010000, 0b00100000, 0b00101000, 
+  0b00110000, 0b00111000, 0b01000100, 0b01001000, 0b01001100, 0b01010000, 0b01011000, 0b01101000, 
+  0b01101100, 0b01110000, 0b01111000, 0b10000010, 0b10000011, 0b10000100, 0b10000101, 0b10000110, 
+  0b10000111, 0b10001000, 0b10001100, 0b10001101, 0b11000100, 0b11000110, 0b11001000, 0b11001100, 
+  0b11011000, }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="23" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a503e620e0bacfac52da5fcac3071e00f" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_0_SIZE</definition>
+        <argsstring></argsstring>
+        <name>ANGLE_0_SIZE</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="29" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1aa5ec1a91d4422a31db47895f216d1c24" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_0_LIST[]</definition>
+        <argsstring>[]</argsstring>
+        <name>ANGLE_0_LIST</name>
+        <initializer>= {
+  0b00000110, 0b00001001, 0b00001011, 0b00001101, 0b00001111, 0b00011001, 0b01100000, 0b10001001, 
+  0b10010000, 0b10010001, 0b10011000, 0b10011001, 0b10110000, 0b11010000, 0b11110000, }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="30" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a787ccf034926aa6adc40e46222977e23" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_45_SIZE</definition>
+        <argsstring></argsstring>
+        <name>ANGLE_45_SIZE</name>
+        <initializer>= 33</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="33" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1ad50f699480a35e5636cd2fef4e55bcb4" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_45_LIST[]</definition>
+        <argsstring>[]</argsstring>
+        <name>ANGLE_45_LIST</name>
+        <initializer>= {
+  0b00000100, 0b00001000, 0b00001010, 0b00001100, 0b00001110, 0b00010001, 0b00010010, 0b00010011, 
+  0b00010100, 0b00010110, 0b00011010, 0b00011011, 0b00011100, 0b00011110, 0b00100001, 0b00100010, 
+  0b00100011, 0b00110001, 0b00110010, 0b00110011, 0b00110110, 0b01000000, 0b01000001, 0b01100001, 
+  0b01100011, 0b10000000, 0b10100000, 0b10100001, 0b10110001, 0b11000000, 0b11000001, 0b11100000, 
+  0b11100001, }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="34" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a84413b8ec38a7d2dfd7993d0a89946b2" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_90_SIZE</definition>
+        <argsstring></argsstring>
+        <name>ANGLE_90_SIZE</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="40" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a2d3e8c1470163772effa29ae029a3f2c" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte ANGLE_90_LIST[]</definition>
+        <argsstring>[]</argsstring>
+        <name>ANGLE_90_LIST</name>
+        <initializer>= {
+  0b00011000, 0b00100100, 0b00100110, 0b00101100, 0b00110100, 0b00111100, 0b01000010, 0b01000011, 
+  0b01000110, 0b01100010, 0b01100100, 0b01100110, 0b10000001, 0b11000010, 0b11000011, }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="41" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1af72ac936717e6d89b4aa70d381911292" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte OFFSET_N1_SIZE</definition>
+        <argsstring></argsstring>
+        <name>OFFSET_N1_SIZE</name>
+        <initializer>= 36</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="45" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1aa533feb650e2854f90c4b54295d41c7c" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte OFFSET_N1_LIST[]</definition>
+        <argsstring>[]</argsstring>
+        <name>OFFSET_N1_LIST</name>
+        <initializer>= {
+  0b00010000, 0b00100000, 0b00100001, 0b00101000, 0b00110000, 0b00111000, 0b01000000, 0b01000001, 
+  0b01001000, 0b01010000, 0b01011000, 0b01100000, 0b01100001, 0b01100011, 0b01101000, 0b01101100, 
+  0b01110000, 0b01111000, 0b10000000, 0b10010000, 0b10100000, 0b10100001, 0b10110000, 0b10110001, 
+  0b11000000, 0b11000001, 0b11010000, 0b11011000, 0b11100000, 0b11100001, 0b11110000, 0b01000010, 
+  0b01000011, 0b10000001, 0b11000010, 0b11000011, }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="46" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a747c9b0bf084c4fa543d4cb3f4d59aa2" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte OFFSET_0_SIZE</definition>
+        <argsstring></argsstring>
+        <name>OFFSET_0_SIZE</name>
+        <initializer>= 24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="52" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a9eb71321b78abdf79c5c2a02326ac2be" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte OFFSET_0_LIST[]</definition>
+        <argsstring>[]</argsstring>
+        <name>OFFSET_0_LIST</name>
+        <initializer>= {
+  0b00010001, 0b00011001, 0b00100010, 0b00100110, 0b00110001, 0b00110010, 0b00110011, 0b01000100, 
+  0b01000110, 0b01001100, 0b01100010, 0b01100100, 0b01100110, 0b10001000, 0b10001001, 0b10001100, 
+  0b10010001, 0b10011000, 0b10011001, 0b11001000, 0b11001100, 0b00010011, 0b11000100, 0b00100011, 
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="53" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a082521f5c9f9b263c1677b33cbc497bc" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte OFFSET_1_SIZE</definition>
+        <argsstring></argsstring>
+        <name>OFFSET_1_SIZE</name>
+        <initializer>= 36</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="58" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="grayscale_8cpp_1a942735142b2e473eb9b47462d46766be" prot="public" static="no" mutable="no">
+        <type>const byte</type>
+        <definition>const byte OFFSET_1_LIST[]</definition>
+        <argsstring>[]</argsstring>
+        <name>OFFSET_1_LIST</name>
+        <initializer>= {
+  0b00000001, 0b00000010, 0b00000011, 0b00000100, 0b00000101, 0b00000110, 0b00000111, 0b00001000, 
+  0b00001001, 0b00001010, 0b00001011, 0b00001100, 0b00001101, 0b00001110, 0b00001111, 0b00010010, 
+  0b00010100, 0b00010110, 0b00011010, 0b00011011, 0b00011100, 0b00011110, 0b00110110, 0b10000010, 
+  0b10000011, 0b10000100, 0b10000101, 0b10000110, 0b10000111, 0b10001101, 0b11000110, 0b00011000, 
+  0b00101100, 0b00110100, 0b00111100, 0b00100100, }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="59" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="grayscale_8cpp_1a62f1abace933d983aabdc6561edee1a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>byte</type>
+        <definition>byte gsRead</definition>
+        <argsstring>()</argsstring>
+        <name>gsRead</name>
+        <briefdescription>
+<para>Read the value of 8-way grayscale module. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>byte eg:0b01001001 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="16" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="grayscale_8cpp_1a74a142f178d23a9827e8f6754a61a2f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool indexOf</definition>
+        <argsstring>(byte *arr, byte size, byte value)</argsstring>
+        <name>indexOf</name>
+        <param>
+          <type>byte *</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="67" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="67" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="grayscale_8cpp_1a4664284ac5bda050ae4fc23ec2f9cd59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>byte</type>
+        <definition>byte gsValueRotate</definition>
+        <argsstring>(byte value, int16_t angle)</argsstring>
+        <name>gsValueRotate</name>
+        <param>
+          <type>byte</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int16_t</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="74" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="74" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="grayscale_8cpp_1ac1019891b3b8dc1015e560fd0b38ecce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t _gsGetAngleOffset</definition>
+        <argsstring>(byte gsValues)</argsstring>
+        <name>_gsGetAngleOffset</name>
+        <param>
+          <type>byte</type>
+          <declname>gsValues</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="97" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="97" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="grayscale_8cpp_1a925c2c51a0473acbb39c342cd8e4c5ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t gsGetAngleOffset</definition>
+        <argsstring>()</argsstring>
+        <name>gsGetAngleOffset</name>
+        <briefdescription>
+<para>Get the angle value and offset value of 8-way grayscale module. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint16_t</para>
+</simplesect>
+<programlisting filename=".cpp"><codeline><highlight class="normal">uint16_t<sp/>result<sp/>=<sp/>gsGetAngleOffset();</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>angleType<sp/>=<sp/>result<sp/>&gt;&gt;<sp/>8<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>offsetType<sp/>=<sp/>result<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" line="125" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp" bodystart="125" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;grayscale.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hc165.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LEARNING_COUNT<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>⑦<sp/>→<sp/><sp/>⓪</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>↗<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↘</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>⑥<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>①</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>↑<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>⑤<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>②</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>↖<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↙</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>④<sp/><sp/>←<sp/>③</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>grayscaleReference<sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>gsRead()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>uint16_t<sp/>data<sp/>=<sp/>hc165Read();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data<sp/>&gt;&gt;<sp/>8<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generate<sp/>by<sp/>test/grayscale_pattern_classifier.py</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_N45_SIZE<sp/>=<sp/>33;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_N45_LIST[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>0b00000001,<sp/>0b00000010,<sp/>0b00000011,<sp/>0b00000101,<sp/>0b00000111,<sp/>0b00010000,<sp/>0b00100000,<sp/>0b00101000,<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>0b00110000,<sp/>0b00111000,<sp/>0b01000100,<sp/>0b01001000,<sp/>0b01001100,<sp/>0b01010000,<sp/>0b01011000,<sp/>0b01101000,<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>0b01101100,<sp/>0b01110000,<sp/>0b01111000,<sp/>0b10000010,<sp/>0b10000011,<sp/>0b10000100,<sp/>0b10000101,<sp/>0b10000110,<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>0b10000111,<sp/>0b10001000,<sp/>0b10001100,<sp/>0b10001101,<sp/>0b11000100,<sp/>0b11000110,<sp/>0b11001000,<sp/>0b11001100,<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>0b11011000,<sp/>};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_0_SIZE<sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_0_LIST[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>0b00000110,<sp/>0b00001001,<sp/>0b00001011,<sp/>0b00001101,<sp/>0b00001111,<sp/>0b00011001,<sp/>0b01100000,<sp/>0b10001001,<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>0b10010000,<sp/>0b10010001,<sp/>0b10011000,<sp/>0b10011001,<sp/>0b10110000,<sp/>0b11010000,<sp/>0b11110000,<sp/>};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_45_SIZE<sp/>=<sp/>33;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_45_LIST[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>0b00000100,<sp/>0b00001000,<sp/>0b00001010,<sp/>0b00001100,<sp/>0b00001110,<sp/>0b00010001,<sp/>0b00010010,<sp/>0b00010011,<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>0b00010100,<sp/>0b00010110,<sp/>0b00011010,<sp/>0b00011011,<sp/>0b00011100,<sp/>0b00011110,<sp/>0b00100001,<sp/>0b00100010,<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>0b00100011,<sp/>0b00110001,<sp/>0b00110010,<sp/>0b00110011,<sp/>0b00110110,<sp/>0b01000000,<sp/>0b01000001,<sp/>0b01100001,<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>0b01100011,<sp/>0b10000000,<sp/>0b10100000,<sp/>0b10100001,<sp/>0b10110001,<sp/>0b11000000,<sp/>0b11000001,<sp/>0b11100000,<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>0b11100001,<sp/>};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_90_SIZE<sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>ANGLE_90_LIST[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>0b00011000,<sp/>0b00100100,<sp/>0b00100110,<sp/>0b00101100,<sp/>0b00110100,<sp/>0b00111100,<sp/>0b01000010,<sp/>0b01000011,<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>0b01000110,<sp/>0b01100010,<sp/>0b01100100,<sp/>0b01100110,<sp/>0b10000001,<sp/>0b11000010,<sp/>0b11000011,<sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>OFFSET_N1_SIZE<sp/>=<sp/>36;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>OFFSET_N1_LIST[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>0b00010000,<sp/>0b00100000,<sp/>0b00100001,<sp/>0b00101000,<sp/>0b00110000,<sp/>0b00111000,<sp/>0b01000000,<sp/>0b01000001,<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>0b01001000,<sp/>0b01010000,<sp/>0b01011000,<sp/>0b01100000,<sp/>0b01100001,<sp/>0b01100011,<sp/>0b01101000,<sp/>0b01101100,<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>0b01110000,<sp/>0b01111000,<sp/>0b10000000,<sp/>0b10010000,<sp/>0b10100000,<sp/>0b10100001,<sp/>0b10110000,<sp/>0b10110001,<sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>0b11000000,<sp/>0b11000001,<sp/>0b11010000,<sp/>0b11011000,<sp/>0b11100000,<sp/>0b11100001,<sp/>0b11110000,<sp/>0b01000010,<sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>0b01000011,<sp/>0b10000001,<sp/>0b11000010,<sp/>0b11000011,<sp/>};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>OFFSET_0_SIZE<sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>OFFSET_0_LIST[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>0b00010001,<sp/>0b00011001,<sp/>0b00100010,<sp/>0b00100110,<sp/>0b00110001,<sp/>0b00110010,<sp/>0b00110011,<sp/>0b01000100,<sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>0b01000110,<sp/>0b01001100,<sp/>0b01100010,<sp/>0b01100100,<sp/>0b01100110,<sp/>0b10001000,<sp/>0b10001001,<sp/>0b10001100,<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>0b10010001,<sp/>0b10011000,<sp/>0b10011001,<sp/>0b11001000,<sp/>0b11001100,<sp/>0b00010011,<sp/>0b11000100,<sp/>0b00100011,<sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>OFFSET_1_SIZE<sp/>=<sp/>36;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>OFFSET_1_LIST[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>0b00000001,<sp/>0b00000010,<sp/>0b00000011,<sp/>0b00000100,<sp/>0b00000101,<sp/>0b00000110,<sp/>0b00000111,<sp/>0b00001000,<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>0b00001001,<sp/>0b00001010,<sp/>0b00001011,<sp/>0b00001100,<sp/>0b00001101,<sp/>0b00001110,<sp/>0b00001111,<sp/>0b00010010,<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>0b00010100,<sp/>0b00010110,<sp/>0b00011010,<sp/>0b00011011,<sp/>0b00011100,<sp/>0b00011110,<sp/>0b00110110,<sp/>0b10000010,<sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>0b10000011,<sp/>0b10000100,<sp/>0b10000101,<sp/>0b10000110,<sp/>0b10000111,<sp/>0b10001101,<sp/>0b11000110,<sp/>0b00011000,<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>0b00101100,<sp/>0b00110100,<sp/>0b00111100,<sp/>0b00100100,<sp/>};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>indexOf(</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">*<sp/>arr,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>size;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(arr[i]<sp/>==<sp/>value)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>gsValueRotate(</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>value,<sp/>int16_t<sp/>angle)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>+=<sp/>360;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>22.5<sp/>&amp;&amp;<sp/>angle<sp/>&lt;=<sp/>67.5)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;&lt;<sp/>1<sp/>&amp;<sp/>0b11111110)<sp/>|<sp/>(value<sp/>&gt;&gt;<sp/>7<sp/>&amp;<sp/>0b00000001);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>67.5<sp/>&amp;&amp;<sp/>angle<sp/>&lt;=<sp/>112.5)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;&lt;<sp/>2<sp/>&amp;<sp/>0b11111100)<sp/>|<sp/>(value<sp/>&gt;&gt;<sp/>6<sp/>&amp;<sp/>0b00000011);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>112.5<sp/>&amp;&amp;<sp/>angle<sp/>&lt;=<sp/>157.5)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;&lt;<sp/>3<sp/>&amp;<sp/>0b11111000)<sp/>|<sp/>(value<sp/>&gt;&gt;<sp/>5<sp/>&amp;<sp/>0b00000111);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>157.5<sp/>&amp;&amp;<sp/>angle<sp/>&lt;=<sp/>202.5)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;&lt;<sp/>4<sp/>&amp;<sp/>0b11110000)<sp/>|<sp/>(value<sp/>&gt;&gt;<sp/>4<sp/>&amp;<sp/>0b00001111);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>202.5<sp/>&amp;&amp;<sp/>angle<sp/>&lt;=<sp/>247.5)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;&lt;<sp/>5<sp/>&amp;<sp/>0b11100000)<sp/>|<sp/>(value<sp/>&gt;&gt;<sp/>3<sp/>&amp;<sp/>0b00011111);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>247.5<sp/>&amp;&amp;<sp/>angle<sp/>&lt;=<sp/>292.5)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;&lt;<sp/>6<sp/>&amp;<sp/>0b11000000)<sp/>|<sp/>(value<sp/>&gt;&gt;<sp/>2<sp/>&amp;<sp/>0b00111111);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>292.5<sp/>&amp;&amp;<sp/>angle<sp/>&lt;=<sp/>337.5)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;&lt;<sp/>7<sp/>&amp;<sp/>0b10000000)<sp/>|<sp/>(value<sp/>&gt;&gt;<sp/>1<sp/>&amp;<sp/>0b01111111);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">uint16_t<sp/>_gsGetAngleOffset(</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>gsValues)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>uint16_t<sp/>result[2];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(indexOf(ANGLE_0_LIST,<sp/>ANGLE_0_SIZE,<sp/>gsValues)){</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>result[0]<sp/>=<sp/>ANGLE_0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(indexOf(ANGLE_45_LIST,<sp/>ANGLE_45_SIZE,<sp/>gsValues)){</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>result[0]<sp/>=<sp/>ANGLE_45;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(indexOf(ANGLE_90_LIST,<sp/>ANGLE_90_SIZE,<sp/>gsValues)){</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>result[0]<sp/>=<sp/>ANGLE_90;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(indexOf(ANGLE_N45_LIST,<sp/>ANGLE_N45_SIZE,<sp/>gsValues)){</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>result[0]<sp/>=<sp/>ANGLE_N45;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Serial.print(&quot;Unknown<sp/>angle<sp/>of<sp/>pattern:<sp/>&quot;);<sp/>Serial.println(gsValues,<sp/>BIN);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>result[0]<sp/>=<sp/>ANGLE_ERROR;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(indexOf(OFFSET_0_LIST,<sp/>OFFSET_0_SIZE,<sp/>gsValues)){</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>result[1]<sp/>=<sp/>OFFSET_0;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(indexOf(OFFSET_1_LIST,<sp/>OFFSET_1_SIZE,<sp/>gsValues)){</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>result[1]<sp/>=<sp/>OFFSET_1;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(indexOf(OFFSET_N1_LIST,<sp/>OFFSET_N1_SIZE,<sp/>gsValues)){</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>result[1]<sp/>=<sp/>OFFSET_N1;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Serial.print(&quot;Unknown<sp/>offset<sp/>of<sp/>pattern:<sp/>&quot;);<sp/>Serial.println(gsValues,<sp/>BIN);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>result[1]<sp/>=<sp/>OFFSET_ERROR;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result[0]<sp/>&lt;&lt;<sp/>8<sp/>|<sp/>result[1];</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">uint16_t<sp/>gsGetAngleOffset()<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>gsValues<sp/>=<sp/>gsRead();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Serial.print(&quot;gsValues:<sp/>&quot;);Serial.print(gsValues,<sp/>BIN);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_gsGetAngleOffset(gsValues);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/grayscale.cpp"/>
+  </compounddef>
+</doxygen>

@@ -11,6 +11,18 @@
 #include "ultrasonic.h"
 #include "rgb.h"
 
+/** motors test, the car cycles forward and backward */
+void motors_test(){
+  _carMove(   0, 80, 0);
+  rgbWrite(0, 255, 0);
+  delay(500);
+  _carMove( 180, 80, 0);
+  rgbWrite(0, 0, 255);
+  delay(500);
+  rgbWrite(255, 255, 255);
+}
+
+/** RGB LEDs test, the LEDs cyclic transformation of R,G,B three colors */
 void rgb_test() {
   rgbWrite(RED);
   delay(1000);
@@ -20,6 +32,9 @@ void rgb_test() {
   delay(1000); 
 }
 
+/** 8-way grayscale module test
+ * |Cyclic printing of the detected data  
+ */
 void grayscale_test() {
   int angle = 0;
   uint16_t result = gsGetAngleOffset();
@@ -47,6 +62,7 @@ void grayscale_test() {
 
 }
 
+/** ultrasonictest, cyclic printing of the detected data */
 void ultrasonic_test() {
   rgbWrite(BLUE);
   float distance = ultrasonicRead();
@@ -57,6 +73,7 @@ void ultrasonic_test() {
   delay(500);
 }
 
+/** infrared obstacle avoidance module test, cyclic printing of the detected data */
 void ir_obstacle_test() {
   // uint16_t result = hc165Read();
   // Serial.println(result, BIN);
@@ -69,13 +86,14 @@ void ir_obstacle_test() {
   delay(100);
 }
 
+/** compasd sensor test, cyclic printing of the detected data */
 void compass_test(){
-
   int16_t result = compassGetAzimuth();
   Serial.println(result);
   delay(200);
 }
 
+/** IR receiver test, cyclic printing of the received data */
 void ir_remote_test() {
   uint8_t result = irRead();
   if (result != IR_KEY_ERROR) {

@@ -11,7 +11,6 @@
 # If yours don't mind to check every pattern types again carefully, with `python3 grayscale_pattern_classifier.py [pattern name]`
 # like: python3 grayscale_pattern_classifier.py ANGLE_N45
 
-
 def usage():
     print("Usage: python3 grayscale_pattern_classifier.py [name]")
     quit()

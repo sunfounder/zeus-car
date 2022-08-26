@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ai_camera &mdash; SunFounder Robot HAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="car_control" href="car_control.html" />
+    <link rel="prev" title="Zeus_Car.ino" href="Zeus_Car.ino.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> SunFounder Robot HAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduce.html">Introduce</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Zeus_Car.h.html"><code class="docutils literal notranslate"><span class="pre">Zeus_Car.h</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Zeus_Car.ino.html"><code class="docutils literal notranslate"><span class="pre">Zeus_Car.ino</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">ai_camera</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="car_control.html"><code class="docutils literal notranslate"><span class="pre">car_control</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_code_config.html"><code class="docutils literal notranslate"><span class="pre">cmd_code_config</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="compass.html"><code class="docutils literal notranslate"><span class="pre">compass</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="grayscale.html"><code class="docutils literal notranslate"><span class="pre">grayscale</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hc165.html"><code class="docutils literal notranslate"><span class="pre">hc165</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ir_obstacle.html"><code class="docutils literal notranslate"><span class="pre">ir_obstacle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ir_remote.html"><code class="docutils literal notranslate"><span class="pre">ir_remote</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="qmc6310.html"><code class="docutils literal notranslate"><span class="pre">qmc6310</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rgb.html"><code class="docutils literal notranslate"><span class="pre">rgb</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html"><code class="docutils literal notranslate"><span class="pre">ultrasonic</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="test.html"><code class="docutils literal notranslate"><span class="pre">test</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Robot HAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="api.html">API</a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">ai_camera</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/ai_camera.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ai-camera">
+<h1><code class="docutils literal notranslate"><span class="pre">ai_camera</span></code><a class="headerlink" href="#ai-camera" title="Permalink to this heading">¶</a></h1>
+<p>Functions for communicating with ESP32-CAM</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-set-the-print-level-of-information-received-by-esp32-cam">Set the print level of information received by esp32-cam</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO</span>
+</pre></div>
+</div>
+ </p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_LEVEL">
+<span class="target" id="ai__camera_8h_1a4a0c27b7658d722af71c43f60cbe78b0"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_LEVEL</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_LEVEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_LEVEL_OFF">
+<span class="target" id="ai__camera_8h_1a35e4e19d42f79ba014f694a80f15e091"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_LEVEL_OFF</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_LEVEL_OFF" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_LEVEL_ERROR">
+<span class="target" id="ai__camera_8h_1a62fe44213c4d875b28a855e55021da1f"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_LEVEL_ERROR</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_LEVEL_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_LEVEL_INFO">
+<span class="target" id="ai__camera_8h_1ab9bcacd7bd3c0b04e0d9f8493080511e"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_LEVEL_INFO</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_LEVEL_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_LEVEL_DEBUG">
+<span class="target" id="ai__camera_8h_1aefa9810a1be627eac1d161b42de138e2"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_LEVEL_DEBUG</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_LEVEL_DEBUG" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_LEVEL_ALL">
+<span class="target" id="ai__camera_8h_1a46ed7da6b057ee42478ca69294eaf9be"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_LEVEL_ALL</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_LEVEL_ALL" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_HEAD_ALL">
+<span class="target" id="ai__camera_8h_1a48ef02fc9ac48560f18cf9201e7bc197"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_HEAD_ALL</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_HEAD_ALL" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_HEAD_ERROR">
+<span class="target" id="ai__camera_8h_1a34784ad727e80ebba224f97cdd0b0eb0"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_HEAD_ERROR</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_HEAD_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_HEAD_INFO">
+<span class="target" id="ai__camera_8h_1a9c494c7fdd5ff5ad8087e8273dd22f9c"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_HEAD_INFO</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_HEAD_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAM_DEBUG_HEAD_DEBUG">
+<span class="target" id="ai__camera_8h_1a01a4ff5faa74359ffca4756510fefa7e"></span><span class="sig-name descname"><span class="n"><span class="pre">CAM_DEBUG_HEAD_DEBUG</span></span></span><a class="headerlink" href="#c.CAM_DEBUG_HEAD_DEBUG" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-define-component-related-values">Define component-related values</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DPAD_STOP">
+<span class="target" id="ai__camera_8h_1a5e5458065bc43b7d8500310a07a306dd"></span><span class="sig-name descname"><span class="n"><span class="pre">DPAD_STOP</span></span></span><a class="headerlink" href="#c.DPAD_STOP" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DPAD_FORWARD">
+<span class="target" id="ai__camera_8h_1aa586b3da7ea15af3254561b26fd19649"></span><span class="sig-name descname"><span class="n"><span class="pre">DPAD_FORWARD</span></span></span><a class="headerlink" href="#c.DPAD_FORWARD" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DPAD_BACKWARD">
+<span class="target" id="ai__camera_8h_1a45588e84d049d46a1085dafd6dd9618e"></span><span class="sig-name descname"><span class="n"><span class="pre">DPAD_BACKWARD</span></span></span><a class="headerlink" href="#c.DPAD_BACKWARD" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DPAD_LEFT">
+<span class="target" id="ai__camera_8h_1a4109c674950f167a866759eaf39dc4c4"></span><span class="sig-name descname"><span class="n"><span class="pre">DPAD_LEFT</span></span></span><a class="headerlink" href="#c.DPAD_LEFT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DPAD_RIGHT">
+<span class="target" id="ai__camera_8h_1a1142011f319ee33d8b04f20d7c04cd6b"></span><span class="sig-name descname"><span class="n"><span class="pre">DPAD_RIGHT</span></span></span><a class="headerlink" href="#c.DPAD_RIGHT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.JOYSTICK_X">
+<span class="target" id="ai__camera_8h_1ad77529dbdf84161b7b5f3874c707b9b9"></span><span class="sig-name descname"><span class="n"><span class="pre">JOYSTICK_X</span></span></span><a class="headerlink" href="#c.JOYSTICK_X" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.JOYSTICK_Y">
+<span class="target" id="ai__camera_8h_1a6fac688dbc7bf507e91570ced2d90119"></span><span class="sig-name descname"><span class="n"><span class="pre">JOYSTICK_Y</span></span></span><a class="headerlink" href="#c.JOYSTICK_Y" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.JOYSTICK_ANGLE">
+<span class="target" id="ai__camera_8h_1ac0d763e82ce9bb22159b181bf479f3aa"></span><span class="sig-name descname"><span class="n"><span class="pre">JOYSTICK_ANGLE</span></span></span><a class="headerlink" href="#c.JOYSTICK_ANGLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.JOYSTICK_RADIUS">
+<span class="target" id="ai__camera_8h_1a0869e20e31e1bad67fa38331cc56e34b"></span><span class="sig-name descname"><span class="n"><span class="pre">JOYSTICK_RADIUS</span></span></span><a class="headerlink" href="#c.JOYSTICK_RADIUS" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WIFI_MODE_NONE">
+<span class="target" id="ai__camera_8h_1ab47cb95c08db199fce8f24d1e6d45708"></span><span class="sig-name descname"><span class="n"><span class="pre">WIFI_MODE_NONE</span></span></span><a class="headerlink" href="#c.WIFI_MODE_NONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WIFI_MODE_STA">
+<span class="target" id="ai__camera_8h_1ae377eb1ee07cd740fe4ea1c9b7adc035"></span><span class="sig-name descname"><span class="n"><span class="pre">WIFI_MODE_STA</span></span></span><a class="headerlink" href="#c.WIFI_MODE_STA" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WIFI_MODE_AP">
+<span class="target" id="ai__camera_8h_1a06328a44e4875f7a973d84c529e2027d"></span><span class="sig-name descname"><span class="n"><span class="pre">WIFI_MODE_AP</span></span></span><a class="headerlink" href="#c.WIFI_MODE_AP" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_A">
+<span class="target" id="ai__camera_8h_1a9c54adfbd6b718b43e969320e045cbc3"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_A</span></span></span><a class="headerlink" href="#c.REGION_A" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_B">
+<span class="target" id="ai__camera_8h_1a8b5e547df1d99609055c593cf0b5e9af"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_B</span></span></span><a class="headerlink" href="#c.REGION_B" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_C">
+<span class="target" id="ai__camera_8h_1ac5c97dd1da070aae881d7ec0fad199e5"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_C</span></span></span><a class="headerlink" href="#c.REGION_C" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_D">
+<span class="target" id="ai__camera_8h_1ab22ff87765eb06968e4c0528b5bfce15"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_D</span></span></span><a class="headerlink" href="#c.REGION_D" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_E">
+<span class="target" id="ai__camera_8h_1ad378ed7ed1b58a904fb1a4b79fe0f4e9"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_E</span></span></span><a class="headerlink" href="#c.REGION_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_F">
+<span class="target" id="ai__camera_8h_1a6eac3648760d437310e2c6574a207043"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_F</span></span></span><a class="headerlink" href="#c.REGION_F" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_G">
+<span class="target" id="ai__camera_8h_1ab52ab077d80feee53d4b057a53034f4c"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_G</span></span></span><a class="headerlink" href="#c.REGION_G" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_H">
+<span class="target" id="ai__camera_8h_1a329efa104afd108363d756df4676b477"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_H</span></span></span><a class="headerlink" href="#c.REGION_H" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_I">
+<span class="target" id="ai__camera_8h_1ac39aec314e96a1e3b848666bcff084c4"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_I</span></span></span><a class="headerlink" href="#c.REGION_I" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_J">
+<span class="target" id="ai__camera_8h_1afe6e890fdb165542e2d3102edb011085"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_J</span></span></span><a class="headerlink" href="#c.REGION_J" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_K">
+<span class="target" id="ai__camera_8h_1a6c1b89b6560507b356cfd987e7568fab"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_K</span></span></span><a class="headerlink" href="#c.REGION_K" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_L">
+<span class="target" id="ai__camera_8h_1a5c8995ec742ce5a61d6f727776372d06"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_L</span></span></span><a class="headerlink" href="#c.REGION_L" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_M">
+<span class="target" id="ai__camera_8h_1a48e75358ed0cd2b66919847b43a97eab"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_M</span></span></span><a class="headerlink" href="#c.REGION_M" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_N">
+<span class="target" id="ai__camera_8h_1a87ebc079a216cdb8f717408cec6f7133"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_N</span></span></span><a class="headerlink" href="#c.REGION_N" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_O">
+<span class="target" id="ai__camera_8h_1a4cad1a5f3ad1deb93107a8cb4fa7754e"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_O</span></span></span><a class="headerlink" href="#c.REGION_O" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_P">
+<span class="target" id="ai__camera_8h_1ac999b0377dff31c970da8277b9b1c06d"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_P</span></span></span><a class="headerlink" href="#c.REGION_P" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_Q">
+<span class="target" id="ai__camera_8h_1a26d92ac8c5af5bf4209152eec23c7c26"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_Q</span></span></span><a class="headerlink" href="#c.REGION_Q" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_R">
+<span class="target" id="ai__camera_8h_1a2c8e726bfbf19248c43b0d7c4dff5d38"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_R</span></span></span><a class="headerlink" href="#c.REGION_R" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_S">
+<span class="target" id="ai__camera_8h_1aae5d762f91f91e3782529bf9fd9e2bb4"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_S</span></span></span><a class="headerlink" href="#c.REGION_S" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_T">
+<span class="target" id="ai__camera_8h_1ad611abda6eedc91538b39f437efee1ab"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_T</span></span></span><a class="headerlink" href="#c.REGION_T" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_U">
+<span class="target" id="ai__camera_8h_1ad1ebb0ffef7427b15f404c0f85fa73a1"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_U</span></span></span><a class="headerlink" href="#c.REGION_U" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_V">
+<span class="target" id="ai__camera_8h_1a2c0cf3a1599147108b5802792f61e1f7"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_V</span></span></span><a class="headerlink" href="#c.REGION_V" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_W">
+<span class="target" id="ai__camera_8h_1a884d3aa89be1150da9eb0d9f35249db6"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_W</span></span></span><a class="headerlink" href="#c.REGION_W" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_X">
+<span class="target" id="ai__camera_8h_1af19d542c7057774330fc485dddd02099"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_X</span></span></span><a class="headerlink" href="#c.REGION_X" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_Y">
+<span class="target" id="ai__camera_8h_1ad33b640d4c951495759296e2dc84d1cd"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_Y</span></span></span><a class="headerlink" href="#c.REGION_Y" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REGION_Z">
+<span class="target" id="ai__camera_8h_1afb448e31488469ed172a06043b4a1374"></span><span class="sig-name descname"><span class="n"><span class="pre">REGION_Z</span></span></span><a class="headerlink" href="#c.REGION_Z" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv48AiCamera">
+<span id="_CPPv38AiCamera"></span><span id="_CPPv28AiCamera"></span><span id="AiCamera"></span><span class="target" id="class_ai_camera"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AiCamera</span></span></span><a class="headerlink" href="#_CPPv48AiCamera" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8AiCameraEPKcPKc">
+<span id="_CPPv3N8AiCamera8AiCameraEPKcPKc"></span><span id="_CPPv2N8AiCamera8AiCameraEPKcPKc"></span><span id="AiCamera::AiCamera__cCP.cCP"></span><span class="target" id="class_ai_camera_1aeb6790e52bbd4a887903a52f243e4460"></span><span class="sig-name descname"><span class="n"><span class="pre">AiCamera</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8AiCameraEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>instantiate <a class="reference internal" href="#class_ai_camera"><span class="std std-ref">AiCamera</span></a> Class, set name and type </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_name</strong> – set name </p></li>
+<li><p><strong>_type</strong> – set type </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera5beginEPKcPKcPKcPKc">
+<span id="_CPPv3N8AiCamera5beginEPKcPKcPKcPKc"></span><span id="_CPPv2N8AiCamera5beginEPKcPKcPKcPKc"></span><span id="AiCamera::begin__cCP.cCP.cCP.cCP"></span><span class="target" id="class_ai_camera_1afdf92ba1920eb5f24ba27b5346459011"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">begin</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ssid</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">password</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">wifiMode</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">wsPort</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera5beginEPKcPKcPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set wifi and websocket port to esp32-cam, block and wait for the setting to succeed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ssid</strong> – wifi ssid </p></li>
+<li><p><strong>password</strong> – wifi password </p></li>
+<li><p><strong>wifiMode</strong> – 0,None; 1, STA; 2, AP </p></li>
+<li><p><strong>wsPort</strong> – websocket server port </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera5debugEPc">
+<span id="_CPPv3N8AiCamera5debugEPc"></span><span id="_CPPv2N8AiCamera5debugEPc"></span><span id="AiCamera::debug__cP"></span><span class="target" id="class_ai_camera_1a00bff2a1314bf9b757f50cdb8e8ee717"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">debug</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera5debugEPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Print the information received from esp32-CAm, according to the set of CAM_DEBUG_LEVEL. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> – Message to be detected </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8readIntoEPc">
+<span id="_CPPv3N8AiCamera8readIntoEPc"></span><span id="_CPPv2N8AiCamera8readIntoEPc"></span><span id="AiCamera::readInto__cP"></span><span class="target" id="class_ai_camera_1a034f1e1c307299629387df7dd4df6c88"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readInto</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8readIntoEPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Store the data read from the serial port into the buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buffer</strong> – Pointer to the character value of the stored data </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8sendDataEPc">
+<span id="_CPPv3N8AiCamera8sendDataEPc"></span><span id="_CPPv2N8AiCamera8sendDataEPc"></span><span id="AiCamera::sendData__cP"></span><span class="target" id="class_ai_camera_1ad9f93c18e1dbcebb88c782cbe2c8e93f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sendData</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8sendDataEPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Serial port sends data, automatically adds header (WS_HEADER) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sendBuffer</strong> – Pointer to the character value of the data buffer to be sent </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera7commandEPKcPKcPc">
+<span id="_CPPv3N8AiCamera7commandEPKcPKcPc"></span><span id="_CPPv2N8AiCamera7commandEPKcPKcPc"></span><span id="AiCamera::command__cCP.cCP.cP"></span><span class="target" id="class_ai_camera_1a0134dee551d3bc90c8c384b58057a0d6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">command</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">command</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">result</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera7commandEPKcPKcPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Send command to ESP32-CAM with serial. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> – command keyword </p></li>
+<li><p><strong>value</strong> – </p></li>
+<li><p><strong>result</strong> – returned information from serial </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera3setEPKc">
+<span id="_CPPv3N8AiCamera3setEPKc"></span><span id="_CPPv2N8AiCamera3setEPKc"></span><span id="AiCamera::set__cCP"></span><span class="target" id="class_ai_camera_1a1d92a8c38d6e9fc111f1c4fe36e38f94"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">command</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera3setEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Use the comand() function to set up the ESP32-CAM. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>command</strong> – command keyword </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera3setEPKcPKc">
+<span id="_CPPv3N8AiCamera3setEPKcPKc"></span><span id="_CPPv2N8AiCamera3setEPKcPKc"></span><span id="AiCamera::set__cCP.cCP"></span><span class="target" id="class_ai_camera_1aa40675fd071138c351f24610501c2578"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">command</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera3setEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Use the comand() function to set up the ESP32-CAM. </p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">set</span><span class="p">(</span><span class="s">&quot;NAME&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Zeus_Car&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">set</span><span class="p">(</span><span class="s">&quot;TYPE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Zeus_Car&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">set</span><span class="p">(</span><span class="s">&quot;SSID&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Zeus_Car&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">set</span><span class="p">(</span><span class="s">&quot;PSK&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;12345678&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">set</span><span class="p">(</span><span class="s">&quot;MODE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WIFI_MODE_AP</span><span class="p">);</span><span class="w"></span>
+<span class="n">set</span><span class="p">(</span><span class="s">&quot;PORT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;8765&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> – command keyword </p></li>
+<li><p><strong>value</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera3getEPKcPc">
+<span id="_CPPv3N8AiCamera3getEPKcPc"></span><span id="_CPPv2N8AiCamera3getEPKcPc"></span><span id="AiCamera::get__cCP.cP"></span><span class="target" id="class_ai_camera_1aa2d6d1a5a197ed47030ae30bce41c409"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">command</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">result</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera3getEPKcPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Use the comand() function to set up the ESP32-CAM, and receive return information. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> – command keyword </p></li>
+<li><p><strong>value</strong> – </p></li>
+<li><p><strong>result</strong> – returned information from serial <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">ip</span><span class="p">[</span><span class="mi">15</span><span class="p">];</span><span class="w"></span>
+<span class="n">get</span><span class="p">(</span><span class="s">&quot;START&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ip</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+ </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera3getEPKcPKcPc">
+<span id="_CPPv3N8AiCamera3getEPKcPKcPc"></span><span id="_CPPv2N8AiCamera3getEPKcPKcPc"></span><span id="AiCamera::get__cCP.cCP.cP"></span><span class="target" id="class_ai_camera_1ad32d9c369e23e6927b529e1b02858ecf"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">command</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">result</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera3getEPKcPKcPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Use the comand() function to set up the ESP32-CAM, and receive return information. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> – command keyword </p></li>
+<li><p><strong>value</strong> – </p></li>
+<li><p><strong>result</strong> – returned information from serial </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera13setOnReceivedEPFvPcPcE">
+<span id="_CPPv3N8AiCamera13setOnReceivedEPFvPcPcE"></span><span id="_CPPv2N8AiCamera13setOnReceivedEPFvPcPcE"></span><span class="target" id="class_ai_camera_1a70117b1447dfd1587c043a1d2b577528"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setOnReceived</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">char</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera13setOnReceivedEPFvPcPcE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set callback function method. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>func</strong> – callback function pointer </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera4loopEv">
+<span id="_CPPv3N8AiCamera4loopEv"></span><span id="_CPPv2N8AiCamera4loopEv"></span><span id="AiCamera::loop"></span><span class="target" id="class_ai_camera_1a829ca6ade8d4417b5ba7afc450c76240"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera4loopEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Receive and process serial port data in a loop. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera9getSliderEPc7uint8_t">
+<span id="_CPPv3N8AiCamera9getSliderEPc7uint8_t"></span><span id="_CPPv2N8AiCamera9getSliderEPc7uint8_t"></span><span id="AiCamera::getSlider__cP.uint8_t"></span><span class="target" id="class_ai_camera_1a94d1b8bab81d704faa213507d66504a6"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSlider</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera9getSliderEPc7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interpret the value of the slider contorl component from the buf string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be interpreted </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the slider contorl component </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera9getButtonEPc7uint8_t">
+<span id="_CPPv3N8AiCamera9getButtonEPc7uint8_t"></span><span id="_CPPv2N8AiCamera9getButtonEPc7uint8_t"></span><span id="AiCamera::getButton__cP.uint8_t"></span><span class="target" id="class_ai_camera_1a54c0f9c558ed9b309354bff3e09740e4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getButton</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera9getButtonEPc7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interpret the value of the Button component from the buf string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be interpreted </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the Joystick component<ul class="simple">
+<li><p>true</p></li>
+<li><p>flase </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera9getSwitchEPc7uint8_t">
+<span id="_CPPv3N8AiCamera9getSwitchEPc7uint8_t"></span><span id="_CPPv2N8AiCamera9getSwitchEPc7uint8_t"></span><span id="AiCamera::getSwitch__cP.uint8_t"></span><span class="target" id="class_ai_camera_1ae22bef06d01876146c7018a182c6cda1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSwitch</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera9getSwitchEPc7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interpret the value of the getSwitch component from the buf string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be interpreted </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the Joystick component<ul class="simple">
+<li><p>true</p></li>
+<li><p>flase </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera11getJoystickEPc7uint8_t7uint8_t">
+<span id="_CPPv3N8AiCamera11getJoystickEPc7uint8_t7uint8_t"></span><span id="_CPPv2N8AiCamera11getJoystickEPc7uint8_t7uint8_t"></span><span id="AiCamera::getJoystick__cP.uint8_t.uint8_t"></span><span class="target" id="class_ai_camera_1a7d49755ad92a8f8c631f6ee5421b8e31"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getJoystick</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">axis</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera11getJoystickEPc7uint8_t7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interpret the value of the Joystick component from the buf string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be interpreted </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+<li><p><strong>axis</strong> – which type of value that you want, could be JOYSTICK_X, JOYSTICK_Y, JOYSTICK_ANGLE, JOYSTICK_RADIUS </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the Joystick component </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera7getDPadEPc7uint8_t">
+<span id="_CPPv3N8AiCamera7getDPadEPc7uint8_t"></span><span id="_CPPv2N8AiCamera7getDPadEPc7uint8_t"></span><span id="AiCamera::getDPad__cP.uint8_t"></span><span class="target" id="class_ai_camera_1ab8e6e780015ca03ef7f90e82f214171a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDPad</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera7getDPadEPc7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interpret the value of the DPad component from the buf string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be interpreted </p></li>
+<li><p><strong>region</strong> – the key of component</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the DPadDPad component, it could be null, “forward”, “backward”, “left”, “stop” </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera11getThrottleEPc7uint8_t">
+<span id="_CPPv3N8AiCamera11getThrottleEPc7uint8_t"></span><span id="_CPPv2N8AiCamera11getThrottleEPc7uint8_t"></span><span id="AiCamera::getThrottle__cP.uint8_t"></span><span class="target" id="class_ai_camera_1a63fb1454e7ad05ada55ede0cbc3cbe93"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getThrottle</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera11getThrottleEPc7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interpret the value of the Throttle component from the buf string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be interpreted </p></li>
+<li><p><strong>region</strong> – the key of component</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the Throttle component, </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8setMeterEPc7uint8_td">
+<span id="_CPPv3N8AiCamera8setMeterEPc7uint8_td"></span><span id="_CPPv2N8AiCamera8setMeterEPc7uint8_td"></span><span id="AiCamera::setMeter__cP.uint8_t.double"></span><span class="target" id="class_ai_camera_1a1695439d3b23e4fd4c99d6669f09385a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setMeter</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8setMeterEPc7uint8_td" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fill the value of Meter display component into the buf to be sent. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be sent </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+<li><p><strong>value</strong> – the value to be filled </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8setRadarEPc7uint8_t7int16_td">
+<span id="_CPPv3N8AiCamera8setRadarEPc7uint8_t7int16_td"></span><span id="_CPPv2N8AiCamera8setRadarEPc7uint8_t7int16_td"></span><span id="AiCamera::setRadar__cP.uint8_t.int16_t.double"></span><span class="target" id="class_ai_camera_1ac87f9c781a21f3473b7ade880ed0d2a6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setRadar</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span>, <span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">angle</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">distance</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8setRadarEPc7uint8_t7int16_td" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fill the value of Radar display component into the buf to be sent. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be sent </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+<li><p><strong>angle</strong> – the orientation of the obstacle </p></li>
+<li><p><strong>distance</strong> – the distance of the obstacle </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera12setGreyscaleEPc7uint8_t8uint16_t8uint16_t8uint16_t">
+<span id="_CPPv3N8AiCamera12setGreyscaleEPc7uint8_t8uint16_t8uint16_t8uint16_t"></span><span id="_CPPv2N8AiCamera12setGreyscaleEPc7uint8_t8uint16_t8uint16_t8uint16_t"></span><span id="AiCamera::setGreyscale__cP.uint8_t.uint16_t.uint16_t.uint16_t"></span><span class="target" id="class_ai_camera_1ada88bbd1d9fbf035f3423147605e2323"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setGreyscale</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value1</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value2</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value3</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera12setGreyscaleEPc7uint8_t8uint16_t8uint16_t8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fill the value of 3-way grayscale display component into the buf to be sent. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be sent </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+<li><p><strong>value1</strong> – </p></li>
+<li><p><strong>value2</strong> – </p></li>
+<li><p><strong>value3</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8setValueEPc7uint8_td">
+<span id="_CPPv3N8AiCamera8setValueEPc7uint8_td"></span><span id="_CPPv2N8AiCamera8setValueEPc7uint8_td"></span><span id="AiCamera::setValue__cP.uint8_t.double"></span><span class="target" id="class_ai_camera_1ae26607db2997327737d97faed859eae9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setValue</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8setValueEPc7uint8_td" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera9getSpeechEPc7uint8_tPc">
+<span id="_CPPv3N8AiCamera9getSpeechEPc7uint8_tPc"></span><span id="_CPPv2N8AiCamera9getSpeechEPc7uint8_tPc"></span><span id="AiCamera::getSpeech__cP.uint8_t.cP"></span><span class="target" id="class_ai_camera_1a7ff76f397ca31b706aff9fea6dde6c3f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSpeech</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">region</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">result</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera9getSpeechEPc7uint8_tPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interpret the value of the Speech component from the buf string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be interpreted </p></li>
+<li><p><strong>region</strong> – the key of component </p></li>
+<li><p><strong>result</strong> – char array pointer to hold the result </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the Joystick component </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera9subStringEPc7int16_t7int16_t">
+<span id="_CPPv3N8AiCamera9subStringEPc7int16_t7int16_t"></span><span id="_CPPv2N8AiCamera9subStringEPc7int16_t7int16_t"></span><span id="AiCamera::subString__cP.int16_t.int16_t"></span><span class="target" id="class_ai_camera_1a8f5b614032639723eb87adc37f7681ba"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">subString</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">start</span></span>, <span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">end</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera9subStringEPc7int16_t7int16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>subtract part of the string </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be subtract </p></li>
+<li><p><strong>start</strong> – start position of content to be subtracted </p></li>
+<li><p><strong>end</strong> – end position of Content to be subtracted </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8getStrOfEPc7uint8_tPcc">
+<span id="_CPPv3N8AiCamera8getStrOfEPc7uint8_tPcc"></span><span id="_CPPv2N8AiCamera8getStrOfEPc7uint8_tPcc"></span><span id="AiCamera::getStrOf__cP.uint8_t.cP.c"></span><span class="target" id="class_ai_camera_1a6050c3a4ac022678faf1ba31730b3215"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStrOf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">result</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">divider</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8getStrOfEPc7uint8_tPcc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Split the string by a cdivider, and return characters of the selected index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be split </p></li>
+<li><p><strong>index</strong> – which index do you wish to return </p></li>
+<li><p><strong>result</strong> – char array pointer to hold the result </p></li>
+<li><p><strong>divider</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8setStrOfEPc7uint8_t6Stringc">
+<span id="_CPPv3N8AiCamera8setStrOfEPc7uint8_t6Stringc"></span><span id="_CPPv2N8AiCamera8setStrOfEPc7uint8_t6Stringc"></span><span id="AiCamera::setStrOf__cP.uint8_t.String.c"></span><span class="target" id="class_ai_camera_1af5e461ac27dd0c7a09a761b8f6e9eef4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setStrOf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">divider</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="sc"><span class="pre">';'</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8setStrOfEPc7uint8_t6Stringc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>split by divider, filling the value to a position in the string </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str</strong> – string pointer to be operated </p></li>
+<li><p><strong>index</strong> – which index do you wish to return </p></li>
+<li><p><strong>value</strong> – the value to be filled </p></li>
+<li><p><strong>divider</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera8getIntOfEPc7uint8_tc">
+<span id="_CPPv3N8AiCamera8getIntOfEPc7uint8_tc"></span><span id="_CPPv2N8AiCamera8getIntOfEPc7uint8_tc"></span><span id="AiCamera::getIntOf__cP.uint8_t.c"></span><span class="target" id="class_ai_camera_1a6edb40582a643de706a4dda9a19e8f3e"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getIntOf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">divider</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="sc"><span class="pre">';'</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera8getIntOfEPc7uint8_tc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Split the string by a cdivider, and return characters of the selected index. Further, the content is converted to int type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – string pointer to be split </p></li>
+<li><p><strong>index</strong> – which index do you wish to return </p></li>
+<li><p><strong>divider</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera9getBoolOfEPc7uint8_t">
+<span id="_CPPv3N8AiCamera9getBoolOfEPc7uint8_t"></span><span id="_CPPv2N8AiCamera9getBoolOfEPc7uint8_t"></span><span id="AiCamera::getBoolOf__cP.uint8_t"></span><span class="target" id="class_ai_camera_1a09ca69ab288efa57aebb869e08b3159f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBoolOf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera9getBoolOfEPc7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8AiCamera11getDoubleOfEPc7uint8_t">
+<span id="_CPPv3N8AiCamera11getDoubleOfEPc7uint8_t"></span><span id="_CPPv2N8AiCamera11getDoubleOfEPc7uint8_t"></span><span id="AiCamera::getDoubleOf__cP.uint8_t"></span><span class="target" id="class_ai_camera_1a2e121895e4f6e5757a4d0967afa0a34b"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDoubleOf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8AiCamera11getDoubleOfEPc7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Zeus_Car.ino.html" class="btn btn-neutral float-left" title="Zeus_Car.ino" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="car_control.html" class="btn btn-neutral float-right" title="car_control" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

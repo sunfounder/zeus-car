@@ -1,0 +1,1262 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_ai_camera" kind="class" language="C++" prot="public">
+    <compoundname>AiCamera</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_ai_camera_1aeb6790e52bbd4a887903a52f243e4460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AiCamera::AiCamera</definition>
+        <argsstring>(const char *name, const char *type)</argsstring>
+        <name>AiCamera</name>
+        <qualifiedname>AiCamera::AiCamera</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+          <defname>_name</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>type</declname>
+          <defname>_type</defname>
+        </param>
+        <briefdescription>
+<para>instantiate <ref refid="class_ai_camera" kindref="compound">AiCamera</ref> Class, set name and type </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="69" column="5" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1abaf6d914947d75c018ed67e3243f88fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>AiCamera::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="71" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1afdf92ba1920eb5f24ba27b5346459011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::begin</definition>
+        <argsstring>(const char *ssid, const char *password, const char *wifiMode, const char *wsPort)</argsstring>
+        <name>begin</name>
+        <qualifiedname>AiCamera::begin</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>ssid</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>password</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>wifiMode</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>wsPort</declname>
+        </param>
+        <briefdescription>
+<para>Set wifi and websocket port to esp32-cam, block and wait for the setting to succeed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ssid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wifiMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0,None; 1, STA; 2, AP </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wsPort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="72" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="71" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a00bff2a1314bf9b757f50cdb8e8ee717" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::debug</definition>
+        <argsstring>(char *msg)</argsstring>
+        <name>debug</name>
+        <qualifiedname>AiCamera::debug</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Print the information received from esp32-CAm, according to the set of CAM_DEBUG_LEVEL. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="73" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="132" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a034f1e1c307299629387df7dd4df6c88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::readInto</definition>
+        <argsstring>(char *buffer)</argsstring>
+        <name>readInto</name>
+        <qualifiedname>AiCamera::readInto</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+<para>Store the data read from the serial port into the buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="74" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="162" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ae9d23a320d2570d1f56d3d9bf37878b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AiCamera::read</definition>
+        <argsstring>()</argsstring>
+        <name>read</name>
+        <qualifiedname>AiCamera::read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="75" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ad9f93c18e1dbcebb88c782cbe2c8e93f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::sendData</definition>
+        <argsstring>(char *buf)</argsstring>
+        <name>sendData</name>
+        <qualifiedname>AiCamera::sendData</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+          <defname>sendBuffer</defname>
+        </param>
+        <briefdescription>
+<para>Serial port sends data, automatically adds header (WS_HEADER) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sendBuffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="76" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="210" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a1d92a8c38d6e9fc111f1c4fe36e38f94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::set</definition>
+        <argsstring>(const char *command)</argsstring>
+        <name>set</name>
+        <qualifiedname>AiCamera::set</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="77" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="244" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1aa40675fd071138c351f24610501c2578" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::set</definition>
+        <argsstring>(const char *command, const char *value)</argsstring>
+        <name>set</name>
+        <qualifiedname>AiCamera::set</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="78" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="249" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1aa2d6d1a5a197ed47030ae30bce41c409" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::get</definition>
+        <argsstring>(const char *command, char *result)</argsstring>
+        <name>get</name>
+        <qualifiedname>AiCamera::get</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="79" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="254" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ad32d9c369e23e6927b529e1b02858ecf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::get</definition>
+        <argsstring>(const char *command, const char *value, char *result)</argsstring>
+        <name>get</name>
+        <qualifiedname>AiCamera::get</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="80" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="258" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a0134dee551d3bc90c8c384b58057a0d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::command</definition>
+        <argsstring>(const char *command, const char *value, char *result)</argsstring>
+        <name>command</name>
+        <qualifiedname>AiCamera::command</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Send command to ESP32-CAM with serial. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>command keyword </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>returned information from serial </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="81" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="222" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a70117b1447dfd1587c043a1d2b577528" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::setOnReceived</definition>
+        <argsstring>(void(*func)(char *, char *))</argsstring>
+        <name>setOnReceived</name>
+        <qualifiedname>AiCamera::setOnReceived</qualifiedname>
+        <param>
+          <type>void(*)(char *, char *)</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+<para>Set callback function method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>callback function pointer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="82" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="95" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a829ca6ade8d4417b5ba7afc450c76240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <qualifiedname>AiCamera::loop</qualifiedname>
+        <briefdescription>
+<para>Receive and process serial port data in a loop. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="83" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="101" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a94d1b8bab81d704faa213507d66504a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t AiCamera::getSlider</definition>
+        <argsstring>(char *buf, uint8_t region)</argsstring>
+        <name>getSlider</name>
+        <qualifiedname>AiCamera::getSlider</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+<para>Interpret the value of the slider contorl component from the buf string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be interpreted <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the value of the slider contorl component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="85" column="13" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="270" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a54c0f9c558ed9b309354bff3e09740e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AiCamera::getButton</definition>
+        <argsstring>(char *buf, uint8_t region)</argsstring>
+        <name>getButton</name>
+        <qualifiedname>AiCamera::getButton</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="86" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="275" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ae22bef06d01876146c7018a182c6cda1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AiCamera::getSwitch</definition>
+        <argsstring>(char *buf, uint8_t region)</argsstring>
+        <name>getSwitch</name>
+        <qualifiedname>AiCamera::getSwitch</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="87" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="280" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a7d49755ad92a8f8c631f6ee5421b8e31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t AiCamera::getJoystick</definition>
+        <argsstring>(char *buf, uint8_t region, uint8_t axis)</argsstring>
+        <name>getJoystick</name>
+        <qualifiedname>AiCamera::getJoystick</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+<para>Interpret the value of the Joystick component from the buf string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be interpreted <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>which type of value that you want, could be JOYSTICK_X, JOYSTICK_Y, JOYSTICK_ANGLE, JOYSTICK_RADIUS </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the value of the Joystick component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="88" column="13" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="294" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ab8e6e780015ca03ef7f90e82f214171a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t AiCamera::getDPad</definition>
+        <argsstring>(char *buf, uint8_t region)</argsstring>
+        <name>getDPad</name>
+        <qualifiedname>AiCamera::getDPad</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+<para>Interpret the value of the DPad component from the buf string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be interpreted <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the value of the DPadDPad component, it could be null, &quot;forward&quot;, &quot;backward&quot;, &quot;left&quot;, &quot;stop&quot; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="89" column="13" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="322" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a63fb1454e7ad05ada55ede0cbc3cbe93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t AiCamera::getThrottle</definition>
+        <argsstring>(char *buf, uint8_t region)</argsstring>
+        <name>getThrottle</name>
+        <qualifiedname>AiCamera::getThrottle</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+<para>Interpret the value of the Throttle component from the buf string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be interpreted <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the value of the Throttle component, </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="90" column="13" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="342" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a1695439d3b23e4fd4c99d6669f09385a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::setMeter</definition>
+        <argsstring>(char *buf, uint8_t region, double value)</argsstring>
+        <name>setMeter</name>
+        <qualifiedname>AiCamera::setMeter</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Fill the value of Meter display component into the buf to be sent. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be sent <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to be filled </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="91" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="367" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ac87f9c781a21f3473b7ade880ed0d2a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::setRadar</definition>
+        <argsstring>(char *buf, uint8_t region, int16_t angle, double distance)</argsstring>
+        <name>setRadar</name>
+        <qualifiedname>AiCamera::setRadar</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>int16_t</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>Fill the value of Radar display component into the buf to be sent. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be sent <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the orientation of the obstacle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the distance of the obstacle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="92" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="379" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ada88bbd1d9fbf035f3423147605e2323" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::setGreyscale</definition>
+        <argsstring>(char *buf, uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3)</argsstring>
+        <name>setGreyscale</name>
+        <qualifiedname>AiCamera::setGreyscale</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value1</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value2</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value3</declname>
+        </param>
+        <briefdescription>
+<para>Fill the value of 3-way grayscale display component into the buf to be sent. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be sent <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="93" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="392" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1ae26607db2997327737d97faed859eae9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::setValue</definition>
+        <argsstring>(char *buf, uint8_t region, double value)</argsstring>
+        <name>setValue</name>
+        <qualifiedname>AiCamera::setValue</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="94" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="397" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a7ff76f397ca31b706aff9fea6dde6c3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::getSpeech</definition>
+        <argsstring>(char *buf, uint8_t region, char *result)</argsstring>
+        <name>getSpeech</name>
+        <qualifiedname>AiCamera::getSpeech</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Interpret the value of the Speech component from the buf string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be interpreted <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key of component </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>char array pointer to hold the result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the value of the Joystick component </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="95" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="355" bodyend="358"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_ai_camera_1a8f5b614032639723eb87adc37f7681ba" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::subString</definition>
+        <argsstring>(char *str, int16_t start, int16_t end=-1)</argsstring>
+        <name>subString</name>
+        <qualifiedname>AiCamera::subString</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>int16_t</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>int16_t</type>
+          <declname>end</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>subtract part of the string </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be subtract <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start position of content to be subtracted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>end position of Content to be subtracted </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="98" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="409" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a6050c3a4ac022678faf1ba31730b3215" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::getStrOf</definition>
+        <argsstring>(char *str, uint8_t index, char *result, char divider)</argsstring>
+        <name>getStrOf</name>
+        <qualifiedname>AiCamera::getStrOf</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>divider</declname>
+        </param>
+        <briefdescription>
+<para>Split the string by a cdivider, and return characters of the selected index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be split <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>which index do you wish to return </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>char array pointer to hold the result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>divider</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="99" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="432" bodyend="461"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1af5e461ac27dd0c7a09a761b8f6e9eef4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AiCamera::setStrOf</definition>
+        <argsstring>(char *str, uint8_t index, String value, char divider=&apos;;&apos;)</argsstring>
+        <name>setStrOf</name>
+        <qualifiedname>AiCamera::setStrOf</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>divider</declname>
+          <defval>&apos;;&apos;</defval>
+        </param>
+        <briefdescription>
+<para>split by divider, filling the value to a position in the string </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be operated <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>which index do you wish to return </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to be filled </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>divider</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="100" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="471" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a6edb40582a643de706a4dda9a19e8f3e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t AiCamera::getIntOf</definition>
+        <argsstring>(char *str, uint8_t index, char divider=&apos;;&apos;)</argsstring>
+        <name>getIntOf</name>
+        <qualifiedname>AiCamera::getIntOf</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>divider</declname>
+          <defval>&apos;;&apos;</defval>
+        </param>
+        <briefdescription>
+<para>Split the string by a cdivider, and return characters of the selected index. Further, the content is converted to int type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string pointer to be split <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>which index do you wish to return </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>divider</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="101" column="13" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="509" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a09ca69ab288efa57aebb869e08b3159f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AiCamera::getBoolOf</definition>
+        <argsstring>(char *str, uint8_t index)</argsstring>
+        <name>getBoolOf</name>
+        <qualifiedname>AiCamera::getBoolOf</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="102" column="10" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="517" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ai_camera_1a2e121895e4f6e5757a4d0967afa0a34b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double AiCamera::getDoubleOf</definition>
+        <argsstring>(char *str, uint8_t index)</argsstring>
+        <name>getDoubleOf</name>
+        <qualifiedname>AiCamera::getDoubleOf</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="103" column="12" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.cpp" bodystart="523" bodyend="529"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" line="67" column="1" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h" bodystart="67" bodyend="104"/>
+    <listofallmembers>
+      <member refid="class_ai_camera_1aeb6790e52bbd4a887903a52f243e4460" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>AiCamera</name></member>
+      <member refid="class_ai_camera_1abaf6d914947d75c018ed67e3243f88fa" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>begin</name></member>
+      <member refid="class_ai_camera_1afdf92ba1920eb5f24ba27b5346459011" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>begin</name></member>
+      <member refid="class_ai_camera_1a0134dee551d3bc90c8c384b58057a0d6" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>command</name></member>
+      <member refid="class_ai_camera_1a00bff2a1314bf9b757f50cdb8e8ee717" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>debug</name></member>
+      <member refid="class_ai_camera_1aa2d6d1a5a197ed47030ae30bce41c409" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>get</name></member>
+      <member refid="class_ai_camera_1ad32d9c369e23e6927b529e1b02858ecf" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>get</name></member>
+      <member refid="class_ai_camera_1a09ca69ab288efa57aebb869e08b3159f" prot="private" virt="non-virtual"><scope>AiCamera</scope><name>getBoolOf</name></member>
+      <member refid="class_ai_camera_1a54c0f9c558ed9b309354bff3e09740e4" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>getButton</name></member>
+      <member refid="class_ai_camera_1a2e121895e4f6e5757a4d0967afa0a34b" prot="private" virt="non-virtual"><scope>AiCamera</scope><name>getDoubleOf</name></member>
+      <member refid="class_ai_camera_1ab8e6e780015ca03ef7f90e82f214171a" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>getDPad</name></member>
+      <member refid="class_ai_camera_1a6edb40582a643de706a4dda9a19e8f3e" prot="private" virt="non-virtual"><scope>AiCamera</scope><name>getIntOf</name></member>
+      <member refid="class_ai_camera_1a7d49755ad92a8f8c631f6ee5421b8e31" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>getJoystick</name></member>
+      <member refid="class_ai_camera_1a94d1b8bab81d704faa213507d66504a6" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>getSlider</name></member>
+      <member refid="class_ai_camera_1a7ff76f397ca31b706aff9fea6dde6c3f" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>getSpeech</name></member>
+      <member refid="class_ai_camera_1a6050c3a4ac022678faf1ba31730b3215" prot="private" virt="non-virtual"><scope>AiCamera</scope><name>getStrOf</name></member>
+      <member refid="class_ai_camera_1ae22bef06d01876146c7018a182c6cda1" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>getSwitch</name></member>
+      <member refid="class_ai_camera_1a63fb1454e7ad05ada55ede0cbc3cbe93" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>getThrottle</name></member>
+      <member refid="class_ai_camera_1a829ca6ade8d4417b5ba7afc450c76240" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>loop</name></member>
+      <member refid="class_ai_camera_1ae9d23a320d2570d1f56d3d9bf37878b1" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>read</name></member>
+      <member refid="class_ai_camera_1a034f1e1c307299629387df7dd4df6c88" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>readInto</name></member>
+      <member refid="class_ai_camera_1ad9f93c18e1dbcebb88c782cbe2c8e93f" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>sendData</name></member>
+      <member refid="class_ai_camera_1a1d92a8c38d6e9fc111f1c4fe36e38f94" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>set</name></member>
+      <member refid="class_ai_camera_1aa40675fd071138c351f24610501c2578" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>set</name></member>
+      <member refid="class_ai_camera_1ada88bbd1d9fbf035f3423147605e2323" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>setGreyscale</name></member>
+      <member refid="class_ai_camera_1a1695439d3b23e4fd4c99d6669f09385a" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>setMeter</name></member>
+      <member refid="class_ai_camera_1a70117b1447dfd1587c043a1d2b577528" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>setOnReceived</name></member>
+      <member refid="class_ai_camera_1ac87f9c781a21f3473b7ade880ed0d2a6" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>setRadar</name></member>
+      <member refid="class_ai_camera_1af5e461ac27dd0c7a09a761b8f6e9eef4" prot="private" virt="non-virtual"><scope>AiCamera</scope><name>setStrOf</name></member>
+      <member refid="class_ai_camera_1ae26607db2997327737d97faed859eae9" prot="public" virt="non-virtual"><scope>AiCamera</scope><name>setValue</name></member>
+      <member refid="class_ai_camera_1a8f5b614032639723eb87adc37f7681ba" prot="private" virt="non-virtual"><scope>AiCamera</scope><name>subString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

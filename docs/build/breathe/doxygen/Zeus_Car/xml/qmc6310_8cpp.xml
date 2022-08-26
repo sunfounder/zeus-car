@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="qmc6310_8cpp" kind="file" language="C++">
+    <compoundname>qmc6310.cpp</compoundname>
+    <includes refid="qmc6310_8h" local="yes">qmc6310.h</includes>
+    <includes refid="rgb_8h" local="yes">rgb.h</includes>
+    <includes refid="car__control_8h" local="yes">car_control.h</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>Arduino.h</label>
+      </node>
+      <node id="6">
+        <label>car_control.h</label>
+        <link refid="car__control_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>compass.h</label>
+        <link refid="compass_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp</label>
+        <link refid="qmc6310_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>qmc6310.h</label>
+        <link refid="qmc6310_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>rgb.h</label>
+        <link refid="rgb_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="qmc6310_8cpp_1ab8e2d5a7c5aaa73523b106697081402d" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t _calibrationData[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>_calibrationData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" line="6" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="qmc6310_8cpp_1a6260e25dbbc42b89ad3ea585d79a9236" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t _x</definition>
+        <argsstring></argsstring>
+        <name>_x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" line="8" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="qmc6310_8cpp_1a68ee5ba360aaca93fee22941b44f2445" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t _y</definition>
+        <argsstring></argsstring>
+        <name>_y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" line="9" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="qmc6310_8cpp_1a0f41626664d987cf4775e6cfc17c59d6" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t _z</definition>
+        <argsstring></argsstring>
+        <name>_z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" line="10" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;qmc6310.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rgb.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;car_control.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">int16_t<sp/>_calibrationData[6];</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">int16_t<sp/>_x;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">int16_t<sp/>_y;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">int16_t<sp/>_z;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">QMC6310::QMC6310()<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>QMC6310::init()<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>Wire.begin();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>Wire.setWireTimeout(100000,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>100ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>this-&gt;_i2cWrite(0x29,<sp/>0x06);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>this-&gt;_i2cWrite(QMC6310_REG_CONTROL_2,<sp/>QMC6310_VAL_RNG_8G);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>this-&gt;_i2cWrite(QMC6310_REG_CONTROL_1,<sp/>QMC6310_VAL_MODE_NORMAL<sp/>|<sp/>QMC6310_VAL_ODR_200HZ<sp/>|<sp/>QMC6310_VAL_OSR1_8<sp/>|<sp/>QMC6310_VAL_OSR2_8);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>QMC6310::read()<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>datas[6];</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>this-&gt;_i2cReadInto(QMC6310_REG_DATA_START,<sp/>6,<sp/>datas);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>_x<sp/>=<sp/>(int16_t)((datas[1]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>datas[0]);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>_y<sp/>=<sp/>(int16_t)((datas[3]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>datas[2]);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>_z<sp/>=<sp/>(int16_t)((datas[5]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>datas[4]);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>calibrate:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;_calibrated)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x_offset<sp/>=<sp/>(_calibrationData[0]<sp/>+<sp/>_calibrationData[1])<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y_offset<sp/>=<sp/>(_calibrationData[2]<sp/>+<sp/>_calibrationData[3])<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z_offset<sp/>=<sp/>(_calibrationData[4]<sp/>+<sp/>_calibrationData[5])<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x_avg<sp/>=<sp/>(_calibrationData[1]<sp/>-<sp/>_calibrationData[0])<sp/>/<sp/>2.0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y_avg<sp/>=<sp/>(_calibrationData[3]<sp/>-<sp/>_calibrationData[2])<sp/>/<sp/>2.0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z_avg<sp/>=<sp/>(_calibrationData[5]<sp/>-<sp/>_calibrationData[4])<sp/>/<sp/>2.0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>avg<sp/>=<sp/>(x_avg<sp/>+<sp/>y_avg<sp/>+<sp/>z_avg)<sp/>/<sp/>3;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x_scale<sp/>=<sp/>avg<sp/>/<sp/>x_avg;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y_scale<sp/>=<sp/>avg<sp/>/<sp/>y_avg;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z_scale<sp/>=<sp/>avg<sp/>/<sp/>z_avg;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>_x<sp/>=<sp/>(int16_t)((_x<sp/>-<sp/>x_offset)<sp/>*<sp/>x_scale);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>_y<sp/>=<sp/>(int16_t)((_y<sp/>-<sp/>y_offset)<sp/>*<sp/>y_scale);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>_z<sp/>=<sp/>(int16_t)((_z<sp/>-<sp/>z_offset)<sp/>*<sp/>z_scale);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">int16_t<sp/>QMC6310::getX()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_x;}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">int16_t<sp/>QMC6310::getY()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_y;}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">int16_t<sp/>QMC6310::getZ()<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_z;}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">uint16_t<sp/>QMC6310::getAzimuth()<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/>azimuth<sp/>=<sp/>atan2(_y,<sp/>_x)<sp/>*<sp/>180.0<sp/>/<sp/>PI;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(azimuth<sp/>&lt;<sp/>0)<sp/>azimuth<sp/>+=<sp/>360;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>azimuth;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>QMC6310::clearCalibration()<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>this-&gt;_calibrated<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>QMC6310::setCalibration(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>xMin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>xMax,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yMin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>yMax,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>zMin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>zMax)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>this-&gt;_calibrated<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>_calibrationData[0]<sp/>=<sp/>xMin;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>_calibrationData[1]<sp/>=<sp/>xMax;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>_calibrationData[2]<sp/>=<sp/>yMin;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>_calibrationData[3]<sp/>=<sp/>yMax;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>_calibrationData[4]<sp/>=<sp/>zMin;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>_calibrationData[5]<sp/>=<sp/>zMax;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>QMC6310::_i2cWrite(</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>reg,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>val)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>Wire.beginTransmission(QMC6310_ADDR);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>Wire.write(reg);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>Wire.write(val);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>Wire.endTransmission();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>QMC6310::_i2cReadInto(</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>reg,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal"><sp/>num,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">*<sp/>dest)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>Wire.beginTransmission(QMC6310_ADDR);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>Wire.write(reg);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>uint8_t<sp/>result<sp/>=<sp/>Wire.endTransmission(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/>Wire.endTransmission();</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/>0:<sp/>success.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/>1:<sp/>data<sp/>too<sp/>long<sp/>to<sp/>fit<sp/>in<sp/>transmit<sp/>buffer.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/>2:<sp/>received<sp/>NACK<sp/>on<sp/>transmit<sp/>of<sp/>address.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/>3:<sp/>received<sp/>NACK<sp/>on<sp/>transmit<sp/>of<sp/>data.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/>4:<sp/>other<sp/>error.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/>5:<sp/>timeout</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>uint8_t<sp/>rec_len<sp/>=<sp/>Wire.requestFrom(QMC6310_ADDR,<sp/>num,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rec_len<sp/>!=<sp/>num)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>m<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(Wire.available()<sp/>&lt;<sp/>num)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(millis()<sp/>-<sp/>m<sp/>&gt;<sp/>200)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>num;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>dest[i]<sp/>=<sp/>Wire.read();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp"/>
+  </compounddef>
+</doxygen>

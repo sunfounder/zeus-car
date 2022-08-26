@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="rgb_8h" kind="file" language="C++">
+    <compoundname>rgb.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includedby refid="_zeus___car_8cpp" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/Zeus_Car.cpp</includedby>
+    <includedby refid="ai__camera_8h" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h</includedby>
+    <includedby refid="qmc6310_8cpp" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/qmc6310.cpp</includedby>
+    <includedby refid="rgb_8cpp" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.cpp</includedby>
+    <includedby refid="test_8h" local="yes">D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/test.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h</label>
+        <link refid="rgb_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ai_camera.h</label>
+        <link refid="ai__camera_8h_source"/>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h</label>
+        <link refid="rgb_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/test.h</label>
+        <link refid="test_8h_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="rgb_8h_1a9f690a64b04fbdaf181334b710143af2" prot="public" static="no">
+        <name>COMMON_ANODE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Indicate whether RGB leds are common-anodes or not<itemizedlist>
+<listitem><para>0 common cathode</para>
+</listitem><listitem><para>1 common anode </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" line="10" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rgb_8h_1a5d9630bbe85b7cb939d780d48222c258" prot="public" static="no">
+        <name>RGB_PINS</name>
+        <initializer>(uint8_t[3]){12, 13, 11}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the pins of RGB leds, the order is R,G,B </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" line="13" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="rgb_8h_1ae09a412019233ba9f240c0e15639a4e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rgbBegin</definition>
+        <argsstring>()</argsstring>
+        <name>rgbBegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize RGB leds </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" line="16" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.cpp" bodystart="4" bodyend="9" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" declline="16" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="rgb_8h_1af223ecb40eca6d6afc3e3238814a640d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rgbWrite</definition>
+        <argsstring>(uint32_t color)</argsstring>
+        <name>rgbWrite</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set LED color in HEX </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" line="19" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.cpp" bodystart="11" bodyend="16" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" declline="19" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="rgb_8h_1a3ab0755b5070fd92e1ccaa0cdbb9ece9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rgbWrite</definition>
+        <argsstring>(uint8_t r, uint8_t g, uint8_t b)</argsstring>
+        <name>rgbWrite</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set LED color in 8bit R,G,B (0 ~ 255) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" line="22" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.cpp" bodystart="18" bodyend="27" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" declline="22" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="rgb_8h_1a1d676e37d65decf5f65a35ea3a75cec0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rgbOff</definition>
+        <argsstring>()</argsstring>
+        <name>rgbOff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Turn odd RGB LEDs </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" line="25" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.cpp" bodystart="29" bodyend="31" declfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h" declline="25" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__RGB_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__RGB_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COMMON_ANODE<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RGB_PINS<sp/>(uint8_t[3]){12,<sp/>13,<sp/>11}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rgbBegin();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rgbWrite(uint32_t<sp/>color);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rgbWrite(uint8_t<sp/>r,<sp/>uint8_t<sp/>g,<sp/>uint8_t<sp/>b);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rgbOff();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__RGB_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/rgb.h"/>
+  </compounddef>
+</doxygen>

@@ -16,7 +16,7 @@ void rgbWrite(uint32_t color) {
 }
 
 void rgbWrite(uint8_t r, uint8_t g, uint8_t b) {
-  #ifdef COMMON_ANODE
+  #if COMMON_ANODE
     r = 255 - r;
     g = 255 - g;
     b = 255 - b;

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>compass &mdash; SunFounder Robot HAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="grayscale" href="grayscale.html" />
+    <link rel="prev" title="cmd_code_config" href="cmd_code_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> SunFounder Robot HAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduce.html">Introduce</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Zeus_Car.h.html"><code class="docutils literal notranslate"><span class="pre">Zeus_Car.h</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Zeus_Car.ino.html"><code class="docutils literal notranslate"><span class="pre">Zeus_Car.ino</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai_camera.html"><code class="docutils literal notranslate"><span class="pre">ai_camera</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="car_control.html"><code class="docutils literal notranslate"><span class="pre">car_control</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmd_code_config.html"><code class="docutils literal notranslate"><span class="pre">cmd_code_config</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">compass</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="grayscale.html"><code class="docutils literal notranslate"><span class="pre">grayscale</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hc165.html"><code class="docutils literal notranslate"><span class="pre">hc165</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ir_obstacle.html"><code class="docutils literal notranslate"><span class="pre">ir_obstacle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ir_remote.html"><code class="docutils literal notranslate"><span class="pre">ir_remote</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="qmc6310.html"><code class="docutils literal notranslate"><span class="pre">qmc6310</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rgb.html"><code class="docutils literal notranslate"><span class="pre">rgb</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html"><code class="docutils literal notranslate"><span class="pre">ultrasonic</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="test.html"><code class="docutils literal notranslate"><span class="pre">test</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Robot HAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="api.html">API</a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">compass</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/compass.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="compass">
+<h1><code class="docutils literal notranslate"><span class="pre">compass</span></code><a class="headerlink" href="#compass" title="Permalink to this heading">¶</a></h1>
+<p>Functions for compass sensor</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.AVERAGE_FILTER_SIZE">
+<span class="target" id="compass_8h_1a01b68be4752b4dadf5e4338ba09d06b5"></span><span class="sig-name descname"><span class="n"><span class="pre">AVERAGE_FILTER_SIZE</span></span></span><a class="headerlink" href="#c.AVERAGE_FILTER_SIZE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the number of samples for average filtering</p>
+<p>default 30 </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EEPROM_CALIBRATION_ADDRESS">
+<span class="target" id="compass_8h_1a5ede282bffe8149b1b8cad8853d69ed0"></span><span class="sig-name descname"><span class="n"><span class="pre">EEPROM_CALIBRATION_ADDRESS</span></span></span><a class="headerlink" href="#c.EEPROM_CALIBRATION_ADDRESS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the EEPROM start address where the calibration value is stored</p>
+<p>default 0 </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CALIBRATION_TIME">
+<span class="target" id="compass_8h_1a68532ab817b6490487ad5388d0548b0c"></span><span class="sig-name descname"><span class="n"><span class="pre">CALIBRATION_TIME</span></span></span><a class="headerlink" href="#c.CALIBRATION_TIME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the time required for calibration values to stabilize</p>
+<p>uinit millisecond， default 3000 </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.AVERAGE_FILTER">
+<span class="target" id="compass_8h_1a771bb32305e13584859119fb88982a38"></span><span class="sig-name descname"><span class="n"><span class="pre">AVERAGE_FILTER</span></span></span><a class="headerlink" href="#c.AVERAGE_FILTER" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whether to turn on the average filter</p>
+<p>default true </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412compassBeginv">
+<span id="_CPPv312compassBeginv"></span><span id="_CPPv212compassBeginv"></span><span id="compassBegin"></span><span class="target" id="compass_8h_1afc3d9e7558ee6bb6c7521180291566f7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compassBegin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412compassBeginv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Compass init. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416compassReadAnglev">
+<span id="_CPPv316compassReadAnglev"></span><span id="_CPPv216compassReadAnglev"></span><span id="compassReadAngle"></span><span class="target" id="compass_8h_1a6a15525237d44a16f55ac708311058d3"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compassReadAngle</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416compassReadAnglev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read the average filtered value of compass angle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>int16_t average angle </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417compassGetAzimuthv">
+<span id="_CPPv317compassGetAzimuthv"></span><span id="_CPPv217compassGetAzimuthv"></span><span id="compassGetAzimuth"></span><span class="target" id="compass_8h_1ac1db930d7f4b410e14573d98efa1bfdf"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compassGetAzimuth</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417compassGetAzimuthv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculate the angle from the values in the x, y direction of the compass sensor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>int16_t angle </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421compassCalibrateStartv">
+<span id="_CPPv321compassCalibrateStartv"></span><span id="_CPPv221compassCalibrateStartv"></span><span id="compassCalibrateStart"></span><span class="target" id="compass_8h_1a75548a0244c7fed3b9a9ee6528fbf90f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compassCalibrateStart</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421compassCalibrateStartv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Start calibrate compass. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420compassCalibrateLoopv">
+<span id="_CPPv320compassCalibrateLoopv"></span><span id="_CPPv220compassCalibrateLoopv"></span><span id="compassCalibrateLoop"></span><span class="target" id="compass_8h_1ad77e6de87b67b6244aa23723ac3068f6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compassCalibrateLoop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420compassCalibrateLoopv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The loop of compass calibration. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420compassCalibrateDonev">
+<span id="_CPPv320compassCalibrateDonev"></span><span id="_CPPv220compassCalibrateDonev"></span><span id="compassCalibrateDone"></span><span class="target" id="compass_8h_1a6b7f2e55aa710299bc35b9b1bff13892"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compassCalibrateDone</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420compassCalibrateDonev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is compass Calibrate Done ? </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>- true<ul class="simple">
+<li><p>false </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmd_code_config.html" class="btn btn-neutral float-left" title="cmd_code_config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="grayscale.html" class="btn btn-neutral float-right" title="grayscale" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

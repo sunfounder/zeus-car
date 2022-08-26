@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_8c79cac05e1c988b6208804425671184" kind="dir">
+    <compoundname>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car</compoundname>
+    <innerfile refid="ai__camera_8cpp">ai_camera.cpp</innerfile>
+    <innerfile refid="ai__camera_8h">ai_camera.h</innerfile>
+    <innerfile refid="car__control_8cpp">car_control.cpp</innerfile>
+    <innerfile refid="car__control_8h">car_control.h</innerfile>
+    <innerfile refid="cmd__code__config_8hpp">cmd_code_config.hpp</innerfile>
+    <innerfile refid="compass_8cpp">compass.cpp</innerfile>
+    <innerfile refid="compass_8h">compass.h</innerfile>
+    <innerfile refid="grayscale_8cpp">grayscale.cpp</innerfile>
+    <innerfile refid="grayscale_8h">grayscale.h</innerfile>
+    <innerfile refid="hc165_8cpp">hc165.cpp</innerfile>
+    <innerfile refid="hc165_8h">hc165.h</innerfile>
+    <innerfile refid="ir__obstacle_8cpp">ir_obstacle.cpp</innerfile>
+    <innerfile refid="ir__obstacle_8h">ir_obstacle.h</innerfile>
+    <innerfile refid="ir__remote_8cpp">ir_remote.cpp</innerfile>
+    <innerfile refid="ir__remote_8h">ir_remote.h</innerfile>
+    <innerfile refid="qmc6310_8cpp">qmc6310.cpp</innerfile>
+    <innerfile refid="qmc6310_8h">qmc6310.h</innerfile>
+    <innerfile refid="rgb_8cpp">rgb.cpp</innerfile>
+    <innerfile refid="rgb_8h">rgb.h</innerfile>
+    <innerfile refid="test_8h">test.h</innerfile>
+    <innerfile refid="ultrasonic_8cpp">ultrasonic.cpp</innerfile>
+    <innerfile refid="ultrasonic_8h">ultrasonic.h</innerfile>
+    <innerfile refid="_zeus___car_8cpp">Zeus_Car.cpp</innerfile>
+    <innerfile refid="_zeus___car_8h">Zeus_Car.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/"/>
+  </compounddef>
+</doxygen>

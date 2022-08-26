@@ -1,0 +1,723 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="car__control_8cpp" kind="file" language="C++">
+    <compoundname>car_control.cpp</compoundname>
+    <includes refid="car__control_8h" local="yes">car_control.h</includes>
+    <includes local="no">Arduino.h</includes>
+    <includes local="no">SoftPWM.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp</label>
+        <link refid="car__control_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>car_control.h</label>
+        <link refid="car__control_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>compass.h</label>
+        <link refid="compass_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>SoftPWM.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="user-defined">
+      <header>simple move functions with CAR_DEFAULT_POWER</header>
+      <memberdef kind="function" id="car__control_8cpp_1a8344e8f4f8b369c0c1126559c16aea07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carForward</definition>
+        <argsstring>()</argsstring>
+        <name>carForward</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="36" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a408afb598068a40273bddea579c32906" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carBackward</definition>
+        <argsstring>()</argsstring>
+        <name>carBackward</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="37" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a5ff415625eaeb0a45f5c272dfba5988c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carLeft</definition>
+        <argsstring>()</argsstring>
+        <name>carLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="38" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a7ccae63e06ce177c8997fe6e045c9cee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carRight</definition>
+        <argsstring>()</argsstring>
+        <name>carRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="39" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a92a635304d348e79ab2853082ce36550" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carTurnLeft</definition>
+        <argsstring>()</argsstring>
+        <name>carTurnLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="40" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a93d928f31187130817b9bfe5bbda0d63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carTurnRight</definition>
+        <argsstring>()</argsstring>
+        <name>carTurnRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="41" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a0afc53f532d191931ed66c6f3dc1c13a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carLeftForword</definition>
+        <argsstring>()</argsstring>
+        <name>carLeftForword</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="42" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a37d953b573ca07c56c2c4c55b5b88a56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carRightForword</definition>
+        <argsstring>()</argsstring>
+        <name>carRightForword</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="43" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a1f8c5e17232c93f115af999d48993584" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carLeftBackward</definition>
+        <argsstring>()</argsstring>
+        <name>carLeftBackward</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="44" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1add8fd5a8f94499868d20938ec6a90db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carRightBackward</definition>
+        <argsstring>()</argsstring>
+        <name>carRightBackward</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="45" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1ac623c5fe5fd5d86a1324c52fe321e042" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carStop</definition>
+        <argsstring>()</argsstring>
+        <name>carStop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="46" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a62e1923865fce9af653413f325dae795" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carSetMotors</definition>
+        <argsstring>(int8_t power0, int8_t power1, int8_t power2, int8_t power3)</argsstring>
+        <name>carSetMotors</name>
+        <param>
+          <type>int8_t</type>
+          <declname>power0</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>power1</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>power2</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>power3</declname>
+        </param>
+        <briefdescription>
+<para>Set speed for 4 motors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>power0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0 ~ 100 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0 ~ 100 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0 ~ 100 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0 ~ 100 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="56" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="56" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1abad1482258b46a9f0f457dd609fa47f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void _carMove</definition>
+        <argsstring>(int16_t angle, int8_t power, int8_t rot, bool drift)</argsstring>
+        <name>_carMove</name>
+        <param>
+          <type>int16_t</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>power</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>rot</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>drift</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Control the car to move</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">_carMove(-90,<sp/>80,<sp/>0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the direction you want the car to move </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>moving speed <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the car fixed rotation angle during the movement </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>drift</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether it is a drift mode, default flase true, drift mode, the car body will return to square flase, drift mode, the car body will not return to square </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="90" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="90" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a6ab972c08e5404a21866105d60a37d83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carMove</definition>
+        <argsstring>(int16_t angle, int8_t power, int8_t rot, bool drift)</argsstring>
+        <name>carMove</name>
+        <param>
+          <type>int16_t</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>power</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>rot</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>drift</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Control the car to move with PID control</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the direction you want the car to move </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>moving speed <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the car fixed rotation angle during the movement </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>drift</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether it is a drift mode, default flase <linebreak/>
+ true, drift mode, the car body will return to square flase, drift mode, the car body will not return to square </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="130" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="130" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1ad1d2640a06e4fec9456918dc9257fb48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carMoveFieldCentric</definition>
+        <argsstring>(int16_t angle, int8_t power, int16_t heading, bool drift)</argsstring>
+        <name>carMoveFieldCentric</name>
+        <param>
+          <type>int16_t</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>power</declname>
+        </param>
+        <param>
+          <type>int16_t</type>
+          <declname>heading</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>drift</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Use the field center method to control the movement of the car</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the direction you want the car to move </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>moving speed <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>heading</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the car head pointing </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>drift</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether it is a drift mode, default flase true, drift mode, the car body will return to square flase, drift mode, the car body will not return to square </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="163" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="163" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="car__control_8cpp_1a1c84672ec5fe1a04fff90a122e05dff4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carResetHeading</definition>
+        <argsstring>()</argsstring>
+        <name>carResetHeading</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reset origin head pointing </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="196" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="196" bodyend="198"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="car__control_8cpp_1a0eeb9f0024cd7d19b6a02c6df4f43323" prot="public" static="no">
+        <name>MOTOR_POWER_MIN</name>
+        <initializer>28</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="6" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="car__control_8cpp_1aa4729260b732666338dee7d841aa12f3" prot="public" static="no">
+        <name>KP</name>
+        <initializer>(float)0.8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="11" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="car__control_8cpp_1ade82752ae1652fdf0df9df7a16ffda29" prot="public" static="no">
+        <name>KI</name>
+        <initializer>(float)0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="12" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="car__control_8cpp_1ad4f9673d16d231643789f081068d2372" prot="public" static="no">
+        <name>KD</name>
+        <initializer>(float)20.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="13" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="car__control_8cpp_1acb48dfe4aeeac4cc0a7f391f6217f889" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t _lastError</definition>
+        <argsstring></argsstring>
+        <name>_lastError</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="15" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="car__control_8cpp_1a120eff59d6569709a588f50b255512f1" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t errorIntegral</definition>
+        <argsstring></argsstring>
+        <name>errorIntegral</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="16" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="car__control_8cpp_1a37bc17604e614384672e24e6fa0a2508" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t originHeading</definition>
+        <argsstring></argsstring>
+        <name>originHeading</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="17" column="9" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="car__control_8cpp_1a830385082951c918a640a597f10d5baa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void carBegin</definition>
+        <argsstring>()</argsstring>
+        <name>carBegin</name>
+        <briefdescription>
+<para>Initialize the motor, and (block) the initialization compass. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" line="22" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp" bodystart="22" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;car_control.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SoftPWM.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MOTOR_POWER_MIN<sp/>28<sp/><sp/></highlight><highlight class="comment">//<sp/>28/255</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/>Set<sp/>the<sp/>pid<sp/>parameters</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KP<sp/>(float)0.8<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KI<sp/>(float)0.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KD<sp/>(float)20.0<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">int32_t<sp/>_lastError<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">int32_t<sp/>errorIntegral<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">int16_t<sp/>originHeading;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carBegin()<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>SoftPWMSet(MOTOR_PINS[i],<sp/>0);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>SoftPWMSetFadeTime(MOTOR_PINS[i],<sp/>100,<sp/>100);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>compassBegin();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>AVERAGE_FILTER_SIZE;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carForward()<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>_carMove(<sp/><sp/><sp/>0,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carBackward()<sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>_carMove(<sp/>180,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carLeft()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>_carMove(<sp/>-90,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carRight()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>_carMove(<sp/><sp/>90,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carTurnLeft()<sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>_carMove(<sp/><sp/><sp/>0,<sp/>0,<sp/>CAR_ROTATE_POWER);<sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carTurnRight()<sp/><sp/><sp/><sp/><sp/>{<sp/>_carMove(<sp/><sp/><sp/>0,<sp/>0,<sp/>-CAR_ROTATE_POWER);<sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carLeftForword()<sp/><sp/><sp/>{<sp/>_carMove(<sp/>-45,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carRightForword()<sp/><sp/>{<sp/>_carMove(<sp/><sp/>45,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carLeftBackward()<sp/><sp/>{<sp/>_carMove(-135,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carRightBackward()<sp/>{<sp/>_carMove(<sp/>135,<sp/>CAR_DEFAULT_POWER,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carStop()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>_carMove(<sp/><sp/><sp/>0,<sp/>0,<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carSetMotors(int8_t<sp/>power0,<sp/>int8_t<sp/>power1,<sp/>int8_t<sp/>power2,<sp/>int8_t<sp/>power3)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dir[4];</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>int8_t<sp/>power[4]<sp/>=<sp/>{power0,<sp/>power1,<sp/>power2,<sp/>power3};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>int8_t<sp/>newPower[4];</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>dir[i]<sp/>=<sp/>power[i]<sp/>&gt;<sp/>0;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(MOTOR_DIRECTIONS[i])<sp/>dir[i]<sp/>=<sp/>!dir[i];</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(power[i]<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newPower[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>newPower[i]<sp/>=<sp/>map(abs(power[i]),<sp/>0,<sp/>100,<sp/>MOTOR_POWER_MIN,<sp/>255);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>SoftPWMSet(MOTOR_PINS[i*2],<sp/>dir[i]<sp/>*<sp/>newPower[i]);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>SoftPWMSet(MOTOR_PINS[i*2+1],<sp/>!dir[i]<sp/>*<sp/>newPower[i]);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_carMove(int16_t<sp/>angle,<sp/>int8_t<sp/>power,<sp/>int8_t<sp/>rot,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>drift)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>int8_t<sp/>power_0,<sp/>power_1,<sp/>power_2,<sp/>power_3;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>speed;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>forward<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>angle<sp/>+=<sp/>90;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Offset<sp/>angle<sp/>as<sp/>0<sp/>to<sp/>the<sp/>front</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rad<sp/>=<sp/>angle<sp/>*<sp/>PI<sp/>/<sp/>180;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rot<sp/>==<sp/>0)<sp/>speed<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>speed<sp/>=<sp/>0.5;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>power<sp/>/=<sp/>sqrt(2);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>4<sp/>wheel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(drift)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>power_0<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>-<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>power_1<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>+<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>power_2<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>-<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed<sp/>+<sp/>rot<sp/>*<sp/>speed<sp/>*<sp/>2;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>power_3<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>+<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed<sp/>-<sp/>rot<sp/>*<sp/>speed<sp/>*<sp/>2;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>power_0<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>-<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed<sp/>-<sp/>rot<sp/>*<sp/>speed;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>power_1<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>+<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed<sp/>+<sp/>rot<sp/>*<sp/>speed;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>power_2<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>-<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed<sp/>+<sp/>rot<sp/>*<sp/>speed;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>power_3<sp/>=<sp/>(power<sp/>*<sp/>sin(rad)<sp/>+<sp/>power<sp/>*<sp/>cos(rad))<sp/>*<sp/>speed<sp/>-<sp/>rot<sp/>*<sp/>speed;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>carSetMotors(power_0,<sp/>power_1,<sp/>power_2,<sp/>power_3);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carMove(int16_t<sp/>angle,<sp/>int8_t<sp/>power,<sp/>int8_t<sp/>rot,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>drift)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>int32_t<sp/>error;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>int32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rot<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>error<sp/>=<sp/>angle<sp/>-<sp/>originHeading;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>convert<sp/>-360<sp/>to<sp/>360<sp/>to<sp/>-180<sp/>to<sp/>180</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>&gt;<sp/>180)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>error<sp/>-=<sp/>360;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>&lt;<sp/>-180)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>error<sp/>+=<sp/>360;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/>KP<sp/>*<sp/>error<sp/>+<sp/>KI<sp/>*<sp/>errorIntegral<sp/>+<sp/>KD<sp/>*<sp/>(error<sp/>-<sp/>_lastError);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>rot<sp/>+=<sp/>max(-100,<sp/>min(100,<sp/>offset));</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>errorIntegral<sp/>+=<sp/>error;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>_lastError<sp/>=<sp/>error;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>_carMove(angle,<sp/>power,<sp/>rot,<sp/>drift);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carMoveFieldCentric(int16_t<sp/>angle,<sp/>int8_t<sp/>power,<sp/>int16_t<sp/>heading,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>drift)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>int16_t<sp/>currentHeading<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>int32_t<sp/>error<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>int32_t<sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>int8_t<sp/>rot<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>currentHeading<sp/>=<sp/>compassReadAngle();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>error<sp/>=<sp/>currentHeading<sp/>-<sp/>originHeading<sp/>-<sp/>heading;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>convert<sp/>-360<sp/>to<sp/>360<sp/>to<sp/>-180<sp/>to<sp/>180</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(error<sp/>&gt;<sp/>180)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>error<sp/>-=<sp/>360;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(error<sp/>&lt;<sp/>-180)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>error<sp/>+=<sp/>360;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>&gt;<sp/>1<sp/>||<sp/>error<sp/>&lt;<sp/>-1)<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/>KP<sp/>*<sp/>error<sp/>+<sp/>KI<sp/>*<sp/>errorIntegral<sp/>+<sp/>KD<sp/>*<sp/>(error<sp/>-<sp/>_lastError);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>rot<sp/>+=<sp/>max(-100,<sp/>min(100,<sp/>offset));</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>errorIntegral<sp/>+=<sp/>error;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>_lastError<sp/>=<sp/>error;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>angle<sp/>=<sp/>angle<sp/>-<sp/>currentHeading<sp/>+<sp/>originHeading;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>_carMove(angle,<sp/>power,<sp/>rot,<sp/>drift);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>carResetHeading()<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>originHeading<sp/>=<sp/>compassReadAngle();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/car_control.cpp"/>
+  </compounddef>
+</doxygen>

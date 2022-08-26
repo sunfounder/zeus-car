@@ -3,9 +3,12 @@
 
 #include <Arduino.h>
 
+/** @name set pin of IR RECEIVER sensor*/
 #define IR_RECEIVER_PIN 2
 
-
+/** @name Define the code sent by the IR remote control keys
+*/
+//@{
 #define IR_KEY_POWER 0x45
 #define IR_KEY_MODE  0x46
 #define IR_KEY_MUTE  0x47
@@ -35,8 +38,28 @@
 #define IR_KEY_9 0x4A
 
 #define IR_KEY_ERROR 0x00
+//@}
 
+/**
+ * @brief IRremote init
+ */
 void irBegin();
+
+/**
+ * @brief Read the code received by IR
+ * 
+ * @code {.cpp}
+ * uint8_t key = irRead();
+ * Serial.print('IR recv code:');
+ * Serial.print(key);
+ * if (key == IR_KEY_POWER) {
+ *  Serial.println("IR_KEY_POWER");
+ * }
+ * @endcode
+ * 
+ * @return uint8_t 
+ * 
+ */
 uint8_t irRead();
 
 #endif // __IR_REMOTE_H__

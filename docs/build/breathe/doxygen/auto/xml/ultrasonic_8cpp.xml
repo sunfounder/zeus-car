@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="ultrasonic_8cpp" kind="file" language="C++">
+    <compoundname>ultrasonic.cpp</compoundname>
+    <includes refid="ultrasonic_8h" local="yes">ultrasonic.h</includes>
+    <includes local="yes">Arduino.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp</label>
+        <link refid="ultrasonic_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ultrasonic.h</label>
+        <link refid="ultrasonic_8h_source"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ultrasonic_8cpp_1aac90af540913d550a44bfb42620cda51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float ultrasonicRead</definition>
+        <argsstring>()</argsstring>
+        <name>ultrasonicRead</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the distance read by the ultrasonic module, unit cm </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" line="4" column="7" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" bodystart="4" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="ultrasonic_8cpp_1a9fa3257c2ca74d1cf5ee83c858ea8455" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ultrasonicIsObstacle</definition>
+        <argsstring>()</argsstring>
+        <name>ultrasonicIsObstacle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine whether there is an obstacle ahead according to the set ULTRASONIC_AVOIDANCE_THRESHOLD </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" line="20" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="ultrasonic_8cpp_1a71348a04f56f29ceab599ac52c20f546" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ultrasonicIsClear</definition>
+        <argsstring>()</argsstring>
+        <name>ultrasonicIsClear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine whether there is clear ahead according to the set ULTRASONIC_AVOIDANCE_THRESHOLD </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" line="24" column="6" bodyfile="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp" bodystart="24" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;ultrasonic.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ultrasonicRead()<sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/>pinMode(ULTRASONIC_TRIG_PIN,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/>digitalWrite(ULTRASONIC_TRIG_PIN,<sp/>LOW);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/>delayMicroseconds(2);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/>digitalWrite(ULTRASONIC_TRIG_PIN,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/>delayMicroseconds(10);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/>digitalWrite(ULTRASONIC_TRIG_PIN,<sp/>LOW);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>pinMode(ULTRASONIC_ECHO_PIN,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duration<sp/>=<sp/>pulseIn(ULTRASONIC_ECHO_PIN,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distance<sp/>=<sp/>duration<sp/><sp/>*<sp/>34.0<sp/>/<sp/>1000;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(distance<sp/>&gt;<sp/>2000)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>distance;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ultrasonicIsObstacle()<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ultrasonicRead()<sp/>&lt;<sp/>ULTRASONIC_AVOIDANCE_THRESHOLD;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ultrasonicIsClear()<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ultrasonicRead()<sp/>&gt;<sp/>ULTRASONIC_AVOIDANCE_THRESHOLD;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/ultrasonic.cpp"/>
+  </compounddef>
+</doxygen>

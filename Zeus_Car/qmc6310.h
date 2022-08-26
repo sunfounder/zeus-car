@@ -4,13 +4,19 @@
 #include <Wire.h>
 #include <Arduino.h>
 
+/** @name Define I2C address of QMC6310 compass sensor */
 #define QMC6310_ADDR 0x1C
 
+/** @name Define register address of QMC6310 compass sensor */
+//@{
 #define QMC6310_REG_DATA_START 0x01
 #define QMC6310_REG_STATUS     0x09
 #define QMC6310_REG_CONTROL_1  0x0A
 #define QMC6310_REG_CONTROL_2  0x0B
+//@}
 
+/** @name Define the register parameter configuration of the sensor */
+//@{
 #define QMC6310_VAL_MODE_SUSPEND    0 << 0
 #define QMC6310_VAL_MODE_NORMAL     1 << 0
 #define QMC6310_VAL_MODE_SINGLE     2 << 0
@@ -45,22 +51,60 @@
 
 #define QMC6310_VAL_SOFT_RST_ON  1 << 7
 #define QMC6310_VAL_SOFT_RST_OFF 0 << 7
+//@}
 
-
+/** A class.  Class of QMC6310 compass sensor */
 class QMC6310{
   public:
+    /** Construct a new QMC6310 object */
     QMC6310();
+
+    /** Initialize QMC6310 */
     void init();
+
+    /** Read values of QMC6310 */
     void read();
+
+    /** Get x-axis values of QMC6310 */
     int16_t getX();
+
+    /** Get y-axis values of QMC6310 */
     int16_t getY();
+
+    /** Get z-axis values of QMC6310 */
     int16_t getZ();
+
+    /** Get azimuth of QMC6310 */
     uint16_t getAzimuth();
+
+    /** Set calibration values */
     void setCalibration(int16_t xMin, int16_t xMax, int16_t yMin, int16_t yMax, int16_t zMin, int16_t zMax);
+    
+    /** clear calibration values */
     void clearCalibration();
+
   private:
+    /** i2c wite 
+     * 
+     * @param reg byte, register address
+     * @param val byte, value to write 
+     * 
+    */
     void _i2cWrite(byte reg, byte val);
+
+    /** i2c read data 
+     * 
+     * @param reg byte, register address
+     * @param num number of bytes to read
+     * @param dest pointer to store read data
+     * 
+     * @return Whether the execution is successful
+     *         - true succeed
+     *         - flase failed
+    */
     bool _i2cReadInto(byte reg, byte num, byte* dest);
+    
+    /** whether calibration is in progress */
     bool _calibrated = false;
 };
 

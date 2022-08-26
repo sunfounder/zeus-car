@@ -16,8 +16,8 @@ int32_t _lastError = 0;
 int32_t errorIntegral = 0;
 int16_t originHeading;
 
-/* 
-* @brief: Initialize the motor, and (block) the initialization compass
+/** 
+* @brief Initialize the motor, and (block) the initialization compass
 */
 void carBegin() {
   for (uint8_t i = 0; i < 8; i++) {
@@ -30,9 +30,9 @@ void carBegin() {
   }
 }
 
-/* 
-* simple move functions
-*/
+/** 
+ * @name simple move functions with CAR_DEFAULT_POWER
+ */
 void carForward()       { _carMove(   0, CAR_DEFAULT_POWER, 0); }
 void carBackward()      { _carMove( 180, CAR_DEFAULT_POWER, 0); }
 void carLeft()          { _carMove( -90, CAR_DEFAULT_POWER, 0); }
@@ -45,9 +45,14 @@ void carLeftBackward()  { _carMove(-135, CAR_DEFAULT_POWER, 0); }
 void carRightBackward() { _carMove( 135, CAR_DEFAULT_POWER, 0); }
 void carStop()          { _carMove(   0, 0, 0); }
 
-/* 
-* @brief: Set PWM values for 4 motors
-*/
+/** 
+ * @brief Set speed for 4 motors
+ *
+ * @param power0  0 ~ 100
+ * @param power1  0 ~ 100
+ * @param power2  0 ~ 100
+ * @param power3 0 ~ 100
+ */
 void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
   bool dir[4];
   int8_t power[4] = {power0, power1, power2, power3};
@@ -68,6 +73,20 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
   }
 }
 
+/** 
+  * Control the car to move
+  *  
+  * @code {.cpp}
+  * _carMove(-90, 80, 0);
+  * @endcode
+  * 
+  * @param angle the direction you want the car to move 
+  * @param power moving speed  
+  * @param rot the car fixed rotation angle during the movement
+  * @param drift Whether it is a drift mode, default flase 
+  *              true, drift mode, the car body will return to square
+  *              flase, drift mode, the car body will not return to square
+  */
 void _carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   int8_t power_0, power_1, power_2, power_3;
   float speed;
@@ -98,6 +117,16 @@ void _carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
 }
 
 
+/** 
+  * Control the car to move with PID control
+  *
+  * @param angle the direction you want the car to move 
+  * @param power moving speed  
+  * @param rot the car fixed rotation angle during the movement
+  * @param drift Whether it is a drift mode, default flase  
+  *              true, drift mode, the car body will return to square
+  *              flase, drift mode, the car body will not return to square
+  */
 void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   int32_t error;
   int32_t offset;
@@ -121,7 +150,16 @@ void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   _carMove(angle, power, rot, drift);
 }
 
-
+/** 
+  * Use the field center method to control the movement of the car
+  *
+  * @param angle the direction you want the car to move 
+  * @param power moving speed  
+  * @param heading the car head pointing
+  * @param drift Whether it is a drift mode, default flase 
+  *              true, drift mode, the car body will return to square
+  *              flase, drift mode, the car body will not return to square
+  */
 void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift) {
   int16_t currentHeading = 0;
   int32_t error = 0;
@@ -152,6 +190,9 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
 
 }
 
+/** 
+  * Reset origin head pointing
+  */
 void carResetHeading() {
   originHeading = compassReadAngle();
 }

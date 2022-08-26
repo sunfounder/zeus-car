@@ -16,6 +16,10 @@ bool calibrateChanged;
 bool calibrateDone = true;
 
 
+/**
+ * @brief Clear value of compass Calibration
+ * 
+ */
 void compassClearCalibration() {
   for (uint8_t i = 0; i < 6; i++) {
     calibrationData[i] = 0;
@@ -25,6 +29,10 @@ void compassClearCalibration() {
   _compass.clearCalibration();
 }
 
+/**
+ * @brief Save value of compass Calibration
+ * 
+ */
 void compassSaveCalibration() {
   // Serial.println("Saving calibration data...");
   for (int i = 0; i < 6; i++) {
@@ -44,6 +52,10 @@ void compassSaveCalibration() {
   );
 }
 
+/**
+ * @brief Read value of compass Calibration
+ * 
+ */
 void compassReadCalibration() {
   uint8_t highByte, lowByte;
   // Serial.println("Reading calibrationData value from EEPROM");
@@ -53,19 +65,7 @@ void compassReadCalibration() {
     long data = (highByte << 8) | lowByte;
     calibrationData[i] = data - 0xFF;
   }
-  // Serial.print("calibrationData data(");
-  // Serial.print(calibrationData[0]);
-  // Serial.print(", ");
-  // Serial.print(calibrationData[1]);
-  // Serial.print(", ");
-  // Serial.print(calibrationData[2]);
-  // Serial.print(", ");
-  // Serial.print(calibrationData[3]);
-  // Serial.print(", ");
-  // Serial.print(calibrationData[4]);
-  // Serial.print(", ");
-  // Serial.print(calibrationData[5]);
-  // Serial.println(");");
+
   _compass.setCalibration(
     calibrationData[0],
     calibrationData[1],
@@ -76,10 +76,22 @@ void compassReadCalibration() {
   );
 }
 
+
+/**
+ * @brief Is compass Calibrate Done ?
+ * 
+ * @return  - true 
+ *          - false 
+ *         
+ */
 bool compassCalibrateDone() {
   return calibrateDone;
 }
 
+/**
+ * @brief Start calibrate compass
+ * 
+ */
 void compassCalibrateStart() {
   compassClearCalibration();
   calibrate_c = millis();
@@ -95,8 +107,11 @@ void compassCalibrateStart() {
   calibrationData[5] = _compass.getZ();
 }
 
+/**
+ * @brief The loop of  compass calibration
+ * 
+ */
 bool compassCalibrateLoop() {
-  // Serial.println("Compass Reading...");
   if (calibrateDone) {
     return;
   }
@@ -131,25 +146,10 @@ bool compassCalibrateLoop() {
   }
 
   if (calibrateChanged) {
-    // Serial.println("Calibrate Data Updated... Keep moving your sensor around.");
     calibrate_c = millis();
   }
   calibrate_t = millis();
   if (calibrate_t - calibrate_c > CALIBRATION_TIME) {
-    // Serial.println("Calibratiion finished!");
-    // Serial.print("calibration data(");
-    // Serial.print(calibrationData[0]);
-    // Serial.print(", ");
-    // Serial.print(calibrationData[1]);
-    // Serial.print(", ");
-    // Serial.print(calibrationData[2]);
-    // Serial.print(", ");
-    // Serial.print(calibrationData[3]);
-    // Serial.print(", ");
-    // Serial.print(calibrationData[4]);
-    // Serial.print(", ");
-    // Serial.print(calibrationData[5]);
-    // Serial.println(");");
 
     compassSaveCalibration();
     calibrateDone = true;
@@ -157,6 +157,11 @@ bool compassCalibrateLoop() {
   return calibrateChanged;
 }
 
+/**
+ * @brief Read the average filtered value of compass angle
+ * 
+ * @return int16_t average angle
+ */
 int16_t compassReadAngle() {
   _compass.read();
   int16_t value = compassGetAzimuth();
@@ -172,6 +177,11 @@ int16_t compassReadAngle() {
   return value;
 }
 
+/**
+ * @brief Calculate the angle from the values in the x, y direction of the compass sensor
+ * 
+ * @return int16_t angle
+ */
 int16_t compassGetAzimuth() {
   _compass.read();
   int16_t y = _compass.getY();
@@ -180,10 +190,13 @@ int16_t compassGetAzimuth() {
   return heading;
 }
 
+/**
+ * @brief Compass init 
+ * 
+ */
 void compassBegin() {
   _compass.init();
   compassReadCalibration();
-  // Serial.println("Compass read calibration done");
   for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
     compassReadAngle();
   }

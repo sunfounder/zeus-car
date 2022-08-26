@@ -1,6 +1,9 @@
 #ifndef __ARDUINO_CAR_H__
 #define __ARDUINO_CAR_H__
 
+/** 
+ * @name Mode Value Definition
+ */
 #define MODE_NONE                    0
 #define MODE_LINE_FOLLOWING 1
 #define MODE_ROTATE_LINE_FOLLOWING   2
@@ -10,6 +13,9 @@
 #define MODE_APP_CONTROL             6
 #define MODE_COMPASS_CALIBRATION     7
 
+/**
+ *@name Defines the hexadecimal value of the color
+ */
 #define RED           0xFF0A0A
 #define ORANGE        0xFF2500  //0xFFA500
 #define YELLOW        0xFFFF0A
@@ -23,6 +29,9 @@
 #define VOILET        0xFF0AFF
 #define MAGENTA       0xFF0AA5
 
+/**
+ * @name Set the color to match the mode
+ */
 #define MODE_NONE_COLOR                     GREEN_CYAN
 #define MODE_LINE_FOLLOWING_COLOR           CYAN
 #define MODE_ROTATE_LINE_FOLLOWING_COLOR    CYAN_BLUE

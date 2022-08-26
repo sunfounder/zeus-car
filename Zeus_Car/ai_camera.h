@@ -5,9 +5,14 @@
 #include "string.h"
 #include "rgb.h"
 
-/*
-  Set the print level of information received by esp32-cam
-*/
+/**
+ * @name Set the print level of information received by esp32-cam
+ *
+ * @code {.cpp}
+ * #define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO
+ * @endcode
+ * 
+ */
 #define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO
 #define CAM_DEBUG_LEVEL_OFF 0
 #define CAM_DEBUG_LEVEL_ERROR 1
@@ -20,7 +25,9 @@
 #define CAM_DEBUG_HEAD_INFO "[CAM_I]"
 #define CAM_DEBUG_HEAD_DEBUG "[CAM_D]"
 
-/*-----------------------------------------*/
+/**
+ * @name Define component-related values
+ */
 #define DPAD_STOP     0
 #define DPAD_FORWARD  1
 #define DPAD_BACKWARD 2
@@ -35,10 +42,6 @@
 #define WIFI_MODE_NONE "0"
 #define WIFI_MODE_STA  "1"
 #define WIFI_MODE_AP   "2"
-
-#define CAMERA_MODE_AI     "0"
-#define CAMERA_MODE_STREAM "1"
-#define CAMERA_MODE_BOTH   "2"
 
 #define REGION_A 0
 #define REGION_B 1
@@ -72,17 +75,15 @@ class AiCamera {
   public:
     AiCamera(const char* name, const char* type);
 
-    void begin();
     void begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort);
     void debug(char* msg);
     void readInto(char* buffer);
-    bool read();
     void sendData(char* buf);
+    void command(const char* command, const char* value, char* result) ;
     void set(const char* command);
     void set(const char* command, const char* value);
     void get(const char* command, char* result);
     void get(const char* command, const char* value, char* result);
-    void command(const char* command, const char* value, char* result) ;
     void setOnReceived(void (*func)(char*, char*));
     void loop();
 
@@ -100,10 +101,8 @@ class AiCamera {
 
   private:
     void subString(char* str, int16_t start, int16_t end=-1);
-    // void getStrOf(char* str, uint8_t index, char* result);
     void getStrOf(char* str, uint8_t index, char* result, char divider);
-    // void setStrOf(char* str, uint8_t index, char* value);
-    void setStrOf(char* str, uint8_t index, String value);
+    void setStrOf(char* str, uint8_t index, String value, char divider=';');
     int16_t getIntOf(char* str, uint8_t index, char divider=';');
     bool getBoolOf(char* str, uint8_t index);
     double getDoubleOf(char* str, uint8_t index);

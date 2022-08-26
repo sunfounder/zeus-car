@@ -1,0 +1,5 @@
+``compass``
+==============================
+.. autodoxygenfile:: compass.h
+   :project: auto
+   

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>car_control &mdash; SunFounder Robot HAT  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="cmd_code_config" href="cmd_code_config.html" />
+    <link rel="prev" title="ai_camera" href="ai_camera.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> SunFounder Robot HAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Zeus_Car.h.html"><code class="docutils literal notranslate"><span class="pre">Zeus_Car.h</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Zeus_Car.ino.html"><code class="docutils literal notranslate"><span class="pre">Zeus_Car.ino</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai_camera.html"><code class="docutils literal notranslate"><span class="pre">ai_camera</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">car_control</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmd_code_config.html"><code class="docutils literal notranslate"><span class="pre">cmd_code_config</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SunFounder Robot HAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">car_control</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/car_control.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="car-control">
+<h1><code class="docutils literal notranslate"><span class="pre">car_control</span></code><a class="headerlink" href="#car-control" title="Permalink to this heading">¶</a></h1>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MOTOR_DIRECTIONS">
+<span class="target" id="car__control_8h_1a568c55661ec8f2d38667a4c93203fd13"></span><span class="sig-name descname"><span class="n"><span class="pre">MOTOR_DIRECTIONS</span></span></span><a class="headerlink" href="#c.MOTOR_DIRECTIONS" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MOTOR_PINS">
+<span class="target" id="car__control_8h_1aa15a33dacfb9e45a76abd1e2fc0e8c31"></span><span class="sig-name descname"><span class="n"><span class="pre">MOTOR_PINS</span></span></span><a class="headerlink" href="#c.MOTOR_PINS" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAR_DEFAULT_POWER">
+<span class="target" id="car__control_8h_1a42eb7ce9d558c9bfb27c004493e65d89"></span><span class="sig-name descname"><span class="n"><span class="pre">CAR_DEFAULT_POWER</span></span></span><a class="headerlink" href="#c.CAR_DEFAULT_POWER" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAR_ROTATE_POWER">
+<span class="target" id="car__control_8h_1a054bfe4159ecfbc1ebedca0e4a59bdb6"></span><span class="sig-name descname"><span class="n"><span class="pre">CAR_ROTATE_POWER</span></span></span><a class="headerlink" href="#c.CAR_ROTATE_POWER" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAR_CALIBRATION_POWER">
+<span class="target" id="car__control_8h_1a59e0385ca958d7ed3d1e1c502a437a06"></span><span class="sig-name descname"><span class="n"><span class="pre">CAR_CALIBRATION_POWER</span></span></span><a class="headerlink" href="#c.CAR_CALIBRATION_POWER" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAR_WIDTH">
+<span class="target" id="car__control_8h_1a555366e17a4c9d72bc3835446fee3fb9"></span><span class="sig-name descname"><span class="n"><span class="pre">CAR_WIDTH</span></span></span><a class="headerlink" href="#c.CAR_WIDTH" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CAR_LENGTH">
+<span class="target" id="car__control_8h_1ac05c17880a1eb83f27e6e177c739309d"></span><span class="sig-name descname"><span class="n"><span class="pre">CAR_LENGTH</span></span></span><a class="headerlink" href="#c.CAR_LENGTH" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48carBeginv">
+<span id="_CPPv38carBeginv"></span><span id="_CPPv28carBeginv"></span><span id="carBegin"></span><span class="target" id="car__control_8h_1a830385082951c918a640a597f10d5baa"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carBegin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48carBeginv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>: Initialize the motor, and (block) the initialization compass </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412carSetMotors6int8_t6int8_t6int8_t6int8_t">
+<span id="_CPPv312carSetMotors6int8_t6int8_t6int8_t6int8_t"></span><span id="_CPPv212carSetMotors6int8_t6int8_t6int8_t6int8_t"></span><span id="carSetMotors__int8_t.int8_t.int8_t.int8_t"></span><span class="target" id="car__control_8h_1a62e1923865fce9af653413f325dae795"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carSetMotors</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">power0</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">power1</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">power2</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">power3</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412carSetMotors6int8_t6int8_t6int8_t6int8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set speed for 4 motors. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>power0</strong> – 0 ~ 100 </p></li>
+<li><p><strong>power1</strong> – 0 ~ 100 </p></li>
+<li><p><strong>power2</strong> – 0 ~ 100 </p></li>
+<li><p><strong>power3</strong> – 0 ~ 100 </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv410carForwardv">
+<span id="_CPPv310carForwardv"></span><span id="_CPPv210carForwardv"></span><span id="carForward"></span><span class="target" id="car__control_8h_1a8344e8f4f8b369c0c1126559c16aea07"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carForward</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410carForwardv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411carBackwardv">
+<span id="_CPPv311carBackwardv"></span><span id="_CPPv211carBackwardv"></span><span id="carBackward"></span><span class="target" id="car__control_8h_1a408afb598068a40273bddea579c32906"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carBackward</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411carBackwardv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411carTurnLeftv">
+<span id="_CPPv311carTurnLeftv"></span><span id="_CPPv211carTurnLeftv"></span><span id="carTurnLeft"></span><span class="target" id="car__control_8h_1a92a635304d348e79ab2853082ce36550"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carTurnLeft</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411carTurnLeftv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412carTurnRightv">
+<span id="_CPPv312carTurnRightv"></span><span id="_CPPv212carTurnRightv"></span><span id="carTurnRight"></span><span class="target" id="car__control_8h_1a93d928f31187130817b9bfe5bbda0d63"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carTurnRight</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412carTurnRightv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414carLeftForwordv">
+<span id="_CPPv314carLeftForwordv"></span><span id="_CPPv214carLeftForwordv"></span><span id="carLeftForword"></span><span class="target" id="car__control_8h_1a0afc53f532d191931ed66c6f3dc1c13a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carLeftForword</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414carLeftForwordv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415carRightForwordv">
+<span id="_CPPv315carRightForwordv"></span><span id="_CPPv215carRightForwordv"></span><span id="carRightForword"></span><span class="target" id="car__control_8h_1a37d953b573ca07c56c2c4c55b5b88a56"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carRightForword</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415carRightForwordv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415carLeftBackwardv">
+<span id="_CPPv315carLeftBackwardv"></span><span id="_CPPv215carLeftBackwardv"></span><span id="carLeftBackward"></span><span class="target" id="car__control_8h_1a1f8c5e17232c93f115af999d48993584"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carLeftBackward</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415carLeftBackwardv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416carRightBackwardv">
+<span id="_CPPv316carRightBackwardv"></span><span id="_CPPv216carRightBackwardv"></span><span id="carRightBackward"></span><span class="target" id="car__control_8h_1add8fd5a8f94499868d20938ec6a90db9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carRightBackward</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416carRightBackwardv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv47carLeftv">
+<span id="_CPPv37carLeftv"></span><span id="_CPPv27carLeftv"></span><span id="carLeft"></span><span class="target" id="car__control_8h_1a5ff415625eaeb0a45f5c272dfba5988c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carLeft</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47carLeftv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48carRightv">
+<span id="_CPPv38carRightv"></span><span id="_CPPv28carRightv"></span><span id="carRight"></span><span class="target" id="car__control_8h_1a7ccae63e06ce177c8997fe6e045c9cee"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carRight</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48carRightv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv47carStopv">
+<span id="_CPPv37carStopv"></span><span id="_CPPv27carStopv"></span><span id="carStop"></span><span class="target" id="car__control_8h_1ac623c5fe5fd5d86a1324c52fe321e042"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carStop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47carStopv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48_carMove7int16_t6int8_t6int8_tb">
+<span id="_CPPv38_carMove7int16_t6int8_t6int8_tb"></span><span id="_CPPv28_carMove7int16_t6int8_t6int8_tb"></span><span id="_carMove__int16_t.int8_t.int8_t.b"></span><span class="target" id="car__control_8h_1a374b6b3aa56001ccc073a220b368bd6f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_carMove</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">angle</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">power</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rot</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">drift</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48_carMove7int16_t6int8_t6int8_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Control the car to move to the set angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> – the direction you want the car to move </p></li>
+<li><p><strong>power</strong> – moving speed </p></li>
+<li><p><strong>rot</strong> – the car fixed rotation angle during the movement </p></li>
+<li><p><strong>drift</strong> – <p>Whether it is a drift mode</p>
+<p>true, drift mode, the car body will return to square flase, drift mode, the car body will not return to square</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv47carMove7int16_t6int8_t6int8_tb">
+<span id="_CPPv37carMove7int16_t6int8_t6int8_tb"></span><span id="_CPPv27carMove7int16_t6int8_t6int8_tb"></span><span id="carMove__int16_t.int8_t.int8_t.b"></span><span class="target" id="car__control_8h_1a3263f6ab327e558770fef548774ab20e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carMove</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">angle</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">power</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rot</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">drift</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47carMove7int16_t6int8_t6int8_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419carMoveFieldCentric7int16_t6int8_t7int16_tb">
+<span id="_CPPv319carMoveFieldCentric7int16_t6int8_t7int16_tb"></span><span id="_CPPv219carMoveFieldCentric7int16_t6int8_t7int16_tb"></span><span id="carMoveFieldCentric__int16_t.int8_t.int16_t.b"></span><span class="target" id="car__control_8h_1ad9448239108619a0868bb063d98975eb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carMoveFieldCentric</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">angle</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">power</span></span>, <span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">heading</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">drift</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419carMoveFieldCentric7int16_t6int8_t7int16_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415carResetHeadingv">
+<span id="_CPPv315carResetHeadingv"></span><span id="_CPPv215carResetHeadingv"></span><span id="carResetHeading"></span><span class="target" id="car__control_8h_1a1c84672ec5fe1a04fff90a122e05dff4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">carResetHeading</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415carResetHeadingv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ai_camera.html" class="btn btn-neutral float-left" title="ai_camera" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cmd_code_config.html" class="btn btn-neutral float-right" title="cmd_code_config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

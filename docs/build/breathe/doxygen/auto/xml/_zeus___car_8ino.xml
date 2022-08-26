@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_zeus___car_8ino" kind="file" language="C++">
+    <compoundname>Zeus_Car.ino</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">/*******************************************************************</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>The<sp/>control<sp/>program<sp/>of<sp/>the<sp/>Ardunio<sp/>Mecanum<sp/>wheel<sp/>trolley</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Development<sp/>test<sp/>environment:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Arduino<sp/>IDE<sp/>1.8.19</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Board<sp/>tools:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Arduino<sp/>AVR<sp/>Boards<sp/>1.8.3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Libraries:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>IRRemote</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>SoftPWM</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Version:<sp/>1.0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>--<sp/>https://github.com/sunfounder/zeus-car.git</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Author:<sp/>Sunfounder</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Website:<sp/>http://www.sunfounder.com</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>https://docs.sunfounder.com</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>*******************************************************************/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>VERSION<sp/>&quot;1.0.0&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Arduino.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;SoftPWM.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;string.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ir_remote.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;rgb.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;Zeus_Car.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;car_control.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ai_camera.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;hc165.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ir_obstacle.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;grayscale.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ultrasonic.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;cmd_code_config.hpp&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/***************************<sp/>Configure<sp/>*******************************/</highlight></codeline>
+<codeline><highlight class="normal">/**<sp/>@name<sp/>Configure<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">///@{</highlight></codeline>
+<codeline><highlight class="normal">/**<sp/>Whether<sp/>to<sp/>enable<sp/>Watchdog<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>WATCH_DOG<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#if<sp/>WATCH_DOG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#include<sp/>&lt;avr/wdt.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Whether<sp/>to<sp/>enable<sp/>TEST<sp/>mode<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TEST<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#if<sp/>TEST</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#include<sp/>&quot;test.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Whether<sp/>to<sp/>enable<sp/><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>MEM<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#if<sp/>MEM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#include<sp/>&lt;MemoryFree.h&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#include<sp/>&lt;pgmStrToRAM.h&gt;<sp/>//<sp/>not<sp/>needed<sp/>for<sp/>new<sp/>way.<sp/>but<sp/>good<sp/>to<sp/>have<sp/>for<sp/>reference.</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>Wifi<sp/>mode<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>WIFI_MODE<sp/>WIFI_MODE_AP</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>Wifi<sp/>SSID<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SSID<sp/>&quot;Zeus_Car&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>Wifi<sp/>password<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PASSWORD<sp/>&quot;12345678&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>#define<sp/>WIFI_MODE<sp/>WIFI_MODE_STA</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>#define<sp/>SSID<sp/>&quot;xxxxxxxxxx&quot;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>#define<sp/>PASSWORD<sp/>&quot;xxxxxxxxxx&quot;</highlight></codeline>
+<codeline><highlight class="normal">//@}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>product<sp/>name<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>NAME<sp/>&quot;Zeus_Car&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>product<sp/>type<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TYPE<sp/>&quot;Zeus_Car&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>websockets<sp/>port</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Sunfounder<sp/>Controller<sp/>APP<sp/>fixed<sp/>using<sp/>port<sp/>8765</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT<sp/>&quot;8765&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>the<sp/>motor<sp/>speed<sp/>in<sp/>voice<sp/>control<sp/>modes<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SPEECH_REMOTE_POWER<sp/>40</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>the<sp/>motor<sp/>speed<sp/>in<sp/>IR<sp/>remote<sp/>control<sp/>modes<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>IR_REMOTE_POWER<sp/><sp/>50</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>the<sp/>motor<sp/>speed<sp/>in<sp/>line<sp/>follow<sp/>modes<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LINE_FOLLOW_POWER<sp/>50</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Configure<sp/>the<sp/>motor<sp/>speed<sp/>in<sp/>line<sp/>obstacle<sp/>follow<sp/>modes<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OBSTACLE_FOLLOW_POWER<sp/>80</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**Configure<sp/>the<sp/>unit<sp/>angle<sp/>of<sp/>line<sp/>follower<sp/>adjustment<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LINE_FOLLOW_OFFSET_ANGLE<sp/>30</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>websocket<sp/>communication<sp/>headers<sp/>*/<sp/></highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>WS_HEADER<sp/>&quot;WS+&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">///@}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/***********************<sp/>Global<sp/>variables<sp/>****************************/</highlight></codeline>
+<codeline><highlight class="normal">/**<sp/>Check<sp/>if<sp/>a<sp/>string<sp/>starts<sp/>with<sp/>a<sp/>certain<sp/>character<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>IsStartWith(str,<sp/>prefix)<sp/>(strncmp(str,<sp/>prefix,<sp/>strlen(prefix))<sp/>==<sp/>0)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Instantiate<sp/>aicamera,<sp/>a<sp/>class<sp/>for<sp/>serial<sp/>communication<sp/>with<sp/>ESP32-CAM<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">AiCamera<sp/>aiCam<sp/>=<sp/>AiCamera(NAME,<sp/>TYPE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">extern<sp/>uint8_t<sp/>currentMode;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int16_t<sp/>currentAngle;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int16_t<sp/>remoteAngle;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int8_t<sp/>remotePower;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int16_t<sp/>remoteHeading;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int16_t<sp/>remoteHeadingR;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>bool<sp/>remoteDriftEnable;</highlight></codeline>
+<codeline><highlight class="normal">int16_t<sp/>app_remoteAngle;</highlight></codeline>
+<codeline><highlight class="normal">int8_t<sp/>app_remotePower;</highlight></codeline>
+<codeline><highlight class="normal">char<sp/>speech_buf[20];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//@}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/***********************<sp/>setup()<sp/>&amp;<sp/>loop()<sp/>************************/</highlight></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>setup(),<sp/>Ardunio<sp/>main<sp/>program<sp/>entrance</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Initialization<sp/>of<sp/>some<sp/>peripherals</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>m<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.begin(115200);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Arduino<sp/>Car<sp/>version<sp/>&quot;);Serial.println(VERSION);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(F(&quot;Initialzing...&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>SoftPWMBegin();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rgbBegin();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rgbWrite(ORANGE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>carBegin();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>hc165Begin();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>irBegin();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>aiCam.begin(SSID,<sp/>PASSWORD,<sp/>WIFI_MODE,<sp/>PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>aiCam.setOnReceived(onReceive);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(millis()<sp/>-<sp/>m<sp/>&lt;<sp/>500)<sp/>{<sp/>//<sp/>Wait<sp/>for<sp/>peripherals<sp/>to<sp/>be<sp/>ready</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#if<sp/>WATCH_DOG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>wdt_disable();<sp/><sp/>/*<sp/>Disable<sp/>the<sp/>watchdog<sp/>and<sp/>wait<sp/>for<sp/>more<sp/>than<sp/>2<sp/>seconds<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(3000);<sp/><sp/>/*<sp/>Done<sp/>so<sp/>that<sp/>the<sp/>Arduino<sp/>doesn&apos;t<sp/>keep<sp/>resetting<sp/>infinitely<sp/>in<sp/>case<sp/>of<sp/>wrong<sp/>configuration<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>wdt_enable(WDTO_2S);<sp/><sp/>/*<sp/>Enable<sp/>the<sp/>watchdog<sp/>with<sp/>a<sp/>timeout<sp/>of<sp/>2<sp/>seconds<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(F(&quot;Okie!&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rgbWrite(GREEN);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>loop(),<sp/>Ardunio<sp/>main<sp/>loop</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>-<sp/>inclued</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>aiCam.loop()</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>ir_remoteHandler()()</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>modeHandler()</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>-<sp/>or<sp/>modules<sp/>test</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#if<sp/>!TEST<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>aiCam.loop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ir_remoteHandler()();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>modeHandler();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/*<sp/>Select<sp/>the<sp/>item<sp/>to<sp/>be<sp/>tested<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motors_test();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>rgb_test();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>grayscale_test();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>ultrasonic_test();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>ir_obstacle_test();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>obstacleAvoidance();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>compass_test();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>ir_remote_test();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#endif<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#if<sp/>WATCH_DOG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>wdt_reset();<sp/><sp/>/*<sp/>Reset<sp/>the<sp/>watchdog<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#if<sp/>MEM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(F(&quot;Free<sp/>RAM<sp/>=<sp/>&quot;));<sp/>//F<sp/>function<sp/>does<sp/>the<sp/>same<sp/>and<sp/>is<sp/>now<sp/>a<sp/>built<sp/>in<sp/>library,<sp/>in<sp/>IDE<sp/>&gt;<sp/>1.0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(freeMemory());<sp/><sp/>//<sp/>print<sp/>how<sp/>much<sp/>RAM<sp/>is<sp/>available<sp/>in<sp/>bytes.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/*****************************<sp/>Functions<sp/>******************************/</highlight></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>modeHandler(),<sp/>Execute<sp/>the<sp/>corresponding<sp/>program<sp/>according<sp/>to<sp/>the<sp/>set<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>-<sp/>inclued</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_NONE</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_LINE_FOLLOWING</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_ROTATE_LINE_FOLLOWING</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_OBSTACLE_FOLLOWING</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_OBSTACLE_AVOIDANCE</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_REMOTE_CONTROL</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_APP_CONTROL</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>-<sp/>MODE_COMPASS_CALIBRATION</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>modeHandler()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>switch<sp/>(currentMode)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_NONE:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(MODE_NONE_COLOR);<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_LINE_FOLLOWING:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(MODE_LINE_FOLLOWING_COLOR);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>LINE_FOLLOW_POWER;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lineFollowing();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_ROTATE_LINE_FOLLOWING:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(MODE_LINE_FOLLOWING_COLOR);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>LINE_FOLLOW_POWER;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotateLineFollowing();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_OBSTACLE_FOLLOWING:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>OBSTACLE_FOLLOW_POWER;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacleFollowing();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_OBSTACLE_AVOIDANCE:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(MODE_OBSTACLE_AVOIDANCE_COLOR);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>OBSTACLE_FOLLOW_POWER;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacleAvoidance();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_REMOTE_CONTROL:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(MODE_REMOTE_CONTROL_COLOR);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carMoveFieldCentric(remoteAngle,<sp/>remotePower,<sp/>remoteHeading,<sp/>true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_APP_CONTROL:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(MODE_APP_CONTROL_COLOR);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carMoveFieldCentric(remoteAngle,<sp/>remotePower,<sp/>remoteHeading,<sp/>remoteDriftEnable);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>MODE_COMPASS_CALIBRATION:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>#if<sp/>WATCH_DOG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wdt_disable();<sp/><sp/>/*<sp/>Disable<sp/>the<sp/>watchdog<sp/>and<sp/>wait<sp/>for<sp/>more<sp/>than<sp/>2<sp/>seconds<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>#endif<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>changed<sp/>=<sp/>compassCalibrateLoop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(changed)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rgbWrite(GREEN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rgbOff();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(compassCalibrateDone())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_NONE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>#if<sp/>WATCH_DOG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>wdt_enable(WDTO_2S);<sp/><sp/>/*<sp/>Enable<sp/>the<sp/>watchdog<sp/>with<sp/>a<sp/>timeout<sp/>of<sp/>2<sp/>seconds<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>default:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Line<sp/>follow<sp/>program</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>lineFollowing()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint16_t<sp/>result<sp/>=<sp/>gsGetAngleOffset();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>angleType<sp/>=<sp/>result<sp/>&gt;&gt;<sp/>8<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>offsetType<sp/>=<sp/>result<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>angle<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int8_t<sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>switch<sp/>(angleType)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_N45:<sp/><sp/><sp/>angle<sp/>=<sp/>-45;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_0:<sp/><sp/><sp/><sp/><sp/>angle<sp/>=<sp/><sp/><sp/>0;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_45:<sp/><sp/><sp/><sp/>angle<sp/>=<sp/><sp/>45;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_90:<sp/><sp/><sp/><sp/>angle<sp/>=<sp/><sp/>90;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_ERROR:<sp/>angle<sp/>=<sp/>currentAngle;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>switch<sp/>(offsetType)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_N1:<sp/><sp/><sp/><sp/>offset<sp/>=<sp/>-1;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_0:<sp/><sp/><sp/><sp/><sp/>offset<sp/>=<sp/><sp/>0;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_1:<sp/><sp/><sp/><sp/><sp/>offset<sp/>=<sp/><sp/>1;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_ERROR:<sp/>offset<sp/>=<sp/><sp/>0;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>deltaAngle<sp/>=<sp/>currentAngle<sp/>-<sp/>angle;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(deltaAngle<sp/>&gt;<sp/>180)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>deltaAngle<sp/>-=<sp/>360;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(deltaAngle<sp/>&lt;<sp/>-180)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>deltaAngle<sp/>+=<sp/>360;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;,currentAngle=&quot;);Serial.print(currentAngle);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;,angleType=&quot;);Serial.print(angle);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;,deltaAngle=&quot;);Serial.print(deltaAngle);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(deltaAngle<sp/>&gt;<sp/>90)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>-=<sp/>180;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>offset<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(deltaAngle<sp/>&lt;<sp/>-90)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>+=<sp/>180;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>offset<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>currentAngle<sp/>=<sp/>angle<sp/>+<sp/>(offset*LINE_FOLLOW_OFFSET_ANGLE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>carMoveFieldCentric(currentAngle,<sp/>LINE_FOLLOW_POWER,<sp/>0,<sp/>false);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;,angle=&quot;);Serial.print(angle);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;,<sp/>offset=&quot;);Serial.print(offset);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;,<sp/>moveAngle=&quot;);Serial.println(currentAngle);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**<sp/>Field<sp/>centric<sp/>angle<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">int16_t<sp/>fcAngle<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">/**<sp/>Robot<sp/>centric<sp/>angle<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">int16_t<sp/>rcAngle<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">int16_t<sp/>currentHeading<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Rotate<sp/>line<sp/>follow<sp/>program</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>rotateLineFollowing()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>currentHeading<sp/>+=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(currentHeading<sp/>&gt;<sp/>360)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentHeading<sp/>-=<sp/>360;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint16_t<sp/>result=gsGetAngleOffset();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>angleType<sp/>=<sp/>result<sp/>&gt;&gt;<sp/>8<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>offsetType<sp/>=<sp/>result<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>angle<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int8_t<sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>switch<sp/>(angleType)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_N45:<sp/><sp/><sp/>angle<sp/>=<sp/>-45;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_0:<sp/><sp/><sp/><sp/><sp/>angle<sp/>=<sp/><sp/><sp/>0;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_45:<sp/><sp/><sp/><sp/>angle<sp/>=<sp/><sp/>45;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_90:<sp/><sp/><sp/><sp/>angle<sp/>=<sp/><sp/>90;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>ANGLE_ERROR:<sp/>angle<sp/>=<sp/>rcAngle;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>switch<sp/>(offsetType)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_N1:<sp/><sp/><sp/><sp/>offset<sp/>=<sp/>-1;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_0:<sp/><sp/><sp/><sp/><sp/>offset<sp/>=<sp/><sp/>0;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_1:<sp/><sp/><sp/><sp/><sp/>offset<sp/>=<sp/><sp/>1;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>case<sp/>OFFSET_ERROR:<sp/>offset<sp/>=<sp/><sp/>0;break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>deltaAngle<sp/>=<sp/>rcAngle<sp/>-<sp/>angle;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(deltaAngle<sp/>&gt;<sp/>90)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>+=<sp/>180;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>offset<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(deltaAngle<sp/>&lt;<sp/>-90)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>-=<sp/>180;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>offset<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rcAngle<sp/>=<sp/>angle;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>fcAngle<sp/>=<sp/>rcAngle<sp/>+<sp/>currentHeading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>moveAngle<sp/>=<sp/>fcAngle<sp/>+<sp/>(offset*LINE_FOLLOW_OFFSET_ANGLE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>carMoveFieldCentric(moveAngle,<sp/>CAR_DEFAULT_POWER,<sp/>currentHeading);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Obstacle<sp/>follow<sp/>program</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>obstacleFollowing()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>byte<sp/>result<sp/>=<sp/>irObstacleRead();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>leftIsClear<sp/>=<sp/>result<sp/>&amp;<sp/>0b00000001;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>rightIsClear<sp/>=<sp/>result<sp/>&amp;<sp/>0b00000010;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>float<sp/>usDistance<sp/>=<sp/>ultrasonicRead();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(usDistance<sp/>&lt;<sp/>10<sp/>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(usDistance<sp/>&lt;<sp/>20)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>carForward();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!leftIsClear)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carTurnLeft();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if<sp/>(!rightIsClear)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carTurnRight();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Obstacle<sp/>avoidance<sp/>program</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>obstacleAvoidance()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>byte<sp/>result<sp/>=<sp/>irObstacleRead();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>leftIsClear<sp/>=<sp/>result<sp/>&amp;<sp/>0b00000001;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>rightIsClear<sp/>=<sp/>result<sp/>&amp;<sp/>0b00000010;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>middleIsClear<sp/>=<sp/>ultrasonicIsClear();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(middleIsClear<sp/>&amp;&amp;<sp/>leftIsClear<sp/>&amp;&amp;<sp/>rightIsClear)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>carForward();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(leftIsClear)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carTurnLeft();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if<sp/>(rightIsClear)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carTurnRight();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carMove(0,<sp/>0,<sp/>20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>delay(400);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>ir_remoteHandler(),<sp/>handle<sp/>IR<sp/>remote<sp/>control<sp/>key<sp/>events</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ir_remoteHandler()()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>key<sp/>=<sp/>irRead();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(key<sp/>==<sp/>IR_KEY_ERROR)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return;<sp/>//<sp/>No<sp/>key<sp/>pressed</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}else{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>IR_REMOTE_POWER;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int8_t<sp/>cmd_code<sp/>=<sp/>ir_key_2_cmd_code(key);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(cmd_code<sp/>!=<sp/>-1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_REMOTE_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmd_fuc_table[cmd_code]();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>switch<sp/>(key)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_POWER:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_NONE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_MODE:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_MUTE:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_COMPASS_CALIBRATION;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carMove(0,<sp/>0,<sp/>CAR_CALIBRATION_POWER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compassCalibrateStart();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_PLAY_PAUSE:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_LINE_FOLLOWING;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_BACKWARD:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_OBSTACLE_FOLLOWING;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_FORWARD:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_OBSTACLE_AVOIDANCE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_EQ:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_MINUS:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_PLUS:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>IR_KEY_0:<sp/>//<sp/>Reset<sp/>origin<sp/>direction</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_REMOTE_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remoteAngle<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remoteHeading<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remoteDriftEnable<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>websocket<sp/>received<sp/>data<sp/>processing</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>onReceive(char*<sp/>recvBuf,<sp/>char*<sp/>sendBuf)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;recv:&quot;);Serial.println(recvBuf);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Mode<sp/>select:<sp/>line<sp/>following,<sp/>obstacle<sp/>following,<sp/>obstacle<sp/>avoidance</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(aiCam.getSwitch(recvBuf,<sp/>REGION_N))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_LINE_FOLLOWING;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(aiCam.getSwitch(recvBuf,<sp/>REGION_O))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_OBSTACLE_FOLLOWING;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(aiCam.getSwitch(recvBuf,<sp/>REGION_P))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_OBSTACLE_AVOIDANCE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(currentMode<sp/>==<sp/>MODE_LINE_FOLLOWING<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>currentMode<sp/>==<sp/>MODE_OBSTACLE_FOLLOWING<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>currentMode<sp/>==<sp/>MODE_OBSTACLE_AVOIDANCE){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_NONE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remoteHeading<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Stop</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(aiCam.getButton(recvBuf,<sp/>REGION_F))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_NONE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Compass<sp/>Calibrate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(aiCam.getButton(recvBuf,<sp/>REGION_E))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_COMPASS_CALIBRATION;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>carMove(0,<sp/>0,<sp/>CAR_CALIBRATION_POWER);<sp/>//<sp/>rote<sp/>to<sp/>calibrate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>compassCalibrateStart();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Reset<sp/>Origin</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(aiCam.getButton(recvBuf,<sp/>REGION_I))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_APP_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>carStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>remoteHeading<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//Joystick</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint16_t<sp/>angle<sp/>=<sp/>aiCam.getJoystick(recvBuf,<sp/>REGION_K,<sp/>JOYSTICK_ANGLE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>power<sp/>=<sp/>aiCam.getJoystick(recvBuf,<sp/>REGION_K,<sp/>JOYSTICK_RADIUS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>power<sp/>=<sp/>map(power,<sp/>0,<sp/>100,<sp/>0,<sp/>CAR_DEFAULT_POWER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(app_remoteAngle<sp/>!=<sp/>angle)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_APP_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>app_remoteAngle<sp/>=<sp/>angle;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>remoteAngle<sp/>=<sp/>app_remoteAngle;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(app_remotePower<sp/>!=<sp/>power)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_APP_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>app_remotePower<sp/>=<sp/>power;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>app_remotePower;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Drift<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial.print(&quot;Drift:&quot;);Serial.println(remoteDriftEnable);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(remoteDriftEnable<sp/>!=<sp/>aiCam.getSwitch(recvBuf,<sp/>REGION_J))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_APP_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>remoteDriftEnable<sp/>=<sp/>!remoteDriftEnable;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>MoveHead</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>moveHeadingA<sp/>=<sp/>aiCam.getJoystick(recvBuf,<sp/>REGION_Q,<sp/>JOYSTICK_ANGLE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>moveHeadingR<sp/>=<sp/>aiCam.getJoystick(recvBuf,<sp/>REGION_Q,<sp/>JOYSTICK_RADIUS);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(remoteHeading<sp/>!=<sp/><sp/>moveHeadingA<sp/>||<sp/>remoteHeadingR<sp/>!=<sp/><sp/>moveHeadingR){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_APP_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>remoteHeading<sp/>=<sp/>moveHeadingA;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>remoteHeadingR<sp/>=<sp/>moveHeadingR;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(remoteDriftEnable<sp/>&amp;&amp;<sp/>moveHeadingR<sp/>==<sp/>0)<sp/>{<sp/>//<sp/>Drift<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>carResetHeading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remoteHeading<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Serial.print(&quot;head:&quot;);Serial.println(remoteHeading);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Speech<sp/>control</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>char<sp/>speech_buf_temp[20];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>aiCam.getSpeech(recvBuf,<sp/>REGION_M,<sp/>speech_buf_temp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(strcmp(speech_buf_temp,<sp/>speech_buf)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>strcpy(speech_buf,<sp/>speech_buf_temp);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(strlen(speech_buf)<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int8_t<sp/>cmd_code<sp/>=<sp/>text_2_cmd_code(speech_buf);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(cmd_code<sp/>!=<sp/>-1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remotePower<sp/>=<sp/>SPEECH_REMOTE_POWER;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentMode<sp/>=<sp/>MODE_APP_CONTROL;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_fuc_table[cmd_code]();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="D:/00_lhl/05_arduino_esp32/Zeus_Car/zeus-car/Zeus_Car/Zeus_Car.ino"/>
+  </compounddef>
+</doxygen>

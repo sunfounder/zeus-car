@@ -1,8 +1,8 @@
 #include "ai_camera.h"
 #include "car_control.h"
 
-/*
-  Use custom serial port
+/**
+* Use custom serial port
 */
 // #define AI_CAM_DEBUG_CUSTOM
 #ifdef AI_CAM_DEBUG_CUSTOM
@@ -15,14 +15,14 @@
   #define DebugSerial Serial
 #endif
 
-/*
-  Set SERIAL_TIMEOUT & WS_BUFFER_SIZE
+/**
+*  Set SERIAL_TIMEOUT & WS_BUFFER_SIZE
 */
 #define SERIAL_TIMEOUT 100
 #define WS_BUFFER_SIZE 100
 
-/*
-  Some keywords for communication with ESP32-CAM
+/**
+* Some keywords for communication with ESP32-CAM
 */
 #define CHECK "SC"
 #define OK_FLAG "[OK]"
@@ -30,41 +30,44 @@
 #define WS_HEADER "WS+"
 #define CAM_INIT "[Init]"
 
-/*
-  functions for manipulating string 
+/**
+*  functions for manipulating string 
 */
 #define IsStartWith(str, prefix) (strncmp(str, prefix, strlen(prefix)) == 0)
 #define StrAppend(str, suffix) uint32_t len=strlen(str); str[len] = suffix; str[len+1] = '\0'
 #define StrClear(str) str[0] = 0
 
-/*
-  Declare global variables
+/**
+* Declare global variables
 */
 char name[32];
 char type[32];
 char readBuffer[WS_BUFFER_SIZE + strlen(WS_HEADER)];
 
-/*
-  Declare the receive callback function
+/**
+* Declare the receive callback function
 */
 void (*__on_receive__)(char*, char*);
 
-
+/**
+ * @brief instantiate AiCamera Class, set name and type
+ * @param _name set name
+ * @param _type set type
+ */
 AiCamera::AiCamera(const char* _name, const char* _type) {
   strcpy(name, _name);
   strcpy(type, _type);
 }
 
-/* 
-* @brief: Set wifi and websocket port to esp32-cam, 
-*         block and wait for the setting to succeed
-*         
-* @param: {const char*} ssid  
-* @param: {const char*} password
-* @param: {const char*} wifiMode  0,None; 1, STA; 2, AP
-* @param: {const char*} wsPort 
-* @ret: void
-*/
+/**
+ * @brief Set wifi and websocket port to esp32-cam, 
+ *        block and wait for the setting to succeed
+ *        
+ * @param ssid  wifi ssid
+ * @param password wifi password
+ * @param wifiMode  0,None; 1, STA; 2, AP
+ * @param wsPort websocket server port
+ */
 void AiCamera::begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort) {
   #ifdef AI_CAM_DEBUG_CUSTOM
   DateSerial.begin(115200);
@@ -84,20 +87,17 @@ void AiCamera::begin(const char* ssid, const char* password, const char* wifiMod
   DebugSerial.println(wsPort);
 }
 
-/* 
-* @brief: Set callback function method
-*         
-* @param: {void *} func  callback function pointer
-* @ret: void
-*/
+/**
+ * @brief Set callback function method
+ *         
+ * @param func  callback function pointer
+ */
 void AiCamera::setOnReceived(void (*func)(char*, char*)) { __on_receive__ = func; }
 
 
-/* 
-* @brief: Receive and process serial port data in a loop
-*         
-* @ret: void
-*/
+/**
+ * @brief Receive and process serial port data in a loop
+ */
 void AiCamera::loop() {
   char recvBuffer[WS_BUFFER_SIZE + strlen(WS_HEADER)];
   char sendBuffer[WS_BUFFER_SIZE] = ";;;;;;;;;;;;;;;;;;;;;;;;;";
@@ -123,13 +123,12 @@ void AiCamera::loop() {
 }
 
 
-/* 
-* @brief: Print the information received from esp32-CAm,
-*        according to the set of CAM_DEBUG_LEVEL
-*         
-* @param: {char*} msg  
-* @ret: void
-*/
+/**
+ * @brief Print the information received from esp32-CAm,
+ *        according to the set of CAM_DEBUG_LEVEL
+ *         
+ * @param msg Message to be detected
+ */
 void AiCamera::debug(char* msg) {
   #if (CAM_DEBUG_LEVEL ==  CAM_DEBUG_LEVEL_ALL) // all
     DebugSerial.print(CAM_DEBUG_HEAD_ALL);
@@ -155,12 +154,11 @@ void AiCamera::debug(char* msg) {
   #endif
 }
 
-/* 
-* @brief: Store the data read from the serial port into the buffer
-*         
-* @param: {char*} buffer  
-* @ret: void
-*/
+/** 
+ * @brief Store the data read from the serial port into the buffer
+ *       
+ * @param buffer  Pointer to the character value of the stored data
+ */
 void AiCamera::readInto(char* buffer) {
   bool finished = false;
   char incomingChar;
@@ -204,25 +202,23 @@ void AiCamera::readInto(char* buffer) {
   }
 }
 
-/* 
-* @brief: Serial port sends data, automatically adds header (WS_HEADER)
-*         
-* @param: {char*} sendBuffer  
-* @ret: void
-*/
+/** 
+ * @brief Serial port sends data, automatically adds header (WS_HEADER)
+ *         
+ * @param sendBuffer  Pointer to the character value of the data buffer to be sent
+ */
 void AiCamera::sendData(char* sendBuffer) {
   DateSerial.print(F(WS_HEADER));
   DateSerial.println(sendBuffer);
 }
 
-/* 
-* @brief: Send command to ESP32-CAM with serial
-*         
-* @param: {char*} command   command keyword
-* @param: {char*} value 
-* @param: {char*} result  returned information from serial
-* @ret: {char*} result 
-*/
+/** 
+ * @brief Send command to ESP32-CAM with serial
+ *         
+ * @param command command keyword
+ * @param value
+ * @param result returned information from serial
+ */
 void AiCamera::command(const char* command, const char* value, char* result) {
   bool is_ok = false;
   while(1) {
@@ -245,40 +241,115 @@ void AiCamera::command(const char* command, const char* value, char* result) {
   }
 }
 
+/** 
+ * @brief Use the comand() function to set up the ESP32-CAM
+ * 
+ * @param command command keyword
+ */
 void AiCamera::set(const char* command) {
   char result[10];
   this->command(command, "", result);
 }
 
+/** 
+ * @brief Use the comand() function to set up the ESP32-CAM
+ * 
+ * @param command command keyword
+ * @param value
+ * 
+ * @code {.cpp}
+ * set("NAME", "Zeus_Car");
+ * set("TYPE", "Zeus_Car");
+ * set("SSID", "Zeus_Car");
+ * set("PSK",  "12345678");
+ * set("MODE", WIFI_MODE_AP);
+ * set("PORT", "8765");
+ * @endcode
+ * 
+ */
 void AiCamera::set(const char* command, const char* value) {
   char result[10];
   this->command(command, value, result);
 }
 
+/** 
+ * @brief Use the comand() function to set up the ESP32-CAM,
+ *        and receive return information
+ * 
+ * @param command command keyword
+ * @param value
+ * @param result returned information from serial
+ * @code {.cpp}
+ * char ip[15];
+ * get("START", ip);
+ * @endcode
+ */
 void AiCamera::get(const char* command, char* result) {
   this->command(command, "", result);
 }
 
+/** 
+ * @brief Use the comand() function to set up the ESP32-CAM,
+ *        and receive return information
+ * 
+ * @param command command keyword
+ * @param value
+ * @param result returned information from serial
+ */
 void AiCamera::get(const char* command, const char* value, char* result) {
   this->command(command, value, result);
 }
 
 
+/** 
+ * @brief Interpret the value of the slider contorl component from the buf string
+ *         
+ * @param buf string pointer to be interpreted  
+ * @param region the key of component
+ * @return the value of the slider contorl component 
+ */
 int16_t AiCamera::getSlider(char* buf, uint8_t region) {
   int16_t value = getIntOf(buf, region);
   return value;
 }
 
+/** 
+ * @brief Interpret the value of the Button component from the buf string
+ *         
+ * @param buf string pointer to be interpreted  
+ * @param region the key of component
+ * @return the value of the Joystick component
+ *        - true
+ *        - flase 
+ */
 bool AiCamera::getButton(char* buf, uint8_t region) {
   bool value = getBoolOf(buf, region);
   return value;
 }
 
+/** 
+ * @brief Interpret the value of the getSwitch component from the buf string
+ *         
+ * @param buf string pointer to be interpreted  
+ * @param region the key of component
+ * @return the value of the Joystick component
+ *        - true
+ *        - flase 
+ */
 bool AiCamera::getSwitch(char* buf, uint8_t region) {
   bool value = getBoolOf(buf, region);
   return value;
 }
 
+/** 
+ * @brief Interpret the value of the Joystick component from the buf string
+ *         
+ * @param buf string pointer to be interpreted  
+ * @param region the key of component
+ * @param axis which type of value that you want, 
+ *             could be JOYSTICK_X, JOYSTICK_Y, JOYSTICK_ANGLE, JOYSTICK_RADIUS
+ * @return the value of the Joystick component 
+ */
 int16_t AiCamera::getJoystick(char* buf, uint8_t region, uint8_t axis) {
   char valueStr[10];
   char xStr[4];
@@ -298,6 +369,15 @@ int16_t AiCamera::getJoystick(char* buf, uint8_t region, uint8_t axis) {
   }
 }
 
+/** 
+ * @brief Interpret the value of the DPad component from the buf string
+ *         
+ * @param buf string pointer to be interpreted  
+ * @param region the key of component
+ * 
+ * @return the value of the DPadDPad component, 
+ *         it could be null, "forward", "backward", "left", "stop"
+ */
 uint8_t AiCamera::getDPad(char* buf, uint8_t region) {
   char value[10];
   getStrOf(buf, region, value, ';');
@@ -310,33 +390,81 @@ uint8_t AiCamera::getDPad(char* buf, uint8_t region) {
   return result;
 }
 
+/** 
+ * @brief Interpret the value of the Throttle component from the buf string
+ *         
+ * @param buf string pointer to be interpreted  
+ * @param region the key of component
+ * 
+ * @return the value of the Throttle component, 
+ */
 int16_t AiCamera::getThrottle(char* buf, uint8_t region) {
   int16_t value = getIntOf(buf, region);
   return value;
 }
 
+/** 
+ * @brief Interpret the value of the Speech component from the buf string
+ *         
+ * @param buf string pointer to be interpreted  
+ * @param region the key of component
+ * @param result char array pointer to hold the result
+ * @return the value of the Joystick component 
+ */
 void AiCamera::getSpeech(char* buf, uint8_t region, char* result) {
   getStrOf(buf, region, result, ';');
 
 }
 
+/** 
+ * @brief Fill the value of Meter display component into the buf to be sent
+ *         
+ * @param buf string pointer to be sent  
+ * @param region the key of component
+ * @param value the value to be filled
+ */
 void AiCamera::setMeter(char* buf, uint8_t region, double value) {
   setStrOf(buf, region, String(value));
 }
 
+/** 
+ * @brief Fill the value of Radar display component into the buf to be sent
+ *         
+ * @param buf string pointer to be sent  
+ * @param region the key of component
+ * @param angle the orientation of the obstacle
+ * @param distance the distance of the obstacle
+ */
 void AiCamera::setRadar(char* buf, uint8_t region, int16_t angle, double distance) {
   setStrOf(buf, region, String(angle) + "," + String(distance));
 }
 
+/** 
+ * @brief Fill the value of 3-way grayscale display component into the buf to be sent
+ *         
+ * @param buf string pointer to be sent  
+ * @param region the key of component
+ * @param value1 
+ * @param value2  
+ * @param value3  
+ */
 void AiCamera::setGreyscale(char* buf, uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3) {
   setStrOf(buf, region, String(value1) + "," + String(value2) + "," + String(value3));
 }
+
 
 void AiCamera::setValue(char* buf, uint8_t region, double value) {
   setStrOf(buf, region, String(value));
 }
 
 
+/** 
+ * @brief subtract part of the string
+ *         
+ * @param buf string pointer to be subtract  
+ * @param start start position of content to be subtracted
+ * @param end end position of Content to be subtracted
+ */
 void AiCamera::subString(char* str, int16_t start, int16_t end) {
   uint8_t length = strlen(str);
   if (end == -1) {
@@ -351,6 +479,15 @@ void AiCamera::subString(char* str, int16_t start, int16_t end) {
   }
 }
 
+/** 
+ * @brief Split the string by a cdivider,
+ *         and return characters of the selected index
+ *
+ * @param buf string pointer to be split  
+ * @param index which index do you wish to return
+ * @param result char array pointer to hold the result
+ * @param divider
+ */
 void AiCamera::getStrOf(char* str, uint8_t index, char* result, char divider) {
   uint8_t start, end;
   uint8_t length = strlen(str);
@@ -382,7 +519,15 @@ void AiCamera::getStrOf(char* str, uint8_t index, char* result, char divider) {
   result[j] = '\0';
 }
 
-void AiCamera::setStrOf(char* str, uint8_t index, String value) {
+/** 
+ * @brief split by divider, filling the value to a position in the string
+ *         
+ * @param str string pointer to be operated  
+ * @param index which index do you wish to return
+ * @param value the value to be filled
+ * @param divider
+ */
+void AiCamera::setStrOf(char* str, uint8_t index, String value, char divider=';') {
   uint8_t start, end;
   uint8_t length = strlen(str);
   uint8_t i, j;
@@ -391,7 +536,7 @@ void AiCamera::setStrOf(char* str, uint8_t index, String value) {
     start = 0;
   } else {
     for (start = 0, j = 1; start < length; start++) {
-      if (str[start] == ';') {
+      if (str[start] == divider) {
         if (index == j) {
           start++;
           break;
@@ -402,7 +547,7 @@ void AiCamera::setStrOf(char* str, uint8_t index, String value) {
   }
   // Get end index
   for (end = start, j = 0; end < length; end++) {
-    if (str[end] == ';') {
+    if (str[end] == divider) {
       break;
     }
   }
@@ -411,6 +556,15 @@ void AiCamera::setStrOf(char* str, uint8_t index, String value) {
   strcpy(str, strValue.c_str());
 }
 
+/** 
+ * @brief Split the string by a cdivider,
+ *         and return characters of the selected index.
+ *         Further, the content is converted to int type.
+ *
+ * @param buf string pointer to be split  
+ * @param index which index do you wish to return
+ * @param divider
+ */
 int16_t AiCamera::getIntOf(char* str, uint8_t index, char divider=';') {
   int16_t result;
   char strResult[6];

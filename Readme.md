@@ -40,7 +40,7 @@ zeus-car
 │  ├─ compass.h                        //
 │  ├─ grayscale.cpp                    // functions for grayscale line patrol module
 │  ├─ grayscale.h                      //
-│  ├─ hc165.cpp                        // functions for hc165 - io expansion chip
+│  ├─ hc165.cpp                        // functions for HC165 - IO expansion chip
 │  ├─ hc165.h                          //
 │  ├─ ir_obstacle.cpp                  // functions for IR obstacle avoidance module
 │  ├─ ir_obstacle.h                    //
@@ -51,7 +51,7 @@ zeus-car
 │  ├─ rgb.cpp                          // functions for rgb led strip
 │  ├─ rgb.h                            //
 │  ├─ test.h                           // functions for testing all modules
-│  ├─ ultrasonic.cpp                   // functions for ultrasonic
+│  ├─ ultrasonic.cpp                   // functions for ultrasonic module
 │  └─ ultrasonic.h                     //
 ├─ test                                
 │  ├─ grayscale_pattern_classifier.py  // status enumeration tool for 8-way line patrol module

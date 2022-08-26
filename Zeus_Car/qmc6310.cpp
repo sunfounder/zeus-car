@@ -2,7 +2,6 @@
 #include "rgb.h"
 #include "car_control.h"
 
-
 int16_t _calibrationData[6];
 
 int16_t _x;
