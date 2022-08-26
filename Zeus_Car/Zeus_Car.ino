@@ -165,14 +165,14 @@ void setup() {
  * 
  * - inclued
  *  - aiCam.loop()
- *  - ir_remoteHandler()()
+ *  - ir_remoteHandler()
  *  - modeHandler()
  * - or modules test
  */
 void loop() {
   #if !TEST 
     aiCam.loop();
-    ir_remoteHandler()();
+    ir_remoteHandler();
     modeHandler();
   #else
     /* Select the item to be tested */
@@ -419,9 +419,9 @@ void obstacleAvoidance() {
 }
 
 /**
- * ir_remoteHandler(), handle IR remote control key events
+ * ir_remoteHandler, handle IR remote control key events
  */
-void ir_remoteHandler()() {
+void ir_remoteHandler() {
   uint8_t key = irRead();
   if (key == IR_KEY_ERROR) {
     return; // No key pressed

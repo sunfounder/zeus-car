@@ -10,7 +10,7 @@
 #define PIN_74HC165_Q7 7
 
 /** HC165 init */
-void HC165Begin();
+void hc165Begin();
 
 /**
  * @brief return IO status of HC165
