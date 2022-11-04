@@ -2,6 +2,7 @@
 #include <SoftPWM.h>
 
 void rgbBegin() {
+  SoftPWMBegin();
   for (uint8_t i = 0; i < 3; i++) {
     SoftPWMSet(RGB_PINS[i], 0);
     SoftPWMSetFadeTime(RGB_PINS[i], 100, 100);

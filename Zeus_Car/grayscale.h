@@ -20,6 +20,11 @@
 #define OFFSET_ERROR  255
 
 /**
+ * @brief init grayscale module
+ */
+void gsBegin();
+
+/**
  * @brief Read the value of 8-way grayscale module
  * 
  * @return byte eg:0b01001001

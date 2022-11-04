@@ -9,7 +9,7 @@
     - IRRemote
     - SoftPWM
 
-  Version: 1.0.0
+  Version: 1.1.0
     -- https://github.com/sunfounder/zeus-car.git
   
   Author: Sunfounder
@@ -17,21 +17,21 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.0.0"
+#define VERSION "1.1.0"
 
 #include "Arduino.h"
 #include <SoftPWM.h>
 #include "string.h"
 #include "ir_remote.h"
 #include "rgb.h"
-#include "Zeus_Car.h"
+#include "common_definition.h"
 #include "car_control.h"
 #include "ai_camera.h"
-#include "hc165.h"
 #include "ir_obstacle.h"
 #include "grayscale.h"
 #include "ultrasonic.h"
 #include "cmd_code_config.hpp"
+#include "compass.h"
 
 /*************************** Configure *******************************/
 /** @name Configure 
@@ -58,19 +58,18 @@
 #endif
 
 
-/** Configure Wifi mode */
+/** Configure Wifi mode, SSID, password*/
 #define WIFI_MODE WIFI_MODE_AP
-
-/** Configure Wifi SSID */
 #define SSID "Zeus_Car"
-
-/** Configure Wifi password */
 #define PASSWORD "12345678"
 
 // #define WIFI_MODE WIFI_MODE_STA
 // #define SSID "xxxxxxxxxx"
 // #define PASSWORD "xxxxxxxxxx"
-//@}
+
+#define WIFI_MODE WIFI_MODE_STA
+#define SSID "xiaoming"
+#define PASSWORD "sunfounder"
 
 /** Configure product name */
 #define NAME "Zeus_Car"
@@ -84,20 +83,19 @@
 */
 #define PORT "8765"
 
-/** Configure the motor speed in voice control modes */
+/** Configure the motors speed in different modes */
 #define SPEECH_REMOTE_POWER 40
-
-/** Configure the motor speed in IR remote control modes */
 #define IR_REMOTE_POWER  50
-
-/** Configure the motor speed in line follow modes */
-#define LINE_FOLLOW_POWER 50
-
-/** Configure the motor speed in line obstacle follow modes */
+#define LINE_TRACK_POWER 50
+#define OBSTACLE_AVOID_POWER 80
 #define OBSTACLE_FOLLOW_POWER 80
+#define CAR_CALIBRATION_POWER 80
 
-/**Configure the unit angle of line follower adjustment */
-#define LINE_FOLLOW_OFFSET_ANGLE 30
+/** Configure the offset angle of line track */
+#define LINE_TRACK_OFFSET_ANGLE 30
+
+/** Configure the follow distance of obstacle follow */
+#define FOLLOW_DISTANCE 20
 
 /** websocket communication headers */ 
 #define WS_HEADER "WS+"
@@ -140,8 +138,9 @@ void setup() {
   rgbBegin();
   rgbWrite(ORANGE);
   carBegin();
-  hc165Begin();
   irBegin();
+  irObstacleBegin();
+  gsBegin();
   delay(100);
   aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT);
   aiCam.setOnReceived(onReceive);
@@ -203,8 +202,7 @@ void loop() {
  * 
  * - inclued
  *  - MODE_NONE
- *  - MODE_LINE_FOLLOWING
- *  - MODE_ROTATE_LINE_FOLLOWING
+ *  - MODE_LINE_TRACK
  *  - MODE_OBSTACLE_FOLLOWING
  *  - MODE_OBSTACLE_AVOIDANCE
  *  - MODE_REMOTE_CONTROL
@@ -216,17 +214,11 @@ void modeHandler() {
     case MODE_NONE: 
       rgbWrite(MODE_NONE_COLOR);    
       break;
-    case MODE_LINE_FOLLOWING:
-      rgbWrite(MODE_LINE_FOLLOWING_COLOR);
-      remotePower = LINE_FOLLOW_POWER;
+    case MODE_LINE_TRACK:
+      rgbWrite(MODE_LINE_TRACK_COLOR);
+      remotePower = LINE_TRACK_POWER;
       carResetHeading();
-      lineFollowing();
-      break;
-    case MODE_ROTATE_LINE_FOLLOWING:
-      rgbWrite(MODE_LINE_FOLLOWING_COLOR);
-      remotePower = LINE_FOLLOW_POWER;
-      carResetHeading();
-      rotateLineFollowing();
+      line_track();
       break;
     case MODE_OBSTACLE_FOLLOWING:
       rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);
@@ -235,7 +227,7 @@ void modeHandler() {
       break;
     case MODE_OBSTACLE_AVOIDANCE:
       rgbWrite(MODE_OBSTACLE_AVOIDANCE_COLOR);
-      remotePower = OBSTACLE_FOLLOW_POWER;
+      remotePower = OBSTACLE_AVOID_POWER;
       obstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
@@ -269,9 +261,9 @@ void modeHandler() {
 }
 
 /**
- * Line follow program
+ * Line track program
  */
-void lineFollowing() {
+void line_track() {
   uint16_t result = gsGetAngleOffset();
   uint8_t angleType = result >> 8 & 0xFF;
   uint8_t offsetType = result & 0xFF;
@@ -299,10 +291,6 @@ void lineFollowing() {
     deltaAngle += 360;
   } 
 
-  // Serial.print(",currentAngle=");Serial.print(currentAngle);
-  // Serial.print(",angleType=");Serial.print(angle);
-  // Serial.print(",deltaAngle=");Serial.print(deltaAngle);
-
   if (deltaAngle > 90) {
     angle -= 180;
     offset *= -1;
@@ -311,64 +299,10 @@ void lineFollowing() {
     offset *= -1;
   }
 
-  currentAngle = angle + (offset*LINE_FOLLOW_OFFSET_ANGLE);
-  carMoveFieldCentric(currentAngle, LINE_FOLLOW_POWER, 0, false);
-
-  // Serial.print(",angle=");Serial.print(angle);
-  // Serial.print(", offset=");Serial.print(offset);
-  // Serial.print(", moveAngle=");Serial.println(currentAngle);
-
+  currentAngle = angle + (offset*LINE_TRACK_OFFSET_ANGLE);
+  carMoveFieldCentric(currentAngle, LINE_TRACK_POWER, 0, false);
 }
 
-
-
-/** Field centric angle */
-int16_t fcAngle = 0;
-/** Robot centric angle */
-int16_t rcAngle = 0;
-int16_t currentHeading = 0;
-/**
- * Rotate line follow program
- */
-void rotateLineFollowing() {
-  currentHeading += 1;
-  if (currentHeading > 360) {
-    currentHeading -= 360;
-  }
-  uint16_t result=gsGetAngleOffset();
-  uint8_t angleType = result >> 8 & 0xFF;
-  uint8_t offsetType = result & 0xFF;
-  int16_t angle = 0;
-  int8_t offset = 0;
-  switch (angleType) {
-    case ANGLE_N45:   angle = -45;break;
-    case ANGLE_0:     angle =   0;break;
-    case ANGLE_45:    angle =  45;break;
-    case ANGLE_90:    angle =  90;break;
-    case ANGLE_ERROR: angle = rcAngle;break;
-  }
-  switch (offsetType) {
-    case OFFSET_N1:    offset = -1;break;
-    case OFFSET_0:     offset =  0;break;
-    case OFFSET_1:     offset =  1;break;
-    case OFFSET_ERROR: offset =  0;break;
-  }
-
-  int16_t deltaAngle = rcAngle - angle;
-  if (deltaAngle > 90) {
-    angle += 180;
-    offset *= -1;
-  } else if (deltaAngle < -90) {
-    angle -= 180;
-    offset *= -1;
-  }
-
-  rcAngle = angle;
-  fcAngle = rcAngle + currentHeading;
-  int16_t moveAngle = fcAngle + (offset*LINE_FOLLOW_OFFSET_ANGLE);
-
-  carMoveFieldCentric(moveAngle, CAR_DEFAULT_POWER, currentHeading);
-}
 
 /**
  * Obstacle follow program
@@ -379,15 +313,17 @@ void obstacleFollowing() {
   bool rightIsClear = result & 0b00000010;
   float usDistance = ultrasonicRead();
 
-  if (usDistance < 10 ) {
+  if (usDistance < 4) {
     carStop();
-  } else if (usDistance < 20) {
-    carForward();
+  } else if (usDistance < 10) {
+    carForward(30);
+  } else if (usDistance < FOLLOW_DISTANCE) {
+    carForward(OBSTACLE_FOLLOW_POWER);
   } else {
     if (!leftIsClear) {
-      carTurnLeft();
+      carTurnLeft(OBSTACLE_FOLLOW_POWER);
     } else if (!rightIsClear) {
-      carTurnRight();
+      carTurnRight(OBSTACLE_FOLLOW_POWER);
     } else {
       carStop();
     }
@@ -404,12 +340,12 @@ void obstacleAvoidance() {
   bool middleIsClear = ultrasonicIsClear();
 
   if (middleIsClear && leftIsClear && rightIsClear) {
-    carForward();
+    carForward(OBSTACLE_AVOID_POWER);
   } else {
     if (leftIsClear) {
-      carTurnLeft();
+      carTurnLeft(OBSTACLE_AVOID_POWER);
     } else if (rightIsClear) {
-      carTurnRight();
+      carTurnRight(OBSTACLE_AVOID_POWER);
     } else {
       carMove(0, 0, 20);
       delay(400);
@@ -449,7 +385,7 @@ void ir_remoteHandler() {
         break;
       case IR_KEY_PLAY_PAUSE:
         carResetHeading();
-        currentMode = MODE_LINE_FOLLOWING;
+        currentMode = MODE_LINE_TRACK;
         break;
       case IR_KEY_BACKWARD:
         carResetHeading();
@@ -484,15 +420,15 @@ void ir_remoteHandler() {
 void onReceive(char* recvBuf, char* sendBuf) {
   // Serial.print("recv:");Serial.println(recvBuf);
 
-  // Mode select: line following, obstacle following, obstacle avoidance
+  // Mode select: line track, obstacle following, obstacle avoidance
   if (aiCam.getSwitch(recvBuf, REGION_N)) {
-    currentMode = MODE_LINE_FOLLOWING;
+    currentMode = MODE_LINE_TRACK;
   } else if (aiCam.getSwitch(recvBuf, REGION_O)) {
     currentMode = MODE_OBSTACLE_FOLLOWING;
   } else if (aiCam.getSwitch(recvBuf, REGION_P)) {
     currentMode = MODE_OBSTACLE_AVOIDANCE;
   } else {
-    if (currentMode == MODE_LINE_FOLLOWING 
+    if (currentMode == MODE_LINE_TRACK 
       || currentMode == MODE_OBSTACLE_FOLLOWING 
       || currentMode == MODE_OBSTACLE_AVOIDANCE){
       currentMode = MODE_NONE;

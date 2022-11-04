@@ -13,6 +13,10 @@
 
 int grayscaleReference = 200;
 
+void gsBegin() {
+  hc165Begin();
+}
+
 byte gsRead() {
   uint16_t data = hc165Read();
   return data >> 8 & 0xFF;

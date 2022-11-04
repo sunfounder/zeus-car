@@ -2,7 +2,6 @@
 
 #include <Arduino.h>
 #include <SoftPWM.h>
-
 #define MOTOR_POWER_MIN 28  // 28/255
 
 /* 
@@ -20,30 +19,33 @@ int16_t originHeading;
 * @brief Initialize the motor, and (block) the initialization compass
 */
 void carBegin() {
+  SoftPWMBegin();
   for (uint8_t i = 0; i < 8; i++) {
     SoftPWMSet(MOTOR_PINS[i], 0);
     SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);
   }
+
   compassBegin();
   for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
     carResetHeading();
   }
+
 }
 
 /** 
  * @name simple move functions with CAR_DEFAULT_POWER
  */
-void carForward()       { _carMove(   0, CAR_DEFAULT_POWER, 0); }
-void carBackward()      { _carMove( 180, CAR_DEFAULT_POWER, 0); }
-void carLeft()          { _carMove( -90, CAR_DEFAULT_POWER, 0); }
-void carRight()         { _carMove(  90, CAR_DEFAULT_POWER, 0); }
-void carTurnLeft()      { _carMove(   0, 0, CAR_ROTATE_POWER); }
-void carTurnRight()     { _carMove(   0, 0, -CAR_ROTATE_POWER); }
-void carLeftForword()   { _carMove( -45, CAR_DEFAULT_POWER, 0); }
-void carRightForword()  { _carMove(  45, CAR_DEFAULT_POWER, 0); }
-void carLeftBackward()  { _carMove(-135, CAR_DEFAULT_POWER, 0); }
-void carRightBackward() { _carMove( 135, CAR_DEFAULT_POWER, 0); }
-void carStop()          { _carMove(   0, 0, 0); }
+void carForward(int8_t power)       { carMove(   0, power, 0); }
+void carBackward(int8_t power)      { carMove( 180, power, 0); }
+void carLeft(int8_t power)          { carMove( -90, power, 0); }
+void carRight(int8_t power)         { carMove(  90, power, 0); }
+void carTurnLeft(int8_t power)      { carMove(   0, 0, power); }
+void carTurnRight(int8_t power)     { carMove(   0, 0, -power); }
+void carLeftForword(int8_t power)   { carMove( -45, power, 0); }
+void carRightForword(int8_t power)  { carMove(  45, power, 0); }
+void carLeftBackward(int8_t power)  { carMove(-135, power, 0); }
+void carRightBackward(int8_t power) { carMove( 135, power, 0); }
+void carStop()          { carMove(   0, 0, 0); }
 
 /** 
  * @brief Set speed for 4 motors
@@ -77,7 +79,7 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
   * Control the car to move
   *  
   * @code {.cpp}
-  * _carMove(-90, 80, 0);
+  * carMove(-90, 80, 0);
   * @endcode
   * 
   * @param angle the direction you want the car to move 
@@ -87,7 +89,7 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
   *              true, drift mode, the car body will return to square
   *              flase, drift mode, the car body will not return to square
   */
-void _carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
+void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   int8_t power_0, power_1, power_2, power_3;
   float speed;
   // Make forward 0
@@ -116,39 +118,6 @@ void _carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
 
 }
 
-
-/** 
-  * Control the car to move with PID control
-  *
-  * @param angle the direction you want the car to move 
-  * @param power moving speed  
-  * @param rot the car fixed rotation angle during the movement
-  * @param drift Whether it is a drift mode, default flase  
-  *              true, drift mode, the car body will return to square
-  *              flase, drift mode, the car body will not return to square
-  */
-void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
-  int32_t error;
-  int32_t offset;
-
-  if (rot == 0) {
-    error = angle - originHeading;
-    // convert -360 to 360 to -180 to 180
-    if (error > 180) {
-      error -= 360;
-    } else if (error < -180) {
-      error += 360;
-    }
-
-    offset += KP * error + KI * errorIntegral + KD * (error - _lastError);
-
-    rot += max(-100, min(100, offset));
-    errorIntegral += error;
-    _lastError = error;
-  }
-
-  _carMove(angle, power, rot, drift);
-}
 
 /** 
   * Use the field center method to control the movement of the car
@@ -186,7 +155,7 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
   }
 
   angle = angle - currentHeading + originHeading;
-  _carMove(angle, power, rot, drift);
+  carMove(angle, power, rot, drift);
 
 }
 

@@ -200,5 +200,6 @@ void compassBegin() {
   for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
     compassReadAngle();
   }
+
 }
 

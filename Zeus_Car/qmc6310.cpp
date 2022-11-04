@@ -1,6 +1,4 @@
 #include "qmc6310.h"
-#include "rgb.h"
-#include "car_control.h"
 
 int16_t _calibrationData[6];
 
@@ -56,7 +54,8 @@ int16_t QMC6310::getY() {return _y;}
 int16_t QMC6310::getZ() {return _z;}
 
 uint16_t QMC6310::getAzimuth() {
-	int16_t azimuth = atan2(_y, _x) * 180.0 / PI;
+	// int16_t azimuth = atan2(_y, _x) * 180.0 / PI;
+	int16_t azimuth = atan2(_y, _x) * RAD_TO_DEG;
   if (azimuth < 0) azimuth += 360;
 	return azimuth;
 }

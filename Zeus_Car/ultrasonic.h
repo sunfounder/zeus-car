@@ -10,11 +10,7 @@
 /** Configure ultrasonic obstacle avoidance distance, unit cm */
 #define ULTRASONIC_AVOIDANCE_THRESHOLD 20
 
-/** Configure ultrasonic following distance, unit cm */
-#define ULTRASONIC_FOLLOW_THRESHOLD 30
-
-/** Configure ultrasonic stop distance, unit cm */
-#define ULTRASONIC_STOP_THRESHOLD 10
+#define MAX_DISTANCE 2000 // unit: cm 
 
 /** Return the distance read by the ultrasonic module, unit cm */
 float ultrasonicRead();
