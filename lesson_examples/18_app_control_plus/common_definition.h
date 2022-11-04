@@ -5,7 +5,7 @@
  * @name Mode Value Definition
  */
 #define MODE_NONE                    0
-#define MODE_LINE_FOLLOWING 1
+#define MODE_LINE_TRACK          1
 #define MODE_ROTATE_LINE_FOLLOWING   2
 #define MODE_OBSTACLE_FOLLOWING      3
 #define MODE_OBSTACLE_AVOIDANCE      4
@@ -33,7 +33,7 @@
  * @name Set the color to match the mode
  */
 #define MODE_NONE_COLOR                     GREEN_CYAN
-#define MODE_LINE_FOLLOWING_COLOR           CYAN
+#define MODE_LINE_TRACK_COLOR               CYAN
 #define MODE_ROTATE_LINE_FOLLOWING_COLOR    CYAN_BLUE
 #define MODE_OBSTACLE_FOLLOWING_COLOR       BLUE
 #define MODE_OBSTACLE_AVOIDANCE_COLOR       PURPLE
