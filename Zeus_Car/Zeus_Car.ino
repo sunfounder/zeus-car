@@ -67,10 +67,6 @@
 // #define SSID "xxxxxxxxxx"
 // #define PASSWORD "xxxxxxxxxx"
 
-#define WIFI_MODE WIFI_MODE_STA
-#define SSID "xiaoming"
-#define PASSWORD "sunfounder"
-
 /** Configure product name */
 #define NAME "Zeus_Car"
 
