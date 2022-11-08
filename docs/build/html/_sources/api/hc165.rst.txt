@@ -1,7 +1,0 @@
-``hc165``
-==============================
-Functions for HC165 - IO expansion chip
-
-
-.. autodoxygenfile:: hc165.h
-   :project: auto
