@@ -17,7 +17,7 @@ Zeur Car is a  omnidirectional moving car with Macnum wheels.It is controlled by
 - Compiler Tools: Arduino AVR Boards 1.8.3
 
 ## Dependency libraries
-- IRRemote
+- IRLremote
 - SoftPWM
 
 ## ESP32-CAM firmware
