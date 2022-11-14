@@ -7,7 +7,7 @@
   Move along 0, 45, 90, 135, 180, 225, 270, 315, 360 direction 
   in turn for 1 second
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include <SoftPWM.h>
 
 
@@ -31,8 +31,8 @@ int8_t power = 80;
 void setup() {
   Serial.begin(115200);
   Serial.println("Zeus Car omni-directional move");
-  carBegin(); // init motor pins
-
+  SoftPWMBegin(); //init softpwm, before the motors initialization
+  carBegin(); // init motors
 }
 
 void loop() {
@@ -55,7 +55,6 @@ void loop() {
 }
 
 void carBegin() {
-  SoftPWMBegin(); //init pwm
   for (uint8_t i = 0; i < 8; i++) {
     SoftPWMSet(MOTOR_PINS[i], 0);
     SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);

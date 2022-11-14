@@ -5,7 +5,7 @@
   to make the car go forward, backward, left turn, right turn and stop.
 
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include <SoftPWM.h>
 
 /*
@@ -28,9 +28,8 @@ int8_t power = 0;
 void setup() {
   Serial.begin(115200);
   Serial.println("Zeus Car basic move");
-  SoftPWMBegin(); //init pwm
-  carBegin(); // init motor pins
-
+  SoftPWMBegin(); //init softpwm, before the motors initialization
+  carBegin(); // init motors
 }
 
 void loop() {

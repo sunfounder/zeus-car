@@ -7,7 +7,7 @@
   Drift left and right.
   
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include <SoftPWM.h>
 
 /*
@@ -30,8 +30,8 @@ int8_t power = 80;
 void setup() {
   Serial.begin(115200);
   Serial.println("Zeus Car drift test");
-  SoftPWMBegin(); //init pwm
-  carBegin(); // init motor pins
+  SoftPWMBegin(); //init softpwm, before the motors initialization
+  carBegin(); // init motors
 }
 
 void loop() {
@@ -41,7 +41,6 @@ void loop() {
   delay(600);
   delay(20);
 }
-
 
 void carBegin() {
   for (uint8_t i = 0; i < 8; i++) {

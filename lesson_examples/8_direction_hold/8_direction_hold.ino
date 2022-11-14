@@ -19,6 +19,7 @@
 
 void setup() {
   Serial.begin(115200);
+  SoftPWMBegin(); //init softpwm, before the motors initialization and the rgb LEDs initialization
   rgbBegin();
   irBegin();
   carBegin();

@@ -20,7 +20,6 @@ int16_t originHeading;
 * @brief Initialize the motor, and (block) the initialization compass
 */
 void carBegin() {
-  SoftPWMBegin();
   for (uint8_t i = 0; i < 8; i++) {
     SoftPWMSet(MOTOR_PINS[i], 0);
     SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);

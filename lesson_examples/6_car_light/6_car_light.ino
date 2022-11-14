@@ -6,7 +6,7 @@
   - key 0 ： turn off 
   - key CYCLE : color gradient  
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include <SoftPWM.h>
 #include "ir_remote.h"
 
@@ -42,7 +42,8 @@ void color_gradient();
 void setup() {
   Serial.begin(115200);
   irBegin();
-  rgbBegin();
+  SoftPWMBegin(); //init softpwm, before the rgb LEDs initialization
+  rgbBegin(); // init rgb LEDs
 }
 
 void loop() {
@@ -100,7 +101,6 @@ void loop() {
 
 /** Initialize RGB leds */
 void rgbBegin() {
-  SoftPWMBegin();
   for (uint8_t i = 0; i < 3; i++) {
     SoftPWMSet(RGB_PINS[i], 0);
     SoftPWMSetFadeTime(RGB_PINS[i], 100, 100);

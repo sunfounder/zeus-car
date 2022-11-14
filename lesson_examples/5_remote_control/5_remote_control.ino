@@ -5,7 +5,7 @@
   to move or rotate in different directions.
 
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include "car_control.h"
 #include "ir_remote.h"
 
@@ -14,7 +14,8 @@ int8_t power = 80;
 void setup() {
   Serial.begin(115200);
   Serial.println("Zeus Car IR remote control");
-  carBegin(); // init motor pins
+  SoftPWMBegin(); //init softpwm, before the motors initialization
+  carBegin(); // init motors
   irBegin();
 }
 

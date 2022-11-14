@@ -6,7 +6,7 @@
 
   Go forward and turn in different radii.
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include <SoftPWM.h>
 
 /*
@@ -30,9 +30,8 @@ int8_t rotate_power = 20;
 void setup() {
   Serial.begin(115200);
   Serial.println("Zeus Car omni-directional move");
-  SoftPWMBegin(); // nit pwm
-  carBegin(); // init motor pins
-
+  SoftPWMBegin(); //init softpwm, before the motors initialization
+  carBegin(); // init motors
 }
 
 void loop() {
@@ -48,7 +47,6 @@ void loop() {
   }
 
 }
-
 
 void carBegin() {
   for (uint8_t i = 0; i < 8; i++) {
@@ -92,14 +90,14 @@ void carMove(int16_t angle, int8_t power, int8_t rot) {
   int8_t power_0, power_1, power_2, power_3;
   float speed;
   // Make forward 0
-  angle += 90;
+  angle += 90;  
   // Offset angle as 0 to the front
   float rad = angle * PI / 180;
 
-  if (rot == 0) speed = 1;
+  if (rot == 0) speed = 1;  // limit power value over 100
   else speed = 0.5;
 
-  power /= sqrt(2);
+  power /= sqrt(2); // limit power value over 100
 
   power_0 = (power * sin(rad) - power * cos(rad)) * speed - rot * speed;
   power_1 = (power * sin(rad) + power * cos(rad)) * speed + rot * speed;
