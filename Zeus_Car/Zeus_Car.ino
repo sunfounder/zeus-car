@@ -1,15 +1,17 @@
 /*******************************************************************
-  The control program of the Ardunio Mecanum wheel trolley
+  The control program of the Ardunio Mecanum wheel trolley.
+  
+  Please install SunFounder Controller APP from APP Store(iOS) or Google Play(Android).
 
   Development test environment:
     - Arduino IDE 1.8.19
   Board tools:
     - Arduino AVR Boards 1.8.3
   Libraries:
-    - IRRemote
+    - IRLremote
     - SoftPWM
 
-  Version: 1.1.0
+  Version: 1.2.0
     -- https://github.com/sunfounder/zeus-car.git
   
   Author: Sunfounder
@@ -17,21 +19,22 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.1.0"
+#define VERSION "1.2.0"
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include <SoftPWM.h>
-#include "string.h"
-#include "ir_remote.h"
+#include <string.h>
+
 #include "rgb.h"
-#include "common_definition.h"
+#include "compass.h"
 #include "car_control.h"
-#include "ai_camera.h"
 #include "ir_obstacle.h"
 #include "grayscale.h"
 #include "ultrasonic.h"
+#include "ir_remote.h"
 #include "cmd_code_config.hpp"
-#include "compass.h"
+#include "ai_camera.h"
+
 
 /*************************** Configure *******************************/
 /** @name Configure 
@@ -74,7 +77,6 @@
 #define TYPE "Zeus_Car"
 
 /** Configure websockets port
- *  
  * Sunfounder Controller APP fixed using port 8765
 */
 #define PORT "8765"
@@ -106,14 +108,17 @@
 AiCamera aiCam = AiCamera(NAME, TYPE);
 
 extern uint8_t currentMode;
+
 extern int16_t currentAngle;
 extern int16_t remoteAngle;
 extern int8_t remotePower;
+extern int8_t lastRemotePower;
 extern int16_t remoteHeading;
 extern int16_t remoteHeadingR;
 extern bool remoteDriftEnable;
 int16_t app_remoteAngle;
 int8_t app_remotePower;
+
 char speech_buf[20];
 
 //@}
@@ -130,14 +135,13 @@ void setup() {
   Serial.print("Arduino Car version ");Serial.println(VERSION);
 
   Serial.println(F("Initialzing..."));
-  SoftPWMBegin();
+  SoftPWMBegin(); // init softpwm, before the motors initialization and the rgb LEDs initialization
   rgbBegin();
-  rgbWrite(ORANGE);
+  rgbWrite(ORANGE); // init hint
   carBegin();
   irBegin();
   irObstacleBegin();
   gsBegin();
-  delay(100);
   aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT);
   aiCam.setOnReceived(onReceive);
   while (millis() - m < 500) { // Wait for peripherals to be ready
@@ -151,8 +155,7 @@ void setup() {
   #endif
 
   Serial.println(F("Okie!"));
-  rgbWrite(GREEN);
-
+  rgbWrite(GREEN); // init finished
 }
 
 /**
@@ -160,17 +163,19 @@ void setup() {
  * 
  * - inclued
  *  - aiCam.loop()
- *  - ir_remoteHandler()
+ *  - irRemoteHandler()
  *  - modeHandler()
  * - or modules test
  */
 void loop() {
   #if !TEST 
-    aiCam.loop();
-    ir_remoteHandler();
+    // Note that "aiCam.loop()" needs to be before "irRemoteHandler"
+    // because the value in a is constantly updated
+    aiCam.loop(); 
+    irRemoteHandler();
     modeHandler();
   #else
-    /* Select the item to be tested */
+    /* Select the item to be tested, multiple selection allowed */
     motors_test();
     // rgb_test();
     // grayscale_test();
@@ -228,7 +233,8 @@ void modeHandler() {
       break;
     case MODE_REMOTE_CONTROL:
       rgbWrite(MODE_REMOTE_CONTROL_COLOR);
-      carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, true);
+      carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
+      lastRemotePower = remotePower;
       break;
     case MODE_APP_CONTROL:
       rgbWrite(MODE_APP_CONTROL_COLOR);
@@ -351,9 +357,9 @@ void obstacleAvoidance() {
 }
 
 /**
- * ir_remoteHandler, handle IR remote control key events
+ * irRemoteHandler, handle IR remote control key events
  */
-void ir_remoteHandler() {
+void irRemoteHandler() {
   uint8_t key = irRead();
   if (key == IR_KEY_ERROR) {
     return; // No key pressed
@@ -393,9 +399,21 @@ void ir_remoteHandler() {
         break;
       case IR_KEY_EQ:
         break;
-      case IR_KEY_MINUS:
+      case IR_KEY_MINUS: // drift left
+        currentMode = MODE_REMOTE_CONTROL;
+        remoteAngle = 0;
+        remotePower = lastRemotePower;
+        remoteHeading = -90;
+        remoteDriftEnable = true;
+        carResetHeading();
         break;
-      case IR_KEY_PLUS:
+      case IR_KEY_PLUS: // drift right
+        currentMode = MODE_REMOTE_CONTROL;
+        remoteAngle = 0;
+        remotePower = lastRemotePower;
+        remoteHeading = 90;
+        remoteDriftEnable = true;
+        carResetHeading();
         break;
       case IR_KEY_0: // Reset origin direction
         currentMode = MODE_REMOTE_CONTROL;

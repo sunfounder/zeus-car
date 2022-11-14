@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 #include <SoftPWM.h>
+
 #define MOTOR_POWER_MIN 28  // 28/255
 
 /* 
@@ -19,17 +20,12 @@ int16_t originHeading;
 * @brief Initialize the motor, and (block) the initialization compass
 */
 void carBegin() {
-  SoftPWMBegin();
   for (uint8_t i = 0; i < 8; i++) {
     SoftPWMSet(MOTOR_PINS[i], 0);
     SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);
   }
-
   compassBegin();
-  for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
-    carResetHeading();
-  }
-
+  carResetHeading();
 }
 
 /** 
@@ -154,7 +150,10 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
     _lastError = error;
   }
 
-  angle = angle - currentHeading + originHeading;
+  if (angle != 0 || drift == true) {
+    angle = angle - currentHeading + originHeading;
+  }
+
   carMove(angle, power, rot, drift);
 
 }
@@ -163,6 +162,10 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
   * Reset origin head pointing
   */
 void carResetHeading() {
-  originHeading = compassReadAngle();
+  // int t = millis();
+  for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
+    originHeading = compassReadAngle();
+  }
+  // Serial.print("reset heading: "); Serial.println(millis() - t); // takes about 93 ms
 }
 

@@ -1,9 +1,8 @@
 #ifndef __AI_CAMERA_H__
 #define __AI_CAMERA_H__
 
-#include "Arduino.h"
-#include "string.h"
-#include "rgb.h"
+#include <Arduino.h>
+#include <string.h>
 
 /**
  * @name Set the print level of information received by esp32-cam

@@ -2,20 +2,41 @@
 #define __CMD_CODE_CONFIG_H__
 
 #include <Arduino.h>
+#include "rgb.h"
+#include "car_control.h"
+#include "ir_remote.h"
 
-// #define REMOTE_MODE_FIELD_CENTRIC
-#define REMOTE_MODE_DRIFT
+/** Mode Value Definition */
+#define MODE_NONE                    0
+#define MODE_LINE_TRACK              1
+#define MODE_ROTATE_LINE_FOLLOWING   2
+#define MODE_OBSTACLE_FOLLOWING      3
+#define MODE_OBSTACLE_AVOIDANCE      4
+#define MODE_REMOTE_CONTROL          5
+#define MODE_APP_CONTROL             6
+#define MODE_COMPASS_CALIBRATION     7
 
-#define CMD_SUM 12
+/** Set the color to match the mode */
+#define MODE_NONE_COLOR                     GREEN_CYAN
+#define MODE_LINE_TRACK_COLOR               CYAN
+#define MODE_ROTATE_LINE_FOLLOWING_COLOR    CYAN_BLUE
+#define MODE_OBSTACLE_FOLLOWING_COLOR       BLUE
+#define MODE_OBSTACLE_AVOIDANCE_COLOR       PURPLE
+#define MODE_REMOTE_CONTROL_COLOR           VOILET
+#define MODE_APP_CONTROL_COLOR              MAGENTA
 
 // State machine for almost all mode. State define see every function
 uint8_t currentMode = MODE_NONE;
+
 int16_t currentAngle = 0;
-int16_t remoteAngle;
-int8_t remotePower;
-int16_t remoteHeading;
-int16_t remoteHeadingR;
-bool remoteDriftEnable;
+int16_t remoteAngle = 0;
+int8_t remotePower = 0;
+int8_t lastRemotePower = 0;
+int16_t remoteHeading = 0;
+int16_t remoteHeadingR = 0;
+bool remoteDriftEnable  = false;
+
+#define CMD_SUM 12
 
 // Pay attention to the order,
 // eg: 'left forward' needs to be placed before' left' and 'forward'
@@ -139,112 +160,92 @@ int8_t ir_key_2_cmd_code(uint8_t key){
 
 void stop(){
   currentMode = MODE_NONE;
+  remoteAngle = 0;
+  remotePower = 0;
+  lastRemotePower = 0;
+  remoteHeading = 0;
+  remoteDriftEnable = false;
   carStop();
+  carResetHeading();
 }
 
 void forward(){
   remoteAngle = 0;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
-  carResetHeading();
   remoteDriftEnable = false;
-  #endif
+  carResetHeading();
 }
 
 void backward(){
   remoteAngle = 180;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
   carResetHeading();
-  #endif
 }
 
 void turn_left(){
-  #ifdef REMOTE_MODE_FIELD_CENTRIC
   remoteAngle = 0;
-  remotePower = 0;
-  remoteHeading -= 45;
-  if (remoteHeading < -180) {
-    remoteHeading += 360;
-  }
-  #endif
-  #ifdef REMOTE_MODE_DRIFT
-  remoteHeading = -90;
-  remoteDriftEnable = true;
-  #endif
+  remotePower = lastRemotePower;
+  remoteHeading = -45;
+  remoteDriftEnable = false;
+  carResetHeading();
 }
 
 void turn_right(){
-  #ifdef REMOTE_MODE_FIELD_CENTRIC
   remoteAngle = 0;
-  remotePower = 0;
-  remoteHeading += 45;
-  if (remoteHeading > 180) {
-    remoteHeading -= 360;
-  }
-  #endif
-  #ifdef REMOTE_MODE_DRIFT
-  remoteHeading = 90;
-  remoteDriftEnable = true;
-  #endif
+  remotePower = lastRemotePower;
+  remoteHeading = 45;
+  remoteDriftEnable = false;
+  carResetHeading();
 }
 
 void left_forward(){
   remoteAngle = 315;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  #endif
+  carResetHeading();
 }
 
 void left_backward(){
   remoteAngle = 225;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  #endif
+  carResetHeading();
 }
 
 void right_forward(){
   remoteAngle = 45;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  #endif
+  carResetHeading();
 }
 
 void right_backward(){
   remoteAngle = 135;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  #endif
+  carResetHeading();
 }
 
 void left(){
   remoteAngle = 270;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  #endif
+  carResetHeading();
 }
 
 void right(){
   remoteAngle = 90;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  #endif
+  carResetHeading();
 }
 
 void pause(){
   remoteAngle = 0;
   remotePower = 0;
-  #ifdef REMOTE_MODE_DRIFT
   remoteHeading = 0;
   remoteDriftEnable = false;
-  #endif
   carStop();
 }
 

@@ -1,5 +1,6 @@
 #include "ai_camera.h"
 #include "car_control.h"
+#include "rgb.h"
 
 /**
 * Use custom serial port
@@ -107,7 +108,7 @@ void AiCamera::loop() {
     if (IsStartWith(recvBuffer, CAM_INIT)) {
       Serial.println(F("ESP32-CAM reboot detected"));
       carStop();
-      rgbWrite(255, 0, 0);
+      rgbWrite(RED);
       while(1);
     }
 

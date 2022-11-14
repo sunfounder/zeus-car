@@ -1,5 +1,5 @@
 #include "ir_remote.h"
-#include "IRLremote.h"
+#include <IRLremote.h>
 
 CNec IRLremote;
 
