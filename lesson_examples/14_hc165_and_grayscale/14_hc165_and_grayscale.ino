@@ -9,7 +9,7 @@
   The 8-channel grayscale module uses the high 8-bit io
 
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include "hc165.h"
 
 void setup() {

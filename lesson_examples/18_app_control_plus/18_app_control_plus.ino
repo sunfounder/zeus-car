@@ -9,7 +9,7 @@
   * - Added indicator light to indicate the status in different modes
 
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include "rgb.h"
 #include "compass.h"
 #include "car_control.h"

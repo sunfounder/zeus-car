@@ -1,8 +1,8 @@
 #ifndef __AI_CAMERA_H__
 #define __AI_CAMERA_H__
 
-#include "Arduino.h"
-#include "string.h"
+#include <Arduino.h>
+#include <string.h>
 #include "rgb.h"
 
 /**

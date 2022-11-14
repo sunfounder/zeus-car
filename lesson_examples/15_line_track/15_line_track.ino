@@ -7,7 +7,7 @@
   to calibrate the grayscale module
 
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include "car_control.h"
 #include "grayscale.h"
 

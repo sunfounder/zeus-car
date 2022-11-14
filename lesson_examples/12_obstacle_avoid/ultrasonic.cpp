@@ -1,5 +1,5 @@
 #include "ultrasonic.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
 float ultrasonicRead() {
   delay(4); // A delay is required between consecutive readings, otherwise the reading may be 0

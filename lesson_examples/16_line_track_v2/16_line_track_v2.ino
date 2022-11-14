@@ -7,7 +7,7 @@
   to calibrate the grayscale module
 
 ******************************************************************/
-#include "Arduino.h"
+#include <Arduino.h>
 #include "car_control.h"
 #include "grayscale.h"
 
@@ -26,7 +26,6 @@ void setup() {
 void loop() {
   line_track();
   // delay(2);
-
 }
 
 void line_track() {
