@@ -114,10 +114,15 @@ extern int16_t remoteAngle;
 extern int8_t remotePower;
 extern int8_t lastRemotePower;
 extern int16_t remoteHeading;
-extern int16_t remoteHeadingR;
 extern bool remoteDriftEnable;
-int16_t app_remoteAngle;
-int8_t app_remotePower;
+
+int16_t appRemoteAngle = 0;
+int8_t appRemotePower = 0;
+int16_t appRemoteHeading = 0;
+int16_t appRemoteHeadingR = 0;
+bool appRemoteDriftEnable = false;
+
+bool irOrAppFlag = false; // true: App, false: IR
 
 char speech_buf[20];
 
@@ -133,6 +138,7 @@ void setup() {
   int m = millis();
   Serial.begin(115200);
   Serial.print("Arduino Car version ");Serial.println(VERSION);
+  product_number_indication();
 
   Serial.println(F("Initialzing..."));
   SoftPWMBegin(); // init softpwm, before the motors initialization and the rgb LEDs initialization
@@ -171,6 +177,7 @@ void loop() {
   #if !TEST 
     // Note that "aiCam.loop()" needs to be before "irRemoteHandler"
     // because the value in a is constantly updated
+    // Note that the cycle interval of the "aiCam.loop()" should be less than 80ms to avoid data d
     aiCam.loop(); 
     irRemoteHandler();
     modeHandler();
@@ -218,7 +225,6 @@ void modeHandler() {
     case MODE_LINE_TRACK:
       rgbWrite(MODE_LINE_TRACK_COLOR);
       remotePower = LINE_TRACK_POWER;
-      carResetHeading();
       line_track();
       break;
     case MODE_OBSTACLE_FOLLOWING:
@@ -238,7 +244,8 @@ void modeHandler() {
       break;
     case MODE_APP_CONTROL:
       rgbWrite(MODE_APP_CONTROL_COLOR);
-      carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
+      carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, appRemoteDriftEnable);
+      lastRemotePower = remotePower;
       break;
     case MODE_COMPASS_CALIBRATION:
       #if WATCH_DOG
@@ -374,10 +381,6 @@ void irRemoteHandler() {
   }
   else{
     switch (key) {
-      case IR_KEY_POWER:
-        currentMode = MODE_NONE;
-        carStop();
-        break;
       case IR_KEY_MODE:
         break;
       case IR_KEY_MUTE:
@@ -387,14 +390,18 @@ void irRemoteHandler() {
         break;
       case IR_KEY_PLAY_PAUSE:
         carResetHeading();
+        // currentAngle = 0;
+        irOrAppFlag = false;
         currentMode = MODE_LINE_TRACK;
         break;
       case IR_KEY_BACKWARD:
         carResetHeading();
+        irOrAppFlag = false;
         currentMode = MODE_OBSTACLE_FOLLOWING;
         break;
       case IR_KEY_FORWARD:
         carResetHeading();
+        irOrAppFlag = false;
         currentMode = MODE_OBSTACLE_AVOIDANCE;
         break;
       case IR_KEY_EQ:
@@ -436,27 +443,40 @@ void onReceive(char* recvBuf, char* sendBuf) {
 
   // Mode select: line track, obstacle following, obstacle avoidance
   if (aiCam.getSwitch(recvBuf, REGION_N)) {
-    currentMode = MODE_LINE_TRACK;
-  } else if (aiCam.getSwitch(recvBuf, REGION_O)) {
-    currentMode = MODE_OBSTACLE_FOLLOWING;
-  } else if (aiCam.getSwitch(recvBuf, REGION_P)) {
-    currentMode = MODE_OBSTACLE_AVOIDANCE;
-  } else {
-    if (currentMode == MODE_LINE_TRACK 
-      || currentMode == MODE_OBSTACLE_FOLLOWING 
-      || currentMode == MODE_OBSTACLE_AVOIDANCE){
-      currentMode = MODE_NONE;
-      carStop();
+    irOrAppFlag = true;
+    if (currentMode != MODE_LINE_TRACK) {
+      // currentAngle = 0;
       carResetHeading();
-      remoteHeading = 0;
-      return;    
+      currentMode = MODE_LINE_TRACK;
+    }
+  } else if (aiCam.getSwitch(recvBuf, REGION_O)) {
+    irOrAppFlag = true;
+    if (currentMode != MODE_OBSTACLE_FOLLOWING) {
+      carResetHeading();
+      currentMode = MODE_OBSTACLE_FOLLOWING;
+    }
+  } else if (aiCam.getSwitch(recvBuf, REGION_P)) {
+    irOrAppFlag = true;
+    if (currentMode != MODE_OBSTACLE_AVOIDANCE) {
+      carResetHeading();
+      currentMode = MODE_OBSTACLE_AVOIDANCE;
+    }
+  } else {
+    if (irOrAppFlag == true) {
+      irOrAppFlag = false;
+      currentMode = MODE_NONE;
+      stop();
+      carResetHeading();
+      // currentAngle = 0;
+      appRemoteHeading = 0;
+      return;
     }
   }
 
   // Stop
   if (aiCam.getButton(recvBuf, REGION_F)) {
     currentMode = MODE_NONE;
-    carStop();
+    stop();
     return;
   }
 
@@ -473,6 +493,7 @@ void onReceive(char* recvBuf, char* sendBuf) {
     currentMode = MODE_APP_CONTROL;
     carStop();
     carResetHeading();
+    appRemoteHeading = 0;
     remoteHeading = 0;
     return;
   }
@@ -481,36 +502,52 @@ void onReceive(char* recvBuf, char* sendBuf) {
   uint16_t angle = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_ANGLE);
   uint8_t power = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_RADIUS);
   power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
-  if (app_remoteAngle != angle) {
-    currentMode = MODE_APP_CONTROL;
-    app_remoteAngle = angle;
-    remoteAngle = app_remoteAngle;
+  if (appRemoteAngle != angle) {
+    if (currentMode != MODE_APP_CONTROL) {
+      currentMode = MODE_APP_CONTROL;
+      carResetHeading();
+    }
+    appRemoteAngle = angle;
+    remoteAngle = appRemoteAngle;
+    appRemoteHeading = 0;
+    remoteHeading = 0; // reset remoteHeading parameter, avoid "IR remote control" changed this value
   }
-  if (app_remotePower != power) {
-    currentMode = MODE_APP_CONTROL;
-    app_remotePower = power;
-    remotePower = app_remotePower;
+  if (appRemotePower != power) {
+    if (currentMode != MODE_APP_CONTROL) {
+      currentMode = MODE_APP_CONTROL;
+      carResetHeading();
+    }
+    appRemotePower = power;
+    remotePower = appRemotePower;
+    appRemoteHeading = 0;
+    remoteHeading = 0; // reset remoteHeading parameter, avoid "IR remote control" changed this value
   }
 
   // Drift 
-  // Serial.print("Drift:");Serial.println(remoteDriftEnable);
-  if (remoteDriftEnable != aiCam.getSwitch(recvBuf, REGION_J)) {
-    currentMode = MODE_APP_CONTROL;
-    remoteDriftEnable = !remoteDriftEnable;
+  if (appRemoteDriftEnable != aiCam.getSwitch(recvBuf, REGION_J)) {
+    if (currentMode != MODE_APP_CONTROL) {
+      currentMode = MODE_APP_CONTROL;
+      carResetHeading();
+    }
+    appRemoteDriftEnable = !appRemoteDriftEnable;
   }
 
   // MoveHead
   int moveHeadingA = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
   int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
-  if (remoteHeading !=  moveHeadingA || remoteHeadingR !=  moveHeadingR){
-    currentMode = MODE_APP_CONTROL;
-    remoteHeading = moveHeadingA;
-    remoteHeadingR = moveHeadingR;
-    if (remoteDriftEnable && moveHeadingR == 0) { // Drift mode
+  if (appRemoteHeading != moveHeadingA || appRemoteHeadingR !=  moveHeadingR){
+    if (currentMode != MODE_APP_CONTROL) {
+      currentMode = MODE_APP_CONTROL;
       carResetHeading();
+    }
+    appRemoteHeading = moveHeadingA;
+    appRemoteHeadingR = moveHeadingR;
+    remoteHeading = moveHeadingA;
+    if (appRemoteDriftEnable && moveHeadingR == 0) { // Drift mode
+      carResetHeading();
+      appRemoteHeading = 0;
       remoteHeading = 0;
-    } 
-    // Serial.print("head:");Serial.println(remoteHeading);
+    }
   }
 
   // Speech control
@@ -530,3 +567,39 @@ void onReceive(char* recvBuf, char* sendBuf) {
 
 }
 
+/*Used to distinguish product models in production*/
+void product_number_indication() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  delay(500);
+  // long bright means 0, blink means: 1, eg: 0x01 , __ __ ..
+  // HIGH , led on
+  // product number: Zeus_Car 0x00 , __ __ __
+
+  // digitalWrite(LED_BUILTIN, HIGH); // 1
+  // delay(250);
+  // digitalWrite(LED_BUILTIN, LOW);
+  // delay(250);
+  // digitalWrite(LED_BUILTIN, HIGH);
+  // delay(250);
+  // digitalWrite(LED_BUILTIN, LOW);
+  // delay(250);
+  // delay(500);
+
+  digitalWrite(LED_BUILTIN, HIGH); // 0
+  delay(750);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(250);
+  delay(500);
+
+  digitalWrite(LED_BUILTIN, HIGH); // 0
+  delay(750);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(250);
+  delay(500);
+
+  digitalWrite(LED_BUILTIN, HIGH); // 0
+  delay(750);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(250);
+  delay(500);
+}

@@ -17,13 +17,18 @@
 #define MODE_COMPASS_CALIBRATION     7
 
 /** Set the color to match the mode */
-#define MODE_NONE_COLOR                     GREEN_CYAN
+#define ERROR_COLOR 0xFF0000 // Red
+#define WARN_COLOR ORANGE
+
+#define MODE_NONE_COLOR 0xE08080  // LightCyan
+
+#define MODE_REMOTE_CONTROL_COLOR           GREEN_CYAN
+#define MODE_APP_CONTROL_COLOR              MAGENTA
+
 #define MODE_LINE_TRACK_COLOR               CYAN
-#define MODE_ROTATE_LINE_FOLLOWING_COLOR    CYAN_BLUE
 #define MODE_OBSTACLE_FOLLOWING_COLOR       BLUE
 #define MODE_OBSTACLE_AVOIDANCE_COLOR       PURPLE
-#define MODE_REMOTE_CONTROL_COLOR           VOILET
-#define MODE_APP_CONTROL_COLOR              MAGENTA
+
 
 // State machine for almost all mode. State define see every function
 uint8_t currentMode = MODE_NONE;
@@ -33,7 +38,7 @@ int16_t remoteAngle = 0;
 int8_t remotePower = 0;
 int8_t lastRemotePower = 0;
 int16_t remoteHeading = 0;
-int16_t remoteHeadingR = 0;
+
 bool remoteDriftEnable  = false;
 
 #define CMD_SUM 12
