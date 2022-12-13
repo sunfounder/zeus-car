@@ -149,9 +149,38 @@ rst_epilog = """
 
 .. |link_install_library| raw:: html
 
-    <a href="https://docs.arduino.cc/software/ide-v1/tutorials/installing-librariese" target="_blank">Installing Libraries</a>
+    <a href="https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries" target="_blank">Installing Libraries</a>
 
+.. |link_esp32cam_schematic| raw:: html
 
+    <a href="https://docs.ai-thinker.com/_media/esp32/docs/esp32_cam_sch.pdf" target="_blank">ESP32-CAM schematic diagram</a>
 
+.. |link_cam_ov2640| raw:: html
+
+    <a href="https://docs.ai-thinker.com/_media/esp32/docs/ov2640_ds_1.8_.pdf" target="_blank">ov2640_ds_1.8</a>
+
+.. |link_aithiner| raw:: html
+
+    <a href="https://docs.ai-thinker.com/en/esp32-cam" target="_blank">Ai-Thinker</a>
+
+.. |link_qmc6310_datasheet| raw:: html
+
+    <a href="https://www.qstcorp.com/upload/pdf/202202/%EF%BC%88%E5%B7%B2%E4%BC%A0%EF%BC%8913-52-17%20QMC6310%20Datasheet%20Rev.C(1).pdf" target="_blank">QMC6310 Datasheet</a>
+
+.. |link_ws2812_datasheet| raw:: html
+
+    <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" target="_blank">WS2812B Datasheet</a>
+
+.. |link_tcrt5000_datasheet| raw:: html
+
+    <a href="https://datasheetspdf.com/pdf-file/377371/VishayTelefunken/TCRT5000/1" target="_blank">TCRT5000 Reflective Sensor</a>
+
+.. |link_lm339_datasheet| raw:: html
+
+    <a href="https://datasheetspdf.com/pdf-file/1055868/FairchildSemiconductor/LM339/1" target="_blank">LM339 Quad Comparator</a>
+
+.. |link_74hc165_datasheet| raw:: html
+
+    <a href="https://datasheetspdf.com/pdf-file/944867/NXP/74HC165/1" target="_blank">74HC165 Shift Register</a>
 
 """

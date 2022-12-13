@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IR Obstacle Avoidcance Module &mdash; SunFounder Zeus Robot Car Kit for Arduino 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4 RGB LEDs Strip" href="cpn_rgb_strip.html" />
+    <link rel="prev" title="Ultrasonic Module" href="cpn_ultrasonic_module_xh.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SunFounder Zeus Robot Car Kit for Arduino
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">Get Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hardware.html">Hardware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpn_r3_board.html">SunFounder R3 Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_zeus_car_shield.html">Zeus Car Shield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_esp_32_cam.html">ESP32 CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_camera_adapter.html">Camera Adapter Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_omni_grayscale_module.html">Omni Grayscale Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ultrasonic_module_xh.html">Ultrasonic Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IR Obstacle Avoidcance Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_rgb_strip.html">4 RGB LEDs Strip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_18650_battery.html">18650 Battery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_tt_motor_xh.html">TT Motor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_mecanum_wheel.html">Mecanum Wheel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="hardware.html">Hardware</a> &raquo;</li>
+        
+      <li>IR Obstacle Avoidcance Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/hardware/cpn_ir_obstacle_module.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ir-obstacle-avoidcance-module">
+<h1>IR Obstacle Avoidcance Module<a class="headerlink" href="#ir-obstacle-avoidcance-module" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/ir_avoid.png" src="../_images/ir_avoid.png" />
+<ul class="simple">
+<li><p><strong>GND</strong>：Ground Input</p></li>
+<li><p><strong>+</strong>：3.3 to 5V DC Supply Input</p></li>
+<li><p><strong>Out</strong>：Signal output pin, default is high and output low when obstacle is detected</p></li>
+<li><p><strong>EN</strong>：Module enable pin. When it is low, the module is working and connected to GND by jumper cap by default.</p></li>
+</ul>
+<p>This is a common IR obstacle avoidance module that uses a pair of IR transmitting and receiving components. Basically, the transmitter emits infrared light, and when the detection direction encounters an obstacle, the infrared light is back and received by the receiver tube. At this time, the indicator lights up. After circuit processing, it outputs a low level signal.</p>
+<p>Sensing distance 2-40cm, with excellent anti-interference ability. There are different reflectivity levels in different colors of objects, so the darker the object, the closer to black the detection distance is short. The 2-30cm range of this sensor is detected against a white wall.</p>
+<p>When the enable pin is at a low level, the module works. As soon as the jumper cap is plugged in, the EN pin is connected to GND, and the module is always working. If you want to control the EN pin by code, you need to remove the jumper cap.</p>
+<img alt="../_images/ir_avoid_cap.png" src="../_images/ir_avoid_cap.png" />
+<p><strong>Adjust the detection distance</strong></p>
+<p>Due to the different light environment, the factory-set detection distance may not be applicable, so you need to adjust its actual detection distance before use.</p>
+<p>There are two potentiometers on the module, one for adjusting the transmitting power and one for adjusting the transmitting frequency, and by adjusting these two potentiometers you can adjust its effective distance.</p>
+<p>You can place a white obstacle in front of the module at the distance you want, adjust a potentiometer on the module until the indicator light on the module just lights up, and then repeatedly move the obstacle to see if the indicator light on the module lights up at the distance you need.</p>
+<p>If in the position you need, the indicator does not light up or is a long light does not go out, you can then go to adjust another potentiometer.</p>
+<img alt="../_images/zeus_ir_avoid.jpg" src="../_images/zeus_ir_avoid.jpg" />
+<p><strong>Features</strong></p>
+<ul class="simple">
+<li><p>operating voltage: 3.3 V to 5 V</p></li>
+<li><p>output: digital (on/off)</p></li>
+<li><p>detection threshold: adjustable by 2 potentiometers</p></li>
+<li><p>distance range: 2 to 40 cm</p></li>
+<li><p>adjustment R5: frequency adjustment 38 kHz (already optimized)</p></li>
+<li><p>adjustment R6: IR LED duty cycle adjustment (already optimized)</p></li>
+<li><p>operating temperature: -10 °C to +50 °C</p></li>
+<li><p>effective angle: 35°</p></li>
+<li><p>I/O interface: 4 wire interface (- / + / S / EN)</p></li>
+<li><p>dimensions: 45 x 16 x 10 mm</p></li>
+<li><p>weight: 9 g</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="cpn_rgb_strip.html" class="btn btn-neutral float-right" title="4 RGB LEDs Strip" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpn_ultrasonic_module_xh.html" class="btn btn-neutral float-left" title="Ultrasonic Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, SunFounder.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

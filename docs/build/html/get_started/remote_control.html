@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Control by Remote &mdash; SunFounder Zeus Robot Car Kit for Arduino 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Programming Mode" href="programming_mode.html" />
+    <link rel="prev" title="Controlled by APP" href="app_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SunFounder Zeus Robot Car Kit for Arduino
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">Get Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Assemble the Car</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="play_mode.html">Play Mode</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="app_control.html">Controlled by APP</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Control by Remote</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quick-guide">Quick Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compass-calibration">Compass Calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#line-track">Line Track</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#follow">Follow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#obstacle-avoidance">Obstacle Avoidance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drift-left-right">Drift Left/Right</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-in-all-directions-1-9">Move in All Directions(1 ~ 9)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rotate-left-right-cycle-usd-key">Rotate Left/Right（Cycle/USD Key）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming_mode.html">Programming Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="get_started.html">Get Started</a> &raquo;</li>
+        
+          <li><a href="play_mode.html">Play Mode</a> &raquo;</li>
+        
+      <li>Control by Remote</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/get_started/remote_control.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="control-by-remote">
+<span id="play-remote-control"></span><h1>Control by Remote<a class="headerlink" href="#control-by-remote" title="Permalink to this headline">¶</a></h1>
+<p>Zeus Car can be controlled with a remote control by turning the car on then pressing the buttons on the remote control directly. This method is stable and less susceptible to outside interference, but the control may not be as flexible.</p>
+<div class="section" id="quick-guide">
+<h2>Quick Guide<a class="headerlink" href="#quick-guide" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Let’s start the Zeus Car.</p>
+<blockquote>
+<div><ul>
+<li><p>When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.</p></li>
+<li><p>When you toggle the power switch ON, the power indicator will not light up, so you’ll need to plug in the Type-C cable for about 5 seconds.</p>
+<blockquote>
+<div><img alt="../_images/zeus_charge.jpg" src="../_images/zeus_charge.jpg" />
+</div></blockquote>
+</li>
+<li><p>If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.</p>
+<blockquote>
+<div><img alt="../_images/zeus_power.jpg" src="../_images/zeus_power.jpg" />
+</div></blockquote>
+</li>
+<li><p>At this point, the Zeus Car starts normally and the RGB LED Strip under the car lights up in cyan.</p>
+<blockquote>
+<div><img alt="../_images/zeus_car.jpg" src="../_images/zeus_car.jpg" />
+</div></blockquote>
+</li>
+<li><p>If a yellow light appears, it means startup was unsuccessful. Please press the <strong>Reset</strong> button to make the code in the Arduino board run again.</p>
+<blockquote>
+<div><img alt="../_images/zeus_reset_button.jpg" src="../_images/zeus_reset_button.jpg" />
+</div></blockquote>
+</li>
+<li><p>Make sure the Upload button is toggled to the right (run mode) if the light is still yellow.</p>
+<blockquote>
+<div><img alt="../_images/zeus_run_upload.jpg" src="../_images/zeus_run_upload.jpg" />
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Press the different keys on the remote control to control the car.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/remote_control.jpg"><img alt="../_images/remote_control.jpg" src="../_images/remote_control.jpg" style="width: 800px;" /></a>
+<ul class="simple">
+<li><p><strong>Stop</strong>: Stop all movements of the car.</p></li>
+<li><p><a class="reference internal" href="#ir-compass-cali"><span class="std std-ref">Compass Calibration</span></a>: Turn on compass calibration.</p></li>
+<li><p><a class="reference internal" href="#ir-line-track"><span class="std std-ref">Line Track</span></a>：Switching to line track mode.</p></li>
+<li><p><a class="reference internal" href="#ir-follow"><span class="std std-ref">Follow</span></a>：Switching to follow mode.</p></li>
+<li><p><a class="reference internal" href="#ir-avoid"><span class="std std-ref">Obstacle Avoidance</span></a>：Switch to obstacle avoidance mode.</p></li>
+<li><p><a class="reference internal" href="#drift"><span class="std std-ref">Drift Left/Right</span></a>: Drift to the left/right.</p></li>
+<li><p><strong>Set Heading</strong>：After placing the car in one direction with your hand, click on this key to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other keys.</p></li>
+<li><p><a class="reference internal" href="#rotate-left-right"><span class="std std-ref">Rotate Left/Right（Cycle/USD Key）</span></a>: Turn left/right</p></li>
+<li><p><a class="reference internal" href="#ir-move"><span class="std std-ref">Move in All Directions(1 ~ 9)</span></a>：Control the car to move in all directions.</p></li>
+<li><p><strong>Pause</strong>：The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="compass-calibration">
+<span id="ir-compass-cali"></span><h2>Compass Calibration<a class="headerlink" href="#compass-calibration" title="Permalink to this headline">¶</a></h2>
+<p>Turn on compass calibration by pressing the <a class="reference internal" href="../_images/ir_mute.png"><img alt="ir_mute" src="../_images/ir_mute.png" style="width: 40px;" /></a> key.</p>
+<p>Place the Zeus car on the ground. Upon turning on the compass calibration, the car will start rotating counterclockwise and will stop in about 1 minute. If it rotates longer than 2 minutes, the magnetic field here is complicated. Try changing the location and calibrating again.</p>
+</div>
+<div class="section" id="line-track">
+<span id="ir-line-track"></span><h2>Line Track<a class="headerlink" href="#line-track" title="Permalink to this headline">¶</a></h2>
+<p>Press the <a class="reference internal" href="../_images/ir_play.png"><img alt="ir_play" src="../_images/ir_play.png" style="width: 40px;" /></a> key to switch to the line track mode.</p>
+<p>Two modes of line track are available on the Zeus Car, one with its head always facing the direction of movement and one with its head facing a fixed direction. Here, the second mode is selected.</p>
+<p>But before you can get it to follow the line, you need to calibrate the Omni Grayscale module and stick the line, as follows.</p>
+<ol class="arabic">
+<li><p>Stick a 3cm wide line</p>
+<blockquote>
+<div><p>There are eight sensors on the Omni grayscale module, and the distance between each sensor is between 2 and 3 cm. There must be two sensors to detect the black line simultaneously. Therefore, the line you stick must be at least 3cm wide and the bend angle should not be less than 90°.</p>
+<a class="reference internal image-reference" href="../_images/map.png"><img alt="../_images/map.png" src="../_images/map.png" style="width: 800px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Calibrate the Omni Grayscale module.</p>
+<blockquote>
+<div><p>Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.</p>
+<ul>
+<li><p>Place the Zeus Car on white surface and turn the potentiometer until the gray sensor light is just illuminated.</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration.jpg" src="../_images/zeus_line_calibration.jpg" />
+</div></blockquote>
+</li>
+<li><p>Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration1.jpg" src="../_images/zeus_line_calibration1.jpg" />
+</div></blockquote>
+</li>
+<li><p>You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Place the Zeus Car on your stickied line, press the <a class="reference internal" href="../_images/ir_play.png"><img alt="ir_play" src="../_images/ir_play.png" style="width: 40px;" /></a> key, and it will track the line.</p></li>
+<li><p>Due to the high environmental requirements of the Omni grayscale module, it is recommended to calibrate it a few more times if the tracking effect is not satisfactory (off-track).</p></li>
+</ol>
+</div>
+<div class="section" id="follow">
+<span id="ir-follow"></span><h2>Follow<a class="headerlink" href="#follow" title="Permalink to this headline">¶</a></h2>
+<p>Press the <a class="reference internal" href="../_images/ir_backward.png"><img alt="ir_backward" src="../_images/ir_backward.png" style="width: 40px;" /></a> key to switch to follow mode.</p>
+<p>The ultrasonic sensor detects obstacles in front (20 cm) and follows them forward. These two obstacle avoidance modules allow the car to follow left or right, but they need to be calibrated (15cm) before use.</p>
+<ol class="arabic">
+<li><p>Calibrate the IR obstacle avoidance module.</p>
+<blockquote>
+<div><ul>
+<li><p>Place an obstacle about 15cm away from the IR obstacle avoidance module.</p></li>
+<li><p>On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.</p></li>
+<li><p>Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn’t, adjust another potentiometer.</p>
+<blockquote>
+<div><img alt="../_images/zeus_ir_avoid.jpg" src="../_images/zeus_ir_avoid.jpg" />
+</div></blockquote>
+</li>
+<li><p>Calibrate the other obstacle avoidance module in the same way.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Place Zeus car on a table or the ground and let it follow your hand or other obstacles.</p></li>
+</ol>
+</div>
+<div class="section" id="obstacle-avoidance">
+<span id="ir-avoid"></span><h2>Obstacle Avoidance<a class="headerlink" href="#obstacle-avoidance" title="Permalink to this headline">¶</a></h2>
+<p>When you want to go into obstacle avoidance mode, press the <a class="reference internal" href="../_images/ir_forward.png"><img alt="ir_forward" src="../_images/ir_forward.png" style="width: 40px;" /></a> key, but first reference the <a class="reference internal" href="#ir-follow"><span class="std std-ref">Follow</span></a> to calibrate the two obstacle avoidance modules.</p>
+<ul class="simple">
+<li><p>Zeus car will move forward.</p></li>
+<li><p>An ultrasonic module detects obstacles in front, if detected, the car turns left.</p></li>
+<li><p>When the left obstacle avoidance module detects an obstacle, the car turns right, and when the right obstacle avoidance module detects an obstacle, the car turns left.</p></li>
+</ul>
+</div>
+<div class="section" id="drift-left-right">
+<span id="drift"></span><h2>Drift Left/Right<a class="headerlink" href="#drift-left-right" title="Permalink to this headline">¶</a></h2>
+<p>Use the <a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> and <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a> keys to drift the car to the left/right.</p>
+<ul class="simple">
+<li><p>Press the <a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> key, the car will drift to the left.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_drift_left.jpg"><img alt="../_images/zeus_drift_left.jpg" class="align-center" src="../_images/zeus_drift_left.jpg" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Press the <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a> key, the car will drift to the right.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_drift_right.jpg"><img alt="../_images/zeus_drift_right.jpg" class="align-center" src="../_images/zeus_drift_right.jpg" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>If it was stopped before drifting, pressing the <a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> or <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a> key once will cause the Zeus to drift 90° to the left or right.</p></li>
+<li><p>If it was moving before drifting, after pressing the key, the Zeus Car will drift 90° to the left or right, then pan until you press another key.</p></li>
+</ul>
+</div>
+<div class="section" id="move-in-all-directions-1-9">
+<span id="ir-move"></span><h2>Move in All Directions(1 ~ 9)<a class="headerlink" href="#move-in-all-directions-1-9" title="Permalink to this headline">¶</a></h2>
+<p>Use the number keys 1~9 to make the Zeus Car move in 8 directions.</p>
+<img alt="../_images/remote_control_move.jpg" src="../_images/remote_control_move.jpg" />
+</div>
+<div class="section" id="rotate-left-right-cycle-usd-key">
+<span id="rotate-left-right"></span><h2>Rotate Left/Right（Cycle/USD Key）<a class="headerlink" href="#rotate-left-right-cycle-usd-key" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The car will turn 45° left with the body as the center if you press <a class="reference internal" href="../_images/ir_return.png"><img alt="ir_return" src="../_images/ir_return.png" style="width: 40px;" /></a> once. Depending on the previous state, it will move forward or stop. If the previous state is stop, it will stop after 45° left turn; if it is forward, it will move forward after the left turn.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_left.jpg"><img alt="../_images/zeus_turn_left.jpg" class="align-center" src="../_images/zeus_turn_left.jpg" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Similarly, pressing <a class="reference internal" href="../_images/ir_usd.png"><img alt="ir_usd" src="../_images/ir_usd.png" style="width: 40px;" /></a> once will make the car turn 45° to the right, and then it will move forward or stop depending on the previous state.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_right.jpg"><img alt="../_images/zeus_turn_right.jpg" class="align-center" src="../_images/zeus_turn_right.jpg" style="width: 600px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="programming_mode.html" class="btn btn-neutral float-right" title="Programming Mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="app_control.html" class="btn btn-neutral float-left" title="Controlled by APP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, SunFounder.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

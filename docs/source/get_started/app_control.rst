@@ -3,9 +3,7 @@
 Controlled by APP
 =========================
 
-Zeus Car出厂时已经预上传了代码，让你可以直接用手机APP来控制它。
-
-但在控制前，你需要先在手机/平板上下载APP(SunFounder Controller)，然后连上Zeus Car发出的局域网，最后在SunFounder Controller上创建属于你的遥控器来控制Zeus Car。
+To control Zeus Car from your mobile device, you must download the APP (SunFounder Controller) on your device, connect to the Zeus Car LAN, and then create your own controller on the APP.
 
 
 Quick Guide
@@ -14,29 +12,28 @@ Quick Guide
 
 #. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
 
-#. 启动Zeus Car。
+#. Let's start the Zeus Car.
 
-    * 由于Zeus Car Shield上板载过放保护电路，在第一次使用或者是拔出电池线时会认为电压过低，从而激活保护电路。
-    * 所以当你将电源开关拨向ON，此时电源指示灯将不会点亮，你需要插入Type-C线大概5秒左右。
+    * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
+    * When you toggle the power switch ON, the power indicator will not light up, so you'll need to plug in the Type-C cable for about 5 seconds.
 
             .. image:: img/zeus_charge.jpg
 
-    * 若电源指示灯点亮，说明保护电路已关闭，可以正常使用了。此时再看下电量指示灯，如果两个电量指示灯都关闭，请继续插入Type-C的线给Zeus Car充电。
+    * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
 
         .. image:: img/zeus_power.jpg
 
-    * 此时Zeus Car正常启动，能从车底看到Cyan color的光。
+    * At this point, the Zeus Car starts normally and the RGB LED Strip under the car lights up in cyan.
 
         .. image:: img/zeus_car.jpg
 
-    * 如果出现的是黄色的光，说明启动不成功，请按下复位按钮来让R3板内的代码重新运行。
+    * If a yellow light appears, it means startup was unsuccessful. Please press the **Reset** button to make the code in the Arduino board run again.
 
         .. image:: img/zeus_reset_button.jpg
 
-    * 如果还是黄色的光，请确认下这个按钮是否已拨向右边（运行模式）。
+    * Make sure the Upload button is toggled to the right (run mode) if the light is still yellow.
 
         .. image:: img/zeus_run_upload.jpg
-
 
 
 #. Connect to ``Zeus_Car`` WLAN.
@@ -51,58 +48,56 @@ Quick Guide
 
 #. Create a controller.
 
-    * 打开SunFounder Controller之后，点击 + 图标来添加遥控器
+    * To add a controller on SunFounder Controller, click the **+** icon.
 
         .. image:: img/app1.png
 
-    * There are preset controllers for some products in the Preset section, 这里我们选择Zeus Car.
+    * Preset controllers are available for some products, here we choose **Zeus Car**.
 
-    .. image:: img/app_preset.png
+        .. image:: img/app_preset.png
 
-    * 你也许可能想给它一个名字，之后点击Confirm.
+    * Give it a name and click Confirm.
 
-    .. image:: img/app_name.png
+        .. image:: img/app_name.png
     
-    * 现在你已经进入到遥控器内部，里面已经有设定的几个部件。点击右上角 |app_save| 按钮。
+    * You are now inside the controller, which already has several widgets set up. Click the |app_save| button in the upper right corner.
 
-    .. image:: img/app_edit.png
+        .. image:: img/app_edit.png
 
-    * 接下来你需要通过 |app_connect| 按钮来让Zeus Car和你的设备连接上。等待几秒，将出现Zeus_Car(IP), 点击它来连接。
+    * The next step is to connect the Zeus Car to your device via the |app_connect| button. Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
 
-    .. image:: img/app_auto_connect.png
+        .. image:: img/app_auto_connect.png
 
-    .. note::
-        如果很久没有出现，请确认你的Wi-Fi是否有连接到Zeus_Car。
+        .. note::
+            Please make sure your Wi-Fi is connected to ``Zeus_Car``, if you are not seeing the above message for a long time.
 
 #. Run the Controller.
 
-    * 出现"Connected Successfully"提示后，点击 |app_run| 按钮。
-    * 摄像头拍摄的画面将在APP上出现，and now you can control your Zeus Car with these widgets.
+    After the "Connected Successfully" message appears, click the |app_run| button, then the camera footage will appear on the app, and now you can control your Zeus Car with these widgets.
 
     .. image:: img/app_run.png
 
     Here are the functions of the widgets.
 
-    * :ref:`app_compass_cali`: 开启罗盘校准。
-    * **Stop(F)**: 停止小车的所有动作。
-    * **Set Heading(I)**: 用手将小车放置一个方向之后，点击这个键来将此时车头的朝向作为小车移动的前方，这可以让你快速指定一个方向，而不是通过其他按键将小车慢慢旋转到那个方向。
-    * :ref:`app_drift`: 启动漂移功能
-    * :ref:`app_move`: 控制小车全向移动。
-    * :ref:`app_speech_control`: 切换到语音控制模式
-    * :ref:`app_line_track`: 切换到循线模式
-    * :ref:`app_follow`: 切换到跟随模式
-    * :ref:`app_avoid`: 切换到避障模式
-    * :ref:`app_rotate_drift`: 用来控制车头方向。
+    * :ref:`app_compass_cali`: Turn on compass calibration.
+    * **Stop(F)**: Stop all movements of the car.
+    * **Set Heading(I)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
+    * :ref:`app_drift`: Activate the drift function.
+    * :ref:`app_move`: Control the car to move in all directions.
+    * :ref:`app_speech_control`: Switching to speech control mode.
+    * :ref:`app_line_track`: Switching to line track mode.
+    * :ref:`app_follow`: Switching to follow mode.
+    * :ref:`app_avoid`: Switch to obstacle avoidance mode.
+    * :ref:`app_rotate_drift`: Used to control the head direction.
 
 .. _app_compass_cali:
 
 Calibration(E)
 --------------------------
 
-点击 |app_cali_e| 按钮来开启罗盘校准功能。
+Turn on compass calibration by clicking the |app_cali_e| button.
 
-将Zeus Car放在地面上，罗盘校准功能开启后，小车将开始逆时针旋转来校准，预计1分钟左右停止。如果它转动超过2分钟，说明此地的磁场比较复杂，建议换个地方再校准下。
-
+Place the Zeus car on the ground. Upon turning on the compass calibration, the car will start rotating counterclockwise and will stop in about 1 minute. If it rotates longer than 2 minutes, the magnetic field here is complicated. Try changing the location and calibrating again.
 
 
 .. _app_drift:
@@ -110,15 +105,15 @@ Calibration(E)
 Drift Enable(J)
 ---------------------
 
-点击 |app_drift_j| 按钮来启动漂移功能。
+Click the |app_drift_j| button to enable the drift function.
 
-* 此时，当你逆时针滑动 |app_rotate_q| 小部件时，Zeus Car会以逆时针漂移。松手后，小车将停在原位。
+* By sliding the |app_rotate_q| widget counterclockwise, you will see Zeus Car drift to the right. Upon releasing the hand, the car will stop at its current position.
 
     .. image:: img/zeus_drift_left.jpg
         :width: 600
         :align: center
 
-* 若顺时针滑动 |app_rotate_q| 小部件，Zeus Car将随着顺时针漂移。松手后，小车将停在原位。
+* Similarly, if you slide the |app_rotate_q| widget clockwise, the Zeus Car will drift to the left and stop in the current position.
 
 .. image:: img/zeus_drift_right.jpg
     :width: 600
@@ -127,15 +122,15 @@ Drift Enable(J)
 
 .. _app_move:
 
-全向移动(k)
----------------
+Move in All Directions(K)
+----------------------------------
 
-往各个方向滑动 |app_move_k| 小部件，将会让Zeus Car往相应的方向移动。
+The Zeus Car will move in the appropriate direction when you swipe the |app_move_k| widget.
 
 .. image:: img/joystick_move.png
     :align: center
 
-每滑动一次，小车移动一次，如果一直未松手，小车将一直移动。
+The car moves once every time you slide, so if you don't release your hand all the time, the car keeps moving.
 
 .. image:: img/zeus_move.jpg
 
@@ -146,17 +141,16 @@ Speech(M)
 -------------------
 
 .. warning::
-    Android设备无法使用语音控制功能，因为它使用的是谷歌在线的语音识别引擎，所以如果要使用该语音控制功能，需要在Android移动设备上安装谷歌服务组件，并且需要连接网络。
-    而iOS设备使用的是离线的语音识别引擎，不需要联网，AP 和 STA 模式连接都可以。
+    Android devices cannot use the speech control function. Because the speech control function requires the Android mobile device to be connected to the Internet and to install the Google service component.
+    
+    While iOS devices use offline voice recognition engine, no network connection is required, AP and STA mode connection are both available.
 
-    如果需要在Android设备使用语音控制，请到后面编程环节。
+The Zeus Car can also be controlled using speech in SunFounder Controller. Zeus Car will perform the set actions based on the commands you say to your mobile device.
 
-在SunFounder Controller中，你还可以用语音来控制Zeus Car. 就是对着你的移动设备说一些指令，移动设备检测到之后，将这个指令发给Zeus Car，然后Zeus Car将执行设定好的动作。
+Now press and hold the |app_speech_m| widget and say any of the following commands to see what happens.
 
-现在按住 |app_speech_m| 小部件，说以下任意指令看下将发生什么。
-
-* ``stop``: 可以停止小车所有动作。
-* ``pasue``: 功能和Stop基本一致，但如果此时小车的车头朝向不是原先设定的，它将慢慢移动到设定方向。
+* ``stop``: All movements of the car can be stopped.
+* ``pasue``: The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.
 * ``forward``
 * ``backward``
 * ``left forward``
@@ -166,18 +160,18 @@ Speech(M)
 * ``move left``
 * ``move right``
 
-    小车接收到上述8个指令后，它将按相应的方向一直移动，除非接收到 ``stop`` 或 ``pasue`` 指令。
+    After the car receives the above 8 commands, it will keep moving in the corresponding direction unless it receives ``stop`` or ``pasue`` commands.
 
     .. image:: img/zeus_move.jpg
 
-* ``turn left``: 会让小车以车身为中心左转45°，然后它将根据前一状态来前进或停止，如果是上一状态是停止，左转45°后，它停止；如果是前进，左转完之后将前进。
+* ``turn left``: This command will make the car to turn left 45° with the body as the center, then it will move forward or stop according to the previous state. If the previous state is stop, it will stop after turning left 45°; if it is forward, it will move forward after turning.
 
 
     .. image:: img/zeus_turn_left.jpg
         :width: 600
         :align: center
 
-* ``turn right``: 会让小车以车身为中心右转45°，同样将根据前一状态来前进或停止。
+* ``turn right``: This command will make the car turn 45° to the right with the body as the center, and again will move forward or stop depending on the previous state.
 
     .. image:: img/zeus_turn_right.jpg
         :width: 600
@@ -191,69 +185,68 @@ Speech(M)
 Line(N)
 --------------
 
-点击 |app_line_n| 小部件切换到循线模式。
+Click on the |app_line_n| widget to switch to the line track mode.
 
-Zeus Car的循线模式有两种，一种是车头总是朝着移动方向，另外一种是它的头是固定方向的。这里选用的是第二种模式，所以你会看到Zeus Car将侧着循线前进。
+Two modes of line track are available on the Zeus Car, one with its head always facing the direction of movement and one with its head facing a fixed direction. Here, the second mode is selected.
 
-但在让它循线前，你需要先校准Omni 灰度模块以及贴好轨道，具体步骤如下：
 
-#. 贴好轨道
+#. Stick a 3cm wide line
 
-    在Omni灰度模块上有8个灰度传感器，每两个传感器之间的距离在2~3cm之间，为了让Omni灰度传感器至少能有2个传感器同时检测到黑线，所以你贴的轨道至少要3cm的宽度，弯道角度不要小于90°。
+    There are eight sensors on the Omni grayscale module, and the distance between each sensor is between 2 and 3 cm. There must be two sensors to detect the black line simultaneously. Therefore, the line you stick must be at least 3cm wide and the bend angle should not be less than 90°.
 
     .. image:: img/map.png
         :width: 800
 
-#. 校准Omni Grayscale module。
+#. Calibrate the Omni Grayscale module.
 
-        因为不同的地板灰度值不同，导致Omni灰度模块目前设定好的灵敏度有差异，你需要在使用前校准。建议在地板颜色变化较大时，都需要校准。
+    Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.
 
-    * 将Zeus Car放在白色地面上，拧动电位器直到灰度传感器的指示灯刚好点亮。
+    * Place the Zeus Car on white surface and turn the potentiometer until the gray sensor light is just illuminated.
 
         .. image:: img/zeus_line_calibration.jpg
 
-    * 现在让侧边两个灰度传感器刚好位于黑线和白线之间的交界处，慢慢拧动电位器直到信号指示灯刚好熄灭。
+    * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
 
-        .. image:: img/zeus_line_calibration1.jpg（缺图）
+        .. image:: img/zeus_line_calibration1.jpg
 
-    * 你可以在黑线和白线上反复移动，确定灰度传感器的灯在黑线与白线之间的交界处时熄灭，在白色表面时亮起，说明就校准好了。
+    * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
 
 
-#. 将Zeus Car放在你贴好的轨道，点击 |app_line_n| 小部件，它就能跟着轨道前进。
+#. Place the Zeus Car on your stickied line, click the |app_line_n| widget, and it will track the line.
 
-#. 由于灰度传感器对环境的要求较高，如果循线效果不理想（脱轨），建议多校准几次。
+#. Due to the high environmental requirements of the Omni grayscale module, it is recommended to calibrate it a few more times if the tracking effect is not satisfactory (off-track).
 
 .. _app_follow:
 
 Follow(O)
 ------------
 
-点击 |app_follow_o| 小部件切换到跟随模式。
+Click the |app_follow_o| widget to switch to follow mode.
 
-超声波检测正前方的障碍物（20cm），检测到就跟随前进。两侧的红外避障模块用来让小车跟随左转或者右转，但是在使用前需要校准这两个模块（15cm）。
+The ultrasonic sensor detects obstacles in front (20 cm) and follows them forward. These two obstacle avoidance modules allow the car to follow left or right, but they need to be calibrated (15cm) before use.
 
-#. 校准红外避障模块。
+#. Calibrate the IR obstacle avoidance module.
 
-    * 将一个障碍物放在离红外避障模块15cm左右的地方。
-    * 模块上有2个电位器，一个是校准发送功率，一个是校准接收频率，通过调节这两个电位器能调节它的有效距离。
-    * 所以你可以先调一个电位器，如果在15cm时，模块上的信号灯刚刚好点亮，说明调节成功；如果发现检测不到，你可以调节另外一个电位器，信号灯刚好点亮就行。
+    * Place an obstacle about 15cm away from the IR obstacle avoidance module.
+    * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
+    * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
 
         .. image:: img/zeus_ir_avoid.jpg
 
-    * 按照同样的方法校准另外一个避障模块。
+    * Calibrate the other obstacle avoidance module in the same way.
 
-#. 将Zeus放在桌面或地面上，让它跟着你的手或其他的障碍物移动。
+#. Place Zeus car on a table or the ground and let it follow your hand or other obstacles.
 
 .. _app_avoid:
 
 Avoid(p)
 ------------------------
 
-点击 |app_avoid_p| 小部件来切换到避障模式，但请确认你已先参考 :ref:`app_follow` 校准2个避障模块。
+When you want to go into obstacle avoidance mode, click the |app_avoid_p| widget, but first reference the :ref:`app_follow` to calibrate the two obstacle avoidance modules.
 
-* Zeus会向前移动。
-* 超声波检测正前方的障碍物，检测到左转。
-* 左侧避障模块检测到障碍物，小车右转，右侧避障模块检测到障碍物，小车左转。
+* Zeus car will move forward.
+* An ultrasonic module detects obstacles in front, if detected, the car turns left.
+* When the left obstacle avoidance module detects an obstacle, the car turns right, and when the right obstacle avoidance module detects an obstacle, the car turns left.
 
 
 
@@ -262,17 +255,17 @@ Avoid(p)
 Control the Drection(Q)
 -------------------------------
 
-* 当 |app_drift_j| 按钮开启时， |app_rotate_q| 小部件是用来让Zeus Car进行左右漂移。
+* When the |app_drift_j| button is on, the |app_rotate_q| widget is used to make the Zeus Car drift left and right.
 
-* 当 |app_drift_j| 小部件关闭时， |app_rotate_q| 小部件是用来控制小车转向。
+* When the |app_drift_j| widget is off, the |app_rotate_q| widget is used to control the direction of the car's head.
 
-    * 以逆时针滑动 |app_rotate_q| 小部件，小车也随着逆时针转向，松手后小车车头将回到一开始设置的方向。
+    * By sliding the |app_rotate_q| widget counterclockwise, the car will also rotate counterclockwise. Upon releasing the hand, the head of the car will back to the original direction.
 
     .. image:: img/zeus_turn_left.jpg
         :width: 600
         :align: center
 
-    * 以顺时针滑动 |app_rotate_q| 小部件, 小车也随着顺时针转向，松手后小车车头将回到一开始设置的方向。
+    * Similarly the car will rotate clockwise with the |app_rotate_q| widget and return to the original direction when released.
 
     .. image:: img/zeus_turn_right.jpg
         :width: 600

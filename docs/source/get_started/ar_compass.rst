@@ -1,0 +1,29 @@
+7. Compass
+==========
+
+In this project, Zeus Car will become a compass.
+You will need to set a heading direction for it, and then no matter how you turn it, it will be facing there.
+
+.. note::
+    If electrical wires are present near the Zeus Car, the electromagnetic field will interfere with the operation of the qmc6310 module, thus changing the heading direction of the car.
+
+**How to do?**
+
+#. First check that the **Upload** button is toggled to the side near the motor port.
+
+#. Open the ``7_compass.ino`` file under the path of ``zeus-car-main\examples\7_compass``. Or copy this code into Arduino IDE.
+
+    <代码>
+
+#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+
+#. First let's calibrate the qmc6310 module.
+
+    * Place the car on the ground (take care to stay away from ground with dense wires).
+    * Press |ir_mute| and the car will rotate in place.
+    * And stop until the magnetic field at that place is fully recorded. 
+    * If it doesn't stop after more than 2 minutes, you can press |ir_power| to stop and then continue elsewhere.
+
+#. Turn the car to the direction you want it to face and press |ir_play|. After that, whatever direction you turn it, it will slowly turn back to the set direction.
+
+#. The magnetic fields on the ground and on the table are not the same and need to be recalibrated.

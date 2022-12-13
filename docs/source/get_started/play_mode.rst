@@ -3,15 +3,15 @@
 Play Mode
 ======================
 
-上手即玩模式是我们在出厂时给主板预上传了代码，Zeus Car开机后，就能用手机APP或者遥控器来遥控了。
+The play mode is where we pre-upload the code to the Arduino board at the factory, and the Zeus Car can be remotely controlled by APP or remote control once it is turned on.
 
-* :ref:`play_app_control`：需要你在手机上安装由SunFounder设计的机器人遥控器 - SunFounder Controller, 你可以用摇杆小部件灵活控制Zeus Car全向移动，还有进行语音控制，最重要的是你可以在APP上看到Zeus Car拍摄的实时画面。
+* :ref:`play_app_control`: You need to install the SunFounder Controller on your mobile or tablet, which allows you to control the Zeus Car in all directions with a joystick widget, as well as speech control, and most importantly, you can see the real-time video streaming taken by the Zeus Car on the APP.
 
-* :ref:`play_remote_control`：我们配置了一款简易遥控器，只需要将Zeus Car开机就能用遥控器来控制了，对于想尽快体验控制Zeus Car的乐趣的用户来说是个不错的选择。
+* :ref:`play_remote_control`: We have equipped a simple remote control, just turn on the Zeus Car and you can control it by remote control, which is a good choice for users who want to experience the fun of controlling Zeus Car as soon as possible.
+
 
 .. toctree::
     :maxdepth: 2
 
-    remote_control
     app_control
-    
+    remote_control
