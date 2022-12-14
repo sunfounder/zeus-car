@@ -15,9 +15,11 @@ You will learn how to make the Zeus Car move in all directions in this project.
 
 #. Connect the Zeus Car to your computer with the blue USB cable. When you plug in your Arduino board, the computer automatically recognizes it and assigns it a COM port, which you can view in Device Manager.
 
-#. Open the ``1_basic_move.ino`` file under the path of ``zeus-car-main\examples\1_basic_move``. Or copy this code into Arduino IDE.
+#. Open the ``1_basic_move.ino`` file under the path of ``zeus-car-main\examples\1_basic_move``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/cedd4eb2-3283-48ae-8851-c932eb2098ea/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. You can quickly select the board and port from this place.
 

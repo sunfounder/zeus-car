@@ -10,9 +10,11 @@ While you control the Zeus Car movement with the remote control, if it is deflec
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``8_move_field_centric.ino`` file under the path of ``zeus-car-main\examples\8_move_field_centric``. Or copy this code into Arduino IDE.
+#. Open the ``8_move_field_centric.ino`` file under the path of ``zeus-car-main\examples\8_move_field_centric``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/a0ac96b3-47a9-4eab-8d8a-d1ca16c7fcda/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

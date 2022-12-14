@@ -183,4 +183,10 @@ rst_epilog = """
 
     <a href="https://datasheetspdf.com/pdf-file/944867/NXP/74HC165/1" target="_blank">74HC165 Shift Register</a>
 
+.. |link_zeus_code| raw:: html
+
+    <a href="https://github.com/sunfounder/zeus-car" target="_blank">SunFounder Zeus Car Kit for Arduino - GitHub </a>
+
+
+
 """

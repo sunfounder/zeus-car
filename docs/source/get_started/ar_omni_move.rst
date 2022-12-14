@@ -1,4 +1,4 @@
-1. Omni Move
+2. Omni Move
 ==========================
 
 
@@ -14,9 +14,11 @@ If you ignore the friction on the ground and the structural tolerances, its path
 
         .. image:: img/zeus_upload.jpg
 
-#. Open the ``2_omni_move.ino`` file under the path of ``zeus-car-main\examples\2_omni_move``. Or copy this code into Arduino IDE.
+#. Open the ``2_omni_move.ino`` file under the path of ``zeus-car-main\examples\2_omni_move``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/2425f280-5bd4-4e49-bb2e-220d1f4f867b/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. Select the correct board and port, then click the **Upload** button.
 

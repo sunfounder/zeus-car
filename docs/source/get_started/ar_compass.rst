@@ -11,9 +11,11 @@ You will need to set a heading direction for it, and then no matter how you turn
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``7_compass.ino`` file under the path of ``zeus-car-main\examples\7_compass``. Or copy this code into Arduino IDE.
+#. Open the ``7_compass.ino`` file under the path of ``zeus-car-main\examples\7_compass``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/672af146-1b45-46f6-b1d9-8ad9ecdcf8c0/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

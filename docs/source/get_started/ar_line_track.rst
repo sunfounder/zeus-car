@@ -18,9 +18,11 @@ But there are two points to note.
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``14_line_track.ino`` file under the path of ``zeus-car-main\examples\14_line_track``. Or copy this code into Arduino IDE.
+#. Open the ``14_line_track.ino`` file under the path of ``zeus-car-main\examples\14_line_track``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/f1bfb9ad-8bfa-417e-a4c0-10dbdcdc4298/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

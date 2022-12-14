@@ -9,9 +9,11 @@ In this project, you will be able to use the remote control to control the RGB l
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``6_car_light.ino`` file under the path of ``zeus-car-main\examples\6_car_light``. Or copy this code into Arduino IDE.
+#. Open the ``6_car_light.ino`` file under the path of ``zeus-car-main\examples\6_car_light``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/79b6c0e5-a788-4d67-bb44-7e7122c521ab/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

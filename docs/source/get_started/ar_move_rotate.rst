@@ -8,9 +8,11 @@ In this project, the Zeus Car can increase the parameters of rotation so that it
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``3_rotate_and_move.ino`` file under the path of ``zeus-car-main\examples\3_rotate_and_move``. Or copy this code into Arduino IDE.
+#. Open the ``3_rotate_and_move.ino`` file under the path of ``zeus-car-main\examples\3_rotate_and_move``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/bf0dfe1b-18c1-4a45-bd38-a9a8e671d66a/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car. The Zeus Car will turn left and then right to return to its original position. Then the car will turn slowly in an outward arc and the turning angle will slowly decrease until it finally rotates on its own.
 

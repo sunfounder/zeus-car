@@ -14,9 +14,11 @@ In addition to controlling it with the remote control, you can also control it w
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``16_app_control.ino`` file under the path of ``zeus-car-main\examples\16_app_control``. Or copy this code into Arduino IDE.
+#. Open the ``16_app_control.ino`` file under the path of ``zeus-car-main\examples\16_app_control``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/5d65d2b4-5ed7-4d21-ba3b-02529ee8dd6c/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

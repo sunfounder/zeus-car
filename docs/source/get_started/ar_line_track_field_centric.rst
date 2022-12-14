@@ -10,9 +10,11 @@ The experimental result is almost the same as :ref:`ar_line_track`, however the 
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``15_line_track_field_centric.ino`` file under the path of ``zeus-car-main\examples\15_line_track_field_centric``. Or copy this code into Arduino IDE.
+#. Open the ``15_line_track_field_centric.ino`` file under the path of ``zeus-car-main\examples\15_line_track_field_centric``.
 
-<代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/6b6734cb-38c9-4a5b-81b7-3decced20326/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

@@ -1,6 +1,6 @@
 
-11. Obstacle Avoid
-====================
+11. Obstacle Avoidance
+================================
 
 In this project, the Zeus car will move forward automatically, and two obstacle avoidance modules and an ultrasonic module will prevent it from hitting obstacles.
 
@@ -9,9 +9,11 @@ In this project, the Zeus car will move forward automatically, and two obstacle 
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``11_obstacle_avoid.ino`` file under the path of ``zeus-car-main\examples\11_obstacle_avoid``. Or copy this code into Arduino IDE.
+#. Open the ``11_obstacle_avoid.ino`` file under the path of ``zeus-car-main\examples\11_obstacle_avoid``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/520af1d6-4ef2-4804-a4a9-f6aa92985258/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

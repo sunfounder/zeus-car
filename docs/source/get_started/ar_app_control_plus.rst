@@ -15,9 +15,11 @@ This project integrates Line Track, Follow, Avoid functions based on :ref:`ar_ap
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``17_app_control_plus.ino`` file under the path of ``zeus-car-main\examples\17_app_control_plus``. Or copy this code into Arduino IDE.
+#. Open the ``17_app_control_plus.ino`` file under the path of ``zeus-car-main\examples\17_app_control_plus``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/b67e7245-369b-4218-b12c-d73f95ac3b22/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

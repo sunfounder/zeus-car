@@ -9,9 +9,11 @@ In this project, you will learn how to control the Zeus Car with the remote cont
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``5_remote_control.ino`` file under the path of ``zeus-car-main\examples\5_remote_control``. Or copy this code into Arduino IDE.
+#. Open the ``5_remote_control.ino`` file under the path of ``zeus-car-main\examples\5_remote_control``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/8e74cf1b-9100-4e4d-ab63-f21ae40232a5/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, turn the power switch to ON to start the Zeus Car. 
 

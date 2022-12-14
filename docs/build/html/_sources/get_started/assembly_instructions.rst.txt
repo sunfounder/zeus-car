@@ -1,6 +1,0 @@
-Assemble the Car
-=========================
-
-Here is the assembly instructions for the Zeus Car, PDF version, which is the same as the foldout you have. If you think there is something on the foldout that you can't read, you can download this PDF.
-
-:download:`(PDF)Zeus Car Assemble Instruction <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`

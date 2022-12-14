@@ -7,9 +7,11 @@ In this project, you will learn how to use the IR obstacle avoidance modules on 
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``9_hc165_and_ir_obstacle.ino`` file under the path of ``zeus-car-main\examples\9_hc165_and_ir_obstacle``. Or copy this code into Arduino IDE.
+#. Open the ``9_hc165_and_ir_obstacle.ino`` file under the path of ``zeus-car-main\examples\9_hc165_and_ir_obstacle``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/3486be01-6b0e-4e84-86f6-9bdadafa1f48/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

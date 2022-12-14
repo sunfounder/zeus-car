@@ -14,6 +14,7 @@ Now let's start the journey of discovery!
 .. toctree::
     :maxdepth: 2
 
+    download_code
     install_arduino_ide
     introduce_ide
     add_libraries

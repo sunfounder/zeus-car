@@ -7,9 +7,11 @@ In this project, you will learn how to read the distance detected by the ultraso
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``10_ultrasonic.ino`` file under the path of ``zeus-car-main\examples\10_ultrasonic``. Or copy this code into Arduino IDE.
+#. Open the ``10_ultrasonic.ino`` file under the path of ``zeus-car-main\examples\10_ultrasonic``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/b3c702d7-2d4e-48fe-8d8d-7d20f70c9e45/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

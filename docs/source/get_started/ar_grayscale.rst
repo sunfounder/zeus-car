@@ -9,9 +9,11 @@ In this project, you will learn how to read and calibrate the Omni Grayscale Mod
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``13_hc165_and_grayscale.ino`` file under the path of ``zeus-car-main\examples\13_hc165_and_grayscale``. Or copy this code into Arduino IDE.
+#. Open the ``13_hc165_and_grayscale.ino`` file under the path of ``zeus-car-main\examples\13_hc165_and_grayscale``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/1c34354c-dd61-4e86-9b99-eccc93e9293f/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 

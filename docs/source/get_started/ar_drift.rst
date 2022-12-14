@@ -9,9 +9,11 @@ In this project, you will learn how to make the Zeus Car drift.
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``4_drift.ino`` file under the path of ``zeus-car-main\examples\4_drift``. Or copy this code into Arduino IDE.
+#. Open the ``4_drift.ino`` file under the path of ``zeus-car-main\examples\4_drift``.
 
-    <代码>
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/9ca66dad-7258-4868-a8a4-3bd512bacd72/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 #. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
 #. Zeus Car will now move forward for 0.5 seconds, then drift 90 degrees left, and so forth. You can try changing 45 (rot) to another value or a negative number to see how the drift angle and direction change.
