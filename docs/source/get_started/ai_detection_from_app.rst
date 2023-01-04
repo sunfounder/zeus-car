@@ -76,7 +76,7 @@ Now take a look at how to use the APP in a simple way.
 
     If you have Pose Detection on, then the pose will be depicted.
 
-    .. image:: img/view_app7.jpg
+    .. image:: img/view_app8.jpg
 
     .. note::
 
