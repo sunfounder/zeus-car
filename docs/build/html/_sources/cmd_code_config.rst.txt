@@ -1,5 +1,0 @@
-``cmd_code_config``
-==============================
-.. autodoxygenfile:: cmd_code_config.hpp
-   :project: auto
-   

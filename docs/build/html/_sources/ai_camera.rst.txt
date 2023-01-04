@@ -1,4 +1,0 @@
-``ai_camera``
-==============================
-.. autodoxygenfile:: ai_camera.h
-   :project: auto
