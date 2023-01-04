@@ -1,10 +1,12 @@
 .. _ar_app_control:
 
-16. APP Control
+17. APP Control
 =====================
 
+In the previous project we simply viewed the footage taken by the camera and used the AI detection function in the SunFounder Controller.
 
-In addition to controlling it with the remote control, you can also control it with the mobile APP - SunFounder Controller. In this APP, you can control its movement flexibly with a dual joystick widget, as well as with speech commands. In addition, you can also see the real-time video streaming.
+In this project, we will try to control the movement and direction of the Zeus Car using the joystick widget in the app, so now let's see how it works.
+
 
 .. note::
     Please install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
@@ -14,7 +16,7 @@ In addition to controlling it with the remote control, you can also control it w
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``16_app_control.ino`` file under the path of ``zeus-car-main\examples\16_app_control``.
+#. Open the ``17_app_control.ino`` file under the path of ``zeus-car-main\examples\17_app_control``.
 
     .. raw:: html
 

@@ -19,6 +19,7 @@ Funny Projects
     ar_grayscale
     ar_line_track
     ar_line_track_field_centric
+    ai_detection_from_app
     ar_app_control
     ar_app_control_plus
 

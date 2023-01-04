@@ -1,6 +1,6 @@
 .. _ar_app_control_plus:
 
-17. APP Control Plus
+18. APP Control Plus
 =====================
 
 
@@ -15,7 +15,7 @@ This project integrates Line Track, Follow, Avoid functions based on :ref:`ar_ap
 
 #. First check that the **Upload** button is toggled to the side near the motor port.
 
-#. Open the ``17_app_control_plus.ino`` file under the path of ``zeus-car-main\examples\17_app_control_plus``.
+#. Open the ``18_app_control_plus.ino`` file under the path of ``zeus-car-main\examples\18_app_control_plus``.
 
     .. raw:: html
 

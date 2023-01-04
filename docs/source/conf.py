@@ -142,6 +142,12 @@ rst_epilog = """
 .. |app_stop_f| image:: /get_started/img/app/app_stop_f.png
     :width: 100
 
+.. |app_camera| image:: /get_started/img/app/app_camera.png
+    :width: 30
+
+.. |app_edit| image:: /get_started/img/app/app_edit.jpg
+    :width: 20
+
 .. |link_download_arduino| raw:: html
 
     <a href="https://www.arduino.cc/en/software#future-version-of-the-arduino-ide" target="_blank">Arduino IDE 2.0.0 Page</a>
