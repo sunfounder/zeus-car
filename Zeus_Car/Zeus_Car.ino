@@ -138,7 +138,6 @@ void setup() {
   int m = millis();
   Serial.begin(115200);
   Serial.print("Arduino Car version ");Serial.println(VERSION);
-  product_number_indication();
 
   Serial.println(F("Initialzing..."));
   SoftPWMBegin(); // init softpwm, before the motors initialization and the rgb LEDs initialization
@@ -571,39 +570,3 @@ void onReceive(char* recvBuf, char* sendBuf) {
 
 }
 
-/*Used to distinguish product models in production*/
-void product_number_indication() {
-  pinMode(LED_BUILTIN, OUTPUT);
-  delay(500);
-  // long bright means 0, blink means: 1, eg: 0x01 , __ __ ..
-  // HIGH , led on
-  // product number: Zeus_Car 0x00 , __ __ __
-
-  // digitalWrite(LED_BUILTIN, HIGH); // 1
-  // delay(250);
-  // digitalWrite(LED_BUILTIN, LOW);
-  // delay(250);
-  // digitalWrite(LED_BUILTIN, HIGH);
-  // delay(250);
-  // digitalWrite(LED_BUILTIN, LOW);
-  // delay(250);
-  // delay(500);
-
-  digitalWrite(LED_BUILTIN, HIGH); // 0
-  delay(750);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(250);
-  delay(500);
-
-  digitalWrite(LED_BUILTIN, HIGH); // 0
-  delay(750);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(250);
-  delay(500);
-
-  digitalWrite(LED_BUILTIN, HIGH); // 0
-  delay(750);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(250);
-  delay(500);
-}
