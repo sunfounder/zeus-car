@@ -72,6 +72,8 @@
 
 class AiCamera {
   public:
+    bool ws_connected = false;
+
     AiCamera(const char* name, const char* type);
 
     void begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort);

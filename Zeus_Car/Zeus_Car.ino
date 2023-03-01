@@ -11,7 +11,7 @@
     - IRLremote
     - SoftPWM
 
-  Version: 1.2.0
+  Version: 1.2.1
     -- https://github.com/sunfounder/zeus-car.git
   
   Author: Sunfounder
@@ -19,7 +19,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.2.0"
+#define VERSION "1.2.1"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
@@ -178,7 +178,10 @@ void loop() {
     // Note that "aiCam.loop()" needs to be before "irRemoteHandler"
     // because the value in a is constantly updated
     // Note that the cycle interval of the "aiCam.loop()" should be less than 80ms to avoid data d
-    aiCam.loop(); 
+    aiCam.loop();
+    if (aiCam.ws_connected == false) {
+      currentMode = MODE_NONE;
+    }
     irRemoteHandler();
     modeHandler();
   #else
@@ -219,8 +222,9 @@ void loop() {
  */
 void modeHandler() {
   switch (currentMode) {
-    case MODE_NONE: 
-      rgbWrite(MODE_NONE_COLOR);    
+    case MODE_NONE:
+      rgbWrite(MODE_NONE_COLOR);
+      carStop();
       break;
     case MODE_LINE_TRACK:
       rgbWrite(MODE_LINE_TRACK_COLOR);

@@ -30,6 +30,8 @@
 #define ERROR_FLAG "[ERR]"
 #define WS_HEADER "WS+"
 #define CAM_INIT "[Init]"
+#define WS_CONNECT "[CONNECTED]"
+#define WS_DISCONNECT "[DISCONNECTED]"
 
 /**
 *  functions for manipulating string 
@@ -104,6 +106,7 @@ void AiCamera::loop() {
   char sendBuffer[WS_BUFFER_SIZE] = ";;;;;;;;;;;;;;;;;;;;;;;;;";
   this->readInto(recvBuffer);
   if (strlen(recvBuffer) != 0) {
+    // Serial.print("recv: ");Serial.println(recvBuffer);
     // ESP32-CAM reboot detection
     if (IsStartWith(recvBuffer, CAM_INIT)) {
       Serial.println(F("ESP32-CAM reboot detected"));
@@ -111,11 +114,21 @@ void AiCamera::loop() {
       rgbWrite(RED);
       while(1);
     }
-
-    if (IsStartWith(recvBuffer, WS_HEADER)) {
+    // ESP32-CAM websocket connected
+    else if (IsStartWith(recvBuffer, WS_CONNECT)) {
+      Serial.println(F("ESP32-CAM websocket connected"));
+      ws_connected = true;
+    }   
+    // ESP32-CAM websocket disconnected
+    else if (IsStartWith(recvBuffer, WS_DISCONNECT)) {
+      Serial.println(F("ESP32-CAM websocket disconnected"));
+      ws_connected = false;
+    }
+    // recv WS+ data
+    else if (IsStartWith(recvBuffer, WS_HEADER)) {
       Serial.println(recvBuffer);
       this->subString(recvBuffer, strlen(WS_HEADER));
-      if (__on_receive__ != NULL) {
+      if (ws_connected == true && __on_receive__ != NULL) {
         __on_receive__(recvBuffer, sendBuffer);
       }
     }
