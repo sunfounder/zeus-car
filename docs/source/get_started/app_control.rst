@@ -38,6 +38,8 @@ Quick Guide
 
 #. Connect to ``Zeus_Car`` WLAN.
 
+    现在来将你的移动设备连接到Zeus Car发出的局域网，这样你的移动设备和Zeus Car就处于同一个局域网，有助于移动设备上的应用与Zeus Car通信。
+
     * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
 
     .. image:: img/app_wlan.png
@@ -64,31 +66,32 @@ Quick Guide
 
         .. image:: img/app_edit.png
 
-    * The next step is to connect the Zeus Car to your device via the |app_connect| button. Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
+#. Connect and run the Controller.
+
+    * 现在通过 |app_connect| button来将SunFounder Controller连接到Zeus Car来开始通信。Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
 
         .. image:: img/app_auto_connect.png
 
         .. note::
             Please make sure your Wi-Fi is connected to ``Zeus_Car``, if you are not seeing the above message for a long time.
 
-#. Run the Controller.
 
-    After the "Connected Successfully" message appears, click the |app_run| button, then the camera footage will appear on the app, and now you can control your Zeus Car with these widgets.
+    * After the "Connected Successfully" message appears, click the |app_run| button, then the camera footage will appear on the app, and now you can control your Zeus Car with these widgets.
 
-    .. image:: img/app_run.png
+        .. image:: img/app_run.png
 
-    Here are the functions of the widgets.
+    * Here are the functions of the widgets.
 
-    * :ref:`app_compass_cali`: Turn on compass calibration.
-    * **Stop(F)**: Stop all movements of the car.
-    * **Set Heading(I)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
-    * :ref:`app_drift`: Activate the drift function.
-    * :ref:`app_move`: Control the car to move in all directions.
-    * :ref:`app_speech_control`: Switching to speech control mode.
-    * :ref:`app_line_track`: Switching to line track mode.
-    * :ref:`app_follow`: Switching to follow mode.
-    * :ref:`app_avoid`: Switch to obstacle avoidance mode.
-    * :ref:`app_rotate_drift`: Used to control the head direction.
+      * :ref:`app_compass_cali`: Turn on compass calibration.
+      * **Stop(F)**: Stop all movements of the car.
+      * **Set Heading(I)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
+      * :ref:`app_drift`: Activate the drift function.
+      * :ref:`app_move`: Control the car to move in all directions.
+      * :ref:`app_speech_control`: Switching to speech control mode.
+      * :ref:`app_line_track`: Switching to line track mode.
+      * :ref:`app_follow`: Switching to follow mode.
+      * :ref:`app_avoid`: Switch to obstacle avoidance mode.
+      * :ref:`app_rotate_drift`: Used to control the head direction.
 
 .. _app_compass_cali:
 

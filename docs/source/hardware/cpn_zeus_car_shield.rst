@@ -37,7 +37,8 @@ This extension board also has a built-in charging circuit, which can charge the 
 * 3 groups of indicators.
     * Charging Indicator: This indicator lights up after plugging in the USC-C cable for charging, the color is orange.
     * Power Indicator: Turn the power switch to ON, the power indicator will light up, color: green.
-    * Power Indicator: Two indicators (orange) represent different power levels. When both D3 and D4 indicators are off, you need to use the USB-C cable to charge. When charging, these two indicators will flash.
+    * Battery Indicator: Two indicators (orange) represent different battery levels. When both D3 and D4 indicators are off, you need to use the USB-C cable to charge. When charging, these two indicators will flash.
+
 * :ref:`shield_ultrasonic_pin`
     * To connect the ultrasonic module, both Trig & Echo pins are connected on pin 10 of the Arduino board.
 
@@ -164,7 +165,7 @@ Here is the schematic.
 
 .. image:: img/shield_motor_sche.png
 
-and the input pins of each channel corresponding to the pins on the Arduino.
+So the corresponding control pins of the 4 motor ports are shown below.
 
 .. list-table::
     :widths: 25 50
@@ -172,21 +173,21 @@ and the input pins of each channel corresponding to the pins on the Arduino.
     * - Arduino Board
       - Zeus Car Shield
     * - ~3
-      - INA1
+      - OUTA1
     * - 4
-      - INB1
+      - OUTB1
     * - ~5
-      - INA2
+      - OUTA2
     * - ~6
-      - INB2
+      - OUTB2
     * - A0
-      - INB4
+      - OUTB4
     * - A1
-      - INA4
+      - OUTA4
     * - A2
-      - INB3
+      - OUTB3
     * - A3
-      - INA3
+      - OUTA3
 
 
 
