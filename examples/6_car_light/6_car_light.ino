@@ -44,6 +44,7 @@ void setup() {
   irBegin();
   SoftPWMBegin(); //init softpwm, before the rgb LEDs initialization
   rgbBegin(); // init rgb LEDs
+  Serial.println("Init OK");
 }
 
 void loop() {
