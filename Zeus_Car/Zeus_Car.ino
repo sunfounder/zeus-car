@@ -11,7 +11,7 @@
     - IRLremote
     - SoftPWM
 
-  Version: 1.2.1
+  Version: 1.3.0
     -- https://github.com/sunfounder/zeus-car.git
   
   Author: Sunfounder
@@ -19,7 +19,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.2.1"
+#define VERSION "1.3.0"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
@@ -93,7 +93,7 @@
 #define LINE_TRACK_OFFSET_ANGLE 30
 
 /** Configure the follow distance of obstacle follow */
-#define FOLLOW_DISTANCE 20
+#define FOLLOW_DISTANCE 15
 
 /** websocket communication headers */ 
 #define WS_HEADER "WS+"
