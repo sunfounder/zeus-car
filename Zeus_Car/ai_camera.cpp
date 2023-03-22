@@ -32,6 +32,7 @@
 #define CAM_INIT "[Init]"
 #define WS_CONNECT "[CONNECTED]"
 #define WS_DISCONNECT "[DISCONNECTED]"
+#define APP_STOP "[APPSTOP]"
 
 /**
 *  functions for manipulating string 
@@ -76,13 +77,18 @@ void AiCamera::begin(const char* ssid, const char* password, const char* wifiMod
   DateSerial.begin(115200);
   #endif
   char ip[15];
-  // this->set("RESET");
+  char version[15];
+
+  this->get("RESET", version);
+  DebugSerial.print("ESP32 firmware version "); DebugSerial.println(version);
+
   this->set("NAME", name);
   this->set("TYPE", type);
   this->set("SSID", ssid);
   this->set("PSK",  password);
   this->set("MODE", wifiMode);
   this->set("PORT", wsPort);
+
   this->get("START", ip);
   DebugSerial.print(F("WebServer started on ws://"));
   DebugSerial.print(ip);
@@ -124,9 +130,17 @@ void AiCamera::loop() {
       Serial.println(F("ESP32-CAM websocket disconnected"));
       ws_connected = false;
     }
+    // ESP32-CAM APP_STOP
+    else if (IsStartWith(recvBuffer, APP_STOP)) {
+      if (ws_connected) {
+        Serial.println(F("APP STOP"));
+      }
+      ws_connected = false;
+    }
     // recv WS+ data
     else if (IsStartWith(recvBuffer, WS_HEADER)) {
-      Serial.println(recvBuffer);
+      Serial.print("RX:"); Serial.println(recvBuffer);
+      ws_connected = true;
       this->subString(recvBuffer, strlen(WS_HEADER));
       if (ws_connected == true && __on_receive__ != NULL) {
         __on_receive__(recvBuffer, sendBuffer);
@@ -183,9 +197,6 @@ void AiCamera::readInto(char* buffer) {
   while (DateSerial.available()) {
     count += 1;
     if (count > WS_BUFFER_SIZE) {
-      // Serial.print(F("count = ")); Serial.println(count);  
-      // rgbWrite(0, 0, 0);
-      // while (1);
       finished = true;
       break;
     }
