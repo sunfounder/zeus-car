@@ -14,10 +14,10 @@
 
 /** motors test, the car cycles forward and backward */
 void motors_test(){
-  _carMove(   0, 80, 0);
+  carMove(   0, 80, 0);
   rgbWrite(0, 255, 0);
   delay(500);
-  _carMove( 180, 80, 0);
+  carMove( 180, 80, 0);
   rgbWrite(0, 0, 255);
   delay(500);
   rgbWrite(255, 255, 255);
