@@ -99,9 +99,6 @@ int8_t text_2_cmd_code(char* text){
     for(uint8_t i=0; i<CMD_SUM; i++){
         strcpy_P(buffer, (char *)pgm_read_word(&cmd_str_table[i]));
         if(str.indexOf(buffer) != -1){
-            // Serial.print(pgm_read_byte(&cmd_code_table[i]), HEX);
-            // Serial.print(" , ");
-            // Serial.println(buffer);
             return pgm_read_byte(&cmd_code_table[i]);
         }
     }
