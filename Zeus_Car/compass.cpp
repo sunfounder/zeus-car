@@ -58,7 +58,6 @@ void compassSaveCalibration() {
  */
 void compassReadCalibration() {
   uint8_t highByte, lowByte;
-  // Serial.println("Reading calibrationData value from EEPROM");
   for (uint8_t i = 0; i < 6; i++) {
     highByte = EEPROM.read(EEPROM_CALIBRATION_ADDRESS + 2 * i);
     lowByte = EEPROM.read(EEPROM_CALIBRATION_ADDRESS + 2 * i + 1);
