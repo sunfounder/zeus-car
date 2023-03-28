@@ -11,7 +11,7 @@
     - IRLremote
     - SoftPWM
 
-  Version: 1.3.0
+  Version: 1.4.0
     -- https://github.com/sunfounder/zeus-car.git
   
   Author: Sunfounder
@@ -19,7 +19,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.3.0"
+#define VERSION "1.4.0"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
@@ -137,7 +137,7 @@ char speech_buf[20];
 void setup() {
   int m = millis();
   Serial.begin(115200);
-  Serial.print("Arduino Car version ");Serial.println(VERSION);
+  Serial.print(F("Arduino Car version "));Serial.println(F(VERSION));
 
   Serial.println(F("Initialzing..."));
   SoftPWMBegin(); // init softpwm, before the motors initialization and the rgb LEDs initialization
@@ -147,8 +147,12 @@ void setup() {
   irBegin();
   irObstacleBegin();
   gsBegin();
-  aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT);
-  aiCam.setOnReceived(onReceive);
+  
+  #if !TEST 
+    aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT);
+    aiCam.setOnReceived(onReceive);
+  #endif
+
   while (millis() - m < 500) { // Wait for peripherals to be ready
     delay(1);
   }
@@ -183,6 +187,8 @@ void loop() {
     }
     irRemoteHandler();
     modeHandler();
+
+    // Serial.print(F("- SRAM left: ")); Serial.println(freeRam()); 
   #else
     /* Select the item to be tested, multiple selection allowed */
     motors_test();
@@ -207,6 +213,14 @@ void loop() {
 }
 
 /***************************** Functions ******************************/
+// https://docs.arduino.cc/learn/programming/memory-guide
+int freeRam() {
+  extern int __heap_start,*__brkval;
+  int v;
+  return (int)&v - (__brkval == 0  
+    ? (int)&__heap_start : (int) __brkval);  
+}
+
 /**
  * modeHandler(), Execute the corresponding program according to the set mode
  * 
@@ -441,24 +455,24 @@ void irRemoteHandler() {
 /**
  * websocket received data processing
  */
-void onReceive(char* recvBuf, char* sendBuf) {
-  // Serial.print("recv:");Serial.println(recvBuf);
+void onReceive() {
+  // Serial.print("recv:");Serial.println(aiCam.recvBuffer);
 
   // Mode select: line track, obstacle following, obstacle avoidance
-  if (aiCam.getSwitch(recvBuf, REGION_N)) {
+  if (aiCam.getSwitch(REGION_N)) {
     irOrAppFlag = true;
     if (currentMode != MODE_LINE_TRACK) {
       // currentAngle = 0;
       carResetHeading();
       currentMode = MODE_LINE_TRACK;
     }
-  } else if (aiCam.getSwitch(recvBuf, REGION_O)) {
+  } else if (aiCam.getSwitch(REGION_O)) {
     irOrAppFlag = true;
     if (currentMode != MODE_OBSTACLE_FOLLOWING) {
       carResetHeading();
       currentMode = MODE_OBSTACLE_FOLLOWING;
     }
-  } else if (aiCam.getSwitch(recvBuf, REGION_P)) {
+  } else if (aiCam.getSwitch(REGION_P)) {
     irOrAppFlag = true;
     if (currentMode != MODE_OBSTACLE_AVOIDANCE) {
       carResetHeading();
@@ -477,14 +491,14 @@ void onReceive(char* recvBuf, char* sendBuf) {
   }
 
   // Stop
-  if (aiCam.getButton(recvBuf, REGION_F)) {
+  if (aiCam.getButton(REGION_F)) {
     currentMode = MODE_NONE;
     stop();
     return;
   }
 
   // Compass Calibrate
-  if (aiCam.getButton(recvBuf, REGION_E)) {
+  if (aiCam.getButton(REGION_E)) {
     currentMode = MODE_COMPASS_CALIBRATION;
     carMove(0, 0, CAR_CALIBRATION_POWER); // rote to calibrate
     compassCalibrateStart();
@@ -492,7 +506,7 @@ void onReceive(char* recvBuf, char* sendBuf) {
   }
 
   // Reset Origin
-  if (aiCam.getButton(recvBuf, REGION_I)) {
+  if (aiCam.getButton(REGION_I)) {
     currentMode = MODE_APP_CONTROL;
     carStop();
     carResetHeading();
@@ -502,8 +516,8 @@ void onReceive(char* recvBuf, char* sendBuf) {
   }
 
   //Joystick
-  uint16_t angle = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_ANGLE);
-  uint8_t power = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_RADIUS);
+  uint16_t angle = aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE);
+  uint8_t power = aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS);
   power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
   if (appRemoteAngle != angle) {
     if (currentMode != MODE_APP_CONTROL) {
@@ -527,7 +541,7 @@ void onReceive(char* recvBuf, char* sendBuf) {
   }
 
   // Drift 
-  if (appRemoteDriftEnable != aiCam.getSwitch(recvBuf, REGION_J)) {
+  if (appRemoteDriftEnable != aiCam.getSwitch(REGION_J)) {
     if (currentMode != MODE_APP_CONTROL) {
       currentMode = MODE_APP_CONTROL;
       carResetHeading();
@@ -536,8 +550,8 @@ void onReceive(char* recvBuf, char* sendBuf) {
   }
 
   // MoveHead
-  int moveHeadingA = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
-  int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
+  int moveHeadingA = aiCam.getJoystick(REGION_Q, JOYSTICK_ANGLE);
+  int16_t moveHeadingR = aiCam.getJoystick(REGION_Q, JOYSTICK_RADIUS);
   if (appRemoteHeading != moveHeadingA || appRemoteHeadingR !=  moveHeadingR){
     if (currentMode != MODE_APP_CONTROL) {
       currentMode = MODE_APP_CONTROL;
@@ -555,7 +569,21 @@ void onReceive(char* recvBuf, char* sendBuf) {
 
   // Speech control
   char speech_buf_temp[20];
-  aiCam.getSpeech(recvBuf, REGION_M, speech_buf_temp);
+
+  aiCam.getSpeech(REGION_M, speech_buf_temp);
+  if (strlen(speech_buf_temp) > 0) {
+    if (aiCam.send_doc["M"].isNull() == false) {
+      bool _last_stat = aiCam.send_doc["M"].as<bool>();
+      if (_last_stat == 1) {
+        aiCam.send_doc["M"] = 0;
+      } else {
+        aiCam.send_doc["M"] = 1;
+      }
+    } else {
+      aiCam.send_doc["M"] = 0;
+    }
+  } 
+
   if (strcmp(speech_buf_temp, speech_buf) != 0) {
     strcpy(speech_buf, speech_buf_temp);
     if (strlen(speech_buf) > 0) {
