@@ -3,6 +3,40 @@
 
 #include <Arduino.h>
 #include <string.h>
+#include <ArduinoJson.h>
+
+/**
+* Use custom serial port
+*/
+// #define AI_CAM_DEBUG_CUSTOM
+#ifdef AI_CAM_DEBUG_CUSTOM
+  #include <SoftwareSerial.h>
+  SoftwareSerial dSerial(10, 11); // RX, TX
+  #define DateSerial dSerial
+  #define DebugSerial Serial
+#else
+  #define DateSerial Serial
+  #define DebugSerial Serial
+#endif
+
+/**
+*  Set SERIAL_TIMEOUT & WS_BUFFER_SIZE
+*/
+#define SERIAL_TIMEOUT 100
+#define WS_BUFFER_SIZE 200
+#define CHAR_TIMEOUT 50
+
+/**
+* Some keywords for communication with ESP32-CAM
+*/
+#define CHECK "SC"
+#define OK_FLAG "[OK]"
+#define ERROR_FLAG "[ERR]"
+#define WS_HEADER "WS+"
+#define CAM_INIT "[Init]"
+#define WS_CONNECT "[CONNECTED]"
+#define WS_DISCONNECT "[DISCONNECTED]"
+#define APP_STOP "[APPSTOP]"
 
 /**
  * @name Set the print level of information received by esp32-cam
@@ -73,35 +107,41 @@
 class AiCamera {
   public:
     bool ws_connected = false;
+    char recvBuffer[WS_BUFFER_SIZE];
+    StaticJsonDocument<200> send_doc;
 
     AiCamera(const char* name, const char* type);
-
     void begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort);
-    void debug(char* msg);
+    void setOnReceived(void (*func)(char*, char*));
+
+    void set_command_timeout(uint32_t _timeout);
     void readInto(char* buffer);
-    void sendData(char* buf);
-    void command(const char* command, const char* value, char* result) ;
+    void loop();
+    void sendData();
+
+    void debug(char* msg);
+    
     void set(const char* command);
     void set(const char* command, const char* value);
     void get(const char* command, char* result);
     void get(const char* command, const char* value, char* result);
-    void setOnReceived(void (*func)(char*, char*));
-    void loop();
 
-    int16_t getSlider(char* buf, uint8_t region);
-    bool getButton(char* buf, uint8_t region);
-    bool getSwitch(char* buf, uint8_t region);
-    int16_t getJoystick(char* buf, uint8_t region, uint8_t axis);
-    uint8_t getDPad(char* buf, uint8_t region);
-    int16_t getThrottle(char* buf, uint8_t region);
-    void setMeter(char* buf, uint8_t region, double value);
-    void setRadar(char* buf, uint8_t region, int16_t angle, double distance);
-    void setGreyscale(char* buf, uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3);
-    void setValue(char* buf, uint8_t region, double value);
-    void getSpeech(char* buf, uint8_t region, char* result);
+    int16_t getSlider(uint8_t region);
+    bool getButton(uint8_t region);
+    bool getSwitch(uint8_t region);
+    int16_t getJoystick(uint8_t region, uint8_t axis);
+    uint8_t getDPad(uint8_t region);
+    int16_t getThrottle(uint8_t region);
+    void setMeter(uint8_t region, double value);
+    void setRadar(uint8_t region, int16_t angle, double distance);
+    void setGreyscale(uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3);
+    void setValue(uint8_t region, double value);
+    void getSpeech(uint8_t region, char* result);
 
   private:
+    void command(const char* command, const char* value, char* result) ;
     void subString(char* str, int16_t start, int16_t end=-1);
+    
     void getStrOf(char* str, uint8_t index, char* result, char divider);
     void setStrOf(char* str, uint8_t index, String value, char divider=';');
     int16_t getIntOf(char* str, uint8_t index, char divider=';');
