@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include <SoftPWM.h>
 
-#define MOTOR_POWER_MIN 28  // 28/255
+#define MOTOR_POWER_MIN 50  // 28/255
 
 /* 
   Set the pid parameters
@@ -64,7 +64,7 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
     if (power[i] == 0) {
       newPower[i] = 0;
     } else {
-      newPower[i] = map(abs(power[i]), 0, 100, MOTOR_POWER_MIN, 255);
+      newPower[i] = map(abs(power[i]), 0, 141, MOTOR_POWER_MIN, 255);
     }
     SoftPWMSet(MOTOR_PINS[i*2], dir[i] * newPower[i]);
     SoftPWMSet(MOTOR_PINS[i*2+1], !dir[i] * newPower[i]);
@@ -87,27 +87,27 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
   */
 void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   int8_t power_0, power_1, power_2, power_3;
-  float speed;
+  float ratio;
   // Make forward 0
   angle += 90;
   // Offset angle as 0 to the front
   float rad = angle * PI / 180;
 
-  if (rot == 0) speed = 1;
-  else speed = 0.5;
-
+  ratio = 0.35;
   power /= sqrt(2);
+  power = power * (1-ratio);
+  
   // Calculate 4 wheel
   if (drift) {
-    power_0 = (power * sin(rad) - power * cos(rad)) * speed;
-    power_1 = (power * sin(rad) + power * cos(rad)) * speed;
-    power_2 = (power * sin(rad) - power * cos(rad)) * speed + rot * speed * 2;
-    power_3 = (power * sin(rad) + power * cos(rad)) * speed - rot * speed * 2;
+    power_0 = (power * sin(rad) - power * cos(rad)) ;
+    power_1 = (power * sin(rad) + power * cos(rad)) ;
+    power_2 = (power * sin(rad) - power * cos(rad)) + rot * ratio * 2;
+    power_3 = (power * sin(rad) + power * cos(rad)) - rot * ratio * 2;
   } else {
-    power_0 = (power * sin(rad) - power * cos(rad)) * speed - rot * speed;
-    power_1 = (power * sin(rad) + power * cos(rad)) * speed + rot * speed;
-    power_2 = (power * sin(rad) - power * cos(rad)) * speed + rot * speed;
-    power_3 = (power * sin(rad) + power * cos(rad)) * speed - rot * speed;
+    power_0 = (power * sin(rad) - power * cos(rad)) - rot * ratio;
+    power_1 = (power * sin(rad) + power * cos(rad)) + rot * ratio;
+    power_2 = (power * sin(rad) - power * cos(rad)) + rot * ratio;
+    power_3 = (power * sin(rad) + power * cos(rad)) - rot * ratio;
   }
   
   carSetMotors(power_0, power_1, power_2, power_3);
