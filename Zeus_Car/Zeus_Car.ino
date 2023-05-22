@@ -11,7 +11,7 @@
     - IRLremote
     - SoftPWM
 
-  Version: 1.4.0
+  Version: 1.4.2
     -- https://github.com/sunfounder/zeus-car.git
   
   Author: Sunfounder
@@ -19,7 +19,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.4.0"
+#define VERSION "1.4.2"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
@@ -84,7 +84,7 @@
 /** Configure the motors speed in different modes */
 #define SPEECH_REMOTE_POWER 40
 #define IR_REMOTE_POWER  50
-#define LINE_TRACK_POWER 50
+#define LINE_TRACK_POWER 80
 #define OBSTACLE_AVOID_POWER 80
 #define OBSTACLE_FOLLOW_POWER 80
 #define CAR_CALIBRATION_POWER 80
@@ -123,6 +123,10 @@ int16_t appRemoteHeadingR = 0;
 bool appRemoteDriftEnable = false;
 
 bool irOrAppFlag = false; // true: App, false: IR
+
+// last button state for app Line button, Follow button & Avoid button
+bool current_button_state[3] = {0, 0, 0};
+bool last_button_state[3] = {0, 0, 0};
 
 char speech_buf[20];
 
@@ -182,7 +186,7 @@ void loop() {
     // because the value in a is constantly updated
     // Note that the cycle interval of the "aiCam.loop()" should be less than 80ms to avoid data d
     aiCam.loop();
-    if (aiCam.ws_connected == false) {
+    if (aiCam.ws_connected == false  && irOrAppFlag == 1 ) {
       currentMode = MODE_NONE;
     }
     irRemoteHandler();
@@ -327,6 +331,7 @@ void line_track() {
 
   currentAngle = angle + (offset*LINE_TRACK_OFFSET_ANGLE);
   carMoveFieldCentric(currentAngle, LINE_TRACK_POWER, 0, false);
+  // carMove(currentAngle, LINE_TRACK_POWER, 0, false);
 }
 
 
@@ -359,31 +364,47 @@ void obstacleFollowing() {
 /**
  * Obstacle avoidance program
  */
+int8_t last_clear = -1; // last_clear, 1, left; -1, right;
+bool last_forward = false;
+
 void obstacleAvoidance() {
   byte result = irObstacleRead();
   bool leftIsClear = result & 0b00000001;
   bool rightIsClear = result & 0b00000010;
   bool middleIsClear = ultrasonicIsClear();
 
-  if (middleIsClear && leftIsClear && rightIsClear) {
+  if (middleIsClear && leftIsClear && rightIsClear) { // 111
+    last_forward = true;
     carForward(OBSTACLE_AVOID_POWER);
   } else {
-    if (leftIsClear) {
-      carTurnLeft(OBSTACLE_AVOID_POWER);
-    } else if (rightIsClear) {
-      carTurnRight(OBSTACLE_AVOID_POWER);
-    } else {
-      carMove(0, 0, 20);
-      delay(400);
-      carStop();
+    if( (leftIsClear&& rightIsClear) || (!leftIsClear&& !rightIsClear)) { // 101, 000, 010
+      carMove(0, 0, last_clear*50); //last_clear=1, turn left
+      last_forward = false;
+    }
+    else if (leftIsClear) { // 100, 110
+      if (last_clear == 1 || last_forward == true) {
+        carTurnLeft(OBSTACLE_AVOID_POWER);
+        last_clear = 1;
+        last_forward = false;
+      }
+    } 
+    else if ( rightIsClear) { // 001, 011
+      if (last_clear == -1 || last_forward == true) {
+        carTurnRight(OBSTACLE_AVOID_POWER);
+        last_clear = -1;
+        last_forward = false;
+      }
     }
   }
+
 }
 
 /**
  * irRemoteHandler, handle IR remote control key events
  */
 void irRemoteHandler() {
+  irOrAppFlag = false;
+
   uint8_t key = irRead();
   if (key == IR_KEY_ERROR) {
     return; // No key pressed
@@ -457,38 +478,49 @@ void irRemoteHandler() {
  */
 void onReceive() {
   // Serial.print("recv:");Serial.println(aiCam.recvBuffer);
+  irOrAppFlag = true;
 
   // Mode select: line track, obstacle following, obstacle avoidance
-  if (aiCam.getSwitch(REGION_N)) {
-    irOrAppFlag = true;
-    if (currentMode != MODE_LINE_TRACK) {
-      // currentAngle = 0;
-      carResetHeading();
-      currentMode = MODE_LINE_TRACK;
+  current_button_state[0] = aiCam.getSwitch(REGION_N);
+  current_button_state[1] = aiCam.getSwitch(REGION_O);
+  current_button_state[2] = aiCam.getSwitch(REGION_P);
+
+  // check change
+  bool is_change = false;
+  for(int i = 0; i < 3; i++) {
+    if(current_button_state[i] != last_button_state[i]) {
+      is_change = true;
     }
-  } else if (aiCam.getSwitch(REGION_O)) {
-    irOrAppFlag = true;
-    if (currentMode != MODE_OBSTACLE_FOLLOWING) {
-      carResetHeading();
-      currentMode = MODE_OBSTACLE_FOLLOWING;
-    }
-  } else if (aiCam.getSwitch(REGION_P)) {
-    irOrAppFlag = true;
-    if (currentMode != MODE_OBSTACLE_AVOIDANCE) {
-      carResetHeading();
-      currentMode = MODE_OBSTACLE_AVOIDANCE;
-    }
-  } else {
-    if (irOrAppFlag == true) {
-      irOrAppFlag = false;
-      currentMode = MODE_NONE;
-      stop();
-      carResetHeading();
-      // currentAngle = 0;
-      appRemoteHeading = 0;
-      return;
-    }
+    last_button_state[i] = current_button_state[i];
   }
+  // changed
+  if (is_change || currentMode == MODE_APP_CONTROL) {
+    if (current_button_state[0]) {
+        if(currentMode != MODE_LINE_TRACK) {
+          carResetHeading();
+          currentMode = MODE_LINE_TRACK;
+        }
+    } else if (current_button_state[1]) {
+      if(currentMode != MODE_OBSTACLE_FOLLOWING) {
+        carResetHeading();
+        currentMode = MODE_OBSTACLE_FOLLOWING;
+      }
+    } else if (current_button_state[2]) {
+      if(currentMode != MODE_OBSTACLE_AVOIDANCE) {
+        carResetHeading();
+        currentMode = MODE_OBSTACLE_AVOIDANCE;
+      }
+    } else {
+      if (currentMode != MODE_APP_CONTROL) {
+        currentMode = MODE_NONE;
+      }
+    }
+  } 
+  // else { // no changed
+
+
+  // }
+
 
   // Stop
   if (aiCam.getButton(REGION_F)) {
