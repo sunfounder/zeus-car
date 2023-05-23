@@ -511,8 +511,12 @@ void onReceive() {
         currentMode = MODE_OBSTACLE_AVOIDANCE;
       }
     } else {
-      if (currentMode != MODE_APP_CONTROL) {
+      if (is_change) {
+        stop();
+        carResetHeading();
+        appRemoteHeading = 0;
         currentMode = MODE_NONE;
+        return;
       }
     }
   } 
