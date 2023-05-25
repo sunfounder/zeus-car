@@ -48,8 +48,6 @@ void setup() {
 }
 
 void loop() {
-  
-
   uint8_t key = irRead();
   if (key != IR_KEY_ERROR) {
     if (key < 16) {
@@ -116,13 +114,20 @@ void rgbWrite(uint32_t color) {
   rgbWrite(r, g, b);
 }
 
+
 /** Set LED color in 8bit R,G,B (0 ~ 255)*/
 void rgbWrite(uint8_t r, uint8_t g, uint8_t b) {
+  // calibrate brightness
+  r = int(r * 1);
+  g = int(g * 0.16);
+  b = int(b * 0.30);
+  // COMMON_ANODE reverse
   #if COMMON_ANODE
     r = 255 - r;
     g = 255 - g;
     b = 255 - b;
   #endif
+  // set volatge
   SoftPWMSet(RGB_PINS[0], r);
   SoftPWMSet(RGB_PINS[1], g);
   SoftPWMSet(RGB_PINS[2], b);
