@@ -4,6 +4,7 @@
 #include <SoftPWM.h>
 
 #define MOTOR_POWER_MIN 50  // 28/255
+#define MOTOR_START_POWER 100
 
 /* 
   Set the pid parameters
@@ -66,6 +67,12 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
     } else {
       newPower[i] = map(abs(power[i]), 0, 141, MOTOR_POWER_MIN, 255);
     }
+
+    if (newPower[i] != 0 && newPower[i] < MOTOR_START_POWER) {
+      SoftPWMSet(MOTOR_PINS[i*2], dir[i] * MOTOR_START_POWER);
+      SoftPWMSet(MOTOR_PINS[i*2+1], !dir[i] * MOTOR_START_POWER);
+      delayMicroseconds(200);
+    }
     SoftPWMSet(MOTOR_PINS[i*2], dir[i] * newPower[i]);
     SoftPWMSet(MOTOR_PINS[i*2+1], !dir[i] * newPower[i]);
   }
@@ -93,7 +100,7 @@ void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   // Offset angle as 0 to the front
   float rad = angle * PI / 180;
 
-  ratio = 0.35;
+  ratio = 0.4;
   power /= sqrt(2);
   power = power * (1-ratio);
   
