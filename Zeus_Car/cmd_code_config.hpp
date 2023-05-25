@@ -17,10 +17,10 @@
 #define MODE_COMPASS_CALIBRATION     7
 
 /** Set the color to match the mode */
-#define ERROR_COLOR 0xFF0000 // Red
+#define ERROR_COLOR RED
 #define WARN_COLOR ORANGE
 
-#define MODE_NONE_COLOR 0xE08080  // LightCyan
+#define MODE_NONE_COLOR 0xFFFFFF // white
 
 #define MODE_REMOTE_CONTROL_COLOR           GREEN_CYAN
 #define MODE_APP_CONTROL_COLOR              MAGENTA
