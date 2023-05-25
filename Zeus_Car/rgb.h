@@ -16,7 +16,7 @@
  *@name Defines the hexadecimal value of the color
  */
 #define RED           0xFF0202
-#define ORANGE        0xFF2500  //0xFFA500
+#define ORANGE        0xFFA500
 #define YELLOW        0xFFFF0A
 #define YELLOW_GREEN  0xA5FF0A
 #define GREEN         0x0AFF0A
@@ -27,6 +27,11 @@
 #define PURPLE        0xA50AFF
 #define VOILET        0xFF0AFF
 #define MAGENTA       0xFF0AA5
+
+/* Calibrate brightness */
+#define R_OFFSET  1.0
+#define G_OFFSET  0.16
+#define B_OFFSET  0.30
 
 /** Initialize RGB leds */
 void rgbBegin();
