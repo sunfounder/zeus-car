@@ -10,10 +10,14 @@
   Libraries:
     - IRLremote
     - SoftPWM
+    - ArduinoJson
 
   Version: 1.4.2
     -- https://github.com/sunfounder/zeus-car.git
   
+  Documentation:
+    -- https://docs.sunfounder.com/projects/zeus-car/en/latest/
+
   Author: Sunfounder
   Website: http://www.sunfounder.com
            https://docs.sunfounder.com
@@ -34,7 +38,6 @@
 #include "ir_remote.h"
 #include "cmd_code_config.hpp"
 #include "ai_camera.h"
-
 
 /*************************** Configure *******************************/
 /** @name Configure 
@@ -82,15 +85,15 @@
 #define PORT "8765"
 
 /** Configure the motors speed in different modes */
-#define SPEECH_REMOTE_POWER 40
-#define IR_REMOTE_POWER  50
+#define SPEECH_REMOTE_POWER 50
+#define IR_REMOTE_POWER  60
 #define LINE_TRACK_POWER 80
 #define OBSTACLE_AVOID_POWER 80
 #define OBSTACLE_FOLLOW_POWER 80
-#define CAR_CALIBRATION_POWER 80
+#define CAR_CALIBRATION_POWER 100
 
 /** Configure the offset angle of line track */
-#define LINE_TRACK_OFFSET_ANGLE 30
+#define LINE_TRACK_OFFSET_ANGLE 35
 
 /** Configure the follow distance of obstacle follow */
 #define FOLLOW_DISTANCE 15
@@ -242,6 +245,7 @@ void modeHandler() {
     case MODE_NONE:
       rgbWrite(MODE_NONE_COLOR);
       carStop();
+      carResetHeading();
       break;
     case MODE_LINE_TRACK:
       rgbWrite(MODE_LINE_TRACK_COLOR);
@@ -484,14 +488,17 @@ void onReceive() {
   current_button_state[0] = aiCam.getSwitch(REGION_N);
   current_button_state[1] = aiCam.getSwitch(REGION_O);
   current_button_state[2] = aiCam.getSwitch(REGION_P);
+  Serial.print(current_button_state[0]);
+  Serial.print(current_button_state[1]);
+  Serial.println(current_button_state[2]);
 
   // check change
   bool is_change = false;
   for(int i = 0; i < 3; i++) {
     if(current_button_state[i] != last_button_state[i]) {
       is_change = true;
+      last_button_state[i] = current_button_state[i];
     }
-    last_button_state[i] = current_button_state[i];
   }
   // changed
   if (is_change || currentMode == MODE_APP_CONTROL) {
@@ -511,20 +518,12 @@ void onReceive() {
         currentMode = MODE_OBSTACLE_AVOIDANCE;
       }
     } else {
-      if (is_change) {
-        stop();
-        carResetHeading();
+      if(currentMode != MODE_APP_CONTROL) {
         appRemoteHeading = 0;
         currentMode = MODE_NONE;
-        return;
       }
     }
-  } 
-  // else { // no changed
-
-
-  // }
-
+  }
 
   // Stop
   if (aiCam.getButton(REGION_F)) {
@@ -554,22 +553,15 @@ void onReceive() {
   //Joystick
   uint16_t angle = aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE);
   uint8_t power = aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS);
-  power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
-  if (appRemoteAngle != angle) {
+  // power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
+
+  if ( appRemoteAngle != angle || appRemotePower != power || angle != 0 || power != 0) {
     if (currentMode != MODE_APP_CONTROL) {
       currentMode = MODE_APP_CONTROL;
       carResetHeading();
     }
     appRemoteAngle = angle;
     remoteAngle = appRemoteAngle;
-    appRemoteHeading = 0;
-    remoteHeading = 0; // reset remoteHeading parameter, avoid "IR remote control" changed this value
-  }
-  if (appRemotePower != power) {
-    if (currentMode != MODE_APP_CONTROL) {
-      currentMode = MODE_APP_CONTROL;
-      carResetHeading();
-    }
     appRemotePower = power;
     remotePower = appRemotePower;
     appRemoteHeading = 0;
@@ -588,11 +580,15 @@ void onReceive() {
   // MoveHead
   int moveHeadingA = aiCam.getJoystick(REGION_Q, JOYSTICK_ANGLE);
   int16_t moveHeadingR = aiCam.getJoystick(REGION_Q, JOYSTICK_RADIUS);
-  if (appRemoteHeading != moveHeadingA || appRemoteHeadingR !=  moveHeadingR){
+  if (appRemoteHeading != 0 || appRemoteHeadingR != 0 || appRemoteHeading != moveHeadingA || appRemoteHeadingR !=  moveHeadingR){
     if (currentMode != MODE_APP_CONTROL) {
       currentMode = MODE_APP_CONTROL;
       carResetHeading();
     }
+    appRemoteAngle = angle;
+    remoteAngle = appRemoteAngle;
+    appRemotePower = power;
+    remotePower = appRemotePower;
     appRemoteHeading = moveHeadingA;
     appRemoteHeadingR = moveHeadingR;
     remoteHeading = moveHeadingA;
