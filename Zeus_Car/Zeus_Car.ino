@@ -488,9 +488,6 @@ void onReceive() {
   current_button_state[0] = aiCam.getSwitch(REGION_N);
   current_button_state[1] = aiCam.getSwitch(REGION_O);
   current_button_state[2] = aiCam.getSwitch(REGION_P);
-  Serial.print(current_button_state[0]);
-  Serial.print(current_button_state[1]);
-  Serial.println(current_button_state[2]);
 
   // check change
   bool is_change = false;
