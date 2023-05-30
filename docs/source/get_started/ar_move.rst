@@ -9,10 +9,13 @@ You will learn how to make the Zeus Car move in all directions in this project.
 
 **How to do?**
 
-#. First check that the **Upload** button is toggled to the side near the motor port.
+#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
 
-        .. image:: img/zeus_upload.jpg
+    .. image:: img/unplug_cam.png
+        :width: 400
+        :align: center
 
+   
 #. Connect the Zeus Car to your computer with the blue USB cable. When you plug in your Arduino board, the computer automatically recognizes it and assigns it a COM port, which you can view in Device Manager.
 
 #. Open the ``1_basic_move.ino`` file under the path of ``zeus-car-main\examples\1_basic_move``.
@@ -41,7 +44,7 @@ You will learn how to make the Zeus Car move in all directions in this project.
 #. Let's start the Zeus Car.
 
     * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
-    * When you toggle the power switch ON, the power indicator will not light up, so you'll need to plug in the Type-C cable for about 5 seconds.
+    * So you'll need to plug in the Type-C cable for about 5 seconds.
 
             .. image:: img/zeus_charge.jpg
 

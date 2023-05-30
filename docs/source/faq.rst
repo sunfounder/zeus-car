@@ -24,6 +24,11 @@ If the following message keeps appearing after clicking the Upload button when t
     avrdude: stk500_recv(): programmer is not responding
     avrdude: stk500_getsync() attempt 3 of 10: not in sync: resp=0x00
 
-At this point you need to check if the Upload button is toggled to the side near the motor port. 
+At this point, you need to make sure that the ESP32 CAM is unplugged.
 
-.. image:: img/zeus_upload.jpg
+The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+
+
+.. image:: img/unplug_cam.png
+    :width: 400
+    :align: center

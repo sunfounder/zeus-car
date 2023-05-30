@@ -15,7 +15,7 @@ Quick Guide
 #. Let's start the Zeus Car.
 
     * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
-    * When you toggle the power switch ON, the power indicator will not light up, so you'll need to plug in the Type-C cable for about 5 seconds.
+    * So you'll need to plug in the Type-C cable for about 5 seconds.
 
             .. image:: img/zeus_charge.jpg
 
@@ -27,18 +27,19 @@ Quick Guide
 
         .. image:: img/zeus_car.jpg
 
-    * If a yellow light appears, it means startup was unsuccessful. Please press the **Reset** button to make the code in the Arduino board run again.
+    * If a yellow light appears, it means startup was unsuccessful, you need to toggle this switch to **Run mode** (Right on the diagram) so that the ESP32-CAM can communicate with the Arduino board.
+    
+        .. image:: img/zeus_run.jpg
+    
+    * Please press the **Reset** button to make the code in the Arduino board run again.
 
         .. image:: img/zeus_reset_button.jpg
-
-    * Make sure the Upload button is toggled to the right (run mode) if the light is still yellow.
-
-        .. image:: img/zeus_run_upload.jpg
 
 
 #. Connect to ``Zeus_Car`` WLAN.
 
-    现在来将你的移动设备连接到Zeus Car发出的局域网，这样你的移动设备和Zeus Car就处于同一个局域网，有助于移动设备上的应用与Zeus Car通信。
+    Now, connect your mobile device to the local area network (LAN) broadcast by the Zeus Car. This way, your mobile device and the Zeus Car will be on the same network, which will facilitate communication between the applications on your mobile device and the Zeus Car.
+    
 
     * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
 
@@ -68,7 +69,7 @@ Quick Guide
 
 #. Connect and run the Controller.
 
-    * 现在通过 |app_connect| button来将SunFounder Controller连接到Zeus Car来开始通信。Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
+    * Now, use the |app_connect| button to connect the SunFounder Controller to the Zeus Car to begin communication.。Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
 
         .. image:: img/app_auto_connect.png
 

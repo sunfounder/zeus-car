@@ -51,8 +51,8 @@ This expansion board also has a built-in charging circuit, which can charge the 
 * :ref:`shield_strip_pin`
     * For connecting 2 RGB LED Strips, the three pins of the strip are connected to 12, 13 and 11 respectively.
 
-* Upload Switch
-   * ESP32-CAM and Arduino board share RX and TX pins, so when uploading code you need to toggle this switch to Upload mode(Right on the diagram) to unoccupy the ESP32-CAM first. When you need to use the camera, you need to toggle this switch to the other side so that the ESP32-CAM can communicate with the Arduino board.
+* Run Switch
+   * When you need to use the camera, you need to toggle this switch to the other side so that the ESP32-CAM can communicate with the Arduino board.
 
 * :ref:`shield_motor_pin`
     * 4 groups of motor ports.

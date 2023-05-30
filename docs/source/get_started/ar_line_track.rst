@@ -16,7 +16,12 @@ But there are two points to note.
 
 **How to do?**
 
-#. First check that the **Upload** button is toggled to the side near the motor port.
+#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+
+    .. image:: img/unplug_cam.png
+        :width: 400
+        :align: center
+
 
 #. Open the ``14_line_track.ino`` file under the path of ``zeus-car-main\examples\14_line_track``.
 

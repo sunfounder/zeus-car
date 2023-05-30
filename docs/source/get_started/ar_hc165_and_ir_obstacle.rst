@@ -5,7 +5,12 @@ In this project, you will learn how to use the IR obstacle avoidance modules on 
 
 **How to do?**
 
-#. First check that the **Upload** button is toggled to the side near the motor port.
+#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+
+    .. image:: img/unplug_cam.png
+        :width: 400
+        :align: center
+
 
 #. Open the ``9_hc165_and_ir_obstacle.ino`` file under the path of ``zeus-car-main\examples\9_hc165_and_ir_obstacle``.
 

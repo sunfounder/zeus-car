@@ -8,7 +8,12 @@ The experimental result is almost the same as :ref:`ar_line_track`, however the 
 
 **How to do?**
 
-#. First check that the **Upload** button is toggled to the side near the motor port.
+#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+
+    .. image:: img/unplug_cam.png
+        :width: 400
+        :align: center
+
 
 #. Open the ``15_line_track_field_centric.ino`` file under the path of ``zeus-car-main\examples\15_line_track_field_centric``.
 

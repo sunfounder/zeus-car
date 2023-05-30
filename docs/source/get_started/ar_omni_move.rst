@@ -10,9 +10,12 @@ If you ignore the friction on the ground and the structural tolerances, its path
 
 **How to do?**
 
-#. First check that the **Upload** button is toggled to the side near the motor port.
+#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
 
-        .. image:: img/zeus_upload.jpg
+    .. image:: img/unplug_cam.png
+        :width: 400
+        :align: center
+
 
 #. Open the ``2_omni_move.ino`` file under the path of ``zeus-car-main\examples\2_omni_move``.
 

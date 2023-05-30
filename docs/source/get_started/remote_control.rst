@@ -11,7 +11,7 @@ Quick Guide
 #. Let's start the Zeus Car.
 
     * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
-    * When you toggle the power switch ON, the power indicator will not light up, so you'll need to plug in the Type-C cable for about 5 seconds.
+    * So you'll need to plug in the Type-C cable for about 5 seconds.
 
             .. image:: img/zeus_charge.jpg
 
@@ -23,13 +23,16 @@ Quick Guide
 
         .. image:: img/zeus_car.jpg
 
-    * If a yellow light appears, it means startup was unsuccessful. Please press the **Reset** button to make the code in the Arduino board run again.
+    * If a yellow light appears, it means startup was unsuccessful, you need to toggle this switch to **Run mode** (Right on the diagram) so that the ESP32-CAM can communicate with the Arduino board.
+    
+        .. image:: img/zeus_run.jpg
+    
+    * Please press the **Reset** button to make the code in the Arduino board run again.
 
         .. image:: img/zeus_reset_button.jpg
 
-    * Make sure the Upload button is toggled to the right (run mode) if the light is still yellow.
 
-        .. image:: img/zeus_run_upload.jpg
+
 
 #. Press the different keys on the remote control to control the car.
 
