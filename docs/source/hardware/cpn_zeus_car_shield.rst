@@ -34,10 +34,10 @@ This expansion board also has a built-in charging circuit, which can charge the 
     * Grayscale adjustment potentiometer: used to set the reference voltage for Omni grayscale module
     * Grayscale Port: Used to connect Omni Grayscale module.
 
-* 3 groups of indicators.
-    * Charging Indicator: This indicator lights up after plugging in the USC-C cable for charging, the color is orange.
-    * Power Indicator: Turn the power switch to ON, the power indicator will light up, color: green.
-    * Battery Indicator: Two indicators (orange) represent different battery levels. When both D3 and D4 indicators are off, you need to use the USB-C cable to charge. When charging, these two indicators will flash.
+* Indicators
+    * **Charge Indicator**: Glows red when the shield is charging through the USB-C port.
+    * **Power Indicator**: Glows green when the power switch is in the "ON" position.
+    * **Battery Indicator**: Two orange indicators represent different battery levels. They flash during charging and turn off when the battery needs charging.
 
 * :ref:`shield_ultrasonic_pin`
     * To connect the ultrasonic module, both Trig & Echo pins are connected on pin 10 of the Arduino board.
