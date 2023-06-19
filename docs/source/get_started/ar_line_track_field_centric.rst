@@ -6,6 +6,9 @@ A different type of tracer mode will be explored in this project - tracer moveme
 
 The experimental result is almost the same as :ref:`ar_line_track`, however the head of the Zeus Car is always facing a fixed direction; in the previous project it changed with the line direction.
 
+
+.. image:: img/line_track_compass.gif
+
 **How to do?**
 
 #. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.

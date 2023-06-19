@@ -6,6 +6,9 @@ Controlled by APP
 To control Zeus Car from your mobile device, you must download the APP (SunFounder Controller) on your device, connect to the Zeus Car LAN, and then create your own controller on the APP.
 
 
+.. image:: img/app_control.gif
+
+
 Quick Guide
 ---------------------
 
