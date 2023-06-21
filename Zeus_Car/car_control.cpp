@@ -65,7 +65,7 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
     if (power[i] == 0) {
       newPower[i] = 0;
     } else {
-      newPower[i] = map(abs(power[i]), 0, 141, MOTOR_POWER_MIN, 255);
+      newPower[i] = map(abs(power[i]), 0, 100, MOTOR_POWER_MIN, 255);
     }
 
     if (newPower[i] != 0 && newPower[i] < MOTOR_START_POWER) {
@@ -100,7 +100,7 @@ void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   // Offset angle as 0 to the front
   float rad = angle * PI / 180;
 
-  ratio = 0.4;
+  ratio = 0.5;
   power /= sqrt(2);
   power = power * (1-ratio);
   
