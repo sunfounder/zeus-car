@@ -12,7 +12,7 @@
     - SoftPWM
     - ArduinoJson
 
-  Version: 1.4.2
+  Version: 1.4.3
     -- https://github.com/sunfounder/zeus-car.git
   
   Documentation:
@@ -23,7 +23,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.4.2"
+#define VERSION "1.4.3"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
@@ -85,11 +85,11 @@
 #define PORT "8765"
 
 /** Configure the motors speed in different modes */
-#define SPEECH_REMOTE_POWER 50
-#define IR_REMOTE_POWER  60
-#define LINE_TRACK_POWER 80
-#define OBSTACLE_AVOID_POWER 80
-#define OBSTACLE_FOLLOW_POWER 80
+#define SPEECH_REMOTE_POWER 60
+#define IR_REMOTE_POWER  80
+#define LINE_TRACK_POWER 100
+#define OBSTACLE_AVOID_POWER 90
+#define OBSTACLE_FOLLOW_POWER 90
 #define CAR_CALIBRATION_POWER 100
 
 /** Configure the offset angle of line track */
@@ -303,7 +303,7 @@ void line_track() {
   uint8_t offsetType = result & 0xFF;
   int16_t angle = 0;
   int8_t offset = 0;
-
+  
   switch (angleType) {
     case ANGLE_N45:   angle = -45;break;
     case ANGLE_0:     angle =   0;break;
@@ -432,7 +432,6 @@ void irRemoteHandler() {
         break;
       case IR_KEY_PLAY_PAUSE:
         carResetHeading();
-        // currentAngle = 0;
         irOrAppFlag = false;
         currentMode = MODE_LINE_TRACK;
         break;
