@@ -449,7 +449,7 @@ void irRemoteHandler() {
       case IR_KEY_EQ:
         carResetHeading();
         irOrAppFlag = false;
-        currentMode = MODE_LINE_TRACK_WITH_MAG;
+        currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
         break;       
       case IR_KEY_BACKWARD:
         carResetHeading();
