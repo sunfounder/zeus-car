@@ -12,7 +12,7 @@
     - SoftPWM
     - ArduinoJson
 
-  Version: 1.4.3
+  Version: 1.4.4
     -- https://github.com/sunfounder/zeus-car.git
   
   Documentation:
@@ -23,7 +23,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.4.3"
+#define VERSION "1.4.4"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
@@ -127,9 +127,9 @@ bool appRemoteDriftEnable = false;
 
 bool irOrAppFlag = false; // true: App, false: IR
 
-// last button state for app Line button, Follow button & Avoid button
-bool current_button_state[3] = {0, 0, 0};
-bool last_button_state[3] = {0, 0, 0};
+// last button state for app buttons:Line no Mag, Line, Follow, Avoid button
+bool current_button_state[4] = {0, 0, 0, 0};
+bool last_button_state[4] = {0, 0, 0, 0};
 
 char speech_buf[20];
 
@@ -247,10 +247,15 @@ void modeHandler() {
       carStop();
       carResetHeading();
       break;
-    case MODE_LINE_TRACK:
-      rgbWrite(MODE_LINE_TRACK_COLOR);
+    case MODE_LINE_TRACK_WITHOUT_MAG:
+      rgbWrite(MODE_LINE_TRACK_WITHOUT_MAG_COLOR);
       remotePower = LINE_TRACK_POWER;
-      line_track();
+      line_track(false);
+      break;
+    case MODE_LINE_TRACK_WITH_MAG:
+      rgbWrite(MODE_LINE_TRACK_WITH_MAG_COLOR);
+      remotePower = LINE_TRACK_POWER;
+      line_track(true);
       break;
     case MODE_OBSTACLE_FOLLOWING:
       rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);
@@ -296,8 +301,12 @@ void modeHandler() {
 
 /**
  * Line track program
+ * 
+ * @param useMag whether to use the geomagnetic sensor to keep the direction of the car,
+ *               true(default), use the geomagnetic sensor,
+ *               false, without the geomagnetic sensor
  */
-void line_track() {
+void line_track(bool useMag) {
   uint16_t result = gsGetAngleOffset();
   uint8_t angleType = result >> 8 & 0xFF;
   uint8_t offsetType = result & 0xFF;
@@ -332,12 +341,14 @@ void line_track() {
     angle += 180;
     offset *= -1;
   }
-
   currentAngle = angle + (offset*LINE_TRACK_OFFSET_ANGLE);
-  carMoveFieldCentric(currentAngle, LINE_TRACK_POWER, 0, false);
-  // carMove(currentAngle, LINE_TRACK_POWER, 0, false);
+  
+  if (useMag) {
+    carMoveFieldCentric(currentAngle, LINE_TRACK_POWER, 0, false, true);
+  } else {
+    carMove(currentAngle, LINE_TRACK_POWER, 0, false);
+  }
 }
-
 
 /**
  * Obstacle follow program
@@ -433,8 +444,13 @@ void irRemoteHandler() {
       case IR_KEY_PLAY_PAUSE:
         carResetHeading();
         irOrAppFlag = false;
-        currentMode = MODE_LINE_TRACK;
+        currentMode = MODE_LINE_TRACK_WITH_MAG;
         break;
+      case IR_KEY_EQ:
+        carResetHeading();
+        irOrAppFlag = false;
+        currentMode = MODE_LINE_TRACK_WITH_MAG;
+        break;       
       case IR_KEY_BACKWARD:
         carResetHeading();
         irOrAppFlag = false;
@@ -444,8 +460,6 @@ void irRemoteHandler() {
         carResetHeading();
         irOrAppFlag = false;
         currentMode = MODE_OBSTACLE_AVOIDANCE;
-        break;
-      case IR_KEY_EQ:
         break;
       case IR_KEY_MINUS: // drift left
         currentMode = MODE_REMOTE_CONTROL;
@@ -483,14 +497,15 @@ void onReceive() {
   // Serial.print("recv:");Serial.println(aiCam.recvBuffer);
   irOrAppFlag = true;
 
-  // Mode select: line track, obstacle following, obstacle avoidance
-  current_button_state[0] = aiCam.getSwitch(REGION_N);
-  current_button_state[1] = aiCam.getSwitch(REGION_O);
-  current_button_state[2] = aiCam.getSwitch(REGION_P);
+  // Mode select: line track without magnetic field, line track withmagnetic field, obstacle following, obstacle avoidance
+  current_button_state[0] = aiCam.getSwitch(REGION_M);
+  current_button_state[1] = aiCam.getSwitch(REGION_N);
+  current_button_state[2] = aiCam.getSwitch(REGION_O);
+  current_button_state[3] = aiCam.getSwitch(REGION_P);
 
   // check change
   bool is_change = false;
-  for(int i = 0; i < 3; i++) {
+  for(int i = 0; i < 4; i++) {
     if(current_button_state[i] != last_button_state[i]) {
       is_change = true;
       last_button_state[i] = current_button_state[i];
@@ -499,16 +514,21 @@ void onReceive() {
   // changed
   if (is_change || currentMode == MODE_APP_CONTROL) {
     if (current_button_state[0]) {
-        if(currentMode != MODE_LINE_TRACK) {
+        if(currentMode != MODE_LINE_TRACK_WITHOUT_MAG) {
           carResetHeading();
-          currentMode = MODE_LINE_TRACK;
+          currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
         }
     } else if (current_button_state[1]) {
+      if(currentMode != MODE_LINE_TRACK_WITH_MAG) {
+        carResetHeading();
+        currentMode = MODE_LINE_TRACK_WITH_MAG;
+      }
+    } else if (current_button_state[2]) {
       if(currentMode != MODE_OBSTACLE_FOLLOWING) {
         carResetHeading();
         currentMode = MODE_OBSTACLE_FOLLOWING;
       }
-    } else if (current_button_state[2]) {
+    } else if (current_button_state[3]) {
       if(currentMode != MODE_OBSTACLE_AVOIDANCE) {
         carResetHeading();
         currentMode = MODE_OBSTACLE_AVOIDANCE;
@@ -537,7 +557,7 @@ void onReceive() {
   }
 
   // Reset Origin
-  if (aiCam.getButton(REGION_I)) {
+  if (aiCam.getButton(REGION_G)) {
     currentMode = MODE_APP_CONTROL;
     carStop();
     carResetHeading();
@@ -598,7 +618,7 @@ void onReceive() {
   // Speech control
   char speech_buf_temp[20];
 
-  aiCam.getSpeech(REGION_M, speech_buf_temp);
+  aiCam.getSpeech(REGION_I, speech_buf_temp);
   if (strlen(speech_buf_temp) > 0) {
     if (aiCam.send_doc["M"].isNull() == false) {
       bool _last_stat = aiCam.send_doc["M"].as<bool>();
