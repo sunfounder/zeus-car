@@ -620,15 +620,15 @@ void onReceive() {
 
   aiCam.getSpeech(REGION_I, speech_buf_temp);
   if (strlen(speech_buf_temp) > 0) {
-    if (aiCam.send_doc["M"].isNull() == false) {
-      bool _last_stat = aiCam.send_doc["M"].as<bool>();
+    if (aiCam.send_doc["I"].isNull() == false) {
+      bool _last_stat = aiCam.send_doc["I"].as<bool>();
       if (_last_stat == 1) {
-        aiCam.send_doc["M"] = 0;
+        aiCam.send_doc["I"] = 0;
       } else {
-        aiCam.send_doc["M"] = 1;
+        aiCam.send_doc["I"] = 1;
       }
     } else {
-      aiCam.send_doc["M"] = 0;
+      aiCam.send_doc["I"] = 0;
     }
   } 
 
