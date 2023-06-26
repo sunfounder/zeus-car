@@ -12,7 +12,7 @@
     - SoftPWM
     - ArduinoJson
 
-  Version: 1.4.4
+  Version: 1.4.5
     -- https://github.com/sunfounder/zeus-car.git
   
   Documentation:
@@ -23,7 +23,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.4.4"
+#define VERSION "1.4.5"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
@@ -419,13 +419,13 @@ void obstacleAvoidance() {
  * irRemoteHandler, handle IR remote control key events
  */
 void irRemoteHandler() {
-  irOrAppFlag = false;
 
   uint8_t key = irRead();
   if (key == IR_KEY_ERROR) {
     return; // No key pressed
   }else{
     remotePower = IR_REMOTE_POWER;
+    irOrAppFlag = false;
   }
 
   int8_t cmd_code = ir_key_2_cmd_code(key);
@@ -444,22 +444,18 @@ void irRemoteHandler() {
         break;
       case IR_KEY_PLAY_PAUSE:
         carResetHeading();
-        irOrAppFlag = false;
         currentMode = MODE_LINE_TRACK_WITH_MAG;
         break;
       case IR_KEY_EQ:
         carResetHeading();
-        irOrAppFlag = false;
         currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
         break;       
       case IR_KEY_BACKWARD:
         carResetHeading();
-        irOrAppFlag = false;
         currentMode = MODE_OBSTACLE_FOLLOWING;
         break;
       case IR_KEY_FORWARD:
         carResetHeading();
-        irOrAppFlag = false;
         currentMode = MODE_OBSTACLE_AVOIDANCE;
         break;
       case IR_KEY_MINUS: // drift left
