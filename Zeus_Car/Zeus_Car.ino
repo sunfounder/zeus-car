@@ -90,6 +90,7 @@
 #define LINE_TRACK_POWER 100
 #define OBSTACLE_AVOID_POWER 90
 #define OBSTACLE_FOLLOW_POWER 90
+#define OBSTACLE_FOLLOW_ROTATE_POWER 50
 #define CAR_CALIBRATION_POWER 100
 
 /** Configure the offset angle of line track */
@@ -367,9 +368,9 @@ void obstacleFollowing() {
     carForward(OBSTACLE_FOLLOW_POWER);
   } else {
     if (!leftIsClear) {
-      carTurnLeft(OBSTACLE_FOLLOW_POWER);
+      carTurnLeft(OBSTACLE_FOLLOW_ROTATE_POWER);
     } else if (!rightIsClear) {
-      carTurnRight(OBSTACLE_FOLLOW_POWER);
+      carTurnRight(OBSTACLE_FOLLOW_ROTATE_POWER);
     } else {
       carStop();
     }
