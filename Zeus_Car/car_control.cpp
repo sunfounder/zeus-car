@@ -131,8 +131,10 @@ void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   * @param drift Whether it is a drift mode, default flase 
   *              true, drift mode, the car body will return to square
   *              flase, drift mode, the car body will not return to square
+  * @param angFlag false, angle of view of field center
+  *                true, the angle of view of the car
   */
-void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift) {
+void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift, bool angFlag) {
   int16_t currentHeading = 0;
   int32_t error = 0;
   int32_t offset = 0;
@@ -157,7 +159,7 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
     _lastError = error;
   }
 
-  if (angle != 0 || drift == true) {
+  if (angFlag==false && (angle != 0 || drift == true)) {
     angle = angle - currentHeading + originHeading;
   }
 
