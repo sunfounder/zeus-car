@@ -2,7 +2,9 @@
 #define _TEST_H_
 
 #include <Arduino.h>
+#if defined(ARDUINO_AVR_UNO)
 #include <SoftPWM.h>
+#endif
 
 #include "car_control.h"
 #include "ir_remote.h"

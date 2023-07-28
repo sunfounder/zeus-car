@@ -65,7 +65,7 @@ const byte OFFSET_1_LIST[OFFSET_1_SIZE] PROGMEM = {
   0b10000011, 0b10000100, 0b10000101, 0b10000110, 0b10000111, 0b10001101, 0b11000110, 0b00011000, 
   0b00101100, 0b00110100, 0b00111100, 0b00100100, };
 
-bool indexOf(byte* arr, byte size, byte value) {
+bool indexOf(const byte* arr, byte size, byte value) {
   for (int i = 0; i < size; i++) {
     byte _value = pgm_read_byte(arr + i);
     // Serial.print("_value:");Serial.println(_value, BIN);

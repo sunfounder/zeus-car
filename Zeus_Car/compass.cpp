@@ -112,7 +112,7 @@ void compassCalibrateStart() {
  */
 bool compassCalibrateLoop() {
   if (calibrateDone) {
-    return;
+    return false;
   }
   calibrateChanged = false;
   _compass.read();

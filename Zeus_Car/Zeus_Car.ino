@@ -26,8 +26,11 @@
 #define VERSION "1.4.5"
 
 #include <Arduino.h>
-#include <SoftPWM.h>
 #include <string.h>
+
+#if defined(ARDUINO_AVR_UNO)
+#include <SoftPWM.h>
+#endif
 
 #include "rgb.h"
 #include "compass.h"
@@ -148,7 +151,9 @@ void setup() {
   Serial.print(F("Arduino Car version "));Serial.println(F(VERSION));
 
   Serial.println(F("Initialzing..."));
+  #if defined(ARDUINO_AVR_UNO)
   SoftPWMBegin(); // init softpwm, before the motors initialization and the rgb LEDs initialization
+  #endif
   rgbBegin();
   rgbWrite(ORANGE); // init hint
   carBegin();

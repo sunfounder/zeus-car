@@ -5,14 +5,8 @@
 #include <string.h>
 #include <ArduinoJson.h>
 
-/**
-* Use custom serial port
-*/
-// #define AI_CAM_DEBUG_CUSTOM
-#ifdef AI_CAM_DEBUG_CUSTOM
-  #include <SoftwareSerial.h>
-  SoftwareSerial dSerial(10, 11); // RX, TX
-  #define DateSerial dSerial
+#ifdef ARDUINO_MINIMA
+  #define DateSerial Serial1
   #define DebugSerial Serial
 #else
   #define DateSerial Serial
@@ -112,7 +106,7 @@ class AiCamera {
 
     AiCamera(const char* name, const char* type);
     void begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort);
-    void setOnReceived(void (*func)(char*, char*));
+    void setOnReceived(void (*func)());
 
     void set_command_timeout(uint32_t _timeout);
     void readInto(char* buffer);

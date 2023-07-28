@@ -1,5 +1,7 @@
 #include "rgb.h"
+#if defined(ARDUINO_AVR_UNO)
 #include <SoftPWM.h>
+#endif
 
 void rgbBegin() {
   for (uint8_t i = 0; i < 3; i++) {
@@ -27,9 +29,15 @@ void rgbWrite(uint8_t r, uint8_t g, uint8_t b) {
     b = 255 - b;
   #endif
   // set volatge 
+  #if defined(ARDUINO_AVR_UNO)
   SoftPWMSet(RGB_PINS[0], r);
   SoftPWMSet(RGB_PINS[1], g);
   SoftPWMSet(RGB_PINS[2], b);
+  #elif defined(ARDUINO_MINIMA)
+  analogWrite(RGB_PINS[0], r);
+  analogWrite(RGB_PINS[1], g);
+  analogWrite(RGB_PINS[2], b);
+  #endif
 }
 
 void rgbOff() {

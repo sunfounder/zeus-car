@@ -1,7 +1,10 @@
 #include "car_control.h"
 
 #include <Arduino.h>
+
+#if defined(ARDUINO_AVR_UNO)
 #include <SoftPWM.h>
+#endif
 
 #define MOTOR_POWER_MIN 50  // 28/255
 #define MOTOR_START_POWER 100
@@ -21,10 +24,12 @@ int16_t originHeading;
 * @brief Initialize the motor, and (block) the initialization compass
 */
 void carBegin() {
-  for (uint8_t i = 0; i < 8; i++) {
-    SoftPWMSet(MOTOR_PINS[i], 0);
-    SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);
-  }
+  #if defined(ARDUINO_AVR_UNO)
+    for (uint8_t i = 0; i < 8; i++) {
+      SoftPWMSet(MOTOR_PINS[i], 0);
+      SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);
+    }
+  #endif
   compassBegin();
   carResetHeading();
 }
@@ -69,12 +74,22 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
     }
 
     if (newPower[i] != 0 && newPower[i] < MOTOR_START_POWER) {
+      #if defined(ARDUINO_AVR_UNO)
       SoftPWMSet(MOTOR_PINS[i*2], dir[i] * MOTOR_START_POWER);
       SoftPWMSet(MOTOR_PINS[i*2+1], !dir[i] * MOTOR_START_POWER);
+      #elif defined(ARDUINO_MINIMA)
+      analogWrite(MOTOR_PINS[i*2], dir[i] * MOTOR_START_POWER);
+      analogWrite(MOTOR_PINS[i*2+1], !dir[i] * MOTOR_START_POWER);
+      #endif
       delayMicroseconds(200);
     }
+    #if defined(ARDUINO_AVR_UNO)
     SoftPWMSet(MOTOR_PINS[i*2], dir[i] * newPower[i]);
     SoftPWMSet(MOTOR_PINS[i*2+1], !dir[i] * newPower[i]);
+    #elif defined(ARDUINO_MINIMA)
+    analogWrite(MOTOR_PINS[i*2], dir[i] * newPower[i]);
+    analogWrite(MOTOR_PINS[i*2+1], !dir[i] * newPower[i]);
+    #endif
   }
 }
 

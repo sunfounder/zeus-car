@@ -11,7 +11,11 @@ QMC6310::QMC6310() {
 
 void QMC6310::init() {
 	Wire.begin();
+  #if defined(ARDUINO_AVR_UNO)
   Wire.setWireTimeout(100000, true); // 100ms
+  #elif defined(ARDUINO_MINIMA)
+  Wire.setTimeout(100000); // 100ms
+  #endif
   
   this->_i2cWrite(0x29, 0x06);
   this->_i2cWrite(QMC6310_REG_CONTROL_2, QMC6310_VAL_RNG_8G);
@@ -64,7 +68,7 @@ void QMC6310::clearCalibration() {
   this->_calibrated = false;
 }
 
-void QMC6310::setCalibration(int xMin, int xMax, int yMin, int yMax, int zMin, int zMax) {
+void QMC6310::setCalibration(int16_t xMin, int16_t xMax, int16_t yMin, int16_t yMax, int16_t zMin, int16_t zMax) {
   this->_calibrated = true;
   _calibrationData[0] = xMin;
   _calibrationData[1] = xMax;
