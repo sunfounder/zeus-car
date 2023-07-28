@@ -99,9 +99,6 @@
 /** Configure the follow distance of obstacle follow */
 #define FOLLOW_DISTANCE 15
 
-/** websocket communication headers */ 
-#define WS_HEADER "WS+"
-
 ///@}
 
 /*********************** Global variables ****************************/
