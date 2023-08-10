@@ -30,30 +30,30 @@ Please contact service@sunfounder.com if you are interested in helping,
 and we will give you a free product in return. 
 
 
-* Currently the online tutorial supports English and Japanese. Please click the **Read the Docs** icon in the lower left corner of the page to change the display language.
+Currently the online tutorial supports English and Japanese. Please click the **Read the Docs** icon in the lower left corner of the page to change the display language.
 
 .. image:: img/translation.png
     :align: center
 
 
-* Beyong that, we recommend using Google Translate to convert English to the language you want to see.
+.. * Beyong that, we recommend using Google Translate to convert English to the language you want to see.
 
-    The steps are as follows.
+..     The steps are as follows.
 
-    * In this course page, right-click and select **Translate to xx**. If the current language is not what you want, you can change it later.
+..     * In this course page, right-click and select **Translate to xx**. If the current language is not what you want, you can change it later.
 
-    .. image:: img/translate1.png
-        :align: center
+..     .. image:: img/translate1.png
+..         :align: center
 
-    * There will be a language popup in the upper right corner. Click on the menu button to **choose another language**.
+..     * There will be a language popup in the upper right corner. Click on the menu button to **choose another language**.
 
-    .. image:: img/translate2.png
-        :align: center
+..     .. image:: img/translate2.png
+..         :align: center
 
-    * Select the language from the inverted triangle box, and then click **Done**.
+..     * Select the language from the inverted triangle box, and then click **Done**.
 
-    .. image:: img/translate3.png
-        :align: center
+..     .. image:: img/translate3.png
+..         :align: center
 
 .. toctree::
     :maxdepth: 2
