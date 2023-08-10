@@ -23,25 +23,37 @@ We set a :ref:`ar_play_mode` for it, so users can directly turn on the car after
 
 **About the display language**
 
-In addition to English, we are working on other languages for this course. Please contact service@sunfounder.com if you are interested in helping, and we will give you a free product in return. 
-In the meantime, we recommend using Google Translate to convert English to the language you want to see.
+.. note::
 
-The steps are as follows.
+In addition to English, we are working on other languages for this course. 
+Please contact service@sunfounder.com if you are interested in helping, 
+and we will give you a free product in return. 
 
-* In this course page, right-click and select **Translate to xx**. If the current language is not what you want, you can change it later.
 
-.. image:: img/translate1.png
+* Currently the online tutorial supports English and Japanese. Please click the **Read the Docs** icon in the lower left corner of the page to change the display language.
+
+.. image:: img/translation.png
     :align: center
 
-* There will be a language popup in the upper right corner. Click on the menu button to **choose another language**.
 
-.. image:: img/translate2.png
-    :align: center
+* Beyong that, we recommend using Google Translate to convert English to the language you want to see.
 
-* Select the language from the inverted triangle box, and then click **Done**.
+    The steps are as follows.
 
-.. image:: img/translate3.png
-    :align: center
+    * In this course page, right-click and select **Translate to xx**. If the current language is not what you want, you can change it later.
+
+    .. image:: img/translate1.png
+        :align: center
+
+    * There will be a language popup in the upper right corner. Click on the menu button to **choose another language**.
+
+    .. image:: img/translate2.png
+        :align: center
+
+    * Select the language from the inverted triangle box, and then click **Done**.
+
+    .. image:: img/translate3.png
+        :align: center
 
 .. toctree::
     :maxdepth: 2
