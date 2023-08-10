@@ -3,10 +3,10 @@ IR Obstacle Avoidcance Module
 
 .. image:: img/ir_avoid.png
 
-* **GND**：Ground Input
-* **+**：3.3 to 5V DC Supply Input
-* **Out**：Signal output pin, default is high and output low when obstacle is detected
-* **EN**：Module enable pin. When it is low, the module is working and connected to GND by jumper cap by default.
+* **GND**: Ground Input
+* **+**: 3.3 to 5V DC Supply Input
+* **Out**: Signal output pin, default is high and output low when obstacle is detected
+* **EN**: Module enable pin. When it is low, the module is working and connected to GND by jumper cap by default.
 
 
 This is a common IR obstacle avoidance module that uses a pair of IR transmitting and receiving components. Basically, the transmitter emits infrared light, and when the detection direction encounters an obstacle, the infrared light is back and received by the receiver tube. At this time, the indicator lights up. After circuit processing, it outputs a low level signal.
