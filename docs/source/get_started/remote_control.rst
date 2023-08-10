@@ -8,36 +8,59 @@ Zeus Car can be controlled with a remote control by turning the car on then pres
 Quick Guide
 --------------------
 
+This is a quick tutorial video. Please watch the video first, and then follow the instructions provided below.
+
+.. raw:: html
+
+   <video loop controls style = "max-width:90%">
+      <source src="../_static/video/ir_control_quick_guide.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> 
+
 #. Let's start the Zeus Car.
 
     * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
     * So you'll need to plug in the Type-C cable for about 5 seconds.
 
-            .. image:: img/zeus_charge.jpg
+    .. image:: img/zeus_charge.jpg
+        :width: 500
+        :align: center
 
     * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
 
-        .. image:: img/zeus_power.jpg
+    .. image:: img/zeus_power.jpg
+        :width: 500
+        :align: center
 
     * At this point, the Zeus Car starts normally and the RGB LED Strip under the car lights up in cyan.
 
-        .. image:: img/zeus_car.jpg
+    .. image:: img/zeus_car.jpg
+        :width: 500
+        :align: center
 
     * If a yellow light appears, it means startup was unsuccessful, you need to toggle this switch to **Run mode** (Right on the diagram) so that the ESP32-CAM can communicate with the Arduino board.
     
-        .. image:: img/zeus_run.jpg
+    .. image:: img/zeus_run.jpg
+        :width: 500
+        :align: center
     
     * Please press the **Reset** button to make the code in the Arduino board run again.
 
-        .. image:: img/zeus_reset_button.jpg
-
-
+    .. image:: img/zeus_reset_button.jpg
+        :width: 500
+        :align: center
 
 
 #. Press the different keys on the remote control to control the car.
 
     .. image:: img/remote_control.jpg
-        :width: 800
+        :width: 500
+        :align: center
+
 
     * **Stop**: Stop all movements of the car.
     * :ref:`ir_compass_cali`: Turn on compass calibration.
@@ -66,6 +89,16 @@ Place the Zeus car on the ground. Upon turning on the compass calibration, the c
 Line Track
 ---------------------------
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/drift_based_line_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> 
 
 Press the |ir_play| key to switch to the line track mode.
 
@@ -78,7 +111,8 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
     There are eight sensors on the Omni grayscale module, and the distance between each sensor is between 2 and 3 cm. There must be two sensors to detect the black line simultaneously. Therefore, the line you stick must be at least 3cm wide and the bend angle should not be less than 90°.
 
     .. image:: img/map.png
-        :width: 800
+        :width: 500
+        :align: center
 
 #. Calibrate the Omni Grayscale module.
 
@@ -86,11 +120,15 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
 
     * Place the Zeus Car on white surface and turn the potentiometer until the gray sensor light is just illuminated.
 
-        .. image:: img/zeus_line_calibration.jpg
+    .. image:: img/zeus_line_calibration.jpg
+        :width: 500
+        :align: center
 
     * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
 
-        .. image:: img/zeus_line_calibration1.jpg
+    .. image:: img/zeus_line_calibration1.jpg
+        :width: 500
+        :align: center
 
     * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
 
@@ -104,6 +142,17 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
 Follow
 ---------------------------
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/object_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> 
+
 
 Press the |ir_backward| key to switch to follow mode.
 
@@ -115,7 +164,9 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
     * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
     * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
 
-        .. image:: img/zeus_ir_avoid.jpg
+    .. image:: img/zeus_ir_avoid.jpg
+        :width: 500
+        :align: center
 
     * Calibrate the other obstacle avoidance module in the same way.
 
@@ -125,6 +176,17 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
 
 Obstacle Avoidance
 --------------------------------------
+
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/obstacle_avoidance.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> 
 
 
 When you want to go into obstacle avoidance mode, press the |ir_forward| key, but first reference the :ref:`ir_follow` to calibrate the two obstacle avoidance modules.
@@ -140,19 +202,34 @@ When you want to go into obstacle avoidance mode, press the |ir_forward| key, bu
 Drift Left/Right
 -------------------------------------------------
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/omni_directional_movement.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> 
+
+
+
 Use the |ir_minus| and |ir_plus| keys to drift the car to the left/right.
 
 * Press the |ir_minus| key, the car will drift to the left.
 
 .. image:: img/zeus_drift_left.jpg
-    :width: 600
+    :width: 500
     :align: center
+
 
 * Press the |ir_plus| key, the car will drift to the right.
 
 .. image:: img/zeus_drift_right.jpg
-    :width: 600
+    :width: 500
     :align: center
+
 
 * If it was stopped before drifting, pressing the |ir_minus| or |ir_plus| key once will cause the Zeus to drift 90° to the left or right.
 * If it was moving before drifting, after pressing the key, the Zeus Car will drift 90° to the left or right, then pan until you press another key.
@@ -162,9 +239,23 @@ Use the |ir_minus| and |ir_plus| keys to drift the car to the left/right.
 Move in All Directions(1 ~ 9)
 -------------------------------------
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/omni_directional_movement.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> 
+
+
 Use the number keys 1~9 to make the Zeus Car move in 8 directions.
 
 .. image:: img/remote_control_move.jpg
+    :width: 500
+    :align: center
 
 .. _rotate_left/right:
 
@@ -174,11 +265,13 @@ Rotate Left/Right（Cycle/USD Key）
 * The car will turn 45° left with the body as the center if you press |ir_return| once. Depending on the previous state, it will move forward or stop. If the previous state is stop, it will stop after 45° left turn; if it is forward, it will move forward after the left turn.
 
 .. image:: img/zeus_turn_left.jpg
-    :width: 600
+    :width: 500
     :align: center
+
 
 * Similarly, pressing |ir_usd| once will make the car turn 45° to the right, and then it will move forward or stop depending on the previous state.
 
 .. image:: img/zeus_turn_right.jpg
-    :width: 600
+    :width: 500
     :align: center
+
