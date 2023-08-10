@@ -1,0 +1,30 @@
+10. 超音波
+==============================
+
+このプロジェクトでは、超音波モジュールによって検出された距離の読み取り方法を学びます。
+
+**操作方法**
+
+#. ESP32-CAMとArduinoボードは、RX（受信）およびTX（送信）のピンが共有されています。コードをアップロードする際は、まずESP32-CAMを切断して、コンフリクトや潜在的な問題を避けてください。
+
+    .. image:: img/unplug_cam.png
+        :width: 400
+        :align: center
+
+#. ``zeus-car-main\examples\10_ultrasonic`` のパスから ``10_ultrasonic.ino`` ファイルを開きます。
+
+    .. raw:: html
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/b3c702d7-2d4e-48fe-8d8d-7d20f70c9e45/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+#. コードが正常にアップロードされたら、電源スイッチをONにしてZeus Carを起動します。
+
+    .. note::
+        このステップでUSBを抜かないでください。コンピュータ上で超音波モジュールのデータを確認する必要があります。
+
+#. シリアルモニターを開き、現在のボーレートが115200に設定されていることを確認してください。最新の印刷データを見るために **オートスクロールを切り替える** アイコンをクリックすることをおすすめします。
+
+   * 印刷されたデータは、 ``distance: 21.11  is_obstacle: 0`` のように表示されます。
+   * 前方の障害物の距離が20cm以内である場合、 ``is_obstacle: 0`` は ``is_obstacle: 1`` になります。
+
+    .. image:: img/ar_ultrasonic.png
