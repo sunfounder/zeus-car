@@ -40,12 +40,12 @@ Zeus Car - SunFounder Arduino ロボットカーキット
 .. .. image:: img/translate3.png
 ..     :align: center
 
-.. .. toctree::
-..     :maxdepth: 2
+.. toctree::
+    :maxdepth: 2
 
-..     get_started/get_started
-..     hardware/hardware
-..     faq
+    get_started/get_started
+    hardware/hardware
+    faq
 
 **著作権通知**
 
