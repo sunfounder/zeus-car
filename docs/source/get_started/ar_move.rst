@@ -3,9 +3,16 @@
 
 You will learn how to make the Zeus Car move in all directions in this project. 
 
-    .. image:: img/zeus_move.jpg
-        :width: 600
+.. raw:: html
 
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
 
 **How to do?**
 

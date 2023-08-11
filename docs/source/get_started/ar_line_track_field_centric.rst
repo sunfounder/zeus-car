@@ -6,8 +6,16 @@ A different type of tracer mode will be explored in this project - tracer moveme
 
 The experimental result is almost the same as :ref:`ar_line_track`, however the head of the Zeus Car is always facing a fixed direction; in the previous project it changed with the line direction.
 
+.. raw:: html
 
-.. image:: img/line_track_compass.gif
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/drift_based_line_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/> 
 
 **How to do?**
 

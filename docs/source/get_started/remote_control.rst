@@ -19,7 +19,7 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 #. Let's start the Zeus Car.
 
@@ -30,36 +30,59 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>
+
     * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
 
     .. image:: img/zeus_power.jpg
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>
+ 
     * At this point, the Zeus Car starts normally and the RGB LED Strip under the car lights up in cyan.
 
     .. image:: img/zeus_car.jpg
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>
+ 
     * If a yellow light appears, it means startup was unsuccessful, you need to toggle this switch to **Run mode** (Right on the diagram) so that the ESP32-CAM can communicate with the Arduino board.
     
     .. image:: img/zeus_run.jpg
         :width: 500
         :align: center
-    
+
+    .. raw:: html
+        
+        <br/>
+ 
     * Please press the **Reset** button to make the code in the Arduino board run again.
 
     .. image:: img/zeus_reset_button.jpg
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>
 
 #. Press the different keys on the remote control to control the car.
 
     .. image:: img/remote_control.jpg
         :width: 500
         :align: center
+
+    .. raw:: html
+        
+        <br/>
 
 
     * **Stop**: Stop all movements of the car.
@@ -98,7 +121,7 @@ Line Track
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 Press the |ir_play| key to switch to the line track mode.
 
@@ -114,6 +137,10 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>
+
 #. Calibrate the Omni Grayscale module.
 
     Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.
@@ -124,11 +151,19 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>
+
     * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
 
     .. image:: img/zeus_line_calibration1.jpg
         :width: 500
         :align: center
+
+    .. raw:: html
+        
+        <br/>
 
     * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
 
@@ -151,7 +186,7 @@ Follow
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 
 Press the |ir_backward| key to switch to follow mode.
@@ -167,6 +202,10 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
     .. image:: img/zeus_ir_avoid.jpg
         :width: 500
         :align: center
+
+    .. raw:: html
+        
+        <br/>
 
     * Calibrate the other obstacle avoidance module in the same way.
 
@@ -186,7 +225,7 @@ Obstacle Avoidance
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 
 When you want to go into obstacle avoidance mode, press the |ir_forward| key, but first reference the :ref:`ir_follow` to calibrate the two obstacle avoidance modules.
@@ -202,19 +241,6 @@ When you want to go into obstacle avoidance mode, press the |ir_forward| key, bu
 Drift Left/Right
 -------------------------------------------------
 
-.. raw:: html
-
-   <video loop autoplay muted style = "max-width:80%">
-      <source src="../_static/video/omni_directional_movement.mp4"  type="video/mp4">
-      Your browser does not support the video tag.
-   </video>
-
-.. raw:: html
-    
-    <br/> 
-
-
-
 Use the |ir_minus| and |ir_plus| keys to drift the car to the left/right.
 
 * Press the |ir_minus| key, the car will drift to the left.
@@ -223,12 +249,20 @@ Use the |ir_minus| and |ir_plus| keys to drift the car to the left/right.
     :width: 500
     :align: center
 
+.. raw:: html
+    
+    <br/>
+
 
 * Press the |ir_plus| key, the car will drift to the right.
 
 .. image:: img/zeus_drift_right.jpg
     :width: 500
     :align: center
+
+.. raw:: html
+    
+    <br/>
 
 
 * If it was stopped before drifting, pressing the |ir_minus| or |ir_plus| key once will cause the Zeus to drift 90° to the left or right.
@@ -242,13 +276,13 @@ Move in All Directions(1 ~ 9)
 .. raw:: html
 
    <video loop autoplay muted style = "max-width:80%">
-      <source src="../_static/video/omni_directional_movement.mp4"  type="video/mp4">
+      <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
       Your browser does not support the video tag.
    </video>
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 
 Use the number keys 1~9 to make the Zeus Car move in 8 directions.
@@ -256,6 +290,10 @@ Use the number keys 1~9 to make the Zeus Car move in 8 directions.
 .. image:: img/remote_control_move.jpg
     :width: 500
     :align: center
+
+.. raw:: html
+    
+    <br/>
 
 .. _rotate_left/right:
 
@@ -268,10 +306,18 @@ Rotate Left/Right（Cycle/USD Key）
     :width: 500
     :align: center
 
+.. raw:: html
+    
+    <br/>
+
 
 * Similarly, pressing |ir_usd| once will make the car turn 45° to the right, and then it will move forward or stop depending on the previous state.
 
 .. image:: img/zeus_turn_right.jpg
     :width: 500
     :align: center
+
+.. raw:: html
+    
+    <br/>
 

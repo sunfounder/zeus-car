@@ -3,7 +3,17 @@
 
 In this project, you will learn how to control the Zeus Car with the remote control.
 
-.. image:: img/ar_remote_control.png
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/ir_control.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
+
 
 **How to do?**
 
@@ -22,7 +32,13 @@ In this project, you will learn how to control the Zeus Car with the remote cont
 
 #. After the code is uploaded successfully, turn the power switch to ON to start the Zeus Car. 
 
-#. Then use the 1~9 on the remote control to control the car in 8 directions. After pressing a key, the Zeus Car will keep moving until you press |ir_power| or the number key 5.
+#. Then use the 1~9 on the remote control to control the car in 8 directions. 
+
+    .. image:: img/ar_remote_control.png
+        :width: 600
+        :align: center
+
+#. After pressing a key, the Zeus Car will keep moving until you press |ir_power| or the number key 5.
 
     .. image:: img/zeus_move.jpg
         :width: 600

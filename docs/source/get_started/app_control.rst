@@ -5,8 +5,16 @@ Controlled by APP
 
 To control Zeus Car from your mobile device, you must download the APP (SunFounder Controller) on your device, connect to the Zeus Car LAN, and then create your own controller on the APP.
 
+.. raw:: html
 
-.. image:: img/app_control.gif
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/app_control.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>
 
 
 Quick Guide
@@ -23,7 +31,7 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>
 
 #. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
 
@@ -36,18 +44,29 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         :width: 500
         :align: center
 
-
+    .. raw:: html
+        
+        <br/>  
+    
     * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
 
     .. image:: img/zeus_power.jpg
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
     * At this point, the Zeus Car starts normally and the RGB LED Strip under the car lights up in cyan.
 
     .. image:: img/zeus_car.jpg
         :width: 500
         :align: center
+    
+    .. raw:: html
+        
+        <br/>  
     
     * If a yellow light appears, it means startup was unsuccessful, you need to toggle this switch to **Run mode** (Right on the diagram) so that the ESP32-CAM can communicate with the Arduino board.
     
@@ -55,11 +74,19 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         :width: 500
         :align: center
     
+    .. raw:: html
+        
+        <br/>  
+    
     * Please press the **Reset** button to make the code in the Arduino board run again.
 
     .. image:: img/zeus_reset_button.jpg
         :width: 500
         :align: center
+    
+    .. raw:: html
+        
+        <br/>  
     
 
 #. Connect to ``Zeus_Car`` WLAN.
@@ -73,12 +100,20 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         :width: 500
         :align: center
     
+    .. raw:: html
+        
+        <br/>  
+    
     * The default connection mode is AP mode. So after you connect, there will be a prompt telling you that there is no Internet access on this WLAN network, please choose to continue connecting.
 
     .. image:: img/app_no_internet.png
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
 #. Create a controller.
 
     * To add a controller on SunFounder Controller, click the **+** icon.
@@ -87,25 +122,40 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
     * Preset controllers are available for some products, here we choose **Zeus Car**.
 
     .. image:: img/app_preset.png
         :width: 500
         :align: center
 
-
+    .. raw:: html
+        
+        <br/>  
+    
     * Give it a name and click Confirm.
 
     .. image:: img/app_name.png
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
     * You are now inside the controller, which already has several widgets set up. Click the |app_save| button in the upper right corner.
 
     .. image:: img/app_edit.png
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
 #. Connect and run the Controller.
 
     * Now, use the |app_connect| button to connect the SunFounder Controller to the Zeus Car to begin communication.。Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
@@ -114,6 +164,10 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
     .. note::
         
         Please make sure your Wi-Fi is connected to ``Zeus_Car``, if you are not seeing the above message for a long time.
@@ -125,6 +179,10 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
 
     * Here are the functions of the widgets.
 
@@ -154,16 +212,6 @@ Place the Zeus car on the ground. Upon turning on the compass calibration, the c
 Drift Enable(J)
 ---------------------
 
-.. raw:: html
-
-   <video loop autoplay muted style = "max-width:80%">
-      <source src="../_static/video/omni_directional_movement.mp4"  type="video/mp4">
-      Your browser does not support the video tag.
-   </video>
-
-.. raw:: html
-    
-    <br/> 
 
 Click the |app_drift_j| button to enable the drift function.
 
@@ -173,13 +221,20 @@ Click the |app_drift_j| button to enable the drift function.
     :width: 500
     :align: center
 
+.. raw:: html
+    
+    <br/>  
+ 
 * Similarly, if you slide the |app_rotate_q| widget clockwise, the Zeus Car will drift to the left and stop in the current position.
 
 .. image:: img/zeus_drift_right.jpg
     :width: 500
     :align: center
 
-
+.. raw:: html
+    
+    <br/>  
+ 
 .. _app_move:
 
 Move in All Directions(K)
@@ -194,13 +249,16 @@ Move in All Directions(K)
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 The Zeus Car will move in the appropriate direction when you swipe the |app_move_k| widget.
 
 .. image:: img/joystick_move.png
     :align: center
 
+.. raw:: html
+    
+    <br/>  
 
 The car moves once every time you slide, so if you don't release your hand all the time, the car keeps moving.
 
@@ -209,6 +267,10 @@ The car moves once every time you slide, so if you don't release your hand all t
     :align: center
 
 
+.. raw:: html
+    
+    <br/>  
+ 
 .. _app_speech_control:
 
 Speech(M)
@@ -246,15 +308,20 @@ After the car receives the above 8 commands, it will keep moving in the correspo
     :width: 500
     :align: center
 
+.. raw:: html
+    
+    <br/>  
+    
 * ``turn right``: This command will make the car turn 45° to the right with the body as the center, and again will move forward or stop depending on the previous state.
 
 .. image:: img/zeus_turn_right.jpg
     :width: 500
     :align: center
 
-
-
-
+.. raw:: html
+    
+    <br/>  
+ 
 .. _app_line_track:
 
 Line(N)
@@ -269,7 +336,7 @@ Line(N)
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 
 Click on the |app_line_n| widget to switch to the line track mode.
@@ -285,6 +352,10 @@ Two modes of line track are available on the Zeus Car, one with its head always 
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
 #. Calibrate the Omni Grayscale module.
 
     Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.
@@ -295,12 +366,21 @@ Two modes of line track are available on the Zeus Car, one with its head always 
         :width: 500
         :align: center
     
+    
+    .. raw:: html
+        
+        <br/>  
+    
     * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
 
     .. image:: img/zeus_line_calibration1.jpg
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
     * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
 
 
@@ -322,7 +402,7 @@ Follow(O)
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 Click the |app_follow_o| widget to switch to follow mode.
 
@@ -338,6 +418,10 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
     * Calibrate the other obstacle avoidance module in the same way.
 
 #. Place Zeus car on a table or the ground and let it follow your hand or other obstacles.
@@ -356,7 +440,7 @@ Avoid(p)
 
 .. raw:: html
     
-    <br/> 
+    <br/> <br/>  
 
 When you want to go into obstacle avoidance mode, click the |app_avoid_p| widget, but first reference the :ref:`app_follow` to calibrate the two obstacle avoidance modules.
 
@@ -381,11 +465,19 @@ Control the Drection(Q)
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
     * Similarly the car will rotate clockwise with the |app_rotate_q| widget and return to the original direction when released.
 
     .. image:: img/zeus_turn_right.jpg
         :width: 500
         :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
 
 
