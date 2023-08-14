@@ -28,7 +28,7 @@ Zeus Carのドリフトは、移動関数 ``carMove()`` にドリフトパラメ
 
 .. code-block::
 
-    void carMove(int16_t angle, int8_t power, int8_t rot)
+    void carMove(int16_t angle, int8_t power, int8_t rot, bool drift)
 
 * ``angle``: 車を移動させたい方向。車の前方を0度として、反時計回りに角度を増やします。
 * ``power``: 移動のパワー、範囲は-100% ~ 100%です。 ``power`` が正の場合、車は前進し、その逆の場合は後退します。
