@@ -30,7 +30,7 @@ The drift of the Zeus Car is achieved by adding the drift parameter ``drift`` to
 
 .. code-block::
 
-    void carMove(int16_t angle, int8_t power, int8_t rot)
+    void carMove(int16_t angle, int8_t power, int8_t rot, bool drift)
 
 * ``angle``: The direction you want the car to move. use the head of the car as the 0 degree and increase the angle in counterclockwise direction.
 * ``power``: The moving power, the range is -100% ~ 100%. When ``power`` is positive, the car moves forward, and vice versa, it moves backward.
