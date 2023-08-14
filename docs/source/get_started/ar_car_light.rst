@@ -4,6 +4,16 @@
 
 In this project, you will be able to use the remote control to control the RGB light strips on the bottom of the car, making them display different colors.
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/car_light.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
 
 **How to do?**
 

@@ -1,12 +1,8 @@
 2. Omni Move
 ==========================
-
-
 In this project, you will learn how to move the Zeus Car to 0, 45, 90, 135, 180, 225, 270, and 315 degrees.
 
 If you ignore the friction on the ground and the structural tolerances, its path should be an octagon and eventually return to the origin.
-
-
 
 **How to do?**
 
