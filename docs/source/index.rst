@@ -30,7 +30,7 @@ Please contact service@sunfounder.com if you are interested in helping,
 and we will give you a free product in return. 
 
 
-Currently the online tutorial supports English and Japanese. Please click the **Read the Docs** icon in the lower left corner of the page to change the display language.
+Currently the online tutorial supports English, German and Japanese. Please click the **Read the Docs** icon in the lower left corner of the page to change the display language.
 
 .. image:: img/translation.png
     :align: center
