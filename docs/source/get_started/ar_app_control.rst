@@ -27,7 +27,9 @@ In this project, we will try to control the movement and direction of the Zeus C
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/5d65d2b4-5ed7-4d21-ba3b-02529ee8dd6c/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
+
+    .. image:: img/plug_esp32_cam.jpg
 
 #. Toggle the Upload Switch to the side of Run (right side on this diagram) to start the ESP32 CAM. 
 

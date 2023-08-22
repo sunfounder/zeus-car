@@ -7,10 +7,12 @@ To control Zeus Car from your mobile device, you must download the APP (SunFound
 
 .. raw:: html
 
-   <video loop autoplay muted style = "max-width:80%">
-      <source src="../_static/video/app_control.mp4"  type="video/mp4">
-      Your browser does not support the video tag.
-   </video>
+    <div style="text-align: center;">
+        <video center loop autoplay muted style = "max-width:70%">
+            <source src="../_static/video/app_control.mp4"  type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
 .. raw:: html
     
@@ -24,29 +26,35 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
 .. raw:: html
 
-   <video loop controls style = "max-width:90%">
-      <source src="../_static/video/app_control_quick_guide.mp4"  type="video/mp4">
-      Your browser does not support the video tag.
-   </video>
+    <div style="text-align: center;">
+        <video loop controls style = "max-width:90%">
+            <source src="../_static/video/app_control_quick_guide.mp4"  type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
 .. raw:: html
     
     <br/> <br/>
-
-#. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
 
 #. Let's start the Zeus Car.
 
     * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
     * So you'll need to plug in the Type-C cable for about 5 seconds.
 
-    .. image:: img/zeus_charge.jpg
-        :width: 500
-        :align: center
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
     .. raw:: html
         
-        <br/>  
+        <br/>
+
     
     * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
 
@@ -58,36 +66,22 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         
         <br/>  
     
-    * At this point, the Zeus Car starts normally and the RGB LED Strip under the car lights up in cyan.
+    * Now, you'll need to flick the smaller switch to the right to establish communication between the car and the ESP32 CAM. Afterward, press the Reset button to reboot the code. At this point, you'll observe the undercarriage lights transition from orange to a light blue.
 
-    .. image:: img/zeus_car.jpg
-        :width: 500
-        :align: center
-    
     .. raw:: html
-        
-        <br/>  
-    
-    * If a yellow light appears, it means startup was unsuccessful, you need to toggle this switch to **Run mode** (Right on the diagram) so that the ESP32-CAM can communicate with the Arduino board.
-    
-    .. image:: img/zeus_run.jpg
-        :width: 500
-        :align: center
-    
-    .. raw:: html
-        
-        <br/>  
-    
-    * Please press the **Reset** button to make the code in the Arduino board run again.
 
-    .. image:: img/zeus_reset_button.jpg
-        :width: 500
-        :align: center
-    
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
     .. raw:: html
         
-        <br/>  
-    
+        <br/>
+
+#. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
 
 #. Connect to ``Zeus_Car`` WLAN.
 
@@ -96,14 +90,20 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
     * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
 
-    .. image:: img/app_wlan.png
-        :width: 500
-        :align: center
-    
+
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:80%">
+                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
     .. raw:: html
         
-        <br/>  
-    
+        <br/>
+
     * The default connection mode is AP mode. So after you connect, there will be a prompt telling you that there is no Internet access on this WLAN network, please choose to continue connecting.
 
     .. image:: img/app_no_internet.png
@@ -113,7 +113,7 @@ This is a quick tutorial video. Please watch the video first, and then follow th
     .. raw:: html
         
         <br/>  
-    
+
 #. Create a controller.
 
     * To add a controller on SunFounder Controller, click the **+** icon.
@@ -126,9 +126,9 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         
         <br/>  
     
-    * Preset controllers are available for some products, here we choose **Zeus Car**.
+    * Preset controllers are available for some products, here we choose **Zeus Car**. Give it a name, or simply tap **Confirm**.
 
-    .. image:: img/app_preset.png
+    .. image:: img/app_preset.jpg
         :width: 500
         :align: center
 
@@ -136,45 +136,19 @@ This is a quick tutorial video. Please watch the video first, and then follow th
         
         <br/>  
     
-    * Give it a name and click Confirm.
+    
+    * Once inside, the app will automatically search for the Zeus Car. After a moment, you will see a prompt saying "Connected Successfully."
 
-    .. image:: img/app_name.png
+    .. image:: img/app_edit.jpg
         :width: 500
         :align: center
 
     .. raw:: html
         
-        <br/>  
+        <br/> 
+
+    * Now, tap the |app_run| button enables you to view the live video feed from the camera and control the car using the provided widgets. 
     
-    * You are now inside the controller, which already has several widgets set up. Click the |app_save| button in the upper right corner.
-
-    .. image:: img/app_edit.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-    
-#. Connect and run the Controller.
-
-    * Now, use the |app_connect| button to connect the SunFounder Controller to the Zeus Car to begin communication.。Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
-
-    .. image:: img/app_auto_connect.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-    
-    .. note::
-        
-        Please make sure your Wi-Fi is connected to ``Zeus_Car``, if you are not seeing the above message for a long time.
-
-
-    * After the "Connected Successfully" message appears, click the |app_run| button, then the camera footage will appear on the app, and now you can control your Zeus Car with these widgets.
-
     .. image:: img/app_run.png
         :width: 500
         :align: center
@@ -182,9 +156,8 @@ This is a quick tutorial video. Please watch the video first, and then follow th
     .. raw:: html
         
         <br/>  
-    
 
-    * Here are the functions of the widgets.
+#. Here are the functions of the widgets.
 
       * :ref:`app_compass_cali`: Turn on compass calibration.
       * **Stop(F)**: Stop all movements of the car.
@@ -410,12 +383,25 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
 
 #. Calibrate the IR obstacle avoidance module.
 
+    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+
+        .. raw:: html
+
+            <video loop autoplay muted style = "max-width:80%">
+                <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+        .. raw:: html
+            
+            <br/> <br/>  
+
     * Place an obstacle about 15cm away from the IR obstacle avoidance module.
     * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
     * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
 
     .. image:: img/zeus_ir_avoid.jpg
-        :width: 500
+        :width: 400
         :align: center
 
     .. raw:: html

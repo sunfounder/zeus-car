@@ -26,14 +26,20 @@ This is a quick tutorial video. Please watch the video first, and then follow th
     * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
     * So you'll need to plug in the Type-C cable for about 5 seconds.
 
-    .. image:: img/zeus_charge.jpg
-        :width: 500
-        :align: center
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
     .. raw:: html
         
         <br/>
 
+    
     * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
 
     .. image:: img/zeus_power.jpg
@@ -42,33 +48,18 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
     .. raw:: html
         
-        <br/>
- 
-    * At this point, the Zeus Car starts normally and the RGB LED Strip under the car lights up in cyan.
-
-    .. image:: img/zeus_car.jpg
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>
- 
-    * If a yellow light appears, it means startup was unsuccessful, you need to toggle this switch to **Run mode** (Right on the diagram) so that the ESP32-CAM can communicate with the Arduino board.
+        <br/>  
     
-    .. image:: img/zeus_run.jpg
-        :width: 500
-        :align: center
+    * Now, you'll need to flick the smaller switch to the right to establish communication between the car and the ESP32 CAM. Afterward, press the Reset button to reboot the code. At this point, you'll observe the undercarriage lights transition from orange to a light blue.
 
     .. raw:: html
-        
-        <br/>
- 
-    * Please press the **Reset** button to make the code in the Arduino board run again.
 
-    .. image:: img/zeus_reset_button.jpg
-        :width: 500
-        :align: center
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
     .. raw:: html
         
@@ -194,6 +185,19 @@ Press the |ir_backward| key to switch to follow mode.
 The ultrasonic sensor detects obstacles in front (20 cm) and follows them forward. These two obstacle avoidance modules allow the car to follow left or right, but they need to be calibrated (15cm) before use.
 
 #. Calibrate the IR obstacle avoidance module.
+
+    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+
+            .. raw:: html
+
+                <video loop autoplay muted style = "max-width:80%">
+                    <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+            .. raw:: html
+                
+                <br/> <br/>  
 
     * Place an obstacle about 15cm away from the IR obstacle avoidance module.
     * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.

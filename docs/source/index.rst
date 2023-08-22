@@ -25,9 +25,9 @@ We set a :ref:`ar_play_mode` for it, so users can directly turn on the car after
 
 .. note::
 
-In addition to English, we are working on other languages for this course. 
-Please contact service@sunfounder.com if you are interested in helping, 
-and we will give you a free product in return. 
+    In addition to English, we are working on other languages for this course. 
+    Please contact service@sunfounder.com if you are interested in helping, 
+    and we will give you a free product in return. 
 
 
 Currently the online tutorial supports English, German and Japanese. Please click the **Read the Docs** icon in the lower left corner of the page to change the display language.

@@ -23,7 +23,9 @@ Now take a look at how to use the APP in a simple way.
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/c14c46e7-2e43-4b31-b7e6-b7718e501e96/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
+
+    .. image:: img/plug_esp32_cam.jpg
 
 #. Toggle the Upload Switch to the side of Run (right side on this diagram) to start the ESP32 CAM. 
 

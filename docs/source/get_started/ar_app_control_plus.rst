@@ -37,7 +37,9 @@ This project integrates Line Track, Follow, Avoid functions based on :ref:`ar_ap
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/b67e7245-369b-4218-b12c-d73f95ac3b22/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
+
+    .. image:: img/plug_esp32_cam.jpg
 
 #. Toggle the Upload Switch to the side of Run (right side on this diagram) to start the ESP32 CAM. 
 
@@ -61,45 +63,57 @@ This project integrates Line Track, Follow, Avoid functions based on :ref:`ar_ap
 
     * To add a controller on SunFounder Controller, click the **+** icon.
 
-        .. image:: img/app1.png
+    .. image:: img/app1.png
+        :width: 500
+        :align: center
 
-    * Preset controllers are available for some products, here we choose **Zeus Car**.
-
-        .. image:: img/app_preset.png
-
-    * Give it a name and click Confirm.
-
-    .. image:: img/app_name.png
+    .. raw:: html
+        
+        <br/>  
     
-    * You are now inside the controller, which already has several widgets set up. Click the |app_save| button in the upper right corner.
+    * Preset controllers are available for some products, here we choose **Zeus Car**. Give it a name, or simply tap **Confirm**.
 
-        .. image:: img/app_edit.png
+    .. image:: img/app_preset.jpg
+        :width: 500
+        :align: center
 
-    * The next step is to connect the Zeus Car to your device via the |app_connect| button. Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
+    .. raw:: html
+        
+        <br/>  
+    
+    
+    * Once inside, the app will automatically search for the Zeus Car. After a moment, you will see a prompt saying "Connected Successfully."
 
-        .. image:: img/app_auto_connect.png
+    .. image:: img/app_edit.jpg
+        :width: 500
+        :align: center
 
-        .. note::
-            Please make sure your Wi-Fi is connected to ``Zeus_Car``, if you are not seeing the above message for a long time.
+    .. raw:: html
+        
+        <br/> 
 
-#. Run the Controller.
-
-    After the "Connected Successfully" message appears, click the |app_run| button, then the camera footage will appear on the app, and now you can control your Zeus Car with these widgets.
-
+    * Now, tap the |app_run| button enables you to view the live video feed from the camera and control the car using the provided widgets. 
+    
     .. image:: img/app_run.png
+        :width: 500
+        :align: center
 
-    Here are the functions of the widgets.
+    .. raw:: html
+        
+        <br/>  
 
-    * :ref:`ar_app_compass_cali`: Turn on compass calibration.
-    * **Stop(F)**: Stop all movements of the car.
-    * **Set Heading(I)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
-    * :ref:`ar_app_drift`: Activate the drift function.
-    * :ref:`ar_app_move`: Control the car to move in all directions.
-    * Speech(M): This widget is not available in this project because no code has been written for it.
-    * :ref:`ar_app_line_track`: Switching to line track mode.
-    * :ref:`ar_app_follow`: Switching to follow mode.
-    * :ref:`ar_app_avoid`: Switch to obstacle avoidance mode.
-    * :ref:`ar_app_rotate_drift`: Used to control the head direction.
+#. Here are the functions of the widgets.
+
+      * :ref:`app_compass_cali`: Turn on compass calibration.
+      * **Stop(F)**: Stop all movements of the car.
+      * **Set Heading(I)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
+      * :ref:`app_drift`: Activate the drift function.
+      * :ref:`app_move`: Control the car to move in all directions.
+      * :ref:`app_speech_control`: Switching to speech control mode.
+      * :ref:`app_line_track`: Switching to line track mode.
+      * :ref:`app_follow`: Switching to follow mode.
+      * :ref:`app_avoid`: Switch to obstacle avoidance mode.
+      * :ref:`app_rotate_drift`: Used to control the head direction.
 
 
 .. _ar_app_compass_cali:
