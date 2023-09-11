@@ -3,6 +3,17 @@
 
 このプロジェクトでは、以前のプロジェクトと同じ2つの障害物回避モジュールと超音波モジュールを使用しますが、今回の目的は障害物を避けることではなく、ユーザーについてくることです。
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/object_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+
+    <br/> 
+
 **どうやって行うか？**
 
 #. ESP32-CAMとArduinoボードは、RX（受信）およびTX（送信）のピンが共有されています。したがって、コードをアップロードする際には、先にESP32-CAMを切断して、トラブルや潜在的な問題を回避してください。

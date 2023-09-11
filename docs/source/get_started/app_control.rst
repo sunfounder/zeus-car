@@ -5,82 +5,152 @@ APPによる制御
 
 Zeus Carをモバイルデバイスから制御するには、デバイスにAPP（SunFounder Controller）をダウンロードし、Zeus CarのLANに接続し、APP上で独自のコントローラーを作成する必要があります。
 
+.. raw:: html
 
-.. image:: img/app_control.gif
+    <div style="text-align: center;">
+        <video center loop autoplay muted style = "max-width:70%">
+            <source src="../_static/video/app_control.mp4"  type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
 
-クイックガイド
+速攻ガイド
 ---------------------
 
+これは簡易チュートリアル動画です。まず動画をご覧いただき、以下の指示に従ってください。
 
-#. **APP Store(iOS)** または **Google Play(Android)** から `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ をインストールします。
+.. raw:: html
 
-#. Zeus Carを起動しましょう。
+    <div style="text-align: center;">
+        <video loop controls style = "max-width:90%">
+            <source src="../_static/video/app_control_quick_guide.mp4"  type="video/mp4">
+            ご使用のブラウザは動画タグをサポートしていません。
+        </video>
+    </div>
 
-    * 初めて使用する場合やバッテリーケーブルを抜いた場合、Zeus Car Shieldは過放電保護回路を作動させます。
-    * したがって、約5秒間Type-Cケーブルを接続する必要があります。
-
-            .. image:: img/zeus_charge.jpg
-
-    * 電源インジケータが点灯した場合、保護状態が解除されたことを意味します。この時、バッテリーインジケータを確認し、両方のインジケータが消灯している場合は、Type-Cケーブルを接続してバッテリーを充電してください。
-
-        .. image:: img/zeus_power.jpg
-
-    * この時点で、Zeus Carは正常に起動し、車の下のRGB LEDストリップがシアン色に点灯します。
-
-        .. image:: img/zeus_car.jpg
-
-    * 黄色いライトが点灯した場合、起動に失敗したことを意味します。この場合、ESP32-CAMがArduinoボードと通信できるように、このスイッチを **Runモード** （図の右）に切り替える必要があります。
-
-        .. image:: img/zeus_run.jpg
+.. raw:: html
     
-    * Arduinoボードのコードを再度実行させるため、 **Reset** ボタンを押してください。
+    <br/> <br/>
 
-        .. image:: img/zeus_reset_button.jpg
+#. Zeus Carの起動方法
 
+    * 初回使用時やバッテリーケーブルを抜き差しした場合、Zeus Car Shieldは過放電保護回路を起動します。
+    * そのため、Type-Cケーブルを約5秒間接続する必要があります。
 
-#. ``Zeus_Car`` WLANに接続します。
+    .. raw:: html
 
-    今、Zeus Carによってブロードキャストされるローカルエリアネットワーク（LAN）にモバイルデバイスを接続します。このようにして、モバイルデバイスとZeus Carが同じネットワーク上になり、アプリとZeus Car間の通信が容易になります。
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+                ご使用のブラウザは動画タグをサポートしていません。
+            </video>
+        </div>
 
-    * 携帯電話（タブレット）のWLANで ``Zeus_Car`` を見つけ、パスワード ``12345678`` を入力して接続します。
+    .. raw:: html
+        
+        <br/>
 
-    .. image:: img/app_wlan.png
+    * 電源インジケータが点灯した場合、保護状態が解除されたことを意味します。この時、バッテリーインジケータを確認してください。両方のインジケータが消灯していれば、Type-Cケーブルを続けて接続してバッテリーを充電してください。
 
-    * デフォルトの接続モードはAPモードです。したがって、接続後、このWLANネットワークにインターネットへのアクセスがないというプロンプトが表示されるので、接続を続けてください。
+    .. image:: img/zeus_power.jpg
+        :width: 500
+        :align: center
+
+    .. raw:: html
+        
+        <br/>  
+
+    * 次に、車とESP32 CAM間の通信を確立するため、小さいスイッチを右にフリックします。その後、Resetボタンを押してコードを再起動します。その時点で、底部のライトがオレンジ色から薄青色に変わるのが観察できます。
+
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+                ご使用のブラウザは動画タグをサポートしていません。
+            </video>
+        </div>
+
+    .. raw:: html
+        
+        <br/>
+
+#. **APP Store(iOS)** または **Google Play(Android)** から `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ をインストールしてください。
+
+#. ``Zeus_Car`` WLANに接続する。
+
+    Zeus Carがブロードキャストするローカルエリアネットワーク(LAN)にモバイルデバイスを接続します。これにより、モバイルデバイスとZeus Carが同じネットワーク上になり、アプリケーション間の通信が容易になります。
+    
+
+    * 携帯電話(タブレット)のWLANで ``Zeus_Car`` を見つけ、パスワード ``12345678`` を入力して接続します。
+
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:80%">
+                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
+                ご使用のブラウザは動画タグをサポートしていません。
+            </video>
+        </div>
+
+    .. raw:: html
+        
+        <br/>
+
+    * デフォルトの接続モードはAPモードです。したがって、接続した後、このWLANネットワークにインターネット接続がないというプロンプトが表示されますが、接続を続行してください。
 
     .. image:: img/app_no_internet.png
+        :width: 500
+        :align: center
 
-#. コントローラーを作成します。
+    .. raw:: html
+        
+        <br/>  
 
-    * SunFounder Controller上でコントローラーを追加するには、**+** アイコンをクリックします。
+#. コントローラの作成。
 
-        .. image:: img/app1.png
+    * SunFounder Controllerでコントローラを追加するには、**+** アイコンをクリックしてください。
 
-    * 一部の製品にはプリセットコントローラーが用意されていますが、ここでは **Zeus Car** を選びます。
+    .. image:: img/app1.png
+        :width: 500
+        :align: center
 
-        .. image:: img/app_preset.png
-
-    * 名前を付けて、確認をクリックします。
-
-        .. image:: img/app_name.png
+    .. raw:: html
+        
+        <br/>  
     
-    * コントローラーの内部に移動し、すでにいくつかのウィジェットが設定されています。右上の |app_save| ボタンをクリックします。
+    * 一部の製品にはプリセットのコントローラが用意されています。ここでは **Zeus Car** を選択してください。名前を付けるか、**Confirm** をタップしてください。
 
-        .. image:: img/app_edit.png
+    .. image:: img/app_preset.jpg
+        :width: 500
+        :align: center
 
-#. コントローラーに接続し、実行します。
+    .. raw:: html
+        
+        <br/>  
+    
+    * アプリ内でZeus Carを自動的に検索します。少し待つと、「接続成功」というプロンプトが表示されます。
 
-    * 今、 |app_connect| ボタンを使用して、SunFounder ControllerをZeus Carに接続し、通信を開始します。数秒待つと ``Zeus_Car(IP)`` が表示されますので、それをクリックして接続します。
+    .. image:: img/app_edit.jpg
+        :width: 500
+        :align: center
 
-        .. image:: img/app_auto_connect.png
+    .. raw:: html
+        
+        <br/> 
 
-        .. note::
-            「Zeus_Car」にWi-Fiが接続されていることを確認してください。長時間上記のメッセージが表示されない場合は特に注意が必要です。
-
-* "Connected Successfully"のメッセージが表示されたら、 |app_run| ボタンをクリックします。するとアプリにカメラの映像が表示され、Zeus Carをこれらのウィジェットで操作することができます。
+    * 今度は、|app_run| ボタンをタップすると、カメラからのライブ映像を表示し、提供されているウィジェットを使用して車を操作できます。
 
     .. image:: img/app_run.png
+        :width: 500
+        :align: center
+
+    .. raw:: html
+        
+        <br/> 
+
+
 
 * 以下はウィジェットの機能一覧です。
 
@@ -114,19 +184,30 @@ Drift Enable(J)
 * |app_rotate_q| ウィジェットを反時計回りにスライドすると、Zeus Carが右にドリフトします。手を離すと、車は現在の位置で停止します。
 
     .. image:: img/zeus_drift_left.jpg
-        :width: 600
+        :width: 500
         :align: center
 
 * 同様に、 |app_rotate_q| ウィジェットを時計回りにスライドすると、Zeus Carは左にドリフトし、現在の位置で停止します。
 
     .. image:: img/zeus_drift_right.jpg
-        :width: 600
+        :width: 500
         :align: center
 
 .. _app_move:
 
 Move in All Directions(K)
 ----------------------------------
+
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
 
 |app_move_k| ウィジェットをスワイプすると、Zeus Carは適切な方向に移動します。
 
@@ -169,19 +250,30 @@ Zeus CarはSunFounder Controller内での音声による操作も可能です。
 * ``turn left``: このコマンドを使用すると、車は本体を中心に45°左に回転し、前の状態に基づいて前進するか停止します。前の状態が停止の場合は、45°左に回転した後に停止します；前進の場合は、回転した後に前進します。
 
     .. image:: img/zeus_turn_left.jpg
-        :width: 600
+        :width: 500
         :align: center
 
 * ``turn right``: このコマンドを使用すると、車は本体を中心に45°右に回転し、前の状態によって前進するか停止します。
 
     .. image:: img/zeus_turn_right.jpg
-        :width: 600
+        :width: 500
         :align: center
 
 .. _app_line_track:
 
 Line(N)
 --------------
+
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/drift_based_line_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+
+    <br/> 
 
 |app_line_n| ウィジェットをクリックしてライン追跡モードに切り替えます。
 
@@ -192,7 +284,8 @@ Zeus Carには、移動の方向を常に向いているモードと、頭が固
     Omniグレースケールモジュールには8つのセンサーがあり、各センサー間の距離は2cmから3cmです。ブラックラインを同時に検出するためには、2つのセンサーが必要です。したがって、貼るラインは少なくとも3cmの幅が必要であり、曲がる角度は90°未満であってはなりません。
 
     .. image:: img/map.png
-        :width: 800
+        :width: 500
+        :align: center
 
 2. Omniグレースケールモジュールをキャリブレートする。
 
@@ -200,12 +293,16 @@ Zeus Carには、移動の方向を常に向いているモードと、頭が固
 
     * Zeus Carを白い表面に置き、灰色のセンサーの光がちょうど点灯するまでポテンショメーターを回します。
 
-        .. image:: img/zeus_line_calibration.jpg
+    .. image:: img/zeus_line_calibration.jpg
+        :width: 500
+        :align: center
 
     * それから、二つのグレースケールセンサーを、ブラックラインと白い表面の間にちょうど配置し、信号インジケータがちょうど消えるまでゆっくりとポテンショメーターを回します。
 
-        .. image:: img/zeus_line_calibration1.jpg
-
+    .. image:: img/zeus_line_calibration1.jpg
+        :width: 500
+        :align: center
+    
     * グレースケールセンサーの光が、ブラックラインと白い表面の間にあるときに消灯し、白い表面にあるときに点灯することを確認するために、ブラックラインと白い表面の上を何度も動かすことができます。これは、モジュールが正常にキャリブレーションされたことを示しています。
 
 3. Zeus Carを貼ったラインの上に置き、 |app_line_n| ウィジェットをクリックすると、ラインを追跡します。
@@ -216,6 +313,16 @@ Zeus Carには、移動の方向を常に向いているモードと、頭が固
 
 Follow(O)
 ------------
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/object_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+
+    <br/> 
 
 |app_follow_o| ウィジェットをクリックして、フォローモードに切り替えます。
 
@@ -223,11 +330,26 @@ Follow(O)
 
 1. IR障害物回避モジュールをキャリブレートする。
 
+    * 右の障害物回避モジュールの調整から始めます。輸送中の衝突により、赤外線モジュールの送信機と受信機が傾くことがあります。したがって、手動でそれらをまっすぐに調整する必要があります。
+
+    .. raw:: html
+
+        <video loop autoplay muted style = "max-width:80%">
+           <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+           Your browser does not support the video tag.
+        </video>
+
+    .. raw:: html
+
+        <br/> 
+
     * IR障害物回避モジュールから約15cm離れた場所に障害物を置きます。
     * モジュールには2つのポテンショメータがあります。一つは送信電力を調整するためのもの、もう一つは送信周波数を調整するためのものです。これらのポテンショメータを調整することで、検出距離を調整することができます。
     * その後、ポテンショメータを調整し、15cmでモジュールの信号灯が点灯する場合は調整が成功していると言えます。そうでない場合は、もう一つのポテンショメータを調整します。
 
         .. image:: img/zeus_ir_avoid.jpg
+            :width: 500
+            :align: center
 
     * 同じ方法で他の障害物回避モジュールをキャリブレートします。
 
@@ -237,6 +359,17 @@ Follow(O)
 
 Avoid(p)
 ------------------------
+
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/obstacle_avoidance.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+
+    <br/> 
 
 障害物回避モードに入る場合は、 |app_avoid_p| ウィジェットをクリックしてください。ただし、2つの障害物回避モジュールをキャリブレートする前に、:ref:`app_follow` を参照してください。
 
@@ -256,12 +389,12 @@ Control the Drection(Q)
     * |app_rotate_q| ウィジェットを反時計回りにスライドすると、車も反時計回りに回転します。手を離すと、車の頭は元の方向に戻ります。
 
     .. image:: img/zeus_turn_left.jpg
-        :width: 600
+        :width: 500
         :align: center
 
     * 同様に、 |app_rotate_q| ウィジェットで車は時計回りに回転し、手を放すと元の方向に戻ります。
 
     .. image:: img/zeus_turn_right.jpg
-        :width: 600
+        :width: 500
         :align: center
 

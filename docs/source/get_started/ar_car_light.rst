@@ -3,6 +3,17 @@
 
 このプロジェクトでは、リモートコントロールを使用して、車の下部に取り付けられたRGBライトストリップを制御し、さまざまな色を表示させることができます。
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/car_light.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
+
 **操作方法**
 
 #. ESP32-CAMとArduinoボードは、RX（受信）およびTX（送信）のピンが共有されています。コードをアップロードする際は、まずESP32-CAMを切断して、コンフリクトや潜在的な問題を避けてください。

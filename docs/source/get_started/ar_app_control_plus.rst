@@ -5,6 +5,15 @@
 
 このプロジェクトは、 :ref:`ar_app_control` を基に、ライントラック、フォロー、回避の機能を統合しています。
 
+.. raw:: html
+
+    <div style="text-align: center;">
+        <video center loop autoplay muted style = "max-width:70%">
+            <source src="../_static/video/app_control.mp4"  type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
 .. note::
     **APP Store(iOS)** または **Google Play(Android)** から `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ をインストールしてください。
 
@@ -13,7 +22,7 @@
 #. ESP32-CAMとArduinoボードは、RX（受信）およびTX（送信）ピンを共有しています。コードをアップロードする際、ESP32-CAMを一旦切断して、競合や問題を回避してください。
 
     .. image:: img/unplug_cam.png
-        :width: 400
+        :width: 300
         :align: center
 
 #. ``zeus-car-main\examples\18_app_control_plus`` のパスの下で ``18_app_control_plus.ino`` ファイルを開きます。
@@ -22,15 +31,23 @@
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/b67e7245-369b-4218-b12c-d73f95ac3b22/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. コードが正常にアップロードされた後、Zeus Carを起動するために電源スイッチをONにスライドします。
+#. コードが正常にアップロードされた後、ESP32-CAMを挿し、その後電源スイッチをONにスライドしてZeus Carを起動することができます。
+
+    .. image:: img/plug_esp32_cam.jpg
+        :width: 300
+        :align: center
 
 #. ESP32 CAMを起動するため、アップロードスイッチをRunの方向（この図では右側）に切り替えます。
 
     .. image:: img/zeus_run.jpg
+        :width: 500
+        :align: center
 
 #. Arduinoボードのプログラムを再起動するために、リセットボタンを押します。
 
     .. image:: img/zeus_reset_button.jpg
+        :width: 500
+        :align: center
 
 #. ``Zeus_Car`` WLANに接続します。
 
@@ -42,38 +59,49 @@
 
     .. image:: img/app_no_internet.png
 
-#. コントローラーを作成します。
+#. コントローラの作成。
 
-    * SunFounder Controllerでコントローラーを追加するには、 **+** アイコンをクリックします。
+    * SunFounder Controllerでコントローラを追加するには、**+** アイコンをクリックしてください。
 
-        .. image:: img/app1.png
+    .. image:: img/app1.png
+        :width: 500
+        :align: center
 
-    * いくつかの製品用のプリセットコントローラーが利用可能です。ここでは **Zeus Car** を選択します。
+    .. raw:: html
+        
+        <br/>  
+    
+    * 一部の製品にはプリセットのコントローラが用意されています。ここでは **Zeus Car** を選択してください。名前を付けるか、**Confirm** をタップしてください。
 
-        .. image:: img/app_preset.png
+    .. image:: img/app_preset.jpg
+        :width: 500
+        :align: center
 
-    * 名前を付けて、確認をクリックします。
+    .. raw:: html
+        
+        <br/>  
+    
+    * アプリ内でZeus Carを自動的に検索します。少し待つと、「接続成功」というプロンプトが表示されます。
 
-    .. image:: img/app_name.png
+    .. image:: img/app_edit.jpg
+        :width: 500
+        :align: center
 
-    * すでにいくつかのウィジェットが設定されているコントローラーの内部に入ります。右上隅の |app_save| ボタンをクリックしてください。
+    .. raw:: html
+        
+        <br/> 
 
-        .. image:: img/app_edit.png
-
-    * 次のステップは、 |app_connect| ボタンを使ってZeus Carをデバイスに接続することです。数秒待ってから ``Zeus_Car(IP)`` が表示されるので、それをクリックして接続します。
-
-        .. image:: img/app_auto_connect.png
-
-        .. note::
-            Wi-Fiが ``Zeus_Car`` に接続されていることを確認してください。上記のメッセージが長い間表示されない場合は特に。
-
-#. コントローラーを実行します。
-
-    "正常に接続されました"のメッセージが表示されたら、 |app_run| ボタンをクリックします。するとアプリにカメラの映像が表示され、これらのウィジェットでZeus Carを制御できるようになります。
+    * 今度は、|app_run| ボタンをタップすると、カメラからのライブ映像を表示し、提供されているウィジェットを使用して車を操作できます。
 
     .. image:: img/app_run.png
+        :width: 500
+        :align: center
+
+    .. raw:: html
         
-    以下はウィジェットの機能になります。
+        <br/> 
+
+#. 以下はウィジェットの機能になります。
 
     * :ref:`ar_app_compass_cali`: コンパスのキャリブレーションを開始。
     * **Stop(F)**: 車の全動きを停止。

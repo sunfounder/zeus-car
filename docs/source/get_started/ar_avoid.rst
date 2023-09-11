@@ -3,6 +3,17 @@
 
 このプロジェクトでは、Zeus車は自動的に前進し、2つの障害物回避モジュールと超音波モジュールが障害物にぶつからないようにします。
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/obstacle_avoidance.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+
+    <br/> 
+
 **操作方法**
 
 #. ESP32-CAMとArduinoボードは、RX（受信）およびTX（送信）のピンが共有されています。コードをアップロードする際は、まずESP32-CAMを切断して、コンフリクトや潜在的な問題を避けてください。

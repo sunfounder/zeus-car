@@ -3,35 +3,67 @@
 リモート制御
 ==========================
 
-Zeus Carは、車をオンにした後、直接リモートコントロールのボタンを押すことでリモート制御できます。この方法は安定しており、外部の干渉を受けにくいですが、制御の柔軟性が少し低いかもしれません。
+Zeus Carは、車を起動してからリモコンのボタンを直接押すことでリモコンで操作することができます。この方法は安定しており、外部の干渉を受けにくいですが、操作の柔軟性が低い場合があります。
 
 クイックガイド
 --------------------
 
-#. Zeus Carを起動しましょう。
+まず、以下のチュートリアルビデオをご覧ください。ビデオを視聴した後、以下の指示に従ってください。
 
-    * 初めて使用する場合やバッテリーケーブルが抜かれている場合、Zeus Car Shieldは過放電保護回路を起動します。
-    * そのため、Type-Cケーブルを約5秒間差し込む必要があります。
+.. raw:: html
 
-            .. image:: img/zeus_charge.jpg
+   <video loop controls style = "max-width:90%">
+      <source src="../_static/video/ir_control_quick_guide.mp4"  type="video/mp4">
+      お使いのブラウザはビデオタグをサポートしていません。
+   </video>
 
-    * 電源インジケータが点灯すると、保護状態が解除されたことを意味します。この時、バッテリーインジケータを確認し、両方のバッテリーインジケータがオフの場合は、Type-Cケーブルを差し込んでバッテリーを充電してください。
-
-        .. image:: img/zeus_power.jpg
-
-    * この時点でZeus Carは正常に起動し、車の下のRGB LED Stripがシアン色で点灯します。
-
-        .. image:: img/zeus_car.jpg
-
-    * 黄色のライトが表示される場合、起動に失敗したことを意味します。この場合、ESP32-CAMがArduinoボードと通信できるように、このスイッチを **Run mode** （図の右）に切り替える必要があります。
+.. raw:: html
     
-        .. image:: img/zeus_run.jpg
+    <br/> <br/>  
+
+#. Zeus Carの起動
+
+    * 初めて使用する場合やバッテリーケーブルが抜かれた場合、Zeus Car Shieldは過放電保護回路を作動させます。
+    * そのため、Type-Cケーブルを約5秒間接続する必要があります。
+
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+                お使いのブラウザはビデオタグをサポートしていません。
+            </video>
+        </div>
+
+    .. raw:: html
+        
+        <br/>
+
     
-    * Arduinoボードのコードを再度実行するには、 **Reset** ボタンを押してください。
+    * 電源インジケータが点灯すると、保護ステータスが解除されたことを意味します。この時点でバッテリーインジケータを確認して、両方のバッテリーインジケータがオフの場合、Type-Cケーブルを続けて接続してバッテリーを充電してください。
 
-        .. image:: img/zeus_reset_button.jpg
+    .. image:: img/zeus_power.jpg
+        :width: 500
+        :align: center
 
+    .. raw:: html
+        
+        <br/>  
+    
+    * 次に、車とESP32 CAMとの通信を確立するために、小さいスイッチを右に切り替えます。その後、リセットボタンを押してコードを再起動します。この時点で、車体下のライトがオレンジから淡い青に変わるのを観察できます。
 
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+                お使いのブラウザはビデオタグをサポートしていません。
+            </video>
+        </div>
+
+    .. raw:: html
+        
+        <br/>
 
 
 #. リモートコントロールの異なるキーを押して、車を制御します。
@@ -68,6 +100,18 @@ Zeus車を地上に置きます。コンパスのキャリブレーションを�
 ライン追跡
 ---------------------------
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/drift_based_line_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
+
+
 |ir_play| キーを押して、ライン追跡モードに切り替えます。
 
 Zeus車には、ライン追跡の2つのモードがあります。
@@ -81,7 +125,8 @@ Zeus車には、ライン追跡の2つのモードがあります。
     Omni grayscaleモジュールには8つのセンサーがあり、各センサー間の距離は2〜3cmです。2つのセンサーで黒いラインを同時に検出する必要があります。したがって、貼り付けるラインは幅が少なくとも3cmで、曲がる角度は90°未満であってはいけません。
 
     .. image:: img/map.png
-        :width: 800
+        :width: 500
+        :align: center
 
 #. Omni Grayscaleモジュールをキャリブレートします。
 
@@ -89,11 +134,15 @@ Zeus車には、ライン追跡の2つのモードがあります。
 
     * Zeus車を白い表面に置き、灰色のセンサーの光がちょうど点灯するまで、ポテンショメータを回します。
 
-        .. image:: img/zeus_line_calibration.jpg
+    .. image:: img/zeus_line_calibration.jpg
+        :width: 500
+        :align: center
 
     * 今度は、黒いラインと白い表面の間に2つのグレースケールセンサーを位置づけ、信号インジケータがちょうど消えるまでポテンショメータをゆっくり回します。
 
-        .. image:: img/zeus_line_calibration1.jpg
+    .. image:: img/zeus_line_calibration1.jpg
+        :width: 500
+        :align: center
 
     * 黒いラインと白い表面の間を何度も移動させて、グレースケールセンサーの光が黒いラインと白い表面の間では消え、白い表面上では点灯していることを確認し、モジュールが正常にキャリブレートされていることを確認できます。
 
@@ -107,6 +156,18 @@ Zeus車には、ライン追跡の2つのモードがあります。
 追跡モード
 ---------------------------
 
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/object_following.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
+
+
 |ir_backward| キーを押して、追跡モードに切り替えます。
 
 超音波センサーは前方（20 cm）の障害物を検出し、それらを前方に追跡します。
@@ -115,6 +176,19 @@ Zeus車には、ライン追跡の2つのモードがあります。
 
 #. IR障害物回避モジュールをキャリブレートします。
 
+    * 右の障害物回避モジュールの調整から始めます。輸送中の衝突により、赤外線モジュールの送信機と受信機が傾くことがあります。したがって、手動でそれらをまっすぐに調整する必要があります。
+
+    .. raw:: html
+
+        <video loop autoplay muted style = "max-width:80%">
+           <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+           Your browser does not support the video tag.
+        </video>
+
+    .. raw:: html
+
+        <br/> 
+    
     * IR障害物回避モジュールから約15cm離れた場所に障害物を置きます。
     * このモジュールには2つのポテンショメータがあり、1つは送信電力を調整するためのものであり、もう1つは送信周波数を調整するためのものです。これらの2つのポテンショメータを調整することで、検出距離を調整することができます。
     * 次に、ポテンショメータを調整します。15cmでモジュール上の信号ライトが点灯したら、調整が成功です。そうでない場合は、もう1つのポテンショメータを調整します。
@@ -129,6 +203,18 @@ Zeus車には、ライン追跡の2つのモードがあります。
 
 障害物回避
 --------------------------------------
+
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/obstacle_avoidance.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
+
 
 障害物回避モードに切り替えたい場合は、 |ir_forward| キーを押しますが、先に :ref:`ir_follow` を参照して、2つの障害物回避モジュールをキャリブレートしてください。
 
@@ -162,6 +248,18 @@ Zeus車には、ライン追跡の2つのモードがあります。
 
 全方向への移動(1 ~ 9)
 -------------------------------------
+
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/> 
+
 
 1~9の数字キーを使用して、Zeus Carを8方向に移動させます。
 

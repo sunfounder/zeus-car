@@ -1,6 +1,27 @@
 Zeus Carの組み立て
 =========================
 
-以下はZeus Carの組み立て手順のPDF版です。これは、あなたが持っている折りたたみ式と同じものです。折りたたみ式で読めないと思った部分があれば、このPDFをダウンロードできます。
+これはZeus Carの組み立て説明書、PDFバージョンです。これはお持ちの折りたたみ式と同じものです。折りたたみ式に読めない部分があると思われる場合は、このPDFをダウンロードしてください。
 
-:download:`(PDF)Zeus Carの組み立て手順 <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`
+
+:download:`(PDF)Zeus Car Assemble Instruction <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`
+
+**組み立てチュートリアルビデオ**
+
+このビデオでは、ロボットをゼロから組み立てるプロセスを詳しく説明します。
+
+このチュートリアルで学ぶ内容は以下の通りです：
+
+* **準備**：必要なすべての工具と部品を紹介し、組み立てを始める前に完全に装備していることを確認します。
+
+* **組み立ての手順**：システマティックな方法で各組み立て手順を示します。
+
+* **ヒントと考慮事項**：プロセス全体を通じて、一般的なミスを避け、車がスムーズに動作するようにするための重要なヒントとトリックを共有します。
+
+* **テストとキャリブレーション**：組み立てが完了したら、組み立てに問題がないことを確認するための簡単なテストを行います。
+
+
+.. raw:: html
+
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/l25HMPTZbjk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+

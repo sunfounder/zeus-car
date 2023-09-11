@@ -3,7 +3,17 @@
 
 このプロジェクトでは、リモートコントロールを使用してZeus Carを制御する方法を学びます。
 
-.. image:: img/ar_remote_control.png
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/> 
+
 
 **どのように実行するか？**
 
@@ -21,7 +31,13 @@
 
 #. コードが正常にアップロードされた後、電源スイッチをONにしてZeus Carを起動します。
 
-#. 次に、リモートコントロールの1〜9の数字を使用して、車を8つの方向に制御します。キーを押すと、Zeus Carは |ir_power| キーまたは数字キー5を押すまで移動し続けます。
+#. 次に、リモートコントロールの1〜9の数字を使用して、車を8つの方向に制御します。
+
+    .. image:: img/ar_remote_control.png
+        :width: 600
+        :align: center
+
+#. キーを押すと、Zeus Carは |ir_power| キーまたは数字キー5を押すまで移動し続けます。
 
     .. image:: img/zeus_move.jpg
         :width: 600

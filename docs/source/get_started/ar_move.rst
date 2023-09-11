@@ -3,8 +3,16 @@
 
 このプロジェクトで、Zeus Carをすべての方向に動かす方法を学びます。
 
-    .. image:: img/zeus_move.jpg
-        :width: 600
+.. raw:: html
+
+   <video loop autoplay muted style = "max-width:80%">
+      <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+      Your browser does not support the video tag.
+   </video>
+
+.. raw:: html
+    
+    <br/> <br/>  
 
 **どのように実行するか？**
 

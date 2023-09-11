@@ -21,15 +21,23 @@ SunFounder Controllerは、ユーザーがロボットやIoTプラットフォ�
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/c14c46e7-2e43-4b31-b7e6-b7718e501e96/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. コードが正常にアップロードされたら、電源スイッチをONにしてZeus Carを起動します。
+#. コードが正常にアップロードされた後、ESP32-CAMを挿し、その後電源スイッチをONにスライドしてZeus Carを起動することができます。
+
+    .. image:: img/plug_esp32_cam.jpg
+        :width: 300
+        :align: center
 
 #. アップロードスイッチをRunの方向（この図では右側）に切り替えて、ESP32 CAMを起動します。
 
     .. image:: img/zeus_run.jpg
+        :width: 500
+        :align: center
 
 #. リセットボタンを押して、Arduinoボードのプログラムを再度実行します。
 
     .. image:: img/zeus_reset_button.jpg
+        :width: 500
+        :align: center
 
 #. ``Zeus_Car`` WLANに接続します。
 

@@ -18,31 +18,20 @@ Zeus Car - SunFounder Arduino ロボットカーキット
 
 このため、:ref:`ar_play_mode` を設定しました。これにより、ユーザーは組み立てた後に車を直接起動し、専用のリモコンやモバイルアプリでさまざまなクールな機能を楽しむことができます。さまざまな機能の実装方法について詳しく知りたい場合は、:ref:`ar_programming_mode` を参照してください。
 
-.. **表示言語について**
+何か質問があれば、service@sunfounder.com へメールをお送りください。できるだけ早く返答いたします。
 
-.. 英語以外の言語についても、このコースで取り組んでいます。協力に興味がある場合は、service@sunfounder.com までお問い合わせください。お礼として無料の製品を提供いたします。
-.. その間、英語を希望する言語に変換するためにGoogle翻訳の使用をお勧めします。
 
-.. 手順は以下のとおりです。
+**表示言語について**
 
-.. * このコースのページで、右クリックして **Translate to xx** を選択します。現在の言語が希望のものでない場合は、後で変更できます。
+この文書は他の言語でも利用可能です。表示言語を切り替えるには、ページの左下隅にある **Read the Docs** のアイコンをクリックしてください。
 
-.. .. image:: img/translate1.png
-..     :align: center
-
-.. * 右上隅に言語ポップアップが表示されます。**別の言語を選択** のメニューボタンをクリックします。
-
-.. .. image:: img/translate2.png
-..     :align: center
-
-.. * 反転三角形ボックスから言語を選択し、**Done** をクリックします。
-
-.. .. image:: img/translate3.png
-..     :align: center
+.. image:: img/translation.webp
 
 .. toctree::
     :maxdepth: 2
 
+
+    About this Kit <self>
     get_started/get_started
     hardware/hardware
     faq

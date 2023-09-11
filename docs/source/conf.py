@@ -57,9 +57,11 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_static_path = ['_static']
 
 
+# SunFounder logo and detect browser language and auto-redirect.
 
 html_js_files = [
     'https://ezblock.cc/readDocFile/custom.js',
+    './lang.js', # new
 ]
 html_css_files = [
     'https://ezblock.cc/readDocFile/custom.css',
