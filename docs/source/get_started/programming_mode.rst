@@ -12,7 +12,7 @@ This project uses the Arduino programming language, so you'll need to install th
 Now let's start the journey of discovery!
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     download_code
     install_arduino_ide

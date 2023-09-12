@@ -35,6 +35,9 @@ Now take a look at how to use the APP in a simple way.
 
     .. image:: img/zeus_reset_button.jpg
 
+#. Now, install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)** to your mobile device.
+
+
 #. Connect to ``Zeus_Car`` WLAN.
 
     * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
@@ -44,9 +47,6 @@ Now take a look at how to use the APP in a simple way.
     * The default connection mode is AP mode. So after you connect, there will be a prompt telling you that there is no Internet access on this WLAN network, please choose to continue connecting.
 
     .. image:: img/app_no_internet.png
-
-#. Now, install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)** to your mobile device.
-
 
 #. Then open the APP and create a controller.
 

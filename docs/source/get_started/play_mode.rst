@@ -18,7 +18,7 @@ The play mode is where we pre-upload the code to the Arduino board at the factor
     If you want to go back to Play Mode after uploading other code to your Arduino, then you just need to upload the ``zeus_car.ino`` under the path of ``zeus-car-main\zeus_car`` to the Arduino board.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     app_control
     remote_control

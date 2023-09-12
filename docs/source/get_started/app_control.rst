@@ -149,7 +149,7 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
     * Now, tap the |app_run| button enables you to view the live video feed from the camera and control the car using the provided widgets. 
     
-    .. image:: img/app_run.png
+    .. image:: img/app_run123.png
         :width: 500
         :align: center
 
@@ -159,16 +159,21 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
 #. Here are the functions of the widgets.
 
-      * :ref:`app_compass_cali`: Turn on compass calibration.
-      * **Stop(F)**: Stop all movements of the car.
-      * **Set Heading(I)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
-      * :ref:`app_drift`: Activate the drift function.
-      * :ref:`app_move`: Control the car to move in all directions.
-      * :ref:`app_speech_control`: Switching to speech control mode.
-      * :ref:`app_line_track`: Switching to line track mode.
-      * :ref:`app_follow`: Switching to follow mode.
-      * :ref:`app_avoid`: Switch to obstacle avoidance mode.
-      * :ref:`app_rotate_drift`: Used to control the head direction.
+        * :ref:`app_compass_cali`: Turn on compass calibration.
+        * **Stop(F)**: Stop all movements of the car.
+        * **Reset Heading(G)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
+        * :ref:`app_speech_control`: Switching to speech control mode.
+        * :ref:`app_drift`: Activate the drift function.
+        * :ref:`app_move`: Control the car to move in all directions.
+        
+        * :ref:`app_line_track`: The following two widgets can both switch to line track mode.
+        
+            * **Line no Mag(M)**: Switch to line track mode, but not affected by the magnetic field. During the line tracking process, the Zeus Car's orientation will continuously change.
+            * **Line(N)**: Switching to line track mode, due to the presence of the magnetic field, the Zeus Car's orientation during line tracking will be oriented towards a specific direction.
+
+        * :ref:`app_follow`: Switching to follow mode.
+        * :ref:`app_avoid`: Switch to obstacle avoidance mode.
+        * :ref:`app_rotate_drift`: Used to control the head direction.
 
 .. _app_compass_cali:
 
@@ -246,17 +251,16 @@ The car moves once every time you slide, so if you don't release your hand all t
  
 .. _app_speech_control:
 
-Speech(M)
+Speech(I)
 -------------------
 
-.. warning::
-    Android devices cannot use the speech control function. Because the speech control function requires the Android mobile device to be connected to the Internet and to install the Google service component.
-    
-    While iOS devices use offline voice recognition engine, no network connection is required, AP and STA mode connection are both available.
+By pressing the |app_speech_m| widget, you can activate the STT feature, where STT stands for Speech to Text. 
 
-The Zeus Car can also be controlled using speech in SunFounder Controller. Zeus Car will perform the set actions based on the commands you say to your mobile device.
+The SunFounder Controller app integrates with your mobile device's voice recognition engine. Hence, when you tap and hold the **Speech(I)** widget on the SunFounder Controller and speak into your mobile device.
 
-Now press and hold the |app_speech_m| widget and say any of the following commands to see what happens.
+Your device will capture your speech, convert it into text, and send it to the Zeus Car. If this text matches the pre-set commands in your code, the Car will carry out the corresponding actions.
+
+The following are the commands currently preset in the code. Speak any of the following commands and observe how the Zeus Car responds.
 
 * ``stop``: All movements of the car can be stopped.
 * ``pasue``: The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.
@@ -268,6 +272,18 @@ Now press and hold the |app_speech_m| widget and say any of the following comman
 * ``right backward``
 * ``move left``
 * ``move right``
+
+.. note::
+
+    The STT (Speech to Text) function requires an internet connection and Google services on Android devices. However, this doesn't work with the pre-set AP (Access Point) mode on the Zeus Car.
+
+    In AP mode, the Zeus Car creates a local Wi-Fi network that your mobile device can connect to, but it does not provide internet access.
+
+    To use the STT function on Android, switch the car's code from AP to STA mode as outlined in :ref:`stt_android`.
+
+.. note::
+
+    iOS devices, using an offline voice recognition engine, work fine in both AP and STA modes.
 
 After the car receives the above 8 commands, it will keep moving in the corresponding direction unless it receives ``stop`` or ``pasue`` commands.
 
@@ -297,7 +313,7 @@ After the car receives the above 8 commands, it will keep moving in the correspo
  
 .. _app_line_track:
 
-Line(N)
+Line Track
 --------------
 
 .. raw:: html
@@ -414,7 +430,7 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
 
 .. _app_avoid:
 
-Avoid(p)
+Avoid(P)
 ------------------------
 
 .. raw:: html
