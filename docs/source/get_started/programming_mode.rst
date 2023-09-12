@@ -15,7 +15,7 @@
 さあ、発見の旅を始めましょう！
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     download_code
     install_arduino_ide

@@ -20,7 +20,7 @@
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     app_control
     remote_control
