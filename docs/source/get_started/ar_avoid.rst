@@ -38,6 +38,19 @@ In this project, the Zeus car will move forward automatically, and two obstacle 
 
 .. note::
     Before use, you need to adjust the detection distance of the two obstacle avoidance modules to 15CM, the steps are as follows
+    
+    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+
+            .. raw:: html
+
+                <video loop autoplay muted style = "max-width:80%">
+                    <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+            .. raw:: html
+                
+                <br/> <br/>  
 
     * Place an obstacle about 15cm away from the IR obstacle avoidance module.
     * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.

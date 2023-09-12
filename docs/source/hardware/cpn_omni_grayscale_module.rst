@@ -68,8 +68,8 @@ The clock input of the 74HC165 is a "gated or" structure that allows one of the 
 * Asynchronous 8-bit parallel load
 * Synchronous serial input
 * Detection Threshold: adjustable by VREF pin
-* Sensor Type：TCRT5000
-* Connector Model：ZH1.5-6P
+* Sensor Type: TCRT5000
+* Connector Model: ZH1.5-6P
 * Operating Temperature: -10 °C to +50 °C
 * Dimensions: 80mm x 80mm
 

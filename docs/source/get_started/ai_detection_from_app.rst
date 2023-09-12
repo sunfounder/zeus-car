@@ -26,6 +26,8 @@ Now take a look at how to use the APP in a simple way.
 #. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
 
     .. image:: img/plug_esp32_cam.jpg
+        :width: 300
+        :align: center
 
 #. Toggle the Upload Switch to the side of Run (right side on this diagram) to start the ESP32 CAM. 
 

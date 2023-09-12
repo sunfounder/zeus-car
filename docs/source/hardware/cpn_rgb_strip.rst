@@ -20,7 +20,7 @@ The RGB LEDs used are 5050, connected in a common anode way. Each LED is an inde
 * Work Voltage: DC5V
 * Color: Full color RGB
 * Working Temperature: -15-50
-* RGB Type：5050RGB
+* RGB Type: 5050RGB
 * Current: 150mA (single circuit)
 * Power: 1.5W
 * Light Strip Thickness: 2mm

@@ -78,14 +78,14 @@ This is a quick tutorial video. Please watch the video first, and then follow th
 
     * **Stop**: Stop all movements of the car.
     * :ref:`ir_compass_cali`: Turn on compass calibration.
-    * :ref:`ir_line_track`：Switching to line track mode.
-    * :ref:`ir_follow`：Switching to follow mode.
-    * :ref:`ir_avoid`：Switch to obstacle avoidance mode.
+    * :ref:`ir_line_track`: Switching to line track mode.
+    * :ref:`ir_follow`: Switching to follow mode.
+    * :ref:`ir_avoid`: Switch to obstacle avoidance mode.
     * :ref:`drift`: Drift to the left/right.
-    * **Set Heading**：After placing the car in one direction with your hand, click on this key to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other keys.
+    * **Set Heading**: After placing the car in one direction with your hand, click on this key to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other keys.
     * :ref:`rotate_left/right`: Turn left/right
-    * :ref:`ir_move`：Control the car to move in all directions.
-    * **Pause**：The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.
+    * :ref:`ir_move`: Control the car to move in all directions.
+    * **Pause**: The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.
 
 
 .. _ir_compass_cali:
@@ -301,7 +301,7 @@ Use the number keys 1~9 to make the Zeus Car move in 8 directions.
 
 .. _rotate_left/right:
 
-Rotate Left/Right（Cycle/USD Key）
+Rotate Left/Right(Cycle/USD Key)
 -----------------------------------------
 
 * The car will turn 45° left with the body as the center if you press |ir_return| once. Depending on the previous state, it will move forward or stop. If the previous state is stop, it will stop after 45° left turn; if it is forward, it will move forward after the left turn.

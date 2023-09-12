@@ -20,7 +20,7 @@ This expansion board also has a built-in charging circuit, which can charge the 
 * Charge Port
     * After plugging into the 5V/2A USB-C port, it can be used to charge the battery for 130min.
 
-* :ref:`shield_battry_pin`：
+* :ref:`shield_battry_pin`: 
     * 6.6V~8.4V PH2.0-5P power input.
     * Powering the Zeus Car Shield and Arduino board at the same time.
 

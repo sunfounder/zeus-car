@@ -32,6 +32,19 @@ In this project, you will learn how to use the IR obstacle avoidance modules on 
 
 #. Calibrate the IR obstacle avoidance module.
 
+    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+
+            .. raw:: html
+
+                <video loop autoplay muted style = "max-width:80%">
+                    <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+            .. raw:: html
+                
+                <br/> <br/>  
+
     * Place an obstacle about 15cm away from the IR obstacle avoidance module.
     * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
     * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
