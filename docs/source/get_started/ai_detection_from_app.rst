@@ -21,7 +21,11 @@ Sehen Sie sich nun an, wie Sie die App auf einfache Weise nutzen können.
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/c14c46e7-2e43-4b31-b7e6-b7718e501e96/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. Nach erfolgreichem Hochladen des Codes, schieben Sie den Ein/Aus-Schalter auf ON, um das Zeus Car zu starten.
+#. Nachdem der Code erfolgreich hochgeladen wurde, können Sie das ESP32-CAM einstecken und dann den Stromschalter auf EIN schieben, um das Zeus-Auto zu starten.
+
+    .. image:: img/plug_esp32_cam.jpg
+        :width: 300
+        :align: center
 
 #. Schalten Sie den Upload-Schalter zur Seite "Run" (auf diesem Diagramm die rechte Seite), um das ESP32 CAM zu starten. 
 
@@ -30,6 +34,8 @@ Sehen Sie sich nun an, wie Sie die App auf einfache Weise nutzen können.
 #. Drücken Sie die Reset-Taste, um das Programm des Arduino-Boards erneut zu starten.
 
     .. image:: img/zeus_reset_button.jpg
+
+#. Installieren Sie nun `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **APP Store(iOS)** oder **Google Play(Android)** auf Ihrem mobilen Gerät.
 
 #. Verbinden Sie sich mit dem WLAN ``Zeus_Car``.
 
@@ -40,8 +46,6 @@ Sehen Sie sich nun an, wie Sie die App auf einfache Weise nutzen können.
     * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang bietet. Bitte wählen Sie "Trotzdem verbinden".
 
     .. image:: img/app_no_internet.png
-
-#. Installieren Sie nun `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **APP Store(iOS)** oder **Google Play(Android)** auf Ihrem mobilen Gerät.
 
 #. Öffnen Sie anschließend die App und erstellen Sie einen Controller.
 
@@ -70,7 +74,7 @@ Sehen Sie sich nun an, wie Sie die App auf einfache Weise nutzen können.
 
 #. Starten Sie den Controller.
 
-    Nachdem die Nachricht "Erfolgreich verbunden" erscheint, klicken Sie auf den |app_run| Button, dann wird das Kamerabild in der App angezeigt.
+    Nachdem die Nachricht "Connected Successfully" erscheint, klicken Sie auf den |app_run| Button, dann wird das Kamerabild in der App angezeigt.
 
     Wenn Sie die Gesichtserkennung aktiviert haben, wird das im Bildschirm erscheinende Gesicht umrahmt.
 

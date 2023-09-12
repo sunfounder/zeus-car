@@ -31,6 +31,19 @@ In diesem Projekt werden Sie lernen, wie Sie die IR-Hindernisvermeidungsmodule a
 
 #. Kalibrieren Sie das IR-Hindernisvermeidungsmodul.
 
+    * Beginnen Sie mit der Einstellung des rechten Hindernisvermeidungsmoduls. Während des Transports können Kollisionen dazu führen, dass der Sender und Empfänger im Infrarotmodul kippen. Daher müssen Sie sie manuell begradigen.
+
+            .. raw:: html
+
+                <video loop autoplay muted style = "max-width:80%">
+                    <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+
+            .. raw:: html
+                
+                <br/> <br/>  
+
     * Platzieren Sie ein Hindernis etwa 15cm vom IR-Hindernisvermeidungsmodul entfernt.
     * Auf dem Modul befinden sich zwei Potentiometer, eines zur Einstellung der Sendeleistung und eines zur Einstellung der Sendefrequenz. Durch das Verstellen dieser beiden Potentiometer können Sie die Erkennungsdistanz einstellen.
     * Danach können Sie ein Potentiometer verstellen, und wenn bei 15cm das Signallicht auf dem Modul leuchtet, ist die Einstellung erfolgreich. Wenn nicht, stellen Sie das andere Potentiometer ein.

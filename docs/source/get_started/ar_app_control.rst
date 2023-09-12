@@ -26,7 +26,11 @@ In diesem Projekt werden wir versuchen, die Bewegung und Richtung des Zeus Autos
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/5d65d2b4-5ed7-4d21-ba3b-02529ee8dd6c/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. Nachdem der Code erfolgreich hochgeladen wurde, schieben Sie den Ein/Aus-Schalter auf ON, um das Zeus Auto zu starten.
+#. Nachdem der Code erfolgreich hochgeladen wurde, können Sie das ESP32-CAM einstecken und dann den Stromschalter auf EIN schieben, um das Zeus-Auto zu starten.
+
+    .. image:: img/plug_esp32_cam.jpg
+        :width: 300
+        :align: center
 
 #. Wechseln Sie den Upload-Schalter auf die Seite "Run" (rechte Seite auf diesem Diagramm), um die ESP32 CAM zu starten. 
 

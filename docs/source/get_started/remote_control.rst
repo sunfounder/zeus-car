@@ -21,20 +21,26 @@ Hier ist ein kurzes Tutorial-Video. Bitte sehen Sie sich zuerst das Video an und
     
     <br/> <br/>  
 
-#. Starten Sie das Zeus-Auto.
+#. Beginnen wir mit dem Zeus Car.
 
-    * Bei erstmaliger Verwendung oder wenn das Batteriekabel getrennt ist, wird der Überentladungsschutz des Zeus Car Shields aktiviert.
-    * Daher müssen Sie das Typ-C-Kabel ca. 5 Sekunden lang anschließen.
+    * Bei der ersten Verwendung oder wenn das Batteriekabel ausgesteckt wird, wird die Überentladungsschutzschaltung des Zeus Car Shield aktiviert.
+    * Daher müssen Sie das Type-C-Kabel für ungefähr 5 Sekunden einstecken.
 
-    .. image:: img/zeus_charge.jpg
-        :width: 500
-        :align: center
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+        </div>
 
     .. raw:: html
         
         <br/>
 
-    * Wenn die Stromanzeige leuchtet, bedeutet dies, dass der Schutzstatus aufgehoben wurde. Schauen Sie zu diesem Zeitpunkt auf die Batterieanzeigen. Wenn beide Batterieanzeigen ausgeschaltet sind, schließen Sie das Typ-C-Kabel weiterhin an, um die Batterie aufzuladen.
+    
+    * Wenn die Stromanzeige leuchtet, bedeutet dies, dass der Schutzstatus aufgehoben wurde. Schauen Sie zu diesem Zeitpunkt auf die Batterieanzeigen. Wenn beide Batterieanzeigen ausgeschaltet sind, stecken Sie das Type-C-Kabel weiterhin ein, um die Batterie zu laden.
 
     .. image:: img/zeus_power.jpg
         :width: 500
@@ -42,37 +48,23 @@ Hier ist ein kurzes Tutorial-Video. Bitte sehen Sie sich zuerst das Video an und
 
     .. raw:: html
         
-        <br/>
- 
-    * Zu diesem Zeitpunkt startet das Zeus-Auto normal und der RGB-LED-Streifen unter dem Auto leuchtet cyanfarben auf.
-
-    .. image:: img/zeus_car.jpg
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>
- 
-    * Wenn ein gelbes Licht erscheint, bedeutet dies, dass der Startvorgang nicht erfolgreich war. Sie müssen diesen Schalter in den **Run-Modus** (Rechts im Diagramm) umlegen, damit die ESP32-CAM mit dem Arduino-Board kommunizieren kann.
+        <br/>  
     
-    .. image:: img/zeus_run.jpg
-        :width: 500
-        :align: center
+    * Nun müssen Sie den kleineren Schalter nach rechts kippen, um die Kommunikation zwischen dem Auto und der ESP32 CAM herzustellen. Drücken Sie anschließend die Reset-Taste, um den Code neu zu starten. Zu diesem Zeitpunkt werden Sie beobachten, wie die Unterbodenleuchten von Orange zu einem hellen Blau wechseln.
+
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+        </div>
 
     .. raw:: html
         
         <br/>
- 
-    * Bitte drücken Sie die **Zurücksetzen**-Taste, um den Code auf dem Arduino-Board erneut auszuführen.
 
-    .. image:: img/zeus_reset_button.jpg
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>
 
 #. Drücken Sie die verschiedenen Tasten auf der Fernbedienung, um das Auto zu steuern.
 
@@ -85,20 +77,20 @@ Hier ist ein kurzes Tutorial-Video. Bitte sehen Sie sich zuerst das Video an und
         <br/>
 
 
-    * **Stopp**: Stoppen Sie alle Bewegungen des Autos.
+    * **Stop**: Stoppen Sie alle Bewegungen des Autos.
     * :ref:`ir_compass_cali`: Kompasskalibrierung aktivieren.
-    * :ref:`ir_line_track`：Wechseln zum Linienverfolgungsmodus.
-    * :ref:`ir_follow`：Wechseln zum Verfolgungsmodus.
-    * :ref:`ir_avoid`：Wechseln zum Hindernisvermeidungsmodus.
+    * :ref:`ir_line_track`: Wechseln zum Linienverfolgungsmodus.
+    * :ref:`ir_follow`: Wechseln zum Verfolgungsmodus.
+    * :ref:`ir_avoid`: Wechseln zum Hindernisvermeidungsmodus.
     * :ref:`drift`: Nach links/rechts driften.
-    * **Richtung festlegen**：Nachdem Sie das Auto mit der Hand in eine Richtung gestellt haben, klicken Sie auf diese Taste, um diese Richtung als Vorderseite der Autobewegung festzulegen. Dies ermöglicht es Ihnen, schnell eine Richtung anzugeben, anstatt das Auto langsam mit anderen Tasten in diese Richtung zu drehen.
+    * **Set Heading**: Nachdem Sie das Auto mit der Hand in eine Richtung gestellt haben, klicken Sie auf diese Taste, um diese Richtung als Vorderseite der Autobewegung festzulegen. Dies ermöglicht es Ihnen, schnell eine Richtung anzugeben, anstatt das Auto langsam mit anderen Tasten in diese Richtung zu drehen.
     * :ref:`rotate_left/right`: Nach links/rechts drehen
-    * :ref:`ir_move`：Steuern Sie das Auto in alle Richtungen.
-    * **Pause**：Die Funktion ähnelt Stopp, aber wenn das vordere Ende des Autos nicht in die ursprünglich festgelegte Richtung zeigt, wird es langsam in die festgelegte Richtung bewegt.
+    * :ref:`ir_move`: Steuern Sie das Auto in alle Richtungen.
+    * **Pause**: Die Funktion ähnelt Stopp, aber wenn das vordere Ende des Autos nicht in die ursprünglich festgelegte Richtung zeigt, wird es langsam in die festgelegte Richtung bewegt.
 
 .. _ir_compass_cali:
 
-Kompasskalibrierung
+Compass Calibration
 -----------------------------------
 
 Schalten Sie die Kompasskalibrierung durch Drücken der |ir_mute|-Taste ein.
@@ -108,7 +100,7 @@ Stellen Sie das Zeus-Auto auf den Boden. Nach dem Aktivieren der Kompasskalibrie
 
 .. _ir_line_track:
 
-Linienverfolgung
+Line Track
 ---------------------------
 
 .. raw:: html
@@ -173,7 +165,7 @@ Bevor Sie die Linienverfolgung starten können, müssen Sie das Omni-Graustufenm
 
 .. _ir_follow:
 
-Folgemodus
+Follow
 ---------------------------
 
 .. raw:: html
@@ -193,6 +185,19 @@ Der Ultraschallsensor erkennt Hindernisse vorne (20 cm) und folgt ihnen. Die zwe
 
 #. Kalibrieren Sie das IR-Hindernisvermeidungsmodul:
 
+    * Beginnen Sie mit der Einstellung des rechten Hindernisvermeidungsmoduls. Während des Transports können Kollisionen dazu führen, dass der Sender und Empfänger im Infrarotmodul kippen. Daher müssen Sie sie manuell begradigen.
+
+            .. raw:: html
+
+                <video loop autoplay muted style = "max-width:80%">
+                    <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+
+            .. raw:: html
+                
+                <br/> <br/>  
+
     * Platzieren Sie ein Hindernis etwa 15 cm vom IR-Hindernisvermeidungsmodul entfernt.
     * Am Modul befinden sich zwei Potentiometer: eines zur Einstellung der Sendeleistung und eines zur Einstellung der Sendefrequenz. Durch Anpassen dieser beiden Potentiometer können Sie die Erkennungsentfernung einstellen.
     * Dann können Sie ein Potentiometer einstellen, und wenn bei 15 cm das Signallämpchen am Modul leuchtet, ist die Einstellung erfolgreich. Wenn nicht, stellen Sie das andere Potentiometer ein.
@@ -211,7 +216,7 @@ Der Ultraschallsensor erkennt Hindernisse vorne (20 cm) und folgt ihnen. Die zwe
 
 .. _ir_avoid:
 
-Hindernisvermeidung
+Obstacle Avoidance
 --------------------------------------
 
 .. raw:: html
@@ -233,7 +238,7 @@ Wenn Sie in den Hindernisvermeidungsmodus wechseln möchten, drücken Sie die |i
 
 .. _drift:
 
-Links/Rechts Driften
+Drift Left/Right
 -------------------------------------------------
 
 Verwenden Sie die Tasten |ir_minus| und |ir_plus|, um das Auto nach links/rechts driften zu lassen.
@@ -263,7 +268,7 @@ Verwenden Sie die Tasten |ir_minus| und |ir_plus|, um das Auto nach links/rechts
 
 .. _ir_move:
 
-In alle Richtungen bewegen (1 ~ 9)
+Move in All Directions(1 ~ 9)
 -------------------------------------
 
 .. raw:: html
@@ -289,7 +294,7 @@ Verwenden Sie die Zahlentasten 1~9, um das Zeus Auto in 8 Richtungen zu steuern.
 
 .. _rotate_left/right:
 
-Links/Rechts drehen (Cycle/USD-Taste)
+Rotate Left/Right(Cycle/USD Key)
 -----------------------------------------
 
 * Wenn Sie die |ir_return|-Taste einmal drücken, dreht sich das Auto mit dem Körper als Zentrum um 45° nach links. Abhängig vom vorherigen Zustand wird es vorwärts fahren oder stoppen. Wenn es zuvor gestoppt wurde, wird es nach einer 45°-Linksdrehung anhalten; wenn es vorwärts gefahren ist, wird es nach der Linksdrehung weiterfahren.

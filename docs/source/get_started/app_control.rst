@@ -19,35 +19,41 @@ Um das Zeus Car über Ihr Mobilgerät zu steuern, müssen Sie die SunFounder Con
 Schnellanleitung
 ---------------------
 
-Schauen Sie sich zuerst dieses kurze Anleitungsvideo an und folgen Sie dann den unten angegebenen Anweisungen.
+Dies ist ein kurzes Tutorial-Video. Bitte sehen Sie sich zuerst das Video an und befolgen Sie dann die untenstehenden Anweisungen.
 
 .. raw:: html
 
-   <video loop controls style="max-width:90%">
-      <source src="../_static/video/app_control_quick_guide.mp4" type="video/mp4">
-      Ihr Browser unterstützt das Video-Tag nicht.
-   </video>
+    <div style="text-align: center;">
+        <video loop controls style = "max-width:90%">
+            <source src="../_static/video/app_control_quick_guide.mp4"  type="video/mp4">
+            Ihr Browser unterstützt das Video-Tag nicht.
+        </video>
+    </div>
 
 .. raw:: html
     
     <br/> <br/>
 
-#. Laden Sie `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **APP Store(iOS)** oder **Google Play(Android)** herunter.
+#. Beginnen Sie mit dem Zeus Car.
 
-#. Starten Sie das Zeus Car.
+    * Bei der ersten Verwendung oder wenn das Batteriekabel abgezogen wird, aktiviert der Zeus Car Shield seine Überentladungsschutzschaltung.
+    * Daher müssen Sie das Type-C-Kabel für etwa 5 Sekunden anschließen.
 
-    * Bei der ersten Nutzung oder wenn das Batteriekabel getrennt wird, aktiviert das Zeus Car Shield seinen Tiefentladeschutz.
-    * Daher sollten Sie das Type-C Kabel für ca. 5 Sekunden anschließen.
+    .. raw:: html
 
-    .. image:: img/zeus_charge.jpg
-        :width: 500
-        :align: center
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+        </div>
 
     .. raw:: html
         
-        <br/>  
+        <br/>
+
     
-    * Wenn die Stromanzeige leuchtet, bedeutet dies, dass der Schutzstatus aufgehoben wurde. Schauen Sie nun auf die Batterieanzeigen. Wenn beide Batterieanzeigen aus sind, stecken Sie das Type-C Kabel weiterhin ein, um die Batterie zu laden.
+    * Wenn die Betriebsanzeige leuchtet, bedeutet dies, dass der Schutzstatus freigegeben wurde. Schauen Sie zu diesem Zeitpunkt auf die Batterieanzeigen. Wenn beide Batterieanzeigen aus sind, stecken Sie bitte weiterhin das Type-C-Kabel ein, um die Batterie aufzuladen.
 
     .. image:: img/zeus_power.jpg
         :width: 500
@@ -57,51 +63,45 @@ Schauen Sie sich zuerst dieses kurze Anleitungsvideo an und folgen Sie dann den 
         
         <br/>  
     
-    * Zu diesem Zeitpunkt startet das Zeus Car normal und der RGB LED Streifen unter dem Auto leuchtet cyanfarben.
+    * Nun müssen Sie den kleineren Schalter nach rechts kippen, um die Kommunikation zwischen dem Auto und der ESP32 CAM herzustellen. Drücken Sie danach die Reset-Taste, um den Code neu zu starten. Zu diesem Zeitpunkt werden Sie beobachten, wie die Unterbodenleuchten von Orange zu Hellblau wechseln.
 
-    .. image:: img/zeus_car.jpg
-        :width: 500
-        :align: center
-    
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:70%">
+                <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+        </div>
+
     .. raw:: html
         
-        <br/>  
-    
-    * Wenn ein gelbes Licht erscheint, bedeutet dies, dass der Start nicht erfolgreich war. Sie müssen den Schalter auf **Run-Modus** (Rechts im Diagramm) umstellen, damit das ESP32-CAM mit dem Arduino-Board kommunizieren kann.
+        <br/>
 
-    .. image:: img/zeus_run.jpg
-        :width: 500
-        :align: center
-    
-    .. raw:: html
-        
-        <br/>  
-    
-    * Bitte drücken Sie die **Reset**-Taste, um den Code auf dem Arduino-Board erneut zu starten.
-
-    .. image:: img/zeus_reset_button.jpg
-        :width: 500
-        :align: center
-    
-    .. raw:: html
-        
-        <br/>  
+#. Installieren Sie `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **APP Store(iOS)** oder **Google Play(Android)**.
 
 #. Verbinden Sie sich mit dem ``Zeus_Car`` WLAN.
 
-    Verbinden Sie Ihr Mobilgerät nun mit dem von Zeus Car ausgestrahlten LAN. Dadurch werden Ihr Mobilgerät und das Zeus Car im selben Netzwerk sein, was die Kommunikation zwischen den Anwendungen auf Ihrem Mobilgerät und dem Zeus Car erleichtert.
+    Verbinden Sie nun Ihr Mobilgerät mit dem lokalen Netzwerk (LAN), das vom Zeus Car bereitgestellt wird. Auf diese Weise befinden sich Ihr Mobilgerät und der Zeus Car im selben Netzwerk, was die Kommunikation zwischen den Anwendungen auf Ihrem Mobilgerät und dem Zeus Car erleichtert.
+    
 
     * Finden Sie ``Zeus_Car`` im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort ``12345678`` ein und verbinden Sie sich damit.
 
-    .. image:: img/app_wlan.png
-        :width: 500
-        :align: center
-    
+
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:80%">
+                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+        </div>
+
     .. raw:: html
         
-        <br/>  
-    
-    * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang bietet. Bitte wählen Sie "Trotzdem verbinden".
+        <br/>
+
+    * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie daher eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Bitte wählen Sie "Weiter verbinden".
 
     .. image:: img/app_no_internet.png
         :width: 500
@@ -110,10 +110,10 @@ Schauen Sie sich zuerst dieses kurze Anleitungsvideo an und folgen Sie dann den 
     .. raw:: html
         
         <br/>  
-    
+
 #. Erstellen Sie einen Controller.
 
-    * Um einen Controller im SunFounder Controller hinzuzufügen, klicken Sie auf das **+** Symbol.
+    * Um auf dem SunFounder Controller einen Controller hinzuzufügen, klicken Sie auf das **+** Symbol.
 
     .. image:: img/app1.png
         :width: 500
@@ -123,9 +123,9 @@ Schauen Sie sich zuerst dieses kurze Anleitungsvideo an und folgen Sie dann den 
         
         <br/>  
     
-    * Für einige Produkte sind voreingestellte Controller verfügbar. Hier wählen wir **Zeus Car**.
+    * Voreingestellte Controller sind für einige Produkte verfügbar. Hier wählen wir **Zeus Car**. Geben Sie ihm einen Namen oder tippen Sie einfach auf **Confirm**.
 
-    .. image:: img/app_preset.png
+    .. image:: img/app_preset.jpg
         :width: 500
         :align: center
 
@@ -133,45 +133,19 @@ Schauen Sie sich zuerst dieses kurze Anleitungsvideo an und folgen Sie dann den 
         
         <br/>  
     
-    * Geben Sie ihm einen Namen und klicken Sie auf Bestätigen.
+    * Einmal drinnen, wird die App automatisch nach dem Zeus Car suchen. Nach einer Weile erscheint eine Meldung, die besagt "Connected Successfully".
 
-    .. image:: img/app_name.png
+    .. image:: img/app_edit.jpg
         :width: 500
         :align: center
 
     .. raw:: html
         
-        <br/>  
+        <br/> 
+
+    * Tippen Sie nun auf die |app_run| Schaltfläche. Dadurch können Sie das Live-Video von der Kamera anzeigen und das Auto mit den bereitgestellten Widgets steuern.
     
-    * Sie befinden sich jetzt im Controller, der bereits mehrere Widgets eingerichtet hat. Klicken Sie auf den |app_save| Button in der oberen rechten Ecke.
-
-    .. image:: img/app_edit.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-    
-#. Verbinden und starten Sie den Controller.
-
-    * Nutzen Sie den |app_connect| Button, um den SunFounder Controller mit dem Zeus Car zu verbinden und die Kommunikation zu starten. Nach einigen Sekunden erscheint ``Zeus_Car(IP)``, klicken Sie darauf, um sich zu verbinden.
-
-    .. image:: img/app_auto_connect.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-    
-    .. note::
-        
-        Stellen Sie sicher, dass Ihr WLAN mit ``Zeus_Car`` verbunden ist, wenn Sie die obige Meldung für längere Zeit nicht sehen.
-
-    * Nachdem die Meldung "Erfolgreich verbunden" erschienen ist, klicken Sie auf den |app_run| Button. Nun erscheint das Kamera-Bild in der App und Sie können Ihr Zeus Car mit diesen Widgets steuern.
-
-    .. image:: img/app_run.png
+    .. image:: img/app_run123.png
         :width: 500
         :align: center
 
@@ -179,23 +153,27 @@ Schauen Sie sich zuerst dieses kurze Anleitungsvideo an und folgen Sie dann den 
         
         <br/>  
 
-    * Hier sind die Funktionen der Widgets.
+#. Hier sind die Funktionen der Widgets.
 
-      * :ref:`app_compass_cali`: Kompasskalibrierung einschalten.
-      * **Stop(F)**: Alle Bewegungen des Autos stoppen.
-      * **Set Heading(I)**: Nachdem Sie das Auto mit der Hand in eine Richtung ausgerichtet haben, klicken Sie auf dieses Widget, um diese Richtung als Front der Autobewegung festzulegen. Dies ermöglicht eine schnelle Richtungsvorgabe, ohne das Auto langsam mit anderen Widgets in diese Richtung drehen zu müssen.
-      * :ref:`app_drift`: Drift-Funktion aktivieren.
-      * :ref:`app_move`: Steuern Sie das Auto in alle Richtungen.
-      * :ref:`app_speech_control`: Wechseln Sie in den Sprachsteuerungsmodus.
-      * :ref:`app_line_track`: Wechseln Sie in den Linienverfolgungsmodus.
-      * :ref:`app_follow`: Wechseln Sie in den Follow-Modus.
-      * :ref:`app_avoid`: Wechseln Sie in den Hindernisvermeidungsmodus.
-      * :ref:`app_rotate_drift`: Dient zur Steuerung der Kopfrichtung.
+        * :ref:`app_compass_cali`: Kompasskalibrierung einschalten.
+        * **Stop(F)**: Stoppen Sie alle Bewegungen des Autos.
+        * **Reset Heading(G)**: Nachdem Sie das Auto manuell in eine Richtung ausgerichtet haben, klicken Sie auf dieses Widget, um diese Richtung als Vorderseite der Autobewegung festzulegen. Damit können Sie schnell eine Richtung angeben, anstatt das Auto langsam mit anderen Widgets in diese Richtung zu drehen.
+        * :ref:`app_speech_control`: Wechseln Sie in den Sprachsteuerungsmodus.
+        * :ref:`app_drift`: Aktivieren Sie die Drift-Funktion.
+        * :ref:`app_move`: Steuern Sie das Auto in alle Richtungen.
+        
+        * :ref:`app_line_track`: Die folgenden beiden Widgets können beide in den Linienverfolgungsmodus wechseln.
+        
+            * **Linie ohne Mag(M)**: Wechseln Sie in den Linienverfolgungsmodus, der nicht vom Magnetfeld beeinflusst wird. Während des Linienverfolgungsvorgangs wird sich die Ausrichtung des Zeus Car ständig ändern.
+            * **Linie(N)**: Wechseln Sie in den Linienverfolgungsmodus. Aufgrund des Vorhandenseins eines Magnetfelds wird sich die Ausrichtung des Zeus Car während der Linienverfolgung in eine bestimmte Richtung orientieren.
 
+        * :ref:`app_follow`: Wechseln in den Verfolgungsmodus.
+        * :ref:`app_avoid`: Wechseln in den Hindernisvermeidungsmodus.
+        * :ref:`app_rotate_drift`: Dient zur Steuerung der Kopfrichtung.
 
 .. _app_compass_cali:
 
-Kalibrierung(E)
+Calibration(E)
 --------------------------
 
 Aktivieren Sie die Kompasskalibrierung, indem Sie auf den |app_cali_e| Button klicken.
@@ -204,7 +182,7 @@ Stellen Sie das Zeus-Auto auf den Boden. Nach Aktivierung der Kompasskalibrierun
 
 .. _app_drift:
 
-Drift Aktivieren(J)
+Drift Enable(J)
 ---------------------
 
 Klicken Sie auf den |app_drift_j| Button, um die Drift-Funktion zu aktivieren.
@@ -231,7 +209,7 @@ Klicken Sie auf den |app_drift_j| Button, um die Drift-Funktion zu aktivieren.
 
 .. _app_move:
 
-In alle Richtungen bewegen(K)
+Move in All Directions(K)
 ----------------------------------
 
 .. raw:: html
@@ -266,7 +244,7 @@ Das Auto bewegt sich jedes Mal, wenn Sie wischen. Wenn Sie Ihre Hand also nicht 
 
 .. _app_speech_control:
 
-Sprachsteuerung(M)
+Speech(I)
 -------------------
 
 .. warning::
@@ -280,14 +258,14 @@ Halten Sie nun das |app_speech_m| Widget gedrückt und sagen Sie einen der folge
 
 * ``stop``: Alle Bewegungen des Autos können gestoppt werden.
 * ``pause``: Die Funktion ähnelt der von Stop, aber wenn die Vorderseite des Autos nicht in die ursprünglich eingestellte Richtung zeigt, wird es sich langsam in die eingestellte Richtung bewegen.
-* ``vorwärts``
-* ``rückwärts``
-* ``links vorwärts``
-* ``links rückwärts``
-* ``rechts vorwärts``
-* ``rechts rückwärts``
-* ``nach links bewegen``
-* ``nach rechts bewegen``
+* ``forward``
+* ``backward``
+* ``left forward``
+* ``left backward``
+* ``right forward``
+* ``right backward``
+* ``move left``
+* ``move right``
 
 Nachdem das Auto die oben genannten 8 Befehle erhalten hat, wird es sich in die entsprechende Richtung bewegen, bis es die Befehle ``stop`` oder ``pause`` erhält.
 
@@ -319,7 +297,7 @@ Nachdem das Auto die oben genannten 8 Befehle erhalten hat, wird es sich in die 
 
 .. _app_line_track:
 
-Linie(N)
+Line Track
 --------------
 
 .. raw:: html
@@ -381,7 +359,7 @@ Der Zeus Car bietet zwei Modi der Linienverfolgung an: Einen, bei dem die Vorder
 
 .. _app_follow:
 
-Folgen(O)
+Follow(O)
 ------------
 
 .. raw:: html
@@ -419,7 +397,7 @@ Der Ultraschallsensor erkennt Hindernisse vor sich (20 cm) und folgt ihnen. Dies
 
 .. _app_avoid:
 
-Vermeiden(P)
+Avoid(P)
 ------------------------
 
 .. raw:: html
@@ -441,7 +419,7 @@ Wenn Sie in den Hindernisvermeidungsmodus wechseln möchten, klicken Sie auf das
 
 .. _app_rotate_drift:
 
-Richtung steuern(Q)
+Control the Drection(Q)
 -------------------------------
 
 * Wenn der |app_drift_j| Button aktiviert ist, wird das |app_rotate_q| Widget verwendet, um das Zeus Auto links und rechts driften zu lassen.

@@ -33,7 +33,11 @@ Dieses Projekt integriert die Funktionen Linienverfolgung, Folgen und Vermeiden 
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/b67e7245-369b-4218-b12c-d73f95ac3b22/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. Nachdem der Code erfolgreich hochgeladen wurde, schieben Sie den Ein-/Ausschalter auf EIN, um das Zeus-Auto zu starten.
+#. Nachdem der Code erfolgreich hochgeladen wurde, können Sie das ESP32-CAM einstecken und dann den Stromschalter auf EIN schieben, um das Zeus-Auto zu starten.
+
+    .. image:: img/plug_esp32_cam.jpg
+        :width: 300
+        :align: center
 
 #. Schalten Sie den Upload-Schalter auf die Seite von "Run" (rechte Seite in dieser Darstellung), um die ESP32 CAM zu starten.
 
@@ -45,57 +49,94 @@ Dieses Projekt integriert die Funktionen Linienverfolgung, Folgen und Vermeiden 
 
 #. Verbinden Sie sich mit dem ``Zeus_Car`` WLAN.
 
-    * Finden Sie ``Zeus_Car`` im WLAN Ihres Handys (Tablet), geben Sie das Passwort ``12345678`` ein und verbinden Sie sich damit.
+    Verbinden Sie nun Ihr Mobilgerät mit dem lokalen Netzwerk (LAN), das vom Zeus Car bereitgestellt wird. Auf diese Weise befinden sich Ihr Mobilgerät und der Zeus Car im selben Netzwerk, was die Kommunikation zwischen den Anwendungen auf Ihrem Mobilgerät und dem Zeus Car erleichtert.
+    
 
-    .. image:: img/app_wlan.png
+    * Finden Sie ``Zeus_Car`` im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort ``12345678`` ein und verbinden Sie sich damit.
 
-    * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung wird eine Meldung angezeigt, die besagt, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Wählen Sie weiterhin Verbinden.
+
+    .. raw:: html
+
+        <div style="text-align: center;">
+            <video center loop autoplay muted style = "max-width:80%">
+                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+        </div>
+
+    .. raw:: html
+        
+        <br/>
+
+    * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie daher eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Bitte wählen Sie "Weiter verbinden".
 
     .. image:: img/app_no_internet.png
+        :width: 500
+        :align: center
+
+    .. raw:: html
+        
+        <br/>  
 
 #. Erstellen Sie einen Controller.
 
-    * Um einen Controller im SunFounder Controller hinzuzufügen, klicken Sie auf das **+** Symbol.
+    * Um auf dem SunFounder Controller einen Controller hinzuzufügen, klicken Sie auf das **+** Symbol.
 
-        .. image:: img/app1.png
+    .. image:: img/app1.png
+        :width: 500
+        :align: center
 
-    * Voreingestellte Controller sind für einige Produkte verfügbar, hier wählen wir **Zeus Car**.
-
-        .. image:: img/app_preset.png
-
-    * Geben Sie ihm einen Namen und klicken Sie auf Bestätigen.
-
-    .. image:: img/app_name.png
+    .. raw:: html
+        
+        <br/>  
     
-    * Sie befinden sich nun im Controller, der bereits einige Widgets eingerichtet hat. Klicken Sie auf die Schaltfläche |app_save| in der oberen rechten Ecke.
+    * Voreingestellte Controller sind für einige Produkte verfügbar. Hier wählen wir **Zeus Car**. Geben Sie ihm einen Namen oder tippen Sie einfach auf **Confirm**.
 
-        .. image:: img/app_edit.png
+    .. image:: img/app_preset.jpg
+        :width: 500
+        :align: center
 
-    * Der nächste Schritt besteht darin, das Zeus-Auto über die |app_connect| Schaltfläche mit Ihrem Gerät zu verbinden. Warten Sie ein paar Sekunden und ``Zeus_Car(IP)`` wird angezeigt. Klicken Sie darauf, um die Verbindung herzustellen.
+    .. raw:: html
+        
+        <br/>  
+    
+    * Einmal drinnen, wird die App automatisch nach dem Zeus Car suchen. Nach einer Weile erscheint eine Meldung, die besagt "Connected Successfully".
 
-        .. image:: img/app_auto_connect.png
+    .. image:: img/app_edit.jpg
+        :width: 500
+        :align: center
 
-        .. note::
-            Stellen Sie sicher, dass Ihr WLAN mit ``Zeus_Car`` verbunden ist, wenn Sie die obige Nachricht lange nicht sehen.
+    .. raw:: html
+        
+        <br/> 
 
-#. Starten Sie den Controller.
+    * Tippen Sie nun auf die |app_run| Schaltfläche. Dadurch können Sie das Live-Video von der Kamera anzeigen und das Auto mit den bereitgestellten Widgets steuern.
+    
+    .. image:: img/app_run123.png
+        :width: 500
+        :align: center
 
-    Nachdem die Meldung "Erfolgreich verbunden" erscheint, klicken Sie auf die |app_run| Schaltfläche. Anschließend wird das Kamerabild in der App angezeigt, und Sie können Ihr Zeus-Auto mit diesen Widgets steuern.
+    .. raw:: html
+        
+        <br/>  
 
-    .. image:: img/app_run.png
+#. Hier sind die Funktionen der Widgets.
 
-    Hier sind die Funktionen der Widgets.
+        * :ref:`app_compass_cali`: Kompasskalibrierung einschalten.
+        * **Stop(F)**: Stoppen Sie alle Bewegungen des Autos.
+        * **Reset Heading(G)**: Nachdem Sie das Auto manuell in eine Richtung ausgerichtet haben, klicken Sie auf dieses Widget, um diese Richtung als Vorderseite der Autobewegung festzulegen. Damit können Sie schnell eine Richtung angeben, anstatt das Auto langsam mit anderen Widgets in diese Richtung zu drehen.
+        * :ref:`app_speech_control`: Wechseln Sie in den Sprachsteuerungsmodus.
+        * :ref:`app_drift`: Aktivieren Sie die Drift-Funktion.
+        * :ref:`app_move`: Steuern Sie das Auto in alle Richtungen.
+        
+        * :ref:`app_line_track`: Die folgenden beiden Widgets können beide in den Linienverfolgungsmodus wechseln.
+        
+            * **Linie ohne Mag(M)**: Wechseln Sie in den Linienverfolgungsmodus, der nicht vom Magnetfeld beeinflusst wird. Während des Linienverfolgungsvorgangs wird sich die Ausrichtung des Zeus Car ständig ändern.
+            * **Linie(N)**: Wechseln Sie in den Linienverfolgungsmodus. Aufgrund des Vorhandenseins eines Magnetfelds wird sich die Ausrichtung des Zeus Car während der Linienverfolgung in eine bestimmte Richtung orientieren.
 
-    * :ref:`ar_app_compass_cali`: Kompasskalibrierung aktivieren.
-    * **Stopp(F)**: Alle Bewegungen des Autos anhalten.
-    * **Richtung festlegen(I)**: Nachdem Sie das Auto mit Ihrer Hand in eine Richtung gesetzt haben, klicken Sie auf dieses Widget, um diese Richtung als Vorderseite der Autobewegung festzulegen. Dadurch können Sie schnell eine Richtung festlegen, anstatt das Auto mit anderen Widgets langsam in diese Richtung zu drehen.
-    * :ref:`ar_app_drift`: Driftfunktion aktivieren.
-    * :ref:`ar_app_move`: Steuern Sie das Auto in alle Richtungen.
-    * Sprache(M): Dieses Widget ist in diesem Projekt nicht verfügbar, da dafür kein Code geschrieben wurde.
-    * :ref:`ar_app_line_track`: Wechseln in den Linienverfolgungsmodus.
-    * :ref:`ar_app_follow`: Wechsel in den Verfolgungsmodus.
-    * :ref:`ar_app_avoid`: Wechsel in den Hindernisvermeidungsmodus.
-    * :ref:`ar_app_rotate_drift`: Wird verwendet, um die Kopfrichtung zu steuern.
+        * :ref:`app_follow`: Wechseln in den Verfolgungsmodus.
+        * :ref:`app_avoid`: Wechseln in den Hindernisvermeidungsmodus.
+        * :ref:`app_rotate_drift`: Dient zur Steuerung der Kopfrichtung.
 
 
 .. _ar_app_compass_cali:

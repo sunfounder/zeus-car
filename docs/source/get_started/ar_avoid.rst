@@ -37,6 +37,19 @@ In diesem Projekt wird das Zeus-Auto automatisch vorwärts fahren. Zwei Hinderni
 .. note::
     Vor der Benutzung müssen Sie den Erkennungsabstand der beiden Hindernisvermeidungsmodule auf 15CM einstellen. Die Schritte sind wie folgt:
 
+    * Beginnen Sie mit der Einstellung des rechten Hindernisvermeidungsmoduls. Während des Transports können Kollisionen dazu führen, dass der Sender und Empfänger im Infrarotmodul kippen. Daher müssen Sie sie manuell begradigen.
+
+            .. raw:: html
+
+                <video loop autoplay muted style = "max-width:80%">
+                    <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+
+            .. raw:: html
+                
+                <br/> <br/>  
+
     * Stellen Sie ein Hindernis in etwa 15 cm Entfernung vom IR-Hindernisvermeidungsmodul auf.
     * Am Modul gibt es zwei Potentiometer. Eines reguliert die Sendeleistung, das andere die Sendefrequenz. Durch das Einstellen dieser beiden Potentiometer können Sie den Erkennungsabstand anpassen.
     * Dann können Sie ein Potentiometer einstellen. Wenn bei 15 cm die Signalleuchte auf dem Modul aufleuchtet, ist die Einstellung erfolgreich. Wenn nicht, stellen Sie das andere Potentiometer ein.

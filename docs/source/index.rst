@@ -17,41 +17,18 @@ Dies ist ein Bildungsbausatz, mit dem Anfänger (Kinder) praktische Erfahrungen 
 
 Wir haben einen :ref:`ar_play_mode` dafür eingerichtet. So können die Benutzer das Auto nach dem Zusammenbau direkt einschalten und mit seinen vielen coolen Funktionen über die eigene Fernbedienung oder Mobil-App spielen. Wenn Sie mehr darüber erfahren möchten, wie Sie seine verschiedenen Funktionen implementieren können, werfen Sie einen Blick auf den :ref:`ar_programming_mode`.
 
-.. **Über die Anzeigesprache**
+Wenn Sie Fragen haben, senden Sie bitte eine E-Mail an service@sunfounder.com, und wir werden so schnell wie möglich antworten.
 
-.. .. note::
+**Über die Anzeigesprache**
 
-.. Neben Englisch arbeiten wir an weiteren Sprachen für diesen Kurs. 
-.. Wenn Sie Interesse haben, uns zu helfen, kontaktieren Sie bitte service@sunfounder.com. 
-.. Als Dankeschön erhalten Sie ein kostenloses Produkt.
+Dieses Dokument ist auch in anderen Sprachen verfügbar. Um die Anzeigesprache zu ändern, klicken Sie bitte auf das **Read the Docs**-Symbol unten links auf der Seite.
 
-.. Derzeit unterstützt das Online-Tutorial Englisch, Deutsch und Japanisch. Bitte klicken Sie auf das **Read the Docs** Symbol in der linken unteren Ecke der Seite, um die Anzeigesprache zu ändern.
-
-.. .. image:: img/translation.png
-..     :align: center
-
-.. * Darüber hinaus empfehlen wir die Verwendung von Google Translate, um Englisch in die von Ihnen gewünschte Sprache zu übersetzen.
-
-..     Die Schritte sind wie folgt:
-
-..     * Auf dieser Kursseite mit der rechten Maustaste klicken und **In xx übersetzen** auswählen. Wenn die aktuelle Sprache nicht die gewünschte ist, können Sie sie später ändern.
-
-..     .. image:: img/translate1.png
-..         :align: center
-
-..     * Ein Sprach-Popup wird in der oberen rechten Ecke erscheinen. Klicken Sie auf das Menü, um **eine andere Sprache auszuwählen**.
-
-..     .. image:: img/translate2.png
-..         :align: center
-
-..     * Wählen Sie die Sprache aus dem umgekehrten Dreiecksfeld und klicken Sie dann auf **Fertig**.
-
-..     .. image:: img/translate3.png
-..         :align: center
+.. image:: img/translation.png
 
 .. toctree::
     :maxdepth: 2
 
+    About this Kit <self>
     get_started/get_started
     hardware/hardware
     faq
