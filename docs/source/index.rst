@@ -2,6 +2,17 @@
 Zeus Car - SunFounder Arduino Robot Car Bausatz
 ========================================================
 
+Danke, dass Sie sich für unser Zeus Car entschieden haben.
+
+.. note::
+    Dieses Dokument ist in den folgenden Sprachen verfügba.
+
+        * |link_german_tutorials|
+        * |link_jp_tutorials|
+        * |link_en_tutorials|
+    
+    Bitte klicken Sie auf die jeweiligen Links, um das Dokument in Ihrer bevorzugten Sprache aufzurufen.
+
 .. image:: img/zeus_car.jpg
     :width: 600
     :align: center
