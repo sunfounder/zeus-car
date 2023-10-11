@@ -144,6 +144,22 @@ rst_epilog = """
 .. |app_edit| image:: /get_started/img/app/app_edit.jpg
     :width: 20
 
+
+
+.. |link_german_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/de/latest/" target="_blank">Deutsch Online-Kurs</a>
+
+.. |link_jp_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/ja/latest/" target="_blank">日本語オンライン教材</a>
+
+.. |link_en_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/en/latest/" target="_blank">English Online-tutorials</a>
+
+
+
 .. |link_download_arduino| raw:: html
 
     <a href="https://www.arduino.cc/en/software#future-version-of-the-arduino-ide" target="_blank">Arduino IDE 2.0.0 Page</a>
