@@ -2,6 +2,17 @@
 Zeus Car - SunFounder Arduino ロボットカーキット
 ========================================================
 
+SunFounder Zeus Carをお選びいただき、ありがとうございます。
+
+.. note::
+    このドキュメントは以下の言語で利用可能です。
+
+        * |link_german_tutorials|
+        * |link_jp_tutorials|
+        * |link_en_tutorials|
+
+    ご希望の言語でドキュメントにアクセスするために、それぞれのリンクをクリックしてください。
+
 .. image:: img/zeus_car.jpg
     :width: 600
     :align: center
