@@ -6,29 +6,29 @@
 #include <ArduinoJson.h>
 
 /**
-* Use custom serial port
-*/
+ * Use custom serial port
+ */
 // #define AI_CAM_DEBUG_CUSTOM
 #ifdef AI_CAM_DEBUG_CUSTOM
-  #include <SoftwareSerial.h>
-  SoftwareSerial dSerial(10, 11); // RX, TX
-  #define DateSerial dSerial
-  #define DebugSerial Serial
+#include <SoftwareSerial.h>
+SoftwareSerial dSerial(10, 11); // RX, TX
+#define DateSerial dSerial
+#define DebugSerial Serial
 #else
-  #define DateSerial Serial
-  #define DebugSerial Serial
+#define DateSerial Serial
+#define DebugSerial Serial
 #endif
 
 /**
-*  Set SERIAL_TIMEOUT & WS_BUFFER_SIZE
-*/
+ *  Set SERIAL_TIMEOUT & WS_BUFFER_SIZE
+ */
 #define SERIAL_TIMEOUT 100
 #define WS_BUFFER_SIZE 200
 #define CHAR_TIMEOUT 50
 
 /**
-* Some keywords for communication with ESP32-CAM
-*/
+ * Some keywords for communication with ESP32-CAM
+ */
 #define CHECK "SC"
 #define OK_FLAG "[OK]"
 #define ERROR_FLAG "[ERR]"
@@ -39,12 +39,25 @@
 #define APP_STOP "[APPSTOP]"
 
 /**
+ * EEPROM address of wifi
+ */
+#define NAME_EEPROM_ADDRESS 12      // NAME start address 12
+#define NAME_MAX_LEN 17             // NAME max length, 16 + '\0'
+#define WIFI_MODE_EEPROM_ADDRESS 29 // WIFI_MODE start address 29
+#define WIFI_MODE_MAX_LEN 2         // WIFI_MODE max length, 1 + '\0'
+#define SSID_EEPROM_ADDRESS 31      // SSID start address 30
+#define SSID_MAX_LEN 21             // SSID max length, 20 + '\0'
+#define PSK_EEPROM_ADDRESS 52       // PSK start address 51
+#define PSK_MAX_LEN 21              // PSK max length, 20 + '\0'
+#define HAVE_DATE_EEPROM_ADDRESS 73 // Whether there is wifi information saved
+
+/**
  * @name Set the print level of information received by esp32-cam
  *
  * @code {.cpp}
  * #define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO
  * @endcode
- * 
+ *
  */
 #define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO
 #define CAM_DEBUG_LEVEL_OFF 0
@@ -61,20 +74,20 @@
 /**
  * @name Define component-related values
  */
-#define DPAD_STOP     0
-#define DPAD_FORWARD  1
+#define DPAD_STOP 0
+#define DPAD_FORWARD 1
 #define DPAD_BACKWARD 2
-#define DPAD_LEFT     3
-#define DPAD_RIGHT    4
+#define DPAD_LEFT 3
+#define DPAD_RIGHT 4
 
-#define JOYSTICK_X       0
-#define JOYSTICK_Y       1
-#define JOYSTICK_ANGLE   2
-#define JOYSTICK_RADIUS  3
+#define JOYSTICK_X 0
+#define JOYSTICK_Y 1
+#define JOYSTICK_ANGLE 2
+#define JOYSTICK_RADIUS 3
 
 #define WIFI_MODE_NONE "0"
-#define WIFI_MODE_STA  "1"
-#define WIFI_MODE_AP   "2"
+#define WIFI_MODE_STA "1"
+#define WIFI_MODE_AP "2"
 
 #define REGION_A 0
 #define REGION_B 1
@@ -103,51 +116,53 @@
 #define REGION_Y 24
 #define REGION_Z 25
 
+class AiCamera
+{
+public:
+  bool ws_connected = false;
+  char recvBuffer[WS_BUFFER_SIZE];
+  StaticJsonDocument<200> send_doc;
 
-class AiCamera {
-  public:
-    bool ws_connected = false;
-    char recvBuffer[WS_BUFFER_SIZE];
-    StaticJsonDocument<200> send_doc;
+  AiCamera(const char *name, const char *type);
+  void begin(const char *ssid, const char *password, const char *wifiMode, const char *wsPort);
+  void setOnReceived(void (*func)(char *, char *));
 
-    AiCamera(const char* name, const char* type);
-    void begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort);
-    void setOnReceived(void (*func)(char*, char*));
+  void set_command_timeout(uint32_t _timeout);
+  void readInto(char *buffer);
+  void loop();
+  void sendData();
 
-    void set_command_timeout(uint32_t _timeout);
-    void readInto(char* buffer);
-    void loop();
-    void sendData();
+  void debug(char *msg);
 
-    void debug(char* msg);
-    
-    void set(const char* command);
-    void set(const char* command, const char* value);
-    void get(const char* command, char* result);
-    void get(const char* command, const char* value, char* result);
+  void set(const char *command);
+  void set(const char *command, const char *value);
+  void get(const char *command, char *result);
+  void get(const char *command, const char *value, char *result);
 
-    int16_t getSlider(uint8_t region);
-    bool getButton(uint8_t region);
-    bool getSwitch(uint8_t region);
-    int16_t getJoystick(uint8_t region, uint8_t axis);
-    uint8_t getDPad(uint8_t region);
-    int16_t getThrottle(uint8_t region);
-    void setMeter(uint8_t region, double value);
-    void setRadar(uint8_t region, int16_t angle, double distance);
-    void setGreyscale(uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3);
-    void setValue(uint8_t region, double value);
-    void getSpeech(uint8_t region, char* result);
+  int16_t getSlider(uint8_t region);
+  bool getButton(uint8_t region);
+  bool getSwitch(uint8_t region);
+  int16_t getJoystick(uint8_t region, uint8_t axis);
+  uint8_t getDPad(uint8_t region);
+  int16_t getThrottle(uint8_t region);
+  void setMeter(uint8_t region, double value);
+  void setRadar(uint8_t region, int16_t angle, double distance);
+  void setGreyscale(uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3);
+  void setValue(uint8_t region, double value);
+  void getSpeech(uint8_t region, char *result);
 
-  private:
-    void command(const char* command, const char* value, char* result) ;
-    void subString(char* str, int16_t start, int16_t end=-1);
-    
-    void getStrOf(char* str, uint8_t index, char* result, char divider);
-    void setStrOf(char* str, uint8_t index, String value, char divider=';');
-    int16_t getIntOf(char* str, uint8_t index, char divider=';');
-    bool getBoolOf(char* str, uint8_t index);
-    double getDoubleOf(char* str, uint8_t index);
+private:
+  void command(const char *command, const char *value, char *result);
+  void subString(char *str, int16_t start, int16_t end = -1);
+
+  void getStrOf(char *str, uint8_t index, char *result, char divider);
+  void setStrOf(char *str, uint8_t index, String value, char divider = ';');
+  int16_t getIntOf(char *str, uint8_t index, char divider = ';');
+  bool getBoolOf(char *str, uint8_t index);
+  double getDoubleOf(char *str, uint8_t index);
+
+  void eeprom_read_string(int addr, char len, char *result);
+  void wifi_change_handler();
 };
 
 #endif // __AI_CAMERA_H__
-

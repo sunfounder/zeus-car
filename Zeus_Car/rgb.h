@@ -32,6 +32,9 @@
 #define R_OFFSET  1.0
 #define G_OFFSET  0.16
 #define B_OFFSET  0.30
+// #define R_OFFSET  1.0
+// #define G_OFFSET  0.5
+// #define B_OFFSET  0.5
 
 /** Initialize RGB leds */
 void rgbBegin();
