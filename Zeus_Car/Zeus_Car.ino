@@ -23,89 +23,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.5.0"
-
-#include <Arduino.h>
-#include <SoftPWM.h>
-#include <string.h>
-
-#include "rgb.h"
-#include "compass.h"
-#include "car_control.h"
-#include "ir_obstacle.h"
-#include "grayscale.h"
-#include "ultrasonic.h"
-#include "ir_remote.h"
-#include "cmd_code_config.hpp"
-#include "ai_camera.h"
-
-/*************************** Configure *******************************/
-/** @name Configure
- *
- */
-///@{
-/** Whether to enable Watchdog */
-#define WATCH_DOG 0
-#if WATCH_DOG
-#include <avr/wdt.h>
-#endif
-
-/** Whether to enable TEST mode */
-#define TEST 0
-#if TEST
-#include "test.h"
-#endif
-
-/** Whether to enable  */
-#define MEM 0
-#if MEM
-#include <MemoryFree.h>
-#include <pgmStrToRAM.h> // not needed for new way. but good to have for reference.
-#endif
-
-/** Configure Wifi mode, SSID, password*/
-#define WIFI_MODE WIFI_MODE_AP
-#define SSID "Zeus_Car"
-#define PASSWORD "12345678"
-
-// #define WIFI_MODE WIFI_MODE_STA
-// #define SSID "sunfounder_test"
-// #define PASSWORD "12345678"
-
-/** Configure product name */
-#define NAME "Zeus_Car"
-
-/** Configure product type */
-#define TYPE "Zeus_Car"
-
-/** Configure websockets port
- * Sunfounder Controller APP fixed using port 8765
- */
-#define PORT "8765"
-
-/** Configure the motors speed in different modes */
-#define SPEECH_REMOTE_POWER 60
-#define IR_REMOTE_POWER 60
-#define LINE_TRACK_POWER 60
-#define OBSTACLE_AVOID_POWER 65
-#define OBSTACLE_FOLLOW_POWER 65
-#define OBSTACLE_FOLLOW_ROTATE_POWER 50
-#define CAR_CALIBRATION_POWER 90
-
-/** Configure the offset angle of line track */
-#define LINE_TRACK_OFFSET_ANGLE 35
-
-/** Configure the follow distance of obstacle follow */
-#define FOLLOW_DISTANCE 15
-
-/** websocket communication headers */
-#define WS_HEADER "WS+"
-
-///@}
-
-/*********************** Global variables ****************************/
-/** Check if a string starts with a certain character */
-#define IsStartWith(str, prefix) (strncmp(str, prefix, strlen(prefix)) == 0)
+#include "Zeus_Car.h"
 
 /** Instantiate aicamera, a class for serial communication with ESP32-CAM */
 AiCamera aiCam = AiCamera(NAME, TYPE);
@@ -149,18 +67,9 @@ void setup()
   Serial.println(F(VERSION));
 
   Serial.println(F("Initialzing..."));
-  // SoftPWMBegin(); // init softpwm, before the motors initialization and the rgb LEDs initialization
-  // rgbBegin();
-  // rgbWrite(ORANGE); // init hint
-  // carBegin();
-  // irBegin();
-  // irObstacleBegin();
-  // gsBegin();
 
-#if !TEST
   aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT);
   aiCam.setOnReceived(onReceive);
-#endif
 
   while (millis() - m < 500)
   { // Wait for peripherals to be ready
@@ -188,7 +97,6 @@ void setup()
  */
 void loop()
 {
-#if !TEST
   // Note that "aiCam.loop()" needs to be before "irRemoteHandler"
   // because the value in a is constantly updated
   // Note that the cycle interval of the "aiCam.loop()" should be less than 80ms to avoid data d
@@ -199,19 +107,6 @@ void loop()
   }
   irRemoteHandler();
   modeHandler();
-
-  // Serial.print(F("- SRAM left: ")); Serial.println(freeRam());
-#else
-  /* Select the item to be tested, multiple selection allowed */
-  motors_test();
-  // rgb_test();
-  // grayscale_test();
-  // ultrasonic_test();
-  // ir_obstacle_test();
-  // obstacleAvoidance();
-  // compass_test();
-  // ir_remote_test();
-#endif
 
 #if WATCH_DOG
   wdt_reset(); /* Reset the watchdog */
