@@ -15,6 +15,7 @@
 /**
  *@name Defines the hexadecimal value of the color
  */
+#define WHITE         0xFFFFFF
 #define RED           0xFF0202
 #define ORANGE        0xFFA500
 #define YELLOW        0xFFFF0A

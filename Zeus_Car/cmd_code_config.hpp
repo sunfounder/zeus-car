@@ -10,26 +10,23 @@
 #define MODE_NONE                     0
 #define MODE_LINE_TRACK_WITHOUT_MAG   1
 #define MODE_LINE_TRACK_WITH_MAG      2
-#define MODE_ROTATE_LINE_FOLLOWING    3
-#define MODE_OBSTACLE_FOLLOWING       4
-#define MODE_OBSTACLE_AVOIDANCE       5
+#define MODE_OBSTACLE_FOLLOWING       3
+#define MODE_OBSTACLE_AVOIDANCE       4
 #define MODE_REMOTE_CONTROL           6
-#define MODE_APP_CONTROL              7
 #define MODE_COMPASS_CALIBRATION      8
 
 /** Set the color to match the mode */
-#define ERROR_COLOR RED
-#define WARN_COLOR ORANGE
+#define COLOR_ERROR RED
+#define COLOR_WARN ORANGE
 
-#define MODE_NONE_COLOR 0xFFFFFF // white
+#define COLOR_STATE_IDLE                    WHITE
+#define COLOR_STATE_IR_REMOTE               GREEN_CYAN
+#define COLOR_STATE_APP                     MAGENTA
 
-#define MODE_REMOTE_CONTROL_COLOR           GREEN_CYAN
-#define MODE_APP_CONTROL_COLOR              MAGENTA
-
-#define MODE_LINE_TRACK_WITH_MAG_COLOR      GREEN
-#define MODE_LINE_TRACK_WITHOUT_MAG_COLOR   CYAN
-#define MODE_OBSTACLE_FOLLOWING_COLOR       BLUE
-#define MODE_OBSTACLE_AVOIDANCE_COLOR       PURPLE
+#define COLOR_MODE_LINE_TRACK_MAG           GREEN
+#define COLOR_MODE_LINE_TRACK_NO_MAG        CYAN
+#define COLOR_MODE_OBSTACLE_FOLLOWING       BLUE
+#define COLOR_MODE_OBSTACLE_AVOIDANCE       PURPLE
 
 
 // State machine for almost all mode. State define see every function

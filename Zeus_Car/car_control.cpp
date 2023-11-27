@@ -171,10 +171,21 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
   * Reset origin head pointing
   */
 void carResetHeading() {
-  // int t = millis();
   for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
     originHeading = compassReadAngle();
   }
-  // Serial.print("reset heading: "); Serial.println(millis() - t); // takes about 93 ms
 }
 
+/**
+ *  Car Set heading
+ * 
+ * @param heading the car head pointing
+ */
+void carSetHeading(int16_t heading) {
+  originHeading = heading;
+}
+
+/** Get Car current heading*/
+int16_t carGetHeading() {
+  return originHeading;
+}

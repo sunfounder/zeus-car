@@ -32,12 +32,12 @@
 /**
  * @name Set the color to match the mode
  */
-#define MODE_NONE_COLOR                     GREEN_CYAN
+#define COLOR_STATE_IDLE                     GREEN_CYAN
 #define MODE_LINE_TRACK_COLOR               CYAN
 #define MODE_ROTATE_LINE_FOLLOWING_COLOR    CYAN_BLUE
-#define MODE_OBSTACLE_FOLLOWING_COLOR       BLUE
-#define MODE_OBSTACLE_AVOIDANCE_COLOR       PURPLE
-#define MODE_REMOTE_CONTROL_COLOR           VOILET
-#define MODE_APP_CONTROL_COLOR              MAGENTA
+#define COLOR_MODE_OBSTACLE_FOLLOWING       BLUE
+#define COLOR_MODE_OBSTACLE_AVOIDANCE       PURPLE
+#define COLOR_STATE_IR_REMOTE           VOILET
+#define COLOR_STATE_APP              MAGENTA
 
 #endif // __ARDUINO_CAR_H__

@@ -251,37 +251,37 @@ void modeHandler()
   switch (currentMode)
   {
   case MODE_NONE:
-    rgbWrite(MODE_NONE_COLOR);
+    rgbWrite(COLOR_STATE_IDLE);
     carStop();
     carResetHeading();
     break;
   case MODE_LINE_TRACK_WITHOUT_MAG:
-    rgbWrite(MODE_LINE_TRACK_WITHOUT_MAG_COLOR);
+    rgbWrite(COLOR_MODE_LINE_TRACK_NO_MAG);
     remotePower = LINE_TRACK_POWER;
     line_track(false);
     break;
   case MODE_LINE_TRACK_WITH_MAG:
-    rgbWrite(MODE_LINE_TRACK_WITH_MAG_COLOR);
+    rgbWrite(COLOR_MODE_LINE_TRACK_MAG);
     remotePower = LINE_TRACK_POWER;
     line_track(true);
     break;
   case MODE_OBSTACLE_FOLLOWING:
-    rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);
+    rgbWrite(COLOR_MODE_OBSTACLE_FOLLOWING);
     remotePower = OBSTACLE_FOLLOW_POWER;
     obstacleFollowing();
     break;
   case MODE_OBSTACLE_AVOIDANCE:
-    rgbWrite(MODE_OBSTACLE_AVOIDANCE_COLOR);
+    rgbWrite(COLOR_MODE_OBSTACLE_AVOIDANCE);
     remotePower = OBSTACLE_AVOID_POWER;
     obstacleAvoidance();
     break;
   case MODE_REMOTE_CONTROL:
-    rgbWrite(MODE_REMOTE_CONTROL_COLOR);
+    rgbWrite(COLOR_STATE_IR_REMOTE);
     carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
     lastRemotePower = remotePower;
     break;
   case MODE_APP_CONTROL:
-    rgbWrite(MODE_APP_CONTROL_COLOR);
+    rgbWrite(COLOR_STATE_APP);
     carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, appRemoteDriftEnable);
     lastRemotePower = remotePower;
     break;

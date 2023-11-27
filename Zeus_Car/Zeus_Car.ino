@@ -28,51 +28,44 @@
 /** Instantiate aicamera, a class for serial communication with ESP32-CAM */
 AiCamera aiCam = AiCamera(NAME, TYPE);
 
-extern uint8_t currentMode;
+/** global variables */
+// current state
+uint8_t currentState = STATE_IDLE;
+// last state
+uint8_t lastState = 255;
+// line track power
+uint8_t lineTrackPower = 0;
+// obstacle power
+uint8_t obstaclePower = 0;
+// calibration State
+uint8_t calibrationState = CALIBRATION_STATE_IDLE;
+// last mode
+uint8_t lastMode = 255;
 
-extern int16_t currentAngle;
-extern int16_t remoteAngle;
-extern int8_t remotePower;
-extern int8_t lastRemotePower;
-extern int16_t remoteHeading;
-extern bool remoteDriftEnable;
-
-int16_t appRemoteAngle = 0;
-int8_t appRemotePower = 0;
-int16_t appRemoteHeading = 0;
-int16_t appRemoteHeadingR = 0;
-bool appRemoteDriftEnable = false;
-
-bool irOrAppFlag = false; // true: App, false: IR
-
-// last button state for app buttons:Line no Mag, Line, Follow, Avoid button
-bool current_button_state[4] = {0, 0, 0, 0};
-bool last_button_state[4] = {0, 0, 0, 0};
-
-char speech_buf[20];
-
-//@}
-
-/*********************** setup() & loop() ************************/
 /**
  * setup(), Ardunio main program entrance
  *
  * Initialization of some peripherals
  */
-void setup()
-{
+void setup() {
   int m = millis();
   Serial.begin(115200);
-  Serial.print(F("Arduino Car version "));
+  Serial.print(F("Zeus Car version "));
   Serial.println(F(VERSION));
 
   Serial.println(F("Initialzing..."));
+  SoftPWMBegin(); // init softpwm, before the motors initialization and the rgb LEDs initialization
+  rgbBegin();
+  rgbWrite(ORANGE); // init hint
+  carBegin();
+  irBegin();
+  irObstacleBegin();
+  gsBegin();
+  
+  aiCam.begin(AP_SSID, AP_PASSWORD, PORT, false);
+  aiCam.setOnReceivedBinary(onReceive);
 
-  aiCam.begin(SSID, PASSWORD, WIFI_MODE, PORT);
-  aiCam.setOnReceived(onReceive);
-
-  while (millis() - m < 500)
-  { // Wait for peripherals to be ready
+  while (millis() - m < 500) {  // Wait for peripherals to be ready
     delay(1);
   }
 
@@ -83,50 +76,91 @@ void setup()
 #endif
 
   Serial.println(F("Okie!"));
-  rgbWrite(GREEN); // init finished
+  rgbWrite(GREEN);  // init finished
 }
 
 /**
  * loop(), Ardunio main loop
  *
- * - inclued
- *  - aiCam.loop()
- *  - irRemoteHandler()
- *  - modeHandler()
- * - or modules test
  */
-void loop()
-{
-  // Note that "aiCam.loop()" needs to be before "irRemoteHandler"
-  // because the value in a is constantly updated
-  // Note that the cycle interval of the "aiCam.loop()" should be less than 80ms to avoid data d
-  aiCam.loop();
-  if (aiCam.ws_connected == false && irOrAppFlag == 1)
-  {
-    currentMode = MODE_NONE;
+void loop() {
+  if (lastState != currentState) {
+    Serial.print(F("State changed to "));
+    Serial.println(currentState);
+    lastState = currentState;
+    switch (currentState) {
+      case STATE_IDLE:
+        {
+          rgbWrite(COLOR_STATE_IDLE);
+          carStop();
+          break;
+        }
+      case STATE_IR_REMOTE:
+        {
+          currentMode = MODE_REMOTE_CONTROL;
+          rgbWrite(COLOR_STATE_IR_REMOTE);
+          if (lastState == STATE_APP) {
+            aiCam.reset(false);
+          }
+          break;
+        }
+      case STATE_APP:
+        {
+          currentMode = MODE_REMOTE_CONTROL;
+          rgbWrite(COLOR_STATE_APP);
+          break;
+        }
+      default:
+        break;
+    }
   }
-  irRemoteHandler();
-  modeHandler();
+  switch (currentState) {
+    case STATE_IDLE:
+      {
+        aiCam.loop();
+        if (aiCam.ws_connected == true) {
+          currentState = STATE_APP;
+        }
+        break;
+      }
+    case STATE_APP:
+      {
+        // Serial.println(F("aiCam loop"));
+        aiCam.loop();
+        // Serial.println(F("aiCam loop done"));
+        handleSensorData();
+        if (aiCam.ws_connected == false) {
+          currentState = STATE_IDLE;
+        }
+        modeHandler();
+        break;
+      }
+    case STATE_IR_REMOTE:
+      {
+        irRemoteHandler();
+        modeHandler();
+        break;
+      }
+    default:
+      break;
+  }
 
 #if WATCH_DOG
   wdt_reset(); /* Reset the watchdog */
 #endif
 
 #if MEM
-  Serial.print(F("Free RAM = ")); // F function does the same and is now a built in library, in IDE > 1.0.0
-  Serial.println(freeMemory());   // print how much RAM is available in bytes.
+  Serial.print(F("Free RAM = "));  // F function does the same and is now a built in library, in IDE > 1.0.0
+  Serial.println(freeMemory());    // print how much RAM is available in bytes.
 #endif
 }
 
 /***************************** Functions ******************************/
 // https://docs.arduino.cc/learn/programming/memory-guide
-int freeRam()
-{
+int freeRam() {
   extern int __heap_start, *__brkval;
   int v;
-  return (int)&v - (__brkval == 0
-                        ? (int)&__heap_start
-                        : (int)__brkval);
+  return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
 }
 
 /**
@@ -141,66 +175,61 @@ int freeRam()
  *  - MODE_APP_CONTROL
  *  - MODE_COMPASS_CALIBRATION
  */
-void modeHandler()
-{
-  switch (currentMode)
-  {
-  case MODE_NONE:
-    rgbWrite(MODE_NONE_COLOR);
-    carStop();
-    carResetHeading();
-    break;
-  case MODE_LINE_TRACK_WITHOUT_MAG:
-    rgbWrite(MODE_LINE_TRACK_WITHOUT_MAG_COLOR);
-    remotePower = LINE_TRACK_POWER;
-    line_track(false);
-    break;
-  case MODE_LINE_TRACK_WITH_MAG:
-    rgbWrite(MODE_LINE_TRACK_WITH_MAG_COLOR);
-    remotePower = LINE_TRACK_POWER;
-    line_track(true);
-    break;
-  case MODE_OBSTACLE_FOLLOWING:
-    rgbWrite(MODE_OBSTACLE_FOLLOWING_COLOR);
-    remotePower = OBSTACLE_FOLLOW_POWER;
-    obstacleFollowing();
-    break;
-  case MODE_OBSTACLE_AVOIDANCE:
-    rgbWrite(MODE_OBSTACLE_AVOIDANCE_COLOR);
-    remotePower = OBSTACLE_AVOID_POWER;
-    obstacleAvoidance();
-    break;
-  case MODE_REMOTE_CONTROL:
-    rgbWrite(MODE_REMOTE_CONTROL_COLOR);
-    carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, remoteDriftEnable);
-    lastRemotePower = remotePower;
-    break;
-  case MODE_APP_CONTROL:
-    rgbWrite(MODE_APP_CONTROL_COLOR);
-    carMoveFieldCentric(remoteAngle, remotePower, remoteHeading, appRemoteDriftEnable);
-    lastRemotePower = remotePower;
-    break;
-  case MODE_COMPASS_CALIBRATION:
-#if WATCH_DOG
-    wdt_disable(); /* Disable the watchdog and wait for more than 2 seconds */
-#endif
-    bool changed = compassCalibrateLoop();
-    if (changed)
-    {
-      rgbWrite(GREEN);
-      delay(20);
-      rgbOff();
+void modeHandler() {
+  if (lastMode != currentMode) {
+    Serial.print(F("Mode Change: "));Serial.print(lastMode);Serial.print(F(" -> "));Serial.println(currentMode);
+    if (lastMode == MODE_COMPASS_CALIBRATION && calibrationState != CALIBRATION_STATE_CALIBRATED) {
+      Serial.print(F("Calibration interrupted"));
+      calibrationState = CALIBRATION_STATE_INTERRUPTED;
     }
-    if (compassCalibrateDone())
-    {
-      currentMode = MODE_NONE;
-      carStop();
-    }
+  }
+  lastMode = currentMode;
+  switch (currentMode) {
+    case MODE_LINE_TRACK_WITHOUT_MAG:
+      // rgbWrite(COLOR_MODE_LINE_TRACK_NO_MAG);
+      remotePower = LINE_TRACK_POWER;
+      line_track(false);
+      break;
+    case MODE_LINE_TRACK_WITH_MAG:
+      // rgbWrite(COLOR_MODE_LINE_TRACK_MAG);
+      remotePower = LINE_TRACK_POWER;
+      line_track(true);
+      break;
+    case MODE_OBSTACLE_FOLLOWING:
+      // rgbWrite(COLOR_MODE_OBSTACLE_FOLLOWING);
+      remotePower = OBSTACLE_FOLLOW_POWER;
+      obstacleFollowing();
+      break;
+    case MODE_OBSTACLE_AVOIDANCE:
+      // rgbWrite(COLOR_MODE_OBSTACLE_AVOIDANCE);
+      remotePower = OBSTACLE_AVOID_POWER;
+      obstacleAvoidance();
+      break;
+    case MODE_REMOTE_CONTROL:
+      // rgbWrite(COLOR_STATE_IR_REMOTE);
+      // carMoveFieldCentric(remoteAngle, remotePower, remoteHeading);
+      // lastRemotePower = remotePower;
+      break;
+    case MODE_COMPASS_CALIBRATION:
 #if WATCH_DOG
-    wdt_enable(WDTO_2S); /* Enable the watchdog with a timeout of 2 seconds */
+      wdt_disable(); /* Disable the watchdog and wait for more than 2 seconds */
 #endif
-  default:
-    break;
+      bool changed = compassCalibrateLoop();
+      if (changed) {
+        rgbWrite(GREEN);
+        delay(20);
+        rgbOff();
+      }
+      if (compassCalibrateDone()) {
+        currentMode = MODE_REMOTE_CONTROL;
+        calibrationState = CALIBRATION_STATE_CALIBRATED;
+        carStop();
+      }
+#if WATCH_DOG
+      wdt_enable(WDTO_2S); /* Enable the watchdog with a timeout of 2 seconds */
+#endif
+    default:
+      break;
   }
 }
 
@@ -211,114 +240,89 @@ void modeHandler()
  *               true(default), use the geomagnetic sensor,
  *               false, without the geomagnetic sensor
  */
-void line_track(bool useMag)
-{
+void line_track(bool useMag) {
   uint16_t result = gsGetAngleOffset();
   uint8_t angleType = result >> 8 & 0xFF;
   uint8_t offsetType = result & 0xFF;
   int16_t angle = 0;
   int8_t offset = 0;
 
-  switch (angleType)
-  {
-  case ANGLE_N45:
-    angle = -45;
-    break;
-  case ANGLE_0:
-    angle = 0;
-    break;
-  case ANGLE_45:
-    angle = 45;
-    break;
-  case ANGLE_90:
-    angle = 90;
-    break;
-  case ANGLE_ERROR:
-    angle = currentAngle;
-    break;
+  switch (angleType) {
+    case ANGLE_N45:
+      angle = -45;
+      break;
+    case ANGLE_0:
+      angle = 0;
+      break;
+    case ANGLE_45:
+      angle = 45;
+      break;
+    case ANGLE_90:
+      angle = 90;
+      break;
+    case ANGLE_ERROR:
+      angle = currentAngle;
+      break;
   }
-  switch (offsetType)
-  {
-  case OFFSET_N1:
-    offset = -1;
-    break;
-  case OFFSET_0:
-    offset = 0;
-    break;
-  case OFFSET_1:
-    offset = 1;
-    break;
-  case OFFSET_ERROR:
-    offset = 0;
-    break;
+  switch (offsetType) {
+    case OFFSET_N1:
+      offset = -1;
+      break;
+    case OFFSET_0:
+      offset = 0;
+      break;
+    case OFFSET_1:
+      offset = 1;
+      break;
+    case OFFSET_ERROR:
+      offset = 0;
+      break;
   }
 
   int16_t deltaAngle = currentAngle - angle;
-  if (deltaAngle > 180)
-  {
+  if (deltaAngle > 180) {
     deltaAngle -= 360;
-  }
-  else if (deltaAngle < -180)
-  {
+  } else if (deltaAngle < -180) {
     deltaAngle += 360;
   }
 
-  if (deltaAngle > 90)
-  {
+  if (deltaAngle > 90) {
     angle -= 180;
     offset *= -1;
-  }
-  else if (deltaAngle < -90)
-  {
+  } else if (deltaAngle < -90) {
     angle += 180;
     offset *= -1;
   }
   currentAngle = angle + (offset * LINE_TRACK_OFFSET_ANGLE);
 
-  if (useMag)
-  {
-    carMoveFieldCentric(currentAngle, LINE_TRACK_POWER, 0, false, true);
-  }
-  else
-  {
-    carMove(currentAngle, LINE_TRACK_POWER, 0, false);
+  if (useMag) {
+    carMoveFieldCentric(currentAngle, lineTrackPower, 0, false, true);
+  } else {
+    carMove(currentAngle, lineTrackPower, 0, false);
   }
 }
 
 /**
  * Obstacle follow program
  */
-void obstacleFollowing()
-{
+void obstacleFollowing() {
   byte result = irObstacleRead();
   bool leftIsClear = result & 0b00000001;
   bool rightIsClear = result & 0b00000010;
   float usDistance = ultrasonicRead();
 
-  if (usDistance < 4)
-  {
+  if (usDistance < 4) {
     carStop();
-  }
-  else if (usDistance < 10)
-  {
+  } else if (usDistance < 10) {
     carForward(30);
-  }
-  else if (usDistance < FOLLOW_DISTANCE)
-  {
+  } else if (usDistance < FOLLOW_DISTANCE) {
     carForward(OBSTACLE_FOLLOW_POWER);
-  }
-  else
-  {
-    if (!leftIsClear)
-    {
-      carTurnLeft(OBSTACLE_FOLLOW_ROTATE_POWER);
-    }
-    else if (!rightIsClear)
-    {
-      carTurnRight(OBSTACLE_FOLLOW_ROTATE_POWER);
-    }
-    else
-    {
+  } else {
+    if (!leftIsClear) {
+      carTurnLeft(obstaclePower);
+    } else if (!rightIsClear) {
+      carTurnRight(obstaclePower);
+    } else {
       carStop();
     }
   }
@@ -327,41 +331,30 @@ void obstacleFollowing()
 /**
  * Obstacle avoidance program
  */
-int8_t last_clear = -1; // last_clear, 1, left; -1, right;
+int8_t last_clear = -1;  // last_clear, 1, left; -1, right;
 bool last_forward = false;
 
-void obstacleAvoidance()
-{
+void obstacleAvoidance() {
   byte result = irObstacleRead();
   bool leftIsClear = result & 0b00000001;
   bool rightIsClear = result & 0b00000010;
   bool middleIsClear = ultrasonicIsClear();
 
-  if (middleIsClear && leftIsClear && rightIsClear)
-  { // 111
+  if (middleIsClear && leftIsClear && rightIsClear) {  // 111
     last_forward = true;
     carForward(OBSTACLE_AVOID_POWER);
-  }
-  else
-  {
-    if ((leftIsClear && rightIsClear) || (!leftIsClear && !rightIsClear))
-    {                                 // 101, 000, 010
-      carMove(0, 0, last_clear * 50); // last_clear=1, turn left
+  } else {
+    if ((leftIsClear && rightIsClear) || (!leftIsClear && !rightIsClear)) {  // 101, 000, 010
+      carMove(0, 0, last_clear * 50);                                        // last_clear=1, turn left
       last_forward = false;
-    }
-    else if (leftIsClear)
-    { // 100, 110
-      if (last_clear == 1 || last_forward == true)
-      {
+    } else if (leftIsClear) {  // 100, 110
+      if (last_clear == 1 || last_forward == true) {
         carTurnLeft(OBSTACLE_AVOID_POWER);
         last_clear = 1;
         last_forward = false;
       }
-    }
-    else if (rightIsClear)
-    { // 001, 011
-      if (last_clear == -1 || last_forward == true)
-      {
+    } else if (rightIsClear) {  // 001, 011
+      if (last_clear == -1 || last_forward == true) {
         carTurnRight(OBSTACLE_AVOID_POWER);
         last_clear = -1;
         last_forward = false;
@@ -373,78 +366,69 @@ void obstacleAvoidance()
 /**
  * irRemoteHandler, handle IR remote control key events
  */
-void irRemoteHandler()
-{
+void irRemoteHandler() {
 
   uint8_t key = irRead();
-  if (key == IR_KEY_ERROR)
-  {
-    return; // No key pressed
-  }
-  else
-  {
+  if (key == IR_KEY_ERROR) {
+    return;  // No key pressed
+  } else {
     remotePower = IR_REMOTE_POWER;
-    irOrAppFlag = false;
   }
 
   int8_t cmd_code = ir_key_2_cmd_code(key);
-  if (cmd_code != -1)
-  {
+  if (cmd_code != -1) {
     currentMode = MODE_REMOTE_CONTROL;
     cmd_fuc_table[cmd_code]();
-  }
-  else
-  {
-    switch (key)
-    {
-    case IR_KEY_MODE:
-      break;
-    case IR_KEY_MUTE:
-      currentMode = MODE_COMPASS_CALIBRATION;
-      carMove(0, 0, CAR_CALIBRATION_POWER);
-      compassCalibrateStart();
-      break;
-    case IR_KEY_PLAY_PAUSE:
-      carResetHeading();
-      currentMode = MODE_LINE_TRACK_WITH_MAG;
-      break;
-    case IR_KEY_EQ:
-      carResetHeading();
-      currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
-      break;
-    case IR_KEY_BACKWARD:
-      carResetHeading();
-      currentMode = MODE_OBSTACLE_FOLLOWING;
-      break;
-    case IR_KEY_FORWARD:
-      carResetHeading();
-      currentMode = MODE_OBSTACLE_AVOIDANCE;
-      break;
-    case IR_KEY_MINUS: // drift left
-      currentMode = MODE_REMOTE_CONTROL;
-      remoteAngle = 0;
-      remotePower = lastRemotePower;
-      remoteHeading = -90;
-      remoteDriftEnable = true;
-      carResetHeading();
-      break;
-    case IR_KEY_PLUS: // drift right
-      currentMode = MODE_REMOTE_CONTROL;
-      remoteAngle = 0;
-      remotePower = lastRemotePower;
-      remoteHeading = 90;
-      remoteDriftEnable = true;
-      carResetHeading();
-      break;
-    case IR_KEY_0: // Reset origin direction
-      currentMode = MODE_REMOTE_CONTROL;
-      remoteAngle = 0;
-      remotePower = 0;
-      remoteHeading = 0;
-      remoteDriftEnable = false;
-      carStop();
-      carResetHeading();
-      break;
+  } else {
+    switch (key) {
+      case IR_KEY_MODE:
+        break;
+      case IR_KEY_MUTE:
+        currentMode = MODE_COMPASS_CALIBRATION;
+        carMove(0, 0, CAR_CALIBRATION_POWER);
+        compassCalibrateStart();
+        break;
+      case IR_KEY_PLAY_PAUSE:
+        carResetHeading();
+        currentMode = MODE_LINE_TRACK_WITH_MAG;
+        break;
+      case IR_KEY_EQ:
+        carResetHeading();
+        currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
+        break;
+      case IR_KEY_BACKWARD:
+        carResetHeading();
+        currentMode = MODE_OBSTACLE_FOLLOWING;
+        break;
+      case IR_KEY_FORWARD:
+        carResetHeading();
+        currentMode = MODE_OBSTACLE_AVOIDANCE;
+        break;
+      case IR_KEY_MINUS:  // drift left
+        currentMode = MODE_REMOTE_CONTROL;
+        remoteAngle = 0;
+        remotePower = lastRemotePower;
+        remoteHeading = -90;
+        remoteDriftEnable = true;
+        carResetHeading();
+        break;
+      case IR_KEY_PLUS:  // drift right
+        currentMode = MODE_REMOTE_CONTROL;
+        remoteAngle = 0;
+        remotePower = lastRemotePower;
+        remoteHeading = 90;
+        remoteDriftEnable = true;
+        carResetHeading();
+        break;
+      case IR_KEY_0:  // Reset origin direction
+        currentMode = MODE_REMOTE_CONTROL;
+        remoteAngle = 0;
+        remotePower = 0;
+        remoteHeading = 0;
+        remoteDriftEnable = false;
+        carStop();
+        carResetHeading();
+        break;
     }
   }
 }
@@ -452,193 +436,253 @@ void irRemoteHandler()
 /**
  * websocket received data processing
  */
-void onReceive()
-{
-  Serial.print("recv:");
-  Serial.println(aiCam.recvBuffer);
-  irOrAppFlag = true;
-
-  // Mode select: line track without magnetic field, line track withmagnetic field, obstacle following, obstacle avoidance
-  current_button_state[0] = aiCam.getSwitch(REGION_M);
-  current_button_state[1] = aiCam.getSwitch(REGION_N);
-  current_button_state[2] = aiCam.getSwitch(REGION_O);
-  current_button_state[3] = aiCam.getSwitch(REGION_P);
-
-  // check change
-  bool is_change = false;
-  for (int i = 0; i < 4; i++)
-  {
-    if (current_button_state[i] != last_button_state[i])
-    {
-      is_change = true;
-      last_button_state[i] = current_button_state[i];
+void onReceive() {
+  Serial.print("onReceive:");
+  for (int i = 0; i < aiCam.recvBufferLength; i++) {
+    Serial.print(aiCam.recvBuffer[i], HEX);
+    Serial.print(" ");
+  }
+  Serial.println(" ");
+  for (int i = 0; i < aiCam.recvBufferLength; i++) {
+    uint8_t entityId = aiCam.recvBuffer[i];
+    switch (entityId) {
+      case 0x01:  // Car move car centric
+        {
+          i += 1;
+          uint8_t angleMSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t angleLSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t movePower = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t rotatePower = aiCam.recvBuffer[i];
+          int16_t angle = (angleMSB << 8) | angleLSB;
+          // Serial.println("Car move car centric");
+          // Serial.print("angle:");Serial.println(angle);
+          // Serial.print("movePower:");Serial.println(movePower);
+          // Serial.print("rotatePower:");Serial.println(rotatePower);
+          carMove(angle, movePower, rotatePower);
+          break;
+        }
+      case 0x02:  // Car move field centric
+        {
+          i += 1;
+          uint8_t moveAngleMSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t moveAngleLSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t movePower = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t headingAngleMSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t headingAngleLSB = aiCam.recvBuffer[i];
+          int16_t moveAngle = (moveAngleMSB << 8) | moveAngleLSB;
+          int16_t headingAngle = (headingAngleMSB << 8) | headingAngleLSB;
+          Serial.println(F("Car move field centric"));
+          Serial.print(F("moveAngle:"));Serial.println(moveAngle);
+          Serial.print(F("movePower:"));Serial.println(movePower);
+          Serial.print(F("headingAngle:"));Serial.println(headingAngle);
+          carMoveFieldCentric(moveAngle, movePower, headingAngle);
+          break;
+        }
+      case 0x03:  // Direct motor control
+        {
+          i += 1;
+          int8_t motor0 = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t motor1 = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t motor2 = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t motor3 = aiCam.recvBuffer[i];
+          Serial.println(F("Direct motor control"));
+          Serial.print(F("motor0:"));Serial.println(motor0);
+          Serial.print(F("motor1:"));Serial.println(motor1);
+          Serial.print(F("motor2:"));Serial.println(motor2);
+          Serial.print(F("motor3:"));Serial.println(motor3);
+          carSetMotors(motor0, motor1, motor2, motor3);
+          break;
+        }
+      case 0x04:  // RGB control
+        {
+          i += 1;
+          uint8_t r = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t g = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t b = aiCam.recvBuffer[i];
+          Serial.println(F("Set RGB: ("));Serial.print(r);
+          Serial.print(F(", "));Serial.print(g);
+          Serial.print(F(", "));Serial.print(b);Serial.println(")");
+          rgbWrite(r, g, b);
+          break;
+        }
+      case 0x05:  // Set Heading
+        {
+          i += 1;
+          uint8_t headingMSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t headingLSB = aiCam.recvBuffer[i];
+          int16_t heading = (headingMSB << 8) | headingLSB;
+          Serial.print(F("Set Heading: "));Serial.println(heading);
+          carSetHeading(heading);
+          break;
+        }
+      case 0x06:  // Calibrate compass
+        {
+          if (currentMode == MODE_COMPASS_CALIBRATION) break;
+          Serial.println(F("Calibrate compass"));
+          carMove(0, 0, CAR_CALIBRATION_POWER);
+          compassCalibrateStart();
+          currentMode = MODE_COMPASS_CALIBRATION;
+          calibrationState = CALIBRATION_STATE_CALIBRATING;
+          break;
+        }
+      case 0x07:  // Line Track mode
+        {
+          i += 1;
+          uint8_t state = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t mag = aiCam.recvBuffer[i];
+          i += 1;
+          lineTrackPower = aiCam.recvBuffer[i];
+          Serial.print(F("Line Track"));
+          if (state == 1) {
+            Serial.print(F(" ON"));
+            if (mag == 1) {
+              Serial.print(F(" with mag"));
+              currentMode = MODE_LINE_TRACK_WITH_MAG;
+            } else {
+              Serial.print(F(" without mag"));
+              currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
+            }
+          } else {
+            Serial.print(F(" OFF"));
+            currentMode = MODE_REMOTE_CONTROL;
+          }
+          Serial.print(F(" power:"));Serial.println(lineTrackPower);
+          break;
+        }
+      case 0x08:  // Obstacle mode
+        {
+          i += 1;
+          uint8_t state = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t mode = aiCam.recvBuffer[i];
+          i += 1;
+          obstaclePower = aiCam.recvBuffer[i];
+          Serial.print(F("Obstacle "));
+          if (state) {
+            Serial.print(F(" ON"));
+            if (mode == 0) {
+              Serial.print(F(" avoidance"));
+              currentMode = MODE_OBSTACLE_AVOIDANCE;
+            } else {
+              Serial.print(F(" following"));
+              currentMode = MODE_OBSTACLE_FOLLOWING;
+            }
+          } else {
+            Serial.print(F(" OFF"));
+            currentMode = MODE_REMOTE_CONTROL;
+          }
+          Serial.print(F(" power:"));Serial.println(obstaclePower);
+          break;
+        }
     }
   }
-  // changed
-  if (is_change || currentMode == MODE_APP_CONTROL)
-  {
-    if (current_button_state[0])
-    {
-      if (currentMode != MODE_LINE_TRACK_WITHOUT_MAG)
-      {
-        carResetHeading();
-        currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
-      }
-    }
-    else if (current_button_state[1])
-    {
-      if (currentMode != MODE_LINE_TRACK_WITH_MAG)
-      {
-        carResetHeading();
-        currentMode = MODE_LINE_TRACK_WITH_MAG;
-      }
-    }
-    else if (current_button_state[2])
-    {
-      if (currentMode != MODE_OBSTACLE_FOLLOWING)
-      {
-        carResetHeading();
-        currentMode = MODE_OBSTACLE_FOLLOWING;
-      }
-    }
-    else if (current_button_state[3])
-    {
-      if (currentMode != MODE_OBSTACLE_AVOIDANCE)
-      {
-        carResetHeading();
-        currentMode = MODE_OBSTACLE_AVOIDANCE;
-      }
-    }
-    else
-    {
-      if (currentMode != MODE_APP_CONTROL)
-      {
-        appRemoteHeading = 0;
-        currentMode = MODE_NONE;
-      }
-    }
+}
+
+void handleSensorData() {
+  uint8_t toSend[WS_BUFFER_SIZE];
+  int index = 0;
+  toSend[index] = WS_DATA_START_BIT;
+
+  // data length placeholder
+  index += 1;
+  toSend[index] = 0x00;
+
+  // checksum placeholder
+  index += 1;
+  toSend[index] = 0x00;
+
+  // UltraSonic
+  index += 1;
+  toSend[index] = 0x81;
+  uint16_t ultrasonicMM = ultrasonicRead() * 10.0;
+  uint8_t ultrasonicMMMSB = ultrasonicMM >> 8;
+  uint8_t ultrasonicMMLS = ultrasonicMM & 0xFF;
+  index += 1;
+  toSend[index] = ultrasonicMMMSB;
+  index += 1;
+  toSend[index] = ultrasonicMMLS;
+
+  // IR Obstacle
+  index += 1;
+  toSend[index] = 0x82;
+  uint8_t irObstacle = irObstacleRead();
+  index += 1;
+  toSend[index] = irObstacle;
+
+  // Grayscale Value
+  index += 1;
+  toSend[index] = 0x83;
+  uint8_t grayscale = gsRead();
+  index += 1;
+  toSend[index] = grayscale;
+
+  // Grayscale State
+  index += 1;
+  toSend[index] = 0x84;
+  uint16_t grayscaleState = gsGetAngleOffset();
+  uint8_t grayscaleAngle = grayscaleState >> 8;
+  uint8_t grayscaleOffset = grayscaleState & 0xFF;
+  index += 1;
+  toSend[index] = grayscaleAngle + grayscaleOffset << 2;
+
+  // User Heading
+  index += 1;
+  toSend[index] = 0x85;
+  int16_t heading = carGetHeading();
+  uint8_t headingMSB = heading >> 8;
+  uint8_t headingLSB = heading & 0xFF;
+  index += 1;
+  toSend[index] = headingMSB;
+  index += 1;
+  toSend[index] = headingLSB;
+
+  // Car Heading
+  index += 1;
+  toSend[index] = 0x86;
+  int16_t compass = compassReadAngle();
+  uint8_t compassMSB = compass >> 8;
+  uint8_t compassLSB = compass & 0xFF;
+  index += 1;
+  toSend[index] = compassMSB;
+  index += 1;
+  toSend[index] = compassLSB;
+
+  // Calibration State
+  index += 1;
+  toSend[index] = 0x87;
+  index += 1;
+  toSend[index] = calibrationState;
+  Serial.print(F("Calibration State: "));Serial.println(calibrationState);
+
+  // End bit
+  index += 1;
+  toSend[index] = WS_DATA_END_BIT;
+
+  uint8_t payloadLength = index + 1;
+
+  // Data length
+  toSend[1] = payloadLength - 4;
+
+  // Checksum
+  uint8_t checksum = 0;
+  for (int i = 0; i < payloadLength - 1; i++) {
+    checksum ^= toSend[i];
   }
+  toSend[2] = checksum;
 
-  // Stop
-  if (aiCam.getButton(REGION_F))
-  {
-    currentMode = MODE_NONE;
-    stop();
-    return;
-  }
-
-  // Compass Calibrate
-  if (aiCam.getButton(REGION_E))
-  {
-    currentMode = MODE_COMPASS_CALIBRATION;
-    carMove(0, 0, CAR_CALIBRATION_POWER); // rote to calibrate
-    compassCalibrateStart();
-    return;
-  }
-
-  // Reset Origin
-  if (aiCam.getButton(REGION_G))
-  {
-    currentMode = MODE_APP_CONTROL;
-    carStop();
-    carResetHeading();
-    appRemoteHeading = 0;
-    remoteHeading = 0;
-    return;
-  }
-
-  // Joystick
-  uint16_t angle = aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE);
-  uint8_t power = aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS);
-  // power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
-
-  if (appRemoteAngle != angle || appRemotePower != power || angle != 0 || power != 0)
-  {
-    if (currentMode != MODE_APP_CONTROL)
-    {
-      currentMode = MODE_APP_CONTROL;
-      carResetHeading();
-    }
-    appRemoteAngle = angle;
-    remoteAngle = appRemoteAngle;
-    appRemotePower = power;
-    remotePower = appRemotePower;
-    appRemoteHeading = 0;
-    remoteHeading = 0; // reset remoteHeading parameter, avoid "IR remote control" changed this value
-  }
-
-  // Drift
-  if (appRemoteDriftEnable != aiCam.getSwitch(REGION_J))
-  {
-    if (currentMode != MODE_APP_CONTROL)
-    {
-      currentMode = MODE_APP_CONTROL;
-      carResetHeading();
-    }
-    appRemoteDriftEnable = !appRemoteDriftEnable;
-  }
-
-  // MoveHead
-  int moveHeadingA = aiCam.getJoystick(REGION_Q, JOYSTICK_ANGLE);
-  int16_t moveHeadingR = aiCam.getJoystick(REGION_Q, JOYSTICK_RADIUS);
-  if (appRemoteHeading != 0 || appRemoteHeadingR != 0 || appRemoteHeading != moveHeadingA || appRemoteHeadingR != moveHeadingR)
-  {
-    if (currentMode != MODE_APP_CONTROL)
-    {
-      currentMode = MODE_APP_CONTROL;
-      carResetHeading();
-    }
-    appRemoteAngle = angle;
-    remoteAngle = appRemoteAngle;
-    appRemotePower = power;
-    remotePower = appRemotePower;
-    appRemoteHeading = moveHeadingA;
-    appRemoteHeadingR = moveHeadingR;
-    remoteHeading = moveHeadingA;
-    if (appRemoteDriftEnable && moveHeadingR == 0)
-    { // Drift mode
-      carResetHeading();
-      appRemoteHeading = 0;
-      remoteHeading = 0;
-    }
-  }
-
-  // Speech control
-  char speech_buf_temp[20];
-
-  aiCam.getSpeech(REGION_I, speech_buf_temp);
-  if (strlen(speech_buf_temp) > 0)
-  {
-    if (aiCam.send_doc["I"].isNull() == false)
-    {
-      bool _last_stat = aiCam.send_doc["I"].as<bool>();
-      if (_last_stat == 1)
-      {
-        aiCam.send_doc["I"] = 0;
-      }
-      else
-      {
-        aiCam.send_doc["I"] = 1;
-      }
-    }
-    else
-    {
-      aiCam.send_doc["I"] = 0;
-    }
-  }
-
-  if (strcmp(speech_buf_temp, speech_buf) != 0)
-  {
-    strcpy(speech_buf, speech_buf_temp);
-    if (strlen(speech_buf) > 0)
-    {
-      int8_t cmd_code = text_2_cmd_code(speech_buf);
-      if (cmd_code != -1)
-      {
-        remotePower = SPEECH_REMOTE_POWER;
-        currentMode = MODE_APP_CONTROL;
-        cmd_fuc_table[cmd_code]();
-      }
-    }
-  }
+  aiCam.sendBinaryData(toSend, payloadLength);
 }
