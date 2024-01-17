@@ -77,6 +77,11 @@
 #define CALIBRATION_STATE_CALIBRATED 2
 #define CALIBRATION_STATE_INTERRUPTED 3
 
+/** Remote Control move state*/
+#define REMOTE_CONTROL_STATE_NONE 0
+#define REMOTE_CONTROL_STATE_CAR_CENTRIC 1
+#define REMOTE_CONTROL_STATE_FIELD_CENTRIC 2
+
 /** websocket communication headers */
 #define WS_HEADER "WS+"
 #define WS_DATA_START_BIT 0xA0

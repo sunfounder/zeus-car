@@ -41,6 +41,17 @@ uint8_t obstaclePower = 0;
 uint8_t calibrationState = CALIBRATION_STATE_IDLE;
 // last mode
 uint8_t lastMode = 255;
+// app control power
+int8_t appControlPower = 0;
+// app control angle
+int16_t appControlAngle = 0;
+// app control heading
+int16_t appControlHeading = 0;
+// app control rotatePower
+int8_t appControlRotatePower = 0;
+// remote control state
+uint8_t remoteControlState = REMOTE_CONTROL_STATE_NONE;
+
 
 /**
  * setup(), Ardunio main program entrance
@@ -86,30 +97,29 @@ void setup() {
 void loop() {
   if (lastState != currentState) {
     Serial.print(F("State changed to "));
-    Serial.println(currentState);
     lastState = currentState;
     switch (currentState) {
-      case STATE_IDLE:
-        {
-          rgbWrite(COLOR_STATE_IDLE);
-          carStop();
-          break;
+      case STATE_IDLE: {
+        Serial.println(F("IDLE"));
+        rgbWrite(COLOR_STATE_IDLE);
+        carStop();
+        break;
+      }
+      case STATE_IR_REMOTE: {
+        Serial.println(F("IR Remote"));
+        currentMode = MODE_REMOTE_CONTROL;
+        rgbWrite(COLOR_STATE_IR_REMOTE);
+        if (lastState == STATE_APP) {
+          aiCam.reset(false);
         }
-      case STATE_IR_REMOTE:
-        {
-          currentMode = MODE_REMOTE_CONTROL;
-          rgbWrite(COLOR_STATE_IR_REMOTE);
-          if (lastState == STATE_APP) {
-            aiCam.reset(false);
-          }
-          break;
-        }
-      case STATE_APP:
-        {
-          currentMode = MODE_REMOTE_CONTROL;
-          rgbWrite(COLOR_STATE_APP);
-          break;
-        }
+        break;
+      }
+      case STATE_APP: {
+        Serial.println(F("APP"));
+        currentMode = MODE_REMOTE_CONTROL;
+        rgbWrite(COLOR_STATE_APP);
+        break;
+      }
       default:
         break;
     }
@@ -207,6 +217,17 @@ void modeHandler() {
       break;
     case MODE_REMOTE_CONTROL:
       // rgbWrite(COLOR_STATE_IR_REMOTE);
+      switch (remoteControlState) {
+        case REMOTE_CONTROL_STATE_CAR_CENTRIC:
+          carMove(appControlAngle, appControlPower, appControlRotatePower);
+          break;
+        case REMOTE_CONTROL_STATE_FIELD_CENTRIC:
+          carMoveFieldCentric(appControlAngle, appControlPower, appControlHeading);
+          break;
+        case REMOTE_CONTROL_STATE_NONE:
+          carStop();
+          break;
+      }
       // carMoveFieldCentric(remoteAngle, remotePower, remoteHeading);
       // lastRemotePower = remotePower;
       break;
@@ -453,7 +474,7 @@ void onReceive() {
           i += 1;
           uint8_t angleLSB = aiCam.recvBuffer[i];
           i += 1;
-          uint8_t movePower = aiCam.recvBuffer[i];
+          int8_t movePower = aiCam.recvBuffer[i];
           i += 1;
           int8_t rotatePower = aiCam.recvBuffer[i];
           int16_t angle = (angleMSB << 8) | angleLSB;
@@ -461,7 +482,12 @@ void onReceive() {
           // Serial.print("angle:");Serial.println(angle);
           // Serial.print("movePower:");Serial.println(movePower);
           // Serial.print("rotatePower:");Serial.println(rotatePower);
-          carMove(angle, movePower, rotatePower);
+          // carMove(angle, movePower, rotatePower);
+          appControlAngle = angle;
+          appControlPower = movePower;
+          appControlRotatePower = rotatePower;
+          currentMode = MODE_REMOTE_CONTROL;
+          remoteControlState = REMOTE_CONTROL_STATE_CAR_CENTRIC;
           break;
         }
       case 0x02:  // Car move field centric
@@ -471,18 +497,23 @@ void onReceive() {
           i += 1;
           uint8_t moveAngleLSB = aiCam.recvBuffer[i];
           i += 1;
-          uint8_t movePower = aiCam.recvBuffer[i];
+          int8_t movePower = aiCam.recvBuffer[i];
           i += 1;
           uint8_t headingAngleMSB = aiCam.recvBuffer[i];
           i += 1;
           uint8_t headingAngleLSB = aiCam.recvBuffer[i];
           int16_t moveAngle = (moveAngleMSB << 8) | moveAngleLSB;
           int16_t headingAngle = (headingAngleMSB << 8) | headingAngleLSB;
-          Serial.println(F("Car move field centric"));
-          Serial.print(F("moveAngle:"));Serial.println(moveAngle);
-          Serial.print(F("movePower:"));Serial.println(movePower);
-          Serial.print(F("headingAngle:"));Serial.println(headingAngle);
-          carMoveFieldCentric(moveAngle, movePower, headingAngle);
+          // Serial.println(F("Car move field centric"));
+          // Serial.print(F("moveAngle:"));Serial.println(moveAngle);
+          // Serial.print(F("movePower:"));Serial.println(movePower);
+          // Serial.print(F("headingAngle:"));Serial.println(headingAngle);
+          // carMoveFieldCentric(moveAngle, movePower, headingAngle);
+          appControlAngle = moveAngle;
+          appControlPower = movePower;
+          appControlHeading = headingAngle;
+          currentMode = MODE_REMOTE_CONTROL;
+          remoteControlState = REMOTE_CONTROL_STATE_FIELD_CENTRIC;
           break;
         }
       case 0x03:  // Direct motor control
@@ -495,11 +526,11 @@ void onReceive() {
           int8_t motor2 = aiCam.recvBuffer[i];
           i += 1;
           int8_t motor3 = aiCam.recvBuffer[i];
-          Serial.println(F("Direct motor control"));
-          Serial.print(F("motor0:"));Serial.println(motor0);
-          Serial.print(F("motor1:"));Serial.println(motor1);
-          Serial.print(F("motor2:"));Serial.println(motor2);
-          Serial.print(F("motor3:"));Serial.println(motor3);
+          // Serial.println(F("Direct motor control"));
+          // Serial.print(F("motor0:"));Serial.println(motor0);
+          // Serial.print(F("motor1:"));Serial.println(motor1);
+          // Serial.print(F("motor2:"));Serial.println(motor2);
+          // Serial.print(F("motor3:"));Serial.println(motor3);
           carSetMotors(motor0, motor1, motor2, motor3);
           break;
         }
@@ -511,21 +542,21 @@ void onReceive() {
           uint8_t g = aiCam.recvBuffer[i];
           i += 1;
           uint8_t b = aiCam.recvBuffer[i];
-          Serial.println(F("Set RGB: ("));Serial.print(r);
-          Serial.print(F(", "));Serial.print(g);
-          Serial.print(F(", "));Serial.print(b);Serial.println(")");
+          // Serial.println(F("Set RGB: ("));Serial.print(r);
+          // Serial.print(F(", "));Serial.print(g);
+          // Serial.print(F(", "));Serial.print(b);Serial.println(")");
           rgbWrite(r, g, b);
           break;
         }
-      case 0x05:  // Set Heading
+      case 0x05:  // Set User Heading
         {
           i += 1;
-          uint8_t headingMSB = aiCam.recvBuffer[i];
+          uint8_t userHeadingMSB = aiCam.recvBuffer[i];
           i += 1;
-          uint8_t headingLSB = aiCam.recvBuffer[i];
-          int16_t heading = (headingMSB << 8) | headingLSB;
-          Serial.print(F("Set Heading: "));Serial.println(heading);
-          carSetHeading(heading);
+          uint8_t userHeadingLSB = aiCam.recvBuffer[i];
+          int16_t userHeading = (userHeadingMSB << 8) | userHeadingLSB;
+          // Serial.print(F("Set Heading: "));Serial.println(userHeading);
+          carSetHeading(userHeading);
           break;
         }
       case 0x06:  // Calibrate compass
@@ -546,21 +577,21 @@ void onReceive() {
           uint8_t mag = aiCam.recvBuffer[i];
           i += 1;
           lineTrackPower = aiCam.recvBuffer[i];
-          Serial.print(F("Line Track"));
+          // Serial.print(F("Line Track"));
           if (state == 1) {
-            Serial.print(F(" ON"));
+            // Serial.print(F(" ON"));
             if (mag == 1) {
-              Serial.print(F(" with mag"));
+              // Serial.print(F(" with mag"));
               currentMode = MODE_LINE_TRACK_WITH_MAG;
             } else {
-              Serial.print(F(" without mag"));
+              // Serial.print(F(" without mag"));
               currentMode = MODE_LINE_TRACK_WITHOUT_MAG;
             }
           } else {
-            Serial.print(F(" OFF"));
+            // Serial.print(F(" OFF"));
             currentMode = MODE_REMOTE_CONTROL;
           }
-          Serial.print(F(" power:"));Serial.println(lineTrackPower);
+          // Serial.print(F(" power:"));Serial.println(lineTrackPower);
           break;
         }
       case 0x08:  // Obstacle mode
@@ -571,21 +602,21 @@ void onReceive() {
           uint8_t mode = aiCam.recvBuffer[i];
           i += 1;
           obstaclePower = aiCam.recvBuffer[i];
-          Serial.print(F("Obstacle "));
+          // Serial.print(F("Obstacle "));
           if (state) {
-            Serial.print(F(" ON"));
+            // Serial.print(F(" ON"));
             if (mode == 0) {
-              Serial.print(F(" avoidance"));
+              // Serial.print(F(" avoidance"));
               currentMode = MODE_OBSTACLE_AVOIDANCE;
             } else {
-              Serial.print(F(" following"));
+              // Serial.print(F(" following"));
               currentMode = MODE_OBSTACLE_FOLLOWING;
             }
           } else {
-            Serial.print(F(" OFF"));
+            // Serial.print(F(" OFF"));
             currentMode = MODE_REMOTE_CONTROL;
           }
-          Serial.print(F(" power:"));Serial.println(obstaclePower);
+          // Serial.print(F(" power:"));Serial.println(obstaclePower);
           break;
         }
     }
@@ -637,36 +668,37 @@ void handleSensorData() {
   uint8_t grayscaleAngle = grayscaleState >> 8;
   uint8_t grayscaleOffset = grayscaleState & 0xFF;
   index += 1;
-  toSend[index] = grayscaleAngle + grayscaleOffset << 2;
+  toSend[index] = grayscaleAngle | grayscaleOffset << 3;
 
   // User Heading
   index += 1;
   toSend[index] = 0x85;
-  int16_t heading = carGetHeading();
-  uint8_t headingMSB = heading >> 8;
-  uint8_t headingLSB = heading & 0xFF;
+  int16_t userHeading = carGetHeading();
+  Serial.print("userHeading:");Serial.println(userHeading);
+  uint8_t userHeadingMSB = userHeading >> 8;
+  uint8_t userHeadingLSB = userHeading & 0xFF;
   index += 1;
-  toSend[index] = headingMSB;
+  toSend[index] = userHeadingMSB;
   index += 1;
-  toSend[index] = headingLSB;
+  toSend[index] = userHeadingLSB;
 
   // Car Heading
   index += 1;
   toSend[index] = 0x86;
-  int16_t compass = compassReadAngle();
-  uint8_t compassMSB = compass >> 8;
-  uint8_t compassLSB = compass & 0xFF;
+  int16_t carHeading = compassReadAngle();
+  Serial.print("car heading:");Serial.println(carHeading);
+  uint8_t carHeadingMSB = carHeading >> 8;
+  uint8_t carHeadingLSB = carHeading & 0xFF;
   index += 1;
-  toSend[index] = compassMSB;
+  toSend[index] = carHeadingMSB;
   index += 1;
-  toSend[index] = compassLSB;
+  toSend[index] = carHeadingLSB;
 
   // Calibration State
   index += 1;
   toSend[index] = 0x87;
   index += 1;
   toSend[index] = calibrationState;
-  Serial.print(F("Calibration State: "));Serial.println(calibrationState);
 
   // End bit
   index += 1;

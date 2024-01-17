@@ -99,7 +99,7 @@ byte gsValueRotate(byte value, int16_t angle) {
 }
 
 uint16_t _gsGetAngleOffset(byte gsValues) {
-  uint16_t result[2];
+  uint8_t result[2];
   if (indexOf(ANGLE_0_LIST, ANGLE_0_SIZE, gsValues)){
     result[0] = ANGLE_0;
   } else if (indexOf(ANGLE_45_LIST, ANGLE_45_SIZE, gsValues)){
