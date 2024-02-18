@@ -19,6 +19,7 @@ Zeur Car is a  omnidirectional moving car with Macnum wheels.It is controlled by
 ## Dependency libraries
 - IRLremote
 - SoftPWM
+- ArduinoJson
 
 ## ESP32-CAM firmware
 https://github.com/sunfounder/ai-camera-firmware
