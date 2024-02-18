@@ -1,6 +1,6 @@
 .. _ar_install_library:
 
-Installing Libraries(Arduino IDE 2)
+Install the Required Libraries
 ===============================================
 
 **What is library?**
@@ -9,9 +9,9 @@ A library, gathering some function definitions and header files, usually contain
 
 When you need to use a function in some library, you just need to add a header file (e.g. #include <dht.h>), and then call that function. This can make your code more concise. 
 
-If you don’t want to use the library, you can also write that function definition directly. Though as a result, the code will be long and inconvenient to read.
+If you don't want to use the library, you can also write that function definition directly. Though as a result, the code will be long and inconvenient to read.
 
-Some libraries are already built in the Arduino IDE, when some others may need to be installed. So now let’s see how to install one.
+Some libraries are already built in the Arduino IDE, when some others may need to be installed. So now let's see how to install one.
 
 **How to install?**
 
@@ -35,3 +35,6 @@ Some libraries are already built in the Arduino IDE, when some others may need t
 
     .. image:: img/arduino/ar_irlremote.png
 
+#. Finally, install the ArduinoJson library.
+
+    .. image:: img/arduino/ar_arduinojson.png
