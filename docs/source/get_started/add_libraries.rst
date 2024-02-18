@@ -34,3 +34,7 @@ Arduino IDEには既にいくつかのライブラリが組み込まれていま
 #. ``IRLremote`` ライブラリも同じ方法でインストールしますが、名前を間違えないように注意してください。
 
     .. image:: img/arduino/ar_irlremote.png
+
+#. 最後に ``ArduinoJson`` ライブラリをインストールしてください。
+
+    .. image:: img/arduino/ar_arduinojson.png

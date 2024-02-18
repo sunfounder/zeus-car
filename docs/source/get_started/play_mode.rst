@@ -16,8 +16,7 @@
 
     * :download:`SunFounder Zeus Car Kit for Arduino <https://github.com/sunfounder/zeus-car/archive/refs/heads/main.zip>`
 
-    他のコードをArduinoにアップロードした後、再び実際の操作モードに戻したい場合は、 ``zeus-car-main\zeus_car`` のパスの下にある ``zeus_car.ino`` をArduinoボードにアップロードするだけでOKです。
-
+    Arduinoに異なるコードをアップロードした後、**プレイモード** に戻りたい場合は、まず :ref:`ar_install_library` を行い、次にパス ``zeus-car-main\Zeus_Car`` 下にある ``Zeus_Car.ino`` ファイルをArduinoボードにアップロードする必要があります。
 
 .. toctree::
     :maxdepth: 3
