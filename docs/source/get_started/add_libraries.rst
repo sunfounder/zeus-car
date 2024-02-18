@@ -35,3 +35,6 @@ Einige Bibliotheken sind bereits in der Arduino IDE enthalten, während andere i
 
     .. image:: img/arduino/ar_irlremote.png
 
+#. Installieren Sie abschließend die ``ArduinoJson`` Bibliothek.
+
+    .. image:: img/arduino/ar_arduinojson.png

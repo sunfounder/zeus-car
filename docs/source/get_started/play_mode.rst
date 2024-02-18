@@ -15,7 +15,7 @@ Im Spielmodus wird der Code bereits im Werk auf das Arduino-Board hochgeladen, u
 
     * :download:`SunFounder Zeus Car Kit für Arduino <https://github.com/sunfounder/zeus-car/archive/refs/heads/main.zip>`
 
-    Wenn Sie nach dem Hochladen anderer Codes auf Ihr Arduino wieder in den Spielmodus zurückkehren möchten, müssen Sie lediglich die Datei ``zeus_car.ino`` unter dem Pfad ``zeus-car-main\zeus_car`` auf das Arduino-Board hochladen.
+    Wenn Sie nach dem Hochladen eines anderen Codes auf Ihren Arduino in den **Spielmodus** zurückkehren möchten, müssen Sie zuerst :ref:`ar_install_library` durchführen, und dann die Datei ``Zeus_Car.ino``, die unter dem Pfad ``zeus-car-main\Zeus_Car`` zu finden ist, auf das Arduino-Board hochladen.
 
 .. toctree::
     :maxdepth: 2
