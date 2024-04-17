@@ -10,11 +10,12 @@ int c = 0;
 
 void setup() {
   Serial.begin(115200);
+  Serial.println("QMC6310 Test Start");
   compass.init();
-  // calibrateInit();
-  compass.setCalibration(2237, 2426, -121, 2529, -3931, -1168);
+  calibrateInit();
+  // compass.setCalibration(2237, 2426, -121, 2529, -3931, -1168);
 
-  Serial.println("Start!");
+  // Serial.println("Start!");
 }
 
 int16_t compassGetAzimuth() {
@@ -26,9 +27,9 @@ int16_t compassGetAzimuth() {
 }
 
 void loop() {
-  // calibrate();
+  calibrate();
 
-  test();
+  // test();
 }
 
 void test() {
@@ -45,9 +46,9 @@ void test() {
 }
 
 void calibrateInit() {
-  // Serial.println("This will provide calibration settings for your QMC5883L chip. When prompted, move the magnetometer in all directions until the calibration is complete.");
-  // Serial.println("Calibration will begin in 5 seconds.");
-  // delay(5000);
+  Serial.println("This will provide calibration settings for your QMC5883L chip. When prompted, move the magnetometer in all directions until the calibration is complete.");
+  Serial.println("Calibration will begin in 5 seconds.");
+  delay(5000);
   compass.read();
   calibrationData[0] = compass.getX();
   calibrationData[1] = compass.getX();
@@ -59,6 +60,7 @@ void calibrateInit() {
 
 void calibrate() {
   int x, y, z;
+  Serial.println("calibration running");
   
   // Read compass values
   compass.read();

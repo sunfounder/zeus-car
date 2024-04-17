@@ -674,7 +674,7 @@ void handleSensorData() {
   index += 1;
   toSend[index] = 0x85;
   int16_t userHeading = carGetHeading();
-  Serial.print("userHeading:");Serial.println(userHeading);
+  // Serial.print("userHeading:");Serial.println(userHeading);
   uint8_t userHeadingMSB = userHeading >> 8;
   uint8_t userHeadingLSB = userHeading & 0xFF;
   index += 1;
@@ -686,7 +686,7 @@ void handleSensorData() {
   index += 1;
   toSend[index] = 0x86;
   int16_t carHeading = compassReadAngle();
-  Serial.print("car heading:");Serial.println(carHeading);
+  // Serial.print("car heading:");Serial.println(carHeading);
   uint8_t carHeadingMSB = carHeading >> 8;
   uint8_t carHeadingLSB = carHeading & 0xFF;
   index += 1;
