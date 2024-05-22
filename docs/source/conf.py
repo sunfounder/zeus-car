@@ -144,8 +144,11 @@ rst_epilog = """
 .. |app_edit| image:: /get_started/img/app/app_edit.jpg
     :width: 20
 
+"""
 
+# open link in a new window
 
+rst_epilog += """
 .. |link_german_tutorials| raw:: html
 
     <a href="https://docs.sunfounder.com/projects/zeus-car/de/latest/" target="_blank">Deutsch Online-Kurs</a>
@@ -206,5 +209,8 @@ rst_epilog = """
     <a href="https://github.com/sunfounder/zeus-car" target="_blank">SunFounder Zeus Car Kit for Arduino - GitHub </a>
 
 
+.. |link_sf_facebook| raw:: html
+
+    <a href="https://bit.ly/4bLipcl" target="_blank">hier</a>
 
 """
