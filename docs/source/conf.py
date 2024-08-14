@@ -219,4 +219,12 @@ rst_epilog += """
 
     <a href="https://bit.ly/raphaelkit" target="_blank">here</a>
 
+.. |link_Zeus_Car| raw:: html
+
+    <a href="https://www.sunfounder.com/collections/esp32-1/products/sunfounder-esp32-ultimate-starter-kit-with-esp32-camera-extension-board-battery" target="_blank">Purchase Link for Zeus Car</a>
+
+.. |link_Robot_Car_Kit| raw:: html
+
+    <a href="https://www.sunfounder.com/products/sunfounder-esp32-ultimate-starter-kit-with-esp32-camera-extension-board-battery" target="_blank">Zeus Car</a>
+
 """
