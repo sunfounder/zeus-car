@@ -221,10 +221,10 @@ rst_epilog += """
 
 .. |link_Zeus_Car| raw:: html
 
-    <a href="https://www.sunfounder.com/collections/esp32-1/products/sunfounder-esp32-ultimate-starter-kit-with-esp32-camera-extension-board-battery" target="_blank">Purchase Link for Zeus Car</a>
+    <a href="https://www.sunfounder.com/products/sunfounder-zeus-car-robot-car-kit-compatible-with-arduino-uno-r3?_pos=1&_sid=10355f713&_ss=r" target="_blank">Purchase Link for Zeus Car</a>
 
 .. |link_Robot_Car_Kit| raw:: html
 
-    <a href="https://www.sunfounder.com/products/sunfounder-esp32-ultimate-starter-kit-with-esp32-camera-extension-board-battery" target="_blank">Zeus Car</a>
+    <a href="https://www.sunfounder.com/products/sunfounder-zeus-car-robot-car-kit-compatible-with-arduino-uno-r3?_pos=1&_sid=10355f713&_ss=r" target="_blank">Zeus Car</a>
 
 """
