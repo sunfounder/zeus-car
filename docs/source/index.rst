@@ -13,10 +13,12 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 
-Zeus Car - SunFounder Arduino Robot Car Bausatz
-========================================================
+|link_Robot_Car_Kit| - SunFounder Arduino Robot Car Bausatz
+===============================================================
 
-Danke, dass Sie sich für unser Zeus Car entschieden haben.
+* |link_Zeus_Car|
+
+Danke, dass Sie sich für unser |link_Robot_Car_Kit| entschieden haben.
 
 .. note::
     Dieses Dokument ist in den folgenden Sprachen verfügba.
