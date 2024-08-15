@@ -213,6 +213,13 @@ rst_epilog += """
 
     <a href="https://github.com/sunfounder/zeus-car" target="_blank">SunFounder Zeus Car Kit for Arduino - GitHub </a>
 
+.. |link_Zeus_Car| raw:: html
+
+    <a href="https://www.sunfounder.com/products/sunfounder-zeus-car-robot-car-kit-compatible-with-arduino-uno-r3?_pos=1&_sid=10355f713&_ss=r" target="_blank">Zeus Carの購入リンク</a>
+
+.. |link_Robot_Car_Kit| raw:: html
+
+    <a href="https://www.sunfounder.com/products/sunfounder-zeus-car-robot-car-kit-compatible-with-arduino-uno-r3?_pos=1&_sid=10355f713&_ss=r" target="_blank">Zeus Car</a>
 
 
 """

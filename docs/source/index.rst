@@ -13,10 +13,12 @@
     👉 私たちと一緒に探索し、創造する準備はできていますか？[|link_sf_facebook|]をクリックして今すぐ参加しましょう！
 
 
-Zeus Car - SunFounder Arduino ロボットカーキット
+|link_Robot_Car_Kit| - SunFounder Arduino ロボットカーキット
 ========================================================
 
-SunFounder Zeus Carをお選びいただき、ありがとうございます。
+* |link_Zeus_Car|
+
+SunFounder |link_Robot_Car_Kit|をお選びいただき、ありがとうございます。
 
 .. note::
     このドキュメントは以下の言語で利用可能です。
