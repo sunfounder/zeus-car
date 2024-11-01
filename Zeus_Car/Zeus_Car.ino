@@ -225,7 +225,6 @@ void modeHandler() {
           carMoveFieldCentric(appControlAngle, appControlPower, appControlHeading);
           break;
         case REMOTE_CONTROL_STATE_NONE:
-          carStop();
           break;
       }
       // carMoveFieldCentric(remoteAngle, remotePower, remoteHeading);
@@ -531,6 +530,8 @@ void onReceive() {
           // Serial.print(F("motor1:"));Serial.println(motor1);
           // Serial.print(F("motor2:"));Serial.println(motor2);
           // Serial.print(F("motor3:"));Serial.println(motor3);
+          currentMode = MODE_REMOTE_CONTROL;
+          remoteControlState = REMOTE_CONTROL_STATE_NONE;
           carSetMotors(motor0, motor1, motor2, motor3);
           break;
         }
