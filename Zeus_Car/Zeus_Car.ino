@@ -49,9 +49,14 @@ int16_t appControlAngle = 0;
 int16_t appControlHeading = 0;
 // app control rotatePower
 int8_t appControlRotatePower = 0;
+// app control move time ms
+uint16_t appControlMoveTimeMs = 0;
+// app control moving state
+uint8_t appControlMovingState = MOVING_STATE_IDLE;
+// app control move start time ms
+uint32_t appControlMoveStartTimeMs = 0;
 // remote control state
 uint8_t remoteControlState = REMOTE_CONTROL_STATE_NONE;
-
 
 /**
  * setup(), Ardunio main program entrance
@@ -226,6 +231,27 @@ void modeHandler() {
           break;
         case REMOTE_CONTROL_STATE_NONE:
           break;
+        // If move time is not zero, the car will move for the specified time and then stop.
+        if (appControlMoveTimeMs > 0) {
+          // If the car is not moving, start moving
+          if (appControlMovingState == MOVING_STATE_IDLE) {
+            appControlMoveStartTimeMs = millis();
+            appControlMovingState = MOVING_STATE_MOVING;
+          } else {
+            // If the car is moving, check if the time is up
+            uint32_t elapsedTimeMs = millis() - appControlMoveStartTimeMs;
+            if (elapsedTimeMs >= appControlMoveTimeMs) {
+              appControlMovingState = MOVING_STATE_IDLE;
+              appControlPower = 0;
+              appControlAngle = 0;
+              appControlHeading = 0;
+              appControlRotatePower = 0;
+              appControlMoveTimeMs = 0;
+              appControlMoveStartTimeMs = 0;
+              carStop();
+            }
+          }
+        }
       }
       // carMoveFieldCentric(remoteAngle, remotePower, remoteHeading);
       // lastRemotePower = remotePower;
@@ -251,6 +277,24 @@ void modeHandler() {
     default:
       break;
   }
+}
+
+/**
+ * stopAll(), Stop the car
+ */
+void stopAll() {
+  currentMode = MODE_REMOTE_CONTROL;
+  remoteControlState = REMOTE_CONTROL_STATE_NONE;
+  appControlPower = 0;
+  appControlAngle = 0;
+  appControlHeading = 0;
+  appControlRotatePower = 0;
+  appControlMoveTimeMs = 0;
+  appControlMovingState = MOVING_STATE_IDLE;
+  appControlMoveStartTimeMs = 0;
+  calibrationState = CALIBRATION_STATE_IDLE;
+  rgbOff();
+  carStop();
 }
 
 /**
@@ -562,12 +606,21 @@ void onReceive() {
         }
       case 0x06:  // Calibrate compass
         {
-          if (currentMode == MODE_COMPASS_CALIBRATION) break;
-          Serial.println(F("Calibrate compass"));
-          carMove(0, 0, CAR_CALIBRATION_POWER);
-          compassCalibrateStart();
-          currentMode = MODE_COMPASS_CALIBRATION;
-          calibrationState = CALIBRATION_STATE_CALIBRATING;
+          i += 1;
+          uint8_t calibrationState = aiCam.recvBuffer[i];
+          if (calibrationState == 0) {
+            // Serial.println(F("Compass calibration stop"));
+            currentMode = MODE_REMOTE_CONTROL;
+            calibrationState = CALIBRATION_STATE_INTERRUPTED;
+            carStop();
+          } else if (calibrationState == 1) {
+            if (currentMode == MODE_COMPASS_CALIBRATION) break;
+            Serial.println(F("Calibrate compass"));
+            carMove(0, 0, CAR_CALIBRATION_POWER);
+            compassCalibrateStart();
+            currentMode = MODE_COMPASS_CALIBRATION;
+            calibrationState = CALIBRATION_STATE_CALIBRATING;
+          }
           break;
         }
       case 0x07:  // Line Track mode
@@ -618,6 +671,68 @@ void onReceive() {
             currentMode = MODE_REMOTE_CONTROL;
           }
           // Serial.print(F(" power:"));Serial.println(obstaclePower);
+          break;
+        }
+      case 0x09:  // Car move car centric for ms
+        {
+          i += 1;
+          uint8_t angleMSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t angleLSB = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t movePower = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t rotatePower = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t moveTimeMsMSB = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t moveTimeMsLSB = aiCam.recvBuffer[i];
+
+          int16_t angle = (angleMSB << 8) | angleLSB;
+          int16_t moveTimeMs = (moveTimeMsMSB << 8) | moveTimeMsLSB;
+          // Serial.println("Car move car centric for ms");
+          // Serial.print("angle:");Serial.println(angle);
+          // Serial.print("movePower:");Serial.println(movePower);
+          // Serial.print("rotatePower:");Serial.println(rotatePower);
+          // Serial.print("moveTimeMs:");Serial.println(moveTimeMs);
+          appControlAngle = angle;
+          appControlPower = movePower;
+          appControlRotatePower = rotatePower;
+          currentMode = MODE_REMOTE_CONTROL;
+          remoteControlState = REMOTE_CONTROL_STATE_CAR_CENTRIC;
+          appControlMoveTimeMs = moveTimeMs;
+          break;
+        }
+      case 0x0A:  // Car move field centric for ms
+        {
+          i += 1;
+          uint8_t moveAngleMSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t moveAngleLSB = aiCam.recvBuffer[i];
+          i += 1;
+          int8_t movePower = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t headingAngleMSB = aiCam.recvBuffer[i];
+          i += 1;
+          uint8_t headingAngleLSB = aiCam.recvBuffer[i];
+          int16_t moveAngle = (moveAngleMSB << 8) | moveAngleLSB;
+          int16_t headingAngle = (headingAngleMSB << 8) | headingAngleLSB;
+          // Serial.println(F("Car move field centric for ms"));
+          // Serial.print(F("moveAngle:"));Serial.println(moveAngle);
+          // Serial.print(F("movePower:"));Serial.println(movePower);
+          // Serial.print(F("headingAngle:"));Serial.println(headingAngle);
+          // carMoveFieldCentric(moveAngle, movePower, headingAngle);
+          appControlAngle = moveAngle;
+          appControlPower = movePower;
+          appControlHeading = headingAngle;
+          currentMode = MODE_REMOTE_CONTROL;
+          remoteControlState = REMOTE_CONTROL_STATE_FIELD_CENTRIC;
+          break;
+        }
+      case 0x0B:  // Stop
+        {
+          // Serial.println(F("Stop"));
+          stopAll();
           break;
         }
     }
@@ -700,6 +815,12 @@ void handleSensorData() {
   toSend[index] = 0x87;
   index += 1;
   toSend[index] = calibrationState;
+
+  // Car Moving State
+  index += 1;
+  toSend[index] = 0x88;
+  index += 1;
+  toSend[index] = appControlMovingState;
 
   // End bit
   index += 1;

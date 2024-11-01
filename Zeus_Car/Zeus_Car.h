@@ -87,6 +87,10 @@
 #define WS_DATA_START_BIT 0xA0
 #define WS_DATA_END_BIT 0xA1
 
+/** car moving state */
+#define MOVING_STATE_IDLE 0
+#define MOVING_STATE_MOVING 1
+
 ///@}
 
 /*********************** Global variables ****************************/
