@@ -57,6 +57,8 @@ uint8_t appControlMovingState = MOVING_STATE_IDLE;
 uint32_t appControlMoveStartTimeMs = 0;
 // remote control state
 uint8_t remoteControlState = REMOTE_CONTROL_STATE_NONE;
+// variable of esp32-cam flash lamp
+bool cam_lamp_status = false;
 
 /**
  * setup(), Ardunio main program entrance
@@ -110,10 +112,10 @@ void loop() {
         carStop();
         break;
       }
-      case STATE_IR_REMOTE: {
+      case STATE_IR: {
         Serial.println(F("IR Remote"));
         currentMode = MODE_REMOTE_CONTROL;
-        rgbWrite(COLOR_STATE_IR_REMOTE);
+        rgbWrite(COLOR_STATE_IR);
         if (lastState == STATE_APP) {
           aiCam.reset(false);
         }
@@ -133,6 +135,7 @@ void loop() {
     case STATE_IDLE:
       {
         aiCam.loop();
+        irRemoteHandler();
         if (aiCam.ws_connected == true) {
           currentState = STATE_APP;
         }
@@ -150,7 +153,7 @@ void loop() {
         modeHandler();
         break;
       }
-    case STATE_IR_REMOTE:
+    case STATE_IR:
       {
         irRemoteHandler();
         modeHandler();
@@ -187,7 +190,6 @@ int freeRam() {
  *  - MODE_OBSTACLE_FOLLOWING
  *  - MODE_OBSTACLE_AVOIDANCE
  *  - MODE_REMOTE_CONTROL
- *  - MODE_APP_CONTROL
  *  - MODE_COMPASS_CALIBRATION
  */
 void modeHandler() {
@@ -221,7 +223,7 @@ void modeHandler() {
       obstacleAvoidance();
       break;
     case MODE_REMOTE_CONTROL:
-      // rgbWrite(COLOR_STATE_IR_REMOTE);
+      // rgbWrite(COLOR_STATE_APP);
       switch (remoteControlState) {
         case REMOTE_CONTROL_STATE_CAR_CENTRIC:
           carMove(appControlAngle, appControlPower, appControlRotatePower);
@@ -437,6 +439,7 @@ void irRemoteHandler() {
     return;  // No key pressed
   } else {
     remotePower = IR_REMOTE_POWER;
+    currentState = STATE_IR;
   }
 
   int8_t cmd_code = ir_key_2_cmd_code(key);
@@ -607,13 +610,13 @@ void onReceive() {
       case 0x06:  // Calibrate compass
         {
           i += 1;
-          uint8_t calibrationState = aiCam.recvBuffer[i];
-          if (calibrationState == 0) {
+          uint8_t state = aiCam.recvBuffer[i];
+          if (state == 0) {
             // Serial.println(F("Compass calibration stop"));
             currentMode = MODE_REMOTE_CONTROL;
             calibrationState = CALIBRATION_STATE_INTERRUPTED;
             carStop();
-          } else if (calibrationState == 1) {
+          } else if (state == 1) {
             if (currentMode == MODE_COMPASS_CALIBRATION) break;
             Serial.println(F("Calibrate compass"));
             carMove(0, 0, CAR_CALIBRATION_POWER);
@@ -733,6 +736,20 @@ void onReceive() {
         {
           // Serial.println(F("Stop"));
           stopAll();
+          break;
+        }
+      case 0x0C:  // Front light control
+        {
+          i += 1;
+          uint8_t state = aiCam.recvBuffer[i];
+          // Serial.print(F("Front light control:"));Serial.println(state);
+          if (state) {
+            cam_lamp_status = true;
+            aiCam.lamp_on(5);  //turn on cam lamp, level 0 ~ 10 
+          } else{
+            cam_lamp_status = false;
+            aiCam.lamp_off();
+          }
           break;
         }
     }

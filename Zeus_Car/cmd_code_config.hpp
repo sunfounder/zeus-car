@@ -12,15 +12,15 @@
 #define MODE_LINE_TRACK_WITH_MAG      2
 #define MODE_OBSTACLE_FOLLOWING       3
 #define MODE_OBSTACLE_AVOIDANCE       4
-#define MODE_REMOTE_CONTROL           6
-#define MODE_COMPASS_CALIBRATION      8
+#define MODE_REMOTE_CONTROL           5
+#define MODE_COMPASS_CALIBRATION      6
 
 /** Set the color to match the mode */
 #define COLOR_ERROR RED
 #define COLOR_WARN ORANGE
 
 #define COLOR_STATE_IDLE                    WHITE
-#define COLOR_STATE_IR_REMOTE               GREEN_CYAN
+#define COLOR_STATE_IR                      GREEN_CYAN
 #define COLOR_STATE_APP                     MAGENTA
 
 #define COLOR_MODE_LINE_TRACK_MAG           GREEN
@@ -63,18 +63,18 @@ const char *const cmd_str_table[] PROGMEM = {
   cmd_str_8, cmd_str_9, cmd_str_10,cmd_str_11,
 };
 
-#define STOP        0x00
-#define FORWARD     0x01
-#define BACKWARD    0x02
-#define TRUE_LEFT   0x03
-#define TRUE_RIGHT  0x04
-#define LEFT_FORWARD 0x05
-#define LEFT_BACKWARD 0x06
-#define RIGHT_FORWARD 0x07
-#define RIGHT_BACKWARD 0x08
-#define LEFT        0x09
-#define RIGHT       0x0A
-#define PAUSE       0x0B
+#define STOP            0x00
+#define FORWARD         0x01
+#define BACKWARD        0x02
+#define TRUE_LEFT       0x03
+#define TRUE_RIGHT      0x04
+#define LEFT_FORWARD    0x05
+#define LEFT_BACKWARD   0x06
+#define RIGHT_FORWARD   0x07
+#define RIGHT_BACKWARD  0x08
+#define LEFT            0x09
+#define RIGHT           0x0A
+#define PAUSE           0x0B
 
 const int8_t cmd_code_table[CMD_SUM] PROGMEM={
   STOP,

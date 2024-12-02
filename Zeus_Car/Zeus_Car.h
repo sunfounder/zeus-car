@@ -54,7 +54,7 @@
  */
 #define STATE_IDLE 0
 #define STATE_APP 1
-#define STATE_IR_REMOTE 2
+#define STATE_IR 2
 
 /** Configure the motors speed in different modes */
 #define SPEECH_REMOTE_POWER 60
