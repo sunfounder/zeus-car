@@ -1,76 +1,57 @@
-# Zeus Car
-The control program of the Ardunio Mecanum wheel car for Ardunio UNO.
+# SunFounder Zeus Car Kit
+This repository is for Zeus Car Kit. you can buy it on [our website](https://www.sunfounder.com/), or search sunfounder in Amazon.
 
-Zeur Car is a  omnidirectional moving car with Macnum wheels.It is controlled by Ardunio UNO and ESP32-CAM, with FPV controller, line patrol, obstacle avoidance and many other interesting functions.You can buy it on [our website](https://www.sunfounder.com/), or search sunfounder in Amazon.
+Quick Links:
 
-- [Zeus Car](#zeus-car)
-  - [Development test environment](#development-test-environment)
-  - [Dependency libraries](#dependency-libraries)
-  - [ESP32-CAM firmware](#esp32-cam-firmware)
-  - [Docs](#docs)
-  - [Project Tree](#project-tree)
-  - [About SunFounder](#about-sunfounder)
-  - [Contact us](#contact-us)
-## Development test environment
-- Board: Ardunio UNO
-- IDE: Arduino IDE 1.8.19
-- Compiler Tools: Arduino AVR Boards 1.8.3
+ * [About this kit](#about_this_kit)
+ * [Update](#update)
+ * [Trouble Shootings](#trouble)
+ * [About SunFounder](#about_sunfounder)
+ * [License](#license)
+ * [Contact us](#contact_us)
 
-## Dependency libraries
-- IRLremote
-- SoftPWM
-- ArduinoJson
+<a id="about_this_kit"></a>
+## About this kit:
 
-## ESP32-CAM firmware
-https://github.com/sunfounder/ai-camera-firmware
-## Docs
-https://docs.sunfounder.com
+This car is an educational marvel, perfect for budding programmers, especially children. It offers an immersive experience in electronics, robotics, and programming. With a 6cm Mecanum Wheel, it effortlessly achieves 360° omnidirectional movement and executes complex maneuvers like drifting. Equipped with an ESP32 CAM, it provides a first-person driving experience through the app. The car also features obstacle avoidance, line-following capabilities, an IR remote control, and captivating lighting effects.
 
-## Project Tree
-```
-zeus-car                               
-├─ Zeus_Car                            //
-│  ├─ Zeus_Car.h                       // macro definition of some variables
-│  ├─ Zeus_Car.ino                     // Arduino main program
-│  ├─ ai_camera.cpp                    // functions for communicating with ESP32-CAM
-│  ├─ ai_camera.h                      //
-│  ├─ car_control.cpp                  // functions for controll motors 
-│  ├─ car_control.h                    //
-│  ├─ cmd_code_config.hpp              // the command table for voice control and IR control
-│  ├─ compass.cpp                      // functions for compass sensor
-│  ├─ compass.h                        //
-│  ├─ grayscale.cpp                    // functions for grayscale line patrol module
-│  ├─ grayscale.h                      //
-│  ├─ hc165.cpp                        // functions for HC165 - IO expansion chip
-│  ├─ hc165.h                          //
-│  ├─ ir_obstacle.cpp                  // functions for IR obstacle avoidance module
-│  ├─ ir_obstacle.h                    //
-│  ├─ ir_remote.cpp                    // functions for IR remote
-│  ├─ ir_remote.h                      // 
-│  ├─ qmc6310.cpp                      // functions for compass sensor
-│  ├─ qmc6310.h                        //
-│  ├─ rgb.cpp                          // functions for rgb led strip
-│  ├─ rgb.h                            //
-│  ├─ test.h                           // functions for testing all modules
-│  ├─ ultrasonic.cpp                   // functions for ultrasonic module
-│  └─ ultrasonic.h                     //
-├─ test                                
-│  ├─ grayscale_pattern_classifier.py  // status enumeration tool for 8-way line patrol module
-│  ├─ qmc6310test                      //
-│  │  ├─ qmc6310.cpp                   //
-│  │  ├─ qmc6310.h                     //
-│  │  └─ qmc6310test.ino               //
-│  └─ test.ino                         //
-├─ .gitignore                          //
-├─ LICENSE                             //
-└─ Readme.md  
-```
+<a id="update"></a>
+## Update:
+2023-09-12:
+ - Revised the description for the Speech widget.
+ - Added a tutorial in the FAQ section for using speech control on Android devices.
+ - Modified the app control image and descriptions of related widgets.
+ 
+<a id="trouble"></a>
+## Trouble Shootings:
+
+<a id="about_sunfounder"></a>
 ## About SunFounder
 SunFounder is a company focused on STEAM education with products like open source robots, development boards, STEAM kit, modules, tools and other smart devices distributed globally. In SunFounder, we strive to help elementary and middle school students as well as hobbyists, through STEAM education, strengthen their hands-on practices and problem-solving abilities. In this way, we hope to disseminate knowledge and provide skill training in a full-of-joy way, thus fostering your interest in programming and making, and exposing you to a fascinating world of science and engineering. To embrace the future of artificial intelligence, it is urgent and meaningful to learn abundant STEAM knowledge.
 
-## Contact us
+<a id="license"></a>
+## License
+This is the code for Zeus Car Kit.
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied wa rranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+zeus_car comes with ABSOLUTELY NO WARRANTY; for details run ./show w. This is free software, and you are welcome to redistribute it under certain conditions; run ./show c for details.
+
+SunFounder, Inc., hereby disclaims all copyright interest in the program 'zeus_car' (which makes passes at compilers).
+
+Mike Huang, 21 August 2015
+
+Mike Huang, Chief Executive Officer
+
+Email: service@sunfounder.com
+
+<a id="contact_us"></a>
+## Contact us:
 website:
-    <a reaf="www.sunfounder.com">www.sunfounder.com</a>
+    www.sunfounder.com
 
 E-mail:
     service@sunfounder.com
