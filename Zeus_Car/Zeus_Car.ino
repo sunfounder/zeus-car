@@ -194,9 +194,9 @@ int freeRam() {
  */
 void modeHandler() {
   if (lastMode != currentMode) {
-    Serial.print(F("Mode Change: "));Serial.print(lastMode);Serial.print(F(" -> "));Serial.println(currentMode);
+    // Serial.print(F("Mode Change: "));Serial.print(lastMode);Serial.print(F(" -> "));Serial.println(currentMode);
     if (lastMode == MODE_COMPASS_CALIBRATION && calibrationState != CALIBRATION_STATE_CALIBRATED) {
-      Serial.print(F("Calibration interrupted"));
+      // Serial.print(F("Calibration interrupted"));
       calibrationState = CALIBRATION_STATE_INTERRUPTED;
     }
   }
@@ -224,6 +224,12 @@ void modeHandler() {
       break;
     case MODE_REMOTE_CONTROL:
       // rgbWrite(COLOR_STATE_APP);
+      // Serial.print("TEST MODE_REMOTE_CONTROL, angle:");
+      // Serial.print(appControlAngle);
+      // Serial.print("power: ");
+      // Serial.print(appControlPower);
+      // Serial.print("rot: ");
+      // Serial.println(appControlRotatePower);
       switch (remoteControlState) {
         case REMOTE_CONTROL_STATE_CAR_CENTRIC:
           carMove(appControlAngle, appControlPower, appControlRotatePower);
@@ -647,6 +653,7 @@ void onReceive() {
           } else {
             // Serial.print(F(" OFF"));
             currentMode = MODE_REMOTE_CONTROL;
+            carStop();
           }
           // Serial.print(F(" power:"));Serial.println(lineTrackPower);
           break;
@@ -672,6 +679,7 @@ void onReceive() {
           } else {
             // Serial.print(F(" OFF"));
             currentMode = MODE_REMOTE_CONTROL;
+            carStop();
           }
           // Serial.print(F(" power:"));Serial.println(obstaclePower);
           break;
