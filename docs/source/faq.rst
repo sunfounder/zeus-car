@@ -56,7 +56,7 @@ STT機能を使用するためには、Androidモーバイルデバイスがイ�
 
 #. ``Zeus_Car.ino`` ファイルのAPモードをSTAモードに変更してください。
 
-    * ``zeus-car-main/Zeus_Car``ディレクトリにある ``Zeus_Car.ino`` ファイルを開きます。
+    * ``zeus-car-main/Zeus_Car`` ディレクトリにある ``Zeus_Car.ino`` ファイルを開きます。
     * APモード関連のコードをコメントアウトし、STAモード関連のコードのコメントを解除し、自宅のWi-Fiの ``SSID`` と ``PASSWORD`` を入力します。
 
         .. code-block:: arduino

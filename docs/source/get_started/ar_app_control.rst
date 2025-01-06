@@ -68,7 +68,7 @@
 
 #. コントローラを作成します。
 
-    * SunFounderコントローラでコントローラを追加するには、**+** アイコンをクリックします。
+    * SunFounderコントローラでコントローラを追加するには、 **+** アイコンをクリックします。
 
         .. image:: img/app1.png
 
@@ -93,7 +93,7 @@
 
     .. image:: img/app_joystick_wid.png
 
-    * 次のステップは、|app_connect| ボタンを使用してZeus Carをデバイスに接続することです。数秒待ち、``Zeus_Car(IP)`` が表示されるのを待ち、クリックして接続します。
+    * 次のステップは、|app_connect| ボタンを使用してZeus Carをデバイスに接続することです。数秒待ち、 ``Zeus_Car(IP)`` が表示されるのを待ち、クリックして接続します。
 
         .. image:: img/app_connect.png
 
