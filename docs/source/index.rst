@@ -29,28 +29,21 @@ Thanks for choosing our |link_Robot_Car_Kit|.
     Please click on the respective links to access the document in your preferred language.
 
 .. image:: img/zeus_car.jpg
-    :width: 600
+    :width: 500
     :align: center
 
+The **Zeus Car** is an educational Arduino-based robot kit designed to spark creativity and hands-on learning in electronics, robotics, and coding. With its 360° omnidirectional movement, FPV camera (via ESP32 CAM), obstacle avoidance, line tracking, IR remote control, and vibrant lighting effects, the Zeus Car offers an engaging and intuitive way to explore cutting-edge tech while having fun.
 
-This is an educational kit for beginning programmers (children) to gain hands-on experience in electronics, robotics and programming. 
+Choose your path based on your interests and skill level:
 
-* Using 6cm Mecanum Wheel, easy to achieve 360 ° omnidirectional movement, and can perform difficult movements such as left and right drift.
-* Equipped with ESP32 CAM, you can experience first-person driving on the APP.
-* With 2 obstacle avoidance modules and an ultrasonic module, it can realize obstacle avoidance and following function.
-* The bottom is mounted with an 8-channel circularly placed grayscale module, which allows the car to follow the line in any direction.
-* There are also IR remote control and cool lighting effects, etc.
-* Module interfaces are XH1.5, easy to assemble and less chance of error.
+* :ref:`quick_start` – If you want to jump right in and start operating the Zeus Car immediately using the mobile app or the IR remote control, this section is for you. Perfect for beginners and anyone who wants instant, hassle-free control.
 
-We set a :ref:`ar_play_mode` for it, so users can directly turn on the car after assembling it and play with its various cool functions with its own remote control or mobile APP. In case you want to learn more about how to implement its various functions, you can refer to the :ref:`ar_programming_mode`.
+* :ref:`programming_arduino` – For those who wish to delve deeper into the code, understand how each function works, and customize the Zeus Car with Arduino programming, this section provides in-depth knowledge and opportunities for experimentation.
 
-**About the display language**
+.. * :ref:`programming_scratch` – Prefer a graphical, drag-and-drop approach to programming? Explore this section to use Scratch, making it easy to create interactive projects and control the Zeus Car without writing code manually.
 
-This document is available in other languages as well. To switch the display language, kindly click on the Read the Docs icon located in the lower left corner of the page.
+If you have any questions, feel free to email us at **service@sunfounder.com**, and we’ll respond as soon as possible.
 
-.. image:: img/translation.png
-
-If you have any questions, please send an email to service@sunfounder.com and we will respond as soon as possible.
 
 
 .. toctree::

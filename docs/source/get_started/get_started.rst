@@ -17,9 +17,9 @@ Get Started
 
 We have set two modes for Zeus Car, the hands-on play mode and the programming mode.
 
-* Hands-on :ref:`ar_play_mode` means you just need to turn on the Zeus Car after assembling, and then you can directly control this car with the remote control or APP to make it achieve various cool functions. Because we have pre-uploaded the code to the Arduino board at the factory.
+* Hands-on :ref:`quick_start` means you just need to turn on the Zeus Car after assembling, and then you can directly control this car with the remote control or APP to make it achieve various cool functions. Because we have pre-uploaded the code to the Arduino board at the factory.
 
-* The :ref:`ar_programming_mode` is that after you have experienced the various cool functions of Zeus Car, you can understand the principle of implementing each function individually according to each project, and then modify it according to your own ideas to achieve the functions you want.
+* The :ref:`programming_arduino` is that after you have experienced the various cool functions of Zeus Car, you can understand the principle of implementing each function individually according to each project, and then modify it according to your own ideas to achieve the functions you want.
 
 .. toctree::
     :maxdepth: 2

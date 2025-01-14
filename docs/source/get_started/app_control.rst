@@ -52,125 +52,119 @@ This is a quick tutorial video. Please watch the video first, and then follow th
     <br/> <br/>
 
 #. Let's start the Zeus Car.
-
-    * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
-    * So you'll need to plug in the Type-C cable for about 5 seconds.
-
-    .. raw:: html
-
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:70%">
-                <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
-
-    
-    * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
-
-    .. image:: img/zeus_power.jpg
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-    
-    * Now, you'll need to flick the smaller switch to the right to establish communication between the car and the ESP32 CAM. Afterward, press the Reset button to reboot the code. At this point, you'll observe the undercarriage lights transition from orange to a light blue.
-
-    .. raw:: html
-
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:70%">
-                <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
+   
+   * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
+   * So you'll need to plug in the Type-C cable for about 5 seconds.
+   
+     .. raw:: html
+     
+         <div style="text-align: center;">
+             <video center loop autoplay muted style = "max-width:70%">
+                 <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+                 Your browser does not support the video tag.
+             </video>
+         </div>
+     
+     .. raw:: html
+         
+         <br/>
+   
+   
+   * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
+   
+     .. image:: img/zeus_power.jpg
+         :width: 500
+         :align: center
+     
+     .. raw:: html
+         
+         <br/>  
+   
+   * Now, you'll need to flick the smaller switch to the right to establish communication between the car and the ESP32 CAM. Afterward, press the Reset button to reboot the code. At this point, you'll observe the undercarriage lights transition from orange to a light blue.
+   
+     .. raw:: html
+     
+         <div style="text-align: center;">
+             <video center loop autoplay muted style = "max-width:70%">
+                 <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+                 Your browser does not support the video tag.
+             </video>
+         </div>
+     
+     .. raw:: html
+         
+         <br/>
 
 #. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
 
 #. Connect to ``Zeus_Car`` WLAN.
 
-    Now, connect your mobile device to the local area network (LAN) broadcast by the Zeus Car. This way, your mobile device and the Zeus Car will be on the same network, which will facilitate communication between the applications on your mobile device and the Zeus Car.
-    
-
-    * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
-
-
-    .. raw:: html
-
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:80%">
-                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
-
-    * The default connection mode is AP mode. So after you connect, there will be a prompt telling you that there is no Internet access on this WLAN network, please choose to continue connecting.
-
-    .. image:: img/app_no_internet.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-
+   Now, connect your mobile device to the local area network (LAN) broadcast by the Zeus Car. This way, your mobile device and the Zeus Car will be on the same network, which will facilitate communication between the applications on your mobile device and the Zeus Car.
+   
+   
+   * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
+   
+     .. note::
+   
+       * The current connection is to the GalaxyRVR hotspot, so there is no internet access. If prompted to switch networks, please choose "Stay connected".
+       * :ref:`ap_to_sta`
+   
+     .. raw:: html
+   
+       <div style="text-align: center;">
+           <video center loop autoplay muted style = "max-width:80%">
+               <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
+               Your browser does not support the video tag.
+           </video>
+       </div>
+   
+     .. raw:: html
+         
+         <br/>
+   
 #. Create a controller.
 
-    * To add a controller on SunFounder Controller, click the **+** icon.
-
-    .. image:: img/app1.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-    
-    * Preset controllers are available for some products, here we choose **Zeus Car**. Give it a name, or simply tap **Confirm**.
-
-    .. image:: img/app_preset.jpg
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-    
-    
-    * Once inside, the app will automatically search for the Zeus Car. After a moment, you will see a prompt saying "Connected Successfully."
-
-    .. image:: img/app_edit.jpg
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/> 
-
-    * Now, tap the |app_run| button enables you to view the live video feed from the camera and control the car using the provided widgets. 
-    
-    .. image:: img/app_run123.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
-
+   * To add a controller on SunFounder Controller, click the **+** icon.
+   
+     .. image:: img/app1.png
+         :width: 500
+         :align: center
+     
+     .. raw:: html
+         
+         <br/>  
+   
+   * Preset controllers are available for some products, here we choose **Zeus Car**. Give it a name, or simply tap **Confirm**.
+   
+     .. image:: img/app_preset.jpg
+         :width: 500
+         :align: center
+     
+     .. raw:: html
+         
+         <br/>  
+   
+   
+   * Once inside, the app will automatically search for the Zeus Car. After a moment, you will see a prompt saying "Connected Successfully."
+   
+     .. image:: img/app_edit.jpg
+         :width: 500
+         :align: center
+     
+     .. raw:: html
+         
+         <br/> 
+   
+   * Now, tap the |app_run| button enables you to view the live video feed from the camera and control the car using the provided widgets. 
+   
+     .. image:: img/app_run123.png
+         :width: 500
+         :align: center
+     
+     .. raw:: html
+         
+         <br/>  
+   
 #. Here are the functions of the widgets.
 
         * :ref:`app_compass_cali`: Turn on compass calibration.

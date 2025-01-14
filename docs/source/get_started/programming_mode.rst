@@ -12,12 +12,12 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-.. _ar_programming_mode:
+.. _programming_arduino:
 
-Programming Mode
-==========================
+Programming with Arduino IDE
+=====================================
 
-After you have experienced :ref:`ar_play_mode`, if you want to understand how each function is implemented, and then modify the effect according to your own ideas, you can come to read this programming mode carefully.
+After you have experienced :ref:`quick_start`, if you want to understand how each function is implemented, and then modify the effect according to your own ideas, you can come to read this programming mode carefully.
 
 Every function in the programming mode chapter is made into a separate project, there are 17 of them. Each project has corresponding code and explanation, so you can see how each function works.
 

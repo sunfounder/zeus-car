@@ -58,7 +58,7 @@ You will learn how to make the Zeus Car move in all directions in this project.
 
     .. note::
         * If you get a "Compilation error: SoftPWM.h: No such file or directory" prompt, it means you don't have the ``SoftPWM`` library installed.
-        * Please refer to :ref:`ar_install_library` to install the two required libraries ``SoftPWM`` and ``IRLremote``.
+        * Please refer to :ref:`ar_install_lib` to install the two required libraries ``SoftPWM`` and ``IRLremote``.
 
     .. image:: img/ar_upload.png
 

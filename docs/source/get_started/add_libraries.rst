@@ -12,43 +12,57 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-.. _ar_install_library:
+.. _ar_install_lib:
 
 Install the Required Libraries
 ===============================================
 
-**What is library?**
+**What is a Library?**
 
-A library, gathering some function definitions and header files, usually contains two files: .h (header file, including function statement, Macro definition, constructor definition, etc.) and .cpp (execution file, with function implementation, variable definition, and so on). 
+A library is a collection of predefined functions and headers that make programming easier and more efficient. Libraries typically consist of two main files:
 
-When you need to use a function in some library, you just need to add a header file (e.g. #include <dht.h>), and then call that function. This can make your code more concise. 
+* **.h (Header File)**: Contains function declarations, macro definitions, and constructor definitions.
+* **.cpp (Source File)**: Includes function implementations, variable definitions, and other executable components.
 
-If you don't want to use the library, you can also write that function definition directly. Though as a result, the code will be long and inconvenient to read.
+By including a library in your project, you can directly call the functions it provides (e.g., ``#include <dht.h>``) instead of writing your own definitions from scratch. This keeps your code concise and easier to read. 
 
-Some libraries are already built in the Arduino IDE, when some others may need to be installed. So now let's see how to install one.
+While it's possible to write the function definitions yourself, using a library saves time and reduces complexity.
 
-**How to install?**
+Some libraries are pre-installed with the Arduino IDE, while others need to be installed manually. Here's how to install the required libraries for this project.
+
+**How to Install a Library**
 
 .. note::
 
-    I am using Arduino IDE 2.0, if you are using Arduino IDE 1.x, you can refer to |link_install_library|.
+    The following instructions are for **Arduino IDE 2.0**. If you are using Arduino IDE 1.x, refer to |link_install_library|.
 
-#. To install a new library into your Arduino IDE you can use the **Library Manager** which can open from the left column.
+Here are steps to install a library:
 
-    .. image:: img/arduino/ar_libr_manager.jpg
+1. Click on the **Library Manager** icon in the left column of the Arduino IDE.
 
-#. A list will now appear of all available libraries, where we can also search for the library we want to use. Here, we are going to install the ``SoftPWM`` library. Click on the **INSTALL** button to install the library.
+   .. image:: img/arduino/ar_libr_manager.jpg
 
-    .. image:: img/arduino/ar_softpwm.png
+2. Search for the library:
 
-#. This process should not take too long, but allow up to a minute to install it. When it is finished, we can take a look at the library in the library manager column, where it should say **INSTALLED**.
+   * A list of available libraries will appear. Use the search bar to find the library you want to install.
+   * For example, to install the ``SoftPWM`` library, type the library name and click the **INSTALL** button.
 
-    .. image:: img/arduino/ar_install_success.png
+   .. image:: img/arduino/ar_softpwm.png
 
-#. Install the ``IRLremote`` library in the same way, but be careful not to misspell the name.
+3. The installation process usually takes less than a minute. Once completed, the library will display **INSTALLED** in the Library Manager.
+   
+   .. image:: img/arduino/ar_install_success.png
 
-    .. image:: img/arduino/ar_irlremote.png
+4. Follow the same steps as above to install the ``IRLremote`` Library, ensuring you spell the library name correctly.
+   
+   .. image:: img/arduino/ar_irlremote.png
 
-#. Finally, install the ArduinoJson library.
+5. Then, install the ``ArduinoJson`` library.
 
-    .. image:: img/arduino/ar_arduinojson.png
+   .. image:: img/arduino/ar_arduinojson.png
+
+6. Search for and install the ``SunFounder AI Camera`` library, the final library needed for this project.
+
+   .. image:: img/arduino/ar_aicamera.png
+
+By following these steps, you'll have all the necessary libraries installed and ready to use for your project.

@@ -23,6 +23,11 @@ Here is the assembly instructions for the Zeus Car, PDF version, which is the sa
 
 This video will walk you through the process of assembling your robot from scratch.
 
+.. note::
+
+    The assembly steps in the video may differ slightly from the printed instructions you have. Please prioritize following the printed instructions. If any steps are unclear, you can refer to the video for further clarification.
+
+
 In this tutorial, you will learn:
 
 * **Preparation**: We'll introduce you to all the tools and parts needed, ensuring you're fully equipped before starting the assembly.

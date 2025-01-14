@@ -12,7 +12,7 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-.. _install_arduino:
+.. _install_arduino_ide:
 
 Download and Install Arduino IDE 2.0
 ========================================

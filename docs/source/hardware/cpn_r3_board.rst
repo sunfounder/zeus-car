@@ -56,6 +56,6 @@ SunFounder R3 board is a microcontroller board based on the ATmega328P (`datashe
 
 * `Arduino IDE <https://www.arduino.cc/en/software>`_
 * `Arduino Programming Language Reference <https://www.arduino.cc/reference/en/>`_
-* :ref:`install_arduino`
+* :ref:`install_arduino_ide`
 * `ATmega328P Datasheet <http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf>`_
 

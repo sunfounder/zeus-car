@@ -37,7 +37,7 @@ If you ignore the friction on the ground and the structural tolerances, its path
 
     .. note::
         * If you get a "Compilation error: SoftPWM.h: No such file or directory" prompt, it means you don't have the ``SoftPWM`` library installed.
-        * Please refer to :ref:`ar_install_library` to install the two required libraries ``SoftPWM`` and ``IRLremote``.
+        * Please refer to :ref:`ar_install_lib` to install the two required libraries ``SoftPWM`` and ``IRLremote``.
 
     .. image:: img/ar_board_upload.png
 
