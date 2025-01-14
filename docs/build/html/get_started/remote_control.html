@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>リモート制御 &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Arduino IDEでのプログラミング" href="programming_mode.html" />
+    <link rel="prev" title="APPによる制御" href="app_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">はじめに</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Zeus Carの組み立て</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="play_mode.html">アプリまたはIRリモコンでのクイックプレイ</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="app_control.html">APPによる制御</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">リモート制御</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">クイックガイド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ir-compass-cali">コンパスのキャリブレーション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ir-line-track">ライン追跡</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ir-follow">追跡モード</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ir-avoid">障害物回避</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drift">左/右にドリフト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ir-move">全方向への移動(1 ~ 9)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cycle-usd">左/右に回転（Cycle/USDキー）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming_mode.html">Arduino IDEでのプログラミング</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">ハードウェア</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">はじめに</a></li>
+          <li class="breadcrumb-item"><a href="play_mode.html">アプリまたはIRリモコンでのクイックプレイ</a></li>
+      <li class="breadcrumb-item active">リモート制御</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/remote_control.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="play-remote-control">
+<span id="id1"></span><h1>リモート制御<a class="headerlink" href="#play-remote-control" title="Permalink to this heading"></a></h1>
+<p>Zeus Carは、車を起動してからリモコンのボタンを直接押すことでリモコンで操作することができます。この方法は安定しており、外部の干渉を受けにくいですが、操作の柔軟性が低い場合があります。</p>
+<section id="id2">
+<h2>クイックガイド<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>まず、以下のチュートリアルビデオをご覧ください。ビデオを視聴した後、以下の指示に従ってください。</p>
+<video loop controls style = "max-width:90%">
+   <source src="../_static/video/ir_control_quick_guide.mp4"  type="video/mp4">
+   お使いのブラウザはビデオタグをサポートしていません。
+</video><br/> <br/><ol class="arabic">
+<li><p>Zeus Carの起動</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>初めて使用する場合やバッテリーケーブルが抜かれた場合、Zeus Car Shieldは過放電保護回路を作動させます。</p></li>
+<li><p>そのため、Type-Cケーブルを約5秒間接続する必要があります。</p></li>
+</ul>
+<div style="text-align: center;">
+    <video center loop autoplay muted style = "max-width:70%">
+        <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+        お使いのブラウザはビデオタグをサポートしていません。
+    </video>
+</div><br/><ul class="simple">
+<li><p>電源インジケータが点灯すると、保護ステータスが解除されたことを意味します。この時点でバッテリーインジケータを確認して、両方のバッテリーインジケータがオフの場合、Type-Cケーブルを続けて接続してバッテリーを充電してください。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_power.jpg"><img alt="../_images/zeus_power.jpg" class="align-center" src="../_images/zeus_power.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>次に、車とESP32 CAMとの通信を確立するために、小さいスイッチを右に切り替えます。その後、リセットボタンを押してコードを再起動します。この時点で、車体下のライトがオレンジから淡い青に変わるのを観察できます。</p></li>
+</ul>
+<div style="text-align: center;">
+    <video center loop autoplay muted style = "max-width:70%">
+        <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+        お使いのブラウザはビデオタグをサポートしていません。
+    </video>
+</div><br/></div></blockquote>
+</li>
+<li><p>リモートコントロールの異なるキーを押して、車を制御します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/remote_control.jpg"><img alt="../_images/remote_control.jpg" src="../_images/remote_control.jpg" style="width: 800px;" /></a>
+<ul class="simple">
+<li><p><strong>Stop</strong>: 車のすべての動きを停止します。</p></li>
+<li><p><a class="reference internal" href="#ir-compass-cali"><span class="std std-ref">コンパスのキャリブレーション</span></a>：コンパスのキャリブレーションをオンにします。</p></li>
+<li><p><a class="reference internal" href="#ir-line-track"><span class="std std-ref">ライン追跡</span></a>：ライン追跡モードに切り替えます。</p></li>
+<li><p><a class="reference internal" href="#ir-follow"><span class="std std-ref">追跡モード</span></a>：フォローモードに切り替えます。</p></li>
+<li><p><a class="reference internal" href="#ir-avoid"><span class="std std-ref">障害物回避</span></a>：障害物回避モードに切り替えます。</p></li>
+<li><p><a class="reference internal" href="#drift"><span class="std std-ref">左/右にドリフト</span></a>：左/右にドリフトします。</p></li>
+<li><p><strong>Set Heading</strong>: 車を手で一方向に置いた後、このキーをクリックして、この方向を車の前方として設定します。これにより、他のキーで車をその方向にゆっくりと回転させるのではなく、迅速に方向を指定できます。</p></li>
+<li><p><a class="reference internal" href="#rotate-left-right"><span class="std std-ref">左/右に回転（Cycle/USDキー）</span></a>：左/右に旋回します。</p></li>
+<li><p><a class="reference internal" href="#ir-move"><span class="std std-ref">全方向への移動(1 ~ 9)</span></a>：車をすべての方向に移動させます。</p></li>
+<li><p><strong>Pause</strong>: 機能は停止とほぼ同じですが、車の頭が元の設定方向を向いていない場合、設定方向にゆっくり移動します。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="ir-compass-cali">
+<span id="id3"></span><h2>コンパスのキャリブレーション<a class="headerlink" href="#ir-compass-cali" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="../_images/ir_mute.png"><img alt="ir_mute" src="../_images/ir_mute.png" style="width: 40px;" /></a> キーを押してコンパスのキャリブレーションをオンにします。</p>
+<p>Zeus車を地上に置きます。コンパスのキャリブレーションをオンにすると、車は反時計回りに回転し始め、
+約1分で停止します。
+2分以上回転する場合、この場所の磁場は複雑です。場所を変更して、再度キャリブレーションを試みてください。</p>
+</section>
+<section id="ir-line-track">
+<span id="id4"></span><h2>ライン追跡<a class="headerlink" href="#ir-line-track" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/drift_based_line_following.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/> <br/><p><a class="reference internal" href="../_images/ir_play.png"><img alt="ir_play" src="../_images/ir_play.png" style="width: 40px;" /></a> キーを押して、ライン追跡モードに切り替えます。</p>
+<p>Zeus車には、ライン追跡の2つのモードがあります。
+1つは頭が常に移動の方向を向いており、もう1つは頭が固定された方向を向いています。
+ここでは、2つ目のモードが選択されています。</p>
+<p>しかし、ラインを追跡させる前に、Omni Grayscaleモジュールをキャリブレートし、ラインを貼る必要があります。</p>
+<ol class="arabic">
+<li><p>3cm幅のラインを貼ります</p>
+<blockquote>
+<div><p>Omni grayscaleモジュールには8つのセンサーがあり、各センサー間の距離は2〜3cmです。2つのセンサーで黒いラインを同時に検出する必要があります。したがって、貼り付けるラインは幅が少なくとも3cmで、曲がる角度は90°未満であってはいけません。</p>
+<a class="reference internal image-reference" href="../_images/map.png"><img alt="../_images/map.png" class="align-center" src="../_images/map.png" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Omni Grayscaleモジュールをキャリブレートします。</p>
+<blockquote>
+<div><p>各フロアには異なるグレースケール値があるため、工場で設定されたグレースケールのしきい値が現在の環境に適していない場合があります。そのため、使用する前にこのモジュールをキャリブレートする必要があります。床の色が大きく変わるたびにキャリブレートすることをおすすめします。</p>
+<ul class="simple">
+<li><p>Zeus車を白い表面に置き、灰色のセンサーの光がちょうど点灯するまで、ポテンショメータを回します。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_line_calibration.jpg"><img alt="../_images/zeus_line_calibration.jpg" class="align-center" src="../_images/zeus_line_calibration.jpg" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>今度は、黒いラインと白い表面の間に2つのグレースケールセンサーを位置づけ、信号インジケータがちょうど消えるまでポテンショメータをゆっくり回します。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_line_calibration1.jpg"><img alt="../_images/zeus_line_calibration1.jpg" class="align-center" src="../_images/zeus_line_calibration1.jpg" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>黒いラインと白い表面の間を何度も移動させて、グレースケールセンサーの光が黒いラインと白い表面の間では消え、白い表面上では点灯していることを確認し、モジュールが正常にキャリブレートされていることを確認できます。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Zeus車を貼り付けたライン上に置き、 <a class="reference internal" href="../_images/ir_play.png"><img alt="ir_play" src="../_images/ir_play.png" style="width: 40px;" /></a> キーを押すと、車はラインを追跡します。</p></li>
+<li><p>Omni grayscaleモジュールの高い環境要件のため、追跡効果が満足できない場合（オフトラック）は、数回追加でキャリブレートすることをおすすめします。</p></li>
+</ol>
+</section>
+<section id="ir-follow">
+<span id="id5"></span><h2>追跡モード<a class="headerlink" href="#ir-follow" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/object_following.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/> <br/><p><a class="reference internal" href="../_images/ir_backward.png"><img alt="ir_backward" src="../_images/ir_backward.png" style="width: 40px;" /></a> キーを押して、追跡モードに切り替えます。</p>
+<p>超音波センサーは前方（20 cm）の障害物を検出し、それらを前方に追跡します。
+これらの2つの障害物回避モジュールにより、車は左または右に追跡することができますが、
+使用する前にキャリブレート（15cm）する必要があります。</p>
+<ol class="arabic">
+<li><p>IR障害物回避モジュールをキャリブレートします。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>右の障害物回避モジュールの調整から始めます。輸送中の衝突により、赤外線モジュールの送信機と受信機が傾くことがあります。したがって、手動でそれらをまっすぐに調整する必要があります。</p></li>
+</ul>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/><ul>
+<li><p>IR障害物回避モジュールから約15cm離れた場所に障害物を置きます。</p></li>
+<li><p>このモジュールには2つのポテンショメータがあり、1つは送信電力を調整するためのものであり、もう1つは送信周波数を調整するためのものです。これらの2つのポテンショメータを調整することで、検出距離を調整することができます。</p></li>
+<li><p>次に、ポテンショメータを調整します。15cmでモジュール上の信号ライトが点灯したら、調整が成功です。そうでない場合は、もう1つのポテンショメータを調整します。</p>
+<blockquote>
+<div><img alt="../_images/zeus_ir_avoid.jpg" src="../_images/zeus_ir_avoid.jpg" />
+</div></blockquote>
+</li>
+<li><p>同じ方法で、もう一つの障害物回避モジュールをキャリブレートします。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Zeus車をテーブルや地上に置き、手やその他の障害物を追跡させます。</p></li>
+</ol>
+</section>
+<section id="ir-avoid">
+<span id="id6"></span><h2>障害物回避<a class="headerlink" href="#ir-avoid" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/obstacle_avoidance.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/> <br/><p>障害物回避モードに切り替えたい場合は、 <a class="reference internal" href="../_images/ir_forward.png"><img alt="ir_forward" src="../_images/ir_forward.png" style="width: 40px;" /></a> キーを押しますが、先に <a class="reference internal" href="#ir-follow"><span class="std std-ref">追跡モード</span></a> を参照して、2つの障害物回避モジュールをキャリブレートしてください。</p>
+<ul class="simple">
+<li><p>Zeus車は前方に進みます。</p></li>
+<li><p>超音波モジュールが前方の障害物を検出すると、車は左に曲がります。</p></li>
+<li><p>左の障害物回避モジュールが障害物を検出すると、車は右に曲がり、右の障害物回避モジュールが障害物を検出すると、車は左に曲がります。</p></li>
+</ul>
+</section>
+<section id="drift">
+<span id="id7"></span><h2>左/右にドリフト<a class="headerlink" href="#drift" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> キーと <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a> キーを使用して、車を左/右にドリフトさせます。</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> キーを押すと、車は左にドリフトします。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_drift_left.jpg"><img alt="../_images/zeus_drift_left.jpg" class="align-center" src="../_images/zeus_drift_left.jpg" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p><a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a> キーを押すと、車は右にドリフトします。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_drift_right.jpg"><img alt="../_images/zeus_drift_right.jpg" class="align-center" src="../_images/zeus_drift_right.jpg" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>ドリフトする前に停止していた場合、 <a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> キーまたは <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a> キーを一度押すと、Zeusは左または右に90°ドリフトします。</p></li>
+<li><p>ドリフトする前に動いていた場合、キーを押すとZeus Carは左または右に90°ドリフトし、別のキーを押すまでパンします。</p></li>
+</ul>
+</section>
+<section id="ir-move">
+<span id="id8"></span><h2>全方向への移動(1 ~ 9)<a class="headerlink" href="#ir-move" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/> <br/><p>1~9の数字キーを使用して、Zeus Carを8方向に移動させます。</p>
+<img alt="../_images/remote_control_move.jpg" src="../_images/remote_control_move.jpg" />
+</section>
+<section id="cycle-usd">
+<span id="rotate-left-right"></span><h2>左/右に回転（Cycle/USDキー）<a class="headerlink" href="#cycle-usd" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../_images/ir_return.png"><img alt="ir_return" src="../_images/ir_return.png" style="width: 40px;" /></a> を一度押すと、車体を中心に45°左に回転します。以前の状態に応じて、前進するか停止します。前の状態が停止の場合、45°左に曲がった後に停止します。前方の場合、左に曲がった後に前進します。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_left.jpg"><img alt="../_images/zeus_turn_left.jpg" class="align-center" src="../_images/zeus_turn_left.jpg" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>同様に、 <a class="reference internal" href="../_images/ir_usd.png"><img alt="ir_usd" src="../_images/ir_usd.png" style="width: 40px;" /></a> を一度押すと、車は45°右に回転し、前の状態に応じて前進するか停止します。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_right.jpg"><img alt="../_images/zeus_turn_right.jpg" class="align-center" src="../_images/zeus_turn_right.jpg" style="width: 600px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app_control.html" class="btn btn-neutral float-left" title="APPによる制御" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="programming_mode.html" class="btn btn-neutral float-right" title="Arduino IDEでのプログラミング" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

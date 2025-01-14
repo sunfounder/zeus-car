@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arduino IDEでのプログラミング &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="コードのダウンロード" href="download_code.html" />
+    <link rel="prev" title="リモート制御" href="remote_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">はじめに</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Zeus Carの組み立て</a></li>
+<li class="toctree-l2"><a class="reference internal" href="play_mode.html">アプリまたはIRリモコンでのクイックプレイ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Arduino IDEでのプログラミング</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="download_code.html">コードのダウンロード</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html">Arduino IDE 2.0のダウンロードとインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduce_ide.html">Arduino IDEの紹介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_libraries.html">必要なライブラリをインストールする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_projects.html">楽しいプロジェクト</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">ハードウェア</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">はじめに</a></li>
+      <li class="breadcrumb-item active">Arduino IDEでのプログラミング</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/programming_mode.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="arduino-ide">
+<span id="programming-arduino"></span><h1>Arduino IDEでのプログラミング<a class="headerlink" href="#arduino-ide" title="Permalink to this heading"></a></h1>
+<p><a class="reference internal" href="play_mode.html#quick-start"><span class="std std-ref">アプリまたはIRリモコンでのクイックプレイ</span></a> を体験した後、各機能がどのように実装されているのか、
+そして自分のアイデアに合わせて効果を変更したい場合、このプログラミングモードをじっくりと読むことができます。</p>
+<p>プログラミングモードの章の各機能は独立したプロジェクトとして作成されており、その数は17あります。
+各プロジェクトには対応するコードと説明があり、各機能がどのように動作するかを確認できます。</p>
+<p>このプロジェクトはArduinoのプログラミング言語を使用しているため、
+始める前にArduino IDEと関連ライブラリをインストールする必要があります。</p>
+<p>さあ、発見の旅を始めましょう！</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="download_code.html">コードのダウンロード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_arduino_ide.html">Arduino IDE 2.0のダウンロードとインストール</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install_arduino_ide.html#id1">要件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_arduino_ide.html#id2">Arduino IDE 2.0のダウンロード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_arduino_ide.html#id3">インストール</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install_arduino_ide.html#ide">IDEの起動</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduce_ide.html">Arduino IDEの紹介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_libraries.html">必要なライブラリをインストールする</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ar_projects.html">楽しいプロジェクト</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ar_move.html">1. 基本動き</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_omni_move.html">2. 全方向移動</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_move_rotate.html">3. 移動と回転</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_drift.html">4. ドリフト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_remote_control.html">5. リモートコントロール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_car_light.html">6. 車のライト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_compass.html">7. コンパス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_move_field_centric.html">8. 移動 - フィールドセントリック制御システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_hc165_and_ir_obstacle.html">9. IR 障害物回避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_ultrasonic.html">10. 超音波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_avoid.html">11. 障害物回避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_follow.html">12. ついてきて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_grayscale.html">13. グレースケール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_line_track.html">14. 線追跡</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_line_track_field_centric.html">15. 線追跡 - フィールド中心の制御システム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai_detection_from_app.html">16. APPからのAI検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_app_control.html">17. APP制御</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar_app_control_plus.html">18. APP Control Plus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#calibration-e">Calibration(E)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#drift-enable-j">Drift Enable(J)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#move-in-all-directions-k">Move in All Directions(K)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#speech-i">Speech(I)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#line-track">Line Track</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#follow-o">Follow(O)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#avoid-p">Avoid(P)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_app_control_plus.html#control-the-drection-q">Control the Drection(Q)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="remote_control.html" class="btn btn-neutral float-left" title="リモート制御" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="download_code.html" class="btn btn-neutral float-right" title="コードのダウンロード" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

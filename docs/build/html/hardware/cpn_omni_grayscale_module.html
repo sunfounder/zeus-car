@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omni Grayscaleモジュール &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="超音波モジュール" href="cpn_ultrasonic_module_xh.html" />
+    <link rel="prev" title="カメラアダプターボード" href="cpn_camera_adapter.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">はじめに</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hardware.html">ハードウェア</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpn_r3_board.html">SunFounder R3ボード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_zeus_car_shield.html">Zeus Car Shield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_esp_32_cam.html">ESP32 CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_camera_adapter.html">カメラアダプターボード</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Omni Grayscaleモジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ultrasonic_module_xh.html">超音波モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ir_obstacle_module.html">IR 障害物回避モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_rgb_strip.html">4 RGB LEDs ストリップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_18650_battery.html">18650 バッテリー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_tt_motor_xh.html">TTモーター</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_mecanum_wheel.html">メカナムホイール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="hardware.html">ハードウェア</a></li>
+      <li class="breadcrumb-item active">Omni Grayscaleモジュール</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/cpn_omni_grayscale_module.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="omni-grayscale">
+<h1>Omni Grayscaleモジュール<a class="headerlink" href="#omni-grayscale" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/omni_grayscale_front.png"><img alt="../_images/omni_grayscale_front.png" src="../_images/omni_grayscale_front.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/omni_grayscale_back.png"><img alt="../_images/omni_grayscale_back.png" src="../_images/omni_grayscale_back.png" style="width: 300px;" /></a>
+<ul class="simple">
+<li><p><strong>VREF</strong>: 参照電圧入力ピン。各センサーの値がこの参照電圧と比較され、出力が高いか低いかを決定します。</p></li>
+<li><p><strong>Q7</strong>: 最終段からのシリアル出力</p></li>
+<li><p><strong>PL</strong>: 非同期並列ロード入力（アクティブLOW）</p></li>
+<li><p><strong>CP</strong>: クロック入力（LOWからHIGHへのエッジトリガー）</p></li>
+<li><p><strong>5V</strong>: 3.3〜5V DC供給入力</p></li>
+<li><p><strong>GND</strong>: グラウンド入力</p></li>
+</ul>
+<p>このOmni Grayscaleモジュールは、ラインフォローとエッジ検出用です。Omniは全方向性を意味し、モジュールには、任意の方向の黒い線を検出するために、円に分布した8つのTCRT5000送信センサーがあります。</p>
+<p>これにより、Mecanumホイールを持つZeus Carのようなロボットカーは、車の頭部が前方を向いていなくても、さまざまな角度でラインを追跡できます。</p>
+<p>モジュールの現在の環境での感度は、VREF値を変更することで調整できます。Zeus Car Shiledでは、青いポテンショメーターがVREFピンの値を調整するために使用されます。</p>
+<p><strong>動作原理</strong></p>
+<ul class="simple">
+<li><p><a href="https://datasheetspdf.com/pdf-file/377371/VishayTelefunken/TCRT5000/1" target="_blank">TCRT5000 Reflective Sensor</a></p></li>
+</ul>
+<p>モジュール内には、8つのTCRT5000送信センサーが統合されており、これらは赤外光反射に基づいており、可視光を遮断する鉛材で覆われた赤外発光ダイオードとフォトトランジスタを含んでいます。</p>
+<a class="reference internal image-reference" href="../_images/tcrt5000_pin.jpg"><img alt="../_images/tcrt5000_pin.jpg" class="align-center" src="../_images/tcrt5000_pin.jpg" style="width: 400px;" /></a>
+<p>動作中、TCRT5000の赤外発光ダイオードは、950nmの波長で赤外光（目に見えない光）を連続して放射します。障害物によって放射された赤外光が反射されないか、反射強度が不足していると、フォトトランジスタは動作しません。赤外光が十分な強度で反射され、同時にフォトトランジスタに受信されると、フォトトランジスタは動作状態となり、出力を提供します。</p>
+<ul class="simple">
+<li><p><a href="https://datasheetspdf.com/pdf-file/1055868/FairchildSemiconductor/LM339/1" target="_blank">LM339 Quad Comparator</a></p></li>
+</ul>
+<p>このOmni Grayscaleモジュールには、合計8つの差動コンパレーターを含む2つのLM339チップがあります。これらの差動コンパレータは、現在のセンサー値と基準値を比較して、高いか低いかを判断するために使用されます。このようにして、黒い線が検出されたかどうかが分かります。</p>
+<img alt="../_images/lm339_chip.png" src="../_images/lm339_chip.png" />
+<p>以下は、チャンネルの一部の回路図です。</p>
+<img alt="../_images/tcrt_lm339.png" src="../_images/tcrt_lm339.png" />
+<ul class="simple">
+<li><p>VREFピンで基準電圧を設定し（この基準電圧はZeus Car Shield上のポテンショメーターで設定します）、この基準電圧をコンパレータの反転入力（-）に追加します。</p></li>
+<li><p>TCRT5000センサーのフォトトランジスタのコレクターをコンパレータの同相入力（+）に追加します。</p></li>
+<li><p>TCRT5000センサーが放射した赤外線が反射されず、または反射強度が不足している場合、感光トランジスタは動作せず、この時、コレクターはプルアップ抵抗に5Vに接続されるので、コンパレータの同相入力（+）が反転入力（-）より大きくなります。</p></li>
+<li><p>コンパレータの出力は高く、インジケータは点灯しません。逆も同様です。</p></li>
+<li><p>黒い表面は光を吸収するため、赤外光を反射するのが少なく、黒い表面上では、コンパレータが高出力でインジケータが点灯せず、白い表面は赤外線を反射して、感光トランジスタが動作し、同相入力の値が反転入力より小さいため、コンパレータは低出力でインジケータが点灯します。</p></li>
+</ul>
+<p>この8つのセンサーデータは、74HC165（8ビット並列入力シリアル出力シフトレジスタ）を介してArduinoボードに転送されます。</p>
+<ul class="simple">
+<li><p><a href="https://datasheetspdf.com/pdf-file/944867/NXP/74HC165/1" target="_blank">74HC165 Shift Register</a></p></li>
+</ul>
+<p>74HC165は8ビット並列入力シリアル出力シフトレジスタで、最終段でQ0とQ7の相互排他的なシリアル出力を取得できます。並列読取り(PL)入力が低い場合、D0からD7ポートからの並列データ入力が非同期でレジスタに読み込まれます。PLが高い場合、データはDS入力からシリアルでレジスタに入力され、各クロックパルスの立ち上がりエッジで1ビット右に移動します（Q0 → Q1 → Q2、など）。この機能を使用すると、Q7出力を次のレベルのDS入力にバインドするだけで、並列からシリアルへの展開が簡単に実現できます。</p>
+<p>74HC165のクロック入力は「ゲーテッドオア」構造で、一つの入力を低アクティブクロック有効（CE）入力として使用できます。CPとCEのピン割り当ては独立しており、必要に応じて配線の便宜のために交換することができます。CPが高い状態の時にのみ、CEは低から高へと上がることが許可されます。PLのアクティブ状態でデータの変位を防ぐため、PLの立ち上がりエッジの前にCPまたはCEを高く設定する必要があります。</p>
+<img alt="../_images/74hc165_con.png" src="../_images/74hc165_con.png" />
+<p><strong>特長</strong></p>
+<ul class="simple">
+<li><p>動作電圧: 3.3 ~ 5V</p></li>
+<li><p>出力: デジタル（オン/オフ）</p></li>
+<li><p>非同期8ビット並列ロード</p></li>
+<li><p>同期式シリアル入力</p></li>
+<li><p>検出閾値: VREFピンで調整可能</p></li>
+<li><p>センサタイプ：TCRT5000</p></li>
+<li><p>コネクタモデル：ZH1.5-6P</p></li>
+<li><p>動作温度範囲: -10℃ 〜 +50℃</p></li>
+<li><p>外寸: 80mm x 80mm</p></li>
+</ul>
+<p><strong>モジュールのキャリブレーション</strong></p>
+<blockquote>
+<div><p>各フロアは異なるグレースケール値を持っているため、工場設定のグレースケール閾値が現在の環境に適していない可能性があります。そのため、使用前にこのモジュールをキャリブレートする必要があります。床の色が大きく変わった時にはキャリブレーションを行うことをおすすめします。</p>
+<ul>
+<li><p>Zeus Carを白い面に置き、灰色のセンサライトが点灯するまでポテンショメータを回します。</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration2.jpg" src="../_images/zeus_line_calibration2.jpg" />
+</div></blockquote>
+</li>
+<li><p>両側のグレースケールセンサを黒いラインと白い面のちょうど間に位置させ、信号インジケータが消灯するまでゆっくりとポテンショメータを回します。</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration11.jpg" src="../_images/zeus_line_calibration11.jpg" />
+</div></blockquote>
+</li>
+<li><p>黒いラインと白い面を繰り返し移動させ、グレースケールセンサのライトが黒いラインと白い面の間にある時にはオフ、白い面にある時にはオンになっていることを確認します。これはモジュールが正常にキャリブレートされていることを示しています。</p></li>
+</ul>
+</div></blockquote>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpn_camera_adapter.html" class="btn btn-neutral float-left" title="カメラアダプターボード" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpn_ultrasonic_module_xh.html" class="btn btn-neutral float-right" title="超音波モジュール" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

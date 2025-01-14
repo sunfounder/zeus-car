@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18. APP Control Plus &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ハードウェア" href="../hardware/hardware.html" />
+    <link rel="prev" title="17. APP制御" href="ar_app_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">はじめに</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Zeus Carの組み立て</a></li>
+<li class="toctree-l2"><a class="reference internal" href="play_mode.html">アプリまたはIRリモコンでのクイックプレイ</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="programming_mode.html">Arduino IDEでのプログラミング</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_code.html">コードのダウンロード</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html">Arduino IDE 2.0のダウンロードとインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduce_ide.html">Arduino IDEの紹介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_libraries.html">必要なライブラリをインストールする</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ar_projects.html">楽しいプロジェクト</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ar_move.html">1. 基本動き</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_omni_move.html">2. 全方向移動</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_rotate.html">3. 移動と回転</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_drift.html">4. ドリフト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_remote_control.html">5. リモートコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_car_light.html">6. 車のライト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_compass.html">7. コンパス</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_field_centric.html">8. 移動 - フィールドセントリック制御システム</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_hc165_and_ir_obstacle.html">9. IR 障害物回避</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_ultrasonic.html">10. 超音波</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_avoid.html">11. 障害物回避</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_follow.html">12. ついてきて</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_grayscale.html">13. グレースケール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track.html">14. 線追跡</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track_field_centric.html">15. 線追跡 - フィールド中心の制御システム</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai_detection_from_app.html">16. APPからのAI検出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_app_control.html">17. APP制御</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">18. APP Control Plus</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">ハードウェア</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">はじめに</a></li>
+          <li class="breadcrumb-item"><a href="programming_mode.html">Arduino IDEでのプログラミング</a></li>
+          <li class="breadcrumb-item"><a href="ar_projects.html">楽しいプロジェクト</a></li>
+      <li class="breadcrumb-item active">18. APP Control Plus</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/ar_app_control_plus.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="app-control-plus">
+<span id="ar-app-control-plus"></span><h1>18. APP Control Plus<a class="headerlink" href="#app-control-plus" title="Permalink to this heading"></a></h1>
+<p>このプロジェクトは、 <a class="reference internal" href="ar_app_control.html#ar-app-control"><span class="std std-ref">17. APP制御</span></a> を基に、ライントラック、フォロー、回避の機能を統合しています。</p>
+<div style="text-align: center;">
+    <video center loop autoplay muted style = "max-width:70%">
+        <source src="../_static/video/app_control.mp4"  type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>APP Store(iOS)</strong> または <strong>Google Play(Android)</strong> から <a class="reference external" href="https://docs.sunfounder.com/projects/sf-controller/en/latest/">SunFounder Controller</a> をインストールしてください。</p>
+</div>
+<p><strong>手順</strong></p>
+<ol class="arabic">
+<li><p>ESP32-CAMとArduinoボードは、RX（受信）およびTX（送信）ピンを共有しています。コードをアップロードする際、ESP32-CAMを一旦切断して、競合や問題を回避してください。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/unplug_cam1.png"><img alt="../_images/unplug_cam1.png" class="align-center" src="../_images/unplug_cam1.png" style="width: 300px;" /></a>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zeus-car-main\examples\18_app_control_plus</span></code> のパスの下で <code class="docutils literal notranslate"><span class="pre">18_app_control_plus.ino</span></code> ファイルを開きます。</p>
+<blockquote>
+<div><iframe src=https://create.arduino.cc/editor/sunfounder01/b67e7245-369b-4218-b12c-d73f95ac3b22/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe></div></blockquote>
+</li>
+<li><p>コードが正常にアップロードされた後、ESP32-CAMを挿し、その後電源スイッチをONにスライドしてZeus Carを起動することができます。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/plug_esp32_cam1.jpg"><img alt="../_images/plug_esp32_cam1.jpg" class="align-center" src="../_images/plug_esp32_cam1.jpg" style="width: 300px;" /></a>
+</div></blockquote>
+</li>
+<li><p>ESP32 CAMを起動するため、アップロードスイッチをRunの方向（この図では右側）に切り替えます。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_run.jpg"><img alt="../_images/zeus_run.jpg" class="align-center" src="../_images/zeus_run.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Arduinoボードのプログラムを再起動するために、リセットボタンを押します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_reset_button.jpg"><img alt="../_images/zeus_reset_button.jpg" class="align-center" src="../_images/zeus_reset_button.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Zeus_Car</span></code> WLANに接続する。</p>
+<blockquote>
+<div><p>Zeus Carがブロードキャストするローカルエリアネットワーク(LAN)にモバイルデバイスを接続します。これにより、モバイルデバイスとZeus Carが同じネットワーク上になり、アプリケーション間の通信が容易になります。</p>
+<ul class="simple">
+<li><p>携帯電話(タブレット)のWLANで <code class="docutils literal notranslate"><span class="pre">Zeus_Car</span></code> を見つけ、パスワード <code class="docutils literal notranslate"><span class="pre">12345678</span></code> を入力して接続します。</p></li>
+</ul>
+<div style="text-align: center;">
+    <video center loop autoplay muted style = "max-width:80%">
+        <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
+        ご使用のブラウザは動画タグをサポートしていません。
+    </video>
+</div><br/><ul class="simple">
+<li><p>デフォルトの接続モードはAPモードです。したがって、接続した後、このWLANネットワークにインターネット接続がないというプロンプトが表示されますが、接続を続行してください。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_no_internet.png"><img alt="../_images/app_no_internet.png" class="align-center" src="../_images/app_no_internet.png" style="width: 500px;" /></a>
+<br/></div></blockquote>
+</li>
+<li><p>コントローラの作成。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SunFounder Controllerでコントローラを追加するには、 <strong>+</strong> アイコンをクリックしてください。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app1.png"><img alt="../_images/app1.png" class="align-center" src="../_images/app1.png" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>一部の製品にはプリセットのコントローラが用意されています。ここでは <strong>Zeus Car</strong> を選択してください。名前を付けるか、 <strong>Confirm</strong> をタップしてください。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_preset1.jpg"><img alt="../_images/app_preset1.jpg" class="align-center" src="../_images/app_preset1.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>アプリ内でZeus Carを自動的に検索します。少し待つと、「接続成功」というプロンプトが表示されます。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_edit2.jpg"><img alt="../_images/app_edit2.jpg" class="align-center" src="../_images/app_edit2.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>今度は、<a class="reference internal" href="../_images/app_run.png"><img alt="app_run" src="../_images/app_run.png" style="width: 20px;" /></a> ボタンをタップすると、カメラからのライブ映像を表示し、提供されているウィジェットを使用して車を操作できます。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_run1231.png"><img alt="../_images/app_run1231.png" class="align-center" src="../_images/app_run1231.png" style="width: 500px;" /></a>
+<br/></div></blockquote>
+</li>
+</ol>
+<ul>
+<li><p>以下はウィジェットの機能一覧です。</p>
+<blockquote>
+<div><ul>
+<li><p><a class="reference internal" href="#app-compass-cali"><span class="std std-ref">Calibration(E)</span></a>: コンパスのキャリブレーションを開始。</p></li>
+<li><p><strong>Stop(F)</strong>: 車の動きを全て停止。</p></li>
+<li><p><strong>Reset Heading(G)</strong>: 手で車を一つの方向に向けて配置した後、このウィジェットをクリックすることで、その方向を車の移動の前方として設定します。これにより、他のウィジェットで車をゆっくりその方向に回転させる代わりに、迅速に方向を指定できます。</p></li>
+<li><p><a class="reference internal" href="#app-speech-control"><span class="std std-ref">Speech(I)</span></a>: 音声制御モードに切り替え。</p></li>
+<li><p><a class="reference internal" href="#app-drift"><span class="std std-ref">Drift Enable(J)</span></a>: ドリフト機能を有効にする。</p></li>
+<li><p><a class="reference internal" href="#app-move"><span class="std std-ref">Move in All Directions(K)</span></a>: 車を全方向に移動させるための制御。</p></li>
+<li><p><a class="reference internal" href="#app-line-track"><span class="std std-ref">Line Track</span></a>: 下記の2つのウィジェットは、ライントラックモードに切り替えることができます。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Line no Mag(M)</strong>: ライントラックモードに切り替えるが、磁場の影響を受けない。ライントラッキングの過程で、Zeus Carの方向は継続的に変わります。</p></li>
+<li><p><strong>Line(N)</strong>: ライントラックモードに切り替えると、磁場の存在のため、ライントラッキング中のZeus Carの方向は特定の方向に向けられます。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference internal" href="#app-follow"><span class="std std-ref">Follow(O)</span></a>: フォローモードに切り替え。</p></li>
+<li><p><a class="reference internal" href="#app-avoid"><span class="std std-ref">Avoid(P)</span></a>: 障害物回避モードに切り替え。</p></li>
+<li><p><a class="reference internal" href="#app-rotate-drift"><span class="std std-ref">Control the Drection(Q)</span></a>: 頭部の方向を制御するために使用。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<section id="calibration-e">
+<span id="app-compass-cali"></span><h2>Calibration(E)<a class="headerlink" href="#calibration-e" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="../_images/app_cali_e.png"><img alt="app_cali_e" src="../_images/app_cali_e.png" style="width: 100px;" /></a> ボタンをクリックしてコンパスのキャリブレーションをオンにします。</p>
+<p>Zeusカーを地上に置きます。コンパスのキャリブレーションをオンにすると、車は反時計回りに回転を開始し、約1分で停止します。2分以上回転する場合は、こちらの磁場が複雑です。場所を変更して再度キャリブレーションしてください。</p>
+</section>
+<section id="drift-enable-j">
+<span id="app-drift"></span><h2>Drift Enable(J)<a class="headerlink" href="#drift-enable-j" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="../_images/app_drift_j.png"><img alt="app_drift_j" src="../_images/app_drift_j.png" style="width: 100px;" /></a> ボタンをクリックして、ドリフト機能を有効にします。</p>
+<ul>
+<li><p><a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> ウィジェットを反時計回りにスライドすると、Zeus Carが右にドリフトします。手を離すと、車は現在の位置で停止します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_drift_left.jpg"><img alt="../_images/zeus_drift_left.jpg" class="align-center" src="../_images/zeus_drift_left.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p>同様に、 <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> ウィジェットを時計回りにスライドすると、Zeus Carは左にドリフトし、現在の位置で停止します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_drift_right.jpg"><img alt="../_images/zeus_drift_right.jpg" class="align-center" src="../_images/zeus_drift_right.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="move-in-all-directions-k">
+<span id="app-move"></span><h2>Move in All Directions(K)<a class="headerlink" href="#move-in-all-directions-k" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/> <br/><p><a class="reference internal" href="../_images/app_move_k.png"><img alt="app_move_k" src="../_images/app_move_k.png" style="width: 100px;" /></a> ウィジェットをスワイプすると、Zeus Carは適切な方向に移動します。</p>
+<img alt="../_images/joystick_move.png" class="align-center" src="../_images/joystick_move.png" />
+<p>一度スライドすると車が動きますので、常に手を離さない限り、車は移動し続けます。</p>
+<img alt="../_images/zeus_move.jpg" src="../_images/zeus_move.jpg" />
+</section>
+<section id="speech-i">
+<span id="app-speech-control"></span><h2>Speech(I)<a class="headerlink" href="#speech-i" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="../_images/app_speech_m.png"><img alt="app_speech_m" src="../_images/app_speech_m.png" style="width: 100px;" /></a> ウィジェットを押すことで、STT機能が有効になります。STTとは、Speech to Textの略です。</p>
+<p>SunFounder Controllerアプリは、モバイルデバイスの音声認識エンジンと統合されています。したがって、SunFounder Controllerで <strong>Speech(I)</strong> ウィジェットをタップして長押しし、モバイルデバイスに向かって話すと、</p>
+<p>デバイスはあなたの発話をキャプチャし、テキストに変換し、Zeus Carに送信します。このテキストがコード内の事前設定されたコマンドと一致する場合、車は対応するアクションを実行します。</p>
+<p>以下は、コード内で現在プリセットされているコマンドです。次のコマンドのいずれかを話し、Zeus Carがどのように反応するかを観察してください。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code>: 車の動きをすべて停止できます。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pasue</span></code>: この機能はStopと基本的に同じですが、車の頭部が元々設定された方向を向いていない場合、設定された方向にゆっくりと動きます。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forward</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backward</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">forward</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">backward</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">forward</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">backward</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">move</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">move</span> <span class="pre">right</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>STT（Speech to Text）機能を使用するには、Androidデバイスでのインターネット接続とGoogleサービスが必要です。しかし、Zeus Carの事前設定されたAP（Access Point）モードでは動作しません。</p>
+<p>APモードでは、Zeus Carはモバイルデバイスが接続できるローカルWi-Fiネットワークを作成しますが、インターネットアクセスは提供されません。</p>
+<p>AndroidでSTT機能を使用するには、<a class="reference internal" href="../faq.html#stt-android"><span class="std std-ref">AndroidデバイスでSTT機能を使用する方法は？</span></a> に従って車のコードをAPモードからSTAモードに切り替えてください。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>iOSデバイスは、オフラインの音声認識エンジンを使用しているため、APモードとSTAモードの両方で問題なく動作します。</p>
+</div>
+<p>上記の8つのコマンドを車が受信した後、 <code class="docutils literal notranslate"><span class="pre">stop</span></code> または <code class="docutils literal notranslate"><span class="pre">pasue</span></code> のコマンドを受信するまで、対応する方向に移動し続けます。</p>
+<blockquote>
+<div><img alt="../_images/zeus_move.jpg" src="../_images/zeus_move.jpg" />
+</div></blockquote>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">turn</span> <span class="pre">left</span></code>: このコマンドを使用すると、車は本体を中心に45°左に回転し、前の状態に基づいて前進するか停止します。前の状態が停止の場合は、45°左に回転した後に停止します；前進の場合は、回転した後に前進します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_turn_left.jpg"><img alt="../_images/zeus_turn_left.jpg" class="align-center" src="../_images/zeus_turn_left.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turn</span> <span class="pre">right</span></code>: このコマンドを使用すると、車は本体を中心に45°右に回転し、前の状態によって前進するか停止します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_turn_right.jpg"><img alt="../_images/zeus_turn_right.jpg" class="align-center" src="../_images/zeus_turn_right.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="line-track">
+<span id="app-line-track"></span><h2>Line Track<a class="headerlink" href="#line-track" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/drift_based_line_following.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/><p><a class="reference internal" href="../_images/app_line_n.png"><img alt="app_line_n" src="../_images/app_line_n.png" style="width: 100px;" /></a> ウィジェットをクリックしてライン追跡モードに切り替えます。</p>
+<p>Zeus Carには、移動の方向を常に向いているモードと、頭が固定の方向を向いているモードの、2つのライン追跡モードがあります。ここでは、後者が選択されています。</p>
+<ol class="arabic">
+<li><p>3cm幅のラインを貼る</p>
+<blockquote>
+<div><p>Omniグレースケールモジュールには8つのセンサーがあり、各センサー間の距離は2cmから3cmです。ブラックラインを同時に検出するためには、2つのセンサーが必要です。したがって、貼るラインは少なくとも3cmの幅が必要であり、曲がる角度は90°未満であってはなりません。</p>
+<a class="reference internal image-reference" href="../_images/map.png"><img alt="../_images/map.png" class="align-center" src="../_images/map.png" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Omniグレースケールモジュールをキャリブレートする。</p>
+<blockquote>
+<div><p>各サブフロアは異なるグレースケール値を持っているため、工場で設定された閾値は現在の環境に適していない場合があります。そのため、使用する前にこのモジュールをキャリブレートする必要があります。床の色が大きく変わった場合は、キャリブレーションを再度行うことを推奨します。</p>
+<ul class="simple">
+<li><p>Zeus Carを白い表面に置き、灰色のセンサーの光がちょうど点灯するまでポテンショメーターを回します。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_line_calibration.jpg"><img alt="../_images/zeus_line_calibration.jpg" class="align-center" src="../_images/zeus_line_calibration.jpg" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>それから、二つのグレースケールセンサーを、ブラックラインと白い表面の間にちょうど配置し、信号インジケータがちょうど消えるまでゆっくりとポテンショメーターを回します。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_line_calibration1.jpg"><img alt="../_images/zeus_line_calibration1.jpg" class="align-center" src="../_images/zeus_line_calibration1.jpg" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>グレースケールセンサーの光が、ブラックラインと白い表面の間にあるときに消灯し、白い表面にあるときに点灯することを確認するために、ブラックラインと白い表面の上を何度も動かすことができます。これは、モジュールが正常にキャリブレーションされたことを示しています。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Zeus Carを貼ったラインの上に置き、 <a class="reference internal" href="../_images/app_line_n.png"><img alt="app_line_n" src="../_images/app_line_n.png" style="width: 100px;" /></a> ウィジェットをクリックすると、ラインを追跡します。</p></li>
+<li><p>Omniグレースケールモジュールの環境要件が高いため、追跡効果が満足できない場合（脱線）は、何度もキャリブレートすることを推奨します。</p></li>
+</ol>
+</section>
+<section id="follow-o">
+<span id="app-follow"></span><h2>Follow(O)<a class="headerlink" href="#follow-o" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/object_following.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/><p><a class="reference internal" href="../_images/app_follow_o.png"><img alt="app_follow_o" src="../_images/app_follow_o.png" style="width: 100px;" /></a> ウィジェットをクリックして、フォローモードに切り替えます。</p>
+<p>超音波センサーは前方（20 cm）の障害物を検出し、それらを追尾します。これら二つの障害物回避モジュールは車が左または右に追尾することを可能にしますが、使用前に（15cm）でキャリブレートする必要があります。</p>
+<ol class="arabic">
+<li><p>IR障害物回避モジュールをキャリブレートする。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>右の障害物回避モジュールの調整から始めます。輸送中の衝突により、赤外線モジュールの送信機と受信機が傾くことがあります。したがって、手動でそれらをまっすぐに調整する必要があります。</p></li>
+</ul>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/><ul>
+<li><p>IR障害物回避モジュールから約15cm離れた場所に障害物を置きます。</p></li>
+<li><p>モジュールには2つのポテンショメータがあります。一つは送信電力を調整するためのもの、もう一つは送信周波数を調整するためのものです。これらのポテンショメータを調整することで、検出距離を調整することができます。</p></li>
+<li><p>その後、ポテンショメータを調整し、15cmでモジュールの信号灯が点灯する場合は調整が成功していると言えます。そうでない場合は、もう一つのポテンショメータを調整します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_ir_avoid.jpg"><img alt="../_images/zeus_ir_avoid.jpg" class="align-center" src="../_images/zeus_ir_avoid.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p>同じ方法で他の障害物回避モジュールをキャリブレートします。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Zeus車をテーブルや地面に置き、あなたの手や他の障害物を追跡させます。</p></li>
+</ol>
+</section>
+<section id="avoid-p">
+<span id="app-avoid"></span><h2>Avoid(P)<a class="headerlink" href="#avoid-p" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/obstacle_avoidance.mp4"  type="video/mp4">
+   Your browser does not support the video tag.
+</video><br/><p>障害物回避モードに入る場合は、 <a class="reference internal" href="../_images/app_avoid_p.png"><img alt="app_avoid_p" src="../_images/app_avoid_p.png" style="width: 100px;" /></a> ウィジェットをクリックしてください。ただし、2つの障害物回避モジュールをキャリブレートする前に、<a class="reference internal" href="#app-follow"><span class="std std-ref">Follow(O)</span></a> を参照してください。</p>
+<ul class="simple">
+<li><p>Zeus車は前進します。</p></li>
+<li><p>超音波モジュールは前方の障害物を検出します。検出された場合、車は左に回転します。</p></li>
+<li><p>左の障害物回避モジュールが障害物を検出すると、車は右に回転し、右の障害物回避モジュールが障害物を検出すると、車は左に回転します。</p></li>
+</ul>
+</section>
+<section id="control-the-drection-q">
+<span id="app-rotate-drift"></span><h2>Control the Drection(Q)<a class="headerlink" href="#control-the-drection-q" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><a class="reference internal" href="../_images/app_drift_j.png"><img alt="app_drift_j" src="../_images/app_drift_j.png" style="width: 100px;" /></a> ボタンがオンの場合、 <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> ウィジェットはZeus Carを左右にドリフトさせるために使用されます。</p></li>
+<li><p><a class="reference internal" href="../_images/app_drift_j.png"><img alt="app_drift_j" src="../_images/app_drift_j.png" style="width: 100px;" /></a> ウィジェットがオフの場合、 <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> ウィジェットは車の頭の方向を制御するために使用されます。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> ウィジェットを反時計回りにスライドすると、車も反時計回りに回転します。手を離すと、車の頭は元の方向に戻ります。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_left.jpg"><img alt="../_images/zeus_turn_left.jpg" class="align-center" src="../_images/zeus_turn_left.jpg" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p>同様に、 <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> ウィジェットで車は時計回りに回転し、手を放すと元の方向に戻ります。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_right.jpg"><img alt="../_images/zeus_turn_right.jpg" class="align-center" src="../_images/zeus_turn_right.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ar_app_control.html" class="btn btn-neutral float-left" title="17. APP制御" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../hardware/hardware.html" class="btn btn-neutral float-right" title="ハードウェア" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

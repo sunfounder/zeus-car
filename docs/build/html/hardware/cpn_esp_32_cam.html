@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESP32 CAM &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="カメラアダプターボード" href="cpn_camera_adapter.html" />
+    <link rel="prev" title="Zeus Car Shield" href="cpn_zeus_car_shield.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">はじめに</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hardware.html">ハードウェア</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpn_r3_board.html">SunFounder R3ボード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_zeus_car_shield.html">Zeus Car Shield</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ESP32 CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_camera_adapter.html">カメラアダプターボード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_omni_grayscale_module.html">Omni Grayscaleモジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ultrasonic_module_xh.html">超音波モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ir_obstacle_module.html">IR 障害物回避モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_rgb_strip.html">4 RGB LEDs ストリップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_18650_battery.html">18650 バッテリー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_tt_motor_xh.html">TTモーター</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_mecanum_wheel.html">メカナムホイール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="hardware.html">ハードウェア</a></li>
+      <li class="breadcrumb-item active">ESP32 CAM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/cpn_esp_32_cam.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="esp32-cam">
+<h1>ESP32 CAM<a class="headerlink" href="#esp32-cam" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/esp32_cam.png"><img alt="../_images/esp32_cam.png" class="align-center" src="../_images/esp32_cam.png" style="width: 500px;" /></a>
+<p>ESP32-CAMは、ESP32-Sチップを搭載した非常に小さなカメラモジュールで、価格はおおよそ$10です。OV2640カメラと多数のGPIOを持つほか、カメラで撮影した画像やクライアントに提供するファイルを保存するためのmicroSDカードスロットも備えています。</p>
+<p>このモジュールは、最小のシステムとして独立して動作することができ、サイズはわずか27*40.5*4.5mmで、ディープスリープ時の消費電流は6mA以下です。</p>
+<p>ESP32-CAMは、さまざまなIoTアプリケーションで広く使用でき、家庭用スマートデバイス、産業用無線制御、無線監視、QR無線識別、無線位置情報システム信号などのIoTアプリケーションに適しています。IoTアプリケーションの理想的なソリューションです。</p>
+<p><strong>技術仕様</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>モジュールモデル</p></td>
+<td><p>ESP32-CAM</p></td>
+</tr>
+<tr class="row-even"><td><p>パッケージ</p></td>
+<td><p>DIP-16</p></td>
+</tr>
+<tr class="row-odd"><td><p>サイズ</p></td>
+<td><p>27*40.5*4.5（±0.2）mm</p></td>
+</tr>
+<tr class="row-even"><td><p>SPIフラッシュ</p></td>
+<td><p>デフォルト 32Mbit</p></td>
+</tr>
+<tr class="row-odd"><td><p>RAM</p></td>
+<td><p>内部520KB + 外部8MB PSRAM</p></td>
+</tr>
+<tr class="row-even"><td><p>ブルートゥース</p></td>
+<td><p>Bluetooth 4.2 BR/EDRおよびBLE基準</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wi-Fi</p></td>
+<td><p>802.11 b/g/n/e/i</p></td>
+</tr>
+<tr class="row-even"><td><p>サポートインターフェース</p></td>
+<td><p>UART、SPI、I2C、PWM</p></td>
+</tr>
+<tr class="row-odd"><td><p>サポートTFカード</p></td>
+<td><p>最大4G</p></td>
+</tr>
+<tr class="row-even"><td><p>IOピン</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-odd"><td><p>シリアルポート速度</p></td>
+<td><p>デフォルト 115200 bps</p></td>
+</tr>
+<tr class="row-even"><td><p>画像出力フォーマット</p></td>
+<td><p>JPEG（OV2640のみサポート）、BMP、グレースケール</p></td>
+</tr>
+<tr class="row-odd"><td><p>周波数範囲</p></td>
+<td><p>2400 ~2483.5MHz</p></td>
+</tr>
+<tr class="row-even"><td><p>アンテナタイプ</p></td>
+<td><p>オンボードPCBアンテナ、ゲイン 2dBi</p></td>
+</tr>
+<tr class="row-odd"><td><p>送信電力</p></td>
+<td><p>802.11b: 17±2 dBm (&#64;11Mbps)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>802.11g: 14±2 dBm (&#64;54Mbps)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>802.11n: 13±2 dBm (&#64;MCS7)</p></td>
+</tr>
+<tr class="row-even"><td><p>受信感度</p></td>
+<td><p>CCK, 1 Mbps: -90dBm,</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>CCK, 11 Mbps: -85 dBm</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>6 Mbps (1/2 BPSK): -88 dBm</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>54 Mbps (3/4 64-QAM): -70dBm</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>MCS7 (65 Mbps, 72.2 Mbps): -67dBm</p></td>
+</tr>
+<tr class="row-odd"><td><p>消費電力</p></td>
+<td><p>フラッシュオフ: 180mA&#64;5V,</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>フラッシュオンおよび最大輝度: 310mA&#64;5V</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>ディープスリープ: 最低消費電力 6mA&#64;5V</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>モデレートスリープ: 最低 20mA&#64;5V</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>ライトスリープ: 最低 6.7mA&#64;5V</p></td>
+</tr>
+<tr class="row-even"><td><p>セキュリティ</p></td>
+<td><p>WPA/WPA2/WPA2-Enterprise/WPS</p></td>
+</tr>
+<tr class="row-odd"><td><p>電源範囲</p></td>
+<td><p>4.75-5.25V</p></td>
+</tr>
+<tr class="row-even"><td><p>動作温度</p></td>
+<td><p>-20 ℃ ~ 70 ℃</p></td>
+</tr>
+<tr class="row-odd"><td><p>保存環境</p></td>
+<td><p>-40 ℃ ~ 125 ℃ , &lt; 90%RH</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ESP32-CAM ピン配置</strong></p>
+<p>以下の図は、ESP32-CAMのピン配置（AI-Thinkerモジュール）を示しています。</p>
+<a class="reference internal image-reference" href="../_images/esp32_cam_pinout.png"><img alt="../_images/esp32_cam_pinout.png" src="../_images/esp32_cam_pinout.png" style="width: 800px;" /></a>
+<ul class="simple">
+<li><p><strong>GND</strong> ピンは3つあり、電源のピンも3つあります：3.3V、5V、3.3Vまたは5V。</p></li>
+<li><p><strong>GPIO 1</strong> と <strong>GPIO 3</strong> はシリアルピンです。これらのピンはボードにコードをアップロードするために必要です。</p></li>
+<li><p>さらに、 <strong>GPIO 0</strong> も重要な役割を果たしており、ESP32がフラッシングモードかどうかを判断します。 <strong>GPIO 0</strong> を <strong>GND</strong> に接続すると、ESP32はフラッシングモードになります。</p></li>
+<li><p>以下のピンは、microSDカードリーダーに内部接続されています：</p></li>
+<li><p>GPIO 14: CLK</p></li>
+<li><p>GPIO 15: CMD</p></li>
+<li><p>GPIO 2: データ0</p></li>
+<li><p>GPIO 4: データ1（オンボードLEDにも接続）</p></li>
+<li><p>GPIO 12: データ2</p></li>
+<li><p>GPIO 13: データ3</p></li>
+</ul>
+<p><strong>注意</strong></p>
+<ul class="simple">
+<li><p>モジュールの入力電源が少なくとも5V 2Aであることを確認してください。そうでない場合、画像にウォーターラインが出現する可能性があります。</p></li>
+<li><p>ESP32のGPIO32ピンはカメラの電源を制御します。カメラが動作しているときは、GPIO32を低くしてください。</p></li>
+<li><p>GPIO0はカメラのXCLKに接続されているため、使用する際にGPIO0を空中にして、高または低レベルに接続しないでください。</p></li>
+<li><p>工場出荷時には既にデフォルトのファームウェアが含まれており、追加のダウンロードは提供されません。他のファームウェアを再書き込む必要がある場合は注意してください。</p></li>
+</ul>
+<p><strong>文書</strong></p>
+<ul class="simple">
+<li><p>回路図： <a href="https://docs.ai-thinker.com/_media/esp32/docs/esp32_cam_sch.pdf" target="_blank">ESP32-CAM schematic diagram</a></p></li>
+<li><p>カメラ仕様（英語版）： <a href="https://docs.ai-thinker.com/_media/esp32/docs/ov2640_ds_1.8_.pdf" target="_blank">ov2640_ds_1.8</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>すべての情報は <a href="https://docs.ai-thinker.com/en/esp32-cam" target="_blank">Ai-Thinker</a> からのものです。</p>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpn_zeus_car_shield.html" class="btn btn-neutral float-left" title="Zeus Car Shield" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpn_camera_adapter.html" class="btn btn-neutral float-right" title="カメラアダプターボード" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

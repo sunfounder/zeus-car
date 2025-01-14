@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeus Car Shield &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ESP32 CAM" href="cpn_esp_32_cam.html" />
+    <link rel="prev" title="SunFounder R3ボード" href="cpn_r3_board.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">はじめに</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hardware.html">ハードウェア</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpn_r3_board.html">SunFounder R3ボード</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zeus Car Shield</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#shield-battry-pin">バッテリーポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shield-grayscale-pin">グレースケールモジュール関連</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shield-ultrasonic-pin">超音波ポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shield-camera-pin">カメラアダプターポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shield-avoid-pin">障害回避ポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rgb-led">RGB LEDストリップポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shield-motor-pin">モーターポート</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_esp_32_cam.html">ESP32 CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_camera_adapter.html">カメラアダプターボード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_omni_grayscale_module.html">Omni Grayscaleモジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ultrasonic_module_xh.html">超音波モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ir_obstacle_module.html">IR 障害物回避モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_rgb_strip.html">4 RGB LEDs ストリップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_18650_battery.html">18650 バッテリー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_tt_motor_xh.html">TTモーター</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_mecanum_wheel.html">メカナムホイール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="hardware.html">ハードウェア</a></li>
+      <li class="breadcrumb-item active">Zeus Car Shield</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/cpn_zeus_car_shield.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="zeus-car-shield">
+<h1>Zeus Car Shield<a class="headerlink" href="#zeus-car-shield" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/zeus_car_shield.png"><img alt="../_images/zeus_car_shield.png" class="align-center" src="../_images/zeus_car_shield.png" style="width: 500px;" /></a>
+<p>SunFounder社がArduino向けに設計したオールインワンの拡張ボードです。モーターやライトバー、障害物回避、グレースケール、ESP32 CAM、超音波モジュールなど、さまざまなモジュールポートが含まれています。HS0038B IRレシーバーも内蔵されており、リモートコントロールが可能です。</p>
+<p>この拡張ボードには充電回路も内蔵されており、PH2.0-5Pインターフェースのバッテリーを充電でき、推定充電時間は130分です。</p>
+<p><strong>Zeus Car Shield ピンアウト</strong></p>
+<img alt="../_images/zeus_car_shield_pinout.png" src="../_images/zeus_car_shield_pinout.png" />
+<ul class="simple">
+<li><dl class="simple">
+<dt>リセットボタン</dt><dd><ul>
+<li><p>このボタンを押すとArduinoボード上のプログラムがリセットされます。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>充電ポート</dt><dd><ul>
+<li><p>5V/2AのUSB-Cポートに接続すると、バッテリーを130分で充電できます。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-battry-pin"><span class="std std-ref">バッテリーポート</span></a>：</dt><dd><ul>
+<li><p>6.6V~8.4V PH2.0-5P電源入力。</p></li>
+<li><p>Zeus Car ShieldとArduinoボードの両方に電源を供給します。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>電源スイッチ</dt><dd><ul>
+<li><p>ONの位置にスライドするとZeus Car Shieldの電源が入ります。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>IRレシーバー</dt><dd><ul>
+<li><p>これはHS0038B IRレシーバーで、Arduinoボードのピン2に信号ピンが接続されています。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-grayscale-pin"><span class="std std-ref">グレースケールモジュール関連</span></a></dt><dd><ul>
+<li><p>グレースケール調整用のポテンショメーター：オムニグレースケールモジュールの基準電圧を設定するために使用</p></li>
+<li><p>グレースケールポート：オムニグレースケールモジュールの接続に使用。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>インジケータ</dt><dd><ul>
+<li><p><strong>充電インジケータ</strong>: USB-Cポートからの充電中に赤く点灯します。</p></li>
+<li><p><strong>電源インジケータ</strong>: 電源スイッチが”ON”の位置にあるとき緑色に点灯します。</p></li>
+<li><p><strong>バッテリーインジケータ</strong>: 2つのオレンジ色のインジケータは、異なるバッテリーレベルを示しています。充電中は点滅し、バッテリーの充電が必要なときは消灯します。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-ultrasonic-pin"><span class="std std-ref">超音波ポート</span></a></dt><dd><ul>
+<li><p>超音波モジュールを接続するために、TrigとEchoのピンはArduinoボードのピン10に接続されます。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-camera-pin"><span class="std std-ref">カメラアダプターポート</span></a></dt><dd><ul>
+<li><p>カメラアダプターボードポート。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-avoid-pin"><span class="std std-ref">障害回避ポート</span></a></dt><dd><ul>
+<li><p>2つのIR障害物回避モジュールを接続するために使用され、2つのポートの信号ピンは74HC165のQ0とQ1に接続されています。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-strip-pin"><span class="std std-ref">RGB LEDストリップポート</span></a></dt><dd><ul>
+<li><p>2つのRGB LEDストリップを接続するために使用され、ストリップの3つのピンはそれぞれ12, 13, 11に接続されています。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>実行スイッチ</dt><dd><ul>
+<li><p>カメラを使用する必要がある場合、このスイッチを反対側に切り替えることで、ESP32-CAMがArduinoボードと通信できるようになります。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-motor-pin"><span class="std std-ref">モーターポート</span></a></dt><dd><ul>
+<li><p>モーターポートの4組。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="shield-battry-pin">
+<span id="id1"></span><h2>バッテリーポート<a class="headerlink" href="#shield-battry-pin" title="Permalink to this heading"></a></h2>
+<p>こちらはバッテリーインターフェースのピン配置図です。タイプはPH2.0-5Pで、電力入力範囲は6.6V〜8.4Vです。</p>
+<a class="reference internal image-reference" href="../_images/shield_battery_pin.png"><img alt="../_images/shield_battery_pin.png" class="align-center" src="../_images/shield_battery_pin.png" style="width: 400px;" /></a>
+</section>
+<section id="shield-grayscale-pin">
+<span id="id2"></span><h2>グレースケールモジュール関連<a class="headerlink" href="#shield-grayscale-pin" title="Permalink to this heading"></a></h2>
+<p>Zeus Car Shield上の青いポテンショメーターは、グレースケールモジュールの参照電圧を設定することで、異なる環境への感度を調整するために使用されます。VREFピンを通じて、グレースケールモジュールは設定された参照電圧を受け取ります。</p>
+<img alt="../_images/shield_grayscale_pin.png" src="../_images/shield_grayscale_pin.png" />
+<p>これは回路図です。グレースケールモジュールの値は、74HC165チップからArduinoボードに転送されます。グレースケールモジュール自体に74HC165チップが組み込まれているため、これら2つのチップのカスケードは、Arduinoボードに16ビットのデータを転送します。最初の8ビットはグレースケールセンサーデータであり、残りの2ビットはIR障害回避データです。</p>
+<img alt="../_images/shield_grayscale1.png" src="../_images/shield_grayscale1.png" />
+<a class="reference internal image-reference" href="../_images/shield_grayscale2.png"><img alt="../_images/shield_grayscale2.png" src="../_images/shield_grayscale2.png" style="width: 400px;" /></a>
+<p>Arduinoボード上のこのポートのピンマッピングは以下の通りです。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Arduino Board</p></td>
+<td><p>Zeus Car Shield</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>74HC165 Q7</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>74HC165 CP</p></td>
+</tr>
+<tr class="row-even"><td><p>~9</p></td>
+<td><p>74HC165 PL</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shield-ultrasonic-pin">
+<span id="id3"></span><h2>超音波ポート<a class="headerlink" href="#shield-ultrasonic-pin" title="Permalink to this heading"></a></h2>
+<p>これはZH1.5-4P超音波ポートのピン配置で、Trig &amp; EchoピンはArduinoボードのピン10に接続されています。</p>
+<img alt="../_images/shield_ultrasonic_pin.png" src="../_images/shield_ultrasonic_pin.png" />
+</section>
+<section id="shield-camera-pin">
+<span id="id4"></span><h2>カメラアダプターポート<a class="headerlink" href="#shield-camera-pin" title="Permalink to this heading"></a></h2>
+<p>カメラアダプターインターフェースのピン図は、タイプはZH1.5-7Pです。</p>
+<ul class="simple">
+<li><p>TXとRXはESP32 CAM用です。</p></li>
+<li><p>SDAとSCLはQMC6310用です。</p></li>
+</ul>
+<img alt="../_images/shield_camera_pin.png" src="../_images/shield_camera_pin.png" />
+</section>
+<section id="shield-avoid-pin">
+<span id="id5"></span><h2>障害回避ポート<a class="headerlink" href="#shield-avoid-pin" title="Permalink to this heading"></a></h2>
+<p>以下は、2つのZH1.5-3P障害回避ポートのピン配置図です。</p>
+<img alt="../_images/shield_avoid_pin.png" src="../_images/shield_avoid_pin.png" />
+<p>回路図に示されているように、S1およびS0は74HC165チップ上のQ0およびQ1を参照します。2つの74HC165カスケードは、2つのIR障害回避モジュールおよびグレースケールセンサーのデータをArduinoボードに転送します。最初の8ビットはグレースケールセンサーデータであり、最後の2ビットはIR障害回避データを示します。</p>
+<img alt="../_images/shield_avoid_sche.png" src="../_images/shield_avoid_sche.png" />
+<img alt="../_images/shield_avoid_sche1.png" src="../_images/shield_avoid_sche1.png" />
+</section>
+<section id="rgb-led">
+<span id="shield-strip-pin"></span><h2>RGB LEDストリップポート<a class="headerlink" href="#rgb-led" title="Permalink to this heading"></a></h2>
+<p>以下は、2つのRGB LEDストリップのピン配置図で、並列接続されており、ピンアウトは同じです。</p>
+<img alt="../_images/shield_strip_pin.png" src="../_images/shield_strip_pin.png" />
+<p>これはその回路図です。</p>
+<img alt="../_images/shield_strip_sche.png" src="../_images/shield_strip_sche.png" />
+<img alt="../_images/shield_strip_sche1.png" src="../_images/shield_strip_sche1.png" />
+</section>
+<section id="shield-motor-pin">
+<span id="id6"></span><h2>モーターポート<a class="headerlink" href="#shield-motor-pin" title="Permalink to this heading"></a></h2>
+<p>これは、4セットのモーターポートのピン配置です。</p>
+<a class="reference internal image-reference" href="../_images/shield_motor_pin.png"><img alt="../_images/shield_motor_pin.png" class="align-center" src="../_images/shield_motor_pin.png" style="width: 400px;" /></a>
+<p>これら4セットのモーターは、最大1.8A/チャンネルの連続出力電流を持つデュアルチャンネルモータードライバーチップである2つのTC1508Sチップによって駆動されます。</p>
+<p>こちらがその回路図です。</p>
+<img alt="../_images/shield_motor_sche.png" src="../_images/shield_motor_sche.png" />
+<p>したがって、4つのモーターポートの対応する制御ピンは以下の通りです。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Arduino Board</p></td>
+<td><p>Zeus Car Shield</p></td>
+</tr>
+<tr class="row-even"><td><p>~3</p></td>
+<td><p>OUTA1</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>OUTB1</p></td>
+</tr>
+<tr class="row-even"><td><p>~5</p></td>
+<td><p>OUTA2</p></td>
+</tr>
+<tr class="row-odd"><td><p>~6</p></td>
+<td><p>OUTB2</p></td>
+</tr>
+<tr class="row-even"><td><p>A0</p></td>
+<td><p>OUTB4</p></td>
+</tr>
+<tr class="row-odd"><td><p>A1</p></td>
+<td><p>OUTA4</p></td>
+</tr>
+<tr class="row-even"><td><p>A2</p></td>
+<td><p>OUTB3</p></td>
+</tr>
+<tr class="row-odd"><td><p>A3</p></td>
+<td><p>OUTA3</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpn_r3_board.html" class="btn btn-neutral float-left" title="SunFounder R3ボード" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpn_esp_32_cam.html" class="btn btn-neutral float-right" title="ESP32 CAM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

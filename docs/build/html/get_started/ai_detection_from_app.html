@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16. APPからのAI検出 &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="17. APP制御" href="ar_app_control.html" />
+    <link rel="prev" title="15. 線追跡 - フィールド中心の制御システム" href="ar_line_track_field_centric.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">はじめに</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Zeus Carの組み立て</a></li>
+<li class="toctree-l2"><a class="reference internal" href="play_mode.html">アプリまたはIRリモコンでのクイックプレイ</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="programming_mode.html">Arduino IDEでのプログラミング</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_code.html">コードのダウンロード</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html">Arduino IDE 2.0のダウンロードとインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduce_ide.html">Arduino IDEの紹介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_libraries.html">必要なライブラリをインストールする</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ar_projects.html">楽しいプロジェクト</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ar_move.html">1. 基本動き</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_omni_move.html">2. 全方向移動</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_rotate.html">3. 移動と回転</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_drift.html">4. ドリフト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_remote_control.html">5. リモートコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_car_light.html">6. 車のライト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_compass.html">7. コンパス</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_field_centric.html">8. 移動 - フィールドセントリック制御システム</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_hc165_and_ir_obstacle.html">9. IR 障害物回避</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_ultrasonic.html">10. 超音波</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_avoid.html">11. 障害物回避</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_follow.html">12. ついてきて</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_grayscale.html">13. グレースケール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track.html">14. 線追跡</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track_field_centric.html">15. 線追跡 - フィールド中心の制御システム</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">16. APPからのAI検出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_app_control.html">17. APP制御</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_app_control_plus.html">18. APP Control Plus</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">ハードウェア</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">はじめに</a></li>
+          <li class="breadcrumb-item"><a href="programming_mode.html">Arduino IDEでのプログラミング</a></li>
+          <li class="breadcrumb-item"><a href="ar_projects.html">楽しいプロジェクト</a></li>
+      <li class="breadcrumb-item active">16. APPからのAI検出</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/ai_detection_from_app.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="appai">
+<h1>16. APPからのAI検出<a class="headerlink" href="#appai" title="Permalink to this heading"></a></h1>
+<p>このプロジェクトでは、SunFounder Controllerというアプリを使用して、リアルタイムのビデオストリーミングを表示し、モバイルデバイス上でのAI検出機能、例えば顔や姿勢の検出を使用します。</p>
+<p>SunFounder Controllerは、ユーザーがロボットやIoTプラットフォームを制御するためのコントローラーをカスタマイズできるアプリケーションです。このアプリには、ボタン、ジョイスティック、ゲージ、レーダーなど、11種類の表示と制御ウィジェットが統合されています。コントローラーページにはA〜Qの17のエリアがあり、異なるウィジェットを配置して独自のコントローラーをカスタマイズできます。</p>
+<p>それでは、このアプリの使い方を簡単に見てみましょう。</p>
+<p><strong>やり方は？</strong></p>
+<ol class="arabic">
+<li><p>ESP32-CAMとArduinoボードは、同じRX（受信）およびTX（送信）ピンを共有しています。そのため、コードをアップロードするときは、まずESP32-CAMを切断して、競合や潜在的な問題を回避する必要があります。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/unplug_cam1.png"><img alt="../_images/unplug_cam1.png" class="align-center" src="../_images/unplug_cam1.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zeus-car-main\examples\16_ai_detection_from_app</span></code> のパスの下で <code class="docutils literal notranslate"><span class="pre">16_ai_detection_from_app.ino</span></code> ファイルを開きます。</p>
+<blockquote>
+<div><iframe src=https://create.arduino.cc/editor/sunfounder01/c14c46e7-2e43-4b31-b7e6-b7718e501e96/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe></div></blockquote>
+</li>
+<li><p>コードが正常にアップロードされた後、ESP32-CAMを挿し、その後電源スイッチをONにスライドしてZeus Carを起動することができます。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/plug_esp32_cam1.jpg"><img alt="../_images/plug_esp32_cam1.jpg" class="align-center" src="../_images/plug_esp32_cam1.jpg" style="width: 300px;" /></a>
+</div></blockquote>
+</li>
+<li><p>アップロードスイッチをRunの方向（この図では右側）に切り替えて、ESP32 CAMを起動します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_run.jpg"><img alt="../_images/zeus_run.jpg" class="align-center" src="../_images/zeus_run.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p>リセットボタンを押して、Arduinoボードのプログラムを再度実行します。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_reset_button.jpg"><img alt="../_images/zeus_reset_button.jpg" class="align-center" src="../_images/zeus_reset_button.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+</li>
+<li><p>これで、モバイルデバイスに <a class="reference external" href="https://docs.sunfounder.com/projects/sf-controller/en/latest/">SunFounder Controller</a> を <strong>APP Store(iOS)</strong> または <strong>Google Play(Android)</strong> からインストールしてください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Zeus_Car</span></code> WLANに接続します。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>携帯電話（タブレット）のWLANで <code class="docutils literal notranslate"><span class="pre">Zeus_Car</span></code> を見つけ、パスワード <code class="docutils literal notranslate"><span class="pre">12345678</span></code> を入力して接続します。</p></li>
+</ul>
+<img alt="../_images/app_wlan1.png" src="../_images/app_wlan1.png" />
+<ul class="simple">
+<li><p>デフォルトの接続モードはAPモードです。そのため、接続後、このWLANネットワークにインターネットアクセスがないというプロンプトが表示されます。続行するように選択してください。</p></li>
+</ul>
+<img alt="../_images/app_no_internet.png" src="../_images/app_no_internet.png" />
+</div></blockquote>
+</li>
+<li><p>次に、APPを開き、コントローラーを作成します。</p>
+<blockquote>
+<div><ul>
+<li><p>SunFounder Controllerでコントローラーを追加するには、 <strong>+</strong> アイコンをクリックします。</p>
+<blockquote>
+<div><img alt="../_images/app1.png" src="../_images/app1.png" />
+</div></blockquote>
+</li>
+<li><p><strong>Blank</strong> と <strong>Dual Stick</strong> テンプレートを選択し、名前を付けます。</p>
+<blockquote>
+<div><img alt="../_images/view_app1.jpg" src="../_images/view_app1.jpg" />
+</div></blockquote>
+</li>
+<li><p>コントローラーの中にいるので、 <a class="reference internal" href="../_images/app_camera.png"><img alt="app_camera" src="../_images/app_camera.png" style="width: 30px;" /></a> アイコンをクリックして、AI検出機能を有効にします。Face DetectionとPose Detectionの両方のオプションが表示されます。</p>
+<blockquote>
+<div><img alt="../_images/view_app6.jpg" src="../_images/view_app6.jpg" />
+</div></blockquote>
+</li>
+<li><p><a class="reference internal" href="../_images/app_save.jpg"><img alt="app_save" src="../_images/app_save.jpg" style="width: 20px;" /></a> ボタンをクリックして、すべての設定を保存します。ウィジェットが選択されていないため、画面は完全に黒くなります。</p>
+<blockquote>
+<div><img alt="../_images/view_app3.jpg" src="../_images/view_app3.jpg" />
+</div></blockquote>
+</li>
+<li><p>次に、 <a class="reference internal" href="../_images/app_connect.jpg"><img alt="app_connect" src="../_images/app_connect.jpg" style="width: 20px;" /></a> ボタンを使用して、Zeus Carをデバイスに接続します。数秒待ってから <code class="docutils literal notranslate"><span class="pre">Zeus_Car(IP)</span></code> が表示されるので、それをクリックして接続します。</p>
+<blockquote>
+<div><img alt="../_images/view_app4.jpg" src="../_images/view_app4.jpg" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wi-Fiが <code class="docutils literal notranslate"><span class="pre">Zeus_Car</span></code> に接続されていることを確認してください。長い間上記のメッセージが表示されない場合は、特に注意が必要です。</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>コントローラーを実行します。</p>
+<blockquote>
+<div><p>「正常に接続されました」というメッセージが表示されたら、 <a class="reference internal" href="../_images/app_run.png"><img alt="app_run" src="../_images/app_run.png" style="width: 20px;" /></a> ボタンをクリックすると、カメラの映像がアプリに表示されます。</p>
+<p>Face Detectionがオンになっている場合、画面に表示される顔は枠で囲まれます。</p>
+<img alt="../_images/view_app7.jpg" src="../_images/view_app7.jpg" />
+<p>Pose Detectionがオンになっている場合、姿勢が描写されます。</p>
+<img alt="../_images/view_app8.jpg" src="../_images/view_app8.jpg" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>別のAI検出に切り替えたい場合は、 <a class="reference internal" href="../_images/app_edit1.jpg"><img alt="app_edit" src="../_images/app_edit1.jpg" style="width: 20px;" /></a> アイコンをクリックして、上記の手順を繰り返すことができます。</p>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ar_line_track_field_centric.html" class="btn btn-neutral float-left" title="15. 線追跡 - フィールド中心の制御システム" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ar_app_control.html" class="btn btn-neutral float-right" title="17. APP制御" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

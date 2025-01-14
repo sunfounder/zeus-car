@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>超音波モジュール &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="IR 障害物回避モジュール" href="cpn_ir_obstacle_module.html" />
+    <link rel="prev" title="Omni Grayscaleモジュール" href="cpn_omni_grayscale_module.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">はじめに</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hardware.html">ハードウェア</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpn_r3_board.html">SunFounder R3ボード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_zeus_car_shield.html">Zeus Car Shield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_esp_32_cam.html">ESP32 CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_camera_adapter.html">カメラアダプターボード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_omni_grayscale_module.html">Omni Grayscaleモジュール</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">超音波モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ir_obstacle_module.html">IR 障害物回避モジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_rgb_strip.html">4 RGB LEDs ストリップ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_18650_battery.html">18650 バッテリー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_tt_motor_xh.html">TTモーター</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_mecanum_wheel.html">メカナムホイール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="hardware.html">ハードウェア</a></li>
+      <li class="breadcrumb-item active">超音波モジュール</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/cpn_ultrasonic_module_xh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>こんにちは、SunFounderのRaspberry Pi &amp; Arduino &amp; ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。</p>
+<p><strong>参加する理由は？</strong></p>
+<ul class="simple">
+<li><p><strong>エキスパートサポート</strong>：コミュニティやチームの助けを借りて、販売後の問題や技術的な課題を解決します。</p></li>
+<li><p><strong>学び＆共有</strong>：ヒントやチュートリアルを交換してスキルを向上させましょう。</p></li>
+<li><p><strong>独占的なプレビュー</strong>：新製品の発表や先行プレビューに早期アクセスしましょう。</p></li>
+<li><p><strong>特別割引</strong>：最新製品の独占割引をお楽しみください。</p></li>
+<li><p><strong>祭りのプロモーションとギフト</strong>：ギフトや祝日のプロモーションに参加しましょう。</p></li>
+</ul>
+<p>👉 私たちと一緒に探索し、創造する準備はできていますか？[<a href="https://bit.ly/raphaelkit" target="_blank">ここ</a>]をクリックして今すぐ参加しましょう！</p>
+</div>
+<section id="id1">
+<h1>超音波モジュール<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/ultrasonic_pic.png"><img alt="../_images/ultrasonic_pic.png" class="align-center" src="../_images/ultrasonic_pic.png" style="width: 400px;" /></a>
+<ul class="simple">
+<li><p><strong>TRIG</strong>: トリガーパルス入力</p></li>
+<li><p><strong>ECHO</strong>: エコーパルス出力</p></li>
+<li><p><strong>GND</strong>: グラウンド</p></li>
+<li><p><strong>VCC</strong>: 5V 電源</p></li>
+</ul>
+<p>こちらはHC-SR04超音波距離センサで、非接触測定を2 cmから400 cmまでの範囲で、最大3 mmの精度で提供します。モジュールには超音波送信機、受信機、および制御回路が含まれています。</p>
+<p>4つのピンだけを接続する必要があります：VCC（電源）、Trig（トリガー）、Echo（受信）およびGND（グラウンド）を接続するだけで、計測プロジェクトに簡単に使用できます。</p>
+<p><strong>特長</strong></p>
+<ul class="simple">
+<li><p>動作電圧: DC5V</p></li>
+<li><p>動作電流: 16mA</p></li>
+<li><p>動作周波数: 40Hz</p></li>
+<li><p>最大測定範囲: 500cm</p></li>
+<li><p>最小測定範囲: 2cm</p></li>
+<li><p>トリガー入力信号: 10uS TTLパルス</p></li>
+<li><p>エコー出力信号: 入力TTLレベル信号および測定範囲に比例</p></li>
+<li><p>コネクタ: XH2.54-4P</p></li>
+<li><p>外寸: 46x20.5x15 mm</p></li>
+</ul>
+<p><strong>原理</strong></p>
+<p>以下の基本原則に従います：</p>
+<ul>
+<li><p>IOトリガーを少なくとも10usの高レベル信号で使用します。</p></li>
+<li><p>モジュールは40 kHzで超音波の8サイクルバーストを送信し、パルス信号が受信されたかどうかを検出します。</p></li>
+<li><p>信号が返されると、Echoは高レベルを出力します。高レベルの持続時間は、放射から返還までの時間です。</p></li>
+<li><p>距離 = (高レベル時間 x 音の速度(340M/S)) / 2</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/ultrasonic_prin.jpg"><img alt="../_images/ultrasonic_prin.jpg" src="../_images/ultrasonic_prin.jpg" style="width: 800px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<p>計算式:</p>
+<ul class="simple">
+<li><p>us / 58 = センチメートル距離</p></li>
+<li><p>us / 148 = インチ距離</p></li>
+<li><p>distance = 高レベル時間 x 速度(340M/S) / 2</p></li>
+</ul>
+<p><strong>使用上の注意</strong></p>
+<ul class="simple">
+<li><p>このモジュールは電源投入時に接続しないでください。必要な場合、モジュールのGNDを先に接続してください。そうしないと、モジュールの動作に影響が出る可能性があります。</p></li>
+<li><p>測定する対象の面積は最低でも0.5平方メートルで、できるだけ平坦である必要があります。そうでないと、結果に影響が出る可能性があります。</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpn_omni_grayscale_module.html" class="btn btn-neutral float-left" title="Omni Grayscaleモジュール" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpn_ir_obstacle_module.html" class="btn btn-neutral float-right" title="IR 障害物回避モジュール" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
