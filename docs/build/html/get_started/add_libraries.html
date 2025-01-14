@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installieren der erforderlichen Bibliotheken &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spaßprojekte" href="ar_projects.html" />
+    <link rel="prev" title="Einführung in die Arduino IDE" href="introduce_ide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">Los geht’s</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Das Auto zusammenbauen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="play_mode.html">Schnelles Spielen mit APP oder IR-Fernbedienung</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="programming_mode.html">Programmierung mit der Arduino IDE</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_code.html">Den Code herunterladen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html">Download und Installation von Arduino IDE 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduce_ide.html">Einführung in die Arduino IDE</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installieren der erforderlichen Bibliotheken</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ar_projects.html">Spaßprojekte</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">Los geht’s</a></li>
+          <li class="breadcrumb-item"><a href="programming_mode.html">Programmierung mit der Arduino IDE</a></li>
+      <li class="breadcrumb-item active">Installieren der erforderlichen Bibliotheken</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/add_libraries.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hallo und willkommen in der SunFounder Raspberry Pi &amp; Arduino &amp; ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.</p>
+<p><strong>Warum beitreten?</strong></p>
+<ul class="simple">
+<li><p><strong>Expertenunterstützung</strong>: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.</p></li>
+<li><p><strong>Lernen &amp; Teilen</strong>: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.</p></li>
+<li><p><strong>Exklusive Vorschauen</strong>: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.</p></li>
+<li><p><strong>Spezialrabatte</strong>: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.</p></li>
+<li><p><strong>Festliche Aktionen und Gewinnspiele</strong>: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.</p></li>
+</ul>
+<p>👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [<a href="https://bit.ly/raphaelkit" target="_blank">hier</a>] und treten Sie heute bei!</p>
+</div>
+<section id="installieren-der-erforderlichen-bibliotheken">
+<span id="ar-install-lib"></span><h1>Installieren der erforderlichen Bibliotheken<a class="headerlink" href="#installieren-der-erforderlichen-bibliotheken" title="Permalink to this heading"></a></h1>
+<p><strong>Was ist eine Bibliothek?</strong></p>
+<p>Eine Bibliothek ist eine Sammlung vordefinierter Funktionen und Header, die das Programmieren einfacher und effizienter machen. Bibliotheken bestehen typischerweise aus zwei Hauptdateien:</p>
+<ul class="simple">
+<li><p><strong>.h (Header-Datei)</strong>: Enthält Funktionsdeklarationen, Makrodefinitionen und Konstruktor-Definitionen.</p></li>
+<li><p><strong>.cpp (Quellcode-Datei)</strong>: Enthält Funktionsimplementierungen, Variablendefinitionen und andere ausführbare Komponenten.</p></li>
+</ul>
+<p>Durch die Einbindung einer Bibliothek in Ihr Projekt können Sie die bereitgestellten Funktionen direkt aufrufen (z. B. <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;dht.h&gt;</span></code>), anstatt eigene Definitionen von Grund auf zu schreiben. Dies macht Ihren Code kürzer und leichter lesbar.</p>
+<p>Obwohl es möglich ist, die Funktionsdefinitionen selbst zu schreiben, spart die Nutzung einer Bibliothek Zeit und reduziert die Komplexität.</p>
+<p>Einige Bibliotheken sind bereits im Arduino IDE vorinstalliert, während andere manuell installiert werden müssen. Hier erfahren Sie, wie Sie die erforderlichen Bibliotheken für dieses Projekt installieren können.</p>
+<p><strong>So installieren Sie eine Bibliothek</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Die folgenden Anweisungen gelten für <strong>Arduino IDE 2.0</strong>. Wenn Sie Arduino IDE 1.x verwenden, lesen Sie <a href="https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries" target="_blank">Installing Libraries</a>.</p>
+</div>
+<p>Hier sind die Schritte zur Installation einer Bibliothek:</p>
+<ol class="arabic">
+<li><p>Klicken Sie im linken Bereich der Arduino IDE auf das Symbol <strong>Bibliotheks-Manager</strong>.</p>
+<img alt="../_images/ar_libr_manager.jpg" src="../_images/ar_libr_manager.jpg" />
+</li>
+<li><p>Suchen Sie nach der Bibliothek:</p>
+<ul class="simple">
+<li><p>Eine Liste der verfügbaren Bibliotheken wird angezeigt. Verwenden Sie die Suchleiste, um die gewünschte Bibliothek zu finden.</p></li>
+<li><p>Um beispielsweise die <code class="docutils literal notranslate"><span class="pre">SoftPWM</span></code>-Bibliothek zu installieren, geben Sie den Namen der Bibliothek ein und klicken Sie auf die Schaltfläche <strong>INSTALLIEREN</strong>.</p></li>
+</ul>
+<img alt="../_images/ar_softpwm.png" src="../_images/ar_softpwm.png" />
+</li>
+<li><p>Der Installationsprozess dauert normalerweise weniger als eine Minute. Nach Abschluss zeigt der Bibliotheks-Manager <strong>INSTALLIERT</strong> an.</p>
+<img alt="../_images/ar_install_success.png" src="../_images/ar_install_success.png" />
+</li>
+<li><p>Wiederholen Sie die oben genannten Schritte, um die <code class="docutils literal notranslate"><span class="pre">IRLremote</span></code>-Bibliothek zu installieren. Achten Sie darauf, den Namen der Bibliothek korrekt zu schreiben.</p>
+<img alt="../_images/ar_irlremote.png" src="../_images/ar_irlremote.png" />
+</li>
+<li><p>Installieren Sie anschließend die <code class="docutils literal notranslate"><span class="pre">ArduinoJson</span></code>-Bibliothek.</p>
+<img alt="../_images/ar_arduinojson.png" src="../_images/ar_arduinojson.png" />
+</li>
+<li><p>Suchen Sie nach und installieren Sie die <code class="docutils literal notranslate"><span class="pre">SunFounder</span> <span class="pre">AI</span> <span class="pre">Camera</span></code>-Bibliothek, die letzte für dieses Projekt benötigte Bibliothek.</p>
+<img alt="get_started/img/arduino/ar_aicamera.png" src="get_started/img/arduino/ar_aicamera.png" />
+</li>
+</ol>
+<p>Indem Sie diese Schritte befolgen, haben Sie alle notwendigen Bibliotheken installiert und können sie für Ihr Projekt verwenden.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduce_ide.html" class="btn btn-neutral float-left" title="Einführung in die Arduino IDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ar_projects.html" class="btn btn-neutral float-right" title="Spaßprojekte" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

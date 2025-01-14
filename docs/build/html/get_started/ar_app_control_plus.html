@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18. APP Control Plus &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hardware" href="../hardware/hardware.html" />
+    <link rel="prev" title="17. APP-Steuerung" href="ar_app_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">Los geht’s</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Das Auto zusammenbauen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="play_mode.html">Schnelles Spielen mit APP oder IR-Fernbedienung</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="programming_mode.html">Programmierung mit der Arduino IDE</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_code.html">Den Code herunterladen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html">Download und Installation von Arduino IDE 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduce_ide.html">Einführung in die Arduino IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_libraries.html">Installieren der erforderlichen Bibliotheken</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ar_projects.html">Spaßprojekte</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ar_move.html">1. Grundbewegungen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_omni_move.html">2. Omni-Bewegung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_rotate.html">3. Bewegen und Rotieren</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_drift.html">4. Driften</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_remote_control.html">5. Fernsteuerung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_car_light.html">6. Autolicht</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_compass.html">7. Kompass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_field_centric.html">8. Feldzentrische Bewegung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_hc165_and_ir_obstacle.html">9. IR Hindernisvermeidung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_ultrasonic.html">10. Ultraschall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_avoid.html">11. Hindernisvermeidung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_follow.html">12. Folgen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_grayscale.html">13. Graustufen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track.html">14. Linienverfolgung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track_field_centric.html">15. Feldzentrisches Linienverfolgen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai_detection_from_app.html">16. KI-Erkennung von der APP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_app_control.html">17. APP-Steuerung</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">18. APP Control Plus</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">Los geht’s</a></li>
+          <li class="breadcrumb-item"><a href="programming_mode.html">Programmierung mit der Arduino IDE</a></li>
+          <li class="breadcrumb-item"><a href="ar_projects.html">Spaßprojekte</a></li>
+      <li class="breadcrumb-item active">18. APP Control Plus</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/ar_app_control_plus.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hallo und willkommen in der SunFounder Raspberry Pi &amp; Arduino &amp; ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.</p>
+<p><strong>Warum beitreten?</strong></p>
+<ul class="simple">
+<li><p><strong>Expertenunterstützung</strong>: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.</p></li>
+<li><p><strong>Lernen &amp; Teilen</strong>: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.</p></li>
+<li><p><strong>Exklusive Vorschauen</strong>: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.</p></li>
+<li><p><strong>Spezialrabatte</strong>: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.</p></li>
+<li><p><strong>Festliche Aktionen und Gewinnspiele</strong>: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.</p></li>
+</ul>
+<p>👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [<a href="https://bit.ly/raphaelkit" target="_blank">hier</a>] und treten Sie heute bei!</p>
+</div>
+<section id="app-control-plus">
+<span id="ar-app-control-plus"></span><h1>18. APP Control Plus<a class="headerlink" href="#app-control-plus" title="Permalink to this heading"></a></h1>
+<p>Dieses Projekt integriert die Funktionen Linienverfolgung, Folgen und Vermeiden basierend auf <a class="reference internal" href="ar_app_control.html#ar-app-control"><span class="std std-ref">17. APP-Steuerung</span></a>.</p>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/app_control.mp4"  type="video/mp4">
+   Ihr Browser unterstützt das Video-Tag nicht.
+</video><br/> <br/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bitte installieren Sie den <a class="reference external" href="https://docs.sunfounder.com/projects/sf-controller/en/latest/">SunFounder Controller</a> aus dem <strong>APP Store(iOS)</strong> oder <strong>Google Play(Android)</strong>.</p>
+</div>
+<p><strong>Wie funktioniert das?</strong></p>
+<ol class="arabic">
+<li><p>Der ESP32-CAM und das Arduino-Board teilen sich die gleichen RX (Empfang) und TX (Senden) Pins. Beim Hochladen des Codes müssen Sie zuerst den ESP32-CAM trennen, um Konflikte oder potenzielle Probleme zu vermeiden.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/unplug_cam1.png"><img alt="../_images/unplug_cam1.png" class="align-center" src="../_images/unplug_cam1.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Öffnen Sie die Datei <code class="docutils literal notranslate"><span class="pre">18_app_control_plus.ino</span></code> im Pfad <code class="docutils literal notranslate"><span class="pre">zeus-car-main\examples\18_app_control_plus</span></code>.</p>
+<blockquote>
+<div><iframe src=https://create.arduino.cc/editor/sunfounder01/b67e7245-369b-4218-b12c-d73f95ac3b22/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe></div></blockquote>
+</li>
+<li><p>Nachdem der Code erfolgreich hochgeladen wurde, können Sie das ESP32-CAM einstecken und dann den Stromschalter auf EIN schieben, um das Zeus-Auto zu starten.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/plug_esp32_cam1.jpg"><img alt="../_images/plug_esp32_cam1.jpg" class="align-center" src="../_images/plug_esp32_cam1.jpg" style="width: 300px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Schalten Sie den Upload-Schalter auf die Seite von “Run” (rechte Seite in dieser Darstellung), um die ESP32 CAM zu starten.</p>
+<blockquote>
+<div><img alt="../_images/zeus_run.jpg" src="../_images/zeus_run.jpg" />
+</div></blockquote>
+</li>
+<li><p>Drücken Sie die Reset-Taste, um das Programm des Arduino-Boards erneut zu starten.</p>
+<blockquote>
+<div><img alt="../_images/zeus_reset_button.jpg" src="../_images/zeus_reset_button.jpg" />
+</div></blockquote>
+</li>
+<li><p>Verbinden Sie sich mit dem <code class="docutils literal notranslate"><span class="pre">Zeus_Car</span></code> WLAN.</p>
+<blockquote>
+<div><p>Verbinden Sie nun Ihr Mobilgerät mit dem lokalen Netzwerk (LAN), das vom Zeus Car bereitgestellt wird. Auf diese Weise befinden sich Ihr Mobilgerät und der Zeus Car im selben Netzwerk, was die Kommunikation zwischen den Anwendungen auf Ihrem Mobilgerät und dem Zeus Car erleichtert.</p>
+<ul class="simple">
+<li><p>Finden Sie <code class="docutils literal notranslate"><span class="pre">Zeus_Car</span></code> im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort <code class="docutils literal notranslate"><span class="pre">12345678</span></code> ein und verbinden Sie sich damit.</p></li>
+</ul>
+<div style="text-align: center;">
+    <video center loop autoplay muted style = "max-width:80%">
+        <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
+        Ihr Browser unterstützt das Video-Tag nicht.
+    </video>
+</div><br/><ul class="simple">
+<li><p>Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie daher eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Bitte wählen Sie “Weiter verbinden”.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_no_internet.png"><img alt="../_images/app_no_internet.png" class="align-center" src="../_images/app_no_internet.png" style="width: 500px;" /></a>
+<br/></div></blockquote>
+</li>
+<li><p>Erstellen Sie einen Controller.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Um auf dem SunFounder Controller einen Controller hinzuzufügen, klicken Sie auf das <strong>+</strong> Symbol.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app1.png"><img alt="../_images/app1.png" class="align-center" src="../_images/app1.png" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Voreingestellte Controller sind für einige Produkte verfügbar. Hier wählen wir <strong>Zeus Car</strong>. Geben Sie ihm einen Namen oder tippen Sie einfach auf <strong>Confirm</strong>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_preset1.jpg"><img alt="../_images/app_preset1.jpg" class="align-center" src="../_images/app_preset1.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Einmal drinnen, wird die App automatisch nach dem Zeus Car suchen. Nach einer Weile erscheint eine Meldung, die besagt “Connected Successfully”.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_edit2.jpg"><img alt="../_images/app_edit2.jpg" class="align-center" src="../_images/app_edit2.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Tippen Sie nun auf die <a class="reference internal" href="../_images/app_run.png"><img alt="app_run" src="../_images/app_run.png" style="width: 20px;" /></a> Schaltfläche. Dadurch können Sie das Live-Video von der Kamera anzeigen und das Auto mit den bereitgestellten Widgets steuern.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/app_run1231.png"><img alt="../_images/app_run1231.png" class="align-center" src="../_images/app_run1231.png" style="width: 500px;" /></a>
+<br/></div></blockquote>
+</li>
+<li><p>Hier sind die Funktionen der Widgets.</p>
+<blockquote>
+<div><ul>
+<li><p><a class="reference internal" href="app_control.html#app-compass-cali"><span class="std std-ref">Calibration(E)</span></a>: Kompasskalibrierung einschalten.</p></li>
+<li><p><strong>Stop(F)</strong>: Stoppen Sie alle Bewegungen des Autos.</p></li>
+<li><p><strong>Reset Heading(G)</strong>: Nachdem Sie das Auto manuell in eine Richtung ausgerichtet haben, klicken Sie auf dieses Widget, um diese Richtung als Vorderseite der Autobewegung festzulegen. Damit können Sie schnell eine Richtung angeben, anstatt das Auto langsam mit anderen Widgets in diese Richtung zu drehen.</p></li>
+<li><p><a class="reference internal" href="app_control.html#app-speech-control"><span class="std std-ref">Speech(I)</span></a>: Wechseln Sie in den Sprachsteuerungsmodus.</p></li>
+<li><p><a class="reference internal" href="app_control.html#app-drift"><span class="std std-ref">Drift Enable(J)</span></a>: Aktivieren Sie die Drift-Funktion.</p></li>
+<li><p><a class="reference internal" href="app_control.html#app-move"><span class="std std-ref">Move in All Directions(K)</span></a>: Steuern Sie das Auto in alle Richtungen.</p></li>
+<li><p><a class="reference internal" href="app_control.html#app-line-track"><span class="std std-ref">Line Track</span></a>: Die folgenden beiden Widgets können beide in den Linienverfolgungsmodus wechseln.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Linie ohne Mag(M)</strong>: Wechseln Sie in den Linienverfolgungsmodus, der nicht vom Magnetfeld beeinflusst wird. Während des Linienverfolgungsvorgangs wird sich die Ausrichtung des Zeus Car ständig ändern.</p></li>
+<li><p><strong>Linie(N)</strong>: Wechseln Sie in den Linienverfolgungsmodus. Aufgrund des Vorhandenseins eines Magnetfelds wird sich die Ausrichtung des Zeus Car während der Linienverfolgung in eine bestimmte Richtung orientieren.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference internal" href="app_control.html#app-follow"><span class="std std-ref">Follow(O)</span></a>: Wechseln in den Verfolgungsmodus.</p></li>
+<li><p><a class="reference internal" href="app_control.html#app-avoid"><span class="std std-ref">Avoid(P)</span></a>: Wechseln in den Hindernisvermeidungsmodus.</p></li>
+<li><p><a class="reference internal" href="app_control.html#app-rotate-drift"><span class="std std-ref">Control the Drection(Q)</span></a>: Dient zur Steuerung der Kopfrichtung.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<section id="kalibrierung-e">
+<span id="ar-app-compass-cali"></span><h2>Kalibrierung(E)<a class="headerlink" href="#kalibrierung-e" title="Permalink to this heading"></a></h2>
+<p>Aktivieren Sie die Kompasskalibrierung, indem Sie auf die Schaltfläche <a class="reference internal" href="../_images/app_cali_e.png"><img alt="app_cali_e" src="../_images/app_cali_e.png" style="width: 100px;" /></a> klicken.</p>
+<p>Stellen Sie das Zeus-Auto auf den Boden. Nach dem Aktivieren der Kompasskalibrierung beginnt das Auto, sich gegen den Uhrzeigersinn zu drehen und stoppt nach etwa 1 Minute. Wenn es länger als 2 Minuten dreht, ist das Magnetfeld hier kompliziert. Versuchen Sie, den Standort zu wechseln und erneut zu kalibrieren.</p>
+</section>
+<section id="drift-aktivieren-j">
+<span id="ar-app-drift"></span><h2>Drift aktivieren(J)<a class="headerlink" href="#drift-aktivieren-j" title="Permalink to this heading"></a></h2>
+<p>Klicken Sie auf die Schaltfläche <a class="reference internal" href="../_images/app_drift_j.png"><img alt="app_drift_j" src="../_images/app_drift_j.png" style="width: 100px;" /></a>, um die Drift-Funktion zu aktivieren.</p>
+<ul>
+<li><p>Wenn Sie das Widget <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> gegen den Uhrzeigersinn verschieben, wird das Zeus-Auto nach rechts driften. Beim Loslassen der Hand wird das Auto an seiner aktuellen Position anhalten.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/zeus_drift_left.jpg"><img alt="../_images/zeus_drift_left.jpg" class="align-center" src="../_images/zeus_drift_left.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Ähnlich wird das Zeus-Auto nach links driften, wenn Sie das Widget <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> im Uhrzeigersinn verschieben und an der aktuellen Position anhalten.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_drift_right.jpg"><img alt="../_images/zeus_drift_right.jpg" class="align-center" src="../_images/zeus_drift_right.jpg" style="width: 600px;" /></a>
+</section>
+<section id="in-alle-richtungen-bewegen-k">
+<span id="ar-app-move"></span><h2>In alle Richtungen bewegen(K)<a class="headerlink" href="#in-alle-richtungen-bewegen-k" title="Permalink to this heading"></a></h2>
+<p>Das Zeus-Auto bewegt sich in die entsprechende Richtung, wenn Sie das Widget <a class="reference internal" href="../_images/app_move_k.png"><img alt="app_move_k" src="../_images/app_move_k.png" style="width: 100px;" /></a> wischen.</p>
+<img alt="../_images/joystick_move.png" class="align-center" src="../_images/joystick_move.png" />
+<p>Das Auto bewegt sich jedes Mal, wenn Sie wischen. Wenn Sie Ihre Hand die ganze Zeit nicht loslassen, bleibt das Auto in Bewegung.</p>
+<img alt="../_images/zeus_move.jpg" src="../_images/zeus_move.jpg" />
+</section>
+<section id="linie-n">
+<span id="ar-app-line-track"></span><h2>Linie(N)<a class="headerlink" href="#linie-n" title="Permalink to this heading"></a></h2>
+<p>Klicken Sie auf das Widget <a class="reference internal" href="../_images/app_line_n.png"><img alt="app_line_n" src="../_images/app_line_n.png" style="width: 100px;" /></a>, um in den Linienverfolgungsmodus zu wechseln.</p>
+<p>Es stehen zwei Modi der Linienverfolgung im Zeus-Auto zur Verfügung: Ein Modus, bei dem der Kopf stets in Bewegungsrichtung zeigt, und ein Modus, bei dem der Kopf in eine feste Richtung zeigt. Hier wird der zweite Modus ausgewählt.</p>
+<ol class="arabic">
+<li><p>Legen Sie eine 3 cm breite Linie an.</p>
+<blockquote>
+<div><p>Es gibt acht Sensoren am Omni-Graustufen-Modul und der Abstand zwischen jedem Sensor liegt zwischen 2 und 3 cm. Mindestens zwei Sensoren müssen die schwarze Linie gleichzeitig erkennen. Daher muss die von Ihnen angelegte Linie mindestens 3 cm breit sein und der Biegungswinkel darf nicht kleiner als 90° sein.</p>
+<a class="reference internal image-reference" href="../_images/map.png"><img alt="../_images/map.png" src="../_images/map.png" style="width: 800px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Kalibrieren Sie das Omni-Graustufen-Modul.</p>
+<blockquote>
+<div><p>Da jeder Untergrund unterschiedliche Graustufenwerte hat, ist der werkseitig eingestellte Graustufen-Schwellenwert möglicherweise nicht für Ihre aktuelle Umgebung geeignet. Daher müssen Sie dieses Modul vor der Verwendung kalibrieren. Es wird empfohlen, dies bei jeder wesentlichen Bodenfarbänderung erneut durchzuführen.</p>
+<ul>
+<li><p>Stellen Sie das Zeus-Auto auf eine weiße Oberfläche und drehen Sie das Potentiometer so, dass das graue Sensorsignal gerade aufleuchtet.</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration.jpg" src="../_images/zeus_line_calibration.jpg" />
+</div></blockquote>
+</li>
+<li><p>Lassen Sie die beiden Graustufensensoren an der Seite genau zwischen der schwarzen Linie und der weißen Oberfläche positionieren und drehen Sie das Potentiometer langsam, bis die Signalanzeige gerade erlischt.</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration1.jpg" src="../_images/zeus_line_calibration1.jpg" />
+</div></blockquote>
+</li>
+<li><p>Sie können mehrfach über die schwarze Linie und die weiße Oberfläche fahren, um sicherzustellen, dass die Lichter des Graustufensensors aus sind, wenn sie sich zwischen der schwarzen Linie und der weißen Oberfläche befinden, und an, wenn sie sich auf der weißen Oberfläche befinden. Dies zeigt an, dass das Modul erfolgreich kalibriert wurde.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Platzieren Sie das Zeus-Auto auf Ihrer angebrachten Linie, klicken Sie auf das Widget <a class="reference internal" href="../_images/app_line_n.png"><img alt="app_line_n" src="../_images/app_line_n.png" style="width: 100px;" /></a> und es wird der Linie folgen.</p></li>
+<li><p>Aufgrund der hohen Umgebungsanforderungen des Omni-Graustufen-Moduls wird empfohlen, es mehrmals zu kalibrieren, wenn der Verfolgungseffekt nicht zufriedenstellend ist (Abweichen von der Linie).</p></li>
+</ol>
+</section>
+<section id="folgen-o">
+<span id="ar-app-follow"></span><h2>Folgen(O)<a class="headerlink" href="#folgen-o" title="Permalink to this heading"></a></h2>
+<p>Klicken Sie auf das Widget <a class="reference internal" href="../_images/app_follow_o.png"><img alt="app_follow_o" src="../_images/app_follow_o.png" style="width: 100px;" /></a>, um in den Folgemodus zu wechseln.</p>
+<p>Der Ultraschallsensor erkennt Hindernisse vorne (20 cm) und folgt ihnen. Diese beiden Hindernisvermeidungsmodule ermöglichen es dem Auto, nach links oder rechts zu folgen, müssen jedoch vor der Verwendung kalibriert werden (15cm).</p>
+<ol class="arabic">
+<li><p>Kalibrieren Sie das IR-Hindernisvermeidungsmodul.</p>
+<blockquote>
+<div><ul>
+<li><p>Platzieren Sie ein Hindernis etwa 15 cm vom IR-Hindernisvermeidungsmodul entfernt.</p></li>
+<li><p>Am Modul befinden sich zwei Potentiometer, eines zur Anpassung der Sendeleistung und eines zur Anpassung der Sendefrequenz. Durch Anpassen dieser beiden Potentiometer können Sie den Erfassungsabstand einstellen.</p></li>
+<li><p>Dann können Sie ein Potentiometer einstellen und wenn bei 15cm das Signallicht am Modul aufleuchtet, ist die Einstellung erfolgreich; wenn nicht, stellen Sie das andere Potentiometer ein.</p>
+<blockquote>
+<div><img alt="../_images/zeus_ir_avoid.jpg" src="../_images/zeus_ir_avoid.jpg" />
+</div></blockquote>
+</li>
+<li><p>Kalibrieren Sie das andere Hindernisvermeidungsmodul auf die gleiche Weise.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Stellen Sie das Zeus-Auto auf einen Tisch oder den Boden und lassen Sie es Ihrer Hand oder anderen Hindernissen folgen.</p></li>
+</ol>
+</section>
+<section id="vermeiden-p">
+<span id="ar-app-avoid"></span><h2>Vermeiden(p)<a class="headerlink" href="#vermeiden-p" title="Permalink to this heading"></a></h2>
+<p>Wenn Sie in den Hindernisvermeidungsmodus wechseln möchten, klicken Sie auf das Widget <a class="reference internal" href="../_images/app_avoid_p.png"><img alt="app_avoid_p" src="../_images/app_avoid_p.png" style="width: 100px;" /></a>. Beachten Sie jedoch zuerst die Referenz <a class="reference internal" href="app_control.html#app-follow"><span class="std std-ref">Follow(O)</span></a>, um die beiden Hindernisvermeidungsmodule zu kalibrieren.</p>
+<ul class="simple">
+<li><p>Das Zeus-Auto fährt vorwärts.</p></li>
+<li><p>Ein Ultraschallmodul erkennt Hindernisse vorne. Wenn ein Hindernis erkannt wird, dreht sich das Auto nach links.</p></li>
+<li><p>Wenn das linke Hindernisvermeidungsmodul ein Hindernis erkennt, dreht sich das Auto nach rechts und wenn das rechte Hindernisvermeidungsmodul ein Hindernis erkennt, dreht sich das Auto nach links.</p></li>
+</ul>
+</section>
+<section id="die-richtung-steuern-q">
+<span id="ar-app-rotate-drift"></span><h2>Die Richtung steuern(Q)<a class="headerlink" href="#die-richtung-steuern-q" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p>Wenn die Schaltfläche <a class="reference internal" href="../_images/app_drift_j.png"><img alt="app_drift_j" src="../_images/app_drift_j.png" style="width: 100px;" /></a> aktiviert ist, wird das Widget <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> verwendet, um das Zeus-Auto links und rechts driften zu lassen.</p></li>
+<li><p>Wenn das Widget <a class="reference internal" href="../_images/app_drift_j.png"><img alt="app_drift_j" src="../_images/app_drift_j.png" style="width: 100px;" /></a> deaktiviert ist, wird das Widget <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> verwendet, um die Richtung des Auto-Kopfes zu steuern.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Wenn Sie das Widget <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> gegen den Uhrzeigersinn verschieben, wird das Auto ebenfalls gegen den Uhrzeigersinn drehen. Wenn Sie die Hand loslassen, kehrt der Kopf des Autos in die ursprüngliche Richtung zurück.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_left.jpg"><img alt="../_images/zeus_turn_left.jpg" class="align-center" src="../_images/zeus_turn_left.jpg" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Ebenso wird das Auto mit dem Widget <a class="reference internal" href="../_images/app_rotate_q.png"><img alt="app_rotate_q" src="../_images/app_rotate_q.png" style="width: 100px;" /></a> im Uhrzeigersinn drehen und bei Loslassen in die ursprüngliche Richtung zurückkehren.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_right.jpg"><img alt="../_images/zeus_turn_right.jpg" class="align-center" src="../_images/zeus_turn_right.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ar_app_control.html" class="btn btn-neutral float-left" title="17. APP-Steuerung" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../hardware/hardware.html" class="btn btn-neutral float-right" title="Hardware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12. Folgen &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13. Graustufen" href="ar_grayscale.html" />
+    <link rel="prev" title="11. Hindernisvermeidung" href="ar_avoid.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">Los geht’s</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Das Auto zusammenbauen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="play_mode.html">Schnelles Spielen mit APP oder IR-Fernbedienung</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="programming_mode.html">Programmierung mit der Arduino IDE</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="download_code.html">Den Code herunterladen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_arduino_ide.html">Download und Installation von Arduino IDE 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduce_ide.html">Einführung in die Arduino IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_libraries.html">Installieren der erforderlichen Bibliotheken</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ar_projects.html">Spaßprojekte</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ar_move.html">1. Grundbewegungen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_omni_move.html">2. Omni-Bewegung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_rotate.html">3. Bewegen und Rotieren</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_drift.html">4. Driften</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_remote_control.html">5. Fernsteuerung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_car_light.html">6. Autolicht</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_compass.html">7. Kompass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_move_field_centric.html">8. Feldzentrische Bewegung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_hc165_and_ir_obstacle.html">9. IR Hindernisvermeidung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_ultrasonic.html">10. Ultraschall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_avoid.html">11. Hindernisvermeidung</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">12. Folgen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_grayscale.html">13. Graustufen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track.html">14. Linienverfolgung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_line_track_field_centric.html">15. Feldzentrisches Linienverfolgen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ai_detection_from_app.html">16. KI-Erkennung von der APP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_app_control.html">17. APP-Steuerung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ar_app_control_plus.html">18. APP Control Plus</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">Los geht’s</a></li>
+          <li class="breadcrumb-item"><a href="programming_mode.html">Programmierung mit der Arduino IDE</a></li>
+          <li class="breadcrumb-item"><a href="ar_projects.html">Spaßprojekte</a></li>
+      <li class="breadcrumb-item active">12. Folgen</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/ar_follow.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hallo und willkommen in der SunFounder Raspberry Pi &amp; Arduino &amp; ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.</p>
+<p><strong>Warum beitreten?</strong></p>
+<ul class="simple">
+<li><p><strong>Expertenunterstützung</strong>: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.</p></li>
+<li><p><strong>Lernen &amp; Teilen</strong>: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.</p></li>
+<li><p><strong>Exklusive Vorschauen</strong>: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.</p></li>
+<li><p><strong>Spezialrabatte</strong>: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.</p></li>
+<li><p><strong>Festliche Aktionen und Gewinnspiele</strong>: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.</p></li>
+</ul>
+<p>👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [<a href="https://bit.ly/raphaelkit" target="_blank">hier</a>] und treten Sie heute bei!</p>
+</div>
+<section id="folgen">
+<h1>12. Folgen<a class="headerlink" href="#folgen" title="Permalink to this heading"></a></h1>
+<p>In diesem Projekt werden dieselben zwei Hindernisvermeidungsmodule und ein Ultraschallmodul verwendet. Allerdings nicht zur Hindernisvermeidung, sondern um Ihnen zu folgen.</p>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/object_following.mp4"  type="video/mp4">
+   Ihr Browser unterstützt das Video-Tag nicht.
+</video><br/> <br/><p><strong>Wie geht das?</strong></p>
+<ol class="arabic">
+<li><p>ESP32-CAM und das Arduino-Board nutzen dieselben RX (Empfang) und TX (Senden) Pins. Beim Hochladen des Codes sollten Sie daher zunächst den ESP32-CAM trennen, um mögliche Konflikte oder Probleme zu vermeiden.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/unplug_cam1.png"><img alt="../_images/unplug_cam1.png" class="align-center" src="../_images/unplug_cam1.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Öffnen Sie die Datei <code class="docutils literal notranslate"><span class="pre">12_follow.ino</span></code> im Pfad <code class="docutils literal notranslate"><span class="pre">zeus-car-main\examples\12_follow</span></code>.</p>
+<blockquote>
+<div><iframe src=https://create.arduino.cc/editor/sunfounder01/3fd83bdc-5457-4532-9da1-126fb7092a11/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe></div></blockquote>
+</li>
+<li><p>Nach erfolgreichem Hochladen des Codes, schieben Sie den Ein-/Ausschalter auf ON, um das Zeus-Auto zu starten.</p></li>
+<li><p>In diesem Fall wird das Zeus-Auto nicht fahren, wenn sich nichts vor ihm befindet. Sobald Sie sich nach vorne bewegen und etwa 20 cm von ihm entfernt stehen, wird es Ihnen folgen.</p></li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ar_avoid.html" class="btn btn-neutral float-left" title="11. Hindernisvermeidung" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ar_grayscale.html" class="btn btn-neutral float-right" title="13. Graustufen" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

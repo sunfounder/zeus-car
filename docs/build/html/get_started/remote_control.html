@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fernsteuerung &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Programmierung mit der Arduino IDE" href="programming_mode.html" />
+    <link rel="prev" title="Mit der APP steuern" href="app_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="get_started.html">Los geht’s</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="assembly_instructions.html">Das Auto zusammenbauen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="play_mode.html">Schnelles Spielen mit APP oder IR-Fernbedienung</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="app_control.html">Mit der APP steuern</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Fernsteuerung</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kurzanleitung">Kurzanleitung</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compass-calibration">Compass Calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#line-track">Line Track</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#follow">Follow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#obstacle-avoidance">Obstacle Avoidance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drift-left-right">Drift Left/Right</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-in-all-directions-1-9">Move in All Directions(1 ~ 9)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rotate-left-right-cycle-usd-key">Rotate Left/Right(Cycle/USD Key)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming_mode.html">Programmierung mit der Arduino IDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="get_started.html">Los geht’s</a></li>
+          <li class="breadcrumb-item"><a href="play_mode.html">Schnelles Spielen mit APP oder IR-Fernbedienung</a></li>
+      <li class="breadcrumb-item active">Fernsteuerung</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/get_started/remote_control.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hallo und willkommen in der SunFounder Raspberry Pi &amp; Arduino &amp; ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.</p>
+<p><strong>Warum beitreten?</strong></p>
+<ul class="simple">
+<li><p><strong>Expertenunterstützung</strong>: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.</p></li>
+<li><p><strong>Lernen &amp; Teilen</strong>: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.</p></li>
+<li><p><strong>Exklusive Vorschauen</strong>: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.</p></li>
+<li><p><strong>Spezialrabatte</strong>: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.</p></li>
+<li><p><strong>Festliche Aktionen und Gewinnspiele</strong>: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.</p></li>
+</ul>
+<p>👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [<a href="https://bit.ly/raphaelkit" target="_blank">hier</a>] und treten Sie heute bei!</p>
+</div>
+<section id="fernsteuerung">
+<span id="play-remote-control"></span><h1>Fernsteuerung<a class="headerlink" href="#fernsteuerung" title="Permalink to this heading"></a></h1>
+<p>Das Zeus-Auto kann mit einer Fernbedienung gesteuert werden, indem man das Auto einschaltet und dann direkt die Tasten der Fernbedienung drückt. Diese Methode ist stabil und weniger anfällig für äußere Störungen, bietet jedoch möglicherweise nicht so flexible Steuerungsmöglichkeiten.</p>
+<section id="kurzanleitung">
+<h2>Kurzanleitung<a class="headerlink" href="#kurzanleitung" title="Permalink to this heading"></a></h2>
+<p>Hier ist ein kurzes Tutorial-Video. Bitte sehen Sie sich zuerst das Video an und folgen Sie dann den untenstehenden Anweisungen.</p>
+<video loop controls style = "max-width:90%">
+   <source src="../_static/video/ir_control_quick_guide.mp4"  type="video/mp4">
+   Ihr Browser unterstützt das Video-Tag nicht.
+</video><br/> <br/><ol class="arabic">
+<li><p>Beginnen wir mit dem Zeus Car.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bei der ersten Verwendung oder wenn das Batteriekabel ausgesteckt wird, wird die Überentladungsschutzschaltung des Zeus Car Shield aktiviert.</p></li>
+<li><p>Daher müssen Sie das Type-C-Kabel für ungefähr 5 Sekunden einstecken.</p></li>
+</ul>
+<div style="text-align: center;">
+    <video center loop autoplay muted style = "max-width:70%">
+        <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
+        Ihr Browser unterstützt das Video-Tag nicht.
+    </video>
+</div><br/><ul class="simple">
+<li><p>Wenn die Stromanzeige leuchtet, bedeutet dies, dass der Schutzstatus aufgehoben wurde. Schauen Sie zu diesem Zeitpunkt auf die Batterieanzeigen. Wenn beide Batterieanzeigen ausgeschaltet sind, stecken Sie das Type-C-Kabel weiterhin ein, um die Batterie zu laden.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_power.jpg"><img alt="../_images/zeus_power.jpg" class="align-center" src="../_images/zeus_power.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Nun müssen Sie den kleineren Schalter nach rechts kippen, um die Kommunikation zwischen dem Auto und der ESP32 CAM herzustellen. Drücken Sie anschließend die Reset-Taste, um den Code neu zu starten. Zu diesem Zeitpunkt werden Sie beobachten, wie die Unterbodenleuchten von Orange zu einem hellen Blau wechseln.</p></li>
+</ul>
+<div style="text-align: center;">
+    <video center loop autoplay muted style = "max-width:70%">
+        <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
+        Ihr Browser unterstützt das Video-Tag nicht.
+    </video>
+</div><br/></div></blockquote>
+</li>
+<li><p>Drücken Sie die verschiedenen Tasten auf der Fernbedienung, um das Auto zu steuern.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/remote_control.jpg"><img alt="../_images/remote_control.jpg" class="align-center" src="../_images/remote_control.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p><strong>Stop</strong>: Stoppen Sie alle Bewegungen des Autos.</p></li>
+<li><p><a class="reference internal" href="#ir-compass-cali"><span class="std std-ref">Compass Calibration</span></a>: Kompasskalibrierung aktivieren.</p></li>
+<li><p><a class="reference internal" href="#ir-line-track"><span class="std std-ref">Line Track</span></a>: Wechseln zum Linienverfolgungsmodus.</p></li>
+<li><p><a class="reference internal" href="#ir-follow"><span class="std std-ref">Follow</span></a>: Wechseln zum Verfolgungsmodus.</p></li>
+<li><p><a class="reference internal" href="#ir-avoid"><span class="std std-ref">Obstacle Avoidance</span></a>: Wechseln zum Hindernisvermeidungsmodus.</p></li>
+<li><p><a class="reference internal" href="#drift"><span class="std std-ref">Drift Left/Right</span></a>: Nach links/rechts driften.</p></li>
+<li><p><strong>Set Heading</strong>: Nachdem Sie das Auto mit der Hand in eine Richtung gestellt haben, klicken Sie auf diese Taste, um diese Richtung als Vorderseite der Autobewegung festzulegen. Dies ermöglicht es Ihnen, schnell eine Richtung anzugeben, anstatt das Auto langsam mit anderen Tasten in diese Richtung zu drehen.</p></li>
+<li><p><a class="reference internal" href="#rotate-left-right"><span class="std std-ref">Rotate Left/Right(Cycle/USD Key)</span></a>: Nach links/rechts drehen</p></li>
+<li><p><a class="reference internal" href="#ir-move"><span class="std std-ref">Move in All Directions(1 ~ 9)</span></a>: Steuern Sie das Auto in alle Richtungen.</p></li>
+<li><p><strong>Pause</strong>: Die Funktion ähnelt Stopp, aber wenn das vordere Ende des Autos nicht in die ursprünglich festgelegte Richtung zeigt, wird es langsam in die festgelegte Richtung bewegt.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="compass-calibration">
+<span id="ir-compass-cali"></span><h2>Compass Calibration<a class="headerlink" href="#compass-calibration" title="Permalink to this heading"></a></h2>
+<p>Schalten Sie die Kompasskalibrierung durch Drücken der <a class="reference internal" href="../_images/ir_mute.png"><img alt="ir_mute" src="../_images/ir_mute.png" style="width: 40px;" /></a>-Taste ein.</p>
+<p>Stellen Sie das Zeus-Auto auf den Boden. Nach dem Aktivieren der Kompasskalibrierung beginnt das Auto, sich gegen den Uhrzeigersinn zu drehen und stoppt nach ungefähr einer Minute. Wenn es länger als 2 Minuten rotiert, ist das Magnetfeld hier komplex. Versuchen Sie, den Standort zu wechseln und erneut zu kalibrieren.</p>
+</section>
+<section id="line-track">
+<span id="ir-line-track"></span><h2>Line Track<a class="headerlink" href="#line-track" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/drift_based_line_following.mp4"  type="video/mp4">
+   Ihre Browser unterstützt das Videotag nicht.
+</video><br/> <br/><p>Drücken Sie die <a class="reference internal" href="../_images/ir_play.png"><img alt="ir_play" src="../_images/ir_play.png" style="width: 40px;" /></a>-Taste, um in den Linienverfolgungsmodus zu wechseln.</p>
+<p>Es gibt zwei Linienverfolgungsmodi im Zeus-Auto: Ein Modus, bei dem der Kopf immer in Bewegungsrichtung zeigt, und ein Modus, bei dem der Kopf in eine feste Richtung zeigt. Hier ist der zweite Modus ausgewählt.</p>
+<p>Bevor Sie die Linienverfolgung starten können, müssen Sie das Omni-Graustufenmodul kalibrieren und die Linie befestigen:</p>
+<ol class="arabic">
+<li><p>Kleben Sie eine 3 cm breite Linie:</p>
+<blockquote>
+<div><p>Es gibt acht Sensoren am Omni-Graustufenmodul und der Abstand zwischen den Sensoren liegt zwischen 2 und 3 cm. Es müssen zwei Sensoren gleichzeitig die schwarze Linie erkennen. Daher muss die angebrachte Linie mindestens 3 cm breit sein und der Biege winkel darf nicht weniger als 90° betragen.</p>
+<a class="reference internal image-reference" href="../_images/map.png"><img alt="../_images/map.png" class="align-center" src="../_images/map.png" style="width: 500px;" /></a>
+<br/></div></blockquote>
+</li>
+<li><p>Kalibrieren Sie das Omni-Graustufenmodul:</p>
+<blockquote>
+<div><p>Da jeder Unterboden unterschiedliche Graustufenwerte aufweist, ist der werkseitig eingestellte Graustufenschwellenwert möglicherweise nicht für Ihre aktuelle Umgebung geeignet. Daher müssen Sie dieses Modul vor der Verwendung kalibrieren. Es wird empfohlen, dies jedes Mal zu tun, wenn sich die Bodenfarbe stark ändert.</p>
+<ul class="simple">
+<li><p>Stellen Sie das Zeus-Auto auf eine weiße Fläche und drehen Sie das Potentiometer, bis das Licht des Grausensors gerade leuchtet.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_line_calibration.jpg"><img alt="../_images/zeus_line_calibration.jpg" class="align-center" src="../_images/zeus_line_calibration.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Positionieren Sie jetzt die beiden Grausensoren so, dass sie genau zwischen der schwarzen Linie und der weißen Oberfläche liegen, und drehen Sie das Potentiometer langsam, bis die Signalanzeige gerade erlischt.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_line_calibration1.jpg"><img alt="../_images/zeus_line_calibration1.jpg" class="align-center" src="../_images/zeus_line_calibration1.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Bewegen Sie das Auto mehrfach über die schwarze Linie und die weiße Fläche, um sicherzustellen, dass die Lichter des Grausensors aus sind, wenn sie zwischen der schwarzen Linie und der weißen Fläche liegen, und eingeschaltet sind, wenn sie auf der weißen Fläche liegen. Dies zeigt an, dass das Modul erfolgreich kalibriert wurde.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Platzieren Sie das Zeus-Auto auf Ihrer markierten Linie, drücken Sie die <a class="reference internal" href="../_images/ir_play.png"><img alt="ir_play" src="../_images/ir_play.png" style="width: 40px;" /></a>-Taste, und es wird der Linie folgen.</p></li>
+<li><p>Aufgrund der hohen Umgebungsanforderungen des Omni-Graustufenmoduls wird empfohlen, es mehrmals zu kalibrieren, falls der Verfolgungseffekt nicht zufriedenstellend ist (Abweichungen).</p></li>
+</ol>
+</section>
+<section id="follow">
+<span id="ir-follow"></span><h2>Follow<a class="headerlink" href="#follow" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/object_following.mp4"  type="video/mp4">
+   Ihre Browser unterstützt das Videotag nicht.
+</video><br/> <br/><p>Drücken Sie die <a class="reference internal" href="../_images/ir_backward.png"><img alt="ir_backward" src="../_images/ir_backward.png" style="width: 40px;" /></a>-Taste, um in den Folgemodus zu wechseln.</p>
+<p>Der Ultraschallsensor erkennt Hindernisse vorne (20 cm) und folgt ihnen. Die zwei Hindernisvermeidungsmodule ermöglichen es dem Auto, nach links oder rechts zu folgen. Sie müssen jedoch vor der Verwendung kalibriert werden (15 cm).</p>
+<ol class="arabic">
+<li><p>Kalibrieren Sie das IR-Hindernisvermeidungsmodul:</p>
+<blockquote>
+<div><ul>
+<li><p>Beginnen Sie mit der Einstellung des rechten Hindernisvermeidungsmoduls. Während des Transports können Kollisionen dazu führen, dass der Sender und Empfänger im Infrarotmodul kippen. Daher müssen Sie sie manuell begradigen.</p>
+<blockquote>
+<div><video loop autoplay muted style = "max-width:80%">
+    <source src="../_static/video/toggle_avoid.mp4"  type="video/mp4">
+    Ihr Browser unterstützt das Video-Tag nicht.
+</video><br/> <br/></div></blockquote>
+</li>
+<li><p>Platzieren Sie ein Hindernis etwa 15 cm vom IR-Hindernisvermeidungsmodul entfernt.</p></li>
+<li><p>Am Modul befinden sich zwei Potentiometer: eines zur Einstellung der Sendeleistung und eines zur Einstellung der Sendefrequenz. Durch Anpassen dieser beiden Potentiometer können Sie die Erkennungsentfernung einstellen.</p></li>
+<li><p>Dann können Sie ein Potentiometer einstellen, und wenn bei 15 cm das Signallämpchen am Modul leuchtet, ist die Einstellung erfolgreich. Wenn nicht, stellen Sie das andere Potentiometer ein.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_ir_avoid.jpg"><img alt="../_images/zeus_ir_avoid.jpg" class="align-center" src="../_images/zeus_ir_avoid.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Kalibrieren Sie das andere Hindernisvermeidungsmodul auf die gleiche Weise.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Stellen Sie das Zeus-Auto auf einen Tisch oder den Boden und lassen Sie es Ihrer Hand oder anderen Hindernissen folgen.</p></li>
+</ol>
+</section>
+<section id="obstacle-avoidance">
+<span id="ir-avoid"></span><h2>Obstacle Avoidance<a class="headerlink" href="#obstacle-avoidance" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/obstacle_avoidance.mp4"  type="video/mp4">
+   Ihre Browser unterstützt das Videotag nicht.
+</video><br/> <br/><p>Wenn Sie in den Hindernisvermeidungsmodus wechseln möchten, drücken Sie die <a class="reference internal" href="../_images/ir_forward.png"><img alt="ir_forward" src="../_images/ir_forward.png" style="width: 40px;" /></a>-Taste. Konsultieren Sie zuerst den Abschnitt <a class="reference internal" href="#ir-follow"><span class="std std-ref">Follow</span></a>, um die beiden Hindernisvermeidungsmodule zu kalibrieren.</p>
+<ul class="simple">
+<li><p>Das Zeus-Auto wird sich vorwärts bewegen.</p></li>
+<li><p>Ein Ultraschallmodul erkennt Hindernisse vorne. Bei Erkennung dreht sich das Auto nach links.</p></li>
+<li><p>Wenn das linke Hindernisvermeidungsmodul ein Hindernis erkennt, dreht sich das Auto nach rechts und bei Erkennung durch das rechte Modul nach links.</p></li>
+</ul>
+</section>
+<section id="drift-left-right">
+<span id="drift"></span><h2>Drift Left/Right<a class="headerlink" href="#drift-left-right" title="Permalink to this heading"></a></h2>
+<p>Verwenden Sie die Tasten <a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> und <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a>, um das Auto nach links/rechts driften zu lassen.</p>
+<ul class="simple">
+<li><p>Bei Betätigung der <a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a>-Taste driftet das Auto nach links.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_drift_left.jpg"><img alt="../_images/zeus_drift_left.jpg" class="align-center" src="../_images/zeus_drift_left.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Bei Betätigung der <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a>-Taste driftet das Auto nach rechts.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_drift_right.jpg"><img alt="../_images/zeus_drift_right.jpg" class="align-center" src="../_images/zeus_drift_right.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Wenn das Auto vor dem Driften gestoppt wurde, bewirkt ein einmaliges Drücken von <a class="reference internal" href="../_images/ir_minus.png"><img alt="ir_minus" src="../_images/ir_minus.png" style="width: 40px;" /></a> oder <a class="reference internal" href="../_images/ir_plus.png"><img alt="ir_plus" src="../_images/ir_plus.png" style="width: 40px;" /></a> einen 90°-Drift des Zeus nach links oder rechts.</p></li>
+<li><p>Wenn das Auto vor dem Driften in Bewegung war, driftet es nach Betätigung der Taste 90° nach links oder rechts und fährt dann weiter, bis eine andere Taste gedrückt wird.</p></li>
+</ul>
+</section>
+<section id="move-in-all-directions-1-9">
+<span id="ir-move"></span><h2>Move in All Directions(1 ~ 9)<a class="headerlink" href="#move-in-all-directions-1-9" title="Permalink to this heading"></a></h2>
+<video loop autoplay muted style = "max-width:80%">
+   <source src="../_static/video/basic_movement.mp4"  type="video/mp4">
+   Ihr Browser unterstützt das Videotag nicht.
+</video><br/> <br/><p>Verwenden Sie die Zahlentasten 1~9, um das Zeus Auto in 8 Richtungen zu steuern.</p>
+<a class="reference internal image-reference" href="../_images/remote_control_move.jpg"><img alt="../_images/remote_control_move.jpg" class="align-center" src="../_images/remote_control_move.jpg" style="width: 500px;" /></a>
+<br/></section>
+<section id="rotate-left-right-cycle-usd-key">
+<span id="rotate-left-right"></span><h2>Rotate Left/Right(Cycle/USD Key)<a class="headerlink" href="#rotate-left-right-cycle-usd-key" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Wenn Sie die <a class="reference internal" href="../_images/ir_return.png"><img alt="ir_return" src="../_images/ir_return.png" style="width: 40px;" /></a>-Taste einmal drücken, dreht sich das Auto mit dem Körper als Zentrum um 45° nach links. Abhängig vom vorherigen Zustand wird es vorwärts fahren oder stoppen. Wenn es zuvor gestoppt wurde, wird es nach einer 45°-Linksdrehung anhalten; wenn es vorwärts gefahren ist, wird es nach der Linksdrehung weiterfahren.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_left.jpg"><img alt="../_images/zeus_turn_left.jpg" class="align-center" src="../_images/zeus_turn_left.jpg" style="width: 500px;" /></a>
+<br/><ul class="simple">
+<li><p>Ebenso wird das Auto durch einmaliges Drücken von <a class="reference internal" href="../_images/ir_usd.png"><img alt="ir_usd" src="../_images/ir_usd.png" style="width: 40px;" /></a> um 45° nach rechts drehen und dann je nach vorherigem Zustand vorwärts fahren oder stoppen.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/zeus_turn_right.jpg"><img alt="../_images/zeus_turn_right.jpg" class="align-center" src="../_images/zeus_turn_right.jpg" style="width: 500px;" /></a>
+<br/></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app_control.html" class="btn btn-neutral float-left" title="Mit der APP steuern" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="programming_mode.html" class="btn btn-neutral float-right" title="Programmierung mit der Arduino IDE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

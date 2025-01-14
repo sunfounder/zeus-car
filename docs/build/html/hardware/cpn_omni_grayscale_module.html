@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omni-Graustufenmodul &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ultraschallmodul" href="cpn_ultrasonic_module_xh.html" />
+    <link rel="prev" title="Kamera-Adapterplatine" href="cpn_camera_adapter.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">Los geht’s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hardware.html">Hardware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpn_r3_board.html">SunFounder R3 Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_zeus_car_shield.html">Zeus Car Shield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_esp_32_cam.html">ESP32 CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_camera_adapter.html">Kamera-Adapterplatine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Omni-Graustufenmodul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ultrasonic_module_xh.html">Ultraschallmodul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ir_obstacle_module.html">IR Hinderniserkennungsmodul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_rgb_strip.html">4 RGB LED-Streifen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_18650_battery.html">18650 Batterie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_tt_motor_xh.html">TT Motor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_mecanum_wheel.html">Mecanum-Rad</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="hardware.html">Hardware</a></li>
+      <li class="breadcrumb-item active">Omni-Graustufenmodul</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/cpn_omni_grayscale_module.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hallo und willkommen in der SunFounder Raspberry Pi &amp; Arduino &amp; ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.</p>
+<p><strong>Warum beitreten?</strong></p>
+<ul class="simple">
+<li><p><strong>Expertenunterstützung</strong>: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.</p></li>
+<li><p><strong>Lernen &amp; Teilen</strong>: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.</p></li>
+<li><p><strong>Exklusive Vorschauen</strong>: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.</p></li>
+<li><p><strong>Spezialrabatte</strong>: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.</p></li>
+<li><p><strong>Festliche Aktionen und Gewinnspiele</strong>: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.</p></li>
+</ul>
+<p>👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [<a href="https://bit.ly/raphaelkit" target="_blank">hier</a>] und treten Sie heute bei!</p>
+</div>
+<section id="omni-graustufenmodul">
+<h1>Omni-Graustufenmodul<a class="headerlink" href="#omni-graustufenmodul" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/omni_grayscale_front.png"><img alt="../_images/omni_grayscale_front.png" src="../_images/omni_grayscale_front.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/omni_grayscale_back.png"><img alt="../_images/omni_grayscale_back.png" src="../_images/omni_grayscale_back.png" style="width: 300px;" /></a>
+<ul class="simple">
+<li><p><strong>VREF</strong>: Referenzspannungseingangspin. Der Wert jedes Sensors wird mit dieser Referenzspannung verglichen, um zu bestimmen, ob ein hoher oder niedriger Wert ausgegeben wird.</p></li>
+<li><p><strong>Q7</strong>: Serieller Ausgang aus der letzten Stufe</p></li>
+<li><p><strong>PL</strong>: Asynchroner paralleler Ladeeingang (aktiv LOW)</p></li>
+<li><p><strong>CP</strong>: Clock-Eingang (LOW-to-HIGH Flanken-gesteuert)</p></li>
+<li><p><strong>5V</strong>: 3,3 bis 5V DC Spannungseingang</p></li>
+<li><p><strong>GND</strong>: Masseanschluss</p></li>
+</ul>
+<p>Dies ist ein Omni-Graustufenmodul zur Linienverfolgung und Kantenerkennung. “Omni” bedeutet omnidirektional, was bedeutet, dass das Modul über 8 TCRT5000 Sendesensoren verfügt, die im Kreis angeordnet sind, um schwarze Linien aus jeder Richtung zu erkennen.</p>
+<p>Dies ermöglicht es einem Roboterwagen wie dem Zeus Car mit Mecanum-Rädern, der Linie in verschiedenen Winkeln zu folgen, ohne dass die Vorderseite des Autos nach vorne zeigt.</p>
+<p>Die Empfindlichkeit des Moduls in der aktuellen Umgebung kann angepasst werden, indem der VREF-Wert geändert wird. Beim Zeus Car Shield wird das blaue Potentiometer verwendet, um den Wert des VREF-Pins einzustellen.</p>
+<p><strong>Funktionsprinzip</strong></p>
+<ul class="simple">
+<li><p><a href="https://datasheetspdf.com/pdf-file/377371/VishayTelefunken/TCRT5000/1" target="_blank">TCRT5000 Reflective Sensor</a></p></li>
+</ul>
+<p>Im Modul sind acht TCRT5000 Sendesensoren integriert, die auf der infraroten optischen Reflexion basieren und eine infrarote LED und einen Fototransistor enthalten, der mit einem Bleimaterial abgedeckt ist, um sichtbares Licht zu blockieren.</p>
+<a class="reference internal image-reference" href="../_images/tcrt5000_pin.jpg"><img alt="../_images/tcrt5000_pin.jpg" class="align-center" src="../_images/tcrt5000_pin.jpg" style="width: 400px;" /></a>
+<p>Bei der Arbeit sendet die infrarote LED des TCRT5000 kontinuierlich infrarotes Licht (unsichtbares Licht) mit einer Wellenlänge von 950nm aus. Wenn das emittierte infrarote Licht nicht von einem Hindernis zurück reflektiert wird oder die Reflexionsintensität unzureichend ist, arbeitet der Fototransistor nicht. Wenn das infrarote Licht mit ausreichender Intensität reflektiert und gleichzeitig vom Fototransistor empfangen wird, ist der Fototransistor in Betrieb und liefert einen Ausgang.</p>
+<ul class="simple">
+<li><p><a href="https://datasheetspdf.com/pdf-file/1055868/FairchildSemiconductor/LM339/1" target="_blank">LM339 Quad Comparator</a></p></li>
+</ul>
+<p>Auf diesem Omni-Graustufenmodul gibt es 2 LM339-Chips, die insgesamt 8 differentielle Komparatoren enthalten. Diese differentiellen Komparatoren werden verwendet, um den aktuellen Sensorwert mit einem Referenzwert zu vergleichen, um zu bestimmen, ob ein hoher oder niedriger Wert ausgegeben wird. So wissen Sie, ob eine schwarze Linie erkannt wird.</p>
+<img alt="../_images/lm339_chip.png" src="../_images/lm339_chip.png" />
+<p>Nachfolgend finden Sie ein Schema eines der Kanäle.</p>
+<img alt="../_images/tcrt_lm339.png" src="../_images/tcrt_lm339.png" />
+<ul class="simple">
+<li><p>Legen Sie eine Referenzspannung am VREF-Pin an (diese Referenzspannung wird über ein Potentiometer am Zeus Car Shield eingestellt) und fügen Sie diese Referenzspannung dem invertierenden Eingang (-) des Komparators hinzu.</p></li>
+<li><p>Fügen Sie den Kollektor des Fototransistors des TCRT5000-Sensors dem in-Phasen-Eingang (+) des Komparators hinzu.</p></li>
+<li><p>Wenn der vom TCRT5000-Sensor ausgesendete Infrarotstrahl nicht zurückreflektiert wird oder die Reflexionsintensität unzureichend ist, funktioniert der lichtempfindliche Transistor nicht, und der Kollektor ist zu diesem Zeitpunkt mit dem Pull-up-Widerstand auf 5V verbunden. Daher ist der in-Phasen-Eingang (+) des Komparators größer als der invertierende Eingang (-).</p></li>
+<li><p>Der Komparatorausgang ist hoch und die Anzeige leuchtet nicht auf. Und umgekehrt.</p></li>
+<li><p>Da die schwarze Oberfläche Licht absorbiert, reflektiert sie weniger Infrarotlicht. Daher gibt der Komparator auf der schwarzen Oberfläche einen hohen Wert aus und die Anzeige leuchtet nicht auf.</p></li>
+<li><p>Die weiße Oberfläche reflektiert mehr Infrarotstrahlen, und der lichtempfindliche Transistor leitet, sodass der Wert des in-Phasen-Eingangs kleiner als der invertierte Eingang ist, und der Komparator gibt einen niedrigen Wert aus, und die Anzeige leuchtet auf.</p></li>
+</ul>
+<p>Diese 8 Sensordaten werden über den 74HC165 (8-Bit-Parallel-Eingabe serieller Ausgangsschieberegister) an das Arduino-Board übertragen.</p>
+<ul class="simple">
+<li><p><a href="https://datasheetspdf.com/pdf-file/944867/NXP/74HC165/1" target="_blank">74HC165 Shift Register</a></p></li>
+</ul>
+<p>Der 74HC165 ist ein 8-Bit paralleler Eingabe serieller Ausgangsschieberegister, der exklusive serielle Ausgänge (Q0 und Q7) in der Endstufe erhalten kann. Wenn der parallele Lese-Eingang (PL) niedrig ist, werden die parallelen Daten von D0 bis D7 asynchron in das Register eingelesen. Und wenn PL hoch ist, werden die Daten seriell vom DS-Eingang in das Register eingelesen, wobei sich ein Bit bei jeder aufsteigenden Flanke eines Taktimpulses nach rechts verschiebt (Q0 → Q1 → Q2 usw.). Mit dieser Funktion kann die Parallel-zu-Seriell-Erweiterung erreicht werden, indem einfach der Q7-Ausgang an den DS-Eingang der nächsten Stufe gebunden wird.</p>
+<p>Der Takteingang des 74HC165 ist eine “gated or” Struktur, die es ermöglicht, einen der Eingänge als Clock Enable (CE) Eingang mit niedriger Aktivität zu verwenden. Die CP- und CE-Pinzuordnungen sind unabhängig und können bei Bedarf ausgetauscht werden. CE darf nur steigen, wenn CP hoch ist. CP oder CE sollten vor der steigenden Flanke von PL hochgesetzt werden, um eine Datenverschiebung im aktiven Zustand von PL zu verhindern.</p>
+<img alt="../_images/74hc165_con.png" src="../_images/74hc165_con.png" />
+<p><strong>Merkmale</strong></p>
+<ul class="simple">
+<li><p>Betriebsspannung: 3,3 ~ 5V</p></li>
+<li><p>Ausgang: digital (an/aus)</p></li>
+<li><p>Asynchroner 8-Bit-Parallel-Ladevorgang</p></li>
+<li><p>Synchroner serieller Eingang</p></li>
+<li><p>Erkennungsschwelle: einstellbar über VREF-Pin</p></li>
+<li><p>Sensortyp：TCRT5000</p></li>
+<li><p>Steckermodell：ZH1.5-6P</p></li>
+<li><p>Betriebstemperatur: -10 °C bis +50 °C</p></li>
+<li><p>Abmessungen: 80mm x 80mm</p></li>
+</ul>
+<p><strong>Kalibrierung des Moduls</strong></p>
+<blockquote>
+<div><p>Da jeder Untergrund unterschiedliche Grauwerte aufweist, ist der werkseitig eingestellte Grauschwellenwert möglicherweise nicht für Ihre aktuelle Umgebung geeignet. Daher müssen Sie dieses Modul vor der Verwendung kalibrieren. Es wird empfohlen, dass Sie es kalibrieren müssen, wann immer sich die Bodenfarbe stark ändert.</p>
+<ul>
+<li><p>Platzieren Sie den Zeus Car auf einer weißen Fläche und drehen Sie das Potentiometer, bis das Licht des Grausensors gerade leuchtet.</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration2.jpg" src="../_images/zeus_line_calibration2.jpg" />
+</div></blockquote>
+</li>
+<li><p>Lassen Sie nun die beiden Grausensoren an der Seite genau zwischen der schwarzen Linie und der weißen Fläche liegen und drehen Sie das Potentiometer langsam, bis die Signalanzeige gerade erlischt.</p>
+<blockquote>
+<div><img alt="../_images/zeus_line_calibration11.jpg" src="../_images/zeus_line_calibration11.jpg" />
+</div></blockquote>
+</li>
+<li><p>Sie können wiederholt über die schwarze Linie und die weiße Fläche fahren, um sicherzustellen, dass die Lichter des Grausensors aus sind, wenn sie zwischen der schwarzen Linie und der weißen Fläche liegen, und an sind, wenn sie auf der weißen Fläche sind, was darauf hinweist, dass das Modul erfolgreich kalibriert wurde.</p></li>
+</ul>
+</div></blockquote>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpn_camera_adapter.html" class="btn btn-neutral float-left" title="Kamera-Adapterplatine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpn_ultrasonic_module_xh.html" class="btn btn-neutral float-right" title="Ultraschallmodul" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

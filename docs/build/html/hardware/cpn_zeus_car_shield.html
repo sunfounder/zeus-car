@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeus Car Shield &mdash; SunFounder Zeus Robot Car Kit for Arduino  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/./lang.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ESP32 CAM" href="cpn_esp_32_cam.html" />
+    <link rel="prev" title="SunFounder R3 Board" href="cpn_r3_board.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder Zeus Robot Car Kit for Arduino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About this Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">Los geht’s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hardware.html">Hardware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpn_r3_board.html">SunFounder R3 Board</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zeus Car Shield</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#batterieanschluss">Batterieanschluss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zum-graustufenmodul">Zum Graustufenmodul</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ultraschallanschluss">Ultraschallanschluss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kamera-adapteranschluss">Kamera-Adapteranschluss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anschluss-zur-hindernisvermeidung">Anschluss zur Hindernisvermeidung</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rgb-led-streifenanschluss">RGB LED Streifenanschluss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motoranschluss">Motoranschluss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_esp_32_cam.html">ESP32 CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_camera_adapter.html">Kamera-Adapterplatine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_omni_grayscale_module.html">Omni-Graustufenmodul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ultrasonic_module_xh.html">Ultraschallmodul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_ir_obstacle_module.html">IR Hinderniserkennungsmodul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_rgb_strip.html">4 RGB LED-Streifen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_18650_battery.html">18650 Batterie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_tt_motor_xh.html">TT Motor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpn_mecanum_wheel.html">Mecanum-Rad</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder Zeus Robot Car Kit for Arduino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="hardware.html">Hardware</a></li>
+      <li class="breadcrumb-item active">Zeus Car Shield</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/cpn_zeus_car_shield.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hallo und willkommen in der SunFounder Raspberry Pi &amp; Arduino &amp; ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.</p>
+<p><strong>Warum beitreten?</strong></p>
+<ul class="simple">
+<li><p><strong>Expertenunterstützung</strong>: Lösen Sie Nachverkaufsprobleme und technische Herausforderungen mit Hilfe unserer Gemeinschaft und unseres Teams.</p></li>
+<li><p><strong>Lernen &amp; Teilen</strong>: Tauschen Sie Tipps und Anleitungen aus, um Ihre Fähigkeiten zu verbessern.</p></li>
+<li><p><strong>Exklusive Vorschauen</strong>: Erhalten Sie frühzeitigen Zugang zu neuen Produktankündigungen und exklusiven Einblicken.</p></li>
+<li><p><strong>Spezialrabatte</strong>: Genießen Sie exklusive Rabatte auf unsere neuesten Produkte.</p></li>
+<li><p><strong>Festliche Aktionen und Gewinnspiele</strong>: Nehmen Sie an Gewinnspielen und Feiertagsaktionen teil.</p></li>
+</ul>
+<p>👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [<a href="https://bit.ly/raphaelkit" target="_blank">hier</a>] und treten Sie heute bei!</p>
+</div>
+<section id="zeus-car-shield">
+<h1>Zeus Car Shield<a class="headerlink" href="#zeus-car-shield" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/zeus_car_shield.png"><img alt="../_images/zeus_car_shield.png" class="align-center" src="../_images/zeus_car_shield.png" style="width: 500px;" /></a>
+<p>Hierbei handelt es sich um eine All-in-One-Erweiterungsplatine, die von SunFounder für Arduino entworfen wurde. Sie enthält verschiedene Modulanschlüsse wie Motor, Lichtleiste, Hindernisvermeidung, Graustufen, ESP32 CAM und Ultraschallmodul. Eingebaut ist auch ein HS0038B IR-Empfänger für die Fernbedienung.</p>
+<p>Diese Erweiterungsplatine verfügt auch über einen eingebauten Ladekreis, der den Akku mit PH2.0-5P-Schnittstelle laden kann, und die geschätzte Ladezeit beträgt 130 Minuten.</p>
+<p><strong>Zeus Car Shield Anschlüsse</strong></p>
+<img alt="../_images/zeus_car_shield_pinout.png" src="../_images/zeus_car_shield_pinout.png" />
+<ul class="simple">
+<li><dl class="simple">
+<dt>Reset-Taste</dt><dd><ul>
+<li><p>Drücken Sie diese Taste, um das Programm auf dem Arduino-Board zurückzusetzen.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Ladeanschluss</dt><dd><ul>
+<li><p>Nachdem Sie in den 5V/2A USB-C-Anschluss eingesteckt haben, kann er verwendet werden, um den Akku in 130 Minuten aufzuladen.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-battry-pin"><span class="std std-ref">Batterieanschluss</span></a>：</dt><dd><ul>
+<li><p>6,6V~8,4V PH2.0-5P Stromversorgung.</p></li>
+<li><p>Versorgt das Zeus Car Shield und das Arduino-Board gleichzeitig mit Strom.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Ein-/Ausschalter</dt><dd><ul>
+<li><p>Auf ON schieben, um das Zeus Car Shield einzuschalten.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>IR-Empfänger</dt><dd><ul>
+<li><p>Dies ist ein HS0038B IR-Empfänger, dessen Signalpin mit Pin 2 des Arduino-Boards verbunden ist.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-grayscale-pin"><span class="std std-ref">Zum Graustufenmodul</span></a></dt><dd><ul>
+<li><p>Graustufen-Justierpotentiometer: Wird verwendet, um die Referenzspannung für das Omni-Graustufen-Modul einzustellen.</p></li>
+<li><p>Graustufenanschluss: Zum Anschluss des Omni-Graustufen-Moduls.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Anzeigen</dt><dd><ul>
+<li><p><strong>Ladeanzeige</strong>: Leuchtet rot, wenn das Shield über den USB-C-Anschluss geladen wird.</p></li>
+<li><p><strong>Stromanzeige</strong>: Leuchtet grün, wenn der Ein-/Ausschalter auf “ON” steht.</p></li>
+<li><p><strong>Batterieanzeige</strong>: Zwei orangefarbene Anzeigen repräsentieren unterschiedliche Batteriestände. Sie blinken während des Ladens und schalten sich aus, wenn die Batterie aufgeladen werden muss.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-ultrasonic-pin"><span class="std std-ref">Ultraschallanschluss</span></a></dt><dd><ul>
+<li><p>Zum Anschluss des Ultraschallmoduls sind beide Pins, Trig &amp; Echo, mit Pin 10 des Arduino-Boards verbunden.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-camera-pin"><span class="std std-ref">Kamera-Adapteranschluss</span></a></dt><dd><ul>
+<li><p>Der Anschluss für das Kamera-Adapter-Board.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-avoid-pin"><span class="std std-ref">Anschluss zur Hindernisvermeidung</span></a></dt><dd><ul>
+<li><p>Wird verwendet, um zwei IR-Hindernisvermeidungsmodule anzuschließen, die Signale der beiden Anschlüsse sind mit Q0 und Q1 des 74HC165 verbunden.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-strip-pin"><span class="std std-ref">RGB LED Streifenanschluss</span></a></dt><dd><ul>
+<li><p>Zum Anschluss von 2 RGB-LED-Streifen sind die drei Pins des Streifens entsprechend mit 12, 13 und 11 verbunden.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Laufschalter</dt><dd><ul>
+<li><p>Wenn Sie die Kamera verwenden möchten, müssen Sie diesen Schalter umlegen, damit der ESP32-CAM mit dem Arduino-Board kommunizieren kann.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#shield-motor-pin"><span class="std std-ref">Motoranschluss</span></a></dt><dd><ul>
+<li><p>4 Gruppen von Motoranschlüssen.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="batterieanschluss">
+<span id="shield-battry-pin"></span><h2>Batterieanschluss<a class="headerlink" href="#batterieanschluss" title="Permalink to this heading"></a></h2>
+<p>Hier sehen Sie das Pinout-Diagramm für die Batterieschnittstelle. Der Typ ist PH2.0-5P und der Eingangsspannungsbereich liegt zwischen 6.6V und 8.4V.</p>
+<a class="reference internal image-reference" href="../_images/shield_battery_pin.png"><img alt="../_images/shield_battery_pin.png" class="align-center" src="../_images/shield_battery_pin.png" style="width: 400px;" /></a>
+</section>
+<section id="zum-graustufenmodul">
+<span id="shield-grayscale-pin"></span><h2>Zum Graustufenmodul<a class="headerlink" href="#zum-graustufenmodul" title="Permalink to this heading"></a></h2>
+<p>Ein blauer Potentiometer auf dem Zeus Car Shield dient zur Anpassung der Empfindlichkeit des Graustufenmoduls an verschiedene Umgebungen. Dies geschieht durch Einstellen der Referenzspannung für das Modul. Über den VREF-Pin erhält das Graustufenmodul die eingestellte Referenzspannung.</p>
+<img alt="../_images/shield_grayscale_pin.png" src="../_images/shield_grayscale_pin.png" />
+<p>Hier ist das Schaltbild. Die Werte des Graustufenmoduls werden von dem 74HC165-Chip auf das Arduino-Board übertragen. Da das Graustufenmodul selbst einen 74HC165-Chip besitzt, wird durch die Kaskadierung dieser beiden Chips eine 16-Bit-Datenübertragung zum Arduino-Board ermöglicht. Die ersten 8 Bit sind Daten des Graustufensensors und die letzten zwei Bit sind Daten für die IR-Hindernisvermeidung.</p>
+<img alt="../_images/shield_grayscale1.png" src="../_images/shield_grayscale1.png" />
+<a class="reference internal image-reference" href="../_images/shield_grayscale2.png"><img alt="../_images/shield_grayscale2.png" src="../_images/shield_grayscale2.png" style="width: 400px;" /></a>
+<p>Die Pin-Zuordnung dieses Ports auf dem Arduino-Board ist unten dargestellt.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Arduino Board</p></td>
+<td><p>Zeus Car Shield</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>74HC165 Q7</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>74HC165 CP</p></td>
+</tr>
+<tr class="row-even"><td><p>~9</p></td>
+<td><p>74HC165 PL</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ultraschallanschluss">
+<span id="shield-ultrasonic-pin"></span><h2>Ultraschallanschluss<a class="headerlink" href="#ultraschallanschluss" title="Permalink to this heading"></a></h2>
+<p>Hier ist das Pinout für den ZH1.5-4P Ultraschallanschluss. Die Trig &amp; Echo Pins sind mit Pin 10 auf dem Arduino Board verbunden.</p>
+<img alt="../_images/shield_ultrasonic_pin.png" src="../_images/shield_ultrasonic_pin.png" />
+</section>
+<section id="kamera-adapteranschluss">
+<span id="shield-camera-pin"></span><h2>Kamera-Adapteranschluss<a class="headerlink" href="#kamera-adapteranschluss" title="Permalink to this heading"></a></h2>
+<p>Hier sehen Sie das Pin-Diagramm für die Kamera-Adapter-Schnittstelle. Der Typ ist ZH1.5-7P.</p>
+<ul class="simple">
+<li><p>TX und RX werden für ESP32 CAM verwendet.</p></li>
+<li><p>SDA und SCL sind für QMC6310.</p></li>
+</ul>
+<img alt="../_images/shield_camera_pin.png" src="../_images/shield_camera_pin.png" />
+</section>
+<section id="anschluss-zur-hindernisvermeidung">
+<span id="shield-avoid-pin"></span><h2>Anschluss zur Hindernisvermeidung<a class="headerlink" href="#anschluss-zur-hindernisvermeidung" title="Permalink to this heading"></a></h2>
+<p>Hier ist das Pinout-Diagramm für die zwei ZH1.5-3P Hindernisvermeidungsanschlüsse.</p>
+<img alt="../_images/shield_avoid_pin.png" src="../_images/shield_avoid_pin.png" />
+<p>Wie im Schaltplan gezeigt, beziehen sich S1 und S0 auf Q0 und Q1 auf dem 74HC165 Chip. Zwei 74HC165 Kaskaden übertragen die Daten der beiden IR-Hindernisvermeidungsmodule und des Graustufensensors auf das Arduino Board. Die ersten acht Bits sind Daten des Graustufensensors und die letzten zwei Bits stellen Daten für die IR-Hindernisvermeidung dar.</p>
+<img alt="../_images/shield_avoid_sche.png" src="../_images/shield_avoid_sche.png" />
+<img alt="../_images/shield_avoid_sche1.png" src="../_images/shield_avoid_sche1.png" />
+</section>
+<section id="rgb-led-streifenanschluss">
+<span id="shield-strip-pin"></span><h2>RGB LED Streifenanschluss<a class="headerlink" href="#rgb-led-streifenanschluss" title="Permalink to this heading"></a></h2>
+<p>Hier ist das Pinout-Diagramm der zwei RGB LED Streifen. Sie sind parallel geschaltet und die Pinbelegungen sind identisch.</p>
+<img alt="../_images/shield_strip_pin.png" src="../_images/shield_strip_pin.png" />
+<p>Hier ist das Schaltbild.</p>
+<img alt="../_images/shield_strip_sche.png" src="../_images/shield_strip_sche.png" />
+<img alt="../_images/shield_strip_sche1.png" src="../_images/shield_strip_sche1.png" />
+</section>
+<section id="motoranschluss">
+<span id="shield-motor-pin"></span><h2>Motoranschluss<a class="headerlink" href="#motoranschluss" title="Permalink to this heading"></a></h2>
+<p>Hier ist das Pinout der 4 Motoranschlüsse.</p>
+<a class="reference internal image-reference" href="../_images/shield_motor_pin.png"><img alt="../_images/shield_motor_pin.png" class="align-center" src="../_images/shield_motor_pin.png" style="width: 400px;" /></a>
+<p>Diese 4 Motorengruppen werden von 2 TC1508S Chips angetrieben. Dies ist ein Dual-Kanal-Motortreiberchip, der einen maximalen Dauerstrom von bis zu 1.8A pro Kanal ausgeben kann.</p>
+<p>Hier ist das Schaltbild.</p>
+<img alt="../_images/shield_motor_sche.png" src="../_images/shield_motor_sche.png" />
+<p>Die entsprechenden Steuerpins der 4 Motoranschlüsse sind unten aufgeführt.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Arduino Board</p></td>
+<td><p>Zeus Car Shield</p></td>
+</tr>
+<tr class="row-even"><td><p>~3</p></td>
+<td><p>OUTA1</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>OUTB1</p></td>
+</tr>
+<tr class="row-even"><td><p>~5</p></td>
+<td><p>OUTA2</p></td>
+</tr>
+<tr class="row-odd"><td><p>~6</p></td>
+<td><p>OUTB2</p></td>
+</tr>
+<tr class="row-even"><td><p>A0</p></td>
+<td><p>OUTB4</p></td>
+</tr>
+<tr class="row-odd"><td><p>A1</p></td>
+<td><p>OUTA4</p></td>
+</tr>
+<tr class="row-even"><td><p>A2</p></td>
+<td><p>OUTB3</p></td>
+</tr>
+<tr class="row-odd"><td><p>A3</p></td>
+<td><p>OUTA3</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpn_r3_board.html" class="btn btn-neutral float-left" title="SunFounder R3 Board" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpn_esp_32_cam.html" class="btn btn-neutral float-right" title="ESP32 CAM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

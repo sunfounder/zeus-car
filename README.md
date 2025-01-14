@@ -17,6 +17,9 @@ This car is an educational marvel, perfect for budding programmers, especially c
 
 <a id="update"></a>
 ## Update:
+2025-01-14:
+- Add more FAQs
+
 2023-09-12:
  - Revised the description for the Speech widget.
  - Added a tutorial in the FAQ section for using speech control on Android devices.
