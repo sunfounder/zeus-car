@@ -1,53 +1,49 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté SunFounder Raspberry Pi & Arduino & ESP32 sur Facebook ! Rejoignez des passionnés pour approfondir vos connaissances sur Raspberry Pi, Arduino et ESP32.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre les problèmes après-vente et relever les défis techniques grâce à notre communauté et notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux coulisses du développement.
+    - **Remises spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.
+    - **Promotions festives et cadeaux** : Participez à des concours et offres spéciales à l’occasion des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
-Mecanum Wheel
+Roue Mecanum
 ========================
 
-
-**What is Mecanum Wheel?**
+**Qu'est-ce qu'une roue Mecanum ?**
 
 .. image:: img/mecanum_wheel1.png
     :width: 400
     :align: center
 
-The Mecanum Wheel is an omnidirectional wheel design for a land-based vehicle to move in any direction. 
-It is sometimes called the Swedish wheel or Ilon wheel after its inventor.
+La roue Mecanum est un type de roue omnidirectionnelle conçue pour permettre à un véhicule terrestre de se déplacer dans n'importe quelle direction. 
+Elle est parfois appelée « roue suédoise » ou « roue Ilon », du nom de son inventeur.
 
-The Mecanum Wheel is a form of tireless wheel, with a series of rubberized external rollers obliquely attached to the 
-whole circumference of its rim. These rollers typically each have an axis of rotation at 45° to the wheel plane and at 45° to the axle line.
+La roue Mecanum est une roue sans pneu, équipée d'une série de rouleaux en caoutchouc fixés obliquement sur toute la circonférence de sa jante. 
+Ces rouleaux sont généralement montés avec un axe de rotation incliné à 45° par rapport au plan de la roue et à 45° par rapport à l'axe du véhicule.
 
-Each Mecanum wheel is an independent non-steering drive wheel with its own powertrain, and when spinning generates a propelling 
-force perpendicular to the roller axle, which can be vectored into a longitudinal and a transverse component in relation to the vehicle.
+Chaque roue Mecanum est une roue motrice indépendante, sans direction, possédant son propre système d’entraînement. Lorsqu'elle tourne, elle génère une force de propulsion perpendiculaire à l’axe du rouleau, qui peut être décomposée en une composante longitudinale et une composante transversale par rapport au véhicule.
 
-The Mecanum Wheel can be divided into left-hand and right-hand wheels that are mirror images of each other, depending on the angle of 45°.
+Les roues Mecanum existent en version droite et gauche, qui sont des images miroir l'une de l'autre en fonction de l'angle de 45° des rouleaux.
 
 .. image:: img/mecanum_wheel.png
 
-
-Mecanum Wheels are usually used in groups of four, as shown in the figure below
+Les roues Mecanum sont généralement utilisées par groupes de quatre, comme illustré ci-dessous.
 
 .. image:: img/zeus_car_wheel.png
     :width: 400
     :align: center
 
-**Features**
+**Caractéristiques**
 
-* Diameter: 60mm
-* Thickness: 30.62mm
-* Rollers: 9pcs
-* Angle: 45°
-* Color: Black
-* Material: plastic + rubber   
-
+* Diamètre : 60 mm
+* Épaisseur : 30.62 mm
+* Nombre de rouleaux : 9 pièces
+* Angle : 45°
+* Couleur : Noir
+* Matériau : Plastique + Caoutchouc   

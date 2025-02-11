@@ -1,16 +1,16 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté SunFounder Raspberry Pi & Arduino & ESP32 sur Facebook ! Rejoignez des passionnés pour approfondir vos connaissances sur Raspberry Pi, Arduino et ESP32.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre les problèmes après-vente et relever les défis techniques grâce à notre communauté et notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux coulisses du développement.
+    - **Remises spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.
+    - **Promotions festives et cadeaux** : Participez à des concours et offres spéciales à l’occasion des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
 Zeus Car Shield
 =========================
@@ -19,65 +19,65 @@ Zeus Car Shield
     :width: 500
     :align: center
 
-This is an all-in-one expansion board designed for Arduino by SunFounder, which contains various module ports such as motor, light bar, obstacle avoidance, grayscale, ESP32 CAM and ultrasonic module. There is also a built-in HS0038B IR receiver for remote control.
+Il s'agit d'une carte d'extension tout-en-un conçue par SunFounder pour Arduino, intégrant divers ports pour modules tels que moteur, barre lumineuse, évitement d’obstacles, capteur de gris, ESP32 CAM et module ultrasonique. Elle intègre également un récepteur IR HS0038B pour le contrôle à distance.
 
-This expansion board also has a built-in charging circuit, which can charge the battery with PH2.0-5P interface, and the estimated charging time is 130 minutes.
+Cette carte d’extension dispose également d’un circuit de charge intégré, permettant de recharger une batterie via une interface PH2.0-5P, avec un temps de charge estimé à 130 minutes.
 
 
-**Zeus Car Shield Pinout**
+**Schéma des broches du Zeus Car Shield**
 
 .. image:: img/zeus_car_shield_pinout.png
 
-* Reset Button
-    * Press this button to reset the program on the Arduino board.
+* Bouton de réinitialisation
+    * Appuyez sur ce bouton pour réinitialiser le programme sur la carte Arduino.
 
-* Charge Port
-    * After plugging into the 5V/2A USB-C port, it can be used to charge the battery for 130min.
+* Port de charge
+    * Une fois branché sur un port USB-C 5V/2A, il permet de charger la batterie en 130 minutes.
 
 * :ref:`shield_battry_pin`: 
-    * 6.6V~8.4V PH2.0-5P power input.
-    * Powering the Zeus Car Shield and Arduino board at the same time.
+    * Entrée d'alimentation PH2.0-5P (6.6V~8.4V).
+    * Alimente à la fois le Zeus Car Shield et la carte Arduino.
 
-* Power Switch
-    * Slide to ON to power on the Zeus Car Shield.
+* Interrupteur d’alimentation
+    * Faites glisser sur ON pour allumer le Zeus Car Shield.
 
-* IR Receiver
-    * This is an HS0038B IR receiver with the signal pin connected to pin 2 of the Arduino board.
+* Récepteur IR
+    * Récepteur infrarouge HS0038B, dont la broche de signal est connectée à la broche 2 de l'Arduino.
 
 * :ref:`shield_grayscale_pin`
-    * Grayscale adjustment potentiometer: used to set the reference voltage for Omni grayscale module
-    * Grayscale Port: Used to connect Omni Grayscale module.
+    * Potentiomètre de réglage du capteur de gris : permet d’ajuster la tension de référence du module Omni Grayscale.
+    * Port du capteur de gris : utilisé pour connecter le module Omni Grayscale.
 
-* Indicators
-    * **Charge Indicator**: Glows red when the shield is charging through the USB-C port.
-    * **Power Indicator**: Glows green when the power switch is in the "ON" position.
-    * **Battery Indicator**: Two orange indicators represent different battery levels. They flash during charging and turn off when the battery needs charging.
+* Indicateurs
+    * Indicateur de charge : s'allume en rouge lorsque la charge via USB-C est en cours.
+    * Indicateur d'alimentation : s'allume en vert lorsque l'interrupteur est en position ON.
+    * Indicateurs de batterie : deux voyants orange affichent différents niveaux de batterie. Ils clignotent pendant la charge et s’éteignent lorsque la batterie doit être rechargée.
 
 * :ref:`shield_ultrasonic_pin`
-    * To connect the ultrasonic module, both Trig & Echo pins are connected on pin 10 of the Arduino board.
+    * Port de connexion pour le module ultrasonique, avec les broches Trig et Echo connectées à la broche 10 de l'Arduino.
 
 * :ref:`shield_camera_pin`
-    * The Camera Adapter Board port.
+    * Port pour carte adaptatrice de caméra.
 
 * :ref:`shield_avoid_pin`
-    * Used for connecting two IR obstacle avoidance modules, the signal pins of the two ports are connected to Q0 and Q1 of 74HC165.
+    * Port pour deux modules IR d’évitement d’obstacles, dont les broches de signal sont connectées aux Q0 et Q1 du 74HC165.
 
 * :ref:`shield_strip_pin`
-    * For connecting 2 RGB LED Strips, the three pins of the strip are connected to 12, 13 and 11 respectively.
+    * Port pour 2 bandes LED RGB, dont les trois broches sont respectivement connectées aux broches 12, 13 et 11.
 
-* Run Switch
-   * When you need to use the camera, you need to toggle this switch to the other side so that the ESP32-CAM can communicate with the Arduino board.
+* Interrupteur Run
+   * Lors de l’utilisation de la caméra, ce commutateur doit être activé pour que l’**ESP32-CAM** puisse communiquer avec l’Arduino.
 
 * :ref:`shield_motor_pin`
-    * 4 groups of motor ports.
+    * 4 groupes de ports moteur.
 
 
 .. _shield_battry_pin:
 
-Battery Port
-----------------
+Port de Batterie
+------------------
 
-Here is the pinout diagram for the battery interface. The type is PH2.0-5P, and the power input range is 6.6V~8.4V.
+Schéma des broches du port batterie (PH2.0-5P), avec une plage de tension d’entrée de 6.6V~8.4V.
 
 .. image:: img/shield_battery_pin.png
     :width: 400
@@ -85,25 +85,25 @@ Here is the pinout diagram for the battery interface. The type is PH2.0-5P, and 
 
 .. _shield_grayscale_pin:
 
-Grayscale Module Related
+Module Grayscale
 -----------------------------
 
-A blue potentiometer on the Zeus Car Shield is used to adjust the grayscale module's sensitivity to different environments by setting the reference voltage for the grayscale module. Through the VREF pin, the grayscale module receives the set reference voltage.
+Un potentiomètre bleu sur le Zeus Car Shield permet d’ajuster la sensibilité du module Grayscale aux variations d’environnement en modifiant la tension de référence VREF.
 
 .. image:: img/shield_grayscale_pin.png
 
-Here is the schematic diagram. The values of the grayscale module are transferred from the 74HC165 chip to the Arduino board. Since the grayscale module itself comes with a 74HC165 chip, the cascade of these two chips will transfer 16 bits of data to the Arduino board - the first 8 bits are grayscale sensor data, and the last two are IR obstacle avoidance data.
+Schéma de connexion : les données du module Grayscale sont transmises via le 74HC165 à la carte Arduino. Le module intègre déjà un 74HC165, et le chaînage de ces deux composants permet de transmettre 16 bits de données à l’Arduino : les 8 premiers bits correspondent aux capteurs de gris, et les 2 derniers aux capteurs IR d’évitement d’obstacles.
 
 .. image:: img/shield_grayscale1.png
 .. image:: img/shield_grayscale2.png
     :width: 400
 
-The pin mapping of this port on the Arduino board is shown below.
+Attribution des broches sur l’Arduino :
 
 .. list-table::
     :widths: 25 50
 
-    * - Arduino Board
+    * - Carte Arduino
       - Zeus Car Shield
     * - 7
       - 74HC165 Q7
@@ -112,80 +112,78 @@ The pin mapping of this port on the Arduino board is shown below.
     * - ~9
       - 74HC165 PL
 
-
 .. _shield_ultrasonic_pin:
 
-Ultrasonic Port
---------------------
+Port Ultrasonique
+----------------------
 
-This is the pinout for the ZH1.5-4P ultrasonic port, with the Trig & Echo pins connected to pin 10 of the Arduino board.
+Schéma des broches du port ZH1.5-4P pour le module ultrasonique, avec Trig & Echo connectés à la broche 10 de l’Arduino.
 
 .. image:: img/shield_ultrasonic_pin.png
 
 .. _shield_camera_pin:
 
-Camera Adapter Port
-----------------------
+Port Adaptateur Caméra
+-------------------------
 
-The camera adapter interface pin diagram is shown here, the type is ZH1.5-7P.
+Schéma des broches du port adaptateur caméra (ZH1.5-7P).
 
-* TX and RX are used for ESP32 CAM.
-* SDA and SCL are for QMC6310.
+* TX et RX : utilisés pour ESP32-CAM.
+* SDA et SCL : utilisés pour QMC6310.
 
 .. image:: img/shield_camera_pin.png
 
-
 .. _shield_avoid_pin:
 
-Obstacle Avoidance Port
+Port Évitement d'Obstacles
 ----------------------------
 
-Below is the pinout diagram of the two ZH1.5-3P obstacle avoidance ports.
+Schéma des broches des deux ports ZH1.5-3P pour les modules IR d’évitement d’obstacles.
 
 .. image:: img/shield_avoid_pin.png
 
-As shown in the circuit diagram, S1 and S0 refer to Q0 and Q1 on the 74HC165 chip. Two 74HC165 cascades transfer the data of the two IR obstacle avoidance modules and the grayscale sensor to the Arduino board. The first eight bits are grayscale sensor data, and the last two bits represent IR obstacle avoidance data.
+Schéma électrique : S1 et S0 correspondent à Q0 et Q1 du 74HC165. Les données des modules IR et du capteur de gris sont envoyées à l’Arduino via deux 74HC165 en cascade. Les 8 premiers bits sont les données des capteurs de gris, et les 2 derniers correspondent aux modules IR d’évitement d’obstacles.
 
 .. image:: img/shield_avoid_sche.png
 .. image:: img/shield_avoid_sche1.png
 
 .. _shield_strip_pin:
 
-RGB LED Strip Port
+Port Bande LED RGB
 -------------------------
 
-Below is the pinout diagram of the two RGB LED Strip, they are connected in parallel and the pinouts are the same.
+Schéma des broches des 2 bandes LED RGB, connectées en parallèle avec la même configuration de broches.
 
 .. image:: img/shield_strip_pin.png
 
-Here is the schematic.
+Schéma électrique :
 
 .. image:: img/shield_strip_sche.png
 .. image:: img/shield_strip_sche1.png
 
 .. _shield_motor_pin:
 
-Motor Port
+Port Moteur
 ---------------
 
-Here is the pinout of the 4 sets of motor ports.
+Schéma des 4 ports moteur.
 
 .. image:: img/shield_motor_pin.png
     :width: 400
     :align: center
 
-These 4 sets of motors are driven by 2 TC1508S chips, which is a dual-channel motor driver chip with a maximum continuous output current of up to 1.8A/per channel.
+Ces 4 moteurs sont pilotés par 2 puces TC1508S, des pilotes de moteur double canal avec un courant de sortie continu maximal de 1.8A par canal.
 
-Here is the schematic.
+Schéma électrique :
 
 .. image:: img/shield_motor_sche.png
 
-So the corresponding control pins of the 4 motor ports are shown below.
+Attribution des broches sur l’**Arduino** :
 
 .. list-table::
     :widths: 25 50
 
-    * - Arduino Board
+    * - Carte Arduino
       - Zeus Car Shield
     * - ~3
       - OUTA1

@@ -1,60 +1,59 @@
-.. note::
+.. note::  
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour, bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez au cœur du Raspberry Pi, de l'Arduino et de l'ESP32 avec d'autres passionnés.  
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**  
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Obtenez de l'aide pour résoudre vos problèmes après-vente et défis techniques grâce à notre communauté et notre équipe.  
+    - **Apprenez & partagez** : Échangez des astuces et des tutoriels pour améliorer vos compétences.  
+    - **Aperçus exclusifs** : Profitez d’un accès anticipé aux annonces de nouveaux produits et à des avant-premières.  
+    - **Réductions spéciales** : Bénéficiez d'offres exclusives sur nos derniers produits.  
+    - **Promotions festives et cadeaux** : Participez à nos jeux concours et offres spéciales pour les fêtes.  
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !  
 
-2. Omni Move
-==========================
-In this project, you will learn how to move the Zeus Car to 0, 45, 90, 135, 180, 225, 270, and 315 degrees.
+2. Déplacement omnidirectionnel  
+========================================
+Dans ce projet, vous apprendrez à déplacer la Zeus Car selon les angles suivants : 0°, 45°, 90°, 135°, 180°, 225°, 270° et 315°.  
 
-If you ignore the friction on the ground and the structural tolerances, its path should be an octagon and eventually return to the origin.
+Si l'on ignore les frictions au sol et les tolérances structurelles, la trajectoire suivie devrait être un octogone, ramenant finalement la voiture à son point de départ.  
 
-**How to do?**
+**Comment procéder ?**  
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. L'ESP32-CAM et la carte Arduino partagent les mêmes broches RX (réception) et TX (transmission). Ainsi, lors du téléversement du code, il est nécessaire de déconnecter l'ESP32-CAM pour éviter tout conflit ou problème potentiel.  
 
-    .. image:: img/unplug_cam.png
-        :width: 400
-        :align: center
+    .. image:: img/unplug_cam.png  
+        :width: 400  
+        :align: center  
+
+#. Ouvrez le fichier ``2_omni_move.ino`` situé sous le chemin ``zeus-car-main\examples\2_omni_move``.  
+
+    .. raw:: html  
+
+        <iframe src=https://create.arduino.cc/editor/sunfounder01/2425f280-5bd4-4e49-bb2e-220d1f4f867b/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>  
+
+#. Sélectionnez la carte et le port corrects, puis cliquez sur le bouton **Upload**.  
+
+    .. note::  
+        * Si vous obtenez l'erreur **"Compilation error: SoftPWM.h: No such file or directory"**, cela signifie que la bibliothèque ``SoftPWM`` n'est pas installée.  
+        * Veuillez consulter :ref: `ar_install_lib` pour installer les deux bibliothèques nécessaires : ``SoftPWM`` et ``IRLremote``.  
+
+    .. image:: img/ar_board_upload.png  
+
+#. Basculez l'interrupteur d'alimentation sur ON pour démarrer la Zeus Car.  
+
+    .. image:: img/zeus_power.jpg  
+
+#. À ce stade, la Zeus Car se déplacera selon les angles 0°, 45°, 90°, 135°, 180°, 225°, 270° et 315°.  
 
 
-#. Open the ``2_omni_move.ino`` file under the path of ``zeus-car-main\examples\2_omni_move``.
+**Comment ça fonctionne ?**  
 
-    .. raw:: html
+Le déplacement de la Zeus Car est principalement contrôlé par cette fonction :  
 
-        <iframe src=https://create.arduino.cc/editor/sunfounder01/2425f280-5bd4-4e49-bb2e-220d1f4f867b/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+.. code-block::  
 
-#. Select the correct board and port, then click the **Upload** button.
+    void carMove(int16_t angle, int8_t power)  
 
-    .. note::
-        * If you get a "Compilation error: SoftPWM.h: No such file or directory" prompt, it means you don't have the ``SoftPWM`` library installed.
-        * Please refer to :ref:`ar_install_lib` to install the two required libraries ``SoftPWM`` and ``IRLremote``.
-
-    .. image:: img/ar_board_upload.png
-
-#. Turn the power switch to ON to start the Zeus Car.
-
-    .. image:: img/zeus_power.jpg
-
-#. At this point the Zeus Car will move to 0, 45, 90, 135, 180, 225, 270, and 315 degrees.
-
-
-**How it works?**
-
-The movement of the Zeus Car is mainly implemented by this function.
-
-.. code-block::
-
-    void carMove(int16_t angle, int8_t power)
-
-* ``angle``: The direction you want the car to move. use the head of the car as the 0 degree and increase the angle in counterclockwise direction.
-* ``power``: The moving power, the range is -100% ~ 100%. When ``power`` is positive, the car moves forward, and vice versa, it moves backward.
+* ``angle`` : La direction dans laquelle vous souhaitez déplacer la voiture. L'avant du véhicule correspond à 0°, et l'angle augmente dans le sens antihoraire.  
+* ``power`` : La puissance de déplacement, comprise entre -100 % et 100 %. Lorsque ``power`` est positif, la voiture avance ; lorsqu'il est négatif, elle recule.  

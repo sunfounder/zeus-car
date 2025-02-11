@@ -1,134 +1,130 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté SunFounder Raspberry Pi & Arduino & ESP32 sur Facebook ! Rejoignez des passionnés pour approfondir vos connaissances sur Raspberry Pi, Arduino et ESP32.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre les problèmes après-vente et relever les défis techniques grâce à notre communauté et notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux coulisses du développement.
+    - **Remises spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.
+    - **Promotions festives et cadeaux** : Participez à des concours et offres spéciales à l’occasion des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
-ESP32 CAM
+ESP32-CAM
 =================
 
 .. image:: img/esp32_cam.png
     :width: 500
     :align: center
 
-The ESP32-CAM is a very small camera module with the ESP32-S chip that costs approximately $10. Besides the OV2640 camera, and several GPIOs to connect peripherals, it also features a microSD card slot that can be useful to store images taken with the camera or to store files to serve to clients.
+L’ESP32-CAM est un module caméra ultra-compact basé sur la puce ESP32-S, disponible pour environ 10 $. En plus de la caméra OV2640 et de plusieurs GPIO pour connecter des périphériques, il dispose d’un lecteur de carte microSD permettant de stocker des images capturées ou des fichiers destinés aux clients.
 
-The module can work independently as the smallest system, with a size of only 27*40.5*4.5mm, and a deep sleep current as low as 6mA.
+Le module peut fonctionner de manière autonome en tant que système minimal, avec des dimensions de seulement 27 × 40.5 × 4.5 mm et un courant de veille profonde aussi bas que 6 mA.
 
-ESP32-CAM can be widely used in various IoT applications, suitable for home smart devices, industrial wireless control, wireless monitoring, QR wireless identification, wireless positioning system signals and other IoT applications. It is an ideal solution for IoT applications.
+L’ESP32-CAM peut être utilisé dans de nombreuses applications IoT, telles que les appareils domestiques intelligents, le contrôle industriel sans fil, la surveillance sans fil, l’identification QR sans fil, le positionnement par signaux et d'autres applications IoT. Il constitue une solution idéale pour ces usages.
 
-
-
-**Technical Specifications**
+**Spécifications techniques**
 
 .. list-table::
     :widths: 25 50
 
-    * - Module Model
+    * - Modèle du module
       - ESP32-CAM
-    * - Package
+    * - Boîtier
       - DIP-16
-    * - Size
-      - 27*40.5*4.5（±0.2）mm
-    * - SPI Flash
-      - default 32Mbit
+    * - Dimensions
+      - 27 × 40.5 × 4.5 (±0.2) mm
+    * - Mémoire Flash SPI
+      - 32 Mbit par défaut
     * - RAM
-      - Internal 520KB + External 8MB PSRAM
+      - 520 KB interne + 8 MB PSRAM externe
     * - Bluetooth
-      - Bluetooth 4.2 BR/EDR and BLE standards
+      - Bluetooth 4.2 BR/EDR et BLE
     * - Wi-Fi
       - 802.11 b/g/n/e/i
-    * - Support Interfaces
-      - UART、SPI、I2C、PWM
-    * - Support TF Card
-      - up to 4G
-    * - IO Pins
-      -  9
-    * - Serial Port Speed
-      - default 115200 bps
-    * - Image Output Format
-      - JPEG(only OV2640 support),BMP,GRAYSCALE
-    * - Spectrum range
-      - 2400 ~2483.5MHz
-    * - Antenna Type
-      - On-board PCB antenna, gain 2dBi
-    * - Transmit Power
-      - 802.11b\: 17±2 dBm (@11Mbps) 
+    * - Interfaces prises en charge
+      - UART, SPI, I²C, PWM
+    * - Support de carte TF
+      - Jusqu’à 4G
+    * - Broches IO
+      - 9
+    * - Vitesse du port série
+      - 115200 bps par défaut
+    * - Formats de sortie d’image
+      - JPEG (seulement OV2640), BMP, GRAYSCALE
+    * - Plage de fréquence
+      - 2400 ~ 2483.5 MHz
+    * - Type d’antenne
+      - Antenne PCB intégrée, gain de 2 dBi
+    * - Puissance d’émission
+      - 802.11b : 17 ± 2 dBm (@11Mbps)
     * - 
-      - 802.11g\: 14±2 dBm (@54Mbps) 
+      - 802.11g : 14 ± 2 dBm (@54Mbps)
     * - 
-      - 802.11n\: 13±2 dBm (@MCS7)
-    * - Receive Sensitivity
-      - CCK, 1 Mbps\: -90dBm, 
+      - 802.11n : 13 ± 2 dBm (@MCS7)
+    * - Sensibilité de réception
+      - CCK, 1 Mbps : -90 dBm
     * - 
-      - CCK, 11 Mbps\: -85 dBm
+      - CCK, 11 Mbps : -85 dBm
     * - 
-      - 6 Mbps (1/2 BPSK)\: -88 dBm
+      - 6 Mbps (1/2 BPSK) : -88 dBm
     * - 
-      - 54 Mbps (3/4 64-QAM)\: -70dBm
+      - 54 Mbps (3/4 64-QAM) : -70 dBm
     * - 
-      - MCS7 (65 Mbps, 72.2 Mbps)\: -67dBm
-    * - Power Consumption
-      - Flash off\: 180mA\@5V, 
+      - MCS7 (65 Mbps, 72.2 Mbps) : -67 dBm
+    * - Consommation électrique
+      - Flash éteint : 180 mA @ 5V
     * - 
-      - Flash on and brightness to maximum\: 310mA\@5V
+      - Flash allumé à luminosité maximale : 310 mA @ 5V
     * - 
-      - Deep-sleep\: the lowest power consumption can reach 6mA\@5V
+      - Veille profonde : consommation minimale de 6 mA @ 5V
     * - 
-      - Moderm-sleep\: minimum 20mA\@5V
+      - Veille modem : minimum 20 mA @ 5V
     * - 
-      - Light-sleep\: minimum 6.7mA\@5V
-    * - Security
+      - Veille légère : minimum 6.7 mA @ 5V
+    * - Sécurité
       - WPA/WPA2/WPA2-Enterprise/WPS
-    * - Power supply range
-      - 4.75-5.25V
-    * - Operating Temperature
+    * - Plage d’alimentation
+      - 4.75 - 5.25V
+    * - Température de fonctionnement
       - -20 ℃ ~ 70 ℃
-    * - Storage Environment
-      - -40 ℃ ~ 125 ℃ , < 90%RH
+    * - Environnement de stockage
+      - -40 ℃ ~ 125 ℃, < 90 % HR
 
 
-**ESP32-CAM Pinout**
+**Schéma des broches de l’ESP32-CAM**
 
-
-The following figure shows the ESP32-CAM pinout (AI-Thinker module).
+L’image suivante montre le schéma des broches de l’ESP32-CAM (module AI-Thinker).
 
 .. image:: img/esp32_cam_pinout.png
     :width: 800
 
-* There are three **GND** pins and three pins for power: 3.3V, 5V and either 3.3V or 5V.
-* **GPIO 1** and **GPIO 3** are the serial pins. You need these pins to upload code to your board. 
-* Additionally, **GPIO 0** also plays an important role, since it determines whether the ESP32 is in flashing mode or not. When **GPIO 0** is connected to **GND**, the ESP32 is in flashing mode.
+* Il y a trois broches **GND** et trois broches d’alimentation : 3.3V, 5V et une broche pouvant être soit 3.3V soit 5V.
+* **GPIO 1** et **GPIO 3** sont les broches de communication série, nécessaires pour télécharger du code sur la carte.
+* **GPIO 0** joue également un rôle clé, car il détermine si l’ESP32 est en mode de flashage. Lorsque **GPIO 0** est connecté à **GND**, l’ESP32 est en mode de flashage.
 
-* The following pins are internally connected to the microSD card reader:
+* Les broches suivantes sont connectées en interne au lecteur de carte microSD :
 
-* GPIO 14: CLK
-* GPIO 15: CMD
-* GPIO 2: Data 0
-* GPIO 4: Data 1 (also connected to the on-board LED)
-* GPIO 12: Data 2
-* GPIO 13: Data 3
+    * GPIO 14 : CLK
+    * GPIO 15 : CMD
+    * GPIO 2 : Data 0
+    * GPIO 4 : Data 1 (également relié à la LED embarquée)
+    * GPIO 12 : Data 2
+    * GPIO 13 : Data 3
 
-**Note**
+**Remarque**
 
-* Please make sure that the input power of the module is at least 5V 2A, otherwise the picture may have water lines.
-* The ESP32 GPIO32 pin controls the camera power. When the camera is working, please pull GPIO32 low.
-* Since GPIO0 is connected to the camera XCLK, please leave GPIO0 in the air when using it, and do not connect it to high or low level.
-* The default firmware is already included in the factory, and no additional download is provided. Please be careful if you need to re-burn other firmware.
+* Assurez-vous que l’alimentation du module est d’au moins 5V 2A, sinon l’image peut contenir des lignes parasites.
+* La broche GPIO32 de l’ESP32 contrôle l’alimentation de la caméra. Lorsque la caméra est en fonctionnement, tirez GPIO32 vers le bas.
+* Comme GPIO0 est connecté à l’horloge XCLK de la caméra, il doit être laissé en l’air lorsqu’il est utilisé et ne doit pas être connecté à un niveau haut ou bas.
+* Le firmware par défaut est déjà installé en usine et aucun téléchargement supplémentaire n’est fourni. Veuillez faire preuve de prudence si vous devez flasher un autre firmware.
 
+**Documentation**
 
-**Document**
-
-* Schematic diagram: |link_esp32cam_schematic|
-* Camera specification (English version): |link_cam_ov2640|
+* Schéma électronique : |link_esp32cam_schematic|
+* Spécifications de la caméra (version anglaise) : |link_cam_ov2640|
 
 .. note::
-    All information above comes from |link_aithiner|
+    Toutes les informations ci-dessus proviennent de |link_aithiner|

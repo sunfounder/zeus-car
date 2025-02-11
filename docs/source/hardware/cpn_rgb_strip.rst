@@ -1,42 +1,42 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté SunFounder Raspberry Pi & Arduino & ESP32 sur Facebook ! Rejoignez des passionnés pour approfondir vos connaissances sur Raspberry Pi, Arduino et ESP32.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre les problèmes après-vente et relever les défis techniques grâce à notre communauté et notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux coulisses du développement.
+    - **Remises spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.
+    - **Promotions festives et cadeaux** : Participez à des concours et offres spéciales à l’occasion des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
-4 RGB LEDs Strip
+Bande de 4 LED RGB
 ====================
 
 .. image:: img/4_rgb_strip.jpg
 
-* **+5V**: Common anode of the three LEDs and needs to connect to DC 5V
-* **B**: Cathode of the blue LED
-* **R**: Cathode of the red LED
-* **G**: Cathode of the green LED
+* **+5V** : Anode commune des trois LED, à connecter à une alimentation DC 5V
+* **B** : Cathode de la LED bleue
+* **R** : Cathode de la LED rouge
+* **G** : Cathode de la LED verte
 
-The RGB strip is composed of 4 RGB LEDs and has the ability to produce any shade of any color, it is a mixture of three primary colors; red, blue and green. 
+Cette bande RGB est composée de 4 LED RGB et est capable de produire une large gamme de couleurs par mélange des trois couleurs primaires : rouge, bleu et vert.
 
-The RGB LEDs used are 5050, connected in a common anode way. Each LED is an independent circuit, can be cut along the switch at will, without damaging other parts. Made of FPC board, backed with double-sided adhesive, can be bent and secured at will.
-
-
+Les LED utilisées sont de type 5050, connectées en mode anode commune. Chaque LED constitue un circuit indépendant, ce qui permet de couper la bande à l'endroit souhaité sans endommager les autres parties. Fabriquée à partir d'un circuit imprimé flexible (FPC), elle est dotée d'un adhésif double face au dos, permettant une fixation et une flexion faciles selon les besoins.
 
 
-**Features**
 
-* Work Voltage: DC5V
-* Color: Full color RGB
-* Working Temperature: -15-50
-* RGB Type: 5050RGB
-* Current: 150mA (single circuit)
-* Power: 1.5W
-* Light Strip Thickness: 2mm
-* Light Strip Width: 5.5mm
-* Cable: ZH1.5-4P, 25cm, 28AWG, Black
+
+**Caractéristiques**
+
+* Tension de fonctionnement : DC 5V
+* Couleur** : RGB pleine couleur
+* Température de fonctionnement : -15°C à 50°C
+* Type de LED : 5050 RGB
+* Courant : 150mA (par circuit)
+* Puissance : 1.5W
+* Épaisseur de la bande : 2 mm
+* Largeur de la bande : 5.5 mm
+* Câble : ZH1.5-4P, 25 cm, 28AWG, noir

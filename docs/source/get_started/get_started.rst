@@ -1,29 +1,29 @@
-.. note::
+.. note::  
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez au cœur du Raspberry Pi, d’Arduino et de l’ESP32 avec d’autres passionnés.  
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**  
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre vos problèmes après-vente et relevez vos défis techniques grâce à notre communauté et notre équipe.  
+    - **Apprenez & partagez** : Échangez des conseils et tutoriels pour perfectionner vos compétences.  
+    - **Aperçus exclusifs** : Profitez d’un accès anticipé aux annonces de nouveaux produits et à des avant-premières exclusives.  
+    - **Réductions spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.  
+    - **Promotions et cadeaux festifs** : Participez à des jeux-concours et à des offres spéciales à l’occasion des fêtes.  
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !  
 
-Get Started
+Premiers Pas  
 =====================
 
-We have set two modes for Zeus Car, the hands-on play mode and the programming mode.
+Nous avons défini deux modes pour la Zeus Car : le mode prêt à l'emploi et le mode programmation.  
 
-* Hands-on :ref:`quick_start` means you just need to turn on the Zeus Car after assembling, and then you can directly control this car with the remote control or APP to make it achieve various cool functions. Because we have pre-uploaded the code to the Arduino board at the factory.
+* Le mode :ref:`quick_start` est un mode intuitif qui vous permet de commencer immédiatement après l’assemblage. Il vous suffit d’allumer la Zeus Car, puis de la contrôler directement à l’aide de la télécommande ou de l’application. Toutes les fonctionnalités sont prêtes à l’emploi, car le code est préchargé sur la carte Arduino en usine.  
 
-* The :ref:`programming_arduino` is that after you have experienced the various cool functions of Zeus Car, you can understand the principle of implementing each function individually according to each project, and then modify it according to your own ideas to achieve the functions you want.
+* Le mode :ref:`programming_arduino` vous permet d’explorer en profondeur le fonctionnement de chaque fonctionnalité. Après avoir testé les capacités de la Zeus Car, vous pourrez analyser le code de chaque projet, le modifier selon vos propres idées et ainsi développer de nouvelles fonctionnalités adaptées à vos besoins.  
 
-.. toctree::
-    :maxdepth: 2
+.. toctree::  
+    :maxdepth: 2  
 
-    assembly_instructions
-    play_mode
-    programming_mode
+    assembly_instructions  
+    play_mode  
+    programming_mode  

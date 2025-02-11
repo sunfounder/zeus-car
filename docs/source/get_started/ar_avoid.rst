@@ -1,22 +1,21 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez dans l’univers de Raspberry Pi, Arduino et ESP32 avec d’autres passionnés et approfondissez vos connaissances.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Bénéficiez de l’aide de notre communauté et de notre équipe pour résoudre les problèmes après-vente et relever les défis techniques.
+    - **Apprentissage et partage** : Échangez des conseils et des tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux exclusivités.
+    - **Réductions spéciales** : Profitez d’offres exclusives sur nos dernières innovations.
+    - **Promotions et cadeaux festifs** : Participez à des concours et à des offres promotionnelles saisonnières.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
-
-11. Obstacle Avoidance
+11. Évitement d'obstacles
 ================================
 
-In this project, the Zeus car will move forward automatically, and two obstacle avoidance modules and an ultrasonic module will prevent it from hitting obstacles.
+Dans ce projet, le Zeus Car avancera automatiquement, et deux modules d’évitement d’obstacles ainsi qu’un module à ultrasons l’empêcheront de percuter des obstacles.
 
 .. raw:: html
 
@@ -29,31 +28,30 @@ In this project, the Zeus car will move forward automatically, and two obstacle 
     
     <br/> <br/>  
 
-**How to do?**
+**Comment procéder ?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM et la carte Arduino partagent les mêmes broches RX (réception) et TX (transmission). Par conséquent, lorsque vous téléversez du code, vous devez d'abord déconnecter la ESP32-CAM pour éviter tout conflit ou problème potentiel.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``11_obstacle_avoid.ino`` file under the path of ``zeus-car-main\examples\11_obstacle_avoid``.
+#. Ouvrez le fichier ``11_obstacle_avoid.ino`` sous le chemin ``zeus-car-main\examples\11_obstacle_avoid``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/520af1d6-4ef2-4804-a4a9-f6aa92985258/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Une fois le code téléversé avec succès, mettez l'interrupteur d’alimentation sur ON pour démarrer le Zeus Car.
 
-    * Zeus car will move forward.
-    * An ultrasonic module detects obstacles in front, if detected, the car turns left.
-    * When the left obstacle avoidance module detects an obstacle, the car turns right, and when the right obstacle avoidance module detects an obstacle, the car turns left.
+    * Le Zeus Car avancera en ligne droite.
+    * Le module à ultrasons détecte les obstacles devant lui. Si un obstacle est détecté, le véhicule tournera à gauche.
+    * Lorsque le module d’évitement gauche détecte un obstacle, la voiture tourne à droite. Lorsque le module d’évitement droit détecte un obstacle, la voiture tourne à gauche.
 
 .. note::
-    Before use, you need to adjust the detection distance of the two obstacle avoidance modules to 15CM, the steps are as follows
-    
-    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+    Avant utilisation, vous devez régler la distance de détection des deux modules d’évitement d’obstacles à 15 cm, les étapes sont les suivantes :
+
+    * Commencez par ajuster le module d’évitement droit. Lors du transport, des chocs peuvent incliner l’émetteur et le récepteur du module infrarouge. Vous devez donc les redresser manuellement.
 
             .. raw:: html
 
@@ -66,10 +64,10 @@ In this project, the Zeus car will move forward automatically, and two obstacle 
                 
                 <br/> <br/>  
 
-    * Place an obstacle about 15cm away from the IR obstacle avoidance module.
-    * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
-    * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
+    * Placez un obstacle à environ 15 cm du module d’évitement infrarouge.
+    * Sur le module, il y a deux potentiomètres : l’un pour ajuster la puissance d’émission, et l’autre pour régler la fréquence d’émission. En ajustant ces deux potentiomètres, vous pouvez modifier la distance de détection.
+    * Ajustez un potentiomètre et si, à 15 cm, le voyant du module s’allume, l’ajustement est réussi ; sinon, ajustez l’autre potentiomètre.
 
         .. image:: img/zeus_ir_avoid.jpg
 
-    * Calibrate the other obstacle avoidance module in the same way.
+    * Calibrez l’autre module d’évitement d’obstacles de la même manière.

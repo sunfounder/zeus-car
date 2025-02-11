@@ -1,22 +1,24 @@
-.. note::
+.. note::  
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez au cœur du Raspberry Pi, d’Arduino et de l’ESP32 avec d’autres passionnés.  
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**  
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre vos problèmes après-vente et relevez vos défis techniques grâce à notre communauté et notre équipe.  
+    - **Apprenez & partagez** : Échangez des conseils et tutoriels pour perfectionner vos compétences.  
+    - **Aperçus exclusifs** : Profitez d’un accès anticipé aux annonces de nouveaux produits et à des avant-premières exclusives.  
+    - **Réductions spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.  
+    - **Promotions et cadeaux festifs** : Participez à des jeux-concours et à des offres spéciales à l’occasion des fêtes.  
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !  
 
-Download the Code
+Téléchargement du Code  
 ===========================
 
-Download the relevant code from the link below.
+Téléchargez le code correspondant via le lien ci-dessous.  
 
-* :download:`SunFounder Zeus Car Kit for Arduino <https://github.com/sunfounder/zeus-car/archive/refs/heads/main.zip>`
 
-Or check out the code at |link_zeus_code|.
+
+* :download:`SunFounder Zeus Car Kit pour Arduino <https://github.com/sunfounder/zeus-car/archive/refs/heads/main.zip>`  
+
+Ou consultez le code directement sur |link_zeus_code|.  

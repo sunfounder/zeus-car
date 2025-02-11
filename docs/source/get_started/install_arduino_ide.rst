@@ -1,108 +1,105 @@
-.. note::
+.. note::  
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez au cœur du Raspberry Pi, d’Arduino et de l’ESP32 avec d’autres passionnés.  
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**  
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre vos problèmes après-vente et relevez vos défis techniques grâce à notre communauté et notre équipe.  
+    - **Apprenez & partagez** : Échangez des conseils et tutoriels pour perfectionner vos compétences.  
+    - **Aperçus exclusifs** : Profitez d’un accès anticipé aux annonces de nouveaux produits et à des avant-premières exclusives.  
+    - **Réductions spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.  
+    - **Promotions et cadeaux festifs** : Participez à des jeux-concours et à des offres spéciales à l’occasion des fêtes.  
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !  
 
-.. _install_arduino_ide:
+.. _install_arduino_ide:  
 
-Download and Install Arduino IDE 2.0
-========================================
+Téléchargement et installation d’Arduino IDE 2.0  
+===================================================
 
-The Arduino IDE, known as Arduino Integrated Development Environment, provides all the software support needed to complete an Arduino project. It is a programming software specifically designed for Arduino, provided by the Arduino team, that allows us to write programs and upload them to the Arduino board. 
+L’Arduino IDE (Environnement de Développement Intégré) fournit tous les outils logiciels nécessaires à la réalisation d’un projet Arduino. Développé par l’équipe Arduino, cet IDE permet d’écrire des programmes et de les téléverser sur une carte Arduino.  
 
-The Arduino IDE 2.0 is an open-source project. It is a big step from its sturdy predecessor, Arduino IDE 1.x, and comes with revamped UI, improved board & library manager, debugger, autocomplete feature and much more.
+Arduino IDE 2.0 est un projet open-source qui représente une avancée majeure par rapport à son prédécesseur, Arduino IDE 1.x. Il propose une interface utilisateur modernisée, une gestion améliorée des cartes et des bibliothèques, un débogueur intégré, une fonction d’autocomplétion et bien d’autres fonctionnalités.  
 
-In this tutorial, we will show how to download and install the Arduino IDE 2.0 on your Windows, Mac, or Linux computer.
+Dans ce tutoriel, nous vous expliquerons comment télécharger et installer l’Arduino IDE 2.0 sur Windows, Mac et Linux.  
 
-Requirements
--------------------
+Configuration requise  
+------------------------
 
-* Windows - Win 10 and newer, 64 bits
-* Linux - 64 bits
-* Mac OS X - Version 10.14: "Mojave" or newer, 64 bits
+* **Windows** - Windows 10 ou plus récent, 64 bits  
+* **Linux** - 64 bits  
+* **Mac OS X** - Version 10.14 "Mojave" ou plus récent, 64 bits  
 
-Download the Arduino IDE 2.0
--------------------------------
+Téléchargement d’Arduino IDE 2.0  
+-----------------------------------
 
-#. Vist |link_download_arduino|.
+#. Rendez-vous sur |link_download_arduino|.  
 
-#. Download the IDE for your OS version.
+#. Téléchargez l’IDE correspondant à votre système d’exploitation.  
 
-    .. image:: img/arduino/sp_001.png
+    .. image:: img/arduino/sp_001.png  
 
-Installation
-------------------------------
+Installation  
+---------------
 
-* :ref:`ide_windows`
-* :ref:`ide_macos`
-* :ref:`ide_linux`
+* :ref:`ide_windows`  
+* :ref:`ide_macos`  
+* :ref:`ide_linux`  
 
-.. _ide_windows:
+.. _ide_windows:  
 
-Windows
-^^^^^^^^^^^^^
+Installation sous Windows  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Double click the ``arduino-ide_xxxx.exe`` file to run the downloaded file.
+#. Double-cliquez sur le fichier ``arduino-ide_xxxx.exe`` téléchargé pour lancer l’installation.  
 
-#. Read the License Agreement and agree it.
+#. Lisez et acceptez le contrat de licence.  
 
-    .. image:: img/arduino/sp_002.png
+    .. image:: img/arduino/sp_002.png  
 
-#. Choose installation options.
+#. Choisissez les options d’installation.  
 
-    .. image:: img/arduino/sp_003.png
+    .. image:: img/arduino/sp_003.png  
 
-#. Choose install location. It is recommended that the software be installed on a drive other than the system drive.
+#. Sélectionnez le répertoire d’installation. Il est recommandé d’installer le logiciel sur un disque autre que celui du système.  
 
-    .. image:: img/arduino/sp_004.png
+    .. image:: img/arduino/sp_004.png  
 
-#. Then Finish. 
+#. Cliquez sur **Terminer** une fois l’installation achevée.  
 
-    .. image:: img/arduino/sp_005.png
+    .. image:: img/arduino/sp_005.png  
 
-.. _ide_macos:
+.. _ide_macos:  
 
-macOS
-^^^^^^^^^^^^^^^^
+Installation sous macOS  
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Double click on the downloaded ``arduino_ide_xxxx.dmg`` file and follow the instructions to copy the **Arduino IDE.app** to the **Applications** folder, you will see the Arduino IDE installed successfully after a few seconds.
+Double-cliquez sur le fichier ``arduino_ide_xxxx.dmg`` téléchargé, puis suivez les instructions pour copier **Arduino IDE.app** dans le dossier **Applications**. Après quelques secondes, l’installation sera terminée.  
 
-.. image:: img/arduino/macos_install_ide.png
-    :width: 800
+.. image:: img/arduino/macos_install_ide.png  
+    :width: 800  
 
-.. _ide_linux:
+.. _ide_linux:  
 
-Linux
-^^^^^^^^^^^^
+Installation sous Linux  
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the tutorial on installing the Arduino IDE 2.0 on a Linux system, please refer to: https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing#linux
-
-
-Open the IDE
---------------
-
-#. When you first open Arduino IDE 2.0, it automatically installs the Arduino AVR Boards, built-in libraries, and other required files.
-
-    .. image:: img/arduino/sp_901.png
-
-#. In addition, your firewall or security center may pop up a few times asking you if you want to install some device driver. Please install all of them.
-
-    .. image:: img/arduino/sp_104.png
-
-#. Now your Arduino IDE is ready!
-
-    .. note::
-        In the event that some installations didn't work due to network issues or other reasons, you can reopen the Arduino IDE and it will finish the rest of the installation. The Output window will not automatically open after all installations are complete unless you click Verify or Upload.
+Pour les instructions d’installation d’Arduino IDE 2.0 sous Linux, veuillez consulter la documentation officielle :  
+https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing#linux  
 
 
+Ouverture de l’IDE  
+---------------------
 
+#. Lors du premier lancement d’Arduino IDE 2.0, le logiciel installe automatiquement les cartes Arduino AVR, les bibliothèques intégrées et d’autres fichiers nécessaires.  
 
+    .. image:: img/arduino/sp_901.png  
+
+#. De plus, votre pare-feu ou votre logiciel de sécurité peut afficher des messages vous demandant d’installer certains pilotes. Veuillez accepter toutes les installations. 
+
+    .. image:: img/arduino/sp_104.png  
+
+#. Votre Arduino IDE est maintenant prêt à l’emploi !  
+
+    .. note::  
+        Si certaines installations échouent en raison de problèmes de connexion ou d’autres raisons, vous pouvez redémarrer l’IDE, et il terminera l’installation. La fenêtre Output ne s’ouvrira pas automatiquement une fois l’installation terminée, sauf si vous cliquez sur Verify ou Upload.  

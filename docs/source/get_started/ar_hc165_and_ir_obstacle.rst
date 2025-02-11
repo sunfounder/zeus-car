@@ -1,52 +1,51 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez dans l’univers de Raspberry Pi, Arduino et ESP32 avec d’autres passionnés et approfondissez vos connaissances.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Bénéficiez de l’aide de notre communauté et de notre équipe pour résoudre les problèmes après-vente et relever les défis techniques.
+    - **Apprentissage et partage** : Échangez des conseils et des tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux exclusivités.
+    - **Réductions spéciales** : Profitez d’offres exclusives sur nos dernières innovations.
+    - **Promotions et cadeaux festifs** : Participez à des concours et à des offres promotionnelles saisonnières.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
-9. IR Obstacle
-==============================
+9. Détection infrarouge d'obstacles
+========================================
 
-In this project, you will learn how to use the IR obstacle avoidance modules on both sides of the Zeus Car.
+Dans ce projet, vous apprendrez à utiliser les modules d’évitement d’obstacles infrarouges situés de chaque côté du Zeus Car.
 
-**How to do?**
+**Comment procéder ?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM et la carte Arduino partagent les mêmes broches RX (réception) et TX (transmission). Par conséquent, lorsque vous téléversez du code, vous devez d'abord déconnecter la ESP32-CAM pour éviter tout conflit ou problème potentiel.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``9_hc165_and_ir_obstacle.ino`` file under the path of ``zeus-car-main\examples\9_hc165_and_ir_obstacle``.
+#. Ouvrez le fichier ``9_hc165_and_ir_obstacle.ino`` sous le chemin ``zeus-car-main\examples\9_hc165_and_ir_obstacle``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/3486be01-6b0e-4e84-86f6-9bdadafa1f48/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Une fois le code téléversé avec succès, mettez l'interrupteur d’alimentation sur ON pour démarrer le Zeus Car.
 
     .. note::
-        Do not unplug the USB in this step, because you need to check the data of the two obstacle avoidance modules on your computer.
+        Ne débranchez pas le USB à cette étape, car vous devrez vérifier les données des deux modules d’évitement d’obstacles sur votre ordinateur.
 
-#. Open the serial monitor and make sure the current baud rate is set to 115200, then you can view the printed data.
+#. Ouvrez le moniteur série et assurez-vous que le débit en bauds est réglé sur 115200, puis observez les données affichées.
 
-   * If both obstacle avoidance modules do not detect an obstacle, the serial monitor will print ``0, 0``.
-   * Put your hand in front of one of the obstacle avoidance modules, it will print ``1, 0`` or ``0, 1``.
+   * Si les deux modules d’évitement d’obstacles ne détectent aucun obstacle, le moniteur série affichera ``0, 0``.
+   * Si vous placez votre main devant l’un des modules, il affichera ``1, 0`` ou ``0, 1``.
 
     .. image:: img/ar_serial.png
 
-#. Calibrate the IR obstacle avoidance module.
+#. Calibrer le module d’évitement d’obstacles infrarouge.
 
-    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+    * Commencez par ajuster le module d’évitement d’obstacles droit. Pendant le transport, des chocs peuvent provoquer une inclinaison de l’émetteur et du récepteur sur le module infrarouge. Il est donc nécessaire de les redresser manuellement.
 
             .. raw:: html
 
@@ -59,10 +58,10 @@ In this project, you will learn how to use the IR obstacle avoidance modules on 
                 
                 <br/> <br/>  
 
-    * Place an obstacle about 15cm away from the IR obstacle avoidance module.
-    * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
-    * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
+    * Placez un obstacle à environ 15 cm du module d’évitement d’obstacles infrarouge.
+    * Sur le module, il y a deux potentiomètres, l'un permettant d'ajuster la puissance d'émission et l'autre la fréquence d’émission. En ajustant ces deux potentiomètres, vous pouvez modifier la distance de détection.
+    * Ajustez un potentiomètre, et si à 15 cm, le voyant du module s’allume, l’ajustement est réussi ; sinon, ajustez l’autre potentiomètre.
 
         .. image:: img/zeus_ir_avoid.jpg
 
-    * Calibrate the other obstacle avoidance module in the same way.
+    * Répétez la même procédure pour calibrer l’autre module d’évitement d’obstacles.

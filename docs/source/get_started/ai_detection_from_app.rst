@@ -1,106 +1,104 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez dans l’univers de Raspberry Pi, Arduino et ESP32 avec d’autres passionnés et approfondissez vos connaissances.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Bénéficiez de l’aide de notre communauté et de notre équipe pour résoudre les problèmes après-vente et relever les défis techniques.
+    - **Apprentissage et partage** : Échangez des conseils et des tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux exclusivités.
+    - **Réductions spéciales** : Profitez d’offres exclusives sur nos dernières innovations.
+    - **Promotions et cadeaux festifs** : Participez à des concours et à des offres promotionnelles saisonnières.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
+16. Détection IA via l'application
+=====================================
 
-16. AI Detection from APP
-===========================
+Dans ce projet, nous allons utiliser l'application - SunFounder Controller pour visionner un flux vidéo en temps réel et exploiter les fonctionnalités de détection IA sur votre appareil mobile, telles que la reconnaissance faciale et la détection de posture.
 
-In this project, we will use an app - SunFounder Controller to view real-time video streaming, as well as use the AI detection features on your mobile device, such as face and pose detection.
+SunFounder Controller est une application qui permet aux utilisateurs de personnaliser un contrôleur pour piloter leur robot ou l’utiliser comme plateforme IoT. Elle intègre 11 types de widgets d'affichage et de contrôle, comme Button, Joystick, Gauge et Radar. La page de contrôle comprend 17 zones, de A à Q, où vous pouvez placer différents widgets pour créer votre propre interface personnalisée.
 
-SunFounder Controller is an application that allows users to customize the controller for controlling their robot or as an IoT platform. 11 kinds of show and control widgets are integrated in this APP, such as Button, Joystick, Gauge, and Radar. The controller page has 17 areas from A~Q, you can place different widgets to customize your own controller.
+Voyons maintenant comment utiliser l’application de manière simple.
 
-Now take a look at how to use the APP in a simple way.
+**Comment procéder ?**
 
-
-**How to do?**
-
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM et la carte Arduino partagent les mêmes broches RX (réception) et TX (transmission). Par conséquent, lorsque vous téléversez du code, il est nécessaire de déconnecter d'abord la ESP32-CAM pour éviter tout conflit ou problème potentiel.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-#. Open the ``16_ai_detection_from_app.ino`` file under the path of ``zeus-car-main\examples\16_ai_detection_from_app``.
+#. Ouvrez le fichier ``16_ai_detection_from_app.ino`` situé dans ``zeus-car-main\examples\16_ai_detection_from_app``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/c14c46e7-2e43-4b31-b7e6-b7718e501e96/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
+#. Une fois le code téléversé avec succès, reconnectez la ESP32-CAM et activez l’interrupteur d’alimentation sur ON pour démarrer le Zeus Car.
 
     .. image:: img/plug_esp32_cam.jpg
         :width: 300
         :align: center
 
-#. Toggle the Upload Switch to the side of Run (right side on this diagram) to start the ESP32 CAM. 
+#. Basculez le commutateur de téléversement en position Run (côté droit du schéma) pour lancer la ESP32-CAM.
 
     .. image:: img/zeus_run.jpg
 
-#. Press the reset button to get the Arduino board's program running again.
+#. Appuyez sur le bouton de réinitialisation pour relancer le programme de la carte Arduino.
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Now, install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)** to your mobile device.
+#. Téléchargez et installez l’application `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ depuis **l’App Store (iOS)** ou **Google Play (Android)** sur votre appareil mobile.
 
 
-#. Connect to ``Zeus_Car`` WLAN.
+#. Connectez-vous au réseau WLAN ``Zeus_Car``.
 
-    * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
+    * Trouvez le réseau ``Zeus_Car`` dans les paramètres Wi-Fi de votre smartphone (ou tablette), saisissez le mot de passe ``12345678``, puis connectez-vous.
 
     .. image:: img/app_wlan.png
 
-    * The default connection mode is AP mode. So after you connect, there will be a prompt telling you that there is no Internet access on this WLAN network, please choose to continue connecting.
+    * Le mode de connexion par défaut est le mode AP. Après la connexion, une notification vous informera que ce réseau Wi-Fi ne fournit pas d’accès à Internet. Sélectionnez Continuer la connexion.
 
     .. image:: img/app_no_internet.png
 
-#. Then open the APP and create a controller.
+#. Ouvrez l’application et créez un contrôleur.
 
-    * To add a controller on SunFounder Controller, click the **+** icon.
+    * Pour ajouter un contrôleur dans SunFounder Controller, cliquez sur l’icône **+**.
 
         .. image:: img/app1.png
 
-    * Select the **Blank** and **Dual Stick** template and give it a name.
+    * Sélectionnez le modèle **Blank** ou **Dual Stick**, puis attribuez-lui un nom.
 
         .. image:: img/view_app1.jpg
 
-    * As you are now inside the controller, click the |app_camera| icon to enable the AI detection feature. You will find both Face Detection and Pose Detection options.
+    * Une fois dans l’interface de contrôle, cliquez sur l’icône |app_camera| pour activer la fonctionnalité détection IA. Vous y trouverez les options détection faciale et détection de posture.
 
         .. image:: img/view_app6.jpg
 
-    * Save all settings by clicking on the |app_save| button. As no widgets have been selected, the screen is completely black.
+    * Enregistrez vos paramètres en cliquant sur le bouton |app_save|. Si aucun widget n’a été sélectionné, l’écran restera noir.
 
         .. image:: img/view_app3.jpg
 
-    * The next step is to connect the Zeus Car to your device via the |app_connect| button. Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
+    * L’étape suivante consiste à connecter le Zeus Car à votre appareil via le bouton |app_connect|. Après quelques secondes, ``Zeus_Car(IP)`` apparaîtra. Cliquez dessus pour établir la connexion.
 
         .. image:: img/view_app4.jpg
 
         .. note::
-            Please make sure your Wi-Fi is connected to ``Zeus_Car``, if you are not seeing the above message for a long time.
+            Assurez-vous que votre appareil est bien connecté au **Wi-Fi Zeus_Car** si vous ne voyez pas le message ci-dessus après un certain temps.
 
-#. Run the Controller.
+#. Démarrez le contrôleur.
 
-    After the "Connected Successfully" message appears, click the |app_run| button, then the camera footage will appear on the app.
+    Une fois le message "Connexion réussie" affiché, cliquez sur le bouton |app_run|. Le flux vidéo de la caméra s’affichera alors dans l’application.
 
-    If you have Face Detection turned on, then the face that appears in the screen will be framed.
+    Si la détection faciale est activée, tout visage apparaissant à l’écran sera encadré.
 
     .. image:: img/view_app7.jpg
 
-    If you have Pose Detection on, then the pose will be depicted.
+    Si la détection de posture est activée, la posture sera analysée et affichée.
 
     .. image:: img/view_app8.jpg
 
     .. note::
 
-        If you want to switch to another AI detection, you can click on the |app_edit| icon and repeat the above steps.
+        Si vous souhaitez passer à un autre mode de détection IA, cliquez sur l’icône |app_edit| et répétez les étapes ci-dessus.

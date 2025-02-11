@@ -1,44 +1,43 @@
-.. note::
+.. note::  
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez au cœur du Raspberry Pi, d’Arduino et de l’ESP32 avec d’autres passionnés.  
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**  
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre vos problèmes après-vente et relevez vos défis techniques grâce à notre communauté et notre équipe.  
+    - **Apprenez & partagez** : Échangez des conseils et tutoriels pour perfectionner vos compétences.  
+    - **Aperçus exclusifs** : Profitez d’un accès anticipé aux annonces de nouveaux produits et à des avant-premières exclusives.  
+    - **Réductions spéciales** : Bénéficiez d’offres exclusives sur nos derniers produits.  
+    - **Promotions et cadeaux festifs** : Participez à des jeux-concours et à des offres spéciales à l’occasion des fêtes.  
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !  
 
-Assemble the Car
+Assembler la voiture  
 =========================
 
-Here is the assembly instructions for the Zeus Car, PDF version, which is the same as the foldout you have. If you think there is something on the foldout that you can't read, you can download this PDF.
+Voici le guide d'assemblage de la Zeus Car en version PDF, identique au dépliant fourni avec votre kit. Si certaines parties du dépliant sont difficiles à lire, vous pouvez télécharger cette version PDF.  
 
-:download:`(PDF)Zeus Car Assemble Instruction <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`
+:download:`(PDF) Guide d'assemblage de la Zeus Car <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`  
 
-**Assembly Tutorial Video**
+**Vidéo tutorielle d’assemblage**  
 
-This video will walk you through the process of assembling your robot from scratch.
+Cette vidéo vous guidera pas à pas dans l’assemblage de votre robot, depuis le début.  
 
-.. note::
+.. note::  
 
-    The assembly steps in the video may differ slightly from the printed instructions you have. Please prioritize following the printed instructions. If any steps are unclear, you can refer to the video for further clarification.
-
-
-In this tutorial, you will learn:
-
-* **Preparation**: We'll introduce you to all the tools and parts needed, ensuring you're fully equipped before starting the assembly.
-
-* **Assembly Steps**: We'll demonstrate each assembly step in a systematic manner.
-
-* **Tips and Considerations**: Throughout the process, we'll share essential tips and tricks to help you avoid common mistakes and ensure your car operates smoothly.
-
-* **Testing and Calibration**: Once assembly is complete, we'll walk you through a brief test of this car to ensure that your assembly is free of issues.
+    Les étapes d’assemblage présentées dans la vidéo peuvent légèrement différer des instructions imprimées fournies avec votre kit. Veuillez toujours suivre en priorité les instructions imprimées. Si certaines étapes ne sont pas claires, vous pouvez vous référer à la vidéo pour plus de précisions.  
 
 
-.. raw:: html
+Dans ce tutoriel, vous apprendrez :  
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/l25HMPTZbjk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+* **Préparation** : Présentation de tous les outils et pièces nécessaires afin de vous assurer que vous êtes bien équipé avant de commencer l'assemblage.  
+
+* **Étapes d’assemblage** : Démonstration détaillée et méthodique de chaque étape du montage.  
+
+* **Conseils et recommandations** : Tout au long du processus, nous partagerons des astuces essentielles pour éviter les erreurs courantes et garantir le bon fonctionnement de votre voiture.  
+
+* **Tests et calibrage** : Une fois l’assemblage terminé, nous vous guiderons à travers un test rapide afin de vérifier que tout fonctionne correctement.  
+
+.. raw:: html  
+
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/l25HMPTZbjk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>  

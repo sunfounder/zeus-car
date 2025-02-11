@@ -1,23 +1,23 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez dans l’univers de Raspberry Pi, Arduino et ESP32 avec d’autres passionnés et approfondissez vos connaissances.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Bénéficiez de l’aide de notre communauté et de notre équipe pour résoudre les problèmes après-vente et relever les défis techniques.
+    - **Apprentissage et partage** : Échangez des conseils et des tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux exclusivités.
+    - **Réductions spéciales** : Profitez d’offres exclusives sur nos dernières innovations.
+    - **Promotions et cadeaux festifs** : Participez à des concours et à des offres promotionnelles saisonnières.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
 .. _play_app_control:
 
-Controlled by APP
+Contrôle via l'APP
 =========================
 
-To control Zeus Car from your mobile device, you must download the APP (SunFounder Controller) on your device, connect to the Zeus Car LAN, and then create your own controller on the APP.
+Pour contrôler le Zeus Car depuis votre appareil mobile, vous devez télécharger l'application SunFounder Controller, vous connecter au réseau local du Zeus Car, puis créer votre propre contrôleur dans l'application.
 
 .. raw:: html
 
@@ -32,11 +32,10 @@ To control Zeus Car from your mobile device, you must download the APP (SunFound
     
     <br/> <br/>
 
-
-Quick Guide
+Guide rapide
 ---------------------
 
-This is a quick tutorial video. Please watch the video first, and then follow the instructions provided below.
+Voici une vidéo tutorielle rapide. Regardez-la avant de suivre les instructions détaillées ci-dessous.
 
 .. raw:: html
 
@@ -51,11 +50,11 @@ This is a quick tutorial video. Please watch the video first, and then follow th
     
     <br/> <br/>
 
-#. Let's start the Zeus Car.
-   
-   * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
-   * So you'll need to plug in the Type-C cable for about 5 seconds.
-   
+#. Démarrons le Zeus Car.
+
+   * Lors de la première utilisation ou après avoir débranché le câble de la batterie, le Zeus Car Shield active son circuit de protection contre la décharge excessive.
+   * Vous devez alors brancher le câble Type-C pendant environ 5 secondes.
+
      .. raw:: html
      
          <div style="text-align: center;">
@@ -68,10 +67,10 @@ This is a quick tutorial video. Please watch the video first, and then follow th
      .. raw:: html
          
          <br/>
-   
-   
-   * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
-   
+
+
+   * Si l'indicateur d’alimentation s'allume, cela signifie que le mode de protection est désactivé. Ensuite, vérifiez les indicateurs de batterie. Si les deux sont éteints, continuez à charger la batterie en branchant le câble Type-C.
+
      .. image:: img/zeus_power.jpg
          :width: 500
          :align: center
@@ -79,9 +78,9 @@ This is a quick tutorial video. Please watch the video first, and then follow th
      .. raw:: html
          
          <br/>  
-   
-   * Now, you'll need to flick the smaller switch to the right to establish communication between the car and the ESP32 CAM. Afterward, press the Reset button to reboot the code. At this point, you'll observe the undercarriage lights transition from orange to a light blue.
-   
+
+   * Ensuite, basculez le petit interrupteur vers la droite pour établir la communication entre la voiture et la ESP32-CAM. Puis, appuyez sur le bouton Reset pour redémarrer le code. Vous verrez alors les lumières sous la voiture passer de l’orange au bleu clair.
+
      .. raw:: html
      
          <div style="text-align: center;">
@@ -95,37 +94,37 @@ This is a quick tutorial video. Please watch the video first, and then follow th
          
          <br/>
 
-#. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
+#. Installez `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ depuis **l'App Store (iOS)** ou **Google Play (Android)**.
 
-#. Connect to ``Zeus_Car`` WLAN.
+#. Connectez-vous au réseau **WLAN Zeus_Car**.
 
-   Now, connect your mobile device to the local area network (LAN) broadcast by the Zeus Car. This way, your mobile device and the Zeus Car will be on the same network, which will facilitate communication between the applications on your mobile device and the Zeus Car.
-   
-   
-   * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
-   
+   Maintenant, connectez votre appareil mobile au réseau **Zeus_Car**. Ainsi, votre appareil et le Zeus Car seront sur le même réseau, ce qui permettra une communication fluide entre eux.
+
+
+   * Recherchez le réseau ``Zeus_Car`` dans les paramètres Wi-Fi de votre téléphone (ou tablette), saisissez le mot de passe ``12345678``, puis connectez-vous.
+
      .. note::
-   
-       * The current connection is to the GalaxyRVR hotspot, so there is no internet access. If prompted to switch networks, please choose "Stay connected".
+
+       * La connexion actuelle est un point d’accès GalaxyRVR, il n’y aura donc pas d’accès à Internet. Si une notification vous propose de changer de réseau, sélectionnez "Rester connecté".
        * :ref:`ap_to_sta`
-   
+
      .. raw:: html
-   
+
        <div style="text-align: center;">
            <video center loop autoplay muted style = "max-width:80%">
                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
                Your browser does not support the video tag.
            </video>
        </div>
-   
+
      .. raw:: html
          
          <br/>
-   
-#. Create a controller.
 
-   * To add a controller on SunFounder Controller, click the **+** icon.
-   
+#. Créez un contrôleur.
+
+   * Pour ajouter un contrôleur dans SunFounder Controller, cliquez sur l’icône **+**.
+
      .. image:: img/app1.png
          :width: 500
          :align: center
@@ -133,9 +132,9 @@ This is a quick tutorial video. Please watch the video first, and then follow th
      .. raw:: html
          
          <br/>  
-   
-   * Preset controllers are available for some products, here we choose **Zeus Car**. Give it a name, or simply tap **Confirm**.
-   
+
+   * Des contrôleurs prédéfinis sont disponibles pour certains produits. Ici, choisissez **Zeus Car**, attribuez-lui un nom ou appuyez simplement sur **Confirm**.
+
      .. image:: img/app_preset.jpg
          :width: 500
          :align: center
@@ -143,10 +142,10 @@ This is a quick tutorial video. Please watch the video first, and then follow th
      .. raw:: html
          
          <br/>  
-   
-   
-   * Once inside, the app will automatically search for the Zeus Car. After a moment, you will see a prompt saying "Connected Successfully."
-   
+
+
+   * Une fois à l'intérieur, l’application recherchera automatiquement le Zeus Car. Après quelques secondes, un message "Connexion réussie" s’affichera.
+
      .. image:: img/app_edit.jpg
          :width: 500
          :align: center
@@ -154,9 +153,9 @@ This is a quick tutorial video. Please watch the video first, and then follow th
      .. raw:: html
          
          <br/> 
-   
-   * Now, tap the |app_run| button enables you to view the live video feed from the camera and control the car using the provided widgets. 
-   
+
+   * Maintenant, appuyez sur le bouton |app_run| pour afficher le flux vidéo en direct de la caméra et contrôler la voiture à l'aide des widgets fournis.
+
      .. image:: img/app_run123.png
          :width: 500
          :align: center
@@ -164,44 +163,43 @@ This is a quick tutorial video. Please watch the video first, and then follow th
      .. raw:: html
          
          <br/>  
-   
-#. Here are the functions of the widgets.
 
-        * :ref:`app_compass_cali`: Turn on compass calibration.
-        * **Stop(F)**: Stop all movements of the car.
-        * **Reset Heading(G)**: After placing the car in one direction with your hand, click on this widget to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other widgets.
-        * :ref:`app_speech_control`: Switching to speech control mode.
-        * :ref:`app_drift`: Activate the drift function.
-        * :ref:`app_move`: Control the car to move in all directions.
-        
-        * :ref:`app_line_track`: The following two widgets can both switch to line track mode.
-        
-            * **Line no Mag(M)**: Switch to line track mode, but not affected by the magnetic field. During the line tracking process, the Zeus Car's orientation will continuously change.
-            * **Line(N)**: Switching to line track mode, due to the presence of the magnetic field, the Zeus Car's orientation during line tracking will be oriented towards a specific direction.
+#. Fonctionnalités des widgets.
 
-        * :ref:`app_follow`: Switching to follow mode.
-        * :ref:`app_avoid`: Switch to obstacle avoidance mode.
-        * :ref:`app_rotate_drift`: Used to control the head direction.
+        * :ref:`app_compass_cali` : Active la calibration du compas.
+        * **Stop(F)** : Arrête tous les mouvements de la voiture.
+        * **Reset Heading(G)** : Une fois la voiture positionnée manuellement dans une direction, cliquez sur ce widget pour enregistrer cette direction comme référence. Cela permet d’orienter rapidement la voiture sans avoir à la tourner lentement via d’autres commandes.
+        * :ref:`app_speech_control` : Passe en mode de contrôle vocal.
+        * :ref:`app_drift` : Active la fonction drift.
+        * :ref:`app_move` : Contrôle les mouvements de la voiture dans toutes les directions.
+        
+        * :ref:`app_line_track` : Ces deux widgets permettent d’activer le mode suivi de ligne.
+        
+            * **Line no Mag(M)** : Active le mode suivi de ligne sans être influencé par le champ magnétique. La voiture ajustera continuellement son orientation pendant le suivi.
+            * **Line(N)** : Active le mode suivi de ligne avec alignement sur un champ magnétique, garantissant une orientation constante de la voiture.
+
+        * :ref:`app_follow` : Active le mode suivi automatique.
+        * :ref:`app_avoid` : Active le mode évitement d'obstacles.
+        * :ref:`app_rotate_drift` : Permet de contrôler la direction de la tête du véhicule.
 
 .. _app_compass_cali:
 
-Calibration(E)
+Calibration(E) 
 --------------------------
 
-Turn on compass calibration by clicking the |app_cali_e| button.
+Activez l'étalonnage du compas en cliquant sur le bouton |app_cali_e|.
 
-Place the Zeus car on the ground. Upon turning on the compass calibration, the car will start rotating counterclockwise and will stop in about 1 minute. If it rotates longer than 2 minutes, the magnetic field here is complicated. Try changing the location and calibrating again.
-
+Placez le **Zeus Car** au sol. Une fois l’étalonnage activé, la voiture commencera à tourner dans le sens antihoraire et s’arrêtera au bout d’environ une minute. Si elle tourne pendant plus de deux minutes, cela signifie que le champ magnétique est trop complexe à cet endroit. Essayez de changer de lieu et relancez l’étalonnage.
 
 .. _app_drift:
 
-Drift Enable(J)
----------------------
+Activation du Drift (J)
+--------------------------
 
 
-Click the |app_drift_j| button to enable the drift function.
+Cliquez sur le bouton |app_drift_j| pour activer la fonction de drift.
 
-* By sliding the |app_rotate_q| widget counterclockwise, you will see Zeus Car drift to the right. Upon releasing the hand, the car will stop at its current position.
+* En faisant glisser le widget |app_rotate_q| vers la gauche (sens antihoraire), le Zeus Car effectuera un drift vers la droite. Lorsque vous relâchez, il s’arrêtera à sa position actuelle.
 
 .. image:: img/zeus_drift_left.jpg
     :width: 500
@@ -211,7 +209,7 @@ Click the |app_drift_j| button to enable the drift function.
     
     <br/>  
  
-* Similarly, if you slide the |app_rotate_q| widget clockwise, the Zeus Car will drift to the left and stop in the current position.
+* De même, en faisant glisser le widget |app_rotate_q| vers la droite (sens horaire), le Zeus Car effectuera un drift vers la gauche et s’arrêtera à sa position actuelle.
 
 .. image:: img/zeus_drift_right.jpg
     :width: 500
@@ -223,8 +221,8 @@ Click the |app_drift_j| button to enable the drift function.
  
 .. _app_move:
 
-Move in All Directions(K)
-----------------------------------
+Déplacement dans toutes les directions (K)
+-----------------------------------------------
 
 .. raw:: html
 
@@ -237,7 +235,7 @@ Move in All Directions(K)
     
     <br/> <br/>  
 
-The Zeus Car will move in the appropriate direction when you swipe the |app_move_k| widget.
+Le **Zeus Car** se déplacera dans la direction correspondante lorsque vous faites glisser le widget |app_move_k|.
 
 .. image:: img/joystick_move.png
     :align: center
@@ -246,7 +244,7 @@ The Zeus Car will move in the appropriate direction when you swipe the |app_move
     
     <br/>  
 
-The car moves once every time you slide, so if you don't release your hand all the time, the car keeps moving.
+Chaque mouvement est déclenché une seule fois à chaque glissement. Tant que vous maintenez la pression sur l’écran, la voiture continuera à se déplacer.
 
 .. image:: img/zeus_move.jpg
     :width: 500
@@ -259,47 +257,47 @@ The car moves once every time you slide, so if you don't release your hand all t
  
 .. _app_speech_control:
 
-Speech(I)
--------------------
+Commande Vocale (I)
+----------------------
 
-By pressing the |app_speech_m| widget, you can activate the STT feature, where STT stands for Speech to Text. 
+En appuyant sur le widget |app_speech_m|, vous activez la fonction **STT (Speech to Text)**.
 
-The SunFounder Controller app integrates with your mobile device's voice recognition engine. Hence, when you tap and hold the **Speech(I)** widget on the SunFounder Controller and speak into your mobile device.
+L’application SunFounder Controller utilise le moteur de reconnaissance vocale de votre appareil mobile. Lorsque vous maintenez enfoncé le widget **Speech(I)** et parlez dans votre appareil, votre voix est capturée, convertie en texte, puis envoyée au Zeus Car. 
 
-Your device will capture your speech, convert it into text, and send it to the Zeus Car. If this text matches the pre-set commands in your code, the Car will carry out the corresponding actions.
+Si le texte correspond à l’une des commandes pré-enregistrées, la voiture exécutera l’action correspondante.
 
-The following are the commands currently preset in the code. Speak any of the following commands and observe how the Zeus Car responds.
+Voici les commandes disponibles :
 
-* ``stop``: All movements of the car can be stopped.
-* ``pasue``: The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.
-* ``forward``
-* ``backward``
-* ``left forward``
-* ``left backward``
-* ``right forward``
-* ``right backward``
-* ``move left``
-* ``move right``
-
-.. note::
-
-    The STT (Speech to Text) function requires an internet connection and Google services on Android devices. However, this doesn't work with the pre-set AP (Access Point) mode on the Zeus Car.
-
-    In AP mode, the Zeus Car creates a local Wi-Fi network that your mobile device can connect to, but it does not provide internet access.
-
-    To use the STT function on Android, switch the car's code from AP to STA mode as outlined in :ref:`stt_android`.
+* ``stop`` : Arrête tous les mouvements.
+* ``pause`` : Fonctionne comme stop, mais si la voiture n’est pas orientée dans la direction initiale, elle s’y réajustera lentement.
+* ``forward`` : Avance.
+* ``backward`` : Recule.
+* ``left forward`` : Avance à gauche.
+* ``left backward`` : Recule à gauche.
+* ``right forward`` : Avance à droite.
+* ``right backward`` : Recule à droite.
+* ``move left`` : Déplacement latéral vers la gauche.
+* ``move right`` : Déplacement latéral vers la droite.
 
 .. note::
 
-    iOS devices, using an offline voice recognition engine, work fine in both AP and STA modes.
+    La fonction STT (Speech to Text) nécessite une connexion Internet et les services Google sur les appareils Android. Elle ne fonctionne pas en mode AP (Access Point).
 
-After the car receives the above 8 commands, it will keep moving in the corresponding direction unless it receives ``stop`` or ``pasue`` commands.
+    En mode AP, le Zeus Car crée un réseau Wi-Fi local auquel votre appareil mobile peut se connecter, mais il ne fournit pas d’accès à Internet.
+
+    Pour utiliser STT sur Android, passez le mode du véhicule de AP à STA, comme expliqué dans :ref:`stt_android`.
+
+.. note::
+
+    Sur les appareils iOS, le moteur de reconnaissance vocale fonctionne hors ligne, ce qui permet d'utiliser cette fonction aussi bien en mode AP qu'en mode STA.
+
+Tant qu’aucune commande ``stop`` ou ``pasue`` n’est donnée, la voiture continuera à exécuter l’ordre reçu.
 
 .. image:: img/zeus_move.jpg
     :width: 500
     :align: center
 
-* ``turn left``: This command will make the car to turn left 45° with the body as the center, then it will move forward or stop according to the previous state. If the previous state is stop, it will stop after turning left 45°; if it is forward, it will move forward after turning.
+* ``turn left`` : La voiture tourne **de 45° à gauche** autour de son axe central, puis continue d’avancer ou s’arrête en fonction de son état précédent.
 
 .. image:: img/zeus_turn_left.jpg
     :width: 500
@@ -308,8 +306,8 @@ After the car receives the above 8 commands, it will keep moving in the correspo
 .. raw:: html
     
     <br/>  
-    
-* ``turn right``: This command will make the car turn 45° to the right with the body as the center, and again will move forward or stop depending on the previous state.
+ 
+* ``turn right`` : La voiture tourne **de 45° à droite** autour de son axe central, puis continue d’avancer ou s’arrête en fonction de son état précédent.
 
 .. image:: img/zeus_turn_right.jpg
     :width: 500
@@ -321,8 +319,8 @@ After the car receives the above 8 commands, it will keep moving in the correspo
  
 .. _app_line_track:
 
-Line Track
---------------
+Suivi de ligne
+----------------
 
 .. raw:: html
 
@@ -336,14 +334,14 @@ Line Track
     <br/> <br/>  
 
 
-Click on the |app_line_n| widget to switch to the line track mode.
+Cliquez sur le widget |app_line_n| pour activer le mode suivi de ligne.
 
-Two modes of line track are available on the Zeus Car, one with its head always facing the direction of movement and one with its head facing a fixed direction. Here, the second mode is selected.
+Deux modes de suivi de ligne sont disponibles sur le Zeus Car, l’un avec sa tête toujours orientée dans la direction du mouvement et l’autre avec sa tête dirigée vers une direction fixe. Ici, le second mode est sélectionné.
 
 
-#. Stick a 3cm wide line
+#. Coller une ligne de 3 cm de large
 
-    There are eight sensors on the Omni grayscale module, and the distance between each sensor is between 2 and 3 cm. There must be two sensors to detect the black line simultaneously. Therefore, the line you stick must be at least 3cm wide and the bend angle should not be less than 90°.
+    Il y a huit capteurs sur le module Omni Grayscale, et la distance entre chaque capteur est comprise entre 2 et 3 cm. Il doit y avoir au moins deux capteurs détectant simultanément la ligne noire. Par conséquent, la ligne que vous collez doit avoir une largeur d’au moins 3 cm et un angle de courbure ne devant pas être inférieur à 90°.
 
     .. image:: img/map.png
         :width: 500
@@ -352,23 +350,24 @@ Two modes of line track are available on the Zeus Car, one with its head always 
     .. raw:: html
         
         <br/>  
-    
-#. Calibrate the Omni Grayscale module.
+ 
+#. Calibrez le module **Omni Grayscale**.
 
-    Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.
+    Chaque surface de sol a des valeurs de gris différentes. Il est donc nécessaire de calibrer le capteur avant utilisation.  
+    Il est recommandé de refaire la calibration si le sol change de couleur.
 
-    * Place the Zeus Car on white surface and turn the potentiometer until the gray sensor light is just illuminated.
+    * Placez le Zeus Car sur une surface blanche et ajustez le potentiomètre jusqu'à ce que le voyant du capteur s'allume.
 
     .. image:: img/zeus_line_calibration.jpg
         :width: 500
         :align: center
-    
-    
+
+
     .. raw:: html
         
         <br/>  
-    
-    * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
+
+    * Placez ensuite les capteurs latéraux entre la ligne noire et la surface blanche. Tournez lentement le potentiomètre jusqu'à ce que le voyant du capteur s'éteigne.
 
     .. image:: img/zeus_line_calibration1.jpg
         :width: 500
@@ -377,17 +376,17 @@ Two modes of line track are available on the Zeus Car, one with its head always 
     .. raw:: html
         
         <br/>  
-    
-    * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
+
+    * Déplacez légèrement le Zeus Car entre la ligne noire et la surface blanche pour vérifier que les capteurs s'allument sur la surface blanche et s'éteignent sur la ligne noire. Cela confirmera une calibration réussie.
 
 
-#. Place the Zeus Car on your stickied line, click the |app_line_n| widget, and it will track the line.
+#. Placez le Zeus Car sur la ligne et activez le mode suivi de ligne en appuyant sur le widget |app_line_n|.
 
-#. Due to the high environmental requirements of the Omni grayscale module, it is recommended to calibrate it a few more times if the tracking effect is not satisfactory (off-track).
+#. En raison de la sensibilité du module Omni Grayscale, si le suivi de ligne est instable, il est recommandé de répéter l’étalonnage plusieurs fois.
 
 .. _app_follow:
 
-Follow(O)
+Follow(O) 
 ------------
 
 .. raw:: html
@@ -401,13 +400,14 @@ Follow(O)
     
     <br/> <br/>  
 
-Click the |app_follow_o| widget to switch to follow mode.
+Cliquez sur le widget |app_follow_o| pour activer le mode suivi.
 
-The ultrasonic sensor detects obstacles in front (20 cm) and follows them forward. These two obstacle avoidance modules allow the car to follow left or right, but they need to be calibrated (15cm) before use.
+Le capteur à ultrasons détecte les obstacles situés à moins de 20 cm devant le véhicule et les suit en avançant. Les deux modules d’évitement d’obstacles permettent au Zeus Car de suivre un objet vers la gauche ou vers la droite. Cependant, ils doivent être calibrés à une distance de 15 cm avant utilisation.
 
-#. Calibrate the IR obstacle avoidance module.
+#. Calibrer le module d’évitement d’obstacles infrarouge.
 
-    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+    * Commencez par ajuster le module de détection des obstacles droit.  
+      Lors du transport, des chocs peuvent incliner l’émetteur et le récepteur du module infrarouge. Vous devez donc les redresser manuellement.
 
         .. raw:: html
 
@@ -420,9 +420,9 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
             
             <br/> <br/>  
 
-    * Place an obstacle about 15cm away from the IR obstacle avoidance module.
-    * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
-    * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
+    * Placez un obstacle à environ 15 cm du module d’évitement d’obstacles infrarouge.  
+    * Sur le module, il y a deux potentiomètres : l’un pour ajuster la puissance d’émission et l’autre pour régler la fréquence d’émission. En ajustant ces deux potentiomètres, vous pouvez modifier la distance de détection.  
+    * Ensuite, ajustez un potentiomètre et si, à 15 cm, le voyant du module s’allume, l’ajustement est réussi ; sinon, ajustez l’autre potentiomètre.  
 
     .. image:: img/zeus_ir_avoid.jpg
         :width: 400
@@ -432,14 +432,14 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
         
         <br/>  
     
-    * Calibrate the other obstacle avoidance module in the same way.
+    * Répétez l’opération pour calibrer l’autre module d’évitement d’obstacles.
 
-#. Place Zeus car on a table or the ground and let it follow your hand or other obstacles.
+#. Placez le Zeus Car sur une table ou au sol et laissez-le suivre votre main ou d’autres objets.
 
 .. _app_avoid:
 
-Avoid(P)
-------------------------
+Évitement d’obstacles (P)
+-----------------------------
 
 .. raw:: html
 
@@ -452,24 +452,22 @@ Avoid(P)
     
     <br/> <br/>  
 
-When you want to go into obstacle avoidance mode, click the |app_avoid_p| widget, but first reference the :ref:`app_follow` to calibrate the two obstacle avoidance modules.
+Lorsque vous souhaitez passer en mode évitement d’obstacles, cliquez sur le widget |app_avoid_p|, mais référez-vous d’abord à :ref:`app_follow` pour calibrer les deux modules d’évitement d’obstacles.
 
-* Zeus car will move forward.
-* An ultrasonic module detects obstacles in front, if detected, the car turns left.
-* When the left obstacle avoidance module detects an obstacle, the car turns right, and when the right obstacle avoidance module detects an obstacle, the car turns left.
-
-
+* Le Zeus Car avancera en ligne droite.  
+* Un module à ultrasons détecte les obstacles à l’avant ; si un obstacle est détecté, la voiture tourne à gauche.  
+* Lorsque le module d’évitement gauche détecte un obstacle, la voiture tourne à droite, et lorsque le module d’évitement droit détecte un obstacle, la voiture tourne à gauche.  
 
 .. _app_rotate_drift:
 
-Control the Drection(Q)
+Contrôle de la direction (Q)
 -------------------------------
 
-* When the |app_drift_j| button is on, the |app_rotate_q| widget is used to make the Zeus Car drift left and right.
+* Lorsque le bouton |app_drift_j| est activé, le widget |app_rotate_q| est utilisé pour faire drifter le Zeus Car vers la gauche et la droite.  
 
-* When the |app_drift_j| widget is off, the |app_rotate_q| widget is used to control the direction of the car's head.
+* Lorsque le widget |app_drift_j| est désactivé, le widget |app_rotate_q| est utilisé pour contrôler l’orientation de la tête du véhicule.  
 
-    * By sliding the |app_rotate_q| widget counterclockwise, the car will also rotate counterclockwise. Upon releasing the hand, the head of the car will back to the original direction.
+    * En faisant glisser le widget |app_rotate_q| dans le sens antihoraire, la voiture tournera également dans le sens antihoraire. En relâchant le widget, la tête du véhicule reviendra à sa direction initiale.  
 
     .. image:: img/zeus_turn_left.jpg
         :width: 500
@@ -479,7 +477,7 @@ Control the Drection(Q)
         
         <br/>  
     
-    * Similarly the car will rotate clockwise with the |app_rotate_q| widget and return to the original direction when released.
+    * De même, en faisant glisser le widget |app_rotate_q| dans le sens horaire, la voiture tournera dans le sens horaire et reviendra à sa direction initiale lorsqu’elle sera relâchée.  
 
     .. image:: img/zeus_turn_right.jpg
         :width: 500

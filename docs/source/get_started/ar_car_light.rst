@@ -1,22 +1,21 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez dans l’univers de Raspberry Pi, Arduino et ESP32 avec d’autres passionnés et approfondissez vos connaissances.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Bénéficiez de l’aide de notre communauté et de notre équipe pour résoudre les problèmes après-vente et relever les défis techniques.
+    - **Apprentissage et partage** : Échangez des conseils et des tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux exclusivités.
+    - **Réductions spéciales** : Profitez d’offres exclusives sur nos dernières innovations.
+    - **Promotions et cadeaux festifs** : Participez à des concours et à des offres promotionnelles saisonnières.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !
 
-6. Car Light
+6. Lumières du véhicule
 ==========================
 
-
-In this project, you will be able to use the remote control to control the RGB light strips on the bottom of the car, making them display different colors.
+Dans ce projet, vous pourrez utiliser la télécommande pour contrôler les bandes lumineuses RGB situées sous la voiture et leur faire afficher différentes couleurs.
 
 .. raw:: html
 
@@ -29,21 +28,20 @@ In this project, you will be able to use the remote control to control the RGB l
     
     <br/> <br/>  
 
-**How to do?**
+**Comment procéder ?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM et la carte Arduino partagent les mêmes broches RX (réception) et TX (transmission). Par conséquent, lorsque vous téléversez du code, vous devez d'abord déconnecter la ESP32-CAM pour éviter tout conflit ou problème potentiel.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``6_car_light.ino`` file under the path of ``zeus-car-main\examples\6_car_light``.
+#. Ouvrez le fichier ``6_car_light.ino`` sous le chemin ``zeus-car-main\examples\6_car_light``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/79b6c0e5-a788-4d67-bb44-7e7122c521ab/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Une fois le code téléversé avec succès, mettez l'interrupteur d’alimentation sur ON pour démarrer le Zeus Car.
 
-#. Now you can use the numbers 1 to 9 on the remote control to control the car to light up different colors, press 0 to turn off, press |ir_return| to let the car perform a color cycle. Key 1 to 9 corresponding to the color is: red, orange, yellow, green, cyan, blue, purple, pink, white. 
+#. Vous pouvez maintenant utiliser les touches numériques 1 à 9 de la télécommande pour allumer les lumières du véhicule en différentes couleurs. Appuyez sur 0 pour éteindre les lumières et sur |ir_return| pour activer un cycle de couleurs. Les touches 1 à 9 correspondent aux couleurs suivantes : rouge, orange, jaune, vert, cyan, bleu, violet, rose et blanc.

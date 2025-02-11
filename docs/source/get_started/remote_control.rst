@@ -1,120 +1,117 @@
-.. note::
+.. note::  
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez dans l’univers du Raspberry Pi, d’Arduino et de l’ESP32 avec d’autres passionnés.  
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**  
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d’experts** : Obtenez de l’aide pour résoudre vos problèmes après-vente et relevez vos défis techniques grâce à notre communauté et notre équipe.  
+    - **Apprenez & partagez** : Échangez des conseils et tutoriels pour perfectionner vos compétences.  
+    - **Aperçus exclusifs** : Bénéficiez d’un accès anticipé aux annonces de nouveaux produits et aux avant-premières exclusives.  
+    - **Réductions spéciales** : Profitez d’offres exclusives sur nos derniers produits.  
+    - **Promotions et cadeaux festifs** : Participez à des concours et à des offres spéciales à l’occasion des fêtes.  
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd’hui !  
 
-.. _play_remote_control:
+.. _play_remote_control:  
 
-Control by Remote
-==========================
+Contrôle par Télécommande  
+=============================
 
-Zeus Car can be controlled with a remote control by turning the car on then pressing the buttons on the remote control directly. This method is stable and less susceptible to outside interference, but the control may not be as flexible.
+La Zeus Car peut être contrôlée via une télécommande en l’allumant, puis en appuyant directement sur les boutons. Cette méthode est stable et moins sujette aux interférences extérieures, mais elle offre un contrôle moins flexible.  
 
-Quick Guide
+Guide rapide  
 --------------------
 
-This is a quick tutorial video. Please watch the video first, and then follow the instructions provided below.
+Ce tutoriel vidéo vous montre comment utiliser rapidement la Zeus Car. Regardez d’abord la vidéo, puis suivez les instructions détaillées ci-dessous.  
 
-.. raw:: html
+.. raw:: html  
 
-   <video loop controls style = "max-width:90%">
-      <source src="../_static/video/ir_control_quick_guide.mp4"  type="video/mp4">
+   <video loop controls style = "max-width:90%">  
+      <source src="../_static/video/ir_control_quick_guide.mp4"  type="video/mp4">  
       Your browser does not support the video tag.
-   </video>
+   </video>  
 
-.. raw:: html
+.. raw:: html  
     
     <br/> <br/>  
 
-#. Let's start the Zeus Car.
+#. Démarrage de la Zeus Car  
 
-    * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
-    * So you'll need to plug in the Type-C cable for about 5 seconds.
+    * Lors de la première utilisation ou si le câble de la batterie a été débranché, le Zeus Car Shield active son circuit de protection contre la décharge excessive.  
+    * Vous devez alors brancher le câble Type-C pendant environ 5 secondes.  
 
-    .. raw:: html
+    .. raw:: html  
 
-        <div style="text-align: center;">
+        <div style="text-align: center;">  
             <video center loop autoplay muted style = "max-width:70%">
                 <source src="../_static/video/activate_battery.mp4"  type="video/mp4">
                 Your browser does not support the video tag.
-            </video>
-        </div>
+            </video>  
+        </div>  
 
-    .. raw:: html
-        
-        <br/>
-
-    
-    * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
-
-    .. image:: img/zeus_power.jpg
-        :width: 500
-        :align: center
-
-    .. raw:: html
+    .. raw:: html  
         
         <br/>  
-    
-    * Now, you'll need to flick the smaller switch to the right to establish communication between the car and the ESP32 CAM. Afterward, press the Reset button to reboot the code. At this point, you'll observe the undercarriage lights transition from orange to a light blue.
 
-    .. raw:: html
+    * Si le voyant d’alimentation s’allume, cela signifie que la protection est désactivée. Vérifiez ensuite les indicateurs de batterie :  
+        - Si les deux indicateurs de batterie sont éteints, continuez à charger la batterie via le câble Type-C.  
 
-        <div style="text-align: center;">
+    .. image:: img/zeus_power.jpg  
+        :width: 500  
+        :align: center  
+
+    .. raw:: html  
+        
+        <br/>  
+
+    * Ensuite, basculez le petit interrupteur vers la droite pour établir la communication entre la voiture et l’**ESP32 CAM**. Puis, appuyez sur le bouton Reset pour redémarrer le programme. À ce moment-là, vous verrez les lumières sous le châssis passer du orange au bleu clair.  
+
+    .. raw:: html  
+
+        <div style="text-align: center;">  
             <video center loop autoplay muted style = "max-width:70%">
                 <source src="../_static/video/re_run_code.mp4"  type="video/mp4">
                 Your browser does not support the video tag.
-            </video>
-        </div>
+            </video>  
+        </div>  
 
-    .. raw:: html
+    .. raw:: html  
         
-        <br/>
+        <br/>  
 
-#. Press the different keys on the remote control to control the car.
+#. Utilisation de la télécommande 
 
-    .. image:: img/remote_control.jpg
-        :width: 500
-        :align: center
+    .. image:: img/remote_control.jpg  
+        :width: 500  
+        :align: center  
 
-    .. raw:: html
+    .. raw:: html  
         
-        <br/>
+        <br/>  
 
+    * **Stop** : Stoppe tous les mouvements de la voiture.  
+    * :ref:`ir_compass_cali` : Active l’étalonnage de la boussole.  
+    * :ref:`ir_line_track` : Active le mode suivi de ligne.  
+    * :ref:`ir_follow` : Active le mode suivi d’objet.  
+    * :ref:`ir_avoid` : Active le mode évitement d’obstacles.  
+    * :ref:`drift` : Effectue un drift à gauche/droite.  
+    * **Set Heading** : Oriente la voiture dans une direction spécifique et enregistre cette direction comme référence de déplacement.  
+    * :ref:`rotate_left/right` : Fait pivoter la voiture vers la gauche/droite.  
+    * :ref:`ir_move` : Permet de déplacer la voiture dans toutes les directions.  
+    * **Pause** : Semblable à Arrêt, mais permet à la voiture de s’orienter progressivement vers sa direction initialement définie.  
 
-    * **Stop**: Stop all movements of the car.
-    * :ref:`ir_compass_cali`: Turn on compass calibration.
-    * :ref:`ir_line_track`: Switching to line track mode.
-    * :ref:`ir_follow`: Switching to follow mode.
-    * :ref:`ir_avoid`: Switch to obstacle avoidance mode.
-    * :ref:`drift`: Drift to the left/right.
-    * **Set Heading**: After placing the car in one direction with your hand, click on this key to make this direction as the front of the car movement. This allows you to quickly specify a direction instead of slowly rotating the car to that direction with other keys.
-    * :ref:`rotate_left/right`: Turn left/right
-    * :ref:`ir_move`: Control the car to move in all directions.
-    * **Pause**: The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.
+.. _ir_compass_cali:  
 
-
-.. _ir_compass_cali:
-
-Compass Calibration
+Calibration de la Boussole
 -----------------------------------
 
-Turn on compass calibration by pressing the |ir_mute| key.
+Activez l'étalonnage de la boussole en appuyant sur la touche |ir_mute|.
 
-Place the Zeus car on the ground. Upon turning on the compass calibration, the car will start rotating counterclockwise and will stop in about 1 minute. If it rotates longer than 2 minutes, the magnetic field here is complicated. Try changing the location and calibrating again.
-
+Placez la voiture Zeus au sol. Une fois l'étalonnage de la boussole activé, la voiture commencera à tourner dans le sens antihoraire et s'arrêtera au bout d'environ une minute. Si elle continue à tourner pendant plus de deux minutes, cela signifie que le champ magnétique à cet endroit est complexe. Essayez de changer d'emplacement et recommencez l'étalonnage.
 
 .. _ir_line_track:
 
-Line Track
+Suivi de Ligne
 ---------------------------
 
 .. raw:: html
@@ -128,15 +125,15 @@ Line Track
     
     <br/> <br/>  
 
-Press the |ir_play| key to switch to the line track mode.
+Appuyez sur la touche |ir_play| pour passer en mode suivi de ligne.
 
-Two modes of line track are available on the Zeus Car, one with its head always facing the direction of movement and one with its head facing a fixed direction. Here, the second mode is selected.
+La voiture Zeus propose deux modes de suivi de ligne : l’un où l'avant du véhicule est toujours orienté dans la direction du déplacement et un autre où l'avant reste fixe dans une direction donnée. Ici, le second mode est sélectionné.
 
-But before you can get it to follow the line, you need to calibrate the Omni Grayscale module and stick the line, as follows.
+Avant de pouvoir suivre une ligne, vous devez calibrer le module Omni Grayscale et préparer la ligne, comme suit :
 
-#. Stick a 3cm wide line
+#. Coller une ligne de 3 cm de large
 
-    There are eight sensors on the Omni grayscale module, and the distance between each sensor is between 2 and 3 cm. There must be two sensors to detect the black line simultaneously. Therefore, the line you stick must be at least 3cm wide and the bend angle should not be less than 90°.
+    Le module Omni Grayscale est équipé de huit capteurs, espacés de 2 à 3 cm. Deux capteurs doivent détecter la ligne noire simultanément. Par conséquent, la ligne collée doit avoir une largeur minimale de 3 cm et les virages ne doivent pas être inférieurs à un angle de 90°.
 
     .. image:: img/map.png
         :width: 500
@@ -146,11 +143,11 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
         
         <br/>
 
-#. Calibrate the Omni Grayscale module.
+#. Calibrer le module Omni Grayscale.
 
-    Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.
+    Chaque sol ayant des valeurs de gris différentes, le seuil de gris défini en usine peut ne pas être adapté à votre environnement actuel. Il est donc nécessaire de calibrer ce module avant utilisation. Il est recommandé de refaire la calibration à chaque changement important de couleur du sol.
 
-    * Place the Zeus Car on white surface and turn the potentiometer until the gray sensor light is just illuminated.
+    * Placez la voiture Zeus sur une surface blanche et ajustez le potentiomètre jusqu'à ce que la lumière du capteur de gris s’allume à peine.
 
     .. image:: img/zeus_line_calibration.jpg
         :width: 500
@@ -160,7 +157,7 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
         
         <br/>
 
-    * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
+    * Ensuite, positionnez les deux capteurs de gris sur les côtés juste entre la ligne noire et la surface blanche, puis tournez lentement le potentiomètre jusqu'à ce que le voyant du signal s'éteigne.
 
     .. image:: img/zeus_line_calibration1.jpg
         :width: 500
@@ -170,16 +167,15 @@ But before you can get it to follow the line, you need to calibrate the Omni Gra
         
         <br/>
 
-    * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
+    * Déplacez la voiture plusieurs fois entre la ligne noire et la surface blanche pour vérifier que les capteurs de gris s'éteignent lorsqu'ils se trouvent entre les deux et s'allument sur la surface blanche, indiquant ainsi une calibration réussie.
 
-#. Place the Zeus Car on your stickied line, press the |ir_play| key, and it will track the line.
+#. Placez la voiture Zeus sur la ligne collée, appuyez sur la touche |ir_play| et elle suivra la ligne.
 
-#. Due to the high environmental requirements of the Omni grayscale module, it is recommended to calibrate it a few more times if the tracking effect is not satisfactory (off-track).
-
+#. En raison des exigences environnementales strictes du module Omni Grayscale, il est recommandé de refaire la calibration plusieurs fois si le suivi de ligne n'est pas satisfaisant (sortie de trajectoire).
 
 .. _ir_follow:
 
-Follow
+Mode Suivi
 ---------------------------
 
 .. raw:: html
@@ -194,13 +190,13 @@ Follow
     <br/> <br/>  
 
 
-Press the |ir_backward| key to switch to follow mode.
+Appuyez sur la touche |ir_backward| pour activer le mode suivi.
 
-The ultrasonic sensor detects obstacles in front (20 cm) and follows them forward. These two obstacle avoidance modules allow the car to follow left or right, but they need to be calibrated (15cm) before use.
+Le capteur à ultrasons détecte les obstacles situés à l'avant (20 cm) et suit leur mouvement. Les deux modules d’évitement d’obstacles permettent à la voiture de suivre un objet vers la gauche ou la droite, mais ils doivent être calibrés (15 cm) avant utilisation.
 
-#. Calibrate the IR obstacle avoidance module.
+#. Calibration du module d’évitement d’obstacles à infrarouge.
 
-    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+    * Commencez par ajuster le module d’évitement d’obstacles droit. Pendant le transport, des chocs peuvent incliner l’émetteur et le récepteur du module infrarouge. Il est donc nécessaire de les redresser manuellement.
 
             .. raw:: html
 
@@ -213,9 +209,9 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
                 
                 <br/> <br/>  
 
-    * Place an obstacle about 15cm away from the IR obstacle avoidance module.
-    * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
-    * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
+    * Placez un obstacle à environ 15 cm du module d’évitement d’obstacles IR.
+    * Le module dispose de deux potentiomètres : l’un ajuste la puissance d’émission et l’autre la fréquence d’émission. En ajustant ces deux paramètres, vous pouvez modifier la distance de détection.
+    * Réglez l'un des potentiomètres. Si, à 15 cm, le voyant du signal s'allume, l'ajustement est réussi. Sinon, ajustez l'autre potentiomètre.
 
     .. image:: img/zeus_ir_avoid.jpg
         :width: 500
@@ -225,13 +221,13 @@ The ultrasonic sensor detects obstacles in front (20 cm) and follows them forwar
         
         <br/>
 
-    * Calibrate the other obstacle avoidance module in the same way.
+    * Calibrez l’autre module d’évitement d’obstacles de la même manière.
 
-#. Place Zeus car on a table or the ground and let it follow your hand or other obstacles.
+#. Placez la voiture Zeus sur une table ou au sol et laissez-la suivre votre main ou d'autres obstacles.
 
 .. _ir_avoid:
 
-Obstacle Avoidance
+Évitement d'Obstacles
 --------------------------------------
 
 .. raw:: html
@@ -245,23 +241,20 @@ Obstacle Avoidance
     
     <br/> <br/>  
 
+Pour activer le mode d’évitement d’obstacles, appuyez sur la touche |ir_forward|. Avant cela, référez-vous à :ref:`ir_follow` pour calibrer les deux modules d’évitement d’obstacles.
 
-When you want to go into obstacle avoidance mode, press the |ir_forward| key, but first reference the :ref:`ir_follow` to calibrate the two obstacle avoidance modules.
-
-* Zeus car will move forward.
-* An ultrasonic module detects obstacles in front, if detected, the car turns left.
-* When the left obstacle avoidance module detects an obstacle, the car turns right, and when the right obstacle avoidance module detects an obstacle, the car turns left.
-
-
+* La voiture Zeus avancera en ligne droite.
+* Un module à ultrasons détecte les obstacles situés devant ; en cas de détection, la voiture tourne à gauche.
+* Lorsque le module d’évitement d’obstacles gauche détecte un obstacle, la voiture tourne à droite ; lorsqu’il s’agit du module droit, elle tourne à gauche.
 
 .. _drift:
 
-Drift Left/Right
+Dérapage Gauche/Droite
 -------------------------------------------------
 
-Use the |ir_minus| and |ir_plus| keys to drift the car to the left/right.
+Utilisez les touches |ir_minus| et |ir_plus| pour faire déraper la voiture à gauche ou à droite.
 
-* Press the |ir_minus| key, the car will drift to the left.
+* En appuyant sur la touche |ir_minus|, la voiture dérapera vers la gauche.
 
 .. image:: img/zeus_drift_left.jpg
     :width: 500
@@ -271,8 +264,7 @@ Use the |ir_minus| and |ir_plus| keys to drift the car to the left/right.
     
     <br/>
 
-
-* Press the |ir_plus| key, the car will drift to the right.
+* En appuyant sur la touche |ir_plus|, la voiture dérapera vers la droite.
 
 .. image:: img/zeus_drift_right.jpg
     :width: 500
@@ -282,14 +274,13 @@ Use the |ir_minus| and |ir_plus| keys to drift the car to the left/right.
     
     <br/>
 
-
-* If it was stopped before drifting, pressing the |ir_minus| or |ir_plus| key once will cause the Zeus to drift 90° to the left or right.
-* If it was moving before drifting, after pressing the key, the Zeus Car will drift 90° to the left or right, then pan until you press another key.
+* Si la voiture était à l'arrêt avant le dérapage, appuyer une fois sur |ir_minus| ou |ir_plus| entraînera un dérapage de 90° à gauche ou à droite.
+* Si elle était en mouvement avant le dérapage, après avoir appuyé sur la touche, la voiture Zeus effectuera un dérapage de 90° à gauche ou à droite, puis poursuivra son mouvement latéral jusqu'à ce qu'une autre touche soit pressée.
 
 .. _ir_move:
 
-Move in All Directions(1 ~ 9)
--------------------------------------
+Déplacement dans Toutes les Directions (1 ~ 9)
+--------------------------------------------------
 
 .. raw:: html
 
@@ -302,8 +293,7 @@ Move in All Directions(1 ~ 9)
     
     <br/> <br/>  
 
-
-Use the number keys 1~9 to make the Zeus Car move in 8 directions.
+Utilisez les touches numériques 1 à 9 pour déplacer la voiture Zeus dans huit directions différentes.
 
 .. image:: img/remote_control_move.jpg
     :width: 500
@@ -315,10 +305,10 @@ Use the number keys 1~9 to make the Zeus Car move in 8 directions.
 
 .. _rotate_left/right:
 
-Rotate Left/Right(Cycle/USD Key)
+Rotation Gauche/Droite (Cycle/Touche USD)
 -----------------------------------------
 
-* The car will turn 45° left with the body as the center if you press |ir_return| once. Depending on the previous state, it will move forward or stop. If the previous state is stop, it will stop after 45° left turn; if it is forward, it will move forward after the left turn.
+* En appuyant une fois sur la touche |ir_return|, la voiture effectuera une rotation de 45° vers la gauche en prenant son châssis comme centre. Ensuite, elle avancera ou s'arrêtera en fonction de son état précédent. Si elle était à l'arrêt, elle s'immobilisera après la rotation de 45° ; si elle était en mouvement, elle continuera d'avancer après avoir tourné à gauche.
 
 .. image:: img/zeus_turn_left.jpg
     :width: 500
@@ -328,8 +318,7 @@ Rotate Left/Right(Cycle/USD Key)
     
     <br/>
 
-
-* Similarly, pressing |ir_usd| once will make the car turn 45° to the right, and then it will move forward or stop depending on the previous state.
+* De même, en appuyant une fois sur la touche |ir_usd|, la voiture effectuera une rotation de 45° vers la droite et continuera d’avancer ou de s’arrêter en fonction de son état précédent.
 
 .. image:: img/zeus_turn_right.jpg
     :width: 500

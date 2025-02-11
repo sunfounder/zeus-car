@@ -173,13 +173,21 @@ rst_epilog += """
 
     <a href="https://docs.sunfounder.com/projects/zeus-car/en/latest/" target="_blank">English Online-tutorials</a>
 
+.. |link_fr_tutorials| raw:: html
 
+    <a href="https://docs.sunfounder.com/projects/zeus-car/fr/latest/" target="_blank">Didacticiels en ligne en français</a>
+
+.. |link_es_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/es/latest/" target="_blank">Tutoriales en línea en español</a>
+
+.. |link_it_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/it/latest/" target="_blank">Tutorial online in italiano</a>
 
 .. |link_download_arduino| raw:: html
 
     <a href="https://www.arduino.cc/en/software#future-version-of-the-arduino-ide" target="_blank">Arduino IDE 2.0.0 Page</a>
-
-
 
 .. |link_install_library| raw:: html
 
