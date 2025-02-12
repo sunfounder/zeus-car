@@ -1,43 +1,42 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Avances exclusivos**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Assemble the Car
+Asamblea del Coche
 =========================
 
-Here is the assembly instructions for the Zeus Car, PDF version, which is the same as the foldout you have. If you think there is something on the foldout that you can't read, you can download this PDF.
+Aquí tienes las instrucciones de ensamblaje del Zeus Car en versión PDF, que es idéntica al folleto que tienes. Si hay algo en el folleto que no puedes leer bien, puedes descargar este PDF.
 
-:download:`(PDF)Zeus Car Assemble Instruction <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`
+:download:`(PDF) Instrucciones de Ensamblaje del Zeus Car <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`
 
-**Assembly Tutorial Video**
+**Video Tutorial de Ensamblaje**
 
-This video will walk you through the process of assembling your robot from scratch.
+Este video te guiará paso a paso en el proceso de ensamblaje de tu robot desde cero.
 
 .. note::
 
-    The assembly steps in the video may differ slightly from the printed instructions you have. Please prioritize following the printed instructions. If any steps are unclear, you can refer to the video for further clarification.
+    Es posible que los pasos de ensamblaje en el video difieran ligeramente de las instrucciones impresas que tienes. Por favor, prioriza seguir las instrucciones impresas. Si algún paso no está claro, puedes consultar el video para obtener más aclaraciones.
 
 
-In this tutorial, you will learn:
+En este tutorial, aprenderás:
 
-* **Preparation**: We'll introduce you to all the tools and parts needed, ensuring you're fully equipped before starting the assembly.
+* **Preparación**: Te presentaremos todas las herramientas y piezas necesarias, asegurándonos de que tengas todo listo antes de comenzar el ensamblaje.
 
-* **Assembly Steps**: We'll demonstrate each assembly step in a systematic manner.
+* **Pasos de ensamblaje**: Demostraremos cada paso del ensamblaje de manera sistemática.
 
-* **Tips and Considerations**: Throughout the process, we'll share essential tips and tricks to help you avoid common mistakes and ensure your car operates smoothly.
+* **Consejos y consideraciones**: A lo largo del proceso, compartiremos consejos esenciales y trucos para evitar errores comunes y garantizar que tu coche funcione sin problemas.
 
-* **Testing and Calibration**: Once assembly is complete, we'll walk you through a brief test of this car to ensure that your assembly is free of issues.
-
+* **Pruebas y calibración**: Una vez completado el ensamblaje, te guiaremos a través de una prueba rápida del coche para asegurarnos de que todo esté correctamente montado y sin problemas.
 
 .. raw:: html
 

@@ -1,22 +1,22 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Explora más a fondo Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Acceso exclusivo**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-6. Car Light
+6. Luces del Coche
 ==========================
 
 
-In this project, you will be able to use the remote control to control the RGB light strips on the bottom of the car, making them display different colors.
+En este proyecto, podrás utilizar el control remoto para gestionar las tiras de luces RGB en la parte inferior del coche, permitiéndoles mostrar diferentes colores.
 
 .. raw:: html
 
@@ -29,21 +29,20 @@ In this project, you will be able to use the remote control to control the RGB l
     
     <br/> <br/>  
 
-**How to do?**
+**¿Cómo hacerlo?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM y la placa Arduino comparten los mismos pines RX (recepción) y TX (transmisión). Por lo tanto, antes de cargar el código, debes desconectar la ESP32-CAM para evitar conflictos o posibles problemas.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``6_car_light.ino`` file under the path of ``zeus-car-main\examples\6_car_light``.
+#. Abre el archivo ``6_car_light.ino`` en la ruta ``zeus-car-main\examples\6_car_light``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/79b6c0e5-a788-4d67-bb44-7e7122c521ab/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Una vez que el código se haya cargado correctamente, desliza el interruptor de encendido a la posición ON para iniciar el Zeus Car.
 
-#. Now you can use the numbers 1 to 9 on the remote control to control the car to light up different colors, press 0 to turn off, press |ir_return| to let the car perform a color cycle. Key 1 to 9 corresponding to the color is: red, orange, yellow, green, cyan, blue, purple, pink, white. 
+#. Ahora puedes usar los números del 1 al 9 en el control remoto para encender las luces del coche en diferentes colores. Presiona 0 para apagarlas y presiona |ir_return| para que el coche realice un ciclo de colores. Las teclas del 1 al 9 corresponden a los siguientes colores: rojo, naranja, amarillo, verde, cian, azul, morado, rosa y blanco.

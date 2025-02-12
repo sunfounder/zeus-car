@@ -1,52 +1,51 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Explora más a fondo Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Acceso exclusivo**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-9. IR Obstacle
-==============================
+9. Sensor de Obstáculos Infrarrojo
+======================================
 
-In this project, you will learn how to use the IR obstacle avoidance modules on both sides of the Zeus Car.
+En este proyecto, aprenderás a utilizar los módulos de evitación de obstáculos por infrarrojos en ambos lados del Zeus Car.
 
-**How to do?**
+**¿Cómo hacerlo?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM y la placa Arduino comparten los mismos pines RX (recepción) y TX (transmisión). Por lo tanto, antes de cargar el código, debes desconectar la ESP32-CAM para evitar conflictos o posibles problemas.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``9_hc165_and_ir_obstacle.ino`` file under the path of ``zeus-car-main\examples\9_hc165_and_ir_obstacle``.
+#. Abre el archivo ``9_hc165_and_ir_obstacle.ino`` en la ruta ``zeus-car-main\examples\9_hc165_and_ir_obstacle``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/3486be01-6b0e-4e84-86f6-9bdadafa1f48/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Una vez que el código se haya cargado correctamente, desliza el interruptor de encendido a la posición ON para iniciar el Zeus Car.
 
     .. note::
-        Do not unplug the USB in this step, because you need to check the data of the two obstacle avoidance modules on your computer.
+        No desconectes el USB en este paso, ya que necesitarás verificar los datos de los dos módulos de evitación de obstáculos en tu computadora.
 
-#. Open the serial monitor and make sure the current baud rate is set to 115200, then you can view the printed data.
+#. Abre el monitor serie y asegúrate de que la velocidad de transmisión actual esté configurada en 115200, luego podrás visualizar los datos impresos.
 
-   * If both obstacle avoidance modules do not detect an obstacle, the serial monitor will print ``0, 0``.
-   * Put your hand in front of one of the obstacle avoidance modules, it will print ``1, 0`` or ``0, 1``.
+   * Si ninguno de los módulos de evitación de obstáculos detecta un obstáculo, el monitor serie imprimirá ``0, 0``.
+   * Si colocas tu mano frente a uno de los módulos, imprimirá ``1, 0`` o ``0, 1``.
 
     .. image:: img/ar_serial.png
 
-#. Calibrate the IR obstacle avoidance module.
+#. Calibrar el módulo de evitación de obstáculos por infrarrojos.
 
-    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+    * Comienza ajustando el módulo de evitación de obstáculos derecho. Durante el transporte, los golpes pueden causar que el transmisor y el receptor del módulo de infrarrojos se inclinen. Por lo tanto, es necesario enderezarlos manualmente.
 
             .. raw:: html
 
@@ -59,10 +58,10 @@ In this project, you will learn how to use the IR obstacle avoidance modules on 
                 
                 <br/> <br/>  
 
-    * Place an obstacle about 15cm away from the IR obstacle avoidance module.
-    * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
-    * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
+    * Coloca un obstáculo aproximadamente a 15 cm del módulo de evitación de obstáculos por infrarrojos.
+    * En el módulo hay dos potenciómetros, uno para ajustar la potencia de transmisión y otro para ajustar la frecuencia de transmisión. Ajustando estos potenciómetros, puedes modificar la distancia de detección.
+    * Ajusta uno de los potenciómetros y, si a 15 cm la luz de señal en el módulo se ilumina, la calibración ha sido exitosa. Si no, ajusta el otro potenciómetro.
 
         .. image:: img/zeus_ir_avoid.jpg
 
-    * Calibrate the other obstacle avoidance module in the same way.
+    * Calibra el otro módulo de evitación de obstáculos de la misma manera.

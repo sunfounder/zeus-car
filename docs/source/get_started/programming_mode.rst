@@ -1,29 +1,29 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Únete a nosotros y sumérgete en el fascinante mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
     **Why Join?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Expert Support**: Resuelve problemas postventa y supera desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Learn & Share**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Exclusive Previews**: Sé el primero en conocer los anuncios de nuevos productos y obtener adelantos exclusivos.
+    - **Special Discounts**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Festive Promotions and Giveaways**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _programming_arduino:
 
-Programming with Arduino IDE
+Programación con Arduino IDE
 =====================================
 
-After you have experienced :ref:`quick_start`, if you want to understand how each function is implemented, and then modify the effect according to your own ideas, you can come to read this programming mode carefully.
+Después de haber experimentado el :ref:`quick_start`, si deseas comprender cómo se implementa cada función y luego modificar su comportamiento según tus propias ideas, este apartado de programación es para ti.
 
-Every function in the programming mode chapter is made into a separate project, there are 17 of them. Each project has corresponding code and explanation, so you can see how each function works.
+Cada función en el modo de programación se ha estructurado como un proyecto independiente, sumando un total de 17 proyectos. Cada uno incluye su propio código y una explicación detallada, permitiéndote comprender el funcionamiento de cada función.
 
-This project uses the Arduino programming language, so you'll need to install the Arduino IDE and related libraries before you can begin.
+Este proyecto utiliza el lenguaje de programación de Arduino, por lo que antes de comenzar, necesitarás instalar el Arduino IDE y las bibliotecas correspondientes.
 
-Now let's start the journey of discovery!
+¡Ahora, comencemos este viaje de descubrimiento!
 
 .. toctree::
     :maxdepth: 3

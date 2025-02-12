@@ -1,68 +1,68 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola y bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi & Arduino & ESP32 en Facebook! Únete a otros apasionados para profundizar en Raspberry Pi, Arduino y ESP32.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Vistas previas exclusivas**: Obtén acceso anticipado a nuevos productos y adelantos especiales.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _ar_install_lib:
 
-Install the Required Libraries
+Instalar las bibliotecas requeridas
 ===============================================
 
-**What is a Library?**
+**¿Qué es una biblioteca?**
 
-A library is a collection of predefined functions and headers that make programming easier and more efficient. Libraries typically consist of two main files:
+Una biblioteca es un conjunto de funciones y encabezados predefinidos que facilitan la programación y la hacen más eficiente. Generalmente, las bibliotecas constan de dos archivos principales:
 
-* **.h (Header File)**: Contains function declarations, macro definitions, and constructor definitions.
-* **.cpp (Source File)**: Includes function implementations, variable definitions, and other executable components.
+* **.h (Header File)**: Contiene declaraciones de funciones, definiciones de macros y constructores.
+* **.cpp (Source File)**: Incluye implementaciones de funciones, definiciones de variables y otros componentes ejecutables.
 
-By including a library in your project, you can directly call the functions it provides (e.g., ``#include <dht.h>``) instead of writing your own definitions from scratch. This keeps your code concise and easier to read. 
+Al incluir una biblioteca en tu proyecto, puedes llamar directamente a las funciones que proporciona (por ejemplo, ``#include <dht.h>``) en lugar de escribir tus propias definiciones desde cero. Esto mantiene el código más conciso y fácil de leer.  
 
-While it's possible to write the function definitions yourself, using a library saves time and reduces complexity.
+Si bien es posible definir las funciones manualmente, el uso de una biblioteca ahorra tiempo y reduce la complejidad.
 
-Some libraries are pre-installed with the Arduino IDE, while others need to be installed manually. Here's how to install the required libraries for this project.
+Algunas bibliotecas vienen preinstaladas en el Arduino IDE, mientras que otras deben instalarse manualmente. A continuación, se explica cómo instalar las bibliotecas necesarias para este proyecto.
 
-**How to Install a Library**
+**Cómo instalar una biblioteca**
 
 .. note::
 
-    The following instructions are for **Arduino IDE 2.0**. If you are using Arduino IDE 1.x, refer to |link_install_library|.
+    Las siguientes instrucciones son para **Arduino IDE 2.0**. Si utilizas Arduino IDE 1.x, consulta |link_install_library|.
 
-Here are steps to install a library:
+Sigue estos pasos para instalar una biblioteca:
 
-1. Click on the **Library Manager** icon in the left column of the Arduino IDE.
+1. Haz clic en el ícono del **Library Manager** en la columna izquierda del Arduino IDE.
 
    .. image:: img/arduino/ar_libr_manager.jpg
 
-2. Search for the library:
+2. Busca la biblioteca:
 
-   * A list of available libraries will appear. Use the search bar to find the library you want to install.
-   * For example, to install the ``SoftPWM`` library, type the library name and click the **INSTALL** button.
+   * Aparecerá una lista de bibliotecas disponibles. Usa la barra de búsqueda para encontrar la que deseas instalar.
+   * Por ejemplo, para instalar la biblioteca ``SoftPWM``, escribe su nombre y haz clic en el botón **INSTALL**.
 
    .. image:: img/arduino/ar_softpwm.png
 
-3. The installation process usually takes less than a minute. Once completed, the library will display **INSTALLED** in the Library Manager.
-   
+3. El proceso de instalación suele tardar menos de un minuto. Una vez finalizado, la biblioteca mostrará el estado **INSTALLED** en el Administrador de Bibliotecas.
+
    .. image:: img/arduino/ar_install_success.png
 
-4. Follow the same steps as above to install the ``IRLremote`` Library, ensuring you spell the library name correctly.
-   
+4. Repite los pasos anteriores para instalar la biblioteca ``IRLremote``, asegurándote de escribir correctamente el nombre.
+
    .. image:: img/arduino/ar_irlremote.png
 
-5. Then, install the ``ArduinoJson`` library.
+5. Luego, instala la biblioteca ``ArduinoJson``.
 
    .. image:: img/arduino/ar_arduinojson.png
 
-6. Search for and install the ``SunFounder AI Camera`` library, the final library needed for this project.
+6. Finalmente, busca e instala la biblioteca ``SunFounder AI Camera``, la última biblioteca necesaria para este proyecto.
 
    .. image:: img/arduino/ar_aicamera.png
 
-By following these steps, you'll have all the necessary libraries installed and ready to use for your project.
+Siguiendo estos pasos, tendrás todas las bibliotecas necesarias instaladas y listas para usar en tu proyecto.

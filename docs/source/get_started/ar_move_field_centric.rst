@@ -1,68 +1,64 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Explora más a fondo Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Acceso exclusivo**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-8. Move Field Centric
-=====================
+8. Movimiento Centrado en el Campo
+======================================
 
+Este proyecto se basa en el proyecto anterior para combinar la función de la brújula con el movimiento del Zeus Car.  
+Mientras controlas el movimiento del Zeus Car con el control remoto, si es desviado por una fuerza externa (por ejemplo, una patada de un perro), automáticamente corregirá su dirección original.
 
-This project is based on the previous project to combine the compass function to the movement of Zeus Car.
-While you control the Zeus Car movement with the remote control, if it is deflected by an external force (e.g. kicked by a dog), it will automatically deflect back to the original direction.
+**¿Cómo hacerlo?**
 
-
-**How to do?**
-
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM y la placa Arduino comparten los mismos pines RX (recepción) y TX (transmisión). Por lo tanto, antes de cargar el código, debes desconectar la ESP32-CAM para evitar conflictos o posibles problemas.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``8_move_field_centric.ino`` file under the path of ``zeus-car-main\examples\8_move_field_centric``.
+#. Abre el archivo ``8_move_field_centric.ino`` en la ruta ``zeus-car-main\examples\8_move_field_centric``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/a0ac96b3-47a9-4eab-8d8a-d1ca16c7fcda/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Una vez que el código se haya cargado correctamente, desliza el interruptor de encendido a la posición ON para iniciar el Zeus Car.
 
-#. Then use the number 1 ~ 9 on the remote control to control the car in 8 directions. After pressing a key, the Zeus Car will keep moving until you press |ir_power| or the number key 5.
+#. Luego, usa los números del 1 al 9 en el control remoto para mover el Zeus Car en 8 direcciones. Una vez que presiones una tecla, el Zeus Car seguirá moviéndose hasta que presiones |ir_power| o la tecla número 5.
 
     .. image:: img/zeus_move.jpg
         :width: 600
         :align: center
 
-
-#. When you press |ir_return| once, the car will rotate counterclockwise with the body as the center and will stop until you press |ir_power| or the number key 5.
+#. Al presionar |ir_return| una vez, el Zeus Car girará en sentido antihorario con su cuerpo como centro y se detendrá cuando presiones |ir_power| o la tecla número 5.
 
     .. image:: img/zeus_turn_left.jpg
         :width: 600
         :align: center
 
-#. Similarly, pressing |ir_usd| once will make the car rotate clockwise, and then it will stop until you press |ir_power| or the number key 5.
+#. De manera similar, al presionar |ir_usd| una vez, el Zeus Car girará en sentido horario y se detendrá hasta que presiones |ir_power| o la tecla número 5.
 
     .. image:: img/zeus_turn_right.jpg
         :width: 600
         :align: center
 
-#. Press the |ir_minus| key, the car will drift to the left.
+#. Presiona la tecla |ir_minus| para hacer que el Zeus Car derrape hacia la izquierda.
 
     .. image:: img/zeus_drift_left.jpg
         :width: 600
         :align: center
 
-#. Press the |ir_plus| key, the car will drift to the right.
+#. Presiona la tecla |ir_plus| para hacer que el Zeus Car derrape hacia la derecha.
 
     .. image:: img/zeus_drift_right.jpg
         :width: 600
@@ -71,5 +67,5 @@ While you control the Zeus Car movement with the remote control, if it is deflec
 
 .. note::
 
-    * If the Zeus Car does not move well, the compass may not be calibrated properly, you need to press |ir_mute| to calibrate it.
-    * If you pick up the car from the ground to the table, the magnetic field will change and you need to recalibrate it.
+    * Si el Zeus Car no se mueve correctamente, es posible que la brújula no esté bien calibrada. Debes presionar |ir_mute| para calibrarla.
+    * Si levantas el Zeus Car del suelo a una mesa, el campo magnético cambiará y será necesario recalibrarlo.

@@ -1,50 +1,47 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Explora más a fondo Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Acceso exclusivo**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _ar_line_track:
 
-14. Line Track
-==============
+14. Seguimiento de Línea
+===========================
 
-In this project, you will learn how to use the Omni Grayscale Module for line tracking.
+En este proyecto, aprenderás a utilizar el Módulo Omni Grayscale para el seguimiento de líneas.
 
-Before working on the project, you will need to use black electrical tape to stick out a line of track, which can be a circle, a straight line, or an irregular shape.
+Antes de comenzar, necesitarás usar cinta aislante negra para trazar una línea de pista, la cual puede ser un círculo, una línea recta o una forma irregular.
 
-But there are two points to note.
+Pero hay dos puntos a tener en cuenta:
 
-1. This line should be 3cm wide (the thickness of a piece of electrical tape is 1.5cm).
-2. The bend angle should not be less than 90°.
+1. La línea debe tener un ancho de 3 cm (el grosor de una cinta aislante es de 1.5 cm).
+2. El ángulo de la curva no debe ser menor de 90°.
 
 .. image:: img/map.png
 
-**How to do?**
+**¿Cómo hacerlo?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM y la placa Arduino comparten los mismos pines RX (recepción) y TX (transmisión). Por lo tanto, antes de cargar el código, debes desconectar la ESP32-CAM para evitar conflictos o posibles problemas.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``14_line_track.ino`` file under the path of ``zeus-car-main\examples\14_line_track``.
+#. Abre el archivo ``14_line_track.ino`` en la ruta ``zeus-car-main\examples\14_line_track``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/f1bfb9ad-8bfa-417e-a4c0-10dbdcdc4298/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Una vez que el código se haya cargado correctamente, desliza el interruptor de encendido a la posición ON para iniciar el Zeus Car.
 
-
-#. Next your Zeus Car will move along the line. If your Zeus Car goes off the line, it may mean that you need to recalibrate the :ref:`ar_grayscale`, or turn down its speed.
-
+#. A continuación, tu Zeus Car se moverá siguiendo la línea. Si se desvía, es posible que necesites recalibrar el :ref:`ar_grayscale` o reducir su velocidad.

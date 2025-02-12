@@ -1,54 +1,53 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Explora a fondo Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Acceso exclusivo**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-3. Move and Rotate
-======================
+3. Movimiento y Rotación
+==========================
 
-In this project, the Zeus Car can increase the parameters of rotation so that it can spin in place or go out of arc.
+En este proyecto, el Zeus Car puede aumentar los parámetros de rotación para girar sobre su propio eje o moverse en un arco.
 
+**¿Cómo hacerlo?**
 
-**How to do?**
-
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM y la placa Arduino comparten los mismos pines RX (recepción) y TX (transmisión). Por lo tanto, antes de cargar el código, debes desconectar la ESP32-CAM para evitar conflictos o posibles problemas.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``3_rotate_and_move.ino`` file under the path of ``zeus-car-main\examples\3_rotate_and_move``.
+#. Abre el archivo ``3_rotate_and_move.ino`` en la ruta ``zeus-car-main\examples\3_rotate_and_move``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/bf0dfe1b-18c1-4a45-bd38-a9a8e671d66a/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car. The Zeus Car will turn left and then right to return to its original position. Then the car will turn slowly in an outward arc and the turning angle will slowly decrease until it finally rotates on its own.
+#. Una vez que el código se haya cargado correctamente, desliza el interruptor de encendido a la posición ON para iniciar el Zeus Car.  
+   Primero, el Zeus Car girará a la izquierda y luego a la derecha para regresar a su posición original. Luego, comenzará a moverse en un arco hacia afuera, con un ángulo de giro que disminuirá progresivamente hasta que finalmente gire sobre su propio eje.
 
 
 
-**How it works?**
+**¿Cómo funciona?**
 
-Here is the addition of a rotational power parameter ``rot`` to the Zeus Car's move function ``carMove()``.
+Aquí se agrega un parámetro de potencia de rotación ``rot`` a la función de movimiento del Zeus Car ``carMove()``.
 
 .. code-block::
 
     void carMove(int16_t angle, int8_t power, int8_t rot)
 
-* ``angle``: The direction you want the car to move. use the head of the car as the 0 degree and increase the angle in counterclockwise direction.
-* ``power``: The moving power, the range is -100% ~ 100%. When ``power`` is positive, the car moves forward, and vice versa, it moves backward.
-* ``rot``: Rotation power, the range is -100% ~ 100%. When ``rot`` is positive, the car turn counterclockwise, and vice versa.
+* ``angle``: La dirección en la que deseas que el Zeus Car se mueva. Usa la parte frontal del vehículo como referencia de 0 grados y aumenta el ángulo en sentido antihorario.
+* ``power``: La potencia de movimiento, con un rango de -100% a 100%. Si ``power`` es positivo, el Zeus Car avanza; si es negativo, retrocede.
+* ``rot``: La potencia de rotación, con un rango de -100% a 100%. Si ``rot`` es positivo, el Zeus Car girará en sentido antihorario; si es negativo, girará en sentido horario.
 
-If ``power`` is 0 and ``rot`` is not 0, the Zeus Car will spin in place. The higher the rotational power, the faster the rotation speed. When ``rot`` is positive, the car will rotate counterclockwise, and vice versa.
+Si ``power`` es 0 y ``rot`` no es 0, el Zeus Car girará sobre su propio eje. Cuanto mayor sea el valor de ``rot``, mayor será la velocidad de rotación. Cuando ``rot`` es positivo, el giro será en sentido antihorario y, cuando es negativo, en sentido horario.
 
-If ``power`` is not 0, you will find that the Zeus Car will go out in an arc. The turning angle will increase as ``rot`` increases, and the Zeus Car will rotate itself when the value is large enough.
+Si ``power`` no es 0, el Zeus Car se desplazará en un arco. El ángulo de giro aumentará a medida que ``rot`` aumente, y cuando el valor sea lo suficientemente grande, el Zeus Car girará sobre su propio eje.

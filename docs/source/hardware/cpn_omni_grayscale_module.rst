@@ -1,18 +1,18 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Únete a nosotros y sumérgete en el fascinante mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
     **Why Join?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Expert Support**: Resuelve problemas postventa y supera desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Learn & Share**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Exclusive Previews**: Sé el primero en conocer los anuncios de nuevos productos y obtener adelantos exclusivos.
+    - **Special Discounts**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Festive Promotions and Giveaways**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Omni Grayscale Module
+Módulo Omni Grayscale
 ============================
 
 .. image:: img/omni_grayscale_front.png
@@ -21,90 +21,79 @@ Omni Grayscale Module
 .. image:: img/omni_grayscale_back.png
     :width: 300
 
-* **VREF**: Reference voltage input pin. The value of each sensor is compared to this reference voltage to determine whether to output high or low.
-* **Q7**: Serial output from the last stage
-* **PL**: Asynchronous parallel load input (active LOW)
-* **CP**: Clock input (LOW-to-HIGH edge-triggered)
-* **5V**: 3.3 to 5V DC Supply Input
-* **GND**: Ground Input
+* **VREF**: Pin de entrada de voltaje de referencia. El valor de cada sensor se compara con este voltaje de referencia para determinar si la salida es alta o baja.
+* **Q7**: Salida en serie de la última etapa.
+* **PL**: Entrada de carga paralela asíncrona (activa en nivel bajo).
+* **CP**: Entrada de reloj (activación en flanco de subida).
+* **5V**: Entrada de alimentación DC de 3.3V a 5V.
+* **GND**: Conexión a tierra.
 
-This is an Omni Grayscale module for line following and edge detection. Omni means omnidirectional, which means that the module has 8 TCRT5000 transmitting sensors distributed in a circle to detect black lines in any direction.
+Este es un módulo Omni Grayscale diseñado para seguimiento de líneas y detección de bordes. El término "Omni" se refiere a su capacidad omnidireccional, ya que el módulo cuenta con 8 sensores transmisores TCRT5000 distribuidos en círculo, permitiendo detectar líneas negras en cualquier dirección.
 
-This allows a robot car like the Zeus Car with Mecanum wheels to follow the line at various angles without having the head of the car facing forward.
+Esto permite que un robot móvil, como el Zeus Car con ruedas Mecanum, pueda seguir líneas en diferentes ángulos sin necesidad de mantener su frente alineado en una sola dirección.
 
-The sensitivity of the module in the current environment can be adjusted by modifying the VREF value. In the Zeus Car Shiled, the blue potentiometer is used to adjust the value of the VREF pin.
+La sensibilidad del módulo puede ajustarse según el entorno modificando el valor de VREF. En el Zeus Car Shield, el potenciómetro azul se usa para calibrar el valor del pin VREF.
 
-
-**Working Principle**
+**Principio de funcionamiento**
 
 * |link_tcrt5000_datasheet|
 
-In the module, eight TCRT5000 transmitter sensors are integrated, which are based on infrared optical reflection and contain an infrared light-emitting diode and a phototransistor covered with a lead material to block visible light.
+El módulo integra ocho sensores TCRT5000, los cuales funcionan bajo el principio de reflexión óptica por infrarrojos. Cada sensor está compuesto por un diodo emisor de infrarrojos y un fototransistor, ambos protegidos por un material que bloquea la luz visible.
 
 .. image:: img/tcrt5000_pin.jpg
     :width: 400
     :align: center
 
-When working, the infrared light-emitting diode of TCRT5000 continuously emits infrared light (invisible light) with a wavelength of 950nm. When the emitted infrared light is not reflected back by the obstacle or the reflection intensity is insufficient, the phototransistor does not work. When the infrared light is reflected with sufficient intensity and received by the phototransistor at the same time, the phototransistor is in working condition and provides output.
+Durante el funcionamiento, el diodo emisor de infrarrojos del TCRT5000 emite luz infrarroja de 950nm de longitud de onda. Si la luz infrarroja no es reflejada por un objeto, o si la intensidad de la reflexión es insuficiente, el fototransistor permanece inactivo. Cuando la luz infrarroja es reflejada con suficiente intensidad y recibida por el fototransistor, este entra en funcionamiento y genera una salida de señal.
 
 * |link_lm339_datasheet|
 
-There are 2 LM339 chips on this Omni Grayscale Module, containing a total of 8 differential comparators. These differential comparators are used to compare the current sensor value with a reference value to determine whether to output a high or low level. This way you know if a black line is detected.
+El módulo Omni Grayscale cuenta con dos chips LM339, cada uno con cuatro comparadores diferenciales, sumando un total de 8 comparadores. Estos comparadores se encargan de comparar el valor actual del sensor con el voltaje de referencia (VREF) para determinar si la salida es de nivel alto o bajo, lo que permite identificar la detección de una línea negra.
 
 .. image:: img/lm339_chip.png
 
-Below is a schematic of one of the channels.
+A continuación, se muestra un esquema del funcionamiento de uno de los canales:
 
 .. image:: img/tcrt_lm339.png
 
-* Set a reference voltage at the VREF pin (this reference voltage is set via a potentiometer on the Zeus Car Shield) and add this reference voltage to the inverting input (-) of the comparator.
-* Add the collector of the TCRT5000 sensor's phototransistor to the in-phase input (+) of the comparator.
-* When the infrared ray emitted by the TCRT5000 sensor is not reflected back or the reflection intensity is insufficient, the photosensitive transistor does not work and the collector is connected to the pull-up resistor to 5V at this time, so the in-phase input (+) of the comparator is greater than the inverting input (-).
-* The comparator output is high and the indicator does not light up. And vice versa.
-* Since the black surface absorbs light, it reflects less infrared light, so on the black surface, the comparator outputs high and the indicator does not light up.
-* The white surface reflects more infrared rays, and the photosensitive transistor conducts, so the value of the in-phase input is smaller than the inverted input, and the comparator outputs low, and the indicator lights up.
+* Se establece un voltaje de referencia en el pin VREF (configurado mediante el potenciómetro en el Zeus Car Shield) y se conecta a la entrada inversora (-) del comparador.
+* La salida del fototransistor del sensor TCRT5000 se conecta a la entrada no inversora (+) del comparador.
+* Si el rayo infrarrojo no se refleja o la intensidad reflejada es insuficiente, el fototransistor no conduce y su salida se mantiene en alto. En este caso, la entrada no inversora (+) del comparador es mayor que la inversora (-), lo que hace que la salida del comparador sea alta y el indicador LED permanezca apagado.
+* Si el sensor detecta una superficie blanca (que refleja más luz infrarroja), el fototransistor conduce, reduciendo el voltaje en la entrada no inversora (+). En este caso, la salida del comparador es baja y el LED indicador se enciende.
+* Como la superficie negra absorbe la luz infrarroja, refleja menos luz hacia el sensor, lo que hace que el comparador mantenga una salida alta y el indicador LED se mantenga apagado.
 
-
-These 8 sensor data are transferred to the Arduino board via 74HC165 (8-bit parallel input serial output shift register).
+Estos 8 datos de los sensores se transmiten a la placa Arduino a través del 74HC165, un registro de desplazamiento de entrada paralela y salida en serie de 8 bits.
 
 * |link_74hc165_datasheet|
 
-The 74HC165 is an 8-bit parallel input serial output shift register, which can get mutually exclusive serial outputs (Q0 and Q7) at the final stage. When the parallel read (PL) input is low, the parallel data input from D0 to D7 port will be read into the register asynchronously. And when PL is high, the data will enter the register serially from the DS input, moving one bit to the right on the rising edge of each clock pulse (Q0 → Q1 → Q2, etc.). Using this feature, the parallel-to-serial expansion can be achieved by simply binding the Q7 output to the next level of DS input.
+El 74HC165 permite obtener salidas serie Q0 y Q7 desde su última etapa. Cuando la entrada de carga paralela (PL) está en bajo, los datos paralelos de D0 a D7 se leen de manera asíncrona en el registro. Cuando PL está en alto, los datos ingresan de forma serial desde la entrada DS, desplazándose un bit a la derecha en cada pulso de reloj.
 
-The clock input of the 74HC165 is a "gated or" structure that allows one of the inputs to be used as a low active clock enable (CE) input. The CP and CE pin assignments are independent and can be interchanged for wiring convenience if necessary. CE is allowed to rise from low to high only when CP is high. CP or CE should be set high before the PL rising edge to prevent data displacement in the active state of PL.
+Este mecanismo permite convertir datos de entrada paralela a serie, enlazando la salida Q7 a la entrada DS del siguiente registro de desplazamiento.
 
 .. image:: img/74hc165_con.png
 
-**Features**
+**Características**
 
-* Operating Voltage: 3.3 ~ 5V
-* Output: digital (on/off)
-* Asynchronous 8-bit parallel load
-* Synchronous serial input
-* Detection Threshold: adjustable by VREF pin
-* Sensor Type: TCRT5000
-* Connector Model: ZH1.5-6P
-* Operating Temperature: -10 °C to +50 °C
-* Dimensions: 80mm x 80mm
+* Voltaje de operación: 3.3 ~ 5V
+* Salida: digital (alto/bajo)
+* Carga paralela asíncrona de 8 bits
+* Entrada serie síncrona
+* Umbral de detección: ajustable mediante el pin VREF
+* Tipo de sensor: TCRT5000
+* Modelo de conector: ZH1.5-6P
+* Temperatura de operación: -10 °C ~ +50 °C
+* Dimensiones: 80mm x 80mm
 
+**Calibración del módulo**
 
-**Calibrate the Module**
+Dado que cada superficie tiene diferentes valores de escala de grises, el umbral de detección preconfigurado en fábrica puede no ser adecuado para todos los entornos. Por ello, es necesario calibrar el módulo antes de su uso. Se recomienda recalibrarlo cada vez que se produzcan cambios significativos en el color del suelo.
 
-    Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.
+* Coloca el Zeus Car sobre una superficie blanca y ajusta el potenciómetro hasta que el LED del sensor de escala de grises se ilumine.
 
-    * Place the Zeus Car on white surface and turn the potentiometer until the gray sensor light is just illuminated.
+    .. image:: img/zeus_line_calibration.jpg
 
-        .. image:: img/zeus_line_calibration.jpg
+* Ahora, coloca los dos sensores laterales justo en el límite entre la línea negra y la superficie blanca, y ajusta lentamente el potenciómetro hasta que el LED de señal se apague.
 
-    * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
+    .. image:: img/zeus_line_calibration1.jpg
 
-        .. image:: img/zeus_line_calibration1.jpg
-
-    * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
-
-
-
-
-
-
-
+* Verifica moviendo el Zeus Car sobre la línea negra y la superficie blanca repetidamente. El sensor de escala de grises debe apagarse al estar sobre la línea negra y encenderse sobre la superficie blanca, lo que indicará que la calibración se ha realizado correctamente.

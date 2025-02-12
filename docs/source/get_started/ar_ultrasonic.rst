@@ -1,46 +1,45 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Explora a fondo Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Acceso exclusivo**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-10. Ultrasonic
+10. Ultrasonido
 ==============================
 
-In this project, you will learn how to read the distance detected by the ultrasonic module.
+En este proyecto, aprenderás a leer la distancia detectada por el módulo ultrasónico.
 
-**How to do?**
+**¿Cómo hacerlo?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM y la placa Arduino comparten los mismos pines RX (recepción) y TX (transmisión). Por lo tanto, antes de cargar el código, primero debes desconectar la ESP32-CAM para evitar conflictos o posibles problemas.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``10_ultrasonic.ino`` file under the path of ``zeus-car-main\examples\10_ultrasonic``.
+#. Abre el archivo ``10_ultrasonic.ino`` en la ruta ``zeus-car-main\examples\10_ultrasonic``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/b3c702d7-2d4e-48fe-8d8d-7d20f70c9e45/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Una vez que el código se haya cargado correctamente, enciende el interruptor de alimentación para iniciar el Zeus Car.
 
     .. note::
-        Do not unplug the USB in this step, because you need to check the data of the Ultrasonic module on your computer.
+        No desconectes el USB en este paso, ya que necesitas verificar los datos del módulo ultrasónico en tu computadora.
 
-#. Open the serial monitor and make sure the current baud rate is set to 115200. It is recommended to click on the **Toggle Autoscroll** icon so that you can see the latest printed data.
+#. Abre el monitor serie y asegúrate de que la velocidad de baudios actual esté configurada en 115200. Se recomienda hacer clic en el icono **Toggle Autoscroll** para ver los datos más recientes.
 
-   * You can view the printed data like ``distance: 21.11  is_obstacle: 0``.
-   * If the distance of the obstacle ahead is within 20cm, ``is_obstacle: 0`` will become ``is_obstacle: 1``.
+   * Podrás visualizar los datos impresos como ``distance: 21.11  is_obstacle: 0``.
+   * Si la distancia del obstáculo frente al sensor es inferior a 20 cm, ``is_obstacle: 0`` cambiará a ``is_obstacle: 1``.
 
     .. image:: img/ar_ultrasonic.png
 

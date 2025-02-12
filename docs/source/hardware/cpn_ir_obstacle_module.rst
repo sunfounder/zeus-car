@@ -1,58 +1,57 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Únete a nosotros y sumérgete en el fascinante mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
     **Why Join?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Expert Support**: Resuelve problemas postventa y supera desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Learn & Share**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Exclusive Previews**: Sé el primero en conocer los anuncios de nuevos productos y obtener adelantos exclusivos.
+    - **Special Discounts**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Festive Promotions and Giveaways**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-IR Obstacle Avoidcance Module
-=======================================
+Módulo de evitación de obstáculos por infrarrojos (IR)
+===========================================================
 
 .. image:: img/ir_avoid.png
 
-* **GND**: Ground Input
-* **+**: 3.3 to 5V DC Supply Input
-* **Out**: Signal output pin, default is high and output low when obstacle is detected
-* **EN**: Module enable pin. When it is low, the module is working and connected to GND by jumper cap by default.
+* **GND**: Conexión a tierra.
+* **+**: Entrada de alimentación de 3.3V a 5V DC.
+* **Out**: Pin de salida de señal. Por defecto, se encuentra en alto y cambia a bajo cuando se detecta un obstáculo.
+* **EN**: Pin de habilitación del módulo. Cuando está en nivel bajo, el módulo está activado. Por defecto, está conectado a GND mediante un puente de conexión.
 
+Este es un módulo común de evitación de obstáculos por infrarrojos, que utiliza un par de componentes emisores y receptores de IR. Básicamente, el emisor emite luz infrarroja, y cuando un obstáculo se encuentra en la dirección de detección, la luz infrarroja se refleja y es captada por el receptor. En ese momento, el indicador LED se enciende y, tras el procesamiento del circuito, se genera una señal de salida en nivel bajo.
 
-This is a common IR obstacle avoidance module that uses a pair of IR transmitting and receiving components. Basically, the transmitter emits infrared light, and when the detection direction encounters an obstacle, the infrared light is back and received by the receiver tube. At this time, the indicator lights up. After circuit processing, it outputs a low level signal.
+El módulo tiene un rango de detección de 2 a 40 cm, con una excelente capacidad de resistencia a interferencias. Como la reflectividad varía según el color del objeto detectado, los objetos más oscuros (cercanos al negro) reducen la distancia de detección. En una pared blanca, el rango efectivo de detección es de **2 a 30 cm**.
 
-Sensing distance 2-40cm, with excellent anti-interference ability. There are different reflectivity levels in different colors of objects, so the darker the object, the closer to black the detection distance is short. The 2-30cm range of this sensor is detected against a white wall.
-
-When the enable pin is at a low level, the module works. As soon as the jumper cap is plugged in, the EN pin is connected to GND, and the module is always working. If you want to control the EN pin by code, you need to remove the jumper cap.
+Cuando el pin de habilitación (EN) está en bajo, el módulo está operativo. Si el puente de conexión está insertado, el pin EN queda conectado a GND y el módulo permanecerá siempre activo. Para controlar el **EN** mediante código, es necesario retirar el puente de conexión.
 
 .. image:: img/ir_avoid_cap.png
 
-**Adjust the detection distance**
+**Ajuste de la distancia de detección**
 
-Due to the different light environment, the factory-set detection distance may not be applicable, so you need to adjust its actual detection distance before use.
+Debido a las variaciones en las condiciones de iluminación, la distancia de detección preconfigurada de fábrica puede no ser adecuada para todos los entornos, por lo que se recomienda ajustarla antes de su uso.
 
-There are two potentiometers on the module, one for adjusting the transmitting power and one for adjusting the transmitting frequency, and by adjusting these two potentiometers you can adjust its effective distance.
+El módulo cuenta con dos potenciómetros: uno para ajustar la potencia de emisión y otro para la frecuencia de emisión. Ajustando ambos, se puede modificar la distancia efectiva de detección.
 
-You can place a white obstacle in front of the module at the distance you want, adjust a potentiometer on the module until the indicator light on the module just lights up, and then repeatedly move the obstacle to see if the indicator light on the module lights up at the distance you need.
+Para calibrarlo, coloca un obstáculo blanco a la distancia deseada y ajusta uno de los potenciómetros hasta que el indicador LED del módulo se encienda. Luego, mueve el obstáculo repetidamente para verificar si el indicador LED se enciende en la distancia esperada.
 
-If in the position you need, the indicator does not light up or is a long light does not go out, you can then go to adjust another potentiometer.
+Si el indicador LED no se enciende en la posición deseada, o permanece encendido constantemente sin apagarse, ajusta el otro potenciómetro hasta obtener la calibración correcta.
 
 .. image:: ../get_started/img/zeus_ir_avoid.jpg
 
-**Features**
+**Características**
 
-* operating voltage: 3.3 V to 5 V
-* output: digital (on/off)
-* detection threshold: adjustable by 2 potentiometers
-* distance range: 2 to 40 cm
-* adjustment R5: frequency adjustment 38 kHz (already optimized)
-* adjustment R6: IR LED duty cycle adjustment (already optimized)
-* operating temperature: -10 °C to +50 °C
-* effective angle: 35°
-* I/O interface: 4 wire interface (- / + / S / EN)
-* dimensions: 45 x 16 x 10 mm
-* weight: 9 g 
+* Voltaje de operación: 3.3V a 5V
+* Salida: digital (encendido/apagado)
+* Umbral de detección: ajustable mediante dos potenciómetros
+* Rango de detección: 2 a 40 cm
+* Ajuste R5: ajuste de frecuencia a 38 kHz (preconfigurado)
+* Ajuste R6: ajuste del ciclo de trabajo del LED IR (preconfigurado)
+* Temperatura de operación: -10 °C a +50 °C
+* Ángulo efectivo: 35°
+* Interfaz de I/O: conexión de 4 pines (- / + / S / EN)
+* Dimensiones: 45 x 16 x 10 mm
+* Peso: 9 g

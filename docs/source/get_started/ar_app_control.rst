@@ -1,152 +1,152 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Explora más a fondo Raspberry Pi, Arduino y ESP32 junto con otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Acceso exclusivo**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _ar_app_control:
 
-17. APP Control
-=====================
+17. Control mediante APP
+============================
 
-In the previous project we simply viewed the footage taken by the camera and used the AI detection function in the SunFounder Controller.
+En el proyecto anterior, solo visualizamos las imágenes capturadas por la cámara y utilizamos la función de detección de IA en la aplicación SunFounder Controller.
 
-In this project, we will try to control the movement and direction of the Zeus Car using the joystick widget in the app, so now let's see how it works.
+En este proyecto, intentaremos controlar el movimiento y la dirección del Zeus Car usando el widget de joystick en la aplicación. Veamos cómo funciona.
 
 
 .. note::
-    Please install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
+    Instala `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ desde **APP Store (iOS)** o **Google Play (Android)**.
 
 
-**How to do?**
+**¿Cómo hacerlo?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM y la placa Arduino comparten los mismos pines RX (recepción) y TX (transmisión). Por lo tanto, cuando cargues código, primero debes desconectar la ESP32-CAM para evitar conflictos o posibles problemas.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
 
-#. Open the ``17_app_control.ino`` file under the path of ``zeus-car-main\examples\17_app_control``.
+#. Abre el archivo ``17_app_control.ino`` en la ruta ``zeus-car-main\examples\17_app_control``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/5d65d2b4-5ed7-4d21-ba3b-02529ee8dd6c/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
+#. Una vez que el código se haya cargado correctamente, puedes volver a conectar la ESP32-CAM y mover el interruptor de encendido a la posición ON para iniciar el Zeus Car.
 
     .. image:: img/plug_esp32_cam.jpg
 
-#. Toggle the Upload Switch to the side of Run (right side on this diagram) to start the ESP32 CAM. 
+#. Cambia el interruptor de carga a la posición de ejecución (lado derecho en este diagrama) para iniciar la ESP32-CAM. 
 
     .. image:: img/zeus_run.jpg
 
-#. Press the reset button to get the Arduino board's program running again.
+#. Presiona el botón de reinicio para ejecutar nuevamente el programa en la placa Arduino.
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Connect to ``Zeus_Car`` WLAN.
+#. Conéctate a la red WLAN ``Zeus_Car``.
 
-    * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
+    * Busca ``Zeus_Car`` en la red Wi-Fi del teléfono móvil (o tableta), introduce la contraseña ``12345678`` y conéctate.
 
     .. image:: img/app_wlan.png
 
-    * The default connection mode is AP mode. So after you connect, there will be a prompt telling you that there is no Internet access on this WLAN network, please choose to continue connecting.
+    * El modo de conexión predeterminado es el modo AP. Una vez conectado, aparecerá un mensaje indicando que no hay acceso a Internet en esta red WLAN. Elige continuar con la conexión.
 
     .. image:: img/app_no_internet.png
 
-#. Create a controller.
+#. Crea un controlador.
 
-    * To add a controller on SunFounder Controller, click the **+** icon.
+    * Para añadir un controlador en SunFounder Controller, haz clic en el icono **+**.
 
         .. image:: img/app1.png
 
-    * There are preset controllers for some products in the Preset section. But here we choose a **Blank** and **Dual Stick** template.
+    * En la sección de plantillas predefinidas, selecciona **Blank** y **Dual Stick**.
 
         .. image:: img/app_blank.PNG
 
-   * Click the + icon in the J area and select a Switch widget. You may need to slide to the left to see the widget.
+   * Haz clic en el icono **+** en el área J y selecciona un widget de interruptor. Puede que necesites deslizar hacia la izquierda para verlo.
 
         .. image:: img/app_switch_wid.png
 
         .. note::
-            If you think you selected the wrong widget, you can click on it again and use the Delete button to remove it.
+            Si crees que seleccionaste el widget equivocado, puedes hacer clic en él nuevamente y usar el botón de eliminación para eliminarlo.
 
             .. image:: img/app_delete.png
 
-    * Click the Settings icon in the upper right corner to give it a name.
+    * Haz clic en el icono de configuración en la parte superior derecha para asignarle un nombre.
 
         .. image:: img/app_name_dirft.png
 
-    * Select a Joystick widget in the K and Q area and give name to both widgets. Then use the |app_save| button to save the controller.
+    * Selecciona un widget de joystick en las áreas K y Q, asígnales un nombre a ambos y guarda el controlador con el botón |app_save|.
 
     .. image:: img/app_joystick_wid.png
 
-    * The next step is to connect the Zeus Car to your device via the |app_connect| button. Wait a few seconds and ``Zeus_Car(IP)`` will appear, click on it to connect.
+    * Luego, conecta el Zeus Car a tu dispositivo a través del botón |app_connect|. Espera unos segundos y aparecerá ``Zeus_Car(IP)``, haz clic en él para conectarte.
 
         .. image:: img/app_connect.png
 
         .. note::
-            Please make sure your Wi-Fi is connected to ``Zeus_Car``, if you are not seeing the above message for a long time.
+            Asegúrate de que tu Wi-Fi esté conectado a ``Zeus_Car`` si no ves este mensaje después de un tiempo.
 
 
-#. Run the Controller.
+#. Ejecuta el controlador.
 
-    After the "Connected Successfully" message appears, click the |app_run| button, then the camera footage will appear on the app, and now you can control your Zeus Car with these widgets.
+    Una vez que aparezca el mensaje "Conectado con éxito", haz clic en el botón |app_run| para ver la transmisión en vivo de la cámara en la aplicación. Ahora podrás controlar tu Zeus Car con los widgets.
 
-    The functions of the three widgets are referenced as follows
+    Las funciones de los tres widgets son las siguientes:
 
 
-    **Move in All Directions(K)**
+    **Mover en todas las direcciones (K)**
 
-    The Zeus Car will move in the appropriate direction when you swipe the |app_move_k| widget.
+    El Zeus Car se moverá en la dirección correspondiente cuando deslices el widget |app_move_k|.
 
     .. image:: img/joystick_move.png
         :align: center
 
-    The car moves once every time you slide, so if you don't release your hand all the time, the car keeps moving.
+    El coche se mueve con cada deslizamiento. Si no sueltas el joystick, el coche continuará en movimiento.
 
     .. image:: img/zeus_move.jpg
 
 
-    **Drift Enable(J)**
+    **Habilitar derrape (J)**
 
-    Click the |app_drift_j| button to enable the drift function.
+    Haz clic en el botón |app_drift_j| para habilitar la función de derrape.
 
-    * By sliding the |app_rotate_q| widget counterclockwise, you will see Zeus Car drift to the right. Upon releasing the hand, the car will stop at its current position.
+    * Si deslizas el widget |app_rotate_q| en sentido antihorario, el Zeus Car derrapará hacia la derecha. Al soltar el joystick, el coche se detendrá en su posición actual.
 
         .. image:: img/zeus_drift_left.jpg
             :width: 600
             :align: center
 
-    * Similarly, if you slide the |app_rotate_q| widget clockwise, the Zeus Car will drift to the left and stop in the current position.
+    * De manera similar, si deslizas el widget |app_rotate_q| en sentido horario, el Zeus Car derrapará hacia la izquierda y se detendrá en su posición actual.
 
     .. image:: img/zeus_drift_right.jpg
         :width: 600
         :align: center
 
 
-    **Control the Drection(Q)**
+    **Control de dirección (Q)**
 
-    * When the |app_drift_j| button is on, the |app_rotate_q| widget is used to make the Zeus Car drift left and right.
+    * Cuando el botón |app_drift_j| está activado, el widget |app_rotate_q| se usa para hacer que el Zeus Car derrape a la izquierda o a la derecha.
 
-    * When the |app_drift_j| widget is off, the |app_rotate_q| widget is used to control the direction of the car's head.
+    * Cuando el widget |app_drift_j| está desactivado, el widget |app_rotate_q| se usa para controlar la dirección del coche.
 
-        * By sliding the |app_rotate_q| widget counterclockwise, the car will also rotate counterclockwise. Upon releasing the hand, the head of the car will back to the original direction.
+        * Si deslizas el widget |app_rotate_q| en sentido antihorario, el coche girará en esa dirección. Al soltarlo, volverá a su dirección original.
 
         .. image:: img/zeus_turn_left.jpg
             :width: 600
             :align: center
 
-        * Similarly the car will rotate clockwise with the |app_rotate_q| widget and return to the original direction when released.
+        * De la misma manera, si deslizas el widget |app_rotate_q| en sentido horario, el coche girará en esa dirección y regresará a su posición original al soltarlo.
 
         .. image:: img/zeus_turn_right.jpg
             :width: 600

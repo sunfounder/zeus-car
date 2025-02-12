@@ -1,53 +1,48 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Únete a nosotros y sumérgete en el fascinante mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
     **Why Join?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Expert Support**: Resuelve problemas postventa y supera desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Learn & Share**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Exclusive Previews**: Sé el primero en conocer los anuncios de nuevos productos y obtener adelantos exclusivos.
+    - **Special Discounts**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Festive Promotions and Giveaways**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Mecanum Wheel
+Rueda Mecanum
 ========================
 
-
-**What is Mecanum Wheel?**
+**¿Qué es una rueda Mecanum?**
 
 .. image:: img/mecanum_wheel1.png
     :width: 400
     :align: center
 
-The Mecanum Wheel is an omnidirectional wheel design for a land-based vehicle to move in any direction. 
-It is sometimes called the Swedish wheel or Ilon wheel after its inventor.
+La rueda Mecanum es un diseño de rueda omnidireccional que permite a un vehículo terrestre moverse en cualquier dirección. 
+También se conoce como rueda sueca o rueda Ilon, en honor a su inventor.
 
-The Mecanum Wheel is a form of tireless wheel, with a series of rubberized external rollers obliquely attached to the 
-whole circumference of its rim. These rollers typically each have an axis of rotation at 45° to the wheel plane and at 45° to the axle line.
+Este tipo de rueda no utiliza neumáticos tradicionales, sino que cuenta con una serie de rodillos de goma fijados de forma oblicua a lo largo de todo el perímetro de su llanta. Cada rodillo tiene un eje de rotación inclinado 45° con respecto al plano de la rueda y 45° con respecto al eje del vehículo.
 
-Each Mecanum wheel is an independent non-steering drive wheel with its own powertrain, and when spinning generates a propelling 
-force perpendicular to the roller axle, which can be vectored into a longitudinal and a transverse component in relation to the vehicle.
+Cada rueda Mecanum es una rueda motriz independiente sin necesidad de dirección, con su propio sistema de tracción. Al girar, genera una fuerza de propulsión perpendicular al eje del rodillo, que se descompone en componentes longitudinales y transversales en relación con el vehículo.
 
-The Mecanum Wheel can be divided into left-hand and right-hand wheels that are mirror images of each other, depending on the angle of 45°.
+Las ruedas Mecanum se dividen en ruedas de mano izquierda y mano derecha, que son imágenes especulares entre sí, dependiendo de la orientación de los rodillos a 45°.
 
 .. image:: img/mecanum_wheel.png
 
-
-Mecanum Wheels are usually used in groups of four, as shown in the figure below
+Normalmente, las ruedas Mecanum se utilizan en grupos de cuatro, como se muestra en la siguiente imagen:
 
 .. image:: img/zeus_car_wheel.png
     :width: 400
     :align: center
 
-**Features**
+**Características**
 
-* Diameter: 60mm
-* Thickness: 30.62mm
-* Rollers: 9pcs
-* Angle: 45°
-* Color: Black
-* Material: plastic + rubber   
-
+* Diámetro: 60 mm
+* Grosor: 30.62 mm
+* Número de rodillos: 9
+* Ángulo de los rodillos: 45°
+* Color: Negro
+* Material: Plástico + goma   

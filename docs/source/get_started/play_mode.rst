@@ -1,31 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Únete a nosotros y sumérgete en el fascinante mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
     **Why Join?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Expert Support**: Resuelve problemas postventa y supera desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Learn & Share**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Exclusive Previews**: Sé el primero en conocer los anuncios de nuevos productos y obtener adelantos exclusivos.
+    - **Special Discounts**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Festive Promotions and Giveaways**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _quick_start:
 
-Quick Play with APP or IR Remote Control
-==============================================
+Control rápido con la APP o el control remoto IR
+====================================================
 
-In **Quick Start Mode**, your Zeus Car comes pre-loaded with code on the Arduino board right from the factory. This means you can start controlling it immediately using the mobile app or the included remote control as soon as it's turned on.
+En el **Modo de Inicio Rápido**, tu Zeus Car viene con el código preinstalado en la placa Arduino directamente desde fábrica. Esto significa que puedes empezar a controlarlo de inmediato usando la aplicación móvil o el control remoto incluido en cuanto lo enciendas.
 
-* :ref:`play_app_control`: Install the SunFounder Controller app on your mobile phone or tablet. This app allows you to control the Zeus Car in all directions with a joystick widget, use speech control, and most importantly, view real-time video streaming from the car's camera.
-* :ref:`play_remote_control`: We've included a simple remote control. Just turn on the Zeus Car, and you can control it directly. This is a great option for users who want to experience the fun of controlling the Zeus Car as soon as possible.
-
+* :ref:`play_app_control`: Instala la aplicación SunFounder Controller en tu teléfono móvil o tablet. Con esta app, podrás controlar el Zeus Car en todas las direcciones mediante un joystick, utilizar el control por voz y, lo más importante, ver la transmisión de video en tiempo real desde la cámara del coche.
+* :ref:`play_remote_control`: También hemos incluido un control remoto simple. Solo enciende el Zeus Car y podrás manejarlo de inmediato. Esta es una excelente opción para quienes desean experimentar la diversión de controlar el Zeus Car lo antes posible.
 
 .. note::  
 
-    If your R3 board is programmed with other code and you wish to control the Zeus Car via the app or the remote control quickly, follow the steps in :ref:`upload_zeus_code`.
+    Si tu placa R3 ha sido programada con otro código y deseas controlar el Zeus Car mediante la app o el control remoto, sigue los pasos indicados en :ref:`upload_zeus_code`.
 
 
 .. toctree::

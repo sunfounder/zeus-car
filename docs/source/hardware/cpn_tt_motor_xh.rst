@@ -1,50 +1,49 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Únete a nosotros y sumérgete en el fascinante mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados.
 
     **Why Join?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Expert Support**: Resuelve problemas postventa y supera desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Learn & Share**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Exclusive Previews**: Sé el primero en conocer los anuncios de nuevos productos y obtener adelantos exclusivos.
+    - **Special Discounts**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Festive Promotions and Giveaways**: Participa en sorteos y promociones especiales durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _cpn_tt_motor:
 
-TT Motor
+Motor TT
 ==============
-
 
 .. image:: img/tt_motor_xh.jpg
     :width: 400
     :align: center
 
-This is a TT DC motor with a gear ratio of 1:48, it comes with 2 x 250mm wires with XH2.54-2P connector.
+Este es un motor TT DC con una relación de engranajes de 1:48, que incluye 2 cables de 250mm con un conector XH2.54-2P.
 
-You can power these motors with 3 ~ 6VDC, but of course, they will go a little faster at higher voltages.
+Se puede alimentar con un voltaje de 3 ~ 6VDC, aunque su velocidad será mayor a voltajes más altos.
 
-Note that these are very basic motors with no built-in encoder, speed control or position feedback. The voltage goes in and the spin comes out. There will be variation from motor to motor, so if you need precise motion, you'll need a separate feedback system.
+Ten en cuenta que estos son motores básicos, sin codificadores integrados, control de velocidad o retroalimentación de posición. La velocidad y el giro dependen únicamente del voltaje aplicado. Además, puede haber variaciones entre motores, por lo que si se necesita un control preciso del movimiento, será necesario implementar un sistema de retroalimentación adicional.
 
-**Features**
+**Características**
 
-* Rated Voltage: 3~6V
-* Continuous No-Load Current: 150mA +/- 10%
-* Min. Operating Speed (3V): 90+/- 10% RPM
-* Min. Operating Speed (6V): 200+/- 10% RPM
-* Stall Torque (3V): 0.4kg.cm
-* Stall Torque (6V): 0.8kg.cm
-* Gear Ratio: 1:48
-* Body Dimensions: 70 x 22.3 x 36.9mm
-* Wires: Gray and Black, 24AWG, 250mm
-* Connector: XH2.54-2P
-* Weight: 30.6g
+* Voltaje nominal: 3~6V
+* Corriente sin carga: 150mA ±10%
+* Velocidad mínima de operación (3V): 90 ±10% RPM
+* Velocidad mínima de operación (6V): 200 ±10% RPM
+* Par de arranque (3V): 0.4 kg.cm
+* Par de arranque (6V): 0.8 kg.cm
+* Relación de engranajes: 1:48
+* Dimensiones del cuerpo: 70 x 22.3 x 36.9 mm
+* Cables: Gris y negro, 24AWG, 250mm
+* Conector: XH2.54-2P
+* Peso: 30.6 g
 
-**Dimensional Drawing**
+**Dibujo dimensional**
 
-Unit: mm
+Unidad: mm
 
 .. image:: img/motor_size.jpg
 
