@@ -173,6 +173,17 @@ rst_epilog += """
 
     <a href="https://docs.sunfounder.com/projects/zeus-car/en/latest/" target="_blank">English Online-tutorials</a>
 
+.. |link_fr_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/fr/latest/" target="_blank">Didacticiels en ligne en français</a>
+
+.. |link_es_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/es/latest/" target="_blank">Tutoriales en línea en español</a>
+
+.. |link_it_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/zeus-car/it/latest/" target="_blank">Tutorial online in italiano</a>
 
 
 .. |link_download_arduino| raw:: html
@@ -223,11 +234,11 @@ rst_epilog += """
 
 .. |link_sf_facebook| raw:: html
 
-    <a href="https://bit.ly/raphaelkit" target="_blank">here</a>
+    <a href="https://bit.ly/raphaelkit" target="_blank">Qui</a>
 
 .. |link_Zeus_Car| raw:: html
 
-    <a href="https://www.sunfounder.com/products/sunfounder-zeus-car-robot-car-kit-compatible-with-arduino-uno-r3?_pos=1&_sid=10355f713&_ss=r" target="_blank">Purchase Link for Zeus Car</a>
+    <a href="https://www.sunfounder.com/products/sunfounder-zeus-car-robot-car-kit-compatible-with-arduino-uno-r3?_pos=1&_sid=10355f713&_ss=r" target="_blank">Link di acquisto per Zeus Car</a>
 
 .. |link_Robot_Car_Kit| raw:: html
 

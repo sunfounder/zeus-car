@@ -1,64 +1,62 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di SunFounder Raspberry Pi, Arduino ed ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni speciali per le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _ar_grayscale:
 
-13. Grayscale
-==============================
+13. Sensore di Scala di Grigi
+===============================
 
-In this project, you will learn how to read and calibrate the Omni Grayscale Module on the bottom of the Zeus Car.
+In questo progetto, imparerai a leggere e calibrare il modulo Omni Grayscale posizionato sul fondo della Zeus Car.
 
-**How to do?**
+**Come fare?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione). Pertanto, prima di caricare il codice, scollega la ESP32-CAM per evitare conflitti o problemi.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
 
-#. Open the ``13_hc165_and_grayscale.ino`` file under the path of ``zeus-car-main\examples\13_hc165_and_grayscale``.
+#. Apri il file ``13_hc165_and_grayscale.ino`` nel percorso ``zeus-car-main\examples\13_hc165_and_grayscale``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/1c34354c-dd61-4e86-9b99-eccc93e9293f/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Dopo aver caricato con successo il codice, sposta l'interruttore di alimentazione su ON per avviare la Zeus Car.
 
     .. note::
-        Do not unplug the USB in this step, because you need to check the data of the Omni Grayscale Module on your computer.
+        Non scollegare il cavo USB in questo passaggio, poiché è necessario controllare i dati del modulo Omni Grayscale sul computer.
 
-#. Open the serial monitor and make sure the current baud rate is set to 115200. It is recommended to click on the **Toggle Autoscroll** icon so that you can see the latest printed data.
+#. Apri il monitor seriale e assicurati che la velocità di trasmissione (baud rate) sia impostata su 115200. Si consiglia di cliccare sull'icona **Toggle Autoscroll** per visualizzare sempre i dati più recenti.
 
     .. image:: img/ar_grayscale.png
 
-    * Turn the car over and you will be able to see the Serial Monitor print out ``data: 11111111``.
-    * If you cover one of the probes on the module with your hand, you will see the value in the corresponding position change to ``0``.
-    * For example, if you cover the ``U11`` probe, you will see ``data: 01111111``.
+    * Capovolgi l’auto e osserva i dati stampati sul monitor seriale. Dovresti vedere ``data: 11111111``.
+    * Coprendo uno dei sensori sul modulo con la mano, vedrai il valore nella posizione corrispondente cambiare in ``0``.
+    * Ad esempio, coprendo il sensore ``U11``, il monitor seriale mostrerà ``data: 01111111``. 
 
+#. Calibrare il modulo Omni Grayscale.
 
-#. Calibrate the Omni Grayscale module.
+    Poiché il valore della scala di grigi può variare a seconda del tipo di pavimentazione, la soglia preimpostata in fabbrica potrebbe non essere adeguata per il tuo ambiente. Per questo motivo, è necessario calibrare il modulo prima dell’uso. Si consiglia di eseguire una nuova calibrazione ogni volta che il colore del pavimento cambia significativamente.
 
-    Since each subfloor has different grayscale values, the factory-set grayscale threshold may not be appropriate for your current environment, so you will need to calibrate this module before use. It is recommended that you need to calibrate it whenever the floor color changes a lot.
-
-    * Place the Zeus Car on white surface and turn the potentiometer until the gray sensor light is just illuminated.
+    * Posiziona la Zeus Car su una superficie bianca e regola il potenziometro finché il LED del sensore di grigio si illumina appena.
 
         .. image:: img/zeus_line_calibration.jpg
 
-    * Now let the two greyscale sensors on the side be located just between the black line and white surface, and slowly turn the potentiometer until the signal indicator just goes off.
+    * Ora posiziona i due sensori di grigio laterali tra la linea nera e la superficie bianca e regola lentamente il potenziometro finché l’indicatore del segnale non si spegne.
 
         .. image:: img/zeus_line_calibration1.jpg
 
-    * You can move repeatedly over the the black line and white surface to make sure that the lights of the greyscale sensor are off when they are between the the black line and white surface and on when they are on the white surface, indicating that the module is successfully calibrated.
-
+    * Muovi ripetutamente il veicolo tra la linea nera e la superficie bianca per verificare che il LED del sensore si spenga quando è tra le due aree e si illumini quando è sulla superficie bianca. Se il comportamento è corretto, la calibrazione è stata eseguita con successo.

@@ -1,25 +1,25 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di SunFounder Raspberry Pi, Arduino ed ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni speciali per le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
-Get Started
+Iniziamo
 =====================
 
-We have set two modes for Zeus Car, the hands-on play mode and the programming mode.
+Abbiamo impostato due modalità per la Zeus Car: la modalità di gioco manuale e la modalità di programmazione.
 
-* Hands-on :ref:`quick_start` means you just need to turn on the Zeus Car after assembling, and then you can directly control this car with the remote control or APP to make it achieve various cool functions. Because we have pre-uploaded the code to the Arduino board at the factory.
+* La modalità Hands-on :ref:`quick_start` ti permette di controllare direttamente la Zeus Car con il telecomando o l'APP subito dopo averla assemblata, senza bisogno di caricare alcun codice. Questo perché il codice è stato pre-caricato nella scheda Arduino direttamente in fabbrica.
 
-* The :ref:`programming_arduino` is that after you have experienced the various cool functions of Zeus Car, you can understand the principle of implementing each function individually according to each project, and then modify it according to your own ideas to achieve the functions you want.
+* La modalità Programmazione :ref:`programming_arduino` è pensata per chi, dopo aver esplorato le funzioni preimpostate della Zeus Car, desidera comprenderne il funzionamento e modificarne il codice per realizzare nuove funzionalità personalizzate.
 
 .. toctree::
     :maxdepth: 2

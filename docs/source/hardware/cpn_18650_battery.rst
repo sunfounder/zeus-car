@@ -1,41 +1,41 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e giveaway festivi**: Partecipa a omaggi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
-18650 Battery
+
+Batteria 18650
 =================
 
 .. image:: img/2battery.jpg
     :width: 300
     :align: center
 
-* **VCC**: Battery positive terminal, here there are two sets of VCC and GND is to increase the current and reduce the resistance.
-* **Middle**: To balance the voltage between the two cells and thus protect the battery.
-* **GND**: Negative battery terminal.
+* **VCC**: Terminale positivo della batteria. Sono presenti due set di VCC e GND per aumentare la corrente e ridurre la resistenza.
+* **Middle**: Bilancia la tensione tra le due celle per proteggere la batteria.
+* **GND**: Terminale negativo della batteria.
+
+Questo è un pacco batteria personalizzato realizzato da SunFounder, composto da due batterie 18650 con una capacità di 2200mAh. Il connettore è di tipo PH2.0-5P e può essere caricato direttamente dopo essere stato inserito nello shield della Zeus Car.
 
 
-This is a custom battery pack made by SunFounder consisting of two 18650 batteries with a capacity of 2200mAh. The connector is PH2.0-5P, which can be charged directly after being inserted into the Zeus Car shield.
+**Pinout**
 
 
-**Pins Out**
+**Caratteristiche**
 
-
-**Features**
-
-* Battery charge: 5V/2A
-* Battery output: 5V/5A
-* Battery capacity: 3.7V 2000mAh x 2
-* Battery life: 90min
-* Battery charge time: 130min
-* Connector: PH2.0, 5P
+* Ricarica della batteria: 5V/2A
+* Uscita della batteria: 5V/5A
+* Capacità della batteria: 3.7V 2000mAh x 2
+* Autonomia della batteria: 90 min
+* Tempo di ricarica: 130 min
+* Connettore: PH2.0, 5P
 

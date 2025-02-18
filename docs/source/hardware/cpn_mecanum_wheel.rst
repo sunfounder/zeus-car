@@ -1,53 +1,52 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e giveaway festivi**: Partecipa a omaggi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
-Mecanum Wheel
+
+Ruota Mecanum
 ========================
 
-
-**What is Mecanum Wheel?**
+**Cos'è una Ruota Mecanum?**
 
 .. image:: img/mecanum_wheel1.png
     :width: 400
     :align: center
 
-The Mecanum Wheel is an omnidirectional wheel design for a land-based vehicle to move in any direction. 
-It is sometimes called the Swedish wheel or Ilon wheel after its inventor.
+La ruota Mecanum è un tipo di ruota omnidirezionale progettata per consentire a un veicolo terrestre di muoversi in qualsiasi direzione. 
+È talvolta chiamata ruota svedese o ruota Ilon, dal nome del suo inventore.
 
-The Mecanum Wheel is a form of tireless wheel, with a series of rubberized external rollers obliquely attached to the 
-whole circumference of its rim. These rollers typically each have an axis of rotation at 45° to the wheel plane and at 45° to the axle line.
+La ruota Mecanum è composta da una serie di rulli esterni in gomma disposti obliquamente lungo tutta la circonferenza del cerchione. 
+Questi rulli sono montati con un angolo di 45° rispetto al piano della ruota e 45° rispetto all'asse della ruota.
 
-Each Mecanum wheel is an independent non-steering drive wheel with its own powertrain, and when spinning generates a propelling 
-force perpendicular to the roller axle, which can be vectored into a longitudinal and a transverse component in relation to the vehicle.
+Ogni ruota Mecanum è una ruota motrice indipendente senza sterzo, con un proprio sistema di trasmissione. Quando ruota, genera una forza di propulsione perpendicolare all'asse del rullo, che può essere scomposta in una componente longitudinale e una trasversale rispetto al veicolo.
 
-The Mecanum Wheel can be divided into left-hand and right-hand wheels that are mirror images of each other, depending on the angle of 45°.
+Le ruote Mecanum possono essere destrorse o sinistrorse, a seconda dell'angolazione dei rulli di 45°, e sono speculari tra loro.
 
 .. image:: img/mecanum_wheel.png
 
 
-Mecanum Wheels are usually used in groups of four, as shown in the figure below
+Le ruote Mecanum vengono solitamente utilizzate in gruppi di quattro, come mostrato nell'immagine sottostante:
 
 .. image:: img/zeus_car_wheel.png
     :width: 400
     :align: center
 
-**Features**
 
-* Diameter: 60mm
-* Thickness: 30.62mm
-* Rollers: 9pcs
-* Angle: 45°
-* Color: Black
-* Material: plastic + rubber   
+**Caratteristiche Tecniche**
 
+* Diametro: 60 mm
+* Spessore: 30,62 mm
+* Numero di rulli: 9
+* Angolazione: 45°
+* Colore: Nero
+* Materiale: plastica + gomma   

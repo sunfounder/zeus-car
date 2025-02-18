@@ -1,21 +1,21 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di SunFounder Raspberry Pi, Arduino ed ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni speciali per le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
-5. Remote Control
+5. Controllo Remoto
 ======================
 
-In this project, you will learn how to control the Zeus Car with the remote control.
+In questo progetto, imparerai a controllare la Zeus Car utilizzando il telecomando.
 
 .. raw:: html
 
@@ -29,44 +29,44 @@ In this project, you will learn how to control the Zeus Car with the remote cont
     <br/> <br/>  
 
 
-**How to do?**
+**Come fare?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione). Pertanto, prima di caricare il codice, scollega la ESP32-CAM per evitare conflitti o problemi.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
 
-#. Open the ``5_remote_control.ino`` file under the path of ``zeus-car-main\examples\5_remote_control``.
+#. Apri il file ``5_remote_control.ino`` nel percorso ``zeus-car-main\examples\5_remote_control``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/8e74cf1b-9100-4e4d-ab63-f21ae40232a5/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, turn the power switch to ON to start the Zeus Car. 
+#. Dopo aver caricato con successo il codice, sposta l'interruttore di alimentazione su ON per avviare la Zeus Car.
 
-#. Then use the 1~9 on the remote control to control the car in 8 directions. 
+#. Ora puoi utilizzare i tasti numerici da 1 a 9 sul telecomando per controllare l’auto in 8 direzioni.
 
     .. image:: img/ar_remote_control.png
         :width: 600
         :align: center
 
-#. After pressing a key, the Zeus Car will keep moving until you press |ir_power| or the number key 5.
+#. Dopo aver premuto un tasto, la Zeus Car continuerà a muoversi fino a quando non premerai |ir_power| o il tasto numero 5.
 
     .. image:: img/zeus_move.jpg
         :width: 600
         :align: center
 
 
-#. When you press |ir_return| once, the car will rotate counterclockwise with the body as the center and will stop until you press |ir_power| or the number key 5.
+#. Premendo una volta |ir_return|, la Zeus Car ruoterà in senso antiorario attorno al proprio asse e si fermerà solo quando premerai |ir_power| o il tasto numero 5.
 
     .. image:: img/zeus_turn_left.jpg
         :width: 600
         :align: center
 
-#. Similarly, pressing |ir_usd| once will make the car rotate clockwise, and then it will stop until you press |ir_power| or the number key 5.
+#. Allo stesso modo, premendo |ir_usd|, la Zeus Car ruoterà in senso orario e si fermerà solo quando premerai |ir_power| o il tasto numero 5.
 
     .. image:: img/zeus_turn_right.jpg
         :width: 600
-        :align: center 
+        :align: center

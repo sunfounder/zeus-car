@@ -1,50 +1,51 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Unisciti a noi per approfondire la conoscenza di Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara & Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Accedi in anticipo agli annunci dei nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a eventi speciali e concorsi con premi.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
-|link_Robot_Car_Kit| - SunFounder Arduino Robot Car Kit
+|link_Robot_Car_Kit| - Kit Robot Arduino SunFounder
 ===========================================================
 
 * |link_Zeus_Car|
 
-Thanks for choosing our |link_Robot_Car_Kit|.
+Grazie per aver scelto il nostro |link_Robot_Car_Kit|.
 
 .. note::
-    This document is available in the following languages.
+    Questo documento è disponibile nelle seguenti lingue:
 
         * |link_german_tutorials|
         * |link_jp_tutorials|
         * |link_en_tutorials|
+        * |link_fr_tutorials|
+        * |link_es_tutorials|
+        * |link_it_tutorials|
     
-    Please click on the respective links to access the document in your preferred language.
+    Clicca sui link corrispondenti per accedere alla documentazione nella lingua desiderata.
 
 .. image:: img/zeus_car.jpg
     :width: 500
     :align: center
 
-The **Zeus Car** is an educational Arduino-based robot kit designed to spark creativity and hands-on learning in electronics, robotics, and coding. With its 360° omnidirectional movement, FPV camera (via ESP32 CAM), obstacle avoidance, line tracking, IR remote control, and vibrant lighting effects, the Zeus Car offers an engaging and intuitive way to explore cutting-edge tech while having fun.
+Il **Zeus Car** è un kit robot educativo basato su Arduino, progettato per stimolare la creatività e l’apprendimento pratico nell’elettronica, nella robotica e nella programmazione. Grazie al suo movimento omnidirezionale a 360°, alla fotocamera FPV (tramite ESP32 CAM), all’evitamento degli ostacoli, al tracciamento delle linee, al controllo remoto IR e agli effetti luminosi vivaci, Zeus Car offre un modo coinvolgente e intuitivo per esplorare la tecnologia avanzata divertendosi.
 
-Choose your path based on your interests and skill level:
+Scegli il tuo percorso in base ai tuoi interessi e al tuo livello di competenza:
 
-* :ref:`quick_start` – If you want to jump right in and start operating the Zeus Car immediately using the mobile app or the IR remote control, this section is for you. Perfect for beginners and anyone who wants instant, hassle-free control.
+* :ref:`quick_start` – Se desideri iniziare subito e controllare il Zeus Car utilizzando l'app mobile o il telecomando IR, questa sezione è perfetta per te. Ideale per principianti e per chiunque voglia un controllo immediato e senza complicazioni.
 
-* :ref:`programming_arduino` – For those who wish to delve deeper into the code, understand how each function works, and customize the Zeus Car with Arduino programming, this section provides in-depth knowledge and opportunities for experimentation.
+* :ref:`programming_arduino` – Per chi desidera approfondire il codice, comprendere il funzionamento di ogni funzione e personalizzare il Zeus Car con la programmazione Arduino, questa sezione offre conoscenze dettagliate e opportunità di sperimentazione.
 
-.. * :ref:`programming_scratch` – Prefer a graphical, drag-and-drop approach to programming? Explore this section to use Scratch, making it easy to create interactive projects and control the Zeus Car without writing code manually.
+.. * :ref:`programming_scratch` – Preferisci un approccio grafico e intuitivo alla programmazione? Esplora questa sezione per utilizzare Scratch, che ti permette di creare progetti interattivi e controllare il Zeus Car senza dover scrivere codice manualmente.
 
-If you have any questions, feel free to email us at **service@sunfounder.com**, and we’ll respond as soon as possible.
-
-
+Se hai domande, non esitare a contattarci via email all'indirizzo **service@sunfounder.com**. Ti risponderemo il prima possibile.
 
 .. toctree::
     :maxdepth: 2
@@ -53,9 +54,8 @@ If you have any questions, feel free to email us at **service@sunfounder.com**, 
     get_started/get_started
     hardware/hardware
     faq
-    
 
-**Copyright Notice**
 
-All contents including but not limited to texts, images, and code in this manual are owned by the SunFounder Company. You should only use it for personal study,investigation, enjoyment, or other non-commercial or nonprofit purposes, under therelated regulations and copyrights laws, without infringing the legal rights of the author and relevant right holders. For any individual or organization that uses these for commercial profit without permission, the Company reserves the right to take legal action.
+**Avviso di Copyright**
 
+Tutti i contenuti di questo manuale, inclusi testi, immagini e codice, sono di proprietà della SunFounder Company. È consentito l’uso esclusivamente per studio personale, ricerca, svago o altre finalità non commerciali e senza scopo di lucro, nel rispetto delle normative e delle leggi sul copyright, senza violare i diritti legali dell’autore e dei titolari dei diritti. Qualsiasi individuo o organizzazione che utilizzi questi contenuti per scopi commerciali senza autorizzazione sarà soggetto a possibili azioni legali da parte della società.

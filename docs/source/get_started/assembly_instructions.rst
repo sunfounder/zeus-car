@@ -1,43 +1,42 @@
+.. note:: 
+
+    Ciao, benvenuto nella Community di appassionati di SunFounder Raspberry Pi, Arduino ed ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
+
+    **Perché unirsi?**
+
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni speciali per le festività.
+
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
+
+Assemblaggio della Zeus Car
+=============================
+
+Ecco le istruzioni di assemblaggio della Zeus Car in formato PDF, identiche al manuale pieghevole fornito con il kit. Se trovi difficoltà a leggere alcune parti del manuale cartaceo, puoi scaricare questa versione PDF.
+
+:download:`(PDF) Istruzioni di Assemblaggio Zeus Car <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`
+
+**Video Tutorial di Assemblaggio**
+
+Questo video ti guiderà passo dopo passo nel processo di assemblaggio del tuo robot.
+
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
-
-    **Why Join?**
-
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
-
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
-
-Assemble the Car
-=========================
-
-Here is the assembly instructions for the Zeus Car, PDF version, which is the same as the foldout you have. If you think there is something on the foldout that you can't read, you can download this PDF.
-
-:download:`(PDF)Zeus Car Assemble Instruction <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0110v10-a0000941-zeus-car.pdf>`
-
-**Assembly Tutorial Video**
-
-This video will walk you through the process of assembling your robot from scratch.
-
-.. note::
-
-    The assembly steps in the video may differ slightly from the printed instructions you have. Please prioritize following the printed instructions. If any steps are unclear, you can refer to the video for further clarification.
+    I passaggi mostrati nel video potrebbero differire leggermente dalle istruzioni stampate che hai ricevuto. Ti consigliamo di seguire prioritariamente le istruzioni stampate. Se qualche passaggio non ti è chiaro, puoi consultare il video per ulteriori dettagli.
 
 
-In this tutorial, you will learn:
+In questo tutorial imparerai:
 
-* **Preparation**: We'll introduce you to all the tools and parts needed, ensuring you're fully equipped before starting the assembly.
+* **Preparazione**: Ti presenteremo tutti gli strumenti e i componenti necessari, assicurandoci che tu abbia tutto il necessario prima di iniziare l’assemblaggio.
 
-* **Assembly Steps**: We'll demonstrate each assembly step in a systematic manner.
+* **Fasi di Assemblaggio**: Mostreremo ogni fase di assemblaggio in modo sistematico e chiaro.
 
-* **Tips and Considerations**: Throughout the process, we'll share essential tips and tricks to help you avoid common mistakes and ensure your car operates smoothly.
+* **Consigli e Suggerimenti**: Durante il processo, condivideremo suggerimenti essenziali per aiutarti a evitare errori comuni e garantire un funzionamento ottimale del tuo robot.
 
-* **Testing and Calibration**: Once assembly is complete, we'll walk you through a brief test of this car to ensure that your assembly is free of issues.
-
+* **Test e Calibrazione**: Una volta completato l’assemblaggio, eseguiremo un breve test per verificare che tutto sia montato correttamente e che la Zeus Car funzioni senza problemi.
 
 .. raw:: html
 

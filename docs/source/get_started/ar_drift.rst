@@ -1,54 +1,53 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di SunFounder Raspberry Pi, Arduino ed ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni speciali per le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
 4. Drift
 ======================
 
-In this project, you will learn how to make the Zeus Car drift.
+In questo progetto, imparerai a far derapare la Zeus Car.
 
 .. image:: img/zeus_drift_left.jpg
 
-**How to do?**
+**Come fare?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione). Pertanto, prima di caricare il codice, scollega la ESP32-CAM per evitare conflitti o problemi.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``4_drift.ino`` file under the path of ``zeus-car-main\examples\4_drift``.
+#. Apri il file ``4_drift.ino`` nel percorso ``zeus-car-main\examples\4_drift``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/9ca66dad-7258-4868-a8a4-3bd512bacd72/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
-#. Zeus Car will now move forward for 0.5 seconds, then drift 90 degrees left, and so forth. You can try changing 45 (rot) to another value or a negative number to see how the drift angle and direction change.
+#. Dopo aver caricato con successo il codice, sposta l'interruttore di alimentazione su ON per avviare la Zeus Car.
+#. Ora la Zeus Car avanzerà per 0,5 secondi, poi eseguirà una derapata di 90 gradi a sinistra e continuerà così. Puoi provare a modificare il valore 45 (``rot``) con un altro valore o un numero negativo per osservare come cambiano l’angolo e la direzione della derapata.
 
 
-**How it works?**
+**Come funziona?**
 
-The drift of the Zeus Car is achieved by adding the drift parameter ``drift`` to the move function ``carMove()``.
+La derapata della Zeus Car è ottenuta aggiungendo il parametro ``drift`` alla funzione di movimento ``carMove()``.
 
 .. code-block::
 
     void carMove(int16_t angle, int8_t power, int8_t rot, bool drift)
 
-* ``angle``: The direction you want the car to move. use the head of the car as the 0 degree and increase the angle in counterclockwise direction.
-* ``power``: The moving power, the range is -100% ~ 100%. When ``power`` is positive, the car moves forward, and vice versa, it moves backward.
-* ``rot``: Rotation power, the range is -100% ~ 100%. When ``rot`` is positive, the car turn counterclockwise, and vice versa.
-* ``drift``: Default is false, when it is true, drift mode is enabled.
+* ``angle``: La direzione in cui vuoi far muovere l'auto. L’orientamento della testa dell’auto corrisponde a 0 gradi e l’angolo aumenta in senso antiorario.
+* ``power``: La potenza di movimento, con un intervallo compreso tra -100% e 100%. Se ``power`` è positivo, l’auto si muove in avanti; se negativo, si muove all’indietro.
+* ``rot``: La potenza di rotazione, con un intervallo compreso tra -100% e 100%. Se ``rot`` è positivo, l’auto ruota in senso antiorario; se negativo, ruota in senso orario.
+* ``drift``: Impostato su ``false`` per impostazione predefinita. Se impostato su ``true``, abilita la modalità drift.
 
-So the different ``power`` and ``rot`` values will change the drift angle and direction of the Zeus Car.
+Pertanto, variando i valori di ``power`` e ``rot``, puoi modificare l’angolo e la direzione della derapata della Zeus Car.

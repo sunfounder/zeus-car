@@ -1,188 +1,188 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di Appassionati di Raspberry Pi, Arduino e ESP32 di SunFounder su Facebook! Esplora più a fondo il mondo di Raspberry Pi, Arduino ed ESP32 insieme ad altri entusiasti.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri ultimi prodotti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e offerte speciali durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti subito!
 
 FAQ
 ================
 
-How to Change Wi-Fi Channel?
+Come Cambiare il Canale Wi-Fi?
 ----------------------------------
 
-The 2.4GHz Wi-Fi band has channels ranging from 1 to 13. ESP32 supports channels 1 to 11. Other devices operating on the same channel may cause interference, leading to connection issues. To mitigate this, you can try changing the channel. By default, the channel is set to 1. When selecting a new channel, it’s recommended to skip 1-2 channels at a time. For example, if the current channel is 1, try channel 3 first, and if the signal is still poor, proceed to channel 5.
+La banda Wi-Fi a 2.4GHz dispone di canali da 1 a 13, ma l’ESP32 supporta solo i canali da 1 a 11. La presenza di altri dispositivi operanti sullo stesso canale potrebbe causare interferenze, compromettendo la connessione. Per ridurre questo problema, puoi provare a cambiare il canale. Il canale predefinito è impostato su 1. Si consiglia di saltare 1-2 canali alla volta quando si seleziona un nuovo canale. Ad esempio, se il canale attuale è 1, prova prima il canale 3 e, se il segnale rimane debole, passa al canale 5.
 
 .. note::
 
-   ESP32 CAM firmware version 1.4.1 or above is required to change channels. Refer to :ref:`update_firmware` for more details.
+   È richiesta la versione firmware 1.4.1 o superiore per modificare il canale Wi-Fi. Consulta :ref:`update_firmware` per maggiori dettagli.
 
-#. Keep the ESP32 CAM inserted into the adapter, then power on the Zeus Car.
+#. Mantieni l'ESP32 CAM inserito nell'adattatore e accendi lo Zeus Car.
 
    .. image:: img/plug_esp32_cam.jpg
       :width: 400
 
-#. To activate the ESP32 CAM, move the mode switch to the **Run** position, and press the **Reset** button to reboot the R3 board.
+#. Per attivare l'ESP32 CAM, sposta l'interruttore di modalità sulla posizione **Run** e premi il pulsante **Reset** per riavviare la scheda R3.
 
    .. image:: img/zeus_run123.jpg
       :width: 600
 
-#. Find ``Zeus Car`` on the list of available networks on your mobile device (tablet or smartphone), enter the password ``12345678``, and connect to it.
+#. Trova ``Zeus Car`` nell'elenco delle reti Wi-Fi disponibili sul tuo dispositivo mobile (tablet o smartphone), inserisci la password ``12345678`` e connettiti.
 
    .. note::
 
-        * The current connection is to the Zeus Car hotspot, so there is no internet access. If prompted to switch networks, please choose "Stay connected".
+        * La connessione attuale è all'hotspot di Zeus Car, quindi non è disponibile l'accesso a Internet. Se viene richiesto di passare a un'altra rete, seleziona "Rimani connesso".
 
    .. image:: img/app_wlan.png
         :width: 500
 
-#. Open a web browser on your mobile device and navigate to ``http://192.168.4.1`` to access the ESP32 CAM OTA update page.
+#. Apri un browser web sul tuo dispositivo e vai all’indirizzo ``http://192.168.4.1`` per accedere alla pagina di aggiornamento OTA dell'ESP32 CAM.
 
    .. image:: img/faq_cam_ota_141.jpg
       :width: 400
 
-#. Under the **Wi-Fi AP Channel** section, select a different channel. 
+#. Nella sezione **Wi-Fi AP Channel**, seleziona un canale diverso.
 
-   * The default channel is 1. When selecting a new channel, skip 1-2 channels at a time (e.g., from channel 1 to 3, and if needed, to 5).  
-   * Click the **Confirm** button to save the changes.
+   * Il canale predefinito è 1. Si consiglia di saltare 1-2 canali alla volta (ad esempio, da 1 a 3, poi a 5 se necessario).  
+   * Clicca su **Confirm** per salvare le modifiche.
 
    .. image:: img/faq_cam_ota_channel.png
       :width: 400
 
-#. A confirmation popup will appear, prompting you to reset the device. Click **Confirm**.
+#. Verrà visualizzato un messaggio di conferma che richiede di riavviare il dispositivo. Clicca su **Confirm**.
 
    .. image:: img/faq_cam_ota_reset.jpg
       :width: 400
-   
-#. Press the **Reset** button to reboot the device. The Zeus Car is now ready for normal operation.
+
+#. Premi il pulsante **Reset** per riavviare il dispositivo. Zeus Car sarà ora pronto per l'uso normale.
 
    .. image:: img/zeus_run123.jpg
       :width: 600
 
 .. _update_firmware:
 
-How to Update Firmware for ESP32 CAM
------------------------------------------
+Come Aggiornare il Firmware dell'ESP32 CAM
+------------------------------------------------
 
-Follow these detailed steps to update the firmware for your ESP32 CAM:
+Segui questi passaggi dettagliati per aggiornare il firmware del tuo ESP32 CAM:
 
-#. Keep the ESP32 CAM inserted into the adapter, then power on the Zeus Car.
+#. Mantieni l'ESP32 CAM inserito nell'adattatore e accendi lo Zeus Car.
 
    .. image:: img/plug_esp32_cam.jpg
       :width: 400
 
-#. To activate the ESP32 CAM, move the mode switch to the **Run** position, and press the **Reset** button to reboot the R3 board.
+#. Per attivare l'ESP32 CAM, sposta l'interruttore di modalità sulla posizione **Run** e premi il pulsante **Reset** per riavviare la scheda R3.
 
    .. image:: img/zeus_run123.jpg
       :width: 600
 
-#. Find ``Zeus Car`` on the list of available networks on your mobile device (tablet or smartphone), enter the password ``12345678``, and connect to it.
+#. Trova ``Zeus Car`` nell'elenco delle reti Wi-Fi disponibili sul tuo dispositivo mobile (tablet o smartphone), inserisci la password ``12345678`` e connettiti.
 
    .. note::
 
-      * The current connection is to the Zeus Car hotspot, so there is no internet access. If prompted to switch networks, please choose "Stay connected".
+      * La connessione attuale è all'hotspot di Zeus Car, quindi non è disponibile l'accesso a Internet. Se viene richiesto di passare a un'altra rete, seleziona "Rimani connesso".
 
    .. image:: img/app_wlan.png
         :width: 500
 
-#. Click the link below to download the firmware file ``ai-camera-firmware-v1.4.1-ota.bin`` and save it to your mobile device.
+#. Clicca sul link seguente per scaricare il file firmware ``ai-camera-firmware-v1.4.1-ota.bin`` e salvalo sul tuo dispositivo.
 
-   * :download:`ESP32 CAM Firmware <https://github.com/sunfounder/ai-camera-firmware/releases/download/1.4.1/ai-camera-firmware-v1.4.1-ota.bin>`
+   * :download:`Firmware ESP32 CAM <https://github.com/sunfounder/ai-camera-firmware/releases/download/1.4.1/ai-camera-firmware-v1.4.1-ota.bin>`
 
-#. Open a web browser on your mobile device and navigate to ``http://192.168.4.1`` to access the ESP32 CAM OTA update page.
+#. Apri un browser web sul tuo dispositivo e vai all’indirizzo ``http://192.168.4.1`` per accedere alla pagina di aggiornamento OTA dell'ESP32 CAM.
 
    .. image:: img/faq_cam_ota.jpg
       :width: 400
 
-#. On the OTA page, click the button to select the firmware file.
+#. Nella pagina OTA, clicca sul pulsante per selezionare il file del firmware.
 
    .. image:: img/faq_cam_ota_choose.png
       :width: 400
 
-#. Choose the previously downloaded ``ai-camera-firmware-v1.4.1-ota.bin`` file from your device and click **OK**.
+#. Seleziona il file ``ai-camera-firmware-v1.4.1-ota.bin`` precedentemente scaricato sul tuo dispositivo e clicca su **OK**.
 
    .. image:: img/faq_cam_ota_file.png
       :width: 400
 
-#. Click the **Update** button to start the firmware update process.
+#. Clicca su **Update** per avviare il processo di aggiornamento del firmware.
 
    .. image:: img/faq_cam_ota_update.png
       :width: 400
-   
-#. Wait for the update to complete. Once the displayed version number changes to ``1.4.1``, the update is successful.
+
+#. Attendi il completamento dell'aggiornamento. Una volta che il numero di versione visualizzato cambia in ``1.4.1``, l'aggiornamento è andato a buon fine.
 
    .. image:: img/faq_cam_ota_finish.png
       :width: 400
-   
-#. After the update is complete, you can close the web browser. Press the **Reset** button to reboot the device. The ESP32 CAM is now ready for normal operation.
+
+#. Dopo l'aggiornamento, puoi chiudere il browser web. Premi il pulsante **Reset** per riavviare il dispositivo. L'ESP32 CAM sarà ora pronto per l'uso normale.
 
    .. image:: img/zeus_run123.jpg
       :width: 600
 
 .. _upload_zeus_code:
 
-How to Upload the ``zeus-car.ino`` Code?
+Come caricare il codice ``zeus-car.ino``? 
 -----------------------------------------------
 
-By default, the Zeus Car's Uno R3 board comes preloaded with the necessary firmware, allowing you to control it via APP. If your R3 board has been overwritten with other code, but you'd like to return to the default firmware and continue with the :ref:`quick_start` process, follow these steps to re-upload the code to your R3 board:
+Di default, la scheda Uno R3 dello Zeus Car viene preconfigurata con il firmware necessario, permettendoti di controllarlo tramite l'APP. Se il firmware della tua scheda R3 è stato sovrascritto con altro codice e desideri ripristinarlo per continuare con il processo :ref:`quick_start`, segui questi passaggi per ricaricare il codice sulla tua scheda R3:
 
-#. Use a USB cable to connect the Arduino to your computer. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
-   
+#. Collega l'Arduino al computer utilizzando un cavo USB. Poiché l'ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione), prima di caricare il codice è necessario scollegare l'ESP32-CAM per evitare conflitti o malfunzionamenti.
+
    .. image:: img/unplug_cam.png
         :width: 400
 
-#. Download the required firmware from the link below: 
-        
-   * :download:`R3 Board Firmware File <https://github.com/sunfounder/zeus-car/releases/download/1.4.5/zeus-car-1.4.5.zip>`
+#. Scarica il firmware necessario dal link sottostante:
 
-#. Extract the downloaded zip file, then double-click the ``update-arduino-firmware.bat`` file to run it.
+   * :download:`File del firmware per R3 Board <https://github.com/sunfounder/zeus-car/releases/download/1.4.5/zeus-car-1.4.5.zip>`
+
+#. Estrai il file ZIP scaricato, quindi fai doppio clic sul file ``update-arduino-firmware.bat`` per avviare il processo.
 
    .. image:: img/faq_firmware_file.png
 
-#. Type the corresponding number for your Zeus Car's Arduino Uno (e.g., ``1``) and press **Enter** to begin the update.
-
+#. Digita il numero corrispondente alla scheda Arduino Uno dello Zeus Car (ad esempio, ``1``) e premi **Invio** per avviare l'aggiornamento.
 
    .. note::
 
-     * If the correct COM port does not appear, or if you're unsure which one it is, disconnect other USB devices from your computer, leaving only the rover connected.  
-     * If you encounter an error like ``avrdude.exe: stk500_getsync() attempt 1 of 10: not in sync: resp=0xXX``, make sure to disconnect the ESP32-CAM as the first step.
+     * Se la porta COM corretta non appare o se non sei sicuro di quale sia, scollega gli altri dispositivi USB dal computer, lasciando collegato solo il rover.  
+     * Se riscontri un errore come ``avrdude.exe: stk500_getsync() attempt 1 of 10: not in sync: resp=0xXX``, assicurati di aver scollegato l'ESP32-CAM come primo passo.
 
    .. image:: img/faq_firmware_port.png
 
-#. After a short while, the new code will be successfully uploaded to the Uno R3 board on Zeus Car. If you fail to upload successfully after multiple attempts, you can run ``update-arduino-firmware-with-bootloader.bat``.
+#. Dopo alcuni secondi, il nuovo codice verrà caricato con successo sulla scheda Uno R3 dello Zeus Car. Se il caricamento fallisce più volte, prova ad eseguire il file ``update-arduino-firmware-with-bootloader.bat``.
 
    .. image:: img/faq_firmware_finish.png
 
 
 .. _ap_to_sta:
 
-How to Control the Zeus Car Using Your Home WiFi?
--------------------------------------------------
-By default, the Uno R3 is preloaded with code configured in APP mode. This means the Zeus Car will broadcast a hotspot, allowing you to connect your mobile device to control it via the SunFounder Controller APP.
+Come controllare lo Zeus Car tramite la rete Wi-Fi domestica?
+------------------------------------------------------------------
 
-If you prefer to control the rover using your home WiFi, follow these steps to upload the modified code to the Uno board:
+Di default, la scheda Uno R3 è preconfigurata in modalità APP. Questo significa che lo Zeus Car trasmetterà un hotspot, permettendoti di connetterti e controllarlo tramite l'app SunFounder Controller.
 
-#. Download the required files from the following link: 
+Se preferisci controllare il rover tramite la tua rete Wi-Fi domestica, segui questi passaggi per caricare il codice modificato sulla scheda Uno:
 
-   * :download:`Zeus Car Codes <https://github.com/sunfounder/zeus-car/archive/refs/heads/main.zip>`
+#. Scarica i file necessari dal seguente link:
 
-#. Refer to the installation guide: :ref:`install_arduino_ide`.
+   * :download:`Codici Zeus Car <https://github.com/sunfounder/zeus-car/archive/refs/heads/main.zip>`
 
-#. Use the **Library Manager** to install the ``SoftPWM`` and ``SunFounder AI Camera`` libraries. For detailed steps, see :ref:`ar_install_lib`.
+#. Consulta la guida all'installazione: :ref:`install_arduino_ide`.
 
-#. Navigate to the ``zeus-car-main\zeus-car`` directory and open the ``zeus-car.ino`` file.
+#. Utilizza il **Library Manager** per installare le librerie ``SoftPWM`` e ``SunFounder AI Camera``. Per i dettagli, vedi :ref:`ar_install_lib`.
+
+#. Vai alla cartella ``zeus-car-main\zeus-car`` e apri il file ``zeus-car.ino``.
 
    .. image:: img/faq_galaxy_code.png
       :width: 600
 
-#. Comment out lines of AP mode, uncomment lines of STA mode, replace ``SSID`` and ``PASSWORD`` with your home WiFi credentials.
+#. Commenta le righe della modalità AP, decommenta le righe della modalità STA e sostituisci ``SSID`` e ``PASSWORD`` con le credenziali della tua rete Wi-Fi domestica.
 
    .. code-block:: arduino
 
@@ -195,86 +195,86 @@ If you prefer to control the rover using your home WiFi, follow these steps to u
       #define SSID "xxxxxxxxxx"
       #define PASSWORD "xxxxxxxxxx"
 
-#. Use a USB cable to connect the Arduino to your computer. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
-   
+#. Collega l'Arduino al computer tramite un cavo USB. Poiché l'ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione), prima di caricare il codice è necessario scollegare l'ESP32-CAM per evitare conflitti o malfunzionamenti.
+
    .. image:: img/unplug_cam.png
         :width: 400
 
-#. Click the **Upload** button in the Arduino IDE to upload the modified code to the Uno board.
+#. Clicca sul pulsante **Upload** nell'Arduino IDE per caricare il codice modificato sulla scheda Uno.
 
    .. image:: img/faq_galaxy_upload.png
       :width: 600
 
-#. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
+#. Dopo il caricamento, puoi ricollegare l'ESP32-CAM e spostare l'interruttore di alimentazione su ON per avviare lo Zeus Car.
 
     .. image:: img/plug_esp32_cam.jpg
 
-#. To activate the ESP32 CAM, move the mode switch to the **Run** position, and press the **Reset** button to reboot the R3 board.
+#. Per attivare l'ESP32 CAM, sposta l'interruttore di modalità sulla posizione **Run** e premi il pulsante **Reset** per riavviare la scheda R3.
 
    .. image:: img/zeus_run123.jpg
       :width: 600
 
-#. Ensure your mobile device (tablet or smartphone) is connected to your home WiFi network.
+#. Assicurati che il tuo dispositivo mobile (tablet o smartphone) sia connesso alla rete Wi-Fi domestica.
 
    .. image:: img/faq_connect_wifi.jpg
         :width: 400
         :align: center
 
-#. Open the SunFounder Controller App, tap the "+" icon to create a new controller, select the "Zeus Car" preset, enter a name or tap "Confirm" to proceed.
+#. Apri l'app SunFounder Controller, tocca l'icona ``+`` per creare un nuovo controller, seleziona il preset "Zeus Car", inserisci un nome oppure premi "Conferma" per procedere.
 
    .. image:: img/app_preset.jpg
         :width: 600
 
-#. The app will automatically search for the Zeus Car. After a moment, you will see a prompt stating "Connected Successfully."
+#. L'app cercherà automaticamente lo Zeus Car. Dopo qualche secondo, vedrai il messaggio "Connessione riuscita".
 
    .. image:: img/app_edit.jpg
         :width: 600
     
-#. Now, tap the |app_run| button enables you to view the live video feed from the camera and control the rover using the provided widgets. 
+#. Ora, toccando il pulsante |app_run| potrai visualizzare il feed video in diretta dalla fotocamera e controllare il rover tramite i widget forniti.
 
    .. image:: img/app_run123.png
-        :width: 600 
+        :width: 600  
     
-How to Invert the Camera?  
----------------------------
+Come invertire la fotocamera?   
+--------------------------------
 
-If you find the camera feed upside down while using the SunFounder Controller, you can easily correct it through the app. Follow these steps:  
+Se l'immagine della fotocamera appare capovolta mentre utilizzi il SunFounder Controller, puoi correggerla facilmente tramite l'app. Segui questi passaggi:  
 
-1. Tap the |app_edit| button in the top-right corner.  
+1. Tocca il pulsante |app_edit| nell'angolo in alto a destra.  
 
    .. image:: img/faq_edit.png  
         :width: 500 
 
-2. Click the **camera** button to open a popup. Toggle the **Inverted** switch to turn it on.  
+2. Clicca sul pulsante **camera** per aprire il popup. Attiva l'interruttore **Inverted** per capovolgere l'immagine.  
 
    .. image:: img/faq_inverted.png  
         :width: 500  
 
-3. Save your settings.  
+3. Salva le impostazioni.  
 
    .. image:: img/faq_save.png  
         :width: 500 
 
-4. Return to the control interface and click the |app_run| button.  
+4. Torna all'interfaccia di controllo e clicca sul pulsante |app_run|.  
 
    .. note::  
 
-        Occasionally, the camera feed may not appear. If this happens, pause the controller and then click the run button again.  
+        A volte il feed della fotocamera potrebbe non apparire. Se ciò accade, metti in pausa il controller e poi premi nuovamente il pulsante di avvio.  
 
    .. image:: img/faq_run.png  
         :width: 500 
 
-Compilation error: SoftPWM.h: No such file or directory?
---------------------------------------------------------------
-If you get a "Compilation error: SoftPWM.h: No such file or directory" prompt, it means you don't have the ``SoftPWM`` library installed.
+Errore di compilazione: SoftPWM.h: No such file or directory?
+----------------------------------------------------------------
 
-Please refer to :ref:`ar_install_lib` to install the required libraries.
+Se ricevi il messaggio di errore "Compilation error: SoftPWM.h: No such file or directory", significa che la libreria ``SoftPWM`` non è installata.
 
+Consulta la guida :ref:`ar_install_lib` per installare le librerie necessarie.
 
 avrdude: stk500_getsync() attempt 10 of 10: not in sync: resp=0x6e?
----------------------------------------------------------------------------
+---------------------------------------------------------------------
 
-If the following message keeps appearing after clicking the Upload button when the board and port have been selected correctly.
+Se il seguente messaggio continua ad apparire dopo aver cliccato sul pulsante Upload, nonostante la scheda e la porta siano state selezionate correttamente:
 
 .. code-block::
 
@@ -285,29 +285,27 @@ If the following message keeps appearing after clicking the Upload button when t
     avrdude: stk500_recv(): programmer is not responding
     avrdude: stk500_getsync() attempt 3 of 10: not in sync: resp=0x00
 
-At this point, you need to make sure that the ESP32 CAM is unplugged.
+Devi assicurarti che l'ESP32 CAM sia scollegato.
 
-The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
-
+L'ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione). Pertanto, durante il caricamento del codice, è necessario scollegare l'ESP32-CAM per evitare conflitti o problemi di comunicazione.
 
 .. image:: img/unplug_cam.png
     :width: 400
     :align: center
 
-
 .. _stt_android:
 
-How can I use the STT feature on my Android device?
+Come utilizzare la funzione STT su un dispositivo Android?
 ------------------------------------------------------------------------
 
-The STT feature requires the Android mobile device to be connected to the Internet and to install the **Google service component**.
+La funzione STT richiede che il dispositivo Android sia connesso a Internet e che il **Google service component** sia installato.
 
-Now follow the steps below.
+Ora segui i passaggi seguenti.
 
-#. Modify the AP mode of ``Zeus_Car.ino`` file to STA mode.
+#. Modifica la modalità AP del file ``Zeus_Car.ino`` in modalità STA.
 
-    * Open the the ``Zeus_Car.ino`` file located in the ``zeus-car-main/Zeus_Car`` directory. 
-    * Then comment out the AP mode related code. Uncomment the STA mode related code and fill in  the ``SSD`` and ``PASSWORD`` of your home Wi-Fi.
+    * Apri il file ``Zeus_Car.ino`` situato nella directory ``zeus-car-main/Zeus_Car``.  
+    * Commenta il codice relativo alla modalità AP, decommenta quello della modalità STA e inserisci ``SSID`` e ``PASSWORD`` della tua rete Wi-Fi domestica.
 
         .. code-block:: arduino
 
@@ -320,28 +318,28 @@ Now follow the steps below.
             #define SSID "xxxxxxxxxx"
             #define PASSWORD "xxxxxxxxxx"
 
-    * Save this code, select the correct board (Arduino Uno) and port, then click the **Upload** button to upload it to the R3 board.
+    * Salva il codice, seleziona la scheda corretta (Arduino Uno) e la porta, quindi clicca su **Upload** per caricarlo sulla scheda R3.
 
-#. Search ``google`` in Google Play, find the app shown below and install it.
+#. Cerca ``google`` su Google Play, trova l'app mostrata di seguito e installala.
 
     .. image:: img/google_voice.png
 
-#. Connect your mobile device to the same Wi-Fi as you wrote in the code.
+#. Connetti il tuo dispositivo mobile alla stessa rete Wi-Fi specificata nel codice.
 
     .. image:: img/sta_wifi.png
         :width: 400
         :align: center
 
-#. Open the controller previously created in SunFounder Controller and connect it to ``Zeus_Car`` through the |app_connect| button.
+#. Apri il controller precedentemente creato nell'app SunFounder Controller e connettilo a ``Zeus_Car`` tramite il pulsante |app_connect|.
 
     .. image:: img/app_connect.png
         :width: 500
         :align: center
 
-#. Tap and hold the |app_speech_m|  widget after clicking the |app_run| button. A prompt will appear indicating that it is listening. Say the following command to move the car.
+#. Tocca e tieni premuto il widget |app_speech_m| dopo aver cliccato sul pulsante |app_run|. Apparirà un messaggio che indica che l'app sta ascoltando. Pronuncia uno dei seguenti comandi per controllare il movimento del rover:
 
-    * ``stop``: All movements of the car can be stopped.
-    * ``pasue``: The function is basically the same as Stop, but if the head of the car is not facing the direction originally set, it will slowly move to the set direction.
+    * ``stop``: Arresta tutti i movimenti del rover.
+    * ``pause``: Funziona in modo simile a Stop, ma se il rover non è rivolto nella direzione originaria, si regolerà lentamente fino a riallinearsi.
     * ``forward`` 
     * ``backward`` 
     * ``left forward``

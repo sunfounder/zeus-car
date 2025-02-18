@@ -1,21 +1,21 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di SunFounder Raspberry Pi, Arduino ed ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni speciali per le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
-1. Basic Movements
+1. Movimenti di Base
 ========================
 
-You will learn how to make the Zeus Car move in all directions in this project. 
+In questo progetto imparerai a far muovere la Zeus Car in tutte le direzioni.
 
 .. raw:: html
 
@@ -28,73 +28,73 @@ You will learn how to make the Zeus Car move in all directions in this project.
     
     <br/> <br/>  
 
-**How to do?**
+**Come fare?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione). Pertanto, prima di caricare il codice, scollega la ESP32-CAM per evitare conflitti o problemi.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
    
-#. Connect the Zeus Car to your computer with the blue USB cable. When you plug in your Arduino board, the computer automatically recognizes it and assigns it a COM port, which you can view in Device Manager.
+#. Collega la Zeus Car al computer utilizzando il cavo USB blu. Una volta collegata la scheda Arduino, il computer la riconoscerà automaticamente e le assegnerà una porta COM, visibile in Gestione dispositivi.
 
-#. Open the ``1_basic_move.ino`` file under the path of ``zeus-car-main\examples\1_basic_move``.
+#. Apri il file ``1_basic_move.ino`` nel percorso ``zeus-car-main\examples\1_basic_move``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/cedd4eb2-3283-48ae-8851-c932eb2098ea/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. You can quickly select the board and port from this place.
+#. Puoi selezionare rapidamente la scheda e la porta da questa sezione.
 
     .. image:: img/ar_board.png
     
     .. note::
-        In case COMxx doesn't appear, open the Board Manager from the left and make sure the "Arduino AVR Boards" core is installed.
+        Se la porta COMxx non appare, apri il Board Manager dalla barra laterale e assicurati che il core "Arduino AVR Boards" sia installato.
 
         .. image:: img/ar_other_board.png
 
-#. Now click the **Upload** button to upload the code to the Arduino board. When it is finished, a notification pops up in the bottom right of your IDE window. Of course, sometimes there are some complications when uploading, and these errors will be listed here as well.
+#. Ora clicca sul pulsante **Upload** per caricare il codice sulla scheda Arduino. Una volta completato il caricamento, comparirà una notifica nell'angolo in basso a destra della finestra dell'IDE. Se dovessero verificarsi errori, verranno elencati in questa sezione.
 
     .. note::
-        * If you get a "Compilation error: SoftPWM.h: No such file or directory" prompt, it means you don't have the ``SoftPWM`` library installed.
-        * Please refer to :ref:`ar_install_lib` to install the two required libraries ``SoftPWM`` and ``IRLremote``.
+        * Se ricevi un messaggio di errore "Compilation error: SoftPWM.h: No such file or directory", significa che la libreria ``SoftPWM`` non è installata.
+        * Consulta :ref:`ar_install_lib` per installare le due librerie necessarie ``SoftPWM`` e ``IRLremote``.
 
     .. image:: img/ar_upload.png
 
-#. Let's start the Zeus Car.
+#. Avviamo la Zeus Car.
 
-    * When first used or when the battery cable is unplugged, Zeus Car Shield will activate its over-discharge protection circuitry.
-    * So you'll need to plug in the Type-C cable for about 5 seconds.
+    * Quando la Zeus Car viene utilizzata per la prima volta o il cavo della batteria viene scollegato, il circuito di protezione da sovra-scarica dello Shield si attiva.
+    * Per sbloccare questa protezione, collega il cavo Type-C per circa 5 secondi.
 
             .. image:: img/zeus_charge.jpg
 
-    * If the power indicator lights up, it means that the protection status has been released. At this time look at the battery indicators, if both battery indicators are off, please continue to plug in the Type-C cable to charge the battery.
+    * Se l’indicatore di alimentazione si accende, significa che la protezione è stata disattivata. Controlla anche gli indicatori della batteria: se entrambi sono spenti, continua a caricare la batteria collegando il cavo Type-C.
 
         .. image:: img/zeus_power.jpg
 
-#. You will now see the Zeus Car move for one second in each direction.
+#. Ora vedrai la Zeus Car muoversi per un secondo in ogni direzione.
 
     .. image:: img/zeus_move.jpg
         :width: 600
 
-**How it works?**
+**Come funziona?**
 
-These movements are obtained by the 4 Mecanum Wheels cooperating together, for example, four wheels forward or backward at the same time can make the car also forward or backward, and two wheels forward and two wheels backward can cause the car to pan or rotate to the left or right.
+Questi movimenti vengono ottenuti grazie alla combinazione delle quattro ruote Mecanum. Ad esempio, quando tutte e quattro le ruote si muovono avanti o indietro contemporaneamente, la Zeus Car si muove nella stessa direzione. Se due ruote si muovono in avanti e le altre due all’indietro, la Zeus Car eseguirà una traslazione laterale o una rotazione.
 
-Let's look at how these movements are specifically achieved.
+Vediamo più nel dettaglio come si realizzano questi movimenti.
 
-* Moving forward and backward, panning left and right.
+* Movimento avanti e indietro, traslazione laterale.
 
     .. image:: img/ar_fwlr.jpg
         :width: 600
 
-* Diagonal panning
+* Traslazione diagonale.
 
     .. image:: img/ar_fblr.jpg
         :width: 600
 
-* Rotate left and right
+* Rotazione a sinistra e a destra.
 
     .. image:: img/ar_turn_lr.jpg
         :width: 600

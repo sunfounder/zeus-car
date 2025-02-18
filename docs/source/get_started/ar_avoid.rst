@@ -1,22 +1,21 @@
-.. note::
+.. note:: 
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di SunFounder Raspberry Pi, Arduino ed ESP32 su Facebook! Approfondisci la tua conoscenza su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l’aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci sui nuovi prodotti e alle anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni speciali per le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
-
-11. Obstacle Avoidance
+11. Evitamento Ostacoli
 ================================
 
-In this project, the Zeus car will move forward automatically, and two obstacle avoidance modules and an ultrasonic module will prevent it from hitting obstacles.
+In questo progetto, la Zeus Car avanzerà automaticamente, mentre due moduli di evitamento ostacoli e un modulo a ultrasuoni impediranno che colpisca eventuali ostacoli.
 
 .. raw:: html
 
@@ -29,31 +28,30 @@ In this project, the Zeus car will move forward automatically, and two obstacle 
     
     <br/> <br/>  
 
-**How to do?**
+**Come fare?**
 
-#. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
+#. La ESP32-CAM e la scheda Arduino condividono gli stessi pin RX (ricezione) e TX (trasmissione). Pertanto, prima di caricare il codice, scollega la ESP32-CAM per evitare conflitti o problemi.
 
     .. image:: img/unplug_cam.png
         :width: 400
         :align: center
 
-
-#. Open the ``11_obstacle_avoid.ino`` file under the path of ``zeus-car-main\examples\11_obstacle_avoid``.
+#. Apri il file ``11_obstacle_avoid.ino`` nel percorso ``zeus-car-main\examples\11_obstacle_avoid``.
 
     .. raw:: html
 
         <iframe src=https://create.arduino.cc/editor/sunfounder01/520af1d6-4ef2-4804-a4a9-f6aa92985258/preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-#. After the code is uploaded successfully, slide the power switch to ON to start the Zeus Car.
+#. Dopo aver caricato con successo il codice, sposta l'interruttore di alimentazione su ON per avviare la Zeus Car.
 
-    * Zeus car will move forward.
-    * An ultrasonic module detects obstacles in front, if detected, the car turns left.
-    * When the left obstacle avoidance module detects an obstacle, the car turns right, and when the right obstacle avoidance module detects an obstacle, the car turns left.
+    * La Zeus Car avanzerà.
+    * Il modulo a ultrasuoni rileverà ostacoli di fronte: se ne rileva uno, l’auto svolterà a sinistra.
+    * Se il modulo di evitamento ostacoli sinistro rileva un ostacolo, l’auto svolterà a destra; se lo rileva quello destro, l’auto svolterà a sinistra.
 
 .. note::
-    Before use, you need to adjust the detection distance of the two obstacle avoidance modules to 15CM, the steps are as follows
-    
-    * Start by adjusting the right obstacle avoidance module. During transportation, collisions may cause the transmitter and receiver on the infrared module to tilt. Therefore, you need to manually straighten them.
+    Prima dell’uso, è necessario regolare la distanza di rilevamento dei due moduli di evitamento ostacoli a 15 cm. Segui questi passaggi:
+
+    * Inizia regolando il modulo di evitamento ostacoli destro. Durante il trasporto, il trasmettitore e il ricevitore del modulo a infrarossi potrebbero essersi inclinati a causa di urti. Assicurati di raddrizzarli manualmente.
 
             .. raw:: html
 
@@ -66,10 +64,10 @@ In this project, the Zeus car will move forward automatically, and two obstacle 
                 
                 <br/> <br/>  
 
-    * Place an obstacle about 15cm away from the IR obstacle avoidance module.
-    * On the module are two potentiometers, one to adjust the sending power and one to adjust the sending frequency. By adjusting these two potentiometers, you can adjust the detection distance.
-    * Then you can adjust a potentiometer, and if at 15cm, the signal light on the module illuminates, the adjustment is successful; if it doesn't, adjust another potentiometer.
+    * Posiziona un ostacolo a circa 15 cm dal modulo IR di evitamento ostacoli.
+    * Sul modulo sono presenti due potenziometri: uno regola la potenza di trasmissione e l’altro la frequenza di invio del segnale. Regolando questi due potenziometri, puoi impostare la distanza di rilevamento.
+    * Regola un potenziometro e verifica che, a 15 cm di distanza, l’indicatore luminoso del modulo si accenda. Se non si illumina, prova a regolare l’altro potenziometro.
 
         .. image:: img/zeus_ir_avoid.jpg
 
-    * Calibrate the other obstacle avoidance module in the same way.
+    * Calibra anche l'altro modulo di evitamento ostacoli seguendo lo stesso procedimento.
