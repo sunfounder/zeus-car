@@ -131,6 +131,8 @@ bool last_button_state[4] = {0, 0, 0, 0};
 
 char speech_buf[20];
 
+bool cam_lamp_state = false;
+uint8_t cam_lamp_level = 5;
 //@}
 
 /*********************** setup() & loop() ************************/
@@ -609,6 +611,24 @@ void onReceive() {
     }
   }
 
+  // Camera lamp control
+  if (aiCam.getSwitch(REGION_C) == true && cam_lamp_state == false) {
+    Serial.println(“lamp on”);
+    cam_lamp_state = true;
+    aiCam.lamp_on(cam_lamp_level); //turn on cam lamp, level 0 ~ 10
+  } else if (aiCam.getSwitch(REGION_C) == false && cam_lamp_state == true) {
+    Serial.println(“lamp off”);
+    cam_lamp_state = false;
+    aiCam.lamp_off(); // turn off cam lamp
+  }
+
+  int16_t _lamp_level = aiCam.getSlider(REGION_D);
+  if (cam_lamp_state == true && _lamp_level != cam_lamp_level)
+  {
+    cam_lamp_level = _lamp_level;
+    aiCam.lamp_on(cam_lamp_level);
+  }
+  
   // Speech control
   char speech_buf_temp[20];
 
