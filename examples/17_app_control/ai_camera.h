@@ -3,7 +3,40 @@
 
 #include <Arduino.h>
 #include <string.h>
-#include "rgb.h"
+#include <ArduinoJson.h>
+
+/**
+ * Use custom serial port
+ */
+// #define AI_CAM_DEBUG_CUSTOM
+#ifdef AI_CAM_DEBUG_CUSTOM
+#include <SoftwareSerial.h>
+SoftwareSerial dSerial(10, 11); // RX, TX
+#define DateSerial dSerial
+#define DebugSerial Serial
+#else
+#define DateSerial Serial
+#define DebugSerial Serial
+#endif
+
+/**
+ *  Set SERIAL_TIMEOUT & WS_BUFFER_SIZE
+ */
+#define SERIAL_TIMEOUT 100
+#define WS_BUFFER_SIZE 200
+#define CHAR_TIMEOUT 50
+
+/**
+ * Some keywords for communication with ESP32-CAM
+ */
+#define CHECK "SC"
+#define OK_FLAG "[OK]"
+#define ERROR_FLAG "[ERR]"
+#define WS_HEADER "WS+"
+#define CAM_INIT "[Init]"
+#define WS_CONNECT "[CONNECTED]"
+#define WS_DISCONNECT "[DISCONNECTED]"
+#define APP_STOP "[APPSTOP]"
 
 /**
  * @name Set the print level of information received by esp32-cam
@@ -11,7 +44,7 @@
  * @code {.cpp}
  * #define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO
  * @endcode
- * 
+ *
  */
 #define CAM_DEBUG_LEVEL CAM_DEBUG_LEVEL_INFO
 #define CAM_DEBUG_LEVEL_OFF 0
@@ -28,20 +61,20 @@
 /**
  * @name Define component-related values
  */
-#define DPAD_STOP     0
-#define DPAD_FORWARD  1
+#define DPAD_STOP 0
+#define DPAD_FORWARD 1
 #define DPAD_BACKWARD 2
-#define DPAD_LEFT     3
-#define DPAD_RIGHT    4
+#define DPAD_LEFT 3
+#define DPAD_RIGHT 4
 
-#define JOYSTICK_X       0
-#define JOYSTICK_Y       1
-#define JOYSTICK_ANGLE   2
-#define JOYSTICK_RADIUS  3
+#define JOYSTICK_X 0
+#define JOYSTICK_Y 1
+#define JOYSTICK_ANGLE 2
+#define JOYSTICK_RADIUS 3
 
 #define WIFI_MODE_NONE "0"
-#define WIFI_MODE_STA  "1"
-#define WIFI_MODE_AP   "2"
+#define WIFI_MODE_STA "1"
+#define WIFI_MODE_AP "2"
 
 #define REGION_A 0
 #define REGION_B 1
@@ -70,42 +103,53 @@
 #define REGION_Y 24
 #define REGION_Z 25
 
+class AiCamera
+{
+public:
+  bool ws_connected = false;
+  char recvBuffer[WS_BUFFER_SIZE];
+  StaticJsonDocument<200> send_doc;
 
-class AiCamera {
-  public:
-    AiCamera(const char* name, const char* type);
+  AiCamera(const char *name, const char *type);
+  void begin(const char *ssid, const char *password, const char *wifiMode, const char *wsPort);
+  void setOnReceived(void (*func)(char *, char *));
 
-    void begin(const char* ssid, const char* password, const char* wifiMode, const char* wsPort);
-    void debug(char* msg);
-    void readInto(char* buffer);
-    void sendData(char* buf);
-    void command(const char* command, const char* value, char* result) ;
-    void set(const char* command);
-    void set(const char* command, const char* value);
-    void get(const char* command, char* result);
-    void get(const char* command, const char* value, char* result);
-    void setOnReceived(void (*func)(char*, char*));
-    void loop();
+  void set_command_timeout(uint32_t _timeout);
+  void readInto(char *buffer);
+  void loop();
+  void sendData();
 
-    int16_t getSlider(char* buf, uint8_t region);
-    bool getButton(char* buf, uint8_t region);
-    bool getSwitch(char* buf, uint8_t region);
-    int16_t getJoystick(char* buf, uint8_t region, uint8_t axis);
-    uint8_t getDPad(char* buf, uint8_t region);
-    int16_t getThrottle(char* buf, uint8_t region);
-    void setMeter(char* buf, uint8_t region, double value);
-    void setRadar(char* buf, uint8_t region, int16_t angle, double distance);
-    void setGreyscale(char* buf, uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3);
-    void setValue(char* buf, uint8_t region, double value);
-    void getSpeech(char* buf, uint8_t region, char* result);
+  void debug(char *msg);
 
-  private:
-    void subString(char* str, int16_t start, int16_t end=-1);
-    void getStrOf(char* str, uint8_t index, char* result, char divider);
-    void setStrOf(char* str, uint8_t index, String value, char divider=';');
-    int16_t getIntOf(char* str, uint8_t index, char divider=';');
-    bool getBoolOf(char* str, uint8_t index);
-    double getDoubleOf(char* str, uint8_t index);
+  void set(const char *command, bool wait = true);
+  void set(const char *command, const char *value, bool wait = true);
+  void get(const char *command, char *result);
+  void get(const char *command, const char *value, char *result);
+
+  int16_t getSlider(uint8_t region);
+  bool getButton(uint8_t region);
+  bool getSwitch(uint8_t region);
+  int16_t getJoystick(uint8_t region, uint8_t axis);
+  uint8_t getDPad(uint8_t region);
+  int16_t getThrottle(uint8_t region);
+  void setMeter(uint8_t region, double value);
+  void setRadar(uint8_t region, int16_t angle, double distance);
+  void setGreyscale(uint8_t region, uint16_t value1, uint16_t value2, uint16_t value3);
+  void setValue(uint8_t region, double value);
+  void getSpeech(uint8_t region, char *result);
+
+  void lamp_on(uint8_t level = 5);
+  void lamp_off(void);
+
+private:
+  void command(const char *command, const char *value, char *result, bool wait = true);
+  void subString(char *str, int16_t start, int16_t end = -1);
+
+  void getStrOf(char *str, uint8_t index, char *result, char divider);
+  void setStrOf(char *str, uint8_t index, String value, char divider = ';');
+  int16_t getIntOf(char *str, uint8_t index, char divider = ';');
+  bool getBoolOf(char *str, uint8_t index);
+  double getDoubleOf(char *str, uint8_t index);
 };
 
 #endif // __AI_CAMERA_H__
