@@ -12,7 +12,7 @@
     - SoftPWM
     - ArduinoJson
 
-  Version: 1.4.5
+  Version: 1.6.0
     -- https://github.com/sunfounder/zeus-car.git
   
   Documentation:
@@ -23,7 +23,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.4.5"
+#define VERSION "1.6.0"
 
 #include <Arduino.h>
 #include <SoftPWM.h>

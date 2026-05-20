@@ -36,3 +36,4 @@ bool compassCalibrateLoop();
 bool compassCalibrateDone();
 
 #endif // __COMPASS_H__
+

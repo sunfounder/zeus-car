@@ -47,8 +47,10 @@ zeus-car
 │  ├─ ir_obstacle.h                    //
 │  ├─ ir_remote.cpp                    // functions for IR remote
 │  ├─ ir_remote.h                      // 
-│  ├─ qmc6310.cpp                      // functions for compass sensor
+│  ├─ qmc6310.cpp                      // functions for QMC6310 compass sensor
 │  ├─ qmc6310.h                        //
+│  ├─ qmc6309.cpp                      // functions for QMC6309 compass sensor
+│  ├─ qmc6309.h                        //
 │  ├─ rgb.cpp                          // functions for rgb led strip
 │  ├─ rgb.h                            //
 │  ├─ test.h                           // functions for testing all modules
