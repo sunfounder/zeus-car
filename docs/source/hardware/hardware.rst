@@ -30,6 +30,5 @@
     cpn_ultrasonic_module_xh
     cpn_ir_obstacle_module
     cpn_rgb_strip
-    cpn_18650_battery
     cpn_tt_motor_xh
     cpn_mecanum_wheel
