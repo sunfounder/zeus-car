@@ -38,8 +38,8 @@ void carLeft(int8_t power)          { carMove( -90, power, 0); }
 void carRight(int8_t power)         { carMove(  90, power, 0); }
 void carTurnLeft(int8_t power)      { carMove(   0, 0, power); }
 void carTurnRight(int8_t power)     { carMove(   0, 0, -power); }
-void carLeftForword(int8_t power)   { carMove( -45, power, 0); }
-void carRightForword(int8_t power)  { carMove(  45, power, 0); }
+void carLeftForward(int8_t power)   { carMove( -45, power, 0); }
+void carRightForward(int8_t power)  { carMove(  45, power, 0); }
 void carLeftBackward(int8_t power)  { carMove(-135, power, 0); }
 void carRightBackward(int8_t power) { carMove( 135, power, 0); }
 void carStop()          { carMove(   0, 0, 0); }
