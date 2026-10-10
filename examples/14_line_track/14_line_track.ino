@@ -8,6 +8,7 @@
 
 ******************************************************************/
 #include <Arduino.h>
+#include <SoftPWM.h>   // SoftPWMBegin() below; carBegin() no longer initialises it
 #include "car_control.h"
 #include "grayscale.h"
 
@@ -21,6 +22,7 @@ bool useMag = false;
 void setup()
 {
   Serial.begin(115200);
+  SoftPWMBegin(); // init softpwm, before the motors initialization
   carBegin();
   gsBegin();
 }
