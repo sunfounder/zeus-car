@@ -23,7 +23,7 @@
            https://docs.sunfounder.com
 
  *******************************************************************/
-#define VERSION "1.4.6"
+#define VERSION "1.4.7"
 
 #include <Arduino.h>
 #include <SoftPWM.h>
