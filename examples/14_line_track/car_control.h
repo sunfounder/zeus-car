@@ -18,6 +18,9 @@
 /** Set the positive and negative directions for the motors */
 #define MOTOR_DIRECTIONS (uint8_t[4]){1, 0, 0, 1}
 
+/** define motors default speed */
+#define CAR_DEFAULT_POWER 80
+
 
 void carBegin();
 void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3);
@@ -33,7 +36,16 @@ void carLeft(int8_t power);
 void carRight(int8_t power);
 void carStop();
 void carMove(int16_t angle, int8_t power, int8_t rot=0, bool drift=false);
-void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading=0, bool drift=false);
+void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading=0, bool drift=false, bool angFlag=false);
 void carResetHeading();
 
+/**
+ * @name Deprecated spellings
+ * The two names above used to be spelled "Forword"; the macros keep sketches
+ * written against the old spelling building. Use the corrected names.
+ */
+#define carLeftForword carLeftForward
+#define carRightForword carRightForward
+
 #endif // __CAR_CONTROL_H__
+

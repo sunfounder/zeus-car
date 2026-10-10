@@ -3,7 +3,8 @@
 #include <Arduino.h>
 #include <SoftPWM.h>
 
-#define MOTOR_POWER_MIN 28  // 28/255
+#define MOTOR_POWER_MIN 50  // 28/255
+#define MOTOR_START_POWER 100
 
 /* 
   Set the pid parameters
@@ -20,17 +21,12 @@ int16_t originHeading;
 * @brief Initialize the motor, and (block) the initialization compass
 */
 void carBegin() {
-  SoftPWMBegin();
   for (uint8_t i = 0; i < 8; i++) {
     SoftPWMSet(MOTOR_PINS[i], 0);
     SoftPWMSetFadeTime(MOTOR_PINS[i], 100, 100);
   }
-
   compassBegin();
-  for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
-    carResetHeading();
-  }
-
+  carResetHeading();
 }
 
 /** 
@@ -71,6 +67,12 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
     } else {
       newPower[i] = map(abs(power[i]), 0, 100, MOTOR_POWER_MIN, 255);
     }
+
+    if (newPower[i] != 0 && newPower[i] < MOTOR_START_POWER) {
+      SoftPWMSet(MOTOR_PINS[i*2], dir[i] * MOTOR_START_POWER);
+      SoftPWMSet(MOTOR_PINS[i*2+1], !dir[i] * MOTOR_START_POWER);
+      delayMicroseconds(200);
+    }
     SoftPWMSet(MOTOR_PINS[i*2], dir[i] * newPower[i]);
     SoftPWMSet(MOTOR_PINS[i*2+1], !dir[i] * newPower[i]);
   }
@@ -92,27 +94,27 @@ void carSetMotors(int8_t power0, int8_t power1, int8_t power2, int8_t power3) {
   */
 void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   int8_t power_0, power_1, power_2, power_3;
-  float speed;
+  float ratio;
   // Make forward 0
   angle += 90;
   // Offset angle as 0 to the front
   float rad = angle * PI / 180;
 
-  if (rot == 0) speed = 1;
-  else speed = 0.5;
-
+  ratio = 0.5;
   power /= sqrt(2);
+  power = power * (1-ratio);
+  
   // Calculate 4 wheel
   if (drift) {
-    power_0 = (power * sin(rad) - power * cos(rad)) * speed;
-    power_1 = (power * sin(rad) + power * cos(rad)) * speed;
-    power_2 = (power * sin(rad) - power * cos(rad)) * speed + rot * speed * 2;
-    power_3 = (power * sin(rad) + power * cos(rad)) * speed - rot * speed * 2;
+    power_0 = (power * sin(rad) - power * cos(rad)) ;
+    power_1 = (power * sin(rad) + power * cos(rad)) ;
+    power_2 = (power * sin(rad) - power * cos(rad)) + rot * ratio * 2;
+    power_3 = (power * sin(rad) + power * cos(rad)) - rot * ratio * 2;
   } else {
-    power_0 = (power * sin(rad) - power * cos(rad)) * speed - rot * speed;
-    power_1 = (power * sin(rad) + power * cos(rad)) * speed + rot * speed;
-    power_2 = (power * sin(rad) - power * cos(rad)) * speed + rot * speed;
-    power_3 = (power * sin(rad) + power * cos(rad)) * speed - rot * speed;
+    power_0 = (power * sin(rad) - power * cos(rad)) - rot * ratio;
+    power_1 = (power * sin(rad) + power * cos(rad)) + rot * ratio;
+    power_2 = (power * sin(rad) - power * cos(rad)) + rot * ratio;
+    power_3 = (power * sin(rad) + power * cos(rad)) - rot * ratio;
   }
   
   carSetMotors(power_0, power_1, power_2, power_3);
@@ -129,8 +131,10 @@ void carMove(int16_t angle, int8_t power, int8_t rot, bool drift) {
   * @param drift Whether it is a drift mode, default flase 
   *              true, drift mode, the car body will return to square
   *              flase, drift mode, the car body will not return to square
+  * @param angFlag false, angle of view of field center
+  *                true, the angle of view of the car
   */
-void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift) {
+void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drift, bool angFlag) {
   int16_t currentHeading = 0;
   int32_t error = 0;
   int32_t offset = 0;
@@ -155,7 +159,10 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
     _lastError = error;
   }
 
-  angle = angle - currentHeading + originHeading;
+  if (angFlag==false && (angle != 0 || drift == true)) {
+    angle = angle - currentHeading + originHeading;
+  }
+
   carMove(angle, power, rot, drift);
 
 }
@@ -164,5 +171,10 @@ void carMoveFieldCentric(int16_t angle, int8_t power, int16_t heading, bool drif
   * Reset origin head pointing
   */
 void carResetHeading() {
-  originHeading = compassReadAngle();
+  // int t = millis();
+  for (uint8_t i = 0; i < AVERAGE_FILTER_SIZE; i++) {
+    originHeading = compassReadAngle();
+  }
+  // Serial.print("reset heading: "); Serial.println(millis() - t); // takes about 93 ms
 }
+

@@ -81,8 +81,8 @@ void loop() {
 void onReceive(char* recvBuf, char* sendBuf) {
 
   //Joystick [K]
-  uint16_t angle = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_ANGLE);
-  uint8_t power = aiCam.getJoystick(recvBuf, REGION_K, JOYSTICK_RADIUS);
+  uint16_t angle = aiCam.getJoystick(REGION_K, JOYSTICK_ANGLE);
+  uint8_t power = aiCam.getJoystick(REGION_K, JOYSTICK_RADIUS);
   power = map(power, 0, 100, 0, CAR_DEFAULT_POWER);
   if (remoteAngle != angle) {
     remoteAngle = angle;
@@ -93,13 +93,13 @@ void onReceive(char* recvBuf, char* sendBuf) {
 
   // Drift [J]
   // Serial.print("Drift:");Serial.println(remoteDriftEnable);
-  if (remoteDriftEnable != aiCam.getSwitch(recvBuf, REGION_J)) {
+  if (remoteDriftEnable != aiCam.getSwitch(REGION_J)) {
     remoteDriftEnable = !remoteDriftEnable;
   }
 
   // MoveHead [Q]
-  int moveHeadingA = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_ANGLE);
-  int16_t moveHeadingR = aiCam.getJoystick(recvBuf, REGION_Q, JOYSTICK_RADIUS);
+  int moveHeadingA = aiCam.getJoystick(REGION_Q, JOYSTICK_ANGLE);
+  int16_t moveHeadingR = aiCam.getJoystick(REGION_Q, JOYSTICK_RADIUS);
   if ((remoteHeading !=  moveHeadingA) || (remoteHeadingR !=  moveHeadingR)){
     remoteHeading = moveHeadingA;
     remoteHeadingR = moveHeadingR;

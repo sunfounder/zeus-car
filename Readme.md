@@ -65,6 +65,21 @@ zeus-car
 ├─ LICENSE                             //
 └─ Readme.md  
 ```
+## Examples
+
+The sketches under `examples/` are self-contained: each one carries its own copy of the
+driver files it uses (not symlinks - real copies), so it can be opened and compiled on its own.
+
+When a file under `Zeus_Car/` changes, every copy of that file under `examples/` has to be
+updated in the same commit, otherwise the examples drift out of sync with the library and stop
+building. The directories that carry copies are listed in `CLAUDE.md`.
+
+Build an example from the repository root:
+
+```
+arduino-cli compile --fqbn arduino:avr:uno examples/14_line_track
+```
+
 ## About SunFounder
 SunFounder is a company focused on STEAM education with products like open source robots, development boards, STEAM kit, modules, tools and other smart devices distributed globally. In SunFounder, we strive to help elementary and middle school students as well as hobbyists, through STEAM education, strengthen their hands-on practices and problem-solving abilities. In this way, we hope to disseminate knowledge and provide skill training in a full-of-joy way, thus fostering your interest in programming and making, and exposing you to a fascinating world of science and engineering. To embrace the future of artificial intelligence, it is urgent and meaningful to learn abundant STEAM knowledge.
 
