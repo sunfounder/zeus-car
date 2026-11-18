@@ -61,8 +61,4 @@ Here are steps to install a library:
 
    .. image:: img/arduino/ar_arduinojson.png
 
-6. Search for and install the ``SunFounder AI Camera`` library, the final library needed for this project.
-
-   .. image:: img/arduino/ar_aicamera.png
-
 By following these steps, you'll have all the necessary libraries installed and ready to use for your project.

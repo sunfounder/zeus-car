@@ -22,7 +22,7 @@ The 2.4GHz Wi-Fi band has channels ranging from 1 to 13. ESP32 supports channels
 
 .. note::
 
-   ESP32 CAM firmware version 1.4.1 or above is required to change channels. Refer to :ref:`update_firmware` for more details.
+   Changing the Wi-Fi channel requires ESP32 CAM firmware version **1.4.1 or above**. Refer to :ref:`update_firmware` for more details.
 
 #. Keep the ESP32 CAM inserted into the adapter, then power on the Zeus Car.
 
@@ -34,44 +34,63 @@ The 2.4GHz Wi-Fi band has channels ranging from 1 to 13. ESP32 supports channels
    .. image:: img/zeus_run123.jpg
       :width: 600
 
-#. Find ``Zeus Car`` on the list of available networks on your mobile device (tablet or smartphone), enter the password ``12345678``, and connect to it.
+#. Find ``Zeus_Car-XXXXXX`` on the list of available networks on your mobile device (tablet or smartphone), enter the password ``12345678``, and connect to it.
 
    .. note::
 
         * The current connection is to the Zeus Car hotspot, so there is no internet access. If prompted to switch networks, please choose "Stay connected".
 
-   .. image:: img/app_wlan.png
-        :width: 500
+   .. image:: img/faq_connect_zeuscar.jpg
+        :width: 400
 
-#. Open a web browser on your mobile device and navigate to ``http://192.168.4.1`` to access the ESP32 CAM OTA update page.
+#. Open a web browser on your mobile device and navigate to ``http://192.168.4.1`` to open the ESP32 CAM settings page.
 
-   .. image:: img/faq_cam_ota_141.jpg
+   .. image:: img/faq_ota_home.jpg
       :width: 400
 
-#. Under the **Wi-Fi AP Channel** section, select a different channel. 
+.. note:: The settings page looks different depending on the ESP32 CAM firmware version. Version A (firmware 1.4.x) is a single page that holds the Wi-Fi and OTA options together, while Version B (firmware 1.5.x and above) has the **Base**, **AP**, **WIFI**, **Camera** and **OTA** tabs. Select the steps that match the interface you see.
 
-   * The default channel is 1. When selecting a new channel, skip 1-2 channels at a time (e.g., from channel 1 to 3, and if needed, to 5).  
-   * Click the **Confirm** button to save the changes.
+   .. image:: img/firmware_access_ab.png
+      :width: 80%
+      :align: center
 
-   .. image:: img/faq_cam_ota_channel.png
-      :width: 400
+**Version A** (firmware 1.4.x)
 
-#. A confirmation popup will appear, prompting you to reset the device. Click **Confirm**.
+   5. Under the **Wi-Fi AP Channel** section, select a different channel, then click the **Confirm** button.
 
-   .. image:: img/faq_cam_ota_reset.jpg
-      :width: 400
-   
-#. Press the **Reset** button to reboot the device. The Zeus Car is now ready for normal operation.
+      * The default channel is 1. When selecting a new channel, skip 1-2 channels at a time (e.g., from channel 1 to 3, and if needed, to 5).
 
-   .. image:: img/zeus_run123.jpg
-      :width: 600
+      .. image:: img/faq_cam_ota_channel.png
+         :width: 400
+
+   #. A confirmation popup will appear, prompting you to reset the device. Click **Confirm**.
+
+      .. image:: img/faq_cam_ota_reset.jpg
+         :width: 400
+
+   #. Press the **Reset** button on the R3 board to reboot the ESP32 CAM. The Zeus Car is now ready for normal operation.
+
+      .. image:: img/zeus_run123.jpg
+         :width: 600
+
+**Version B** (firmware 1.5.x and above)
+
+   5. Click **AP** in the side menu (or tap the **AP** tab at the bottom of the screen), then select a different channel from the **AP Channel** list.
+
+      * The default channel is 1. When selecting a new channel, skip 1-2 channels at a time (e.g., from channel 1 to 3, and if needed, to 5).
+
+      .. image:: img/faq_change_channel.jpg
+         :width: 400
+
+   #. When the banner "Reboot to take effect." appears at the top of the page, click **REBOOT**. The Zeus Car is now ready for normal operation.
 
 .. _update_firmware:
 
 How to Update Firmware for ESP32 CAM
 -----------------------------------------
 
-Follow these detailed steps to update the firmware for your ESP32 CAM:
+The ESP32 CAM broadcasts the Wi-Fi hotspot and captures video for the Zeus Car.
+If the firmware is outdated, these functions may not work properly. Follow the steps below to update the firmware.
 
 #. Keep the ESP32 CAM inserted into the adapter, then power on the Zeus Car.
 
@@ -83,48 +102,62 @@ Follow these detailed steps to update the firmware for your ESP32 CAM:
    .. image:: img/zeus_run123.jpg
       :width: 600
 
-#. Find ``Zeus Car`` on the list of available networks on your mobile device (tablet or smartphone), enter the password ``12345678``, and connect to it.
+#. Download the firmware file.
 
-   .. note::
+   * Open `the latest ESP32 CAM firmware release <https://github.com/sunfounder/ai-camera-firmware/releases/latest>`_ — the version number of the current firmware is shown at the top of the page.
+   * In the **Assets** list, download the ``ai-camera-firmware.vX.X.X-ota.bin`` file. The ``-factory.bin`` file in the same list is for flashing the module with a programmer, and is not used for this update.
 
-      * The current connection is to the Zeus Car hotspot, so there is no internet access. If prompted to switch networks, please choose "Stay connected".
-
-   .. image:: img/app_wlan.png
-        :width: 500
-
-#. Click the link below to download the firmware file ``ai-camera-firmware-v1.4.1-ota.bin`` and save it to your mobile device.
-
-   * :download:`ESP32 CAM Firmware <https://github.com/sunfounder/ai-camera-firmware/releases/download/1.4.1/ai-camera-firmware-v1.4.1-ota.bin>`
-
-#. Open a web browser on your mobile device and navigate to ``http://192.168.4.1`` to access the ESP32 CAM OTA update page.
-
-   .. image:: img/faq_cam_ota.jpg
-      :width: 400
-
-#. On the OTA page, click the button to select the firmware file.
-
-   .. image:: img/faq_cam_ota_choose.png
-      :width: 400
-
-#. Choose the previously downloaded ``ai-camera-firmware-v1.4.1-ota.bin`` file from your device and click **OK**.
-
-   .. image:: img/faq_cam_ota_file.png
-      :width: 400
-
-#. Click the **Update** button to start the firmware update process.
-
-   .. image:: img/faq_cam_ota_update.png
-      :width: 400
-   
-#. Wait for the update to complete. Once the displayed version number changes to ``1.4.1``, the update is successful.
-
-   .. image:: img/faq_cam_ota_finish.png
-      :width: 400
-   
-#. After the update is complete, you can close the web browser. Press the **Reset** button to reboot the device. The ESP32 CAM is now ready for normal operation.
-
-   .. image:: img/zeus_run123.jpg
+   .. image:: img/faq_firm_download.png
       :width: 600
+     
+#. Connect your mobile device to the Zeus Car's WiFi network.
+
+   * The network name (SSID) is ``Zeus_Car-XXXXXX``, where ``XXXXXX`` are the last six characters of the ESP32 CAM's MAC address, and the password is ``12345678``.
+   * If you see a warning stating "No Internet access," please choose the option to **"Stay connected."**
+
+   .. image:: img/faq_connect_zeuscar.jpg
+        :width: 400
+
+#. Open a web browser on your mobile device and navigate to ``http://192.168.4.1`` to open the ESP32 CAM settings page.
+
+   .. image:: img/faq_ota_home.jpg
+      :width: 400
+
+.. note:: On this page, you will see OTA upgrade options in one of two interfaces. Version A (the former) and Version B (the latter) will appear depending on your firmware version. Simply select the corresponding upgrade steps based on the interface you see.
+
+   .. image:: img/firmware_access_ab.png
+      :width: 80%
+      :align: center
+
+**Version A** (firmware 1.4.x)
+
+   6. On the OTA page, select the firmware file and start the update:
+
+      * Choose the previously downloaded ``ai-camera-firmware.vX.X.X-ota.bin`` file from your device and click **Add**.
+      * Click the **Update** button to begin the firmware update, then wait for it to complete.
+
+      .. image:: img/faq_ota_a.png
+         :width: 700
+
+   #. After the update is complete, the Zeus Car's WiFi hotspot name will change to ``AI Camera-XXXXXX``, and the password will remain ``12345678``. Press the **Reset** button on the R3 board, and the car registers its name again, so the hotspot becomes ``Zeus_Car-XXXXXX``.
+
+**Version B** (firmware 1.5.x and above)
+
+   6. On the **OTA** page, check the current firmware version displayed on the webpage.
+
+      .. image:: img/faq_upgrade.jpg
+         :width: 400
+         :align: center
+
+   #. Tap **Upgrade Firmware**, select the firmware file, and wait for the update to complete:
+
+      * Tap the **Upgrade Firmware** button, then select the previously downloaded ``ai-camera-firmware.vX.X.X-ota.bin`` file from your device.
+      * The update will begin immediately and typically takes 1-2 minutes. Once finished, select **CONFIRM** to restart the Zeus Car.
+
+      .. image:: img/faq_ota_b.png
+         :width: 700
+
+   #. After the update is complete, the Zeus Car's WiFi hotspot name will change to ``AI Camera-XXXXXX``, and the password will remain ``12345678``. Press the **Reset** button on the R3 board, and the car registers its name again, so the hotspot becomes ``Zeus_Car-XXXXXX``.
 
 .. _upload_zeus_code:
 
@@ -167,52 +200,40 @@ How to Control the Zeus Car Using Your Home WiFi?
 -------------------------------------------------
 By default, the Uno R3 is preloaded with code configured in APP mode. This means the Zeus Car will broadcast a hotspot, allowing you to connect your mobile device to control it via the SunFounder Controller APP.
 
-If you prefer to control the rover using your home WiFi, follow these steps to upload the modified code to the Uno board:
+If you prefer to control the car using your home WiFi, you can let the ESP32 CAM join your home network. The camera keeps working in AP + STA dual mode, so the Zeus Car hotspot stays available as well:
 
-#. Download the required files from the following link: 
-
-   * :download:`Zeus Car Codes <https://github.com/sunfounder/zeus-car/archive/refs/heads/main.zip>`
-
-#. Refer to the installation guide: :ref:`install_arduino_ide`.
-
-#. Use the **Library Manager** to install the ``SoftPWM`` and ``SunFounder AI Camera`` libraries. For detailed steps, see :ref:`ar_install_lib`.
-
-#. Navigate to the ``zeus-car-main\zeus-car`` directory and open the ``zeus-car.ino`` file.
-
-   .. image:: img/faq_galaxy_code.png
-      :width: 600
-
-#. Comment out lines of AP mode, uncomment lines of STA mode, replace ``SSID`` and ``PASSWORD`` with your home WiFi credentials.
-
-   .. code-block:: arduino
-
-      /** Configure Wifi mode, SSID, password*/
-      // #define WIFI_MODE WIFI_MODE_AP
-      // #define SSID "Zeus_Car"
-      // #define PASSWORD "12345678"
-
-      #define WIFI_MODE WIFI_MODE_STA
-      #define SSID "xxxxxxxxxx"
-      #define PASSWORD "xxxxxxxxxx"
-
-#. Use a USB cable to connect the Arduino to your computer. The ESP32-CAM and the Arduino board share the same RX (receive) and TX (transmit) pins. So, when you're uploading code, you'll need to first disconnect the ESP32-CAM to avoid any conflicts or potential issues.
-   
-   .. image:: img/unplug_cam.png
-        :width: 400
-
-#. Click the **Upload** button in the Arduino IDE to upload the modified code to the Uno board.
-
-   .. image:: img/faq_galaxy_upload.png
-      :width: 600
-
-#. After the code is uploaded successfully, you can plug in the ESP32-CAM and then slide the power switch to ON to start the Zeus Car.
-
-    .. image:: img/plug_esp32_cam.jpg
-
-#. To activate the ESP32 CAM, move the mode switch to the **Run** position, and press the **Reset** button to reboot the R3 board.
+#. Power on the Zeus Car. To activate the ESP32 CAM, move the mode switch to the **Run** position, and press the **Reset** button to reboot the R3 board.
 
    .. image:: img/zeus_run123.jpg
       :width: 600
+
+#. Connect your mobile device to the Zeus Car's WiFi network.
+
+   * The network name (SSID) is ``Zeus_Car-XXXXXX``, where ``XXXXXX`` are the last six characters of the ESP32 CAM's MAC address, and the password is ``12345678``.
+   * If you see a warning stating "No Internet access," please choose the option to **"Stay connected."**
+
+   .. image:: img/faq_connect_zeuscar.jpg
+        :width: 400
+
+#. Open a web browser on your mobile device and navigate to ``http://192.168.4.1`` to open the ESP32 CAM settings page.
+
+   .. image:: img/faq_ota_home.jpg
+      :width: 400
+
+#. Click **WIFI** in the side menu (or tap the **WIFI** tab at the bottom of the screen), then enter the name and the password of your home WiFi network.
+
+   * Put your home WiFi's name in **STA SSID** — you can also pick it from the scanned list — and its password in **STA password**.
+   * Tap **CONFIRM** to save the settings. Once the credentials are stored, the page shows "Success, Restart to apply."
+   * After the reboot, the **Base** page shows the IP address that your router assigned to the camera in **IP Address**.
+
+   .. image:: img/faq_set_sta.jpg
+      :width: 400
+
+#. Reboot the ESP32 CAM: click **Reboot** on the page, or press the **Reset** button on the R3 board. The ESP32 CAM now connects to your home WiFi and keeps the Zeus Car hotspot at the same time.
+
+   .. note::
+
+      With ESP32 CAM firmware **1.5.4** and above, the camera runs in AP + STA dual mode and the serial command ``MODE`` is ignored. Changing ``WIFI_MODE``, ``SSID`` and ``PASSWORD`` in the R3 sketch therefore no longer switches the camera to STA mode — configure the home WiFi as described above instead.
 
 #. Ensure your mobile device (tablet or smartphone) is connected to your home WiFi network.
 
@@ -264,6 +285,11 @@ If you find the camera feed upside down while using the SunFounder Controller, y
    .. image:: img/faq_run.png  
         :width: 500 
 
+Alternatively, you can flip the camera from the ESP32 CAM settings page: connect your mobile device to the Zeus Car's WiFi network, open ``http://192.168.4.1``, and switch on **Horizontal flip** or **Vertical flip** on the **Camera** page.
+
+.. image:: img/faq_camera.jpg
+     :width: 400
+
 Compilation error: SoftPWM.h: No such file or directory?
 --------------------------------------------------------------
 If you get a "Compilation error: SoftPWM.h: No such file or directory" prompt, it means you don't have the ``SoftPWM`` library installed.
@@ -304,35 +330,19 @@ The STT feature requires the Android mobile device to be connected to the Intern
 
 Now follow the steps below.
 
-#. Modify the AP mode of ``Zeus_Car.ino`` file to STA mode.
-
-    * Open the the ``Zeus_Car.ino`` file located in the ``zeus-car-main/Zeus_Car`` directory. 
-    * Then comment out the AP mode related code. Uncomment the STA mode related code and fill in  the ``SSD`` and ``PASSWORD`` of your home Wi-Fi.
-
-        .. code-block:: arduino
-
-            /** Configure Wifi mode, SSID, password*/
-            // #define WIFI_MODE WIFI_MODE_AP
-            // #define SSID "Zeus_Car"
-            // #define PASSWORD "12345678"
-
-            #define WIFI_MODE WIFI_MODE_STA
-            #define SSID "xxxxxxxxxx"
-            #define PASSWORD "xxxxxxxxxx"
-
-    * Save this code, select the correct board (Arduino Uno) and port, then click the **Upload** button to upload it to the R3 board.
+#. Connect the Zeus Car to your home WiFi network, so that both the car and your mobile device have Internet access. Follow :ref:`ap_to_sta` to save the home WiFi in the ESP32 CAM settings page — you do not need to modify or re-upload the ``Zeus_Car.ino`` code.
 
 #. Search ``google`` in Google Play, find the app shown below and install it.
 
     .. image:: img/google_voice.png
 
-#. Connect your mobile device to the same Wi-Fi as you wrote in the code.
+#. Connect your mobile device to the same home WiFi network.
 
     .. image:: img/sta_wifi.png
         :width: 400
         :align: center
 
-#. Open the controller previously created in SunFounder Controller and connect it to ``Zeus_Car`` through the |app_connect| button.
+#. Open the controller previously created in SunFounder Controller and connect it to the Zeus Car through the |app_connect| button.
 
     .. image:: img/app_connect.png
         :width: 500

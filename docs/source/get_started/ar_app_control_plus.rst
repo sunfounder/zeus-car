@@ -65,37 +65,18 @@ This project integrates Line Track, Follow, Avoid functions based on :ref:`ar_ap
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Connect to ``Zeus_Car`` WLAN.
+#. Connect to ``Zeus_Car-XXXXXX`` WLAN. 
 
-    Now, connect your mobile device to the local area network (LAN) broadcast by the Zeus Car. This way, your mobile device and the Zeus Car will be on the same network, which will facilitate communication between the applications on your mobile device and the Zeus Car.
-    
+    * Find ``Zeus_Car-XXXXXX`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it. ``XXXXXX`` are the last six characters of the ESP32 CAM's MAC address, so the hotspot name is different on every car.
 
-    * Find ``Zeus_Car`` on the WLAN of the mobile phone (tablet), enter the password ``12345678`` and connect to it.
-
-
-    .. raw:: html
-
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:80%">
-                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
+      .. image:: ../img/faq_connect_zeuscar.jpg
+          :width: 400
 
     * The default connection mode is AP mode. So after you connect, there will be a prompt telling you that there is no Internet access on this WLAN network, please choose to continue connecting.
 
-    .. image:: img/app_no_internet.png
-        :width: 500
-        :align: center
+      .. image:: img/app_no_internet.png
 
-    .. raw:: html
-        
-        <br/>  
-
+    
 #. Create a controller.
 
     * To add a controller on SunFounder Controller, click the **+** icon.
