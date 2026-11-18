@@ -96,30 +96,16 @@ Voici une vidéo tutorielle rapide. Regardez-la avant de suivre les instructions
 
 #. Installez `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ depuis **l'App Store (iOS)** ou **Google Play (Android)**.
 
-#. Connectez-vous au réseau **WLAN Zeus_Car**.
+#. Connectez-vous au WLAN ``Zeus_Car-XXXXXX``.
 
-   Maintenant, connectez votre appareil mobile au réseau **Zeus_Car**. Ainsi, votre appareil et le Zeus Car seront sur le même réseau, ce qui permettra une communication fluide entre eux.
+   * Recherchez ``Zeus_Car-XXXXXX`` dans les paramètres Wi-Fi de votre téléphone (ou tablette), saisissez le mot de passe ``12345678``, puis connectez-vous. ``XXXXXX`` correspond aux six derniers caractères de l'adresse MAC de l'ESP32 CAM ; le nom du point d'accès est donc différent sur chaque voiture.
 
+     .. image:: ../img/faq_connect_zeuscar.jpg
+         :width: 400
 
-   * Recherchez le réseau ``Zeus_Car`` dans les paramètres Wi-Fi de votre téléphone (ou tablette), saisissez le mot de passe ``12345678``, puis connectez-vous.
+   * Le mode de connexion par défaut est le mode AP. Après la connexion, un message indiquera que ce réseau WLAN n'a pas d'accès Internet ; choisissez de poursuivre la connexion.
 
-     .. note::
-
-       * La connexion actuelle est un point d’accès GalaxyRVR, il n’y aura donc pas d’accès à Internet. Si une notification vous propose de changer de réseau, sélectionnez "Rester connecté".
-       * :ref:`ap_to_sta`
-
-     .. raw:: html
-
-       <div style="text-align: center;">
-           <video center loop autoplay muted style = "max-width:80%">
-               <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-               Your browser does not support the video tag.
-           </video>
-       </div>
-
-     .. raw:: html
-         
-         <br/>
+     .. image:: img/app_no_internet.png
 
 #. Créez un contrôleur.
 
