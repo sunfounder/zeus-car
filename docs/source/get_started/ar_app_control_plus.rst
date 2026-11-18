@@ -63,35 +63,16 @@
         :width: 500
         :align: center
 
-#. ``Zeus_Car`` WLANに接続する。
+#. ``Zeus_Car-XXXXXX`` WLAN に接続します。
 
-    Zeus Carがブロードキャストするローカルエリアネットワーク(LAN)にモバイルデバイスを接続します。これにより、モバイルデバイスとZeus Carが同じネットワーク上になり、アプリケーション間の通信が容易になります。
-    
+    * 携帯電話 (タブレット) の WLAN で ``Zeus_Car-XXXXXX`` を探し、パスワード ``12345678`` を入力して接続します。``XXXXXX`` は ESP32 CAM の MAC アドレスの下 6 桁で、ホットスポット名は車ごとに異なります。
 
-    * 携帯電話(タブレット)のWLANで ``Zeus_Car`` を見つけ、パスワード ``12345678`` を入力して接続します。
+      .. image:: ../img/faq_connect_zeuscar.jpg
+          :width: 400
 
-    .. raw:: html
+    * 既定の接続モードは AP モードです。接続後に、この WLAN ネットワークにはインターネット接続がない旨のメッセージが表示されるので、接続を続けるよう選択してください。
 
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:80%">
-                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-                ご使用のブラウザは動画タグをサポートしていません。
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
-
-    * デフォルトの接続モードはAPモードです。したがって、接続した後、このWLANネットワークにインターネット接続がないというプロンプトが表示されますが、接続を続行してください。
-
-    .. image:: img/app_no_internet.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
+      .. image:: img/app_no_internet.png
 
 #. コントローラの作成。
 

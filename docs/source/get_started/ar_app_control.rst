@@ -56,11 +56,12 @@
         :width: 500
         :align: center
 
-#. ``Zeus_Car`` WLANに接続します。
+#. ``Zeus_Car-XXXXXX`` WLANに接続します。
 
-    * 携帯電話(タブレット)のWLANで ``Zeus_Car`` を見つけ、パスワード ``12345678`` を入力して接続します。
+    * 携帯電話(タブレット)のWLANで ``Zeus_Car-XXXXXX`` を見つけ、パスワード ``12345678`` を入力して接続します。``XXXXXX`` は ESP32 CAM の MAC アドレスの下 6 桁で、ホットスポット名は車ごとに異なります。
 
-    .. image:: img/app_wlan.png
+    .. image:: ../img/faq_connect_zeuscar.jpg
+        :width: 400
 
     * デフォルトの接続モードはAPモードです。接続後、このWLANネットワークにインターネットアクセスがないというプロンプトが表示されますが、接続を続行してください。
 
@@ -98,7 +99,7 @@
         .. image:: img/app_connect.png
 
         .. note::
-            Wi-Fiが ``Zeus_Car`` に接続されていることを確認してください。上記のメッセージが長い間表示されない場合。
+            Wi-Fiが ``Zeus_Car-XXXXXX`` に接続されていることを確認してください。上記のメッセージが長い間表示されない場合。
 
 #. コントローラを実行します。
 

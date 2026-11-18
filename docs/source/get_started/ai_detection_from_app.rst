@@ -55,11 +55,12 @@ SunFounder Controllerは、ユーザーがロボットやIoTプラットフォ�
 
 #. これで、モバイルデバイスに `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ を **APP Store(iOS)** または **Google Play(Android)** からインストールしてください。
 
-#. ``Zeus_Car`` WLANに接続します。
+#. ``Zeus_Car-XXXXXX`` WLANに接続します。
 
-    * 携帯電話（タブレット）のWLANで ``Zeus_Car`` を見つけ、パスワード ``12345678`` を入力して接続します。
+    * 携帯電話（タブレット）のWLANで ``Zeus_Car-XXXXXX`` を見つけ、パスワード ``12345678`` を入力して接続します。``XXXXXX`` は ESP32 CAM の MAC アドレスの下 6 桁で、ホットスポット名は車ごとに異なります。
 
-    .. image:: img/app_wlan.png
+    .. image:: ../img/faq_connect_zeuscar.jpg
+        :width: 400
 
     * デフォルトの接続モードはAPモードです。そのため、接続後、このWLANネットワークにインターネットアクセスがないというプロンプトが表示されます。続行するように選択してください。
 
@@ -88,7 +89,7 @@ SunFounder Controllerは、ユーザーがロボットやIoTプラットフォ�
         .. image:: img/view_app4.jpg
 
         .. note::
-            Wi-Fiが ``Zeus_Car`` に接続されていることを確認してください。長い間上記のメッセージが表示されない場合は、特に注意が必要です。
+            Wi-Fiが ``Zeus_Car-XXXXXX`` に接続されていることを確認してください。長い間上記のメッセージが表示されない場合は、特に注意が必要です。
 
 #. コントローラーを実行します。
 

@@ -92,31 +92,17 @@ Zeus Carをモバイルデバイスから制御するには、デバイスにAPP
 
 #. **APP Store(iOS)** または **Google Play(Android)** から `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ をインストールします。
 
-#. ``Zeus_Car`` WLANに接続します。
+#. ``Zeus_Car-XXXXXX`` WLAN に接続します。
 
-   次に、Zeus Carが放送するローカルエリアネットワーク（LAN）にモバイルデバイスを接続します。これにより、モバイルデバイスとZeus Carが同じネットワーク上に配置され、モバイルデバイスのアプリケーションとZeus Car間の通信が容易になります。
-   
-   
-   * モバイル端末（タブレット）のWLANで ``Zeus_Car`` を見つけ、パスワード ``12345678`` を入力して接続します。
-   
-     .. note::
-   
-       * 現在の接続はGalaxyRVRホットスポットへの接続であり、インターネットアクセスはありません。ネットワークを切り替えるように促された場合は、「接続を維持」を選択してください。
-       * :ref:`ap_to_sta`
-   
-     .. raw:: html
-   
-       <div style="text-align: center;">
-           <video center loop autoplay muted style = "max-width:80%">
-               <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-               お使いのブラウザはvideoタグに対応していません。
-           </video>
-       </div>
-   
-     .. raw:: html
-         
-         <br/>
-   
+   * 携帯電話 (タブレット) の WLAN で ``Zeus_Car-XXXXXX`` を探し、パスワード ``12345678`` を入力して接続します。``XXXXXX`` は ESP32 CAM の MAC アドレスの下 6 桁で、ホットスポット名は車ごとに異なります。
+
+     .. image:: ../img/faq_connect_zeuscar.jpg
+         :width: 400
+
+   * 既定の接続モードは AP モードです。接続後に、この WLAN ネットワークにはインターネット接続がない旨のメッセージが表示されるので、接続を続けるよう選択してください。
+
+     .. image:: img/app_no_internet.png
+
 #. コントローラーを作成します。
 
    * SunFounder Controllerでコントローラーを追加するには、 **+** アイコンをクリックします。

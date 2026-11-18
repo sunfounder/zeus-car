@@ -61,8 +61,4 @@ Arduino IDEにはあらかじめインストールされているライブラリ
 
    .. image:: img/arduino/ar_arduinojson.png
 
-6. 最後に、このプロジェクトで必要な ``SunFounder AI Camera`` ライブラリを検索してインストールします。
-
-   .. image:: img/arduino/ar_aicamera.png
-
 これらの手順に従うことで、プロジェクトに必要なすべてのライブラリをインストールし、使用できるようになります。
