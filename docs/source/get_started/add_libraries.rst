@@ -61,8 +61,4 @@ Hier sind die Schritte zur Installation einer Bibliothek:
 
    .. image:: img/arduino/ar_arduinojson.png  
 
-6. Suchen Sie nach und installieren Sie die ``SunFounder AI Camera``-Bibliothek, die letzte für dieses Projekt benötigte Bibliothek.  
-
-   .. image:: img/arduino/ar_aicamera.png  
-
 Indem Sie diese Schritte befolgen, haben Sie alle notwendigen Bibliotheken installiert und können sie für Ihr Projekt verwenden.  

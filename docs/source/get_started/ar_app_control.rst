@@ -54,11 +54,12 @@ In diesem Projekt werden wir versuchen, die Bewegung und Richtung des Zeus Autos
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Verbinden Sie sich mit dem ``Zeus_Car`` WLAN.
+#. Verbinden Sie sich mit dem ``Zeus_Car-XXXXXX`` WLAN.
 
-    * Finden Sie ``Zeus_Car`` im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort ``12345678`` ein und stellen Sie die Verbindung her.
+    * Finden Sie ``Zeus_Car-XXXXXX`` im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort ``12345678`` ein und stellen Sie die Verbindung her. ``XXXXXX`` sind die letzten sechs Zeichen der MAC-Adresse des ESP32 CAM, der Hotspot-Name ist also bei jedem Fahrzeug anders.
 
-    .. image:: img/app_wlan.png
+      .. image:: ../img/faq_connect_zeuscar.jpg
+          :width: 400
 
     * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung wird angezeigt, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Wählen Sie weiterhin "Verbinden".
 
@@ -96,7 +97,7 @@ In diesem Projekt werden wir versuchen, die Bewegung und Richtung des Zeus Autos
         .. image:: img/app_connect.png
 
         .. note::
-            Bitte stellen Sie sicher, dass Ihr WLAN mit ``Zeus_Car`` verbunden ist, wenn Sie die oben genannte Nachricht lange nicht sehen.
+            Bitte stellen Sie sicher, dass Ihr WLAN mit ``Zeus_Car-XXXXXX`` verbunden ist, wenn Sie die oben genannte Nachricht lange nicht sehen.
 
 
 #. Starten Sie den Controller.

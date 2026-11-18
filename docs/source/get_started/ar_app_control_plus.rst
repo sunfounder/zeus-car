@@ -61,36 +61,17 @@ Dieses Projekt integriert die Funktionen Linienverfolgung, Folgen und Vermeiden 
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Verbinden Sie sich mit dem ``Zeus_Car`` WLAN.
+#. Verbinden Sie sich mit dem ``Zeus_Car-XXXXXX`` WLAN.
 
-    Verbinden Sie nun Ihr Mobilgerät mit dem lokalen Netzwerk (LAN), das vom Zeus Car bereitgestellt wird. Auf diese Weise befinden sich Ihr Mobilgerät und der Zeus Car im selben Netzwerk, was die Kommunikation zwischen den Anwendungen auf Ihrem Mobilgerät und dem Zeus Car erleichtert.
-    
+    * Finden Sie ``Zeus_Car-XXXXXX`` im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort ``12345678`` ein und verbinden Sie sich damit. ``XXXXXX`` sind die letzten sechs Zeichen der MAC-Adresse des ESP32 CAM, der Hotspot-Name ist also bei jedem Fahrzeug anders.
 
-    * Finden Sie ``Zeus_Car`` im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort ``12345678`` ein und verbinden Sie sich damit.
+      .. image:: ../img/faq_connect_zeuscar.jpg
+          :width: 400
 
+    * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Bitte wählen Sie "Weiter verbinden".
 
-    .. raw:: html
+      .. image:: img/app_no_internet.png
 
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:80%">
-                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-                Ihr Browser unterstützt das Video-Tag nicht.
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
-
-    * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie daher eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Bitte wählen Sie "Weiter verbinden".
-
-    .. image:: img/app_no_internet.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
 
 #. Erstellen Sie einen Controller.
 

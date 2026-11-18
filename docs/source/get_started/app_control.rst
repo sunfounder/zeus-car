@@ -93,30 +93,17 @@ Dies ist ein schnelles Tutorial-Video. Bitte sehen Sie sich zunächst das Video 
 
 #. Installieren Sie `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **APP Store (iOS)** oder **Google Play (Android)**.
 
-#. Verbinden Sie sich mit dem ``Zeus_Car`` WLAN.
+#. Verbinden Sie sich mit dem ``Zeus_Car-XXXXXX`` WLAN.
 
-   Verbinden Sie nun Ihr mobiles Gerät mit dem lokalen Netzwerk (LAN), das vom Zeus Car bereitgestellt wird. Auf diese Weise befinden sich Ihr mobiles Gerät und das Zeus Car im selben Netzwerk, was die Kommunikation zwischen den Anwendungen auf Ihrem mobilen Gerät und dem Zeus Car erleichtert.
-   
-   * Finden Sie ``Zeus_Car`` im WLAN Ihres Mobiltelefons (Tablets), geben Sie das Passwort ``12345678`` ein und verbinden Sie sich damit.
-   
-     .. note::
-   
-       * Die aktuelle Verbindung erfolgt über den GalaxyRVR-Hotspot, daher besteht kein Internetzugang. Wenn Sie aufgefordert werden, das Netzwerk zu wechseln, wählen Sie bitte "Verbunden bleiben".
-       * :ref:`ap_to_sta`
-   
-     .. raw:: html
-   
-       <div style="text-align: center;">
-           <video center loop autoplay muted style = "max-width:80%">
-               <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-               Ihr Browser unterstützt das Video-Tag nicht.
-           </video>
-       </div>
-   
-     .. raw:: html
-         
-         <br/>
-   
+   * Finden Sie ``Zeus_Car-XXXXXX`` im WLAN Ihres Mobiltelefons (Tablet), geben Sie das Passwort ``12345678`` ein und verbinden Sie sich damit. ``XXXXXX`` sind die letzten sechs Zeichen der MAC-Adresse des ESP32 CAM, der Hotspot-Name ist also bei jedem Fahrzeug anders.
+
+     .. image:: ../img/faq_connect_zeuscar.jpg
+         :width: 400
+
+   * Der Standardverbindungsmodus ist der AP-Modus. Nach der Verbindung erhalten Sie eine Meldung, dass dieses WLAN-Netzwerk keinen Internetzugang hat. Bitte wählen Sie "Weiter verbinden".
+
+     .. image:: img/app_no_internet.png
+
 #. Erstellen Sie einen Controller.
 
    * Um einen Controller in SunFounder Controller hinzuzufügen, klicken Sie auf das **+** Symbol.
