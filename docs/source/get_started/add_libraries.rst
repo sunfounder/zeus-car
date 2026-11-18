@@ -61,8 +61,4 @@ Ecco i passaggi per installare una libreria:
 
    .. image:: img/arduino/ar_arduinojson.png
 
-6. Infine, cerca e installa la libreria ``SunFounder AI Camera``, l'ultima necessaria per questo progetto.
-
-   .. image:: img/arduino/ar_aicamera.png
-
 Seguendo questi passaggi, avrai tutte le librerie necessarie installate e pronte all'uso per il tuo progetto.

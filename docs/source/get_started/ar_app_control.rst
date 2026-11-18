@@ -51,11 +51,12 @@ In questo progetto, proveremo a controllare il movimento e la direzione della Ze
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Connettiti alla rete WLAN ``Zeus_Car``.
+#. Connettiti alla rete WLAN ``Zeus_Car-XXXXXX``.
 
-    * Trova ``Zeus_Car`` nella lista delle reti WLAN del tuo telefono (o tablet), inserisci la password ``12345678`` e connettiti.
+    * Trova ``Zeus_Car-XXXXXX`` nella lista delle reti WLAN del tuo telefono (o tablet), inserisci la password ``12345678`` e connettiti. ``XXXXXX`` sono gli ultimi sei caratteri dell'indirizzo MAC dell'ESP32 CAM, quindi il nome dell'hotspot è diverso per ogni automobile.
 
-    .. image:: img/app_wlan.png
+    .. image:: ../img/faq_connect_zeuscar.jpg
+        :width: 400
 
     * La modalità di connessione predefinita è AP. Dopo la connessione, potrebbe apparire un avviso che indica l’assenza di accesso a Internet su questa rete WLAN. Scegli di continuare la connessione.
 
@@ -93,7 +94,7 @@ In questo progetto, proveremo a controllare il movimento e la direzione della Ze
         .. image:: img/app_connect.png
 
         .. note::
-            Assicurati che il Wi-Fi sia connesso a ``Zeus_Car`` se il messaggio non appare dopo un po' di tempo.
+            Assicurati che il Wi-Fi sia connesso a ``Zeus_Car-XXXXXX`` se il messaggio non appare dopo un po' di tempo.
 
 
 #. Avvia il controller.

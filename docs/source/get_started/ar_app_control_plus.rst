@@ -63,34 +63,16 @@ Questo progetto integra le funzioni di tracciamento della linea, follow e evitam
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Connettiti alla rete WLAN ``Zeus_Car``.
+#. Connettiti alla rete WLAN ``Zeus_Car-XXXXXX``.
 
-    Ora collega il tuo dispositivo mobile alla rete locale (LAN) trasmessa dalla Zeus Car. In questo modo, il tuo dispositivo e la Zeus Car saranno sulla stessa rete, facilitando la comunicazione tra le applicazioni mobili e il veicolo.
+    * Trova ``Zeus_Car-XXXXXX`` nella lista delle reti WLAN del tuo telefono (o tablet), inserisci la password ``12345678`` e connettiti. ``XXXXXX`` sono gli ultimi sei caratteri dell'indirizzo MAC dell'ESP32 CAM, quindi il nome dell'hotspot è diverso per ogni automobile.
 
-    * Trova ``Zeus_Car`` nella lista delle reti WLAN del tuo telefono (o tablet), inserisci la password ``12345678`` e connettiti.
+      .. image:: ../img/faq_connect_zeuscar.jpg
+          :width: 400
 
-    .. raw:: html
+    * La modalità di connessione predefinita è la modalità AP. Dopo la connessione compare un avviso che questa rete WLAN non ha accesso a Internet; scegli di continuare la connessione.
 
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:80%">
-                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
-
-    * La modalità di connessione predefinita è la modalità AP. Dopo la connessione, potrebbe apparire un avviso che indica l’assenza di accesso a Internet su questa rete WLAN. Scegli di continuare la connessione.
-
-    .. image:: img/app_no_internet.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
+      .. image:: img/app_no_internet.png
 
 #. Crea un controller.
 
