@@ -52,11 +52,12 @@ Veamos ahora cómo utilizar la aplicación de manera sencilla.
 #. Ahora, instala `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ desde la **APP Store (iOS)** o **Google Play (Android)** en tu dispositivo móvil.
 
 
-#. Conéctate a la red ``Zeus_Car``.
+#. Conéctate a la red ``Zeus_Car-XXXXXX``.
 
-    * Busca ``Zeus_Car`` en la lista de redes Wi-Fi de tu teléfono o tableta, ingresa la contraseña ``12345678`` y conéctate.
+    * Busca ``Zeus_Car-XXXXXX`` en la lista de redes Wi-Fi de tu teléfono o tableta, ingresa la contraseña ``12345678`` y conéctate. ``XXXXXX`` son los últimos seis caracteres de la dirección MAC del ESP32 CAM, por lo que el nombre del punto de acceso es distinto en cada coche.
 
-    .. image:: img/app_wlan.png
+    .. image:: ../img/faq_connect_zeuscar.jpg
+        :width: 400
 
     * El modo de conexión predeterminado es el modo AP. Una vez conectado, aparecerá un mensaje indicando que no hay acceso a Internet en esta red. Selecciona la opción Permanecer conectado.
 
@@ -85,7 +86,7 @@ Veamos ahora cómo utilizar la aplicación de manera sencilla.
         .. image:: img/view_app4.jpg
 
         .. note::
-            Si el mensaje anterior no aparece, asegúrate de que tu dispositivo esté conectado a la red ``Zeus_Car``.
+            Si el mensaje anterior no aparece, asegúrate de que tu dispositivo esté conectado a la red ``Zeus_Car-XXXXXX``.
 
 #. Ejecutar el controlador.
 

@@ -63,34 +63,16 @@ Este proyecto integra las funciones de Seguimiento de Línea, Seguimiento de Obj
 
     .. image:: img/zeus_reset_button.jpg
 
-#. Conéctate a la red WLAN de ``Zeus_Car``.
+#. Conéctate a la red WLAN ``Zeus_Car-XXXXXX``.
 
-    Ahora, conecta tu dispositivo móvil a la red LAN (Local Area Network) generada por el Zeus Car. De esta manera, tu dispositivo y el Zeus Car estarán en la misma red, facilitando la comunicación entre ambos.
+    * Busca ``Zeus_Car-XXXXXX`` en el WLAN de tu teléfono móvil (tableta), introduce la contraseña ``12345678`` y conéctate. ``XXXXXX`` son los últimos seis caracteres de la dirección MAC del ESP32 CAM, por lo que el nombre del punto de acceso es distinto en cada coche.
 
-    * Busca ``Zeus_Car`` en la lista de redes Wi-Fi en tu dispositivo móvil (tablet o smartphone), introduce la contraseña ``12345678`` y conéctate.
+      .. image:: ../img/faq_connect_zeuscar.jpg
+          :width: 400
 
-    .. raw:: html
+    * El modo de conexión por defecto es el modo AP. Después de conectar aparecerá un aviso indicando que esta red WLAN no tiene acceso a Internet; elige continuar con la conexión.
 
-        <div style="text-align: center;">
-            <video center loop autoplay muted style = "max-width:80%">
-                <source src="../_static/video/connect_wifi.mp4"  type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-    .. raw:: html
-        
-        <br/>
-
-    * El modo de conexión predeterminado es el modo AP. Una vez conectado, aparecerá un mensaje indicando que no hay acceso a Internet en esta red WLAN. Por favor, selecciona la opción de continuar conectado.
-
-    .. image:: img/app_no_internet.png
-        :width: 500
-        :align: center
-
-    .. raw:: html
-        
-        <br/>  
+      .. image:: img/app_no_internet.png
 
 #. Crea un controlador.
 
